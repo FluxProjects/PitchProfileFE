@@ -10,7 +10,6 @@ import "./plugins/slick/slick-theme.min.css";
 function App(props) {
   return (
     <div className="App">
-      {React.version}
       <Markup />
     </div>
   );
