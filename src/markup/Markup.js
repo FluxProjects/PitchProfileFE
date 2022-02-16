@@ -99,11 +99,11 @@ class Markup extends Component {
             {/* Routes to use */}
 
             <Route path="/" exact component={Homepage} />
-            {/* <Route path="/index-2" exact component={Homepage2} />
+            <Route path="/index-2" exact component={Homepage2} />
 
             <Route path="/jobs-alerts" exact component={Jobsalert} />
             <Route path="/jobs-saved-jobs" exact component={Jobsavedjobs} />
-             <Route path="/jobs-cv-manager" exact component={Jobcvmanager} />
+            <Route path="/jobs-cv-manager" exact component={Jobcvmanager} />
 
             <Route
               path="/company-transactions"
@@ -178,7 +178,7 @@ class Markup extends Component {
               component={Blogdetailgridsidebar}
             />
             <Route path="/blog-left-img" exact component={Blogleftimg} />
-            <Route path="/blog-details" exact component={Blogdetail} /> */}
+            <Route path="/blog-details" exact component={Blogdetail} />
           </Switch>
         </div>
         <ScrollToTop />
