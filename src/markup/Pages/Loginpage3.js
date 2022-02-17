@@ -1,10 +1,8 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import RegisterTextInput from "../Components/RegisterTextInput";
 
 export default function Register() {
-  const [fname, setFName] = useState("");
-  const [lname, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
