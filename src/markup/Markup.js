@@ -31,7 +31,7 @@ import Register from "./Pages/Register";
 
 export default function Markup() {
   return (
-    <BrowserRouter basename="/react">
+    <BrowserRouter basename="/">
       <div className="page-wraper">
         <Switch>
           {/* Routes to use */}
