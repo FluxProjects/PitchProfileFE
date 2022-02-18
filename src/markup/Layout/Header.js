@@ -10,9 +10,6 @@ export default function Header() {
   const handleClose = () => {
     setShow(false);
   };
-  const handleShow = () => {
-    setShow(true);
-  };
 
   useEffect(() => {
     var btn = document.querySelector(".navicon");
@@ -38,13 +35,46 @@ export default function Header() {
     }
   }, []);
 
+  const links = [
+    {
+      name: "Browse Job",
+      link: "/",
+      index: "0",
+    },
+    {
+      name: "Companies",
+      link: "/",
+      index: "1",
+    },
+    {
+      name: "My Applied Jobs",
+      link: "/jobs-applied-job",
+      index: "2",
+    },
+    {
+      name: "My Resume",
+      link: "/jobs-my-resume",
+      index: "3",
+    },
+    {
+      name: "About",
+      link: "/about-us",
+      index: "4",
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+      index: "5",
+    },
+  ];
+
   return (
     <>
       <header className="site-header mo-left header fullwidth">
         <div className="sticky-header main-bar-wraper navbar-expand-lg">
           <div className="main-bar clearfix">
             <div className="container clearfix">
-              <div className="logo-header mostion">
+              <div style={{ marginTop: 5 }} className="logo-header mostion">
                 <Link to={"./"}>
                   <img
                     src={require("./../../images/logo.png")}
@@ -69,47 +99,40 @@ export default function Header() {
               </button>
 
               <div className="extra-nav">
-                <div className="extra-cell">
-                  <Link to={"/login"} className="site-button">
-                    <i className="fa fa-user"></i> Sign Up
-                  </Link>
+                <Link to={"/login"} className="site-button">
+                  <i className="fa fa-user"></i> Sign Up
+                </Link>
 
-                  <Link
-                    to={"#"}
-                    title="READ MORE"
-                    onClick={() => handleShow()}
-                    className="site-button"
-                  >
-                    <i className="fa fa-lock"></i> login{" "}
-                  </Link>
+                <div className="testimonial-picHead radius">
+                  <img
+                    src={require("./../../images/testimonials/pic3.jpg")}
+                    alt=""
+                    width="20"
+                    height="20"
+                  />
                 </div>
               </div>
 
               <div
+                style={{ marginTop: 5 }}
                 className="header-nav navbar-collapse collapse myNavbar justify-content-start"
                 id="navbarNavDropdown"
               >
                 <ul className="nav navbar-nav">
-                  <li className="active">
-                    {/* <Link to={""}> */}
-                    <Link to={"/"} className="dez-page">
-                      Home
-                      {/* <i className="fa fa-chevron-down"></i> */}
-                    </Link>
-                    {/* <ul className="sub-menu">
-                        <li>
-                          <Link to={"./"} className="dez-page">
-                            Home 1
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={"/index-2"} className="dez-page">
-                            Home 2
-                          </Link>
-                        </li>
-                      </ul> */}
-                  </li>
-                  <li>
+                  {links.map((item, index) => (
+                    <li
+                      className={
+                        item.link === `react/${window.location.pathname}`
+                          ? "active"
+                          : ""
+                      }
+                    >
+                      <Link to={item.link} className="dez-page">
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                  {/* <li>
                     <Link to={"/browse-candidates"}>For Candidates</Link>
                   </li>
                   <li>
@@ -265,7 +288,7 @@ export default function Header() {
                       <li>
                         <Link to={"/login"} className="dez-page">
                           Login
-                          {/* <i className="fa fa-angle-right"></i> */}
+                          {/* <i className="fa fa-angle-right"></i> 
                         </Link>
                       </li>
                       <li>
@@ -285,7 +308,7 @@ export default function Header() {
                         </Link>
                       </li>
                     </ul>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
