@@ -47,6 +47,39 @@ export default function Header() {
       index: "1",
     },
     {
+      name: "Browse Candidates",
+      link: "/jobs-applied-job",
+      index: "2",
+    },
+    {
+      name: "Post a job",
+      link: "/jobs-my-resume",
+      index: "3",
+    },
+    {
+      name: "About",
+      link: "/about-us",
+      index: "4",
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+      index: "5",
+    },
+  ];
+
+  const loginLinks = [
+    {
+      name: "Browse Job",
+      link: "/",
+      index: "0",
+    },
+    {
+      name: "Companies",
+      link: "/",
+      index: "1",
+    },
+    {
       name: "My Applied Jobs",
       link: "/jobs-applied-job",
       index: "2",
@@ -98,21 +131,6 @@ export default function Header() {
                 <span></span>
               </button>
 
-              <div className="extra-nav">
-                <Link to={"/login"} className="site-button">
-                  <i className="fa fa-user"></i> Sign Up
-                </Link>
-
-                <div className="testimonial-picHead radius">
-                  <img
-                    src={require("./../../images/testimonials/pic3.jpg")}
-                    alt=""
-                    width="20"
-                    height="20"
-                  />
-                </div>
-              </div>
-
               <div
                 style={{ marginTop: 5 }}
                 className="header-nav navbar-collapse collapse myNavbar justify-content-start"
@@ -132,12 +150,25 @@ export default function Header() {
                       </Link>
                     </li>
                   ))}
-                  {/* <li>
-                    <Link to={"/browse-candidates"}>For Candidates</Link>
+
+                  <li></li>
+                  <li></li>
+                  <li className="active float-right">
+                    <Link to={"/login"} className="site-button">
+                      <i className="fa fa-user"></i> Sign Up
+                    </Link>
                   </li>
-                  <li>
+
+                  <li className="float-right noselect" style={{ padding: 0 }}>
                     <Link to={""}>
-                      For Employers <i className="fa fa-chevron-down"></i>
+                      <div className="testimonial-picHead radius">
+                        <img
+                          src={require("./../../images/testimonials/pic3.jpg")}
+                          alt=""
+                          width="20"
+                          height="20"
+                        />
+                      </div>
                     </Link>
                     <ul className="sub-menu">
                       <li>
@@ -145,170 +176,8 @@ export default function Header() {
                           Company Profile <span className="new-page">New</span>
                         </Link>
                       </li>
-                      <li>
-                        <Link to={"/company-resume"} className="dez-page">
-                          Employer Resume <span className="new-page">New</span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/company-post-jobs"} className="dez-page">
-                          Post A Jobs <span className="new-page">New</span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/company-manage-job"} className="dez-page">
-                          Manage jobs <span className="new-page">New</span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/company-transactions"} className="dez-page">
-                          Transactions <span className="new-page">New</span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/browse-candidates"} className="dez-page">
-                          Browse Candidates
-                        </Link>
-                      </li>
                     </ul>
                   </li>
-                  <li>
-                    <Link to={""}>
-                      Pages <i className="fa fa-chevron-down"></i>
-                    </Link>
-                    <ul className="sub-menu">
-                      <li>
-                        <Link to={"/about-us"} className="dez-page">
-                          About Us
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/job-detail"} className="dez-page">
-                          Job Detail
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/companies"} className="dez-page">
-                          companies
-                        </Link>
-                      </li>
-
-                      <li>
-                        <Link to={""} className="dez-page">
-                          Browse Job <i className="fa fa-angle-right"></i>
-                        </Link>
-                        <ul className="sub-menu">
-                          <li>
-                            <Link to={"/browse-job-list"} className="dez-page">
-                              browse job list
-                            </Link>
-                          </li>
-                          <li>
-                            <Link to={"/browse-job-grid"} className="dez-page">
-                              browse job grid{" "}
-                              <span className="new-page">New</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={"/browse-job-filter-list"}
-                              className="dez-page"
-                            >
-                              browse filter list{" "}
-                              <span className="new-page">New</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={"/browse-job-filter-grid"}
-                              className="dez-page"
-                            >
-                              browse filter grid{" "}
-                              <span className="new-page">New</span>
-                            </Link>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <Link to={""} className="dez-page">
-                          Jobs<i className="fa fa-angle-right"></i>
-                        </Link>
-                        <ul className="sub-menu">
-                          <li>
-                            <Link
-                              to={"/category-all-jobs"}
-                              className="dez-page"
-                            >
-                              all jobs <span className="new-page">New</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={"/category-company-jobs"}
-                              className="dez-page"
-                            >
-                              company jobs <span className="new-page">New</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={"/category-designations-jobs"}
-                              className="dez-page"
-                            >
-                              designations jobs{" "}
-                              <span className="new-page">New</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link to={"/category-jobs"} className="dez-page">
-                              category jobs{" "}
-                              <span className="new-page">New</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={"/category-location-jobs"}
-                              className="dez-page"
-                            >
-                              location jobs{" "}
-                              <span className="new-page">New</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={"/category-skill-jobs"}
-                              className="dez-page"
-                            >
-                              skill jobs <span className="new-page">New</span>
-                            </Link>
-                          </li>
-                        </ul>
-                      </li>
-
-                      <li>
-                        <Link to={"/login"} className="dez-page">
-                          Login
-                          {/* <i className="fa fa-angle-right"></i> 
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/register"} className="dez-page">
-                          register <i className="fa fa-angle-right"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"/error-404"} className="dez-page">
-                          Error 404
-                        </Link>
-                      </li>
-
-                      <li>
-                        <Link to={"/contact"} className="dez-page">
-                          Contact Us
-                        </Link>
-                      </li>
-                    </ul>
-                  </li> */}
                 </ul>
               </div>
             </div>
