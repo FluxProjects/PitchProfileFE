@@ -1,11 +1,6 @@
 import React from "react";
 
-export default function TextAreaModalComponent({
-  label,
-  onChange,
-  type,
-  placeholder,
-}) {
+export default function TextAreaModalComponent({ onChange, placeholder }) {
   return (
     <>
       <textarea

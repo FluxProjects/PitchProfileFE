@@ -68,38 +68,38 @@ export default function Header() {
     },
   ];
 
-  const loginLinks = [
-    {
-      name: "Browse Job",
-      link: "/",
-      index: "0",
-    },
-    {
-      name: "Companies",
-      link: "/",
-      index: "1",
-    },
-    {
-      name: "My Applied Jobs",
-      link: "/jobs-applied-job",
-      index: "2",
-    },
-    {
-      name: "My Resume",
-      link: "/jobs-my-resume",
-      index: "3",
-    },
-    {
-      name: "About",
-      link: "/about-us",
-      index: "4",
-    },
-    {
-      name: "Contact",
-      link: "/contact",
-      index: "5",
-    },
-  ];
+  // const loginLinks = [
+  //   {
+  //     name: "Browse Job",
+  //     link: "/",
+  //     index: "0",
+  //   },
+  //   {
+  //     name: "Companies",
+  //     link: "/",
+  //     index: "1",
+  //   },
+  //   {
+  //     name: "My Applied Jobs",
+  //     link: "/jobs-applied-job",
+  //     index: "2",
+  //   },
+  //   {
+  //     name: "My Resume",
+  //     link: "/jobs-my-resume",
+  //     index: "3",
+  //   },
+  //   {
+  //     name: "About",
+  //     link: "/about-us",
+  //     index: "4",
+  //   },
+  //   {
+  //     name: "Contact",
+  //     link: "/contact",
+  //     index: "5",
+  //   },
+  // ];
 
   return (
     <>

@@ -3,13 +3,7 @@ import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function AccomplishmentsComponent({
-  label,
-  onChange,
-  required,
-  type,
-  placeholder,
-}) {
+export default function AccomplishmentsComponent({}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -848,6 +842,17 @@ export default function AccomplishmentsComponent({
           </div>
         </div>
       </div>
+
+      <Modal
+        show={show}
+        onHide={() => handleClose()}
+        className="modal fade modal-bx-info editor"
+        id="employment"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="EmploymentModalLongTitle"
+        aria-hidden="true"
+      ></Modal>
     </>
   );
 }

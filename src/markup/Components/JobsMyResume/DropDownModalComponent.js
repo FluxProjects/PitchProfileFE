@@ -1,12 +1,6 @@
 import React from "react";
 
-export default function DropDownModalComponent({
-  label,
-  onChange,
-  type,
-  placeholder,
-  options,
-}) {
+export default function DropDownModalComponent({ onChange, options }) {
   return (
     <>
       <select onChange={onChange} className="form-control">

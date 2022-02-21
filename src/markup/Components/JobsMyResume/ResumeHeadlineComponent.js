@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 
-export default function ResumeHeadlineComponent({
-  label,
-  onChange,
-  required,
-  type,
-  placeholder,
-}) {
+export default function ResumeHeadlineComponent({}) {
   const [show, setShow] = useState(false);
   const [description, setDescription] = useState("");
 
