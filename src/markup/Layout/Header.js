@@ -152,14 +152,14 @@ export default function Header() {
                   ))}
 
                   <li></li>
-                  <li></li>
+                  <li style={{ marginLeft: 100 }}></li>
                   <li className="active float-right">
                     <Link to={"/login"} className="site-button">
                       <i className="fa fa-user"></i> Sign Up
                     </Link>
                   </li>
 
-                  <li className="float-right noselect" style={{ padding: 0 }}>
+                  {/* <li className="float-right noselect" style={{ padding: 0 }}>
                     <Link to={""}>
                       <div className="testimonial-picHead radius">
                         <img
@@ -177,7 +177,7 @@ export default function Header() {
                         </Link>
                       </li>
                     </ul>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
