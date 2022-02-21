@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
-import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import Listingsidebar from "./../Element/Listingsidebar";
 import ResumeHeadlineComponent from "../Components/JobsMyResume/ResumeHeadlineComponent";
@@ -21,13 +20,8 @@ var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
 export default function Jobmyresume() {
-  const [show, setShow] = useState(false);
-
   const handleClose = () => {
     setShow(false);
-  };
-  const handleShow = () => {
-    setShow(true);
   };
 
   return (

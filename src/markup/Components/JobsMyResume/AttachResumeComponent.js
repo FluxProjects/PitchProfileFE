@@ -1,23 +1,16 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function AttachResumeComponent({
-  label,
-  onChange,
-  required,
-  type,
-  placeholder,
-}) {
+export default function AttachResumeComponent({}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false);
   };
-  const handleShow = () => {
-    setShow(true);
-  };
+  //   const handleShow = () => {
+  //     setShow(true);
+  //   };
 
   return (
     <>
