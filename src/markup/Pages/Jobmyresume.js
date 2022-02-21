@@ -20,6 +20,8 @@ var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
 export default function Jobmyresume() {
+  const [show, setShow] = useState(false);
+
   const handleClose = () => {
     setShow(false);
   };
