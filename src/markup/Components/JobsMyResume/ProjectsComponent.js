@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import DropDownModalComponent from "./DropDownModalComponent";
+import TextAreaModalComponent from "./TextAreaModalComponent";
+import TextInputModal from "./TextInputModal";
 
 export default function ProjectsComponent({}) {
   const [show, setShow] = useState(false);
+  const [ProjectsTitle, setProjectsTitle] = useState("");
+  const [TagProject, setTagProject] = useState("");
+  const [Client, setClient] = useState("");
+  const [ProgressStatus, setProgressStatus] = useState(1);
+  const [description, setDescription] = useState("");
+  const [startedWorking, setStartedWorking] = useState("");
+  const [WorkedTill, setWorkedTill] = useState("");
 
   const handleClose = () => {
     setShow(false);
@@ -33,220 +42,6 @@ export default function ProjectsComponent({}) {
         <p className="m-b0">w3itexpert (Offsite)</p>
         <p className="m-b0">Dec 2018 to Present (Full Time)</p>
         <p className="m-b0">Job Board Template</p>
-
-        <div
-          className="modal fade modal-bx-info editor"
-          id="projects"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="ProjectsModalLongTitle"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="ProjectsModalLongTitle">
-                  Add Projects
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <form>
-                  <div className="row">
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Project Title</label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          placeholder="Enter Project Title"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>
-                          Tag this project with your Employment/Education
-                        </label>
-                        <select>
-                          <option>Class 12th</option>
-                          <option>Class 10th</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Client</label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          placeholder="Enter Client Name"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Project Status</label>
-                        <div className="row">
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                className="custom-control-input"
-                                id="inprogress"
-                                name="example1"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="inprogress"
-                              >
-                                In Progress
-                              </label>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                className="custom-control-input"
-                                id="finished"
-                                name="example1"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="finished"
-                              >
-                                Finished
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-6">
-                      <div className="form-group">
-                        <label>Started Working From</label>
-                        <div className="row">
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <Form.Control as="select">
-                              <option>2018</option>
-                              <option>2017</option>
-                              <option>2016</option>
-                              <option>2015</option>
-                              <option>2014</option>
-                              <option>2013</option>
-                              <option>2012</option>
-                              <option>2011</option>
-                              <option>2010</option>
-                              <option>2009</option>
-                              <option>2008</option>
-                              <option>2007</option>
-                              <option>2006</option>
-                              <option>2005</option>
-                              <option>2004</option>
-                              <option>2003</option>
-                              <option>2002</option>
-                              <option>2001</option>
-                            </Form.Control>
-                          </div>
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <Form.Control as="select">
-                              <option>january</option>
-                              <option>february</option>
-                              <option>March</option>
-                              <option>April</option>
-                              <option>May</option>
-                              <option>Jun</option>
-                              <option>July</option>
-                              <option>August</option>
-                              <option>September</option>
-                              <option>October</option>
-                              <option>November</option>
-                              <option>December</option>
-                            </Form.Control>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-6">
-                      <div className="form-group">
-                        <label>Worked Till</label>
-                        <div className="row">
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <Form.Control as="select">
-                              <option>2018</option>
-                              <option>2017</option>
-                              <option>2016</option>
-                              <option>2015</option>
-                              <option>2014</option>
-                              <option>2013</option>
-                              <option>2012</option>
-                              <option>2011</option>
-                              <option>2010</option>
-                              <option>2009</option>
-                              <option>2008</option>
-                              <option>2007</option>
-                              <option>2006</option>
-                              <option>2005</option>
-                              <option>2004</option>
-                              <option>2003</option>
-                              <option>2002</option>
-                              <option>2001</option>
-                            </Form.Control>
-                          </div>
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <Form.Control as="select">
-                              <option>january</option>
-                              <option>february</option>
-                              <option>March</option>
-                              <option>April</option>
-                              <option>May</option>
-                              <option>Jun</option>
-                              <option>July</option>
-                              <option>August</option>
-                              <option>September</option>
-                              <option>October</option>
-                              <option>November</option>
-                              <option>December</option>
-                            </Form.Control>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Details of Project</label>
-                        <textarea
-                          className="form-control"
-                          placeholder="Type Description"
-                        ></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="site-button"
-                  data-dismiss="modal"
-                >
-                  Cancel
-                </button>
-                <button type="button" className="site-button">
-                  Save
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <Modal
@@ -258,7 +53,176 @@ export default function ProjectsComponent({}) {
         role="dialog"
         aria-labelledby="EmploymentModalLongTitle"
         aria-hidden="true"
-      ></Modal>
+      >
+        <div className="modal-dialog my-0" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="EmploymentModalLongTitle">
+                Add Projects
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                onClick={() => handleClose()}
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="row">
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Projects Title</label>
+                      <TextInputModal
+                        placeholder="Enter Projects Title"
+                        onChange={(e) => setProjectsTitle(e.target.value)}
+                        value={ProjectsTitle}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>
+                        Tag this project with your Employment/Education
+                      </label>
+                      <DropDownModalComponent
+                        onChange={(e) => {
+                          console.log("eee", e.target.value);
+                          setTagProject(e.target.value);
+                        }}
+                        value={TagProject}
+                        options={[
+                          { id: 1, name: "test 1" },
+                          { id: 2, name: "test 2" },
+                        ]}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Client</label>
+                      <TextInputModal
+                        placeholder="Enter Client Name"
+                        onChange={(e) => setClient(e.target.value)}
+                        value={Client}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Project Status</label>
+                      <div className="row">
+                        <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div className="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              className="custom-control-input"
+                              id="employ_yes"
+                              name="example1"
+                              checked={ProgressStatus == 1 ? true : false}
+                              value={1}
+                              onChange={() => setProgressStatus(1)}
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="employ_yes"
+                            >
+                              In Progress
+                            </label>
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div className="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              className="custom-control-input"
+                              id="employ_no"
+                              name="example1"
+                              checked={ProgressStatus == 2 ? true : false}
+                              value={2}
+                              onChange={() => setProgressStatus(2)}
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="employ_no"
+                            >
+                              Finished
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Started Working From</label>
+                      <div className="row">
+                        <div className="col-lg-12 col-md-12 col-sm-12 col-12">
+                          <TextInputModal
+                            label=""
+                            type="date"
+                            onChange={(e) => {
+                              console.log("test", e.target.value);
+                              setStartedWorking(e.target.value);
+                            }}
+                            value={startedWorking}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Worked Till</label>
+                      <div className="row">
+                        <div className="col-lg-12 col-md-12 col-sm-12 col-12">
+                          <TextInputModal
+                            label=""
+                            type="date"
+                            onChange={(e) => {
+                              console.log("test", e.target.value);
+                              setWorkedTill(e.target.value);
+                            }}
+                            value={WorkedTill}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Details of Project</label>
+                      <TextAreaModalComponent
+                        onChange={(e) => {
+                          setDescription(e.target.value);
+                        }}
+                        value={description}
+                        placeholder="Type Description"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="site-button"
+                data-dismiss="modal"
+                onClick={() => handleClose()}
+              >
+                Cancel
+              </button>
+              <button type="button" className="site-button">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }

@@ -308,22 +308,17 @@ export default function Jobmyresume() {
                   {/* ProfileSummaryComponent */}
                   <ProfileSummary />
 
-                  <div
-                    id="accomplishments_bx"
-                    className="job-bx bg-white m-b30"
-                  >
-                    {/* Accomplishments */}
-                    <AccomplishmentsComponent />
+                  {/* Accomplishments */}
+                  <AccomplishmentsComponent />
 
-                    {/* DesiredCareerProfileComponent */}
-                    <DesiredCareerProfileComponent />
+                  {/* DesiredCareerProfileComponent */}
+                  <DesiredCareerProfileComponent />
 
-                    {/* ProfileDetailsComponent */}
-                    <ProfileDetailsComponent />
+                  {/* ProfileDetailsComponent */}
+                  <ProfileDetailsComponent />
 
-                    {/* AttachResumeComponent */}
-                    <AttachResumeComponent />
-                  </div>
+                  {/* AttachResumeComponent */}
+                  <AttachResumeComponent />
                 </div>
               </div>
             </div>

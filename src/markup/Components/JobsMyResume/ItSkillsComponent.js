@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import DropDownModalComponent from "./DropDownModalComponent";
+import TextInputModal from "./TextInputModal";
 
 export default function ItSkillsComponent({}) {
   const [show, setShow] = useState(false);
+  const [ItSkills, setItSkills] = useState("");
+  const [Version, setVersion] = useState("");
+  const [LastUsed, setLastUsed] = useState("");
+  const [ExpDate, setExpDate] = useState("");
 
   const handleClose = () => {
     setShow(false);
@@ -272,7 +278,92 @@ export default function ItSkillsComponent({}) {
         role="dialog"
         aria-labelledby="EmploymentModalLongTitle"
         aria-hidden="true"
-      ></Modal>
+      >
+        <div className="modal-dialog my-0" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="EmploymentModalLongTitle">
+                IT Skills
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                onClick={() => handleClose()}
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="row">
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>IT Skills</label>
+                      <TextInputModal
+                        placeholder="Enter IT Skills"
+                        onChange={(e) => setItSkills(e.target.value)}
+                        value={ItSkills}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-6 col-md-6 col-sm-12">
+                    <div className="form-group">
+                      <label>Course</label>
+                      <TextInputModal
+                        placeholder="Select Version"
+                        onChange={(e) => setVersion(e.target.value)}
+                        value={Version}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-6 col-md-6 col-sm-12">
+                    <div className="form-group">
+                      <label>Last Used</label>
+                      <DropDownModalComponent
+                        onChange={(e) => {
+                          console.log("eee", e.target.value);
+                          setLastUsed(e.target.value);
+                        }}
+                        options={[
+                          { id: 1, name: "test 1" },
+                          { id: 2, name: "test 2" },
+                        ]}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Experience</label>
+                      <TextInputModal
+                        placeholder=""
+                        type="date"
+                        onChange={(e) => setExpDate(e.target.value)}
+                        value={ExpDate}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="site-button"
+                data-dismiss="modal"
+                onClick={() => handleClose()}
+              >
+                Cancel
+              </button>
+              <button type="button" className="site-button">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }

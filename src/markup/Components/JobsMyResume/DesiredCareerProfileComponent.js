@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import TextInputModal from "./TextInputModal";
 
 export default function DesiredCareerProfileComponent({}) {
   const [show, setShow] = useState(false);
@@ -30,15 +31,17 @@ export default function DesiredCareerProfileComponent({}) {
           </Link>
         </div>
 
-        <div
+        <Modal
+          show={show}
+          onHide={() => handleClose()}
           className="modal fade modal-bx-info editor"
-          id="desiredprofile"
+          id="employment"
           tabIndex="-1"
           role="dialog"
-          aria-labelledby="DesiredprofileModalLongTitle"
+          aria-labelledby="EmploymentModalLongTitle"
           aria-hidden="true"
         >
-          <div className="modal-dialog" role="document">
+          <div className="modal-dialog my-0" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="DesiredprofileModalLongTitle">
@@ -232,33 +235,12 @@ export default function DesiredCareerProfileComponent({}) {
                     <div className="col-lg-12 col-md-6">
                       <div className="form-group">
                         <label>Availability to Join</label>
-                        <div className="row">
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <Form.Control as="select">
-                              <option>2018</option>
-                              <option>2019</option>
-                              <option>2020</option>
-                              <option>2021</option>
-                              <option>2022</option>
-                            </Form.Control>
-                          </div>
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <Form.Control as="select">
-                              <option>january</option>
-                              <option>february</option>
-                              <option>March</option>
-                              <option>April</option>
-                              <option>May</option>
-                              <option>Jun</option>
-                              <option>July</option>
-                              <option>August</option>
-                              <option>September</option>
-                              <option>October</option>
-                              <option>November</option>
-                              <option>December</option>
-                            </Form.Control>
-                          </div>
-                        </div>
+                        <TextInputModal
+                          type="date"
+                          onChange={(e) => {
+                            console.log(e.target.value);
+                          }}
+                        />
                       </div>
                     </div>
                     <div className="col-lg-12 col-md-12">
@@ -374,7 +356,7 @@ export default function DesiredCareerProfileComponent({}) {
               </div>
             </div>
           </div>
-        </div>
+        </Modal>
 
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-6">
@@ -427,17 +409,6 @@ export default function DesiredCareerProfileComponent({}) {
           </div>
         </div>
       </div>
-
-      <Modal
-        show={show}
-        onHide={() => handleClose()}
-        className="modal fade modal-bx-info editor"
-        id="employment"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="EmploymentModalLongTitle"
-        aria-hidden="true"
-      ></Modal>
     </>
   );
 }

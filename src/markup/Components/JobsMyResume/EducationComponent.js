@@ -5,16 +5,11 @@ import { Link } from "react-router-dom";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
-export default function EducationComponent({
-  label,
-  onChange,
-  required,
-  type,
-  placeholder,
-}) {
+export default function EducationComponent({}) {
   const [show, setShow] = useState(false);
   const [Course, setCourse] = useState("");
   const [University, setUniversity] = useState("");
+  const [Education, setEducation] = useState("");
 
   const handleClose = () => {
     setShow(false);
@@ -25,6 +20,92 @@ export default function EducationComponent({
 
   return (
     <>
+      <Modal
+        show={show}
+        onHide={() => handleClose()}
+        className="modal fade modal-bx-info editor"
+        id="employment"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="EmploymentModalLongTitle"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog my-0" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="EmploymentModalLongTitle">
+                Education
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                onClick={() => handleClose()}
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="row">
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Education</label>
+                      <DropDownModalComponent
+                        onChange={(e) => {
+                          console.log("eee", e.target.value);
+                          setEducation(e.target.value);
+                        }}
+                        value={Education}
+                        options={[
+                          { id: 1, name: "test 1" },
+                          { id: 2, name: "test 2" },
+                        ]}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-12 col-md-12 col-sm-12">
+                    <div className="form-group">
+                      <label>Course</label>
+                      <TextInputModal
+                        placeholder="Select Course"
+                        onChange={(e) => setCourse(e.target.value)}
+                        value={Course}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>University/Institute</label>
+                      <TextInputModal
+                        placeholder="Select University/Institute"
+                        type="date"
+                        onChange={(e) => setUniversity(e.target.value)}
+                        value={University}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="site-button"
+                data-dismiss="modal"
+                onClick={() => handleClose()}
+              >
+                Cancel
+              </button>
+              <button type="button" className="site-button">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </Modal>
       {/* Education */}
       <div id="education_bx" className="job-bx bg-white m-b30">
         <div className="d-flex">
@@ -143,88 +224,6 @@ export default function EducationComponent({
           Add Graduation/Diploma
         </Link>
       </div>
-      <Modal
-        show={show}
-        onHide={() => handleClose()}
-        className="modal fade modal-bx-info editor"
-        id="employment"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="EmploymentModalLongTitle"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog my-0" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="EmploymentModalLongTitle">
-                Education
-              </h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                onClick={() => handleClose()}
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <form>
-                <div className="row">
-                  <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>Education</label>
-                      <DropDownModalComponent
-                        onChange={(e) => {
-                          console.log("eee", e.target.value);
-                        }}
-                        options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
-                        ]}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>Course</label>
-                      <TextInputModal
-                        placeholder="Select Course"
-                        onChange={(e) => setCourse(e.target.value)}
-                        value={Course}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>University/Institute</label>
-                      <TextInputModal
-                        placeholder="Select University/Institute"
-                        onChange={(e) => setUniversity(e.target.value)}
-                        value={University}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="site-button"
-                data-dismiss="modal"
-                onClick={() => handleClose()}
-              >
-                Cancel
-              </button>
-              <button type="button" className="site-button">
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      </Modal>
     </>
   );
 }
