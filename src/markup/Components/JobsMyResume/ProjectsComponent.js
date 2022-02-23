@@ -42,6 +42,17 @@ export default function ProjectsComponent({}) {
         <p className="m-b0">w3itexpert (Offsite)</p>
         <p className="m-b0">Dec 2018 to Present (Full Time)</p>
         <p className="m-b0">Job Board Template</p>
+        <div className="d-flex">
+          <Link
+            to={"#"}
+            data-toggle="modal"
+            data-target="#projects"
+            onClick={() => handleShow()}
+            className="site-button add-btn button-sm"
+          >
+            <i className="fa fa-plus m-r5"></i> Add
+          </Link>
+        </div>
       </div>
 
       <Modal

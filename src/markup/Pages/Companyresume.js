@@ -164,8 +164,15 @@ export default function Companyresume() {
                               target="blank"
                               className="job-links"
                             >
-                              <i className="fa fa-download"></i>
+                              <i className="fa fa-download "></i>
                             </Link>
+                            {/* <Link
+                              to={"/files/pdf-sample.pdf"}
+                              target="blank"
+                              className="job-links"
+                            >
+                              <i className="fa fa-play "></i>
+                            </Link> */}
                           </div>
                         </li>
                       ))}

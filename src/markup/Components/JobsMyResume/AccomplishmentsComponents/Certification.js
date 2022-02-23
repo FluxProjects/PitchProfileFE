@@ -28,6 +28,17 @@ export default function Certification({}) {
           >
             <i className="fa fa-pencil m-r5"></i> Edit
           </Link>
+          <div className="d-flex ml-2">
+            <Link
+              to={"#"}
+              data-toggle="modal"
+              data-target="#projects"
+              onClick={() => handleShow()}
+              className="site-button add-btn button-sm"
+            >
+              <i className="fa fa-plus m-r5"></i> Add
+            </Link>
+          </div>
         </div>
         <p className="m-b0">Add details of Certification you have filed.</p>
 

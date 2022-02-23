@@ -41,6 +41,17 @@ export default function EmploymentComponent({}) {
         <p className="m-b0">Oct 2015 to Present (3 years 4 months)</p>
         <p className="m-b0">Available to join in 1 Months</p>
         <p className="m-b0">Junior Software Developer</p>
+        <div className="d-flex">
+          <Link
+            to={"#"}
+            data-toggle="modal"
+            data-target="#employment"
+            onClick={() => handleShow()}
+            className="site-button add-btn button-sm"
+          >
+            <i className="fa fa-plus "></i> Add
+          </Link>
+        </div>
 
         <Modal
           show={show}
