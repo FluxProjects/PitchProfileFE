@@ -10,6 +10,8 @@ export default function EducationComponent({}) {
   const [Course, setCourse] = useState("");
   const [University, setUniversity] = useState("");
   const [Education, setEducation] = useState("");
+  const [StartDate, setStartDate] = useState("");
+  const [EndDate, setEndDate] = useState("");
 
   const handleClose = () => {
     setShow(false);
@@ -30,7 +32,7 @@ export default function EducationComponent({}) {
         aria-labelledby="EmploymentModalLongTitle"
         aria-hidden="true"
       >
-        <div className="modal-dialog my-0" role="document">
+        <div className="modal-dialog mx-0 my-0" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="EmploymentModalLongTitle">
@@ -65,25 +67,44 @@ export default function EducationComponent({}) {
                       />
                     </div>
                   </div>
-                  <div className="col-lg-12 col-md-12 col-sm-12">
+
+                  <div className="col-lg-6 col-md-6 col-xs-12">
                     <div className="form-group">
-                      <label>Course</label>
+                      <label>Start date</label>
                       <TextInputModal
-                        placeholder="Select Course"
-                        onChange={(e) => setCourse(e.target.value)}
-                        value={Course}
+                        // placeholder="Select University/Institute"
+                        type="date"
+                        onChange={(e) => setStartDate(e.target.value)}
+                        value={StartDate}
                       />
                     </div>
                   </div>
 
-                  <div className="col-lg-12 col-md-12">
+                  <div className="col-lg-6 col-md-6 col-xs-12">
                     <div className="form-group">
-                      <label>University/Institute</label>
+                      <label>End date</label>
                       <TextInputModal
-                        placeholder="Select University/Institute"
+                        // placeholder="Select University/Institute"
                         type="date"
-                        onChange={(e) => setUniversity(e.target.value)}
-                        value={University}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        value={EndDate}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-lg-12 col-md-12 col-sm-12">
+                    <div className="form-group">
+                      <label>Course</label>
+                      <DropDownModalComponent
+                        onChange={(e) => {
+                          console.log("eee", e.target.value);
+                          setEducation(e.target.value);
+                        }}
+                        value={Education}
+                        options={[
+                          { id: 1, name: "test 1" },
+                          { id: 2, name: "test 2" },
+                        ]}
                       />
                     </div>
                   </div>

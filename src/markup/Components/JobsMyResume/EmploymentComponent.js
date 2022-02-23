@@ -11,6 +11,7 @@ export default function EmploymentComponent({}) {
   const [description, setDescription] = useState("");
   const [designation, setDesignation] = useState("");
   const [organization, setOrganization] = useState("");
+  const [Category, setCategory] = useState("");
 
   const handleClose = () => {
     setShow(false);
@@ -87,6 +88,16 @@ export default function EmploymentComponent({}) {
                           placeholder="Enter Your Organization"
                           onChange={(e) => setOrganization(e.target.value)}
                           value={organization}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        <label>Your category/department</label>
+                        <TextInputModal
+                          placeholder="Enter Your category/department"
+                          onChange={(e) => setCategory(e.target.value)}
+                          value={Category}
                         />
                       </div>
                     </div>

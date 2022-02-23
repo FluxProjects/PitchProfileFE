@@ -13,6 +13,8 @@ export default function AccomplishmentsComponent({}) {
       <h5 className="m-b10 ">Accomplishments</h5>
       <div className="list-row">
         <div className="list-line">
+          {/* Certification */}
+          <Certification />
           {/* OnlineProfile */}
           <OnlineProfile />
           {/* Work sample */}
@@ -23,8 +25,6 @@ export default function AccomplishmentsComponent({}) {
           <Presentation />
           {/* Patent */}
           <Patent />
-          {/* Certification */}
-          <Certification />
         </div>
       </div>
     </div>

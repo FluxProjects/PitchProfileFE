@@ -15,6 +15,7 @@ import AccomplishmentsComponent from "../Components/JobsMyResume/Accomplishments
 import DesiredCareerProfileComponent from "../Components/JobsMyResume/DesiredCareerProfileComponent";
 import ProfileDetailsComponent from "../Components/JobsMyResume/ProfileDetailsComponent";
 import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeComponent";
+import AttachVideo from "../Components/JobsMyResume/AttachVideo";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
@@ -290,8 +291,8 @@ export default function Jobmyresume() {
                   {/* Resume Headline */}
                   <ResumeHeadlineComponent />
 
-                  {/* Key skills */}
-                  <KeySkillsComponent />
+                  {/* ProfileSummaryComponent */}
+                  <ProfileSummary />
 
                   {/* Employment */}
                   <EmploymentComponent />
@@ -299,14 +300,14 @@ export default function Jobmyresume() {
                   {/* Education */}
                   <EducationComponent />
 
+                  {/* Key skills */}
+                  <KeySkillsComponent />
+
                   {/* ItSkillsComponent */}
                   <ItSkillsComponent />
 
                   {/* ProjectsComponent */}
                   <ProjectsComponent />
-
-                  {/* ProfileSummaryComponent */}
-                  <ProfileSummary />
 
                   {/* Accomplishments */}
                   <AccomplishmentsComponent />
@@ -319,6 +320,9 @@ export default function Jobmyresume() {
 
                   {/* AttachResumeComponent */}
                   <AttachResumeComponent />
+
+                  {/* AttachVideo */}
+                  <AttachVideo />
                 </div>
               </div>
             </div>
