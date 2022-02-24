@@ -92,7 +92,7 @@ export default function Certification({}) {
                     </div>
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Year Onlabel</label>
+                        <label>Year on Obtained</label>
                         <TextInputModal
                           type="date"
                           onChange={(e) => {

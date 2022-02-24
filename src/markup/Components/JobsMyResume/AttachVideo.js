@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function AttachVideo({}) {
@@ -8,19 +7,16 @@ export default function AttachVideo({}) {
   const handleClose = () => {
     setShow(false);
   };
-  //   const handleShow = () => {
-  //     setShow(true);
-  //   };
+  const handleShow = () => {
+    setShow(true);
+  };
 
   return (
     <>
       {/* Attach resume */}
       <div id="attach_resume_bx" className="job-bx bg-white m-b30">
         <h5 className="m-b10">Attach Video</h5>
-        <p>
-          Video is the one of the most important document recruiters look for.
-          Recruiters generally do not look at profiles without videos.
-        </p>
+
         <form className="attach-resume">
           <div className="row">
             <div className="col-lg-12 col-md-12">
@@ -40,26 +36,7 @@ export default function AttachVideo({}) {
             </div>
           </div>
         </form>
-        <p className="text-center">
-          If you do not have a resume document, you may write your brief
-          professional profile{" "}
-          <Link to={""} className="site-button-link">
-            here
-          </Link>
-          .
-        </p>
       </div>
-
-      <Modal
-        show={show}
-        onHide={() => handleClose()}
-        className="modal fade modal-bx-info editor"
-        id="employment"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="EmploymentModalLongTitle"
-        aria-hidden="true"
-      ></Modal>
     </>
   );
 }

@@ -310,7 +310,7 @@ export default function ItSkillsComponent({}) {
                   </div>
                   <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
-                      <label>Course</label>
+                      <label>Version</label>
                       <TextInputModal
                         placeholder="Select Version"
                         onChange={(e) => setVersion(e.target.value)}
@@ -321,25 +321,21 @@ export default function ItSkillsComponent({}) {
                   <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
                       <label>Last Used</label>
-                      <DropDownModalComponent
-                        onChange={(e) => {
-                          console.log("eee", e.target.value);
-                          setLastUsed(e.target.value);
-                        }}
-                        options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
-                        ]}
+                      <TextInputModal
+                        placeholder=""
+                        type="date"
+                        onChange={(e) => setExpDate(e.target.value)}
+                        value={ExpDate}
                       />
                     </div>
                   </div>
 
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Experience</label>
+                      <label>Experience (Years)</label>
                       <TextInputModal
                         placeholder=""
-                        type="date"
+                        type="number"
                         onChange={(e) => setExpDate(e.target.value)}
                         value={ExpDate}
                       />

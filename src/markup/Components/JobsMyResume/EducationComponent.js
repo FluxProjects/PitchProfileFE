@@ -53,7 +53,18 @@ export default function EducationComponent({}) {
                 <div className="row">
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Education</label>
+                      <label>Your Institute</label>
+                      <TextInputModal
+                        placeholder="Enter Your Institute"
+                        // onChange={(e) => setOrganization(e.target.value)}
+                        // value={organization}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Education Level</label>
                       <DropDownModalComponent
                         onChange={(e) => {
                           console.log("eee", e.target.value);
@@ -106,6 +117,46 @@ export default function EducationComponent({}) {
                           { id: 2, name: "test 2" },
                         ]}
                       />
+                    </div>
+                  </div>
+
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Is this your current Institute?</label>
+                      <div className="row">
+                        <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div className="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              className="custom-control-input"
+                              id="employ_yes"
+                              name="example1"
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="employ_yes"
+                            >
+                              Yes
+                            </label>
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div className="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              className="custom-control-input"
+                              id="employ_no"
+                              name="example1"
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="employ_no"
+                            >
+                              No
+                            </label>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -175,7 +226,7 @@ export default function EducationComponent({}) {
                   <div className="row">
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Education</label>
+                        <label>Education Level</label>
                         <Form.Control as="select">
                           <option>Doctorate/PhD</option>
                           <option>Masters/Post-Graduation</option>

@@ -147,6 +147,19 @@ export default function ResumeHeadlineComponent({}) {
                 <div className="row">
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
+                      <label>Enter your top 3 skills?</label>
+
+                      <TextInputModal
+                        label=""
+                        onChange={(e) => setKeySkills(e.target.value)}
+                        value={keySkills}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Enter your skills?</label>
+
                       <TextInputModal
                         label=""
                         onChange={(e) => setKeySkills(e.target.value)}

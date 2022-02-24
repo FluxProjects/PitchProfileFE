@@ -94,7 +94,7 @@ export default function ProjectsComponent({}) {
                       />
                     </div>
                   </div>
-                  <div className="col-lg-12 col-md-12">
+                  {/* <div className="col-lg-12 col-md-12">
                     <div className="form-group">
                       <label>
                         Tag this project with your Employment/Education
@@ -111,7 +111,7 @@ export default function ProjectsComponent({}) {
                         ]}
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
                       <label>Client</label>

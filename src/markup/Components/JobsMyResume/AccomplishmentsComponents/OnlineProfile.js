@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import DropDownModalComponent from "../DropDownModalComponent";
 
 export default function OnlineProfile({}) {
   const [show, setShow] = useState(false);
@@ -16,7 +17,7 @@ export default function OnlineProfile({}) {
   return (
     <>
       <div className="d-flex">
-        <h6 className="font-14 m-b5">Online Profile</h6>
+        <h6 className="font-14 m-b5">Social Profile</h6>
         <Link
           to={"#"}
           data-toggle="modal"
@@ -26,9 +27,20 @@ export default function OnlineProfile({}) {
         >
           <i className="fa fa-pencil m-r5"></i> Edit
         </Link>
+        <div className="d-flex ml-2">
+          <Link
+            to={"#"}
+            data-toggle="modal"
+            data-target="#projects"
+            onClick={() => handleShow()}
+            className="site-button add-btn button-sm"
+          >
+            <i className="fa fa-plus m-r5"></i> Add
+          </Link>
+        </div>
       </div>
       <p className="m-b0">
-        Add link to Online profiles (e.g. Linkedin, Facebook etc.).
+        Add link to Social profiles (e.g. Linkedin, Facebook etc.).
       </p>
 
       <Modal
@@ -45,7 +57,7 @@ export default function OnlineProfile({}) {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="AccomplishmentsModalLongTitle">
-                Online Profiles
+                Social Profiles
               </h5>
               <button
                 type="button"
@@ -66,6 +78,22 @@ export default function OnlineProfile({}) {
                         type="email"
                         className="form-control"
                         placeholder="Social Profile Name"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Social platform</label>
+                      <DropDownModalComponent
+                        onChange={(e) => {
+                          console.log("eee", e.target.value);
+                          // setTagProject(e.target.value);
+                        }}
+                        // value={TagProject}
+                        options={[
+                          { id: 1, name: "facebook" },
+                          { id: 2, name: "linkedin" },
+                        ]}
                       />
                     </div>
                   </div>

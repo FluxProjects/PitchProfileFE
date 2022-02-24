@@ -16,6 +16,7 @@ import DesiredCareerProfileComponent from "../Components/JobsMyResume/DesiredCar
 import ProfileDetailsComponent from "../Components/JobsMyResume/ProfileDetailsComponent";
 import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeComponent";
 import AttachVideo from "../Components/JobsMyResume/AttachVideo";
+import OnlineProfileContainer from "../Components/JobsMyResume/OnlineProfileContainer";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
@@ -102,16 +103,18 @@ export default function Jobmyresume() {
                 </div>
               </div>
               <div className="col-lg-4 col-md-5">
-                <Link to={""}>
-                  <div className="pending-info text-white p-a25">
+                {/* <Link to={""}> */}
+                {/* AttachVideo */}
+                <AttachVideo />
+                {/* <div className="pending-info text-white p-a25">
                     <h5>Pending Action</h5>
                     <ul className="list-check secondry">
                       <li>Verify Mobile Number</li>
                       <li>Add Preferred Location</li>
                       <li>Add Resume</li>
                     </ul>
-                  </div>
-                </Link>
+                  </div> */}
+                {/* </Link> */}
               </div>
             </div>
           </div>
@@ -284,6 +287,16 @@ export default function Jobmyresume() {
           <div className="section-full browse-job content-inner-2">
             <div className="container">
               <div className="row">
+                <div className="col-12 m-b30">
+                  <div className="pending-info text-white p-a25">
+                    <h5>Pending Action</h5>
+                    <ul className="list-check secondry">
+                      <li>Verify Mobile Number</li>
+                      <li>Add Preferred Location</li>
+                      <li>Add Resume</li>
+                    </ul>
+                  </div>
+                </div>
                 <div className="col-xl-3 col-lg-4 col-md-4 col-sm-12 m-b30">
                   <Listingsidebar />
                 </div>
@@ -309,8 +322,11 @@ export default function Jobmyresume() {
                   {/* ProjectsComponent */}
                   <ProjectsComponent />
 
-                  {/* Accomplishments */}
+                  {/* Certification */}
                   <AccomplishmentsComponent />
+
+                  {/* Social  */}
+                  <OnlineProfileContainer />
 
                   {/* DesiredCareerProfileComponent */}
                   <DesiredCareerProfileComponent />
@@ -320,9 +336,6 @@ export default function Jobmyresume() {
 
                   {/* AttachResumeComponent */}
                   <AttachResumeComponent />
-
-                  {/* AttachVideo */}
-                  <AttachVideo />
                 </div>
               </div>
             </div>

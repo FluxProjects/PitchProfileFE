@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 import TextInputModal from "./TextInputModal";
 
@@ -84,16 +85,6 @@ export default function EmploymentComponent({}) {
                   <div className="row">
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Your Designation</label>
-                        <TextInputModal
-                          placeholder="Enter Your Designation"
-                          onChange={(e) => setDesignation(e.target.value)}
-                          value={designation}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
                         <label>Your Organization</label>
                         <TextInputModal
                           placeholder="Enter Your Organization"
@@ -102,16 +93,68 @@ export default function EmploymentComponent({}) {
                         />
                       </div>
                     </div>
+
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Your category/department</label>
-                        <TextInputModal
-                          placeholder="Enter Your category/department"
-                          onChange={(e) => setCategory(e.target.value)}
-                          value={Category}
+                        <label>Industry</label>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            // setEducation(e.target.value);
+                          }}
+                          // value={Education}
+                          options={[
+                            { id: 1, name: "test 1" },
+                            { id: 2, name: "test 2" },
+                          ]}
                         />
                       </div>
                     </div>
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        <label>Department</label>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            // setEducation(e.target.value);
+                          }}
+                          // value={Education}
+                          options={[
+                            { id: 1, name: "test 1" },
+                            { id: 2, name: "test 2" },
+                          ]}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        <label>Role</label>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            // setEducation(e.target.value);
+                          }}
+                          // value={Education}
+                          options={[
+                            { id: 1, name: "test 1" },
+                            { id: 2, name: "test 2" },
+                          ]}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        <label>Your Designation</label>
+                        <TextInputModal
+                          placeholder="Enter Your Designation"
+                          onChange={(e) => setDesignation(e.target.value)}
+                          value={designation}
+                        />
+                      </div>
+                    </div>
+
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>Is this your current company?</label>

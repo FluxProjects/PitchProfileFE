@@ -8,23 +8,19 @@ import WorkSample from "./AccomplishmentsComponents/WorkSample";
 
 export default function AccomplishmentsComponent({}) {
   return (
-    <div id="accomplishments_bx" className="job-bx bg-white m-b30">
+    <div id="Certification_bx" className="job-bx bg-white m-b30">
       {/* Accomplishments */}
-      <h5 className="m-b10 ">Accomplishments</h5>
+      <h5 clas2sName="m-b10 ">Certification</h5>
       <div className="list-row">
         <div className="list-line">
           {/* Certification */}
           <Certification />
-          {/* OnlineProfile */}
-          <OnlineProfile />
-          {/* Work sample */}
+
+          {/*          
           <WorkSample />
-          {/* White Paper / Research Publication / Journal Entry */}
           <WhitePaper />
-          {/* Presentation */}
           <Presentation />
-          {/* Patent */}
-          <Patent />
+          <Patent /> */}
         </div>
       </div>
     </div>

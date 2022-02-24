@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import DropDownModalComponent from "./DropDownModalComponent";
+import TextAreaModalComponent from "./TextAreaModalComponent";
 import TextInputModal from "./TextInputModal";
 
 export default function ProfileDetailsComponent({}) {
@@ -70,45 +72,7 @@ export default function ProfileDetailsComponent({}) {
                         />
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Gender</label>
-                        <div className="row">
-                          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                className="custom-control-input"
-                                id="male"
-                                name="example1"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="male"
-                              >
-                                Male
-                              </label>
-                            </div>
-                          </div>
-                          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                className="custom-control-input"
-                                id="female"
-                                name="example1"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="female"
-                              >
-                                Female
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>Permanent Address</label>
@@ -139,15 +103,7 @@ export default function ProfileDetailsComponent({}) {
                         />
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Marital Status</label>
-                        <select>
-                          <option>Married</option>
-                          <option>Single / Unmarried</option>
-                        </select>
-                      </div>
-                    </div>
+
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>Passport Number</label>
@@ -181,6 +137,118 @@ export default function ProfileDetailsComponent({}) {
                           <option>Hong Kong</option>
                           <option>Kuwait</option>
                         </Form.Control>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="job-bx-title clearfix">
+                    <h5 className="font-weight-700 pull-left text-uppercase">
+                      Contact Information
+                    </h5>
+                  </div>
+                  <div className="row">
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        <label>Headline:</label>
+                        <TextAreaModalComponent
+                          onChange={(e) => {
+                            // setDescription(e.target.value);
+                          }}
+                          //   value={description}
+                          placeholder="Type Description"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        <label>Summary:</label>
+                        <TextAreaModalComponent
+                          onChange={(e) => {
+                            // setDescription(e.target.value);
+                          }}
+                          //   value={description}
+                          placeholder="Type Description"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-lg-4 col-md-4 col-sm-12">
+                      <div className="form-group">
+                        <label>Country:</label>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            //   setLastUsed(e.target.value);
+                          }}
+                          options={[
+                            { id: 1, name: "test 1" },
+                            { id: 2, name: "test 2" },
+                          ]}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-lg-4 col-md-4 col-sm-12">
+                      <div className="form-group">
+                        <label>City:</label>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            //   setLastUsed(e.target.value);
+                          }}
+                          options={[
+                            { id: 1, name: "test 1" },
+                            { id: 2, name: "test 2" },
+                          ]}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-lg-4 col-md-4 col-sm-12">
+                      <div className="form-group">
+                        <label>State:</label>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            //   setLastUsed(e.target.value);
+                          }}
+                          options={[
+                            { id: 1, name: "test 1" },
+                            { id: 2, name: "test 2" },
+                          ]}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-lg-6 col-md-6">
+                      <div className="form-group">
+                        <label>Email Address:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="info@example.com"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-lg-6 col-md-6">
+                      <div className="form-group">
+                        <label>Phone:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Phone number"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        <label>Full Address:</label>
+                        <TextAreaModalComponent
+                          onChange={(e) => {
+                            // setDescription(e.target.value);
+                          }}
+                          //   value={description}
+                          placeholder="Full address"
+                        />
                       </div>
                     </div>
                   </div>

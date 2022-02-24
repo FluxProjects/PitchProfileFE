@@ -38,12 +38,12 @@ export default function Header() {
   const links = [
     {
       name: "Browse Job",
-      link: "/",
+      link: "/browse-job-grid",
       index: "0",
     },
     {
       name: "Companies",
-      link: "/",
+      link: "/company-post-jobs",
       index: "1",
     },
     {
@@ -65,6 +65,55 @@ export default function Header() {
       name: "Contact",
       link: "/contact",
       index: "5",
+    },
+  ];
+
+  const linksTest = [
+    {
+      name: "Browse Job",
+      link: "/browse-job-grid",
+      index: "0",
+    },
+
+    {
+      name: "Candidate profile",
+      link: "/jobs-profile",
+      index: "7",
+    },
+    {
+      name: "Companies",
+      link: "/company-post-jobs",
+      index: "1",
+    },
+    {
+      name: "Browse Candidates",
+      link: "/browse-candidates",
+      index: "2",
+    },
+    {
+      name: "Post a job",
+      link: "/company-post-jobs",
+      index: "3",
+    },
+    {
+      name: "About",
+      link: "/about-us",
+      index: "4",
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+      index: "5",
+    },
+    {
+      name: "job-detail",
+      link: "/job-detail",
+      index: "6",
+    },
+    {
+      name: "jobs-my-resume",
+      link: "/jobs-my-resume",
+      index: "7",
     },
   ];
 
@@ -137,7 +186,7 @@ export default function Header() {
                 id="navbarNavDropdown"
               >
                 <ul className="nav navbar-nav">
-                  {links.map((item, index) => (
+                  {/* {links.map((item, index) => (
                     <li
                       className={
                         item.link === `react/${window.location.pathname}`
@@ -149,16 +198,27 @@ export default function Header() {
                         {item.name}
                       </Link>
                     </li>
-                  ))}
-
+                  ))} */}
                   <li></li>
                   <li style={{ marginLeft: 100 }}></li>
-                  <li className="active float-right">
+                  {/* <li className="active float-right">
                     <Link to={"/login"} className="site-button">
                       <i className="fa fa-user"></i> Sign Up
                     </Link>
+                  </li>{" "} */}
+                  <li className="float-right noselect" style={{ padding: 0 }}>
+                    <Link className="dez-page">All links</Link>
+                    <ul className="sub-menu">
+                      {linksTest.map((item) => (
+                        <li>
+                          <Link to={item.link} className="dez-page">
+                            {item.name}
+                            <span className="new-page">New</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </li>
-
                   {/* <li className="float-right noselect" style={{ padding: 0 }}>
                     <Link to={""}>
                       <div className="testimonial-picHead radius">
@@ -171,11 +231,14 @@ export default function Header() {
                       </div>
                     </Link>
                     <ul className="sub-menu">
-                      <li>
-                        <Link to={"/company-profile"} className="dez-page">
-                          Company Profile <span className="new-page">New</span>
-                        </Link>
-                      </li>
+                      {linksTest.map((item) => (
+                        <li>
+                          <Link to={item.link} className="dez-page">
+                            {item.name}
+                            <span className="new-page">New</span>
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   </li> */}
                 </ul>
