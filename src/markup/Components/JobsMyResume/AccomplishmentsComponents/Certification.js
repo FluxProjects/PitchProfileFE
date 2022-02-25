@@ -109,6 +109,9 @@ export default function Certification({}) {
                   type="button"
                   className="site-button"
                   data-dismiss="modal"
+                  onClick={() => {
+                    handleClose();
+                  }}
                 >
                   Cancel
                 </button>

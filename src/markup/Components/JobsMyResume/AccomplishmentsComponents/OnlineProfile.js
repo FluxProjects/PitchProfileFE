@@ -124,6 +124,7 @@ export default function OnlineProfile({}) {
                 type="button"
                 className="site-button"
                 data-dismiss="modal"
+                onClick={() => handleClose()}
               >
                 Cancel
               </button>

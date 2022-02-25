@@ -14,10 +14,14 @@ export default function AttachVideo({}) {
   return (
     <>
       {/* Attach resume */}
-      <div id="attach_resume_bx" className="job-bx bg-white m-b30">
-        <h5 className="m-b10">Attach Video</h5>
+      <div
+        id="attach_resume_bx"
+        style={{ backgroundColor: "rgba(46,85,250,0.8)" }}
+        className="job-bx  m-b30"
+      >
+        <h5 className="m-b10 text-white">Attach Video</h5>
 
-        <form className="attach-resume">
+        <form className="attach-resume bg-white">
           <div className="row">
             <div className="col-lg-12 col-md-12">
               <div className="form-group">

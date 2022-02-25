@@ -16,7 +16,7 @@ export default function AttachResumeComponent({}) {
     <>
       {/* Attach resume */}
       <div id="attach_resume_bx" className="job-bx bg-white m-b30">
-        <h5 className="m-b10">Attach Resume</h5>
+        <h5 className="m-b10">Attach Cover Letter</h5>
         <p>
           Resume is the most important document recruiters look for. Recruiters
           generally do not look at profiles without resumes.

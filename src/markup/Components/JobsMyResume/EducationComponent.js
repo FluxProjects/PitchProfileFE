@@ -72,8 +72,9 @@ export default function EducationComponent({}) {
                         }}
                         value={Education}
                         options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
+                          { id: 1, name: "Doctorate/PhD" },
+                          { id: 2, name: "Masters/Post-Graduation" },
+                          { id: 3, name: "Graduation/Diploma" },
                         ]}
                       />
                     </div>
@@ -227,11 +228,18 @@ export default function EducationComponent({}) {
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>Education Level</label>
-                        <Form.Control as="select">
-                          <option>Doctorate/PhD</option>
-                          <option>Masters/Post-Graduation</option>
-                          <option>Graduation/Diploma</option>
-                        </Form.Control>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            setEducation(e.target.value);
+                          }}
+                          value={Education}
+                          options={[
+                            { id: 1, name: "Doctorate/PhD" },
+                            { id: 2, name: "Masters/Post-Graduation" },
+                            { id: 3, name: "Graduation/Diploma" },
+                          ]}
+                        />
                       </div>
                     </div>
                     <div className="col-lg-12 col-md-12">

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
 export default function DesiredCareerProfileComponent({}) {
@@ -246,88 +247,61 @@ export default function DesiredCareerProfileComponent({}) {
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>Expected Salary</label>
-                        <div className="row">
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                className="custom-control-input"
-                                id="usdollars"
-                                name="example1"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="usdollars"
-                              >
-                                US Dollars
-                              </label>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                className="custom-control-input"
-                                id="rupees"
-                                name="example1"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="rupees"
-                              >
-                                Indian Rupees
-                              </label>
-                            </div>
-                          </div>
-                        </div>
+                        <TextInputModal
+                          placeholder="Enter your Expected Salary"
+                          onChange={() => {
+                            console.log("test");
+                          }}
+                        />
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-6">
+
+                    <div className="col-lg-4 col-md-4 col-sm-12">
                       <div className="form-group">
-                        <div className="row">
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <Form.Control as="select">
-                              <option>0 lakh</option>
-                              <option>1 lakh</option>
-                              <option>2 lakh</option>
-                              <option>5 lakh</option>
-                              <option>4 lakh</option>
-                              <option>5 lakh</option>
-                            </Form.Control>
-                          </div>
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <Form.Control as="select">
-                              <option> 05 Thousand </option>
-                              <option> 10 Thousand </option>
-                              <option> 15 Thousand </option>
-                              <option> 20 Thousand </option>
-                              <option> 25 Thousand </option>
-                              <option> 30 Thousand </option>
-                              <option> 35 Thousand </option>
-                              <option> 40 Thousand </option>
-                              <option> 45 Thousand </option>
-                              <option> 50 Thousand </option>
-                            </Form.Control>
-                          </div>
-                        </div>
+                        <label>Country:</label>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            //   setLastUsed(e.target.value);
+                          }}
+                          options={[
+                            { id: 1, name: "test 1" },
+                            { id: 2, name: "test 2" },
+                          ]}
+                        />
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
+                    <div className="col-lg-4 col-md-4 col-sm-12">
                       <div className="form-group">
-                        <label>Desired Location</label>
-                        <Form.Control as="select">
-                          <option>India</option>
-                          <option>Australia</option>
-                          <option>Bahrain</option>
-                          <option>China</option>
-                          <option>Dubai</option>
-                          <option>France</option>
-                          <option>Germany</option>
-                          <option>Hong Kong</option>
-                          <option>Kuwait</option>
-                        </Form.Control>
+                        <label>City:</label>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            //   setLastUsed(e.target.value);
+                          }}
+                          options={[
+                            { id: 1, name: "test 1" },
+                            { id: 2, name: "test 2" },
+                          ]}
+                        />
                       </div>
                     </div>
+                    <div className="col-lg-4 col-md-4 col-sm-12">
+                      <div className="form-group">
+                        <label>State:</label>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            //   setLastUsed(e.target.value);
+                          }}
+                          options={[
+                            { id: 1, name: "test 1" },
+                            { id: 2, name: "test 2" },
+                          ]}
+                        />
+                      </div>
+                    </div>
+
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>Desired Industry</label>
@@ -347,6 +321,9 @@ export default function DesiredCareerProfileComponent({}) {
                   type="button"
                   className="site-button"
                   data-dismiss="modal"
+                  onClick={() => {
+                    handleClose();
+                  }}
                 >
                   Cancel
                 </button>

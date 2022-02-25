@@ -244,7 +244,18 @@ export default function Jobprofile() {
                             />
                           </div>
                         </div>
-
+                        <div className="col-lg-12 col-md-12">
+                          <div className="form-group">
+                            <label>Full Address:</label>
+                            <TextAreaModalComponent
+                              onChange={(e) => {
+                                // setDescription(e.target.value);
+                              }}
+                              //   value={description}
+                              placeholder="Full address"
+                            />
+                          </div>
+                        </div>
                         <div className="col-lg-4 col-md-4 col-sm-12">
                           <div className="form-group">
                             <label>Country:</label>
@@ -290,6 +301,21 @@ export default function Jobprofile() {
                             />
                           </div>
                         </div>
+                        <div className="col-lg-12 col-md-12 col-sm-12">
+                          <div className="form-group">
+                            <label>Hometown:</label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                //   setLastUsed(e.target.value);
+                              }}
+                              options={[
+                                { id: 1, name: "test 1" },
+                                { id: 2, name: "test 2" },
+                              ]}
+                            />
+                          </div>
+                        </div>
 
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
@@ -308,19 +334,6 @@ export default function Jobprofile() {
                               type="text"
                               className="form-control"
                               placeholder="Phone number"
-                            />
-                          </div>
-                        </div>
-
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>Full Address:</label>
-                            <TextAreaModalComponent
-                              onChange={(e) => {
-                                // setDescription(e.target.value);
-                              }}
-                              //   value={description}
-                              placeholder="Full address"
                             />
                           </div>
                         </div>
