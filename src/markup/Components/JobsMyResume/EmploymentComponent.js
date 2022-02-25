@@ -26,43 +26,78 @@ export default function EmploymentComponent({}) {
       {/* Employment */}
       <div id="employment_bx" className="job-bx bg-white m-b30 ">
         <div className="d-flex">
-          <h5 className="m-b15">Employment</h5>
+          <h5 className=" mb-2">Employment </h5>
           <Link
             to={"#"}
             data-toggle="modal"
-            data-target="#employment"
+            data-target="#projects"
             onClick={() => handleShow()}
             className="site-button add-btn button-sm"
           >
-            <i className="fa fa-pencil m-r5"></i> Edit
+            <i className="fa fa-plus m-r5"></i> Add
           </Link>
         </div>
-        <h6 className="font-14 m-b0">Junior Software DeveloperEdit</h6>
-        <p className="m-b0">W3itexperts</p>
-        <p className="m-b0">Oct 2015 to Present (3 years 4 months)</p>
-        <p className="m-b0">Available to join in 1 Months</p>
-        <p className="m-b0">Junior Software Developer</p>
-        <div className="d-flex">
-          <Link
-            to={"#"}
-            data-toggle="modal"
-            data-target="#employment"
-            onClick={() => handleShow()}
-            className="site-button add-btn button-sm"
-          >
-            <i className="fa fa-plus "></i> Add
-          </Link>
+        <h6 className="font-14 m-b0">
+          Org name{" "}
+          <span className="float-right ml-2 ">
+            <Link
+              to={"#"}
+              data-toggle="modal"
+              data-target="#employment"
+              onClick={() => handleShow()}
+              className="site-button add-btn button-sm"
+            >
+              <i className="fa fa-pencil m-r5"></i> Edit
+            </Link>
+          </span>
+        </h6>
+
+        <div className="row">
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">Industry</h6>
+            <p className="m-b0">W3itexperts</p>
+          </div>
+
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">Department</h6>
+            <p className="m-b0">lorem</p>
+          </div>
+
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">Role</h6>
+            <p className="m-b0">ipsum</p>
+          </div>
+
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">Your Designation</h6>
+            <p className="m-b0">doret</p>
+          </div>
+
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">Started working from</h6>
+            <p className="m-b0">doret</p>
+          </div>
+
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">Stopped working</h6>
+            <p className="m-b0">doret</p>
+          </div>
+
+          <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
+            <h6 className="font-14 m-b0">Describe your Job Profile</h6>
+            <p className="m-b0">
+              lorem ipsum doret lorem ipsum doretlorem ipsum doretlorem ipsum
+              doretlorem ipsum doretlorem ipsum doretlorem ipsum doretlorem
+              ipsum doretlorem ipsum doretlorem ipsum doretlorem ipsum
+              doretlorem ipsum doretlorem ipsum doret
+            </p>
+          </div>
         </div>
 
         <Modal
           show={show}
           onHide={() => handleClose()}
           className="modal fade modal-bx-info editor"
-          id="employment"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="EmploymentModalLongTitle"
-          aria-hidden="true"
         >
           <div className="modal-dialog my-0" role="document">
             <div className="modal-content">
@@ -208,7 +243,7 @@ export default function EmploymentComponent({}) {
                       <div className="form-group">
                         <label>Is this your current company?</label>
                         <div className="row">
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div className="col-lg-4 mb-2 col-md-6 col-sm-6 col-6">
                             <div className="custom-control custom-radio">
                               <input
                                 type="radio"
@@ -224,7 +259,7 @@ export default function EmploymentComponent({}) {
                               </label>
                             </div>
                           </div>
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div className="col-lg-4 mb-2 col-md-6 col-sm-6 col-6">
                             <div className="custom-control custom-radio">
                               <input
                                 type="radio"

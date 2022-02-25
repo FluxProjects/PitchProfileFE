@@ -36,11 +36,6 @@ export default function DesiredCareerProfileComponent({}) {
           show={show}
           onHide={() => handleClose()}
           className="modal fade modal-bx-info editor"
-          id="employment"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="EmploymentModalLongTitle"
-          aria-hidden="true"
         >
           <div className="modal-dialog my-0" role="document">
             <div className="modal-content">
@@ -51,8 +46,9 @@ export default function DesiredCareerProfileComponent({}) {
                 <button
                   type="button"
                   className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
+                  onClick={() => {
+                    setShow(false);
+                  }}
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>

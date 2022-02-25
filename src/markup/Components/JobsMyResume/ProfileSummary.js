@@ -102,11 +102,6 @@ export default function ProfileSummary({}) {
         show={show}
         onHide={() => handleClose()}
         className="modal fade modal-bx-info editor"
-        id="resumeheadline"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="ResumeheadlineModalLongTitle"
-        aria-hidden="true"
       >
         <div className="modal-dialog my-0" role="document">
           <div className="modal-content">

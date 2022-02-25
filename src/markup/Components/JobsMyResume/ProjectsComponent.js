@@ -27,22 +27,7 @@ export default function ProjectsComponent({}) {
       {/* Projects */}
       <div id="projects_bx" className="job-bx bg-white m-b30">
         <div className="d-flex">
-          <h5 className="m-b15">Projects</h5>
-          <Link
-            to={"#"}
-            data-toggle="modal"
-            data-target="#projects"
-            onClick={() => handleShow()}
-            className="site-button add-btn button-sm"
-          >
-            <i className="fa fa-pencil m-r5"></i> Edit
-          </Link>
-        </div>
-        <h6 className="font-14 m-b0">Job BoardEdit</h6>
-        <p className="m-b0">w3itexpert (Offsite)</p>
-        <p className="m-b0">Dec 2018 to Present (Full Time)</p>
-        <p className="m-b0">Job Board Template</p>
-        <div className="d-flex">
+          <h5 className="m-b15">Projects </h5>
           <Link
             to={"#"}
             data-toggle="modal"
@@ -53,17 +38,29 @@ export default function ProjectsComponent({}) {
             <i className="fa fa-plus m-r5"></i> Add
           </Link>
         </div>
+        <h6 className="font-14 m-b0">
+          Job BoardEdit{" "}
+          <span className="float-right">
+            <Link
+              to={"#"}
+              data-toggle="modal"
+              data-target="#projects"
+              onClick={() => handleShow()}
+              className="site-button add-btn button-sm"
+            >
+              <i className="fa fa-pencil m-r5"></i> Edit
+            </Link>
+          </span>
+        </h6>
+        <p className="m-b0">w3itexpert (Offsite)</p>
+        <p className="m-b0">Dec 2018 to Present (Full Time)</p>
+        <p className="m-b0">Job Board Template</p>
       </div>
 
       <Modal
         show={show}
         onHide={() => handleClose()}
         className="modal fade modal-bx-info editor"
-        id="employment"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="EmploymentModalLongTitle"
-        aria-hidden="true"
       >
         <div className="modal-dialog my-0" role="document">
           <div className="modal-content">

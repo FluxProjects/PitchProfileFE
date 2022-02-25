@@ -37,11 +37,6 @@ export default function Presentation({}) {
           show={show}
           onHide={() => handleClose()}
           className="modal fade modal-bx-info editor"
-          id="employment"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="EmploymentModalLongTitle"
-          aria-hidden="true"
         >
           <div className="modal-dialog my-0" role="document">
             <div className="modal-content">

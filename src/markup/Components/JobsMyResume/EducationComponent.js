@@ -26,11 +26,6 @@ export default function EducationComponent({}) {
         show={show}
         onHide={() => handleClose()}
         className="modal fade modal-bx-info editor"
-        id="employment"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="EmploymentModalLongTitle"
-        aria-hidden="true"
       >
         <div className="modal-dialog mx-0 my-0" role="document">
           <div className="modal-content">
@@ -182,19 +177,32 @@ export default function EducationComponent({}) {
       <div id="education_bx" className="job-bx bg-white m-b30">
         <div className="d-flex">
           <h5 className="m-b15">Education</h5>
+
           <Link
             to={"#"}
             data-toggle="modal"
-            data-target="#education"
+            data-target="#projects"
             onClick={() => handleShow()}
             className="site-button add-btn button-sm"
           >
-            <i className="fa fa-pencil m-r5"></i> Edit
+            <i className="fa fa-plus m-r5"></i> Add
           </Link>
         </div>
+
         <p>
           Mention your employment details including your current and previous
           company work experience
+          <span className="float-right ml-2 ">
+            <Link
+              to={"#"}
+              data-toggle="modal"
+              data-target="#employment"
+              onClick={() => handleShow()}
+              className="site-button add-btn button-sm"
+            >
+              <i className="fa fa-pencil m-r5"></i> Edit
+            </Link>
+          </span>
         </p>
 
         <div

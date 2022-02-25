@@ -54,11 +54,6 @@ export default function AttachResumeComponent({}) {
         show={show}
         onHide={() => handleClose()}
         className="modal fade modal-bx-info editor"
-        id="employment"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="EmploymentModalLongTitle"
-        aria-hidden="true"
       ></Modal>
     </>
   );
