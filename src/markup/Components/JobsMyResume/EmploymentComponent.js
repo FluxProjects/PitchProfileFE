@@ -157,41 +157,14 @@ export default function EmploymentComponent({}) {
 
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Is this your current company?</label>
-                        <div className="row">
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                className="custom-control-input"
-                                id="employ_yes"
-                                name="example1"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="employ_yes"
-                              >
-                                Yes
-                              </label>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <div className="custom-control custom-radio">
-                              <input
-                                type="radio"
-                                className="custom-control-input"
-                                id="employ_no"
-                                name="example1"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="employ_no"
-                              >
-                                No
-                              </label>
-                            </div>
-                          </div>
-                        </div>
+                        <label>Describe your Job Profile</label>
+                        <TextAreaModalComponent
+                          onChange={(e) => {
+                            setDescription(e.target.value);
+                          }}
+                          value={description}
+                          placeholder="Type Description"
+                        />
                       </div>
                     </div>
                     <div className="col-lg-12 col-md-12">
@@ -230,16 +203,44 @@ export default function EmploymentComponent({}) {
                         </div>
                       </div>
                     </div>
+
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Describe your Job Profile</label>
-                        <TextAreaModalComponent
-                          onChange={(e) => {
-                            setDescription(e.target.value);
-                          }}
-                          value={description}
-                          placeholder="Type Description"
-                        />
+                        <label>Is this your current company?</label>
+                        <div className="row">
+                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div className="custom-control custom-radio">
+                              <input
+                                type="radio"
+                                className="custom-control-input"
+                                id="employ_yes"
+                                name="example1"
+                              />
+                              <label
+                                className="custom-control-label"
+                                htmlFor="employ_yes"
+                              >
+                                Yes
+                              </label>
+                            </div>
+                          </div>
+                          <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div className="custom-control custom-radio">
+                              <input
+                                type="radio"
+                                className="custom-control-input"
+                                id="employ_no"
+                                name="example1"
+                              />
+                              <label
+                                className="custom-control-label"
+                                htmlFor="employ_no"
+                              >
+                                No
+                              </label>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

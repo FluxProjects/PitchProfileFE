@@ -80,6 +80,22 @@ export default function EducationComponent({}) {
                     </div>
                   </div>
 
+                  <div className="col-lg-12 col-md-12 col-sm-12">
+                    <div className="form-group">
+                      <label>Course</label>
+                      <DropDownModalComponent
+                        onChange={(e) => {
+                          console.log("eee", e.target.value);
+                          setEducation(e.target.value);
+                        }}
+                        value={Education}
+                        options={[
+                          { id: 1, name: "test 1" },
+                          { id: 2, name: "test 2" },
+                        ]}
+                      />
+                    </div>
+                  </div>
                   <div className="col-lg-6 col-md-6 col-xs-12">
                     <div className="form-group">
                       <label>Start date</label>
@@ -100,23 +116,6 @@ export default function EducationComponent({}) {
                         type="date"
                         onChange={(e) => setEndDate(e.target.value)}
                         value={EndDate}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="col-lg-12 col-md-12 col-sm-12">
-                    <div className="form-group">
-                      <label>Course</label>
-                      <DropDownModalComponent
-                        onChange={(e) => {
-                          console.log("eee", e.target.value);
-                          setEducation(e.target.value);
-                        }}
-                        value={Education}
-                        options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
-                        ]}
                       />
                     </div>
                   </div>
@@ -242,16 +241,7 @@ export default function EducationComponent({}) {
                         />
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Course</label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          placeholder="Select Course"
-                        />
-                      </div>
-                    </div>
+
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>University/Institute</label>
