@@ -106,7 +106,7 @@ class Listingsidebar extends Component {
               </Link>
             </li>
 
-			<li>
+            <li>
               <Link
                 activeClass="active"
                 className="scroll-bar nav-link"
@@ -152,7 +152,7 @@ class Listingsidebar extends Component {
                 offset={-70}
                 duration={500}
               >
-                <span>Attach Resume</span>
+                <span>Attach Cover Letter</span>
               </Link>
             </li>
           </ul>

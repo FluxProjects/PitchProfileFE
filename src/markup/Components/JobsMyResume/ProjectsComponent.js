@@ -39,7 +39,7 @@ export default function ProjectsComponent({}) {
           </Link>
         </div>
         <h6 className="font-14 m-b0">
-          Job BoardEdit{" "}
+          {/* Job BoardEdit{" "} */}
           <span className="float-right">
             <Link
               to={"#"}

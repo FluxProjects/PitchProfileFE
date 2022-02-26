@@ -247,9 +247,10 @@ export default function Jobprofile() {
                             />
                           </div>
                         </div>
+
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>City:</label>
+                            <label>State:</label>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
@@ -264,7 +265,7 @@ export default function Jobprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>State:</label>
+                            <label>City:</label>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);

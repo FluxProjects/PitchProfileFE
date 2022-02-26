@@ -33,7 +33,7 @@ export default function OnlineProfileContainer({}) {
       </h5>
 
       <div className="d-flex">
-        <h6 className="font-14 m-b5">Social Profile</h6>
+        {/* <h6 className="font-14 m-b5">Social Profile</h6> */}
         <Link
           to={"#"}
           data-toggle="modal"
@@ -45,11 +45,6 @@ export default function OnlineProfileContainer({}) {
         </Link>
       </div>
       <div className="row">
-        <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-          <h6 className="font-14 m-b0">Social Profile</h6>
-          <p className="m-b0">doret</p>
-        </div>
-
         <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
           <h6 className="font-14 m-b0">Social platform</h6>
           <p className="m-b0">facebook</p>

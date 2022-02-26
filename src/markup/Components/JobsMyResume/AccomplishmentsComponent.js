@@ -30,17 +30,18 @@ export default function AccomplishmentsComponent({}) {
         </span>
       </h5>
 
-      <h6 className="font-14">
-        Certification{" "}
-        <span
-          onClick={() => {
-            setShow(true);
-          }}
-          className="site-button  float-right add-btn button-sm"
+      <div className="d-flex">
+        {/* <h6 className="font-14 m-b5">Social Profile</h6> */}
+        <Link
+          to={"#"}
+          data-toggle="modal"
+          data-target="#accomplishments"
+          onClick={() => handleShow()}
+          className="site-button add-btn button-sm"
         >
           <i className="fa fa-pencil m-r5"></i> Edit
-        </span>
-      </h6>
+        </Link>
+      </div>
       <div className="row">
         <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
           <h6 className="font-14 m-b0">Certification Name</h6>

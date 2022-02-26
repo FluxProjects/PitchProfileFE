@@ -78,17 +78,7 @@ export default function EducationComponent({}) {
                   <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="form-group">
                       <label>Course</label>
-                      <DropDownModalComponent
-                        onChange={(e) => {
-                          console.log("eee", e.target.value);
-                          setEducation(e.target.value);
-                        }}
-                        value={Education}
-                        options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
-                        ]}
-                      />
+                      <TextInputModal placeholder="Enter Course" />
                     </div>
                   </div>
                   <div className="col-lg-6 col-md-6 col-xs-12">
@@ -190,8 +180,8 @@ export default function EducationComponent({}) {
         </div>
 
         <p>
-          Mention your employment details including your current and previous
-          company work experience
+          {/* Mention your employment details including your current and previous
+company work experience */}
           <span className="float-right ml-2 ">
             <Link
               to={"#"}
@@ -205,102 +195,48 @@ export default function EducationComponent({}) {
           </span>
         </p>
 
-        <div
-          className="modal fade modal-bx-info editor"
-          id="education"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="EducationModalLongTitle"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog my-0" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="EducationModalLongTitle">
-                  Education
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  onClick={() => handleClose()}
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <form>
-                  <div className="row">
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Education Level</label>
-                        <DropDownModalComponent
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
-                            setEducation(e.target.value);
-                          }}
-                          value={Education}
-                          options={[
-                            { id: 1, name: "Doctorate/PhD" },
-                            { id: 2, name: "Masters/Post-Graduation" },
-                            { id: 3, name: "Graduation/Diploma" },
-                          ]}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>University/Institute</label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          placeholder="Select University/Institute"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="site-button"
-                  data-dismiss="modal"
-                  onClick={() => handleClose()}
-                >
-                  Cancel
-                </button>
-                <button type="button" className="site-button">
-                  Save
-                </button>
-              </div>
+        <div className="row">
+          <div className="col-lg-6 col-md-6 col-sm-12">
+            <div className="clearfix m-b20">
+              <label className="m-b0">Your Institute</label>
+              <span className="clearfix font-13">Uni</span>
             </div>
           </div>
-        </div>
 
-        <div className="row">
+          <div className="col-lg-6 col-md-6 col-sm-12">
+            <div className="clearfix m-b20">
+              <label className="m-b0">Education Level</label>
+              <span className="clearfix font-13">Doctorate/PHD</span>
+            </div>
+          </div>
           <div className="col-lg-12 col-md-12 col-sm-12">
             <div className="clearfix m-b20">
-              <label className="m-b0">London - 12th</label>
-              <span className="clearfix font-13">2017</span>
+              <label className="m-b0">Course</label>
+              <span className="clearfix font-13">Doctorate/PHD</span>
             </div>
+          </div>
+
+          <div className="col-lg-6 col-md-6 col-sm-12">
             <div className="clearfix m-b20">
-              <label className="m-b0">London - 10th</label>
-              <span className="clearfix font-13">2015</span>
+              <label className="m-b0">Start date</label>
+              <span className="clearfix font-13">12/2/2020</span>
+            </div>
+          </div>
+
+          <div className="col-lg-6 col-md-6 col-sm-12">
+            <div className="clearfix m-b20">
+              <label className="m-b0">End date</label>
+              <span className="clearfix font-13">12/2/2022</span>
+            </div>
+          </div>
+
+          <div className="col-lg-6 col-md-6 col-sm-12">
+            <div className="clearfix m-b20">
+              <label className="m-b0">Current Institute</label>
+              <span className="clearfix font-13">Yes</span>
             </div>
           </div>
         </div>
-        <Link to={""} className="clearfix">
-          Add Doctorate/PhD
-        </Link>
-        <Link to={""} className="clearfix">
-          Add Masters/Post-Graduation
-        </Link>
-        <Link to={""} className="clearfix">
-          Add Graduation/Diploma
-        </Link>
       </div>
     </>
   );

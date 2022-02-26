@@ -250,30 +250,6 @@ export default function ProfileDetailsComponent({}) {
                   <div className="row">
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Headline:</label>
-                        <TextAreaModalComponent
-                          onChange={(e) => {
-                            // setDescription(e.target.value);
-                          }}
-                          //   value={description}
-                          placeholder="Type Description"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Summary:</label>
-                        <TextAreaModalComponent
-                          onChange={(e) => {
-                            // setDescription(e.target.value);
-                          }}
-                          //   value={description}
-                          placeholder="Type Description"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
                         <label>Full Address:</label>
                         <TextAreaModalComponent
                           onChange={(e) => {
@@ -299,9 +275,10 @@ export default function ProfileDetailsComponent({}) {
                         />
                       </div>
                     </div>
+
                     <div className="col-lg-6 col-md-6 col-sm-12">
                       <div className="form-group">
-                        <label>City:</label>
+                        <label>State:</label>
                         <DropDownModalComponent
                           onChange={(e) => {
                             console.log("eee", e.target.value);
@@ -314,9 +291,10 @@ export default function ProfileDetailsComponent({}) {
                         />
                       </div>
                     </div>
+
                     <div className="col-lg-6 col-md-6 col-sm-12">
                       <div className="form-group">
-                        <label>State:</label>
+                        <label>City:</label>
                         <DropDownModalComponent
                           onChange={(e) => {
                             console.log("eee", e.target.value);
@@ -387,7 +365,7 @@ export default function ProfileDetailsComponent({}) {
 
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12">
-            <h5 className="m-b30">Personal Details</h5>
+            {/* <h5 className="m-b30">Personal Details</h5> */}
             <div className="row">
               <div className="clearfix col-md-6 col-sm-12 col-lg-6 m-b20">
                 <label className="m-b0">Your Name:</label>
@@ -443,12 +421,13 @@ export default function ProfileDetailsComponent({}) {
                 <label className="m-b0">Country</label>
                 <span className="clearfix font-13">UK</span>
               </div>
+
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
-                <label className="m-b0">City</label>
+                <label className="m-b0">State</label>
                 <span className="clearfix font-13">UK</span>
               </div>
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
-                <label className="m-b0">State</label>
+                <label className="m-b0">City</label>
                 <span className="clearfix font-13">UK</span>
               </div>
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">

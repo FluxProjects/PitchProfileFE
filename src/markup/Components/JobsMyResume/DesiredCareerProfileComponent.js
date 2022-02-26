@@ -267,9 +267,10 @@ export default function DesiredCareerProfileComponent({}) {
                         />
                       </div>
                     </div>
+
                     <div className="col-lg-4 col-md-4 col-sm-12">
                       <div className="form-group">
-                        <label>City:</label>
+                        <label>State:</label>
                         <DropDownModalComponent
                           onChange={(e) => {
                             console.log("eee", e.target.value);
@@ -282,9 +283,10 @@ export default function DesiredCareerProfileComponent({}) {
                         />
                       </div>
                     </div>
+
                     <div className="col-lg-4 col-md-4 col-sm-12">
                       <div className="form-group">
-                        <label>State:</label>
+                        <label>City:</label>
                         <DropDownModalComponent
                           onChange={(e) => {
                             console.log("eee", e.target.value);
