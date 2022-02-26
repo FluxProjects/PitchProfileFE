@@ -222,30 +222,6 @@ export default function Jobprofile() {
                       <div className="row">
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
-                            <label>Headline:</label>
-                            <TextAreaModalComponent
-                              onChange={(e) => {
-                                // setDescription(e.target.value);
-                              }}
-                              //   value={description}
-                              placeholder="Type Description"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>Summary:</label>
-                            <TextAreaModalComponent
-                              onChange={(e) => {
-                                // setDescription(e.target.value);
-                              }}
-                              //   value={description}
-                              placeholder="Type Description"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
                             <label>Full Address:</label>
                             <TextAreaModalComponent
                               onChange={(e) => {
@@ -265,7 +241,7 @@ export default function Jobprofile() {
                                 //   setLastUsed(e.target.value);
                               }}
                               options={[
-                                { id: 1, name: "test 1" },
+                                { id: 1, name: "United Kingdom" },
                                 { id: 2, name: "test 2" },
                               ]}
                             />

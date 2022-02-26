@@ -225,21 +225,20 @@ export default function ProfileDetailsComponent({}) {
                         </div>
                       </div>
                     )}
-                  </div>
 
-                  <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>Language:</label>
-                      <DropDownModalComponent
-                        onChange={(e) => {
-                          console.log("eee", e.target.value);
-                          //   setLastUsed(e.target.value);
-                        }}
-                        options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
-                        ]}
-                      />
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        <label>Language:</label>
+                        <DropDownModalComponent
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                          }}
+                          options={[
+                            { id: 1, name: "test 1" },
+                            { id: 2, name: "test 2" },
+                          ]}
+                        />
+                      </div>
                     </div>
                   </div>
 
@@ -285,7 +284,7 @@ export default function ProfileDetailsComponent({}) {
                         />
                       </div>
                     </div>
-                    <div className="col-lg-4 col-md-4 col-sm-12">
+                    <div className="col-lg-6 col-md-6 col-sm-12">
                       <div className="form-group">
                         <label>Country:</label>
                         <DropDownModalComponent
@@ -300,7 +299,7 @@ export default function ProfileDetailsComponent({}) {
                         />
                       </div>
                     </div>
-                    <div className="col-lg-4 col-md-4 col-sm-12">
+                    <div className="col-lg-6 col-md-6 col-sm-12">
                       <div className="form-group">
                         <label>City:</label>
                         <DropDownModalComponent
@@ -315,7 +314,7 @@ export default function ProfileDetailsComponent({}) {
                         />
                       </div>
                     </div>
-                    <div className="col-lg-4 col-md-4 col-sm-12">
+                    <div className="col-lg-6 col-md-6 col-sm-12">
                       <div className="form-group">
                         <label>State:</label>
                         <DropDownModalComponent
@@ -330,7 +329,7 @@ export default function ProfileDetailsComponent({}) {
                         />
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12 col-sm-12">
+                    <div className="col-lg-6 col-md-6 col-sm-12">
                       <div className="form-group">
                         <label>Hometown:</label>
                         <DropDownModalComponent
@@ -387,48 +386,83 @@ export default function ProfileDetailsComponent({}) {
         </Modal>
 
         <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            <div className="clearfix m-b20">
-              <label className="m-b0">Date of Birth</label>
-              <span className="clearfix font-13">31 July 1998</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Gender</label>
-              <span className="clearfix font-13">male</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Marital Status</label>
-              <span className="clearfix font-13">Single / unmarried</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Passport Number</label>
-              <span className="clearfix font-13">+ 123 456 7890</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Differently Abled</label>
-              <span className="clearfix font-13">None</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Languages</label>
-              <span className="clearfix font-13">English</span>
+          <div className="col-lg-12 col-md-12 col-sm-12">
+            <h5 className="m-b30">Personal Details</h5>
+            <div className="row">
+              <div className="clearfix col-md-6 col-sm-12 col-lg-6 m-b20">
+                <label className="m-b0">Your Name:</label>
+                <span className="clearfix font-13">John Doe</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">Date of Birth</label>
+                <span className="clearfix font-13">31 July 1998</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">Gender</label>
+                <span className="clearfix font-13">male</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">Marital Status</label>
+                <span className="clearfix font-13">Single / unmarried</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">Passport Number</label>
+                <span className="clearfix font-13">+ 123 456 7890</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">Differently Abled</label>
+                <span className="clearfix font-13">None</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">Languages</label>
+                <span className="clearfix font-13">English</span>
+              </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            <div className="clearfix m-b20">
-              <label className="m-b0">Permanent Address</label>
-              <span className="clearfix font-13">Add Permanent Address</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Area Pin Code</label>
-              <span className="clearfix font-13">302010</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Hometown</label>
-              <span className="clearfix font-13">Delhi</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Work permit of other country</label>
-              <span className="clearfix font-13">USA</span>
+          <div className="col-lg-12 col-md-12 col-sm-12">
+            <h5 className="m-b30">Contact Details</h5>
+            <div className="row">
+              <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
+                <label className="m-b0">Headline</label>
+                <span className="clearfix font-13">
+                  Lorem ipsum tdjfshdia hidawy efsd ddw de{" "}
+                </span>
+              </div>
+              <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
+                <label className="m-b0">Summary</label>
+                <span className="clearfix font-13">
+                  Lorem ipsum tdjfshdia hidawy efsd ddw de{" "}
+                </span>
+              </div>
+
+              <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
+                <label className="m-b0">Full Address</label>
+                <span className="clearfix font-13">Add Permanent Address</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">Country</label>
+                <span className="clearfix font-13">UK</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">City</label>
+                <span className="clearfix font-13">UK</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">State</label>
+                <span className="clearfix font-13">UK</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">Hometown</label>
+                <span className="clearfix font-13">Delhi</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">Email</label>
+                <span className="clearfix font-13">John@gmail.com</span>
+              </div>
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+                <label className="m-b0">Phone</label>
+                <span className="clearfix font-13">+92632984</span>
+              </div>
             </div>
           </div>
         </div>

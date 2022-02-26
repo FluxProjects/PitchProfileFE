@@ -261,7 +261,7 @@ export default function DesiredCareerProfileComponent({}) {
                             //   setLastUsed(e.target.value);
                           }}
                           options={[
-                            { id: 1, name: "test 1" },
+                            { id: 1, name: "United Kingdom" },
                             { id: 2, name: "test 2" },
                           ]}
                         />
@@ -295,18 +295,6 @@ export default function DesiredCareerProfileComponent({}) {
                             { id: 2, name: "test 2" },
                           ]}
                         />
-                      </div>
-                    </div>
-
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Desired Industry</label>
-                        <Form.Control as="select">
-                          <option>Software</option>
-                          <option>Factory</option>
-                          <option>Ngo</option>
-                          <option>Other</option>
-                        </Form.Control>
                       </div>
                     </div>
                   </div>
@@ -352,8 +340,13 @@ export default function DesiredCareerProfileComponent({}) {
               <span className="clearfix font-13">12 july</span>
             </div>
             <div className="clearfix m-b20">
-              <label className="m-b0">Desired Location</label>
-              <span className="clearfix font-13">Add Desired Location</span>
+              <label className="m-b0">Country</label>
+              <span className="clearfix font-13">Add Country</span>
+            </div>
+
+            <div className="clearfix m-b20">
+              <label className="m-b0">State</label>
+              <span className="clearfix font-13">Add State</span>
             </div>
           </div>
           <div className="col-lg-6 col-md-6 col-sm-6">
@@ -368,16 +361,16 @@ export default function DesiredCareerProfileComponent({}) {
               <span className="clearfix font-13">permanent</span>
             </div>
             <div className="clearfix m-b20">
-              <label className="m-b0">Desired Shift</label>
-              <span className="clearfix font-13">Add Desired Shift</span>
+              <label className="m-b0">Preferred Shift</label>
+              <span className="clearfix font-13">Add Preferred Shift</span>
             </div>
             <div className="clearfix m-b20">
               <label className="m-b0">Expected Salary</label>
               <span className="clearfix font-13">1 Lakhs</span>
             </div>
             <div className="clearfix m-b20">
-              <label className="m-b0">Desired Industry</label>
-              <span className="clearfix font-13">Add Desired Industry</span>
+              <label className="m-b0">City</label>
+              <span className="clearfix font-13">Add City</span>
             </div>
           </div>
         </div>

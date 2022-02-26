@@ -44,9 +44,27 @@ export default function OnlineProfileContainer({}) {
           <i className="fa fa-pencil m-r5"></i> Edit
         </Link>
       </div>
-      <p className="m-b0">
-        Add link to Social profiles (e.g. Linkedin, Facebook etc.).
-      </p>
+      <div className="row">
+        <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+          <h6 className="font-14 m-b0">Social Profile</h6>
+          <p className="m-b0">doret</p>
+        </div>
+
+        <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+          <h6 className="font-14 m-b0">Social platform</h6>
+          <p className="m-b0">facebook</p>
+        </div>
+
+        <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+          <h6 className="font-14 m-b0">URL</h6>
+          <p className="m-b0">fb.com</p>
+        </div>
+
+        <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
+          <h6 className="font-14 m-b0">Description</h6>
+          <p className="m-b0">lorem ipsum dorey feau sjka</p>
+        </div>
+      </div>
 
       <Modal
         show={show}

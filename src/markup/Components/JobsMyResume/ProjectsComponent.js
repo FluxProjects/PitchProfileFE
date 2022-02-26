@@ -52,9 +52,37 @@ export default function ProjectsComponent({}) {
             </Link>
           </span>
         </h6>
-        <p className="m-b0">w3itexpert (Offsite)</p>
-        <p className="m-b0">Dec 2018 to Present (Full Time)</p>
-        <p className="m-b0">Job Board Template</p>
+        <div className="row">
+          <div className="col-md-6 col-lg-6 col-sm-12 mb-2 mt-2">
+            <h6 className="font-14 m-b0">Projects Title</h6>
+            <p className="m-b0">w3itexpert (Offsite)</p>
+          </div>
+
+          <div className="col-md-6 col-lg-6 col-sm-12 mb-2 mt-2">
+            <h6 className="font-14 m-b0">Client</h6>
+            <p className="m-b0">w3itexpert (Offsite)</p>
+          </div>
+
+          <div className="col-md-6 col-lg-6 col-sm-12 mb-2 mt-2">
+            <h6 className="font-14 m-b0">Project Status</h6>
+            <p className="m-b0">In progress</p>
+          </div>
+
+          <div className="col-md-6 col-lg-6 col-sm-12 mb-2 mt-2">
+            <h6 className="font-14 m-b0">Started Working From</h6>
+            <p className="m-b0">12/12/2021</p>
+          </div>
+
+          <div className="col-md-6 col-lg-6 col-sm-12 mb-2 mt-2">
+            <h6 className="font-14 m-b0">Worked Till</h6>
+            <p className="m-b0">1/2/2022</p>
+          </div>
+
+          <div className="col-md-12 col-lg-12 col-sm-12">
+            <h6 className="font-14 m-b0">Details of Project</h6>
+            <p className="m-b0">lorem ipsum doret doretlorem dorey</p>
+          </div>
+        </div>
       </div>
 
       <Modal
