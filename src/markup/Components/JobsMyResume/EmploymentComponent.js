@@ -38,7 +38,7 @@ export default function EmploymentComponent({}) {
           </Link>
         </div>
         <h6 className="font-14 m-b0">
-          Org name{" "}
+          {/* Org name{" "} */}
           <span className="float-right ml-2 ">
             <Link
               to={"#"}
@@ -54,6 +54,11 @@ export default function EmploymentComponent({}) {
 
         <div className="row">
           <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">Organization</h6>
+            <p className="m-b0">W3itexperts</p>
+          </div>
+
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
             <h6 className="font-14 m-b0">Industry</h6>
             <p className="m-b0">W3itexperts</p>
           </div>
@@ -64,33 +69,32 @@ export default function EmploymentComponent({}) {
           </div>
 
           <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-            <h6 className="font-14 m-b0">Role</h6>
-            <p className="m-b0">ipsum</p>
-          </div>
-
-          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-            <h6 className="font-14 m-b0">Your Designation</h6>
+            <h6 className="font-14 m-b0">Designation</h6>
             <p className="m-b0">doret</p>
           </div>
 
           <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-            <h6 className="font-14 m-b0">Started working from</h6>
+            <h6 className="font-14 m-b0">Start Date</h6>
             <p className="m-b0">doret</p>
           </div>
 
           <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-            <h6 className="font-14 m-b0">Stopped working</h6>
+            <h6 className="font-14 m-b0">End Date</h6>
             <p className="m-b0">doret</p>
           </div>
 
           <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
-            <h6 className="font-14 m-b0">Describe your Job Profile</h6>
+            <h6 className="font-14 m-b0">Description</h6>
             <p className="m-b0">
               lorem ipsum doret lorem ipsum doretlorem ipsum doretlorem ipsum
               doretlorem ipsum doretlorem ipsum doretlorem ipsum doretlorem
               ipsum doretlorem ipsum doretlorem ipsum doretlorem ipsum
               doretlorem ipsum doretlorem ipsum doret
             </p>
+          </div>
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">Current Job</h6>
+            <p className="m-b0">Yes</p>
           </div>
         </div>
 
@@ -120,9 +124,9 @@ export default function EmploymentComponent({}) {
                   <div className="row">
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Your Organization</label>
+                        <label>Organization</label>
                         <TextInputModal
-                          placeholder="Enter Your Organization"
+                          placeholder="Enter Organization"
                           onChange={(e) => setOrganization(e.target.value)}
                           value={organization}
                         />
@@ -164,47 +168,17 @@ export default function EmploymentComponent({}) {
 
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Role</label>
-                        <DropDownModalComponent
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
-                            // setEducation(e.target.value);
-                          }}
-                          // value={Education}
-                          options={[
-                            { id: 1, name: "test 1" },
-                            { id: 2, name: "test 2" },
-                          ]}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Your Designation</label>
+                        <label>Designation</label>
                         <TextInputModal
-                          placeholder="Enter Your Designation"
+                          placeholder="Enter Designation"
                           onChange={(e) => setDesignation(e.target.value)}
                           value={designation}
                         />
                       </div>
                     </div>
-
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Describe your Job Profile</label>
-                        <TextAreaModalComponent
-                          onChange={(e) => {
-                            setDescription(e.target.value);
-                          }}
-                          value={description}
-                          placeholder="Type Description"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Started Working From</label>
+                        <label>Start Date</label>
                         <div className="row">
                           <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                             <TextInputModal
@@ -222,7 +196,7 @@ export default function EmploymentComponent({}) {
                     </div>
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Worked Till</label>
+                        <label>End Date</label>
                         <div className="row">
                           <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                             <TextInputModal
@@ -236,6 +210,19 @@ export default function EmploymentComponent({}) {
                             />
                           </div>
                         </div>
+                      </div>
+                    </div>
+
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        <label>Description</label>
+                        <TextAreaModalComponent
+                          onChange={(e) => {
+                            setDescription(e.target.value);
+                          }}
+                          value={description}
+                          placeholder="Type Description"
+                        />
                       </div>
                     </div>
 

@@ -16,7 +16,7 @@ export default function AccomplishmentsComponent({}) {
   return (
     <div id="Certification_bx" className="job-bx bg-white m-b30">
       {/* Accomplishments */}
-      <h5 clas2sName="m-b10 ">
+      <h5 clas2sName=" ">
         Certification{" "}
         <span className="float-right ml-2 ">
           <span
@@ -30,18 +30,20 @@ export default function AccomplishmentsComponent({}) {
         </span>
       </h5>
 
-      <div className="d-flex">
-        {/* <h6 className="font-14 m-b5">Social Profile</h6> */}
-        <Link
-          to={"#"}
-          data-toggle="modal"
-          data-target="#accomplishments"
-          onClick={() => handleShow()}
-          className="site-button add-btn button-sm"
-        >
-          <i className="fa fa-pencil m-r5"></i> Edit
-        </Link>
-      </div>
+      <h6 className="font-14 m-b0">
+        {/* Job BoardEdit{" "} */}
+        <span className="float-right">
+          <Link
+            to={"#"}
+            data-toggle="modal"
+            data-target="#projects"
+            onClick={() => handleShow()}
+            className="site-button add-btn button-sm"
+          >
+            <i className="fa fa-pencil m-r5"></i> Edit
+          </Link>
+        </span>
+      </h6>
       <div className="row">
         <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
           <h6 className="font-14 m-b0">Certification Name</h6>
@@ -54,8 +56,12 @@ export default function AccomplishmentsComponent({}) {
         </div>
 
         <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-          <h6 className="font-14 m-b0">Year on Obtained</h6>
+          <h6 className="font-14 m-b0">Year Obtained</h6>
           <p className="m-b0">12/01/2011</p>
+        </div>
+        <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
+          <h6 className="font-14 m-b0">Referance No.</h6>
+          <p className="m-b0">123456789</p>
         </div>
       </div>
 
@@ -105,9 +111,21 @@ export default function AccomplishmentsComponent({}) {
                   </div>
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Year on Obtained</label>
+                      <label>Year Obtained</label>
                       <TextInputModal
                         type="date"
+                        onChange={(e) => {
+                          console.log(e.target.value);
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Referance No.</label>
+                      <TextInputModal
+                        type=""
                         onChange={(e) => {
                           console.log(e.target.value);
                         }}

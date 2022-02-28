@@ -7,6 +7,7 @@ export default function Loginpage3() {
   const [lname, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [CnfrmPassword, setCnfrmPassword] = useState("");
 
   const textInputFields = [
     {
@@ -15,7 +16,7 @@ export default function Loginpage3() {
       className: "form-control ",
       placeholder: "Your first name",
       type: "text",
-      label: "First name",
+      label: "First Name",
       onChange: (e) => {
         setFName(e.target.value);
       },
@@ -27,7 +28,7 @@ export default function Loginpage3() {
       className: "form-control ",
       placeholder: "Your last name",
       type: "text",
-      label: "Last name",
+      label: "Last Name",
       onChange: (e) => {
         setLName(e.target.value);
       },
@@ -56,6 +57,18 @@ export default function Loginpage3() {
         setPassword(e.target.value);
       },
       value: password,
+    },
+    {
+      name: "cnfrmpassword",
+      required: "true",
+      className: "form-control ",
+      placeholder: "Confirm Password",
+      type: "password",
+      label: "Confirm Password",
+      onChange: (e) => {
+        setCnfrmPassword(e.target.value);
+      },
+      value: CnfrmPassword,
     },
   ];
 
@@ -145,7 +158,7 @@ export default function Loginpage3() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
-              <span className="float-left text-black-light">
+              {/* <span className="float-left text-black-light">
                 {" "}
                 © Copyright by{" "}
                 <i className="fa fa-heart m-lr5 text-red heart"></i>
@@ -153,7 +166,7 @@ export default function Loginpage3() {
                   Pitch profile{" "}
                 </Link>
               </span>
-              <span className="float-right">All rights reserved.</span>
+              <span className="float-right">All rights reserved.</span> */}
             </div>
           </div>
         </div>

@@ -71,7 +71,7 @@ export default function ProfileSummary({}) {
                   <div className="row">
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Details of Project</label>
+                        <label>Details Of Project</label>
                         <textarea
                           className="form-control"
                           placeholder="Type Description"
@@ -130,7 +130,7 @@ export default function ProfileSummary({}) {
                 <div className="row">
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      {/* <label>Details of Project</label> */}
+                      {/* <label>Details Of Project</label> */}
 
                       <TextAreaModalComponent
                         onChange={(e) => {

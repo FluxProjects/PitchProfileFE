@@ -1,6 +1,13 @@
 import React from "react";
 
-export default function TextInputModal({ label, onChange, type, placeholder }) {
+export default function TextInputModal({
+  label,
+  onChange,
+  type,
+  placeholder,
+  min,
+  max,
+}) {
   return (
     <>
       <input
@@ -8,6 +15,8 @@ export default function TextInputModal({ label, onChange, type, placeholder }) {
         className="form-control"
         placeholder={placeholder}
         onChange={onChange}
+        min={min}
+        max={max}
       />
     </>
   );

@@ -53,33 +53,33 @@ export default function ProjectsComponent({}) {
           </span>
         </h6>
         <div className="row">
-          <div className="col-md-6 col-lg-6 col-sm-12 mb-2 mt-2">
-            <h6 className="font-14 m-b0">Projects Title</h6>
+          <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
+            <h6 className="font-14 m-b0">Project Title</h6>
             <p className="m-b0">w3itexpert (Offsite)</p>
           </div>
 
-          <div className="col-md-6 col-lg-6 col-sm-12 mb-2 mt-2">
+          <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
             <h6 className="font-14 m-b0">Client</h6>
             <p className="m-b0">w3itexpert (Offsite)</p>
           </div>
 
-          <div className="col-md-6 col-lg-6 col-sm-12 mb-2 mt-2">
-            <h6 className="font-14 m-b0">Project Status</h6>
+          <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
+            <h6 className="font-14 m-b0">Status</h6>
             <p className="m-b0">In progress</p>
           </div>
 
-          <div className="col-md-6 col-lg-6 col-sm-12 mb-2 mt-2">
-            <h6 className="font-14 m-b0">Started Working From</h6>
+          <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
+            <h6 className="font-14 m-b0">Start Date</h6>
             <p className="m-b0">12/12/2021</p>
           </div>
 
-          <div className="col-md-6 col-lg-6 col-sm-12 mb-2 mt-2">
-            <h6 className="font-14 m-b0">Worked Till</h6>
+          <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
+            <h6 className="font-14 m-b0">End Date</h6>
             <p className="m-b0">1/2/2022</p>
           </div>
 
           <div className="col-md-12 col-lg-12 col-sm-12">
-            <h6 className="font-14 m-b0">Details of Project</h6>
+            <h6 className="font-14 m-b0">Description</h6>
             <p className="m-b0">lorem ipsum doret doretlorem dorey</p>
           </div>
         </div>
@@ -149,7 +149,7 @@ export default function ProjectsComponent({}) {
                   </div>
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Project Status</label>
+                      <label>Status</label>
                       <div className="row">
                         <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                           <div className="custom-control custom-radio">
@@ -194,7 +194,7 @@ export default function ProjectsComponent({}) {
                   </div>
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Started Working From</label>
+                      <label>Start Date</label>
                       <div className="row">
                         <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                           <TextInputModal
@@ -212,7 +212,7 @@ export default function ProjectsComponent({}) {
                   </div>
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Worked Till</label>
+                      <label>End Date</label>
                       <div className="row">
                         <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                           <TextInputModal
@@ -230,7 +230,7 @@ export default function ProjectsComponent({}) {
                   </div>
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Details of Project</label>
+                      <label>Description</label>
                       <TextAreaModalComponent
                         onChange={(e) => {
                           setDescription(e.target.value);

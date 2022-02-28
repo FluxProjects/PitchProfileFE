@@ -32,32 +32,29 @@ export default function OnlineProfileContainer({}) {
         </span>
       </h5>
 
-      <div className="d-flex">
-        {/* <h6 className="font-14 m-b5">Social Profile</h6> */}
-        <Link
-          to={"#"}
-          data-toggle="modal"
-          data-target="#accomplishments"
-          onClick={() => handleShow()}
-          className="site-button add-btn button-sm"
-        >
-          <i className="fa fa-pencil m-r5"></i> Edit
-        </Link>
-      </div>
+      <h6 className="font-14 m-b0">
+        {/* Job BoardEdit{" "} */}
+        <span className="float-right">
+          <Link
+            to={"#"}
+            data-toggle="modal"
+            data-target="#projects"
+            onClick={() => handleShow()}
+            className="site-button add-btn button-sm"
+          >
+            <i className="fa fa-pencil m-r5"></i> Edit
+          </Link>
+        </span>
+      </h6>
       <div className="row">
         <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-          <h6 className="font-14 m-b0">Social platform</h6>
+          <h6 className="font-14 m-b0">Platform</h6>
           <p className="m-b0">facebook</p>
         </div>
 
         <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
           <h6 className="font-14 m-b0">URL</h6>
           <p className="m-b0">fb.com</p>
-        </div>
-
-        <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
-          <h6 className="font-14 m-b0">Description</h6>
-          <p className="m-b0">lorem ipsum dorey feau sjka</p>
         </div>
       </div>
 
@@ -66,7 +63,7 @@ export default function OnlineProfileContainer({}) {
         onHide={() => handleClose()}
         className="modal fade modal-bx-info editor"
       >
-        <div className="modal-dialog my-0" role="document">
+        <div className="modal-dialog my-0 mx-0" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="AccomplishmentsModalLongTitle">
@@ -87,17 +84,7 @@ export default function OnlineProfileContainer({}) {
                 <div className="row">
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Social Profile</label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Social Profile Name"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>Social platform</label>
+                      <label>Platform</label>
                       <DropDownModalComponent
                         onChange={(e) => {
                           console.log("eee", e.target.value);
@@ -119,15 +106,6 @@ export default function OnlineProfileContainer({}) {
                         className="form-control"
                         placeholder="www.google.com"
                       />
-                    </div>
-                  </div>
-                  <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>Description</label>
-                      <textarea
-                        className="form-control"
-                        placeholder="Type Description"
-                      ></textarea>
                     </div>
                   </div>
                 </div>

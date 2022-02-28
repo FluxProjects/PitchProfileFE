@@ -8,9 +8,9 @@ import TextInputModal from "./TextInputModal";
 export default function ItSkillsComponent({}) {
   const [show, setShow] = useState(false);
   const [ItSkills, setItSkills] = useState("");
-  const [Version, setVersion] = useState("");
   const [LastUsed, setLastUsed] = useState("");
   const [ExpDate, setExpDate] = useState("");
+  const [IsTopSkill, setIsTopSkill] = useState(1);
 
   const handleClose = () => {
     setShow(false);
@@ -21,10 +21,10 @@ export default function ItSkillsComponent({}) {
 
   return (
     <>
-      {/* It skills */}
+      {/* skills */}
       <div id="it_skills_bx" className="job-bx table-job-bx bg-white m-b30">
         <div className="d-flex">
-          <h5 className="m-b15">IT Skills</h5>
+          <h5 className="m-b15">Skills</h5>
           <Link
             to={"#"}
             data-toggle="modal"
@@ -43,9 +43,9 @@ export default function ItSkillsComponent({}) {
           <thead>
             <tr>
               <th>Skills</th>
-              <th>Version</th>
-              <th>Last Used</th>
-              <th>Experience</th>
+              <th>Type</th>
+              <th>Rating</th>
+              <th>Top Skill</th>
               <th></th>
             </tr>
           </thead>
@@ -145,7 +145,7 @@ export default function ItSkillsComponent({}) {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="ItskillsModalLongTitle">
-                  IT Skills
+                  Skills
                 </h5>
                 <button
                   type="button"
@@ -161,24 +161,15 @@ export default function ItSkillsComponent({}) {
                   <div className="row">
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>IT Skills</label>
+                        <label>Skills</label>
                         <input
                           type="email"
                           className="form-control"
-                          placeholder="Enter IT Skills"
+                          placeholder="Enter Skills"
                         />
                       </div>
                     </div>
-                    <div className="col-lg-6 col-md-6">
-                      <div className="form-group">
-                        <label>Version</label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          placeholder="Enter Version"
-                        />
-                      </div>
-                    </div>
+
                     <div className="col-lg-6 col-md-6">
                       <div className="form-group">
                         <label>Last Used</label>
@@ -278,7 +269,7 @@ export default function ItSkillsComponent({}) {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="EmploymentModalLongTitle">
-                IT Skills
+                Skills
               </h5>
               <button
                 type="button"
@@ -293,11 +284,11 @@ export default function ItSkillsComponent({}) {
             <div className="modal-body">
               <form>
                 <div className="row">
-                  <div className="col-lg-12 col-md-12">
+                  <div className="col-lg-6 col-md-12">
                     <div className="form-group">
-                      <label>IT Skills</label>
+                      <label>Skills</label>
                       <TextInputModal
-                        placeholder="Enter IT Skills"
+                        placeholder="Enter Skills"
                         onChange={(e) => setItSkills(e.target.value)}
                         value={ItSkills}
                       />
@@ -305,35 +296,77 @@ export default function ItSkillsComponent({}) {
                   </div>
                   <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
-                      <label>Version</label>
-                      <TextInputModal
-                        placeholder="Select Version"
-                        onChange={(e) => setVersion(e.target.value)}
-                        value={Version}
+                      <label>Type</label>
+                      <DropDownModalComponent
+                        onChange={(e) => {
+                          console.log("eee", e.target.value);
+                          //   setLastUsed(e.target.value);
+                        }}
+                        options={[
+                          { id: 1, name: "Business" },
+                          { id: 2, name: "Technical" },
+                        ]}
                       />
                     </div>
                   </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12">
+
+                  <div className="col-lg-6 col-md-12">
                     <div className="form-group">
-                      <label>Last Used</label>
+                      <label>Rating (1 - 10)</label>
                       <TextInputModal
-                        placeholder=""
-                        type="date"
+                        placeholder="Rate your Skill from 1 to 10"
+                        type="number"
+                        min={1}
+                        max={10}
                         onChange={(e) => setExpDate(e.target.value)}
                         value={ExpDate}
                       />
                     </div>
                   </div>
 
-                  <div className="col-lg-12 col-md-12">
+                  <div className="col-lg-6 col-md-12">
                     <div className="form-group">
-                      <label>Experience (Years)</label>
-                      <TextInputModal
-                        placeholder=""
-                        type="number"
-                        onChange={(e) => setExpDate(e.target.value)}
-                        value={ExpDate}
-                      />
+                      <label>Top Skill</label>
+                      <div className="row">
+                        <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div className="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              className="custom-control-input"
+                              id="employ_yes"
+                              name="example1"
+                              checked={IsTopSkill == 1 ? true : false}
+                              value={1}
+                              onChange={() => setIsTopSkill(1)}
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="employ_yes"
+                            >
+                              Yes
+                            </label>
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div className="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              className="custom-control-input"
+                              id="employ_no"
+                              name="example1"
+                              checked={IsTopSkill == 2 ? true : false}
+                              value={2}
+                              onChange={() => setIsTopSkill(2)}
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="employ_no"
+                            >
+                              No
+                            </label>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

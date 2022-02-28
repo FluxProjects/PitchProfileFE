@@ -154,7 +154,7 @@ export default function Register() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
-              <span className="float-left text-black-light">
+              {/* <span className="float-left text-black-light">
                 {" "}
                 © Copyright by{" "}
                 <i className="fa fa-heart m-lr5 text-red heart"></i>
@@ -162,7 +162,7 @@ export default function Register() {
                   Pitch profile{" "}
                 </Link>
               </span>
-              <span className="float-right">All rights reserved.</span>
+              <span className="float-right">All rights reserved.</span> */}
             </div>
           </div>
         </div>

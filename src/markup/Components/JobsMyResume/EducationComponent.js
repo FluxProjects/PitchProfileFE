@@ -48,9 +48,9 @@ export default function EducationComponent({}) {
                 <div className="row">
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Your Institute</label>
+                      <label>Your Institute Name</label>
                       <TextInputModal
-                        placeholder="Enter Your Institute"
+                        placeholder="Enter Your Institute Name"
                         // onChange={(e) => setOrganization(e.target.value)}
                         // value={organization}
                       />
@@ -83,9 +83,9 @@ export default function EducationComponent({}) {
                   </div>
                   <div className="col-lg-6 col-md-6 col-xs-12">
                     <div className="form-group">
-                      <label>Start date</label>
+                      <label>Start Date</label>
                       <TextInputModal
-                        // placeholder="Select University/Institute"
+                        // placeholder="Select University/Institute Name"
                         type="date"
                         onChange={(e) => setStartDate(e.target.value)}
                         value={StartDate}
@@ -95,9 +95,9 @@ export default function EducationComponent({}) {
 
                   <div className="col-lg-6 col-md-6 col-xs-12">
                     <div className="form-group">
-                      <label>End date</label>
+                      <label>End Date</label>
                       <TextInputModal
-                        // placeholder="Select University/Institute"
+                        // placeholder="Select University/Institute Name"
                         type="date"
                         onChange={(e) => setEndDate(e.target.value)}
                         value={EndDate}
@@ -107,7 +107,7 @@ export default function EducationComponent({}) {
 
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Is this your current Institute?</label>
+                      <label>Is this your current Institute Name?</label>
                       <div className="row">
                         <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                           <div className="custom-control custom-radio">
@@ -179,9 +179,8 @@ export default function EducationComponent({}) {
           </Link>
         </div>
 
-        <p>
-          {/* Mention your employment details including your current and previous
-company work experience */}
+        <h6 className="font-14 m-b0">
+          {/* Org name{" "} */}
           <span className="float-right ml-2 ">
             <Link
               to={"#"}
@@ -193,44 +192,44 @@ company work experience */}
               <i className="fa fa-pencil m-r5"></i> Edit
             </Link>
           </span>
-        </p>
+        </h6>
 
         <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-12">
+          <div className="col-lg-4 col-md-6 col-sm-12">
             <div className="clearfix m-b20">
-              <label className="m-b0">Your Institute</label>
+              <label className="m-b0">Institute Name</label>
               <span className="clearfix font-13">Uni</span>
             </div>
           </div>
 
-          <div className="col-lg-6 col-md-6 col-sm-12">
+          <div className="col-lg-4 col-md-6 col-sm-12">
             <div className="clearfix m-b20">
               <label className="m-b0">Education Level</label>
               <span className="clearfix font-13">Doctorate/PHD</span>
             </div>
           </div>
-          <div className="col-lg-12 col-md-12 col-sm-12">
+          <div className="col-lg-4 col-md-12 col-sm-12">
             <div className="clearfix m-b20">
               <label className="m-b0">Course</label>
               <span className="clearfix font-13">Doctorate/PHD</span>
             </div>
           </div>
 
-          <div className="col-lg-6 col-md-6 col-sm-12">
+          <div className="col-lg-4 col-md-6 col-sm-12">
             <div className="clearfix m-b20">
-              <label className="m-b0">Start date</label>
+              <label className="m-b0">Start Date</label>
               <span className="clearfix font-13">12/2/2020</span>
             </div>
           </div>
 
-          <div className="col-lg-6 col-md-6 col-sm-12">
+          <div className="col-lg-4 col-md-6 col-sm-12">
             <div className="clearfix m-b20">
-              <label className="m-b0">End date</label>
+              <label className="m-b0">End Date</label>
               <span className="clearfix font-13">12/2/2022</span>
             </div>
           </div>
 
-          <div className="col-lg-6 col-md-6 col-sm-12">
+          <div className="col-lg-4 col-md-6 col-sm-12">
             <div className="clearfix m-b20">
               <label className="m-b0">Current Institute</label>
               <span className="clearfix font-13">Yes</span>

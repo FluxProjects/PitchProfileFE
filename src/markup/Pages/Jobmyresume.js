@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
-import { Form } from "react-bootstrap";
+import { Form, ToggleButton } from "react-bootstrap";
 import Listingsidebar from "./../Element/Listingsidebar";
 import ResumeHeadlineComponent from "../Components/JobsMyResume/ResumeHeadlineComponent";
 import KeySkillsComponent from "../Components/JobsMyResume/KeySkillsComponent";
@@ -15,9 +15,9 @@ import AccomplishmentsComponent from "../Components/JobsMyResume/Accomplishments
 import DesiredCareerProfileComponent from "../Components/JobsMyResume/DesiredCareerProfileComponent";
 import ProfileDetailsComponent from "../Components/JobsMyResume/ProfileDetailsComponent";
 import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeComponent";
-import AttachVideo from "../Components/JobsMyResume/AttachVideo";
 import OnlineProfileContainer from "../Components/JobsMyResume/OnlineProfileContainer";
 
+import HeaderMyResume from "../Components/JobsMyResume/HeaderMyResume";
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
@@ -38,84 +38,7 @@ export default function Jobmyresume() {
         >
           <div className="container">
             <div className="row">
-              <div className="col-lg-8 col-md-7 candidate-info">
-                <div className="candidate-detail">
-                  <div className="canditate-des text-center">
-                    <Link to={""}>
-                      <img
-                        alt=""
-                        src={require("./../../images/team/pic1.jpg")}
-                      />
-                    </Link>
-                    <div
-                      className="upload-link"
-                      title="update"
-                      data-toggle="tooltip"
-                      data-placement="right"
-                    >
-                      <input type="file" className="update-flie" />
-                      <i className="fa fa-camera"></i>
-                    </div>
-                  </div>
-                  <div className="text-white browse-job text-left">
-                    <h4 className="m-b0">
-                      John Doe
-                      <Link
-                        to={""}
-                        className="m-l15 font-16 text-white"
-                        data-toggle="modal"
-                        data-target="#profilename"
-                      >
-                        <i className="fa fa-pencil"></i>
-                      </Link>
-                    </h4>
-                    <p className="m-b15">
-                      Freelance Senior PHP Developer at various agencies
-                    </p>
-                    <ul className="clearfix">
-                      <li>
-                        <i className="ti-location-pin"></i> Sacramento,
-                        California
-                      </li>
-                      <li>
-                        <i className="ti-mobile"></i> +1 123 456 7890
-                      </li>
-                      <li>
-                        <i className="ti-briefcase"></i> Fresher
-                      </li>
-                      <li>
-                        <i className="ti-email"></i> info@example.com
-                      </li>
-                    </ul>
-                    <div className="progress-box m-t10">
-                      <div className="progress-info">
-                        Profile Strength (Average)<span>70%</span>
-                      </div>
-                      <div className="progress">
-                        <div
-                          className="progress-bar bg-primary"
-                          style={{ width: "80%" }}
-                          role="progressbar"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-5">
-                {/* <Link to={""}> */}
-                {/* AttachVideo */}
-                <AttachVideo />
-                {/* <div className="pending-info text-white p-a25">
-                    <h5>Pending Action</h5>
-                    <ul className="list-check secondry">
-                      <li>Verify Mobile Number</li>
-                      <li>Add Preferred Location</li>
-                      <li>Add Resume</li>
-                    </ul>
-                  </div> */}
-                {/* </Link> */}
-              </div>
+              <HeaderMyResume />
             </div>
           </div>
           <div
@@ -302,7 +225,7 @@ export default function Jobmyresume() {
                 </div>
                 <div className="col-xl-9 col-lg-8 col-md-8 col-sm-12">
                   {/* Resume Headline */}
-                  <ResumeHeadlineComponent />
+                  {/* <ResumeHeadlineComponent /> */}
 
                   {/* ProfileSummaryComponent */}
                   <ProfileSummary />
@@ -313,8 +236,8 @@ export default function Jobmyresume() {
                   {/* Education */}
                   <EducationComponent />
 
-                  {/* Key skills */}
-                  <KeySkillsComponent />
+                  {/* Key skills
+                  <KeySkillsComponent /> */}
 
                   {/* ItSkillsComponent */}
                   <ItSkillsComponent />

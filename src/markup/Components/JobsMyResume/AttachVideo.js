@@ -15,14 +15,14 @@ export default function AttachVideo({}) {
     <>
       {/* Attach resume */}
       <div
-        id="attach_resume_bx"
+        id="attach_resume_bx "
         style={{ backgroundColor: "transparent" }}
-        className="job-bx  m-b30"
+        className=" margin_bx_AttachVid m-b30"
       >
         <h5 className="m-b10 text-white">Attach Video</h5>
 
         <form
-          className="attach-resume "
+          className="attach-resume-Video "
           style={{
             backgroundColor: "transparent",
             border: "1px solid white",

@@ -7,7 +7,7 @@ class Listingsidebar extends Component {
       <div className="sticky-top bg-white">
         <div className="candidate-info onepage">
           <ul>
-            <li>
+            {/* <li>
               <Link
                 activeClass="active"
                 className="scroll-bar nav-link"
@@ -18,7 +18,7 @@ class Listingsidebar extends Component {
               >
                 <span>Resume Headline</span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 activeClass="active"
@@ -55,7 +55,7 @@ class Listingsidebar extends Component {
                 <span>Education</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 activeClass="active"
                 className="scroll-bar nav-link"
@@ -66,7 +66,7 @@ class Listingsidebar extends Component {
               >
                 <span>Key Skills</span>
               </Link>
-            </li>
+            </li> */}
 
             <li>
               <Link
@@ -77,7 +77,7 @@ class Listingsidebar extends Component {
                 offset={-70}
                 duration={500}
               >
-                <span>IT Skills</span>
+                <span>Skills</span>
               </Link>
             </li>
             <li>

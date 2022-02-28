@@ -56,23 +56,8 @@ export default function ProfileDetailsComponent({}) {
                 </button>
               </div>
               <div className="modal-body">
-                <div className="job-bx-title clearfix">
-                  <h5 className="font-weight-700 pull-left text-uppercase">
-                    Basic Information
-                  </h5>
-                </div>
                 <form>
                   <div className="row m-b30">
-                    <div className="col-lg-6 col-md-6">
-                      <div className="form-group">
-                        <label>Your Name:</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Alexander Weir"
-                        />
-                      </div>
-                    </div>
                     <div className="col-lg-6 col-md-6">
                       <div className="form-group">
                         <label>Date of birth:</label>
@@ -160,16 +145,6 @@ export default function ProfileDetailsComponent({}) {
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Passport Number:</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter your passport number"
-                        />
-                      </div>
-                    </div>
 
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
@@ -220,7 +195,7 @@ export default function ProfileDetailsComponent({}) {
                     {Disability && (
                       <div className="col-lg-12 col-md-12">
                         <div className="form-group">
-                          <label>Disability description:</label>
+                          <label>Disability Description:</label>
                           <textarea className="form-control"></textarea>
                         </div>
                       </div>
@@ -237,109 +212,6 @@ export default function ProfileDetailsComponent({}) {
                             { id: 1, name: "test 1" },
                             { id: 2, name: "test 2" },
                           ]}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="job-bx-title clearfix">
-                    <h5 className="font-weight-700 pull-left text-uppercase">
-                      Contact Information
-                    </h5>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Full Address:</label>
-                        <TextAreaModalComponent
-                          onChange={(e) => {
-                            // setDescription(e.target.value);
-                          }}
-                          //   value={description}
-                          placeholder="Full address"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-md-6 col-sm-12">
-                      <div className="form-group">
-                        <label>Country:</label>
-                        <DropDownModalComponent
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
-                            //   setLastUsed(e.target.value);
-                          }}
-                          options={[
-                            { id: 1, name: "test 1" },
-                            { id: 2, name: "test 2" },
-                          ]}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="col-lg-6 col-md-6 col-sm-12">
-                      <div className="form-group">
-                        <label>State:</label>
-                        <DropDownModalComponent
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
-                            //   setLastUsed(e.target.value);
-                          }}
-                          options={[
-                            { id: 1, name: "test 1" },
-                            { id: 2, name: "test 2" },
-                          ]}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="col-lg-6 col-md-6 col-sm-12">
-                      <div className="form-group">
-                        <label>City:</label>
-                        <DropDownModalComponent
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
-                            //   setLastUsed(e.target.value);
-                          }}
-                          options={[
-                            { id: 1, name: "test 1" },
-                            { id: 2, name: "test 2" },
-                          ]}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-md-6 col-sm-12">
-                      <div className="form-group">
-                        <label>Hometown:</label>
-                        <DropDownModalComponent
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
-                            //   setLastUsed(e.target.value);
-                          }}
-                          options={[
-                            { id: 1, name: "test 1" },
-                            { id: 2, name: "test 2" },
-                          ]}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="col-lg-6 col-md-6">
-                      <div className="form-group">
-                        <label>Email Address:</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="info@example.com"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-md-6">
-                      <div className="form-group">
-                        <label>Phone:</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Phone number"
                         />
                       </div>
                     </div>
@@ -367,80 +239,28 @@ export default function ProfileDetailsComponent({}) {
           <div className="col-lg-12 col-md-12 col-sm-12">
             {/* <h5 className="m-b30">Personal Details</h5> */}
             <div className="row">
-              <div className="clearfix col-md-6 col-sm-12 col-lg-6 m-b20">
-                <label className="m-b0">Your Name:</label>
-                <span className="clearfix font-13">John Doe</span>
-              </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Date of Birth</label>
                 <span className="clearfix font-13">31 July 1998</span>
               </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Gender</label>
                 <span className="clearfix font-13">male</span>
               </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Marital Status</label>
                 <span className="clearfix font-13">Single / unmarried</span>
               </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
-                <label className="m-b0">Passport Number</label>
-                <span className="clearfix font-13">+ 123 456 7890</span>
-              </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Differently Abled</label>
                 <span className="clearfix font-13">None</span>
               </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
+              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-8">
                 <label className="m-b0">Languages</label>
-                <span className="clearfix font-13">English</span>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-12 col-md-12 col-sm-12">
-            <h5 className="m-b30">Contact Details</h5>
-            <div className="row">
-              <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
-                <label className="m-b0">Headline</label>
                 <span className="clearfix font-13">
-                  Lorem ipsum tdjfshdia hidawy efsd ddw de{" "}
+                  English (Fluent), Spanish (Native), French (Basic)
                 </span>
-              </div>
-              <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
-                <label className="m-b0">Summary</label>
-                <span className="clearfix font-13">
-                  Lorem ipsum tdjfshdia hidawy efsd ddw de{" "}
-                </span>
-              </div>
-
-              <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
-                <label className="m-b0">Full Address</label>
-                <span className="clearfix font-13">Add Permanent Address</span>
-              </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
-                <label className="m-b0">Country</label>
-                <span className="clearfix font-13">UK</span>
-              </div>
-
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
-                <label className="m-b0">State</label>
-                <span className="clearfix font-13">UK</span>
-              </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
-                <label className="m-b0">City</label>
-                <span className="clearfix font-13">UK</span>
-              </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
-                <label className="m-b0">Hometown</label>
-                <span className="clearfix font-13">Delhi</span>
-              </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
-                <label className="m-b0">Email</label>
-                <span className="clearfix font-13">John@gmail.com</span>
-              </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-6">
-                <label className="m-b0">Phone</label>
-                <span className="clearfix font-13">+92632984</span>
               </div>
             </div>
           </div>

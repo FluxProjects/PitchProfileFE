@@ -36,11 +36,21 @@ export default function Jobprofile() {
                       <div className="row m-b30">
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Your Name:</label>
+                            <label>First Name:</label>
                             <input
                               type="text"
                               className="form-control"
                               placeholder="Alexander Weir"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
+                            <label>Last Name:</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder=" Weir"
                             />
                           </div>
                         </div>
@@ -94,6 +104,16 @@ export default function Jobprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
+                            <label>Passport Number:</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter your passport number"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
                             <label>Marital Status</label>
                             <div className="row">
                               <div className="col-lg-3 col-md-6 col-sm-6 col-6">
@@ -129,16 +149,6 @@ export default function Jobprofile() {
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>Passport Number:</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Enter your passport number"
-                            />
                           </div>
                         </div>
 
@@ -191,7 +201,7 @@ export default function Jobprofile() {
                         {Disability && (
                           <div className="col-lg-12 col-md-12">
                             <div className="form-group">
-                              <label>Disability description:</label>
+                              <label>Disability Description:</label>
                               <textarea className="form-control"></textarea>
                             </div>
                           </div>
@@ -222,7 +232,7 @@ export default function Jobprofile() {
                       <div className="row">
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
-                            <label>Full Address:</label>
+                            <label>Address:</label>
                             <TextAreaModalComponent
                               onChange={(e) => {
                                 // setDescription(e.target.value);
@@ -232,7 +242,7 @@ export default function Jobprofile() {
                             />
                           </div>
                         </div>
-                        <div className="col-lg-4 col-md-4 col-sm-12">
+                        <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
                             <label>Country:</label>
                             <DropDownModalComponent

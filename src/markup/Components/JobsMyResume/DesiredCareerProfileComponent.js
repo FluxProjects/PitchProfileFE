@@ -6,6 +6,41 @@ import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
 export default function DesiredCareerProfileComponent({}) {
+  const DesiredCareerProfileFields = [
+    {
+      name: "Industry",
+      desc: "IT-Software/Software Services",
+    },
+    {
+      name: "Department",
+      desc: "Design / Creative / User Experience",
+    },
+    {
+      name: "Role",
+      desc: "Web Designer",
+    },
+    {
+      name: "Employment Type",
+      desc: "Full Time",
+    },
+    {
+      name: "Job Type",
+      desc: "Permanent",
+    },
+    {
+      name: "Shift",
+      desc: "Morning",
+    },
+    {
+      name: "Expected Salary",
+      desc: "$ 2000",
+    },
+    {
+      name: "Availability To Join",
+      desc: "12 July 2022",
+    },
+  ];
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -56,7 +91,7 @@ export default function DesiredCareerProfileComponent({}) {
               <div className="modal-body">
                 <form>
                   <div className="row">
-                    <div className="col-lg-12 col-md-12">
+                    <div className="col-lg-12 col-md-12 ">
                       <div className="form-group">
                         <label>Industry</label>
                         <Form.Control as="select">
@@ -70,9 +105,9 @@ export default function DesiredCareerProfileComponent({}) {
                         </Form.Control>
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
+                    <div className="col-lg-12 col-md-12 ">
                       <div className="form-group">
-                        <label>Functional Area / Department</label>
+                        <label>Department</label>
                         <Form.Control as="select">
                           <option>Agent</option>
                           <option>Architecture / Interior Design</option>
@@ -83,7 +118,7 @@ export default function DesiredCareerProfileComponent({}) {
                         </Form.Control>
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
+                    <div className="col-lg-12 col-md-12 ">
                       <div className="form-group">
                         <label>Role</label>
                         <Form.Control as="select">
@@ -96,7 +131,7 @@ export default function DesiredCareerProfileComponent({}) {
                         </Form.Control>
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
+                    <div className="col-lg-12 col-md-12 ">
                       <div className="form-group">
                         <label>Job Type</label>
                         <div className="row">
@@ -135,7 +170,7 @@ export default function DesiredCareerProfileComponent({}) {
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
+                    <div className="col-lg-12 col-md-12 ">
                       <div className="form-group">
                         <label>Employment Type</label>
                         <div className="row">
@@ -174,9 +209,9 @@ export default function DesiredCareerProfileComponent({}) {
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
+                    <div className="col-lg-12 col-md-12 ">
                       <div className="form-group">
-                        <label>Preferred Shift</label>
+                        <label>Shift</label>
                         <div className="row">
                           <div className="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div className="custom-control custom-radio">
@@ -231,7 +266,7 @@ export default function DesiredCareerProfileComponent({}) {
                     </div>
                     <div className="col-lg-12 col-md-6">
                       <div className="form-group">
-                        <label>Availability to Join</label>
+                        <label>Availability To Join</label>
                         <TextInputModal
                           type="date"
                           onChange={(e) => {
@@ -240,7 +275,7 @@ export default function DesiredCareerProfileComponent({}) {
                         />
                       </div>
                     </div>
-                    <div className="col-lg-12 col-md-12">
+                    <div className="col-lg-12 col-md-12 ">
                       <div className="form-group">
                         <label>Expected Salary</label>
                         <TextInputModal
@@ -251,8 +286,15 @@ export default function DesiredCareerProfileComponent({}) {
                         />
                       </div>
                     </div>
+                  </div>
 
-                    <div className="col-lg-4 col-md-4 col-sm-12">
+                  <div className="col-12 job-bx-title clearfix">
+                    <h5 className="font-weight-700 pull-left text-uppercase">
+                      Preferred Location
+                    </h5>
+                  </div>
+                  <div className="row">
+                    <div className="col-lg-4 col-md-4 mt-0 col-sm-12">
                       <div className="form-group">
                         <label>Country:</label>
                         <DropDownModalComponent
@@ -322,58 +364,31 @@ export default function DesiredCareerProfileComponent({}) {
         </Modal>
 
         <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            <div className="clearfix m-b20">
-              <label className="m-b0">Industry</label>
-              <span className="clearfix font-13">
-                IT-Software/Software Services
-              </span>
+          {DesiredCareerProfileFields.map((item) => (
+            <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+              <h6 className="font-14 m-b0">{item.name}</h6>
+              <p className="m-b0">{item.desc}</p>
             </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Role</label>
-              <span className="clearfix font-13">Web Designer</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Employment Type</label>
-              <span className="clearfix font-13">Full Time</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Availability to Join</label>
-              <span className="clearfix font-13">12 july</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Country</label>
-              <span className="clearfix font-13">Add Country</span>
-            </div>
+          ))}
+        </div>
 
-            <div className="clearfix m-b20">
-              <label className="m-b0">State</label>
-              <span className="clearfix font-13">Add State</span>
-            </div>
+        <h5 className="mt-3">Preferred Location</h5>
+        <div className="row">
+          {/* <h6 className="col-12  my-2 mt-1 m-b0"></h6> */}
+
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">City</h6>
+            <p className="m-b0">London</p>
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            <div className="clearfix m-b20">
-              <label className="m-b0">Functional Area</label>
-              <span className="clearfix font-13">
-                Design / Creative / User Experience
-              </span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Job Type</label>
-              <span className="clearfix font-13">permanent</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Preferred Shift</label>
-              <span className="clearfix font-13">Add Preferred Shift</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">Expected Salary</label>
-              <span className="clearfix font-13">1 Lakhs</span>
-            </div>
-            <div className="clearfix m-b20">
-              <label className="m-b0">City</label>
-              <span className="clearfix font-13">Add City</span>
-            </div>
+
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">State</h6>
+            <p className="m-b0">England</p>
+          </div>
+
+          <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+            <h6 className="font-14 m-b0">Country</h6>
+            <p className="m-b0">United Kingdom</p>
           </div>
         </div>
       </div>
