@@ -1,13 +1,27 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { registerUser } from "../../redux/action";
 import RegisterTextInput from "../Components/RegisterTextInput";
+import { useHistory } from "react-router-dom";
 
 export default function Loginpage3() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [CnfrmPassword, setCnfrmPassword] = useState("");
+
+  const callRegisterUser = async () => {
+    if (password == CnfrmPassword) {
+      await dispatch(registerUser(fname, lname, email, password, history));
+    }
+    // router.push("/registration/");
+  };
 
   const textInputFields = [
     {
@@ -101,7 +115,15 @@ export default function Loginpage3() {
                     ))}
 
                     <div className="text-left">
-                      <button className="site-button">Sign up</button>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          callRegisterUser(e);
+                        }}
+                        className="site-button"
+                      >
+                        Sign up
+                      </button>
                     </div>
                   </form>
                 </div>

@@ -17,8 +17,6 @@ export default function ProfileDetailsComponent({}) {
     },
   ]);
 
-  console.log("LangArrLangArr", LangArr);
-
   const handleClose = () => {
     setShow(false);
   };
@@ -236,7 +234,7 @@ export default function ProfileDetailsComponent({}) {
 
                           <div className="col-lg-3 col-md-3 col-sm-12">
                             <div className="form-group">
-                              <label>Choose Level:</label>
+                              <label>Proficiency Level:</label>
                               <DropDownModalComponent
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);

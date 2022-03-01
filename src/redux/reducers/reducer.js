@@ -1,13 +1,13 @@
 const initialState = {
-  firstState: [],
+  userDetails: [],
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
   switch (type) {
     case "set":
       return { ...state, ...rest };
-    case "firstAction":
-      return { ...state, firstState: rest.data };
+    case "RegisterUser":
+      return { ...state, userDetails: rest.data };
 
     default:
       return state;

@@ -118,7 +118,18 @@ class Listingsidebar extends Component {
                 <span>Social Profiles</span>
               </Link>
             </li>
-
+            <li>
+              <Link
+                activeClass="active"
+                className="scroll-bar nav-link"
+                to="reference_bx"
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                <span>References</span>
+              </Link>
+            </li>
             <li>
               <Link
                 activeClass="active"

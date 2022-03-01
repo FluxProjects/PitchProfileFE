@@ -52,7 +52,7 @@ export default function ResumeHeadlineComponent({}) {
   return (
     <>
       {/* Desired career profile */}
-      <div id="desired_career_profile_bx" className="job-bx bg-white m-b30">
+      <div id="reference_bx" className="job-bx bg-white m-b30">
         <div className="d-flex">
           <h5 className="">References</h5>
           <Link
