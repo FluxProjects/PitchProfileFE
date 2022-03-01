@@ -10,6 +10,28 @@ import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComp
 export default function Jobprofile() {
   const [Disability, setHasDisability] = useState(false);
 
+  const [LangArr, setLangArr] = useState([
+    {
+      language: "",
+      level: "",
+    },
+  ]);
+
+  // handle click event of the Remove button
+  const handleRemoveClick = (index) => {
+    const list = [...LangArr];
+    list.splice(index, 1);
+    setLangArr(list);
+  };
+
+  // handle click event of the Add button
+  const handleAddClickOption = (i) => {
+    const list = [...LangArr];
+    list.push("");
+
+    setLangArr(list);
+  };
+
   return (
     <div className="page-wraper">
       <Header2 />
@@ -208,20 +230,57 @@ export default function Jobprofile() {
                         )}
                       </div>
 
-                      <div className="col-lg-12 col-md-12">
-                        <div className="form-group">
-                          <label>Language:</label>
-                          <DropDownModalComponent
-                            onChange={(e) => {
-                              console.log("eee", e.target.value);
-                              //   setLastUsed(e.target.value);
-                            }}
-                            options={[
-                              { id: 1, name: "test 1" },
-                              { id: 2, name: "test 2" },
-                            ]}
-                          />
-                        </div>
+                      <div className="col-12">
+                        {LangArr.map((item, i) => (
+                          <div className="row">
+                            <div className="col-lg-3 col-md-3 col-sm-12">
+                              <div className="form-group">
+                                <label>Languages:</label>
+                                <TextInputModal
+                                  placeholder={"Enter Language"}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="col-lg-3 col-md-3 col-sm-12">
+                              <div className="form-group">
+                                <label>Choose Level:</label>
+                                <DropDownModalComponent
+                                  onChange={(e) => {
+                                    console.log("eee", e.target.value);
+                                  }}
+                                  options={[
+                                    { id: 1, name: "test 1" },
+                                    { id: 2, name: "test 2" },
+                                  ]}
+                                />
+                              </div>
+                            </div>
+                            <div className="col-lg-3 col-md-3 col-sm-12">
+                              <span
+                                onClick={() => {
+                                  handleAddClickOption(i);
+                                }}
+                                className="btn btn-primary mt-4"
+                              >
+                                <i className="fa fa-plus m-r5"></i> Add
+                              </span>
+                            </div>
+
+                            {LangArr.length !== 1 && (
+                              <div className="col-lg-3 col-md-3 col-sm-12">
+                                <span
+                                  onClick={() => {
+                                    handleRemoveClick(i);
+                                  }}
+                                  className="btn btn-danger mt-4"
+                                >
+                                  <i className="fa fa-minus m-r5"></i> Remove
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        ))}
                       </div>
 
                       <div className="job-bx-title clearfix">

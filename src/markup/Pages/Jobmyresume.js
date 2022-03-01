@@ -13,6 +13,7 @@ import ProjectsComponent from "../Components/JobsMyResume/ProjectsComponent";
 import ProfileSummary from "../Components/JobsMyResume/ProfileSummary";
 import AccomplishmentsComponent from "../Components/JobsMyResume/AccomplishmentsComponent";
 import DesiredCareerProfileComponent from "../Components/JobsMyResume/DesiredCareerProfileComponent";
+import ReferenceComponent from "../Components/JobsMyResume/ReferenceComponent";
 import ProfileDetailsComponent from "../Components/JobsMyResume/ProfileDetailsComponent";
 import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeComponent";
 import OnlineProfileContainer from "../Components/JobsMyResume/OnlineProfileContainer";
@@ -250,6 +251,9 @@ export default function Jobmyresume() {
 
                   {/* Social  */}
                   <OnlineProfileContainer />
+
+                  {/* Reference Component */}
+                  <ReferenceComponent />
 
                   {/* DesiredCareerProfileComponent */}
                   <DesiredCareerProfileComponent />
