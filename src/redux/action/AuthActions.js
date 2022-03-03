@@ -114,7 +114,6 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
         });
         router.push("/");
       } else {
-        alert("tete");
         toast.error("Something went wrong!", {
           position: "top-right",
           autoClose: 5000,
@@ -127,8 +126,6 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
       }
     })
     .catch(function (error) {
-      alert("tete");
-
       console.log(error);
       toast.error(error, {
         position: "top-right",
