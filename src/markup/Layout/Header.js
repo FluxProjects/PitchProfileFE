@@ -115,6 +115,11 @@ export default function Header() {
       link: "/jobs-my-resume",
       index: "7",
     },
+    {
+      name: "Login",
+      link: "/login",
+      index: "8",
+    },
   ];
 
   // const loginLinks = [

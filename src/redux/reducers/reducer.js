@@ -1,5 +1,6 @@
 const initialState = {
   userDetails: [],
+  authToken: "",
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -8,7 +9,8 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, ...rest };
     case "RegisterUser":
       return { ...state, userDetails: rest.data };
-
+    case "SetAuthToken":
+      return { ...state, authToken: rest.data };
     default:
       return state;
   }

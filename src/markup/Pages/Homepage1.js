@@ -8,6 +8,9 @@ import Jobcategories from "./../Element/Jobcategories";
 import Featureblog from "./../Element/Featureblog";
 import Jobsection from "./../Element/Jobsection";
 import Owltestimonial from "./../Element/Owlblog1";
+import { useDispatch, useSelector } from "react-redux";
+import { getAuthToken } from "../../redux/action";
+import { useHistory } from "react-router-dom";
 
 var bnr1 = require("./../../images/main-slider/slide2.jpg");
 var bnr2 = require("./../../images/background/bg4.jpg");
@@ -40,6 +43,21 @@ export default function Homepage() {
 
     // Placeholder Animation End
   }, []);
+
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const router = useHistory();
+  useEffect(() => {
+    if (state.authToken) {
+      callGetAuth();
+    } else {
+      router.push("/login");
+    }
+  }, []);
+
+  const callGetAuth = async () => {
+    await dispatch(getAuthToken(state.authToken, router));
+  };
 
   return (
     <div className="page-wraper">

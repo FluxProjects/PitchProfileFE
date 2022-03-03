@@ -1,10 +1,21 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { LoginUser } from "../../redux/action";
 import RegisterTextInput from "../Components/RegisterTextInput";
 
 export default function Register() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const callLoginUser = async () => {
+    await dispatch(LoginUser(email, password, history));
+    // router.push("/registration/");
+  };
 
   const textInputFields = [
     {
@@ -62,7 +73,15 @@ export default function Register() {
                     ))}
 
                     <div className="text-left">
-                      <button className="site-button">login</button>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          callLoginUser(e);
+                        }}
+                        className="site-button"
+                      >
+                        login
+                      </button>
                       <Link
                         data-toggle="tab"
                         to="#forgot-password"
