@@ -114,7 +114,7 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
         });
         router.push("/");
       } else {
-        toast.error("Something went wrong!", {
+        toast.error(response.data.msg, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,

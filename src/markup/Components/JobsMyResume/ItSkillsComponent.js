@@ -36,16 +36,18 @@ export default function ItSkillsComponent({}) {
           </Link>
         </div>
         <p>
-          Mention your employment details including your current and previous
-          company work experience
+          Skills are the first thing recruiters notice in your profile. List
+          down your expertise and identify Top 3 skills to highlight your
+          profile.
         </p>
         <table>
           <thead>
             <tr>
-              <th>Skills</th>
-              <th>Type</th>
-              <th>Rating</th>
-              <th>Top Skill</th>
+              <th>Skill Type</th>
+              <th>Skill Name</th>
+              <th>Proficiency</th>
+              <th>Expirience</th>
+              <th>Select Top 3 Skills</th>
               <th></th>
             </tr>
           </thead>
@@ -54,6 +56,7 @@ export default function ItSkillsComponent({}) {
               <td>Bootstrap</td>
               <td>3</td>
               <td>2018</td>
+              <td>1 Year 5 Months</td>
               <td>1 Year 5 Months</td>
               <td>
                 <Link
@@ -71,6 +74,7 @@ export default function ItSkillsComponent({}) {
               <td>4</td>
               <td>2013</td>
               <td>5 Year 5 Months</td>
+              <td>5 Year 5 Months</td>
               <td>
                 <Link
                   to={""}
@@ -86,6 +90,7 @@ export default function ItSkillsComponent({}) {
               <td>html</td>
               <td>5</td>
               <td>2016</td>
+              <td>2 Year 7 Months</td>
               <td>2 Year 7 Months</td>
               <td>
                 <Link
@@ -103,6 +108,7 @@ export default function ItSkillsComponent({}) {
               <td>3</td>
               <td>2018</td>
               <td>0 Year 5 Months</td>
+              <td>0 Year 5 Months</td>
               <td>
                 <Link
                   to={""}
@@ -118,6 +124,7 @@ export default function ItSkillsComponent({}) {
               <td>photoshop</td>
               <td>64bit</td>
               <td>2017</td>
+              <td>1 Year 0 Months</td>
               <td>1 Year 0 Months</td>
               <td>
                 <Link
@@ -286,7 +293,7 @@ export default function ItSkillsComponent({}) {
                 <div className="row">
                   <div className="col-lg-6 col-md-12">
                     <div className="form-group">
-                      <label>Skills</label>
+                      <label>Skill Name</label>
                       <TextInputModal
                         placeholder="Enter Skills"
                         onChange={(e) => setItSkills(e.target.value)}
@@ -296,7 +303,7 @@ export default function ItSkillsComponent({}) {
                   </div>
                   <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
-                      <label>Type</label>
+                      <label>Skill Type</label>
                       <DropDownModalComponent
                         onChange={(e) => {
                           console.log("eee", e.target.value);
@@ -312,7 +319,7 @@ export default function ItSkillsComponent({}) {
 
                   <div className="col-lg-6 col-md-12">
                     <div className="form-group">
-                      <label>Rating (1 - 10)</label>
+                      <label>Proficiency</label>
                       <TextInputModal
                         placeholder="Rate your Skill from 1 to 10"
                         type="number"
@@ -367,6 +374,20 @@ export default function ItSkillsComponent({}) {
                           </div>
                         </div>
                       </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Expirience</label>
+                      <TextInputModal
+                        placeholder="Enter years of Expirience"
+                        type="number"
+                        min={1}
+                        // max={10}
+                        onChange={(e) => setExpDate(e.target.value)}
+                        value={ExpDate}
+                      />
                     </div>
                   </div>
                 </div>

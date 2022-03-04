@@ -45,7 +45,7 @@ export default function HeaderMyResume({}) {
               />
 
               <p className="text-white font-weight-bold m-b15">
-                {ToggleIsActive ? "Active" : "In-Active"}
+                {ToggleIsActive ? "Available" : "Unavailable"}
               </p>
             </div>
           </div>

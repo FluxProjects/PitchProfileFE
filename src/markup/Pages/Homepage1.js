@@ -48,6 +48,7 @@ export default function Homepage() {
   const dispatch = useDispatch();
   const router = useHistory();
   useEffect(() => {
+    // auth
     if (state.authToken) {
       callGetAuth();
     } else {
