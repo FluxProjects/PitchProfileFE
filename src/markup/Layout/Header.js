@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Modal } from "react-bootstrap";
+import { LogoutUser } from "../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
 var bnr3 = require("./../../images/background/bg3.jpg");
 
@@ -35,6 +37,14 @@ export default function Header() {
     }
   }, []);
 
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const router = useHistory();
+
+  const callLogoutUser = async () => {
+    await dispatch(LogoutUser(router));
+  };
+
   const links = [
     {
       name: "Browse Job",
@@ -68,59 +78,59 @@ export default function Header() {
     },
   ];
 
-  const linksTest = [
-    {
-      name: "Browse Job",
-      link: "/browse-job-grid",
-      index: "0",
-    },
+  // const linksTest = [
+  //   {
+  //     name: "Browse Job",
+  //     link: "/browse-job-grid",
+  //     index: "0",
+  //   },
 
-    {
-      name: "Candidate profile",
-      link: "/jobs-profile",
-      index: "7",
-    },
-    {
-      name: "Companies",
-      link: "/company-post-jobs",
-      index: "1",
-    },
-    {
-      name: "Browse Candidates",
-      link: "/browse-candidates",
-      index: "2",
-    },
-    {
-      name: "Post a job",
-      link: "/company-post-jobs",
-      index: "3",
-    },
-    {
-      name: "About",
-      link: "/about-us",
-      index: "4",
-    },
-    {
-      name: "Contact",
-      link: "/contact",
-      index: "5",
-    },
-    {
-      name: "job-detail",
-      link: "/job-detail",
-      index: "6",
-    },
-    {
-      name: "jobs-my-resume",
-      link: "/jobs-my-resume",
-      index: "7",
-    },
-    {
-      name: "Login",
-      link: "/login",
-      index: "8",
-    },
-  ];
+  //   {
+  //     name: "Candidate profile",
+  //     link: "/jobs-profile",
+  //     index: "7",
+  //   },
+  //   {
+  //     name: "Companies",
+  //     link: "/company-post-jobs",
+  //     index: "1",
+  //   },
+  //   {
+  //     name: "Browse Candidates",
+  //     link: "/browse-candidates",
+  //     index: "2",
+  //   },
+  //   {
+  //     name: "Post a job",
+  //     link: "/company-post-jobs",
+  //     index: "3",
+  //   },
+  //   {
+  //     name: "About",
+  //     link: "/about-us",
+  //     index: "4",
+  //   },
+  //   {
+  //     name: "Contact",
+  //     link: "/contact",
+  //     index: "5",
+  //   },
+  //   {
+  //     name: "job-detail",
+  //     link: "/job-detail",
+  //     index: "6",
+  //   },
+  //   {
+  //     name: "jobs-my-resume",
+  //     link: "/jobs-my-resume",
+  //     index: "7",
+  //   },
+  //   {
+  //     name: "Login",
+  //     link: "/login",
+  //     index: "8",
+  //   },
+  // ];
 
   // const loginLinks = [
   //   {
@@ -191,7 +201,7 @@ export default function Header() {
                 id="navbarNavDropdown"
               >
                 <ul className="nav navbar-nav">
-                  {/* {links.map((item, index) => (
+                  {links.map((item, index) => (
                     <li
                       className={
                         item.link === `react/${window.location.pathname}`
@@ -203,18 +213,47 @@ export default function Header() {
                         {item.name}
                       </Link>
                     </li>
-                  ))} */}
+                  ))}
                   <li></li>
                   <li style={{ marginLeft: 100 }}></li>
-                  {/* <li className="active float-right">
-                    <Link to={"/login"} className="site-button">
-                      <i className="fa fa-user"></i> Sign Up
-                    </Link>
-                  </li>{" "} */}
-                  <li className="float-right noselect" style={{ padding: 0 }}>
+
+                  {state.authToken ? (
+                    <>
+                      <li className="active float-right">
+                        <Link
+                          onClick={(e) => {
+                            e.preventDefault();
+                            callLogoutUser();
+                          }}
+                          className="site-button"
+                        >
+                          <i className="fa fa-user"></i> Logout
+                        </Link>
+                      </li>
+
+                      <Link to={"/jobs-profile"}>
+                        <div className="testimonial-picHead radius mt-2">
+                          <img
+                            src={require("./../../images/testimonials/pic3.jpg")}
+                            alt=""
+                            width="20"
+                            height="20"
+                          />
+                        </div>
+                      </Link>
+                    </>
+                  ) : (
+                    <li className="active float-right">
+                      <Link to={"/login"} className="site-button">
+                        <i className="fa fa-user"></i> Login
+                      </Link>
+                    </li>
+                  )}
+
+                  {/* <li className="float-right noselect" style={{ padding: 0 }}>
                     <Link className="dez-page">All links</Link>
                     <ul className="sub-menu">
-                      {linksTest.map((item) => (
+                      {links.map((item) => (
                         <li>
                           <Link to={item.link} className="dez-page">
                             {item.name}
@@ -223,19 +262,10 @@ export default function Header() {
                         </li>
                       ))}
                     </ul>
-                  </li>
-                  {/* <li className="float-right noselect" style={{ padding: 0 }}>
-                    <Link to={""}>
-                      <div className="testimonial-picHead radius">
-                        <img
-                          src={require("./../../images/testimonials/pic3.jpg")}
-                          alt=""
-                          width="20"
-                          height="20"
-                        />
-                      </div>
-                    </Link>
-                    <ul className="sub-menu">
+                  </li> */}
+                  {/* <li className="float-right noselect" style={{ padding: 0 }}> */}
+
+                  {/*  <ul className="sub-menu">
                       {linksTest.map((item) => (
                         <li>
                           <Link to={item.link} className="dez-page">

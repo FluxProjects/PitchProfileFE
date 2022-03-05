@@ -70,6 +70,18 @@ export const registerUser =
       });
   };
 
+export const LogoutUser = (router) => async (dispatch) => {
+  dispatch({
+    type: "RegisterUser",
+    data: [],
+  });
+  dispatch({
+    type: "SetAuthToken",
+    data: "",
+  });
+  router.push("/login");
+};
+
 export const LoginUser = (email, password, router) => async (dispatch) => {
   var data = JSON.stringify({
     l_data: {

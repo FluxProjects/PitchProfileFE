@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { GetLanguages } from "../../../redux/action";
 import DropDownModalComponent from "./DropDownModalComponent";
-import TextAreaModalComponent from "./TextAreaModalComponent";
+import DropdownSearch from "./DropdownSearch";
 import TextInputModal from "./TextInputModal";
 
 export default function ProfileDetailsComponent({}) {
@@ -16,6 +18,16 @@ export default function ProfileDetailsComponent({}) {
       level: "",
     },
   ]);
+
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    //  to get languages
+    CallGetLanguages();
+  }, []);
+  const CallGetLanguages = async () => {
+    if (state.languages.length < 1) await dispatch(GetLanguages());
+  };
 
   const handleClose = () => {
     setShow(false);
@@ -228,11 +240,12 @@ export default function ProfileDetailsComponent({}) {
                           <div className="col-lg-3 col-md-3 col-sm-12">
                             <div className="form-group">
                               <label>Languages:</label>
-                              <TextInputModal placeholder={"Enter Language"} />
+                              <DropdownSearch items={state.languages} />
+                              {/* <TextInputModal placeholder={"Enter Language"} /> */}
                             </div>
                           </div>
 
-                          <div className="col-lg-3 col-md-3 col-sm-12">
+                          <div className="col-lg-4 col-md-4 col-sm-12">
                             <div className="form-group">
                               <label>Proficiency Level:</label>
                               <DropDownModalComponent
@@ -246,7 +259,7 @@ export default function ProfileDetailsComponent({}) {
                               />
                             </div>
                           </div>
-                          <div className="col-lg-3 col-md-3 col-sm-12">
+                          <div className="col-lg-2 col-md-2 col-sm-12">
                             <span
                               onClick={() => {
                                 handleAddClickOption(i);

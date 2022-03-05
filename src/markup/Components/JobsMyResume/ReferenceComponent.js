@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { GetCities, GetCountries, GetStates } from "../../../redux/action";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
@@ -47,6 +49,25 @@ export default function ResumeHeadlineComponent({}) {
   };
   const handleShow = () => {
     setShow(true);
+  };
+
+  const [loading, setLoading] = useState(true);
+
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    //  to get languages
+    CallGetDropDown();
+  }, []);
+  const CallGetDropDown = async () => {
+    if (state.countries.length < 1) await dispatch(GetCountries());
+    if (state.states.length < 1) await dispatch(GetStates());
+    if (state.cities.length < 1) await dispatch(GetCities(4));
+
+    setLoading(false);
+  };
+  const CallGetCities = async (stateId) => {
+    await dispatch(GetCities(stateId));
   };
 
   return (
@@ -141,12 +162,9 @@ export default function ResumeHeadlineComponent({}) {
                         <DropDownModalComponent
                           onChange={(e) => {
                             console.log("eee", e.target.value);
-                            //   setLastUsed(e.target.value);
+                            CallGetCities(e.target.value);
                           }}
-                          options={[
-                            { id: 1, name: "United Kingdom" },
-                            { id: 2, name: "test 2" },
-                          ]}
+                          options={state.countries}
                         />
                       </div>
                     </div>
@@ -159,10 +177,7 @@ export default function ResumeHeadlineComponent({}) {
                             console.log("eee", e.target.value);
                             //   setLastUsed(e.target.value);
                           }}
-                          options={[
-                            { id: 1, name: "test 1" },
-                            { id: 2, name: "test 2" },
-                          ]}
+                          options={state.states}
                         />
                       </div>
                     </div>
@@ -175,10 +190,7 @@ export default function ResumeHeadlineComponent({}) {
                             console.log("eee", e.target.value);
                             //   setLastUsed(e.target.value);
                           }}
-                          options={[
-                            { id: 1, name: "test 1" },
-                            { id: 2, name: "test 2" },
-                          ]}
+                          options={state.cities}
                         />
                       </div>
                     </div>
