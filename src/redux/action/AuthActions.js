@@ -2,6 +2,7 @@ import axios from "axios";
 import { URL } from "../../utils/APIUtils";
 
 import { toast } from "react-toastify";
+import { lazySlidesOnLeft } from "react-slick/lib/utils/innerSliderUtils";
 
 export const registerUser =
   (f_name, l_name, email, password, router) => async (dispatch) => {
@@ -79,8 +80,98 @@ export const LogoutUser = (router) => async (dispatch) => {
     type: "SetAuthToken",
     data: "",
   });
-  router.push("/login");
+  router.push("/jobs-profile");
 };
+
+export const updateUser =
+  (
+    id,
+    f_name,
+    l_name,
+    dob,
+    gender,
+    marital_status,
+    passport_number,
+    disability,
+    disability_description,
+    address,
+    city_id,
+    state_id,
+    country_id,
+    hometown_country_id,
+    phone,
+    email,
+    authToken,
+    router
+  ) =>
+  async (dispatch, state) => {
+    var data = JSON.stringify({
+      data: {
+        id,
+        f_name,
+        l_name,
+        dob,
+        gender,
+        marital_status,
+        passport_number,
+        disability,
+        disability_description,
+        address,
+        city_id,
+        state_id,
+        country_id,
+        hometown_country_id,
+        phone,
+        email,
+      },
+    });
+    var config = {
+      method: "post",
+      url: `${URL}/profile/update_profile`,
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        if (response.data.Successful) {
+          console.log("data", response.data.data);
+          toast.success("Update Success!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          dispatch({
+            type: "RegisterUser",
+            data: response.data.data,
+          });
+          dispatch({
+            type: "SetAuthToken",
+            data: response.data.accessToken,
+          });
+        } else {
+          toast.error(response.data.Message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
 export const LoginUser = (email, password, router) => async (dispatch) => {
   var data = JSON.stringify({
@@ -107,6 +198,7 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
     .then(function (response) {
       console.log(JSON.stringify(response.data));
       if (response.data.successful) {
+        console.log("data", response.data.data);
         toast.success("Login Success!", {
           position: "top-right",
           autoClose: 5000,
@@ -118,13 +210,13 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
         });
         dispatch({
           type: "RegisterUser",
-          data: response.data.data[0],
+          data: response.data.data,
         });
         dispatch({
           type: "SetAuthToken",
           data: response.data.accessToken,
         });
-        router.push("/");
+        router.push("/jobs-profile");
       } else {
         toast.error(response.data.msg, {
           position: "top-right",
@@ -165,7 +257,6 @@ export const getAuthToken = (authToken, router) => async (dispatch, state) => {
     .then(function (response) {
       console.log("workd", response);
       if (response.data.successful) {
-        router.push("/");
         dispatch({
           type: "RegisterUser",
           data: response.data.data,

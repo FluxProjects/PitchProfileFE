@@ -84,11 +84,11 @@ export const GetCountries = () => async (dispatch) => {
     });
 };
 
-export const GetStates = () => async (dispatch) => {
+export const GetStates = (country) => async (dispatch) => {
   console.log("tetetee");
   var config = {
     method: "get",
-    url: `${URL}/locations/states`,
+    url: `${URL}/locations/states/${country ? country : "United Kingdom"}`,
     headers: {},
   };
 

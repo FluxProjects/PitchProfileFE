@@ -7,6 +7,7 @@ export default function TextInputModal({
   placeholder,
   min,
   max,
+  value,
 }) {
   return (
     <>
@@ -17,6 +18,7 @@ export default function TextInputModal({
         onChange={onChange}
         min={min}
         max={max}
+        value={value}
       />
     </>
   );

@@ -12,12 +12,35 @@ import {
   GetCountries,
   GetLanguages,
   GetStates,
+  updateUser,
 } from "../../redux/action";
 import Header from "../Layout/Header";
 import DropdownSearch from "../Components/JobsMyResume/DropdownSearch";
 
 export default function Jobprofile() {
-  const [Disability, setHasDisability] = useState(false);
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  // states
+  const [fname, setFname] = useState(state.userDetails.f_name);
+  const [lname, setLname] = useState(state.userDetails.l_name);
+  const [dob, setDob] = useState(state.userDetails.dob);
+  const [gender, setGender] = useState(state.userDetails.gender);
+  const [passport, setPassport] = useState(state.userDetails.passport_number);
+  const [isMarried, setIsMarried] = useState(state.userDetails.marital_status);
+  const [Disability, setHasDisability] = useState(state.userDetails.disability);
+  const [disabilityDescription, setDisabilityDescription] = useState(
+    state.userDetails.disability_description
+  );
+  const [city, setCity] = useState(state.userDetails.city_id);
+  const [stateName, setStateName] = useState(state.userDetails.state_id);
+  const [country, setCountry] = useState(state.userDetails.country_id);
+  const [hometownCountry, setHometownCountry] = useState(
+    state.userDetails.hometown_country_id
+  );
+  const [address, setAddress] = useState(state.userDetails.address);
+  const [phone, setPhone] = useState(state.userDetails.phone);
+  const [email, setEmail] = useState(state.userDetails.email);
 
   const [LangArr, setLangArr] = useState([
     {
@@ -28,12 +51,11 @@ export default function Jobprofile() {
 
   const [loading, setLoading] = useState(true);
 
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
   useEffect(() => {
     //  to get languages
     CallGetDropDown();
   }, []);
+
   const CallGetDropDown = async () => {
     if (state.languages.length < 1) await dispatch(GetLanguages());
 
@@ -45,6 +67,31 @@ export default function Jobprofile() {
   };
   const CallGetCities = async (stateId) => {
     await dispatch(GetCities(stateId));
+  };
+
+  const callUpdateUser = async () => {
+    await dispatch(
+      updateUser(
+        state.userDetails.id,
+        fname,
+        lname,
+        dob,
+        gender,
+        isMarried,
+        passport,
+        Disability,
+        disabilityDescription,
+        address,
+        city,
+        stateName,
+        country,
+        hometownCountry,
+        phone,
+        email,
+        state.userDetails.authToken
+        // router
+      )
+    );
   };
 
   // handle click event of the Remove button
@@ -98,20 +145,25 @@ export default function Jobprofile() {
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                               <label>First Name:</label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Alexander Weir"
+                              <TextInputModal
+                                placeholder={"Enter First Name"}
+                                value={fname}
+                                onChange={(e) => {
+                                  setFname(e.target.value);
+                                }}
                               />
                             </div>
                           </div>
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                               <label>Last Name:</label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                placeholder=" Weir"
+
+                              <TextInputModal
+                                placeholder={"Enter Last Name"}
+                                value={lname}
+                                onChange={(e) => {
+                                  setLname(e.target.value);
+                                }}
                               />
                             </div>
                           </div>
@@ -120,7 +172,10 @@ export default function Jobprofile() {
                               <label>Date of birth:</label>
                               <TextInputModal
                                 type="date"
-                                onChange={(e) => console.log(e.target.value)}
+                                value={dob}
+                                onChange={(e) => {
+                                  setDob(e.target.value);
+                                }}
                               />
                             </div>
                           </div>
@@ -134,7 +189,13 @@ export default function Jobprofile() {
                                       type="radio"
                                       className="custom-control-input"
                                       id="male"
-                                      name="example1"
+                                      name="gender"
+                                      defaultChecked={
+                                        gender == 1 ? true : false
+                                      }
+                                      onChange={() => {
+                                        setGender(1);
+                                      }}
                                     />
                                     <label
                                       className="custom-control-label"
@@ -150,7 +211,13 @@ export default function Jobprofile() {
                                       type="radio"
                                       className="custom-control-input"
                                       id="female"
-                                      name="example1"
+                                      name="gender"
+                                      defaultChecked={
+                                        gender == 2 ? true : false
+                                      }
+                                      onChange={() => {
+                                        setGender(2);
+                                      }}
                                     />
                                     <label
                                       className="custom-control-label"
@@ -166,10 +233,13 @@ export default function Jobprofile() {
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                               <label>Passport Number:</label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter your passport number"
+
+                              <TextInputModal
+                                placeholder={"Enter passport number"}
+                                value={passport}
+                                onChange={(e) => {
+                                  setPassport(e.target.value);
+                                }}
                               />
                             </div>
                           </div>
@@ -184,6 +254,11 @@ export default function Jobprofile() {
                                       className="custom-control-input"
                                       id="married"
                                       name="married"
+                                      checked={isMarried == 1 ? true : false}
+                                      onChange={() => {
+                                        setIsMarried(1);
+                                      }}
+                                      value={1}
                                     />
                                     <label
                                       className="custom-control-label"
@@ -200,6 +275,11 @@ export default function Jobprofile() {
                                       className="custom-control-input"
                                       id="single"
                                       name="married"
+                                      checked={isMarried == 2 ? true : false}
+                                      onChange={() => {
+                                        setIsMarried(2);
+                                      }}
+                                      value={2}
                                     />
                                     <label
                                       className="custom-control-label"
@@ -226,6 +306,9 @@ export default function Jobprofile() {
                                       onChange={() => {
                                         setHasDisability(true);
                                       }}
+                                      checked={
+                                        Disability == true ? true : false
+                                      }
                                       name="disability"
                                     />
 
@@ -246,6 +329,9 @@ export default function Jobprofile() {
                                       onChange={() => {
                                         setHasDisability(false);
                                       }}
+                                      checked={
+                                        Disability == false ? true : false
+                                      }
                                       name="disability"
                                     />
                                     <label
@@ -263,7 +349,13 @@ export default function Jobprofile() {
                             <div className="col-lg-12 col-md-12">
                               <div className="form-group">
                                 <label>Disability Description:</label>
-                                <textarea className="form-control"></textarea>
+                                <textarea
+                                  onChange={(e) => {
+                                    setDisabilityDescription(e.target.value);
+                                  }}
+                                  value={disabilityDescription}
+                                  className="form-control"
+                                ></textarea>
                               </div>
                             </div>
                           )}
@@ -337,9 +429,9 @@ export default function Jobprofile() {
                               <label>Address:</label>
                               <TextAreaModalComponent
                                 onChange={(e) => {
-                                  // setDescription(e.target.value);
+                                  setAddress(e.target.value);
                                 }}
-                                //   value={description}
+                                value={address}
                                 placeholder="Full address"
                               />
                             </div>
@@ -353,7 +445,9 @@ export default function Jobprofile() {
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
                                   CallGetCities(e.target.value);
+                                  setCountry(e.target.value);
                                 }}
+                                value={country}
                                 options={state.countries}
                               />
                             </div>
@@ -365,8 +459,10 @@ export default function Jobprofile() {
                               <DropDownModalComponent
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
+                                  setStateName(e.target.value);
                                   //   setLastUsed(e.target.value);
                                 }}
+                                value={stateName}
                                 options={state.states}
                               />
                             </div>
@@ -377,8 +473,10 @@ export default function Jobprofile() {
                               <DropDownModalComponent
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
+                                  setCity(e.target.value);
                                   //   setLastUsed(e.target.value);
                                 }}
+                                value={city}
                                 options={state.cities}
                               />
                             </div>
@@ -389,12 +487,11 @@ export default function Jobprofile() {
                               <DropDownModalComponent
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
+                                  setHometownCountry(e.target.value);
                                   //   setLastUsed(e.target.value);
                                 }}
-                                options={[
-                                  { id: 1, name: "test 1" },
-                                  { id: 2, name: "test 2" },
-                                ]}
+                                value={hometownCountry}
+                                options={state.cities}
                               />
                             </div>
                           </div>
@@ -402,26 +499,36 @@ export default function Jobprofile() {
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                               <label>Email Address:</label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                placeholder="info@example.com"
+                              <TextInputModal
+                                placeholder={"info@example.com"}
+                                value={email}
+                                onChange={(e) => {
+                                  setEmail(e.target.value);
+                                }}
                               />
                             </div>
                           </div>
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                               <label>Phone:</label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Phone number"
+                              <TextInputModal
+                                placeholder={"Phone number"}
+                                value={phone}
+                                onChange={(e) => {
+                                  setPhone(e.target.value);
+                                }}
                               />
                             </div>
                           </div>
                         </div>
-                        <button className="site-button m-b30">
-                          Save Setting
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            callUpdateUser();
+                          }}
+                          className="site-button m-b30"
+                        >
+                          Update
                         </button>
                       </form>
                     </div>
