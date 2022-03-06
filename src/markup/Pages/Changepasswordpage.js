@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Header2 from "./../Layout/Header2";
 import Footer from "./../Layout/Footer";
+import { UpdateUserPassword } from "../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import TextInputModal from "../Components/JobsMyResume/TextInputModal";
+import { toast } from "react-toastify";
 
 export default function Changepasswordpage() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const [password, setPassword] = useState("");
+  const [CnfrmPassword, setCnfrmPassword] = useState("");
+
+  const CallUpdateUserPassword = async () => {
+    if (password == CnfrmPassword) {
+      dispatch(
+        UpdateUserPassword(state.userDetails.id, password, state.authToken)
+      );
+    } else {
+      toast.error("Passwords don't match!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
   return (
     <>
       <Header2 />
@@ -124,26 +152,42 @@ export default function Changepasswordpage() {
                     </div>
                     <form>
                       <div className="row">
-                        <div className="col-lg-12">
+                        {/* <div className="col-lg-12">
                           <div className="form-group">
                             <label>Old Password</label>
                             <input type="password" className="form-control" />
                           </div>
-                        </div>
+                        </div> */}
                         <div className="col-lg-6">
                           <div className="form-group">
                             <label>New Password </label>
-                            <input type="password" className="form-control" />
+                            <TextInputModal
+                              type="password"
+                              onChange={(e) => {
+                                setPassword(e.target.value);
+                              }}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-6">
                           <div className="form-group">
                             <label>Confirm New Password</label>
-                            <input type="password" className="form-control" />
+                            <TextInputModal
+                              type="password"
+                              onChange={(e) => {
+                                setCnfrmPassword(e.target.value);
+                              }}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-12 m-b10">
-                          <button className="site-button">
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              CallUpdateUserPassword();
+                            }}
+                            className="site-button"
+                          >
                             Update Password
                           </button>
                         </div>
