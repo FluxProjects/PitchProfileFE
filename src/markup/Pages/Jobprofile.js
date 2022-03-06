@@ -16,6 +16,7 @@ import {
 } from "../../redux/action";
 import Header from "../Layout/Header";
 import DropdownSearch from "../Components/JobsMyResume/DropdownSearch";
+import { proficiencyLevelDrop } from "../../utils/DropDownUtils";
 
 export default function Jobprofile() {
   const state = useSelector((state) => state);
@@ -384,10 +385,7 @@ export default function Jobprofile() {
                                     onChange={(e) => {
                                       console.log("eee", e.target.value);
                                     }}
-                                    options={[
-                                      { id: 1, name: "test 1" },
-                                      { id: 2, name: "test 2" },
-                                    ]}
+                                    options={proficiencyLevelDrop}
                                   />
                                 </div>
                               </div>

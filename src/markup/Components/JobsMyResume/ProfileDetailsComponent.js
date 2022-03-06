@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { GetLanguages } from "../../../redux/action";
+import { proficiencyLevelDrop } from "../../../utils/DropDownUtils";
 import DropDownModalComponent from "./DropDownModalComponent";
 import DropdownSearch from "./DropdownSearch";
 import TextInputModal from "./TextInputModal";
@@ -252,10 +253,7 @@ export default function ProfileDetailsComponent({}) {
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
                                 }}
-                                options={[
-                                  { id: 1, name: "test 1" },
-                                  { id: 2, name: "test 2" },
-                                ]}
+                                options={proficiencyLevelDrop}
                               />
                             </div>
                           </div>

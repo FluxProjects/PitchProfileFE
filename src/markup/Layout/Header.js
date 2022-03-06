@@ -57,15 +57,11 @@ export default function Header() {
       index: "1",
     },
     {
-      name: "Browse Candidates",
-      link: "/jobs-applied-job",
+      name: "My Resume",
+      link: "/jobs-my-resume",
       index: "2",
     },
-    {
-      name: "Post a job",
-      link: "/jobs-my-resume",
-      index: "3",
-    },
+
     {
       name: "About",
       link: "/about-us",
