@@ -85,10 +85,9 @@ export const GetCountries = () => async (dispatch) => {
 };
 
 export const GetStates = (country) => async (dispatch) => {
-  console.log("tetetee");
   var config = {
     method: "get",
-    url: `${URL}/locations/states/${country ? country : "United Kingdom"}`,
+    url: `${URL}/locations/states/${country}`,
     headers: {},
   };
 
@@ -128,6 +127,8 @@ export const GetStates = (country) => async (dispatch) => {
 };
 
 export const GetCities = (id) => async (dispatch) => {
+  console.log("teteteecvr", id);
+
   var config = {
     method: "get",
     url: `${URL}/locations/cities/${id}`,

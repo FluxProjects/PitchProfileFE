@@ -70,6 +70,10 @@ export default function Jobprofile() {
     await dispatch(GetCities(stateId));
   };
 
+  const CallGetStates = async (stateId) => {
+    await dispatch(GetStates(stateId));
+  };
+
   const callUpdateUser = async () => {
     await dispatch(
       updateUser(
@@ -442,7 +446,7 @@ export default function Jobprofile() {
                               <DropDownModalComponent
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
-                                  CallGetCities(e.target.value);
+                                  CallGetStates(e.target.value);
                                   setCountry(e.target.value);
                                 }}
                                 value={country}
@@ -457,6 +461,8 @@ export default function Jobprofile() {
                               <DropDownModalComponent
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
+                                  CallGetCities(e.target.value);
+
                                   setStateName(e.target.value);
                                   //   setLastUsed(e.target.value);
                                 }}
@@ -489,7 +495,7 @@ export default function Jobprofile() {
                                   //   setLastUsed(e.target.value);
                                 }}
                                 value={hometownCountry}
-                                options={state.cities}
+                                options={state.countries}
                               />
                             </div>
                           </div>

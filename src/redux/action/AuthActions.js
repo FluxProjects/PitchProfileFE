@@ -80,7 +80,7 @@ export const LogoutUser = (router) => async (dispatch) => {
     type: "SetAuthToken",
     data: "",
   });
-  router.push("/jobs-profile");
+  router.push("/login");
 };
 
 export const updateUser =
