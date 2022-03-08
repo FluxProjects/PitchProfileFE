@@ -131,7 +131,12 @@ export default function Jobprofile() {
             <div className="section-full bg-white browse-job p-t50 p-b20">
               <div className="container">
                 <div className="row">
-                  <Profilesidebar />
+                  <div className="col-xl-3 col-lg-4 m-b30">
+                    <Profilesidebar
+                      image={`require("./../../images/team/pic1.jpg")`}
+                      isActive="Profile"
+                    />
+                  </div>
                   <div className="col-xl-9 col-lg-8 m-b30">
                     <div className="job-bx job-profile">
                       <div className="job-bx-title clearfix">

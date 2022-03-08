@@ -1,6 +1,6 @@
 const initialState = {
   //  Auth actions
-  userDetails: [],
+  userDetails: {},
   authToken: "",
 
   // Dropdown data actions

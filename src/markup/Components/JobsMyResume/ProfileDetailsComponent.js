@@ -21,6 +21,7 @@ export default function ProfileDetailsComponent({}) {
   ]);
 
   const state = useSelector((state) => state);
+  const userDetails = useSelector((state) => state.userDetails);
   const dispatch = useDispatch();
   useEffect(() => {
     //  to get languages
@@ -309,20 +310,26 @@ export default function ProfileDetailsComponent({}) {
             <div className="row">
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Date of Birth</label>
-                <span className="clearfix font-13">31 July 1998</span>
+                <span className="clearfix font-13">{userDetails.dob}</span>
               </div>
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Gender</label>
-                <span className="clearfix font-13">male</span>
+                <span className="clearfix font-13">
+                  {userDetails.gender == 1 ? "Male" : "Female"}
+                </span>
               </div>
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Marital Status</label>
-                <span className="clearfix font-13">Single / unmarried</span>
+                <span className="clearfix font-13">
+                  {userDetails.marital_status == 1 ? "Married" : "Single"}
+                </span>
               </div>
 
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Differently Abled</label>
-                <span className="clearfix font-13">None</span>
+                <span className="clearfix font-13">
+                  {userDetails.disability ? "Yes" : "No"}
+                </span>
               </div>
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-8">
                 <label className="m-b0">Languages</label>
