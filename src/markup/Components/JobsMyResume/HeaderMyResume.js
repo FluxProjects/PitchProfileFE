@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
@@ -12,6 +13,8 @@ import TextInputModal from "./TextInputModal";
 export default function HeaderMyResume({}) {
   const [show, setShow] = useState(false);
   const [ToggleIsActive, setToggleIsActive] = useState(false);
+
+  const userDetail = useSelector((state) => state.userDetails);
 
   const handleClose = () => {
     setShow(false);
@@ -51,7 +54,7 @@ export default function HeaderMyResume({}) {
           </div>
           <div className="text-white browse-job text-left">
             <h4 className="m-b0">
-              John Doe
+              {userDetail.f_name} {userDetail.l_name}
               <span
                 onClick={() => handleShow()}
                 className="m-l15 font-16 text-white"
