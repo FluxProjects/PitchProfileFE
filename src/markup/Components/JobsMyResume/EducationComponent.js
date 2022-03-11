@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
 export default function EducationComponent({}) {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const [show, setShow] = useState(false);
   const [Course, setCourse] = useState("");
   const [University, setUniversity] = useState("");
@@ -62,15 +66,10 @@ export default function EducationComponent({}) {
                       <label>Education Level</label>
                       <DropDownModalComponent
                         onChange={(e) => {
-                          console.log("eee", e.target.value);
                           setEducation(e.target.value);
                         }}
                         value={Education}
-                        options={[
-                          { id: 1, name: "Doctorate/PhD" },
-                          { id: 2, name: "Masters/Post-Graduation" },
-                          { id: 3, name: "Graduation/Diploma" },
-                        ]}
+                        options={state.educationLevels}
                       />
                     </div>
                   </div>

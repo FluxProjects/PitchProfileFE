@@ -12,7 +12,7 @@ export const GetLanguages = () => async (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      console.log("languages get", response.data);
+      // console.log("languages get", response.data);
       if (response.data.successful) {
         dispatch({
           type: "setLangs",
@@ -93,7 +93,7 @@ export const GetStates = (country) => async (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      console.log("testing the ", response.data);
+      // console.log("testing the ", response.data);
 
       if (response.data.successful) {
         dispatch({
@@ -127,7 +127,7 @@ export const GetStates = (country) => async (dispatch) => {
 };
 
 export const GetCities = (id) => async (dispatch) => {
-  console.log("teteteecvr", id);
+  // console.log("teteteecvr", id);
 
   var config = {
     method: "get",
@@ -137,7 +137,7 @@ export const GetCities = (id) => async (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      console.log("testing the ", response.data);
+      // console.log("testing the ", response.data);
       if (response.data.successful) {
         dispatch({
           type: "setCities",
@@ -166,5 +166,133 @@ export const GetCities = (id) => async (dispatch) => {
         draggable: true,
         progress: undefined,
       });
+    });
+};
+
+export const GetDepartments = (id) => async (dispatch) => {
+  var config = {
+    method: "get",
+    url: `${URL}/profile/get_departments`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      // console.log("res data", response.data);
+      if (response.data.successful) {
+        dispatch({
+          type: "GetDepartments",
+          data: response.data.data,
+        });
+      } else {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const GetIndustries = (id) => async (dispatch) => {
+  var config = {
+    method: "get",
+    url: `${URL}/profile/get_industries`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      // console.log(JSON.stringify(response.data));
+      if (response.data.successful) {
+        dispatch({
+          type: "GetIndustries",
+          data: response.data.data,
+        });
+      } else {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const GetSkills = (id) => async (dispatch) => {
+  var config = {
+    method: "get",
+    url: `${URL}/profile/get_skills`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      // console.log(JSON.stringify(response.data));
+      if (response.data.successful) {
+        dispatch({
+          type: "GetSkills",
+          data: response.data.data,
+        });
+      } else {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const GetEducationLevels = (id) => async (dispatch) => {
+  var config = {
+    method: "get",
+    url: `${URL}/profile/get_education_levels`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      if (response.data.successful) {
+        dispatch({
+          type: "GetEducationLevels",
+          data: response.data.data,
+        });
+      } else {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
     });
 };

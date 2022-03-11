@@ -8,6 +8,10 @@ const initialState = {
   countries: [],
   states: [],
   cities: [],
+  departments: [],
+  industries: [],
+  skills: [],
+  educationLevels: [],
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -29,7 +33,14 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, states: rest.data };
     case "setCities":
       return { ...state, cities: rest.data };
-
+    case "GetDepartments":
+      return { ...state, departments: rest.data };
+    case "GetIndustries":
+      return { ...state, industries: rest.data };
+    case "GetSkills":
+      return { ...state, skills: rest.data };
+    case "GetEducationLevels":
+      return { ...state, educationLevels: rest.data };
     default:
       return state;
   }

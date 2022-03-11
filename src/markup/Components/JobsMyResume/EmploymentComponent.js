@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 import TextInputModal from "./TextInputModal";
 
 export default function EmploymentComponent({}) {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const [show, setShow] = useState(false);
   const [startedWorking, setStartedWorking] = useState("");
   const [WorkedTill, setWorkedTill] = useState("");
@@ -142,10 +146,7 @@ export default function EmploymentComponent({}) {
                             // setEducation(e.target.value);
                           }}
                           // value={Education}
-                          options={[
-                            { id: 1, name: "test 1" },
-                            { id: 2, name: "test 2" },
-                          ]}
+                          options={state.industries}
                         />
                       </div>
                     </div>
@@ -158,10 +159,7 @@ export default function EmploymentComponent({}) {
                             // setEducation(e.target.value);
                           }}
                           // value={Education}
-                          options={[
-                            { id: 1, name: "test 1" },
-                            { id: 2, name: "test 2" },
-                          ]}
+                          options={state.departments}
                         />
                       </div>
                     </div>

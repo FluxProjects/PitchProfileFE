@@ -310,18 +310,28 @@ export default function ProfileDetailsComponent({}) {
             <div className="row">
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Date of Birth</label>
-                <span className="clearfix font-13">{userDetails.dob}</span>
+                <span className="clearfix font-13">
+                  {userDetails.dob ? userDetails.dob : "Not Entered"}
+                </span>
               </div>
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Gender</label>
                 <span className="clearfix font-13">
-                  {userDetails.gender == 1 ? "Male" : "Female"}
+                  {userDetails.gender == 1
+                    ? "Male"
+                    : userDetails.gender == 2
+                    ? "Female"
+                    : "Not Selected"}
                 </span>
               </div>
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Marital Status</label>
                 <span className="clearfix font-13">
-                  {userDetails.marital_status == 1 ? "Married" : "Single"}
+                  {userDetails.marital_status == 1
+                    ? "Married"
+                    : userDetails.marital_status == 2
+                    ? "Single"
+                    : "Not Selected"}
                 </span>
               </div>
 

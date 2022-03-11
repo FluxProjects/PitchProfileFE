@@ -10,8 +10,37 @@ import "./plugins/slick/slick-theme.min.css";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  GetDepartments,
+  GetEducationLevels,
+  GetIndustries,
+  GetSkills,
+} from "./redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    callGetDrop();
+  }, []);
+
+  const callGetDrop = async () => {
+    if (state.departments.length < 1) {
+      dispatch(GetDepartments());
+    }
+    if (state.industries.length < 1) {
+      dispatch(GetIndustries());
+    }
+    if (state.skills.length < 1) {
+      dispatch(GetSkills());
+    }
+    if (state.educationLevels.length < 1) {
+      dispatch(GetEducationLevels());
+    }
+  };
+
   return (
     <div className="App">
       <Markup />

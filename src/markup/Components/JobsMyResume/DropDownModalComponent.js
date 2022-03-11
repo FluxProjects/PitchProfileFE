@@ -5,9 +5,7 @@ export default function DropDownModalComponent({ onChange, options, value }) {
     <>
       <select value={value} onChange={onChange} className="form-control">
         {options.map((item) => (
-          <option value={item?.state_id ? item.state_id : item.id}>
-            {item.name}
-          </option>
+          <option value={item.id}>{item.name}</option>
         ))}
       </select>
     </>
