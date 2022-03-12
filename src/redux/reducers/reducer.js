@@ -12,6 +12,9 @@ const initialState = {
   industries: [],
   skills: [],
   educationLevels: [],
+
+  // Candidate my resume
+  candidateSkill: [],
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -41,6 +44,13 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, skills: rest.data };
     case "GetEducationLevels":
       return { ...state, educationLevels: rest.data };
+
+    //  Candidate my resume
+    case "SetCandidateSkill":
+      return {
+        ...state,
+        candidateSkills: rest.data,
+      };
     default:
       return state;
   }

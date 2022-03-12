@@ -102,7 +102,7 @@ export const updateUser =
     phone,
     email,
     authToken,
-    router
+    setModal
   ) =>
   async (dispatch, state) => {
     var data = JSON.stringify({
@@ -136,8 +136,8 @@ export const updateUser =
     };
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        if (response.data.Successful) {
+        console.log(response.data);
+        if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success("Update Success!", {
             position: "top-right",
@@ -148,6 +148,7 @@ export const updateUser =
             draggable: true,
             progress: undefined,
           });
+
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
@@ -156,6 +157,9 @@ export const updateUser =
             type: "SetAuthToken",
             data: response.data.accessToken,
           });
+          if (setModal) {
+            setModal(false);
+          }
         } else {
           toast.error(response.data.Message, {
             position: "top-right",

@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { GetLanguages } from "../../../redux/action";
+import { GetLanguages, updateUser } from "../../../redux/action";
 import { proficiencyLevelDrop } from "../../../utils/DropDownUtils";
 import DropDownModalComponent from "./DropDownModalComponent";
 import DropdownSearch from "./DropdownSearch";
@@ -11,7 +11,6 @@ import TextInputModal from "./TextInputModal";
 
 export default function ProfileDetailsComponent({}) {
   const [show, setShow] = useState(false);
-  const [Disability, setHasDisability] = useState(false);
 
   const [LangArr, setLangArr] = useState([
     {
@@ -23,6 +22,41 @@ export default function ProfileDetailsComponent({}) {
   const state = useSelector((state) => state);
   const userDetails = useSelector((state) => state.userDetails);
   const dispatch = useDispatch();
+
+  const [dob, setDob] = useState(userDetails.dob);
+  const [gender, setGender] = useState(state.userDetails.gender);
+  const [isMarried, setIsMarried] = useState(state.userDetails.marital_status);
+  const [Disability, setHasDisability] = useState(state.userDetails.disability);
+  const [disabilityDescription, setDisabilityDescription] = useState(
+    state.userDetails.disability_description
+  );
+
+  const callUpdateUser = async () => {
+    await dispatch(
+      updateUser(
+        userDetails.id,
+        userDetails.fname,
+        userDetails.lname,
+        dob,
+        gender,
+        isMarried,
+        userDetails.passport,
+        Disability,
+        disabilityDescription,
+        userDetails.address,
+        userDetails.city,
+        userDetails.stateName,
+        userDetails.country,
+        userDetails.hometownCountry,
+        userDetails.phone,
+        userDetails.email,
+        state.userDetails.authToken,
+        // router
+        setShow()
+      )
+    );
+  };
+
   useEffect(() => {
     //  to get languages
     CallGetLanguages();
@@ -97,9 +131,13 @@ export default function ProfileDetailsComponent({}) {
                     <div className="col-lg-6 col-md-6">
                       <div className="form-group">
                         <label>Date of birth:</label>
+
                         <TextInputModal
                           type="date"
-                          onChange={(e) => console.log(e.target.value)}
+                          value={dob}
+                          onChange={(e) => {
+                            setDob(e.target.value);
+                          }}
                         />
                       </div>
                     </div>
@@ -113,7 +151,11 @@ export default function ProfileDetailsComponent({}) {
                                 type="radio"
                                 className="custom-control-input"
                                 id="male"
-                                name="example1"
+                                name="gender"
+                                defaultChecked={gender == 1 ? true : false}
+                                onChange={() => {
+                                  setGender(1);
+                                }}
                               />
                               <label
                                 className="custom-control-label"
@@ -129,7 +171,11 @@ export default function ProfileDetailsComponent({}) {
                                 type="radio"
                                 className="custom-control-input"
                                 id="female"
-                                name="example1"
+                                name="gender"
+                                defaultChecked={gender == 2 ? true : false}
+                                onChange={() => {
+                                  setGender(2);
+                                }}
                               />
                               <label
                                 className="custom-control-label"
@@ -153,6 +199,11 @@ export default function ProfileDetailsComponent({}) {
                                 className="custom-control-input"
                                 id="married"
                                 name="married"
+                                checked={isMarried == 1 ? true : false}
+                                onChange={() => {
+                                  setIsMarried(1);
+                                }}
+                                value={1}
                               />
                               <label
                                 className="custom-control-label"
@@ -169,6 +220,11 @@ export default function ProfileDetailsComponent({}) {
                                 className="custom-control-input"
                                 id="single"
                                 name="married"
+                                checked={isMarried == 2 ? true : false}
+                                onChange={() => {
+                                  setIsMarried(2);
+                                }}
+                                value={2}
                               />
                               <label
                                 className="custom-control-label"
@@ -195,6 +251,7 @@ export default function ProfileDetailsComponent({}) {
                                 onChange={() => {
                                   setHasDisability(true);
                                 }}
+                                checked={Disability == true ? true : false}
                                 name="disability"
                               />
 
@@ -215,6 +272,7 @@ export default function ProfileDetailsComponent({}) {
                                 onChange={() => {
                                   setHasDisability(false);
                                 }}
+                                checked={Disability == false ? true : false}
                                 name="disability"
                               />
                               <label
@@ -232,7 +290,13 @@ export default function ProfileDetailsComponent({}) {
                       <div className="col-lg-12 col-md-12">
                         <div className="form-group">
                           <label>Disability Description:</label>
-                          <textarea className="form-control"></textarea>
+                          <textarea
+                            onChange={(e) => {
+                              setDisabilityDescription(e.target.value);
+                            }}
+                            value={disabilityDescription}
+                            className="form-control"
+                          ></textarea>
                         </div>
                       </div>
                     )}
@@ -296,7 +360,14 @@ export default function ProfileDetailsComponent({}) {
                 >
                   Cancel
                 </button>
-                <button type="button" className="site-button">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    callUpdateUser();
+                  }}
+                  type="button"
+                  className="site-button"
+                >
                   Save
                 </button>
               </div>

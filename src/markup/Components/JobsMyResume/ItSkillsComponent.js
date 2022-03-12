@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { AddCandidateSkill, GetCandidateSkills } from "../../../redux/action";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
 export default function ItSkillsComponent({}) {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // callAddCandidateSkill();
+    callGetCandidateSkill();
+  }, []);
+
+  const callGetCandidateSkill = async () => {
+    await dispatch(GetCandidateSkills());
+  };
+
+  const callAddCandidateSkill = async () => {
+    await dispatch(AddCandidateSkill());
+  };
+
   const [show, setShow] = useState(false);
   const [ItSkills, setItSkills] = useState("");
   const [LastUsed, setLastUsed] = useState("");
