@@ -14,7 +14,7 @@ const initialState = {
   educationLevels: [],
 
   // Candidate my resume
-  candidateSkill: [],
+  candidateSkills: [],
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
