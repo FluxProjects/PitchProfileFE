@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
+import {
+  DeleteCandidateCertificate,
+  GetCandidateCertificates,
+} from "../../../redux/action";
+import AccomplishmentModalComp from "./Modals/AccomplishmentModalComp";
 import TextInputModal from "./TextInputModal";
 
 export default function AccomplishmentsComponent({}) {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const [show, setShow] = useState(false);
+  const [updateData, setUpdateData] = useState(false);
+  const [modalDataIndex, setModalDataIndex] = useState(0);
 
   const handleClose = () => {
     setShow(false);
@@ -13,6 +24,19 @@ export default function AccomplishmentsComponent({}) {
   const handleShow = () => {
     setShow(true);
   };
+
+  useEffect(() => {
+    callGetCandidateCertificates();
+  }, []);
+
+  const callGetCandidateCertificates = async () => {
+    await dispatch(GetCandidateCertificates());
+  };
+
+  const deleteCandidateVal = async (id, index) => {
+    await dispatch(DeleteCandidateCertificate(id, index));
+  };
+
   return (
     <div id="Certification_bx" className="job-bx bg-white m-b30">
       {/* Accomplishments */}
@@ -30,128 +54,67 @@ export default function AccomplishmentsComponent({}) {
         </span>
       </h5>
 
-      <h6 className="font-14 m-b0">
-        {/* Job BoardEdit{" "} */}
-        <span className="float-right">
-          <Link
-            to={"#"}
-            data-toggle="modal"
-            data-target="#projects"
-            onClick={() => handleShow()}
-            className="site-button add-btn button-sm"
-          >
-            <i className="fa fa-pencil m-r5"></i> Edit
-          </Link>
-        </span>
-      </h6>
-      <div className="row">
-        <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-          <h6 className="font-14 m-b0">Certification Name</h6>
-          <p className="m-b0">doret</p>
-        </div>
+      {state.candidateCertificates.map((item, index) => (
+        <>
+          <h6 className="font-14 mt-5 m-b0">
+            {/* Job BoardEdit{" "} */}
+            <span className="float-right">
+              <span
+                onClick={() => {
+                  setUpdateData(true);
+                  setModalDataIndex(index);
+                  handleShow();
+                }}
+                className="site-button add-btn button-sm"
+              >
+                <i className="fa fa-pencil m-r5"></i> Edit
+              </span>
+              <span
+                onClick={() => {
+                  console.log("tests", index);
 
-        <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-          <h6 className="font-14 m-b0">Certification Body</h6>
-          <p className="m-b0">doret lorem opsim</p>
-        </div>
+                  deleteCandidateVal(item.id, index);
+                }}
+                className="m-l15 cursorPointer font-14"
+              >
+                <i className="fa fa-minus text-danger"></i>
+              </span>
+            </span>
+          </h6>
+          <div className="row">
+            <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+              <h6 className="font-14 m-b0">Certification Name</h6>
+              <p className="m-b0">{item.name}</p>
+            </div>
 
-        <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-          <h6 className="font-14 m-b0">Year Obtained</h6>
-          <p className="m-b0">12/01/2011</p>
-        </div>
-        <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
-          <h6 className="font-14 m-b0">Referance No.</h6>
-          <p className="m-b0">123456789</p>
-        </div>
-      </div>
+            <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+              <h6 className="font-14 m-b0">Certification Body</h6>
+              <p className="m-b0">{item.body}</p>
+            </div>
+
+            <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+              <h6 className="font-14 m-b0">Year Obtained</h6>
+              <p className="m-b0">{item.year_obtained}</p>
+            </div>
+            <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
+              <h6 className="font-14 m-b0">Referance No.</h6>
+              <p className="m-b0">{item.ref_no}</p>
+            </div>
+          </div>
+        </>
+      ))}
 
       <Modal
         show={show}
         onHide={() => handleClose()}
         className="modal fade modal-bx-info editor"
       >
-        <div className="modal-dialog my-0" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="CertificationModalLongTitle">
-                Certification
-              </h5>
-              <button
-                type="button"
-                className="close"
-                onClick={() => {
-                  setShow(false);
-                }}
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <form>
-                <div className="row">
-                  <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>Certification Name</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter Certification Name"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>Certification Body</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter Certification Body"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>Year Obtained</label>
-                      <TextInputModal
-                        type="date"
-                        onChange={(e) => {
-                          console.log(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>Referance No.</label>
-                      <TextInputModal
-                        type=""
-                        onChange={(e) => {
-                          console.log(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="site-button"
-                data-dismiss="modal"
-                onClick={() => {
-                  handleClose();
-                }}
-              >
-                Cancel
-              </button>
-              <button type="button" className="site-button">
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
+        <AccomplishmentModalComp
+          data={state.candidateCertificates[modalDataIndex]}
+          isUpdate={updateData}
+          index={modalDataIndex}
+          handleClose={() => handleClose()}
+        />
       </Modal>
     </div>
   );

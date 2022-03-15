@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddCandidateSkill,
-  UpdateCandidateSkills,
+  UpdateCandidateSkill,
 } from "../../../../redux/action";
 import { skillTypeDrop } from "../../../../utils/DropDownUtils";
 import DropDownModalComponent from "../DropDownModalComponent";
@@ -30,7 +30,7 @@ export default function ItSkillsModalComponent({
     if (isUpdate) {
       console.log("update called");
       await dispatch(
-        UpdateCandidateSkills(
+        UpdateCandidateSkill(
           id,
           ItSkills,
           skillType,
@@ -80,10 +80,13 @@ export default function ItSkillsModalComponent({
                 <div className="col-lg-6 col-md-12">
                   <div className="form-group">
                     <label>Skill Name</label>
-                    <TextInputModal
-                      placeholder="Enter Skills"
-                      onChange={(e) => setItSkills(e.target.value)}
+                    <DropDownModalComponent
+                      onChange={(e) => {
+                        console.log("ret", e.target.value);
+                        setItSkills(e.target.value);
+                      }}
                       value={ItSkills}
+                      options={state.skills}
                     />
                   </div>
                 </div>

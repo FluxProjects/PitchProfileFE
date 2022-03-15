@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import {
   AddCandidateSkill,
   GetCandidateSkills,
-  DeleteCandidateSkills,
+  DeleteCandidateSkill,
 } from "../../../redux/action";
 import { skillTypeDrop } from "../../../utils/DropDownUtils";
 import DropDownModalComponent from "./DropDownModalComponent";
@@ -26,7 +26,7 @@ export default function ItSkillsComponent({}) {
   };
 
   const deleteCandidateSkill = async (id, index) => {
-    await dispatch(DeleteCandidateSkills(id, index));
+    await dispatch(DeleteCandidateSkill(id, index));
   };
 
   const [show, setShow] = useState(false);
@@ -82,14 +82,14 @@ export default function ItSkillsComponent({}) {
                 <td>
                   {
                     state.skills[
-                      state.skills.findIndex((x) => x.id === item.skill_id)
+                      state.skills.findIndex((x) => x.id == item.skill_id)
                     ].name
                   }
                 </td>
                 <td>
                   {
                     skillTypeDrop[
-                      skillTypeDrop.findIndex((x) => x.id === item.skill_type)
+                      skillTypeDrop.findIndex((x) => x.id == item.skill_type)
                     ].name
                   }
                 </td>
@@ -160,7 +160,7 @@ export default function ItSkillsComponent({}) {
               : ""
           }
           isUpdate={updateData}
-          index
+          index={modalDataIndex}
           handleClose={() => handleClose()}
           handleShow={() => handleShow()}
         />
