@@ -45,6 +45,7 @@ export default function AccomplishmentsComponent({}) {
         <span className="float-right ml-2 ">
           <span
             onClick={() => {
+              setUpdateData(false);
               setShow(true);
             }}
             className="site-button add-btn button-sm"

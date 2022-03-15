@@ -18,21 +18,21 @@ export default function ProjectsModalComp({
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [ProjectsTitle, setProjectsTitle] = useState(
-    data?.title ? data.title : ""
+    isUpdate == true ? data?.title : ""
   );
   const [TagProject, setTagProject] = useState(data);
   const [Client, setClient] = useState(
-    data?.client_name ? data.client_name : ""
+    isUpdate == true ? data?.client_name : ""
   );
   //   const [ProgressStatus, setProgressStatus] = useState(data.);
   const [description, setDescription] = useState(
-    data?.description ? data.description : ""
+    isUpdate == true ? data?.description : ""
   );
   const [startedWorking, setStartedWorking] = useState(
-    data?.start_date ? data.start_date : ""
+    isUpdate == true ? data?.start_date : ""
   );
   const [WorkedTill, setWorkedTill] = useState(
-    data?.end_date ? data.end_date : ""
+    isUpdate == true ? data?.end_date : ""
   );
 
   const callAction = async () => {

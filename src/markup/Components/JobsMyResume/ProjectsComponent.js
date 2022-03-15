@@ -48,7 +48,10 @@ export default function ProjectsComponent({}) {
             to={"#"}
             data-toggle="modal"
             data-target="#projects"
-            onClick={() => handleShow()}
+            onClick={() => {
+              setUpdateData(false);
+              handleShow();
+            }}
             className="site-button add-btn button-sm"
           >
             <i className="fa fa-plus m-r5"></i> Add

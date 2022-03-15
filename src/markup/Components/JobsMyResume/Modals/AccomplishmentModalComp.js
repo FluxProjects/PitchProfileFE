@@ -18,10 +18,12 @@ export default function AccomplishmentModalComp({
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const [name, setName] = useState(data?.name);
-  const [body, setBody] = useState(data?.body);
-  const [yearObtained, setYearObtained] = useState(data?.year_obtained);
-  const [refNo, setrefNo] = useState(data?.ref_no);
+  const [name, setName] = useState(isUpdate == true ? data?.name : "");
+  const [body, setBody] = useState(isUpdate == true ? data?.body : "");
+  const [yearObtained, setYearObtained] = useState(
+    isUpdate == true ? data?.year_obtained : ""
+  );
+  const [refNo, setrefNo] = useState(isUpdate == true ? data?.ref_no : "");
 
   const callAction = async () => {
     if (isUpdate) {
