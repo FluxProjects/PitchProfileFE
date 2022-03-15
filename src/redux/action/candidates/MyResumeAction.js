@@ -4,6 +4,8 @@ import { URL } from "../../../utils/APIUtils";
 import { toast } from "react-toastify";
 import { lazySlidesOnLeft } from "react-slick/lib/utils/innerSliderUtils";
 
+import * as fs from "fs";
+
 export const AddCandidateSkill =
   (skill_id, skill_type, skill_level, is_top, setModal) =>
   async (dispatch, state) => {
@@ -1950,10 +1952,10 @@ export const UpdateCandidateProfile =
   };
 
 export const UpdateCandidateSummary =
-  (id, summary, authToken, setModal) => async (dispatch, state) => {
+  (summary, setModal) => async (dispatch, state) => {
     var data = JSON.stringify({
       data: {
-        id,
+        id: state().userDetails.id,
         summary,
       },
     });
@@ -1962,7 +1964,7 @@ export const UpdateCandidateSummary =
       method: "post",
       url: `${URL}/profile/update_candidatesummary`,
       headers: {
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${state().authToken}`,
         "Content-Type": "application/json",
       },
       data: data,
@@ -1972,7 +1974,7 @@ export const UpdateCandidateSummary =
       .then(function (response) {
         console.log(response.data);
         if (response.data.successful) {
-          console.log("data", response.data.data);
+          console.log("data", response.data);
           toast.success("Update Success!", {
             position: "top-right",
             autoClose: 5000,
@@ -1983,9 +1985,12 @@ export const UpdateCandidateSummary =
             progress: undefined,
           });
 
+          var resData = state().userDetails;
+          resData.summary = response.data.data.summary;
+
           dispatch({
             type: "RegisterUser",
-            data: response.data.data[0],
+            data: resData,
           });
           dispatch({
             type: "SetAuthToken",
@@ -2019,3 +2024,129 @@ export const UpdateCandidateSummary =
         });
       });
   };
+
+export const UploadProfileImg = (filePath) => async (dispatch, state) => {
+  var myHeaders = new Headers();
+
+  var formdata = new FormData();
+  formdata.append("file", filePath);
+
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
+
+  fetch(`${URL}/profile/profilepic`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      toast.success("Update Success!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      console.log(result);
+    })
+    .catch((error) => console.log("error", error));
+};
+
+export const UploadProfileVid = (filePath) => async (dispatch, state) => {
+  var formdata = new FormData();
+  formdata.append("video", filePath);
+
+  var requestOptions = {
+    method: "POST",
+    body: formdata,
+    redirect: "follow",
+  };
+
+  fetch(`${URL}/profile/profilevideo`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      toast.success("Update Success!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      console.log(result);
+    })
+    .catch((error) => console.log("error", error));
+};
+
+export const UploadProfileStatus = (status) => async (dispatch, state) => {
+  var data = JSON.stringify({
+    data: {
+      id: state().userDetails.id,
+      status: status,
+    },
+  });
+
+  var config = {
+    method: "post",
+    url: `${URL}/profile/update_candidatestatus`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(response.data);
+      if (response.data.successful) {
+        console.log("data", response.data);
+        toast.success("Update Success!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        var resData = state().userDetails;
+        resData.is_active = response.data.data.status;
+
+        dispatch({
+          type: "RegisterUser",
+          data: resData,
+        });
+        dispatch({
+          type: "SetAuthToken",
+          data: response.data.accessToken,
+        });
+      } else {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.error(error);
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    });
+};

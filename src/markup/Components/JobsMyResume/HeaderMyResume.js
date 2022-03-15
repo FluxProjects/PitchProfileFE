@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
+import {
+  UpdateCandidateSummary,
+  UploadProfileImg,
+} from "../../../redux/action";
 import AttachVideo from "./AttachVideo";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 import TextInputModal from "./TextInputModal";
 
 export default function HeaderMyResume({}) {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [ToggleIsActive, setToggleIsActive] = useState(false);
+  const [ResumeHeadline, setResumeHeadline] = useState(
+    state.userDetails.summary
+  );
+  const [ProfileImg, setProfileImg] = useState("");
 
   const userDetail = useSelector((state) => state.userDetails);
 
@@ -23,13 +33,24 @@ export default function HeaderMyResume({}) {
     setShow(true);
   };
 
+  const callUpdateCandidateSummary = async () => {
+    dispatch(UpdateCandidateSummary(ResumeHeadline, handleClose()));
+  };
+
   return (
     <>
       <div className="col-lg-8 col-md-7 candidate-info">
         <div className="candidate-detail">
           <div className="canditate-des text-center">
             <Link to={""}>
-              <img alt="" src={require(".././../../images/team/pic1.jpg")} />
+              <img
+                alt=""
+                src={
+                  state.userDetails.pic != null
+                    ? state.userDetails.pic
+                    : require(".././../../images/team/pic1.jpg")
+                }
+              />
             </Link>
             <div
               className="upload-link"
@@ -37,7 +58,15 @@ export default function HeaderMyResume({}) {
               data-toggle="tooltip"
               data-placement="right"
             >
-              <input type="file" className="update-flie" />
+              <input
+                type="file"
+                onChange={(e) => {
+                  console.log("eeee", e.target.value);
+                  setProfileImg(e.target.value);
+                  dispatch(UploadProfileImg(e.target.value));
+                }}
+                className="update-flie"
+              />
               <i className="fa fa-camera"></i>
             </div>
 
@@ -63,7 +92,7 @@ export default function HeaderMyResume({}) {
               </span>
             </h4>
             <p className="m-b15">
-              Freelance Senior PHP Developer at various agencies
+              {state.userDetails.summary}
               {/* <span
                 onClick={() => handleShow()}
                 className="m-l15 font-16 text-white"
@@ -140,7 +169,7 @@ export default function HeaderMyResume({}) {
             <div className="modal-body">
               <form>
                 <div className="row">
-                  <div className="col-lg-6 col-md-6 col-sm-12">
+                  {/* <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
                       <label>First Name</label>
                       <TextInputModal
@@ -149,9 +178,9 @@ export default function HeaderMyResume({}) {
                         // value={ProjectsTitle}
                       />
                     </div>
-                  </div>
+                  </div> */}
 
-                  <div className="col-lg-6 col-md-6 col-sm-12">
+                  {/* <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
                       <label>Last Name</label>
                       <TextInputModal
@@ -160,20 +189,20 @@ export default function HeaderMyResume({}) {
                         // value={ProjectsTitle}
                       />
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="form-group">
                       <label>Resume Headline</label>
                       <TextAreaModalComponent
                         placeholder="Enter Description"
-                        // onChange={(e) => setProjectsTitle(e.target.value)}
-                        // value={ProjectsTitle}
+                        onChange={(e) => setResumeHeadline(e.target.value)}
+                        value={ResumeHeadline}
                       />
                     </div>
                   </div>
 
-                  <div className="col-lg-6 col-md-6 col-sm-12">
+                  {/*  <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
                       <label>Country:</label>
                       <DropDownModalComponent
@@ -219,8 +248,8 @@ export default function HeaderMyResume({}) {
                         ]}
                       />
                     </div>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12">
+                  </div> */}
+                  {/* <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
                       <label>Hometown:</label>
                       <DropDownModalComponent
@@ -255,7 +284,7 @@ export default function HeaderMyResume({}) {
                         placeholder="Phone number"
                       />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </form>
             </div>
@@ -268,7 +297,14 @@ export default function HeaderMyResume({}) {
               >
                 Cancel
               </button>
-              <button type="button" className="site-button">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  callUpdateCandidateSummary();
+                }}
+                type="button"
+                className="site-button"
+              >
                 Save
               </button>
             </div>

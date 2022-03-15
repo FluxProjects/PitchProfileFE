@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { UploadProfileVid } from "../../../redux/action";
 
 export default function AttachVideo({}) {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -41,6 +45,9 @@ export default function AttachVideo({}) {
                     type="file"
                     className="site-button form-control"
                     id="customFile"
+                    onChange={(e) => {
+                      dispatch(UploadProfileVid(e.target.value));
+                    }}
                   />
                 </div>
               </div>
