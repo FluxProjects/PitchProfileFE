@@ -819,15 +819,7 @@ export const DeleteCandidateEmployment =
   };
 
 export const AddCandidateProject =
-  (
-    candidate_id,
-    title,
-    client_name,
-    description,
-    start_date,
-    end_date,
-    setModal
-  ) =>
+  (title, client_name, description, start_date, end_date, setModal) =>
   async (dispatch, state) => {
     console.log("logging", state().authToken);
     var data = JSON.stringify({
@@ -865,7 +857,9 @@ export const AddCandidateProject =
             draggable: true,
             progress: undefined,
           });
-          var resData = state().candidateProjects.push(response.data.data[0]);
+          var resData = state().candidateProjects;
+          resData.push(response.data.data[0]);
+
           dispatch({
             type: "SetCandidateProject",
             data: resData,
@@ -1302,7 +1296,8 @@ export const DeleteCandidateCertificate =
             draggable: true,
             progress: undefined,
           });
-          var resData = state().candidateCertificates.splice(index, 1);
+          var resData = state().candidateCertificates;
+          resData.splice(index, 1);
           console.log("index", resData);
           dispatch({
             type: "SetCandidateCertificate",
