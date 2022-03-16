@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  DeleteCandidateProject,
-  GetCandidateProjects,
+  DeleteCandidateSocialProfile,
+  GetCandidateSocialProfiles,
 } from "../../../redux/action";
-import ProjectsModalComp from "./Modals/ProjectsModalComp";
+import SocialProfilesModalComp from "./Modals/SocialProfilesModalComp";
 
-export default function ProjectsComponent({}) {
+export default function SocialProfilesComponent({}) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -24,27 +24,27 @@ export default function ProjectsComponent({}) {
   };
 
   useEffect(() => {
-    callGetCandidateProjects();
+    callGetCandidateSocialProfiles();
   }, []);
 
-  const callGetCandidateProjects = async () => {
-    await dispatch(GetCandidateProjects());
+  const callGetCandidateSocialProfiles = async () => {
+    await dispatch(GetCandidateSocialProfiles());
   };
 
   const deleteCandidateVal = async (id, index) => {
-    await dispatch(DeleteCandidateProject(id, index));
+    await dispatch(DeleteCandidateSocialProfile(id, index));
   };
 
   return (
     <>
-      {/* Projects */}
-      <div id="projects_bx" className="job-bx bg-white m-b30">
+      {/* SocialProfile */}
+      <div id="social_bx" className="job-bx bg-white m-b30">
         <div className="d-flex">
-          <h5 className="m-b15">Projects </h5>
+          <h5 className=" mb-2">Social Profiles </h5>
           <Link
             to={"#"}
             data-toggle="modal"
-            data-target="#projects"
+            data-target="#socialprofiles"
             onClick={() => {
               setUpdateData(false);
               handleShow();
@@ -54,8 +54,9 @@ export default function ProjectsComponent({}) {
             <i className="fa fa-plus m-r5"></i> Add
           </Link>
         </div>
+
         {/* map */}
-        {state.candidateProjects.map((item, index) => (
+        {state.candidateSocialProfiles.map((item, index) => (
           <>
             <h6 className="font-14 mt-5 m-b0">
               {/* Project Board Edit{" "} */}
@@ -84,42 +85,36 @@ export default function ProjectsComponent({}) {
             </h6>
 
             <div className="row">
-              <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
-                <h6 className="font-14 m-b0">Project Title</h6>
-                <p className="m-b0">{item.title}</p>
+              <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+                <h6 className="font-14 m-b0">Platform</h6>
+                <p className="m-b0">facebook</p>
               </div>
 
-              <div className="col-md-6 col-lg-3 col-sm-12 mb-2 mt-2">
-                <h6 className="font-14 m-b0">Client</h6>
-                <p className="m-b0">{item.client_name}</p>
-              </div>
-
-              <div className="col-md-12 col-lg-12 col-sm-12">
-                <h6 className="font-14 m-b0">Description</h6>
-                <p className="m-b0">{item.description}</p>
-              </div>
-
-              <div className="col-md-6 col-lg-3 col-sm-12 mb-2 mt-2">
-                <h6 className="font-14 m-b0">Start Date</h6>
-                <p className="m-b0">{item.start_date}</p>
-              </div>
-
-              <div className="col-md-6 col-lg-3 col-sm-12 mb-2 mt-2">
-                <h6 className="font-14 m-b0">End Date</h6>
-                <p className="m-b0">{item.end_date}</p>
+              <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+                <h6 className="font-14 m-b0">URL</h6>
+                <p className="m-b0">fb.com</p>
               </div>
             </div>
           </>
         ))}
       </div>
-
       <Modal
         show={show}
         onHide={() => handleClose()}
         className="modal fade modal-bx-info editor"
       >
-        <ProjectsModalComp
-          data={state.candidateProjects[modalDataIndex]}
+        <SocialProfilesModalComp
+          data={state.candidateSocialProfiles[modalDataIndex]}
+          id={
+            state.candidateSocialProfiles[modalDataIndex]
+              ? state.candidateSocialProfiles[modalDataIndex].id
+              : ""
+          }
+          socialProfileProp={
+            state.candidateSocialProfiles[modalDataIndex]
+              ? state.candidateSocialProfiles[modalDataIndex].social_profile_id
+              : ""
+          }
           isUpdate={updateData}
           index={modalDataIndex}
           handleClose={() => handleClose()}

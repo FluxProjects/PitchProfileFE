@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
-import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  AddCandidateSkill,
   GetCandidateSkills,
   DeleteCandidateSkill,
 } from "../../../redux/action";
+import SkillsModalComp from "./Modals/SkillsModalComp";
 import { skillTypeDrop } from "../../../utils/DropDownUtils";
-import DropDownModalComponent from "./DropDownModalComponent";
-import ItSkillsModalComponent from "./Modals/ITSkillsModalComp";
-import TextInputModal from "./TextInputModal";
 
-export default function ItSkillsComponent({}) {
+export default function SkillsComponent({}) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -31,7 +27,6 @@ export default function ItSkillsComponent({}) {
 
   const [show, setShow] = useState(false);
   const [updateData, setUpdateData] = useState(false);
-
   const [modalDataIndex, setModalDataIndex] = useState(0);
 
   const handleClose = () => {
@@ -133,7 +128,7 @@ export default function ItSkillsComponent({}) {
         onHide={() => handleClose()}
         className="modal fade modal-bx-info editor"
       >
-        <ItSkillsModalComponent
+        <SkillsModalComp
           id={
             state.candidateSkills[modalDataIndex]
               ? state.candidateSkills[modalDataIndex].id

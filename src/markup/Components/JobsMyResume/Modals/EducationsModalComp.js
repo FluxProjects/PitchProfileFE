@@ -1,41 +1,53 @@
 import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  AddCandidateSkill,
-  UpdateCandidateSkill,
+  AddCandidateEducation,
+  UpdateCandidateEducation,
 } from "../../../../redux/action";
-import { skillTypeDrop } from "../../../../utils/DropDownUtils";
 import DropDownModalComponent from "../DropDownModalComponent";
 import TextInputModal from "../TextInputModal";
 
-export default function ItSkillsModalComponent({
-  id,
+export default function EducationsModalComp({
+  data,
+  educationLevelProp,
+  departmentProp,
+  isCurrentProp,
   index,
-  ItSkillsProp,
-  ProLevProp,
-  IsTopSkillProp,
-  SkillTypeProp,
   handleClose,
   isUpdate,
 }) {
   const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const [ItSkills, setItSkills] = useState(ItSkillsProp);
-  const [skillType, setSkillType] = useState(ItSkillsProp);
-  const [ProLev, setProLev] = useState(ProLevProp);
-  const [IsTopSkill, setIsTopSkill] = useState(IsTopSkillProp);
 
-  const callAddCandidateSkill = async () => {
+  const dispatch = useDispatch();
+
+  const [institute, setInstitute] = useState(
+    isUpdate == true ? data?.institute : ""
+  );
+  const [educationLevel, setEducationLevel] = useState(educationLevelProp);
+
+  const [department, setDepartment] = useState(departmentProp);
+
+  const [course, setCourse] = useState(isUpdate == true ? data?.course : "");
+
+  const [startDate, setStartDate] = useState(
+    isUpdate == true ? data?.startDate : ""
+  );
+  const [endDate, setEndDate] = useState(isUpdate == true ? data?.endDate : "");
+  const [isCurrent, setIsCurrent] = useState(isCurrentProp);
+
+  const callAction = async () => {
     if (isUpdate) {
       console.log("update called");
       await dispatch(
-        UpdateCandidateSkill(
-          id,
-          ItSkills,
-          skillType,
-          ProLev,
-          IsTopSkill,
+        UpdateCandidateEducation(
+          data.id,
+          institute,
+          educationLevel,
+          department,
+          course,
+          startDate,
+          endDate,
+          isCurrent,
           index,
           handleClose()
         )
@@ -43,11 +55,15 @@ export default function ItSkillsModalComponent({
     } else {
       console.log("add called");
       await dispatch(
-        AddCandidateSkill(
-          ItSkills,
-          skillType,
-          ProLev,
-          IsTopSkill,
+        AddCandidateEducation(
+          institute,
+          educationLevel,
+          department,
+          course,
+          startDate,
+          endDate,
+          isCurrent,
+          index,
           handleClose()
         )
       );
@@ -56,13 +72,11 @@ export default function ItSkillsModalComponent({
 
   return (
     <>
-      {/* skills */}
-
-      <div className="modal-dialog my-0" role="document">
+      <div className="modal-dialog mx-0 my-0" role="document">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="EmploymentModalLongTitle">
-              Skills
+              Education
             </h5>
             <button
               type="button"
@@ -77,50 +91,87 @@ export default function ItSkillsModalComponent({
           <div className="modal-body">
             <form>
               <div className="row">
-                <div className="col-lg-6 col-md-12">
+                <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Skill Name</label>
-                    <DropDownModalComponent
-                      onChange={(e) => {
-                        console.log("ret", e.target.value);
-                        setItSkills(e.target.value);
-                      }}
-                      value={ItSkills}
-                      options={state.skills}
+                    <label>Institute Name</label>
+                    <TextInputModal
+                      placeholder="Enter Your Institute Name"
+                      onChange={(e) => setInstitute(e.target.value)}
+                      value={institute}
                     />
                   </div>
                 </div>
-                <div className="col-lg-6 col-md-6 col-sm-12">
+
+                <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Skill Type</label>
+                    <label>Department</label>
                     <DropDownModalComponent
                       onChange={(e) => {
                         console.log("eee", e.target.value);
-                        setSkillType(e.target.value);
+                        setDepartment(e.target.value);
                       }}
-                      value={skillType}
-                      options={skillTypeDrop}
+                      value={department}
+                      options={state.departments}
                     />
                   </div>
                 </div>
 
-                <div className="col-lg-6 col-md-12">
+                <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Proficiency</label>
+                    <label>Education Level</label>
+                    <DropDownModalComponent
+                      onChange={(e) => {
+                        setEducationLevel(e.target.value);
+                      }}
+                      value={educationLevel}
+                      options={state.educationLevels}
+                    />
+                  </div>
+                </div>
+
+                <div className="col-lg-12 col-md-12 col-sm-12">
+                  <div className="form-group">
+                    <label>Course</label>
                     <TextInputModal
-                      placeholder="Rate your Skill from 1 to 10"
-                      type="number"
-                      min={1}
-                      max={10}
-                      onChange={(e) => setProLev(e.target.value)}
-                      value={ProLev}
+                      placeholder="Enter Course"
+                      onChange={(e) => setCourse(e.target.value)}
+                      value={course}
+                    />
+                  </div>
+                </div>
+                <div className="col-lg-6 col-md-6 col-xs-12">
+                  <div className="form-group">
+                    <label>Start Date</label>
+                    <TextInputModal
+                      label=""
+                      type="date"
+                      onChange={(e) => {
+                        console.log("test", e.target.value);
+                        setStartDate(e.target.value);
+                      }}
+                      value={startDate}
                     />
                   </div>
                 </div>
 
-                <div className="col-lg-6 col-md-12">
+                <div className="col-lg-6 col-md-6 col-xs-12">
                   <div className="form-group">
-                    <label>Top Skill</label>
+                    <label>End Date</label>
+                    <TextInputModal
+                      label=""
+                      type="date"
+                      onChange={(e) => {
+                        console.log("test", e.target.value);
+                        setEndDate(e.target.value);
+                      }}
+                      value={endDate}
+                    />
+                  </div>
+                </div>
+
+                <div className="col-lg-12 col-md-12">
+                  <div className="form-group">
+                    <label>Is this your current Institute Name?</label>
                     <div className="row">
                       <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                         <div className="custom-control custom-radio">
@@ -129,9 +180,9 @@ export default function ItSkillsModalComponent({
                             className="custom-control-input"
                             id="employ_yes"
                             name="example1"
-                            checked={IsTopSkill == true ? true : false}
+                            checked={isCurrent == true ? true : false}
                             value={true}
-                            onChange={() => setIsTopSkill(true)}
+                            onChange={() => setIsCurrent(true)}
                           />
                           <label
                             className="custom-control-label"
@@ -148,9 +199,9 @@ export default function ItSkillsModalComponent({
                             className="custom-control-input"
                             id="employ_no"
                             name="example1"
-                            checked={IsTopSkill == false ? true : false}
+                            checked={isCurrent == false ? true : false}
                             value={false}
-                            onChange={() => setIsTopSkill(false)}
+                            onChange={() => setIsCurrent(false)}
                           />
                           <label
                             className="custom-control-label"
@@ -178,7 +229,7 @@ export default function ItSkillsModalComponent({
             <button
               onClick={(e) => {
                 e.preventDefault();
-                callAddCandidateSkill();
+                callAction();
               }}
               type="button"
               className="site-button"

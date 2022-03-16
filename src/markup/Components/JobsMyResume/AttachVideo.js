@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { UploadProfileVid } from "../../../redux/action";
 
 export default function AttachVideo({}) {

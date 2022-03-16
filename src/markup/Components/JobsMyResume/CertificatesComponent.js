@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-
-import { Link } from "react-router-dom";
 import {
   DeleteCandidateCertificate,
   GetCandidateCertificates,
 } from "../../../redux/action";
-import AccomplishmentModalComp from "./Modals/AccomplishmentModalComp";
-import TextInputModal from "./TextInputModal";
+import CertificatesModalComp from "./Modals/CertificatesModalComp";
 
-export default function AccomplishmentsComponent({}) {
+export default function CertificatesComponent({}) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -110,7 +107,7 @@ export default function AccomplishmentsComponent({}) {
         onHide={() => handleClose()}
         className="modal fade modal-bx-info editor"
       >
-        <AccomplishmentModalComp
+        <CertificatesModalComp
           data={state.candidateCertificates[modalDataIndex]}
           isUpdate={updateData}
           index={modalDataIndex}

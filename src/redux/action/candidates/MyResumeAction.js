@@ -168,15 +168,6 @@ export const GetCandidateSkills = () => async (dispatch, state) => {
       console.log(response.data);
 
       if (response.data.successful) {
-        // toast.success(response.data.message, {
-        //   position: "top-right",
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        // });
         dispatch({
           type: "SetCandidateSkill",
           data: response.data.data,

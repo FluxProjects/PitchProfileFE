@@ -57,6 +57,16 @@ const changeState = (state = initialState, { type, ...rest }) => {
         ...state,
         candidateSkills: rest.data,
       };
+    case "SetCandidateEducation":
+      return {
+        ...state,
+        candidateEducations: rest.data,
+      };
+    case "SetCandidateEmployment":
+      return {
+        ...state,
+        candidateEmployments: rest.data,
+      };
     case "SetCandidateProject":
       return {
         ...state,
@@ -66,6 +76,18 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         candidateCertificates: rest.data,
+      };
+
+    case "SetCandidateReference":
+      return {
+        ...state,
+        candidateReferences: rest.data,
+      };
+
+    case "SetCandidateSocialProfile":
+      return {
+        ...state,
+        candidateReferences: rest.data,
       };
     default:
       return state;

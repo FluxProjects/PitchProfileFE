@@ -5,18 +5,17 @@ import Footer from "./../Layout/Footer";
 import { Form, ToggleButton } from "react-bootstrap";
 import Listingsidebar from "./../Element/Listingsidebar";
 import ResumeHeadlineComponent from "../Components/JobsMyResume/ResumeHeadlineComponent";
-import KeySkillsComponent from "../Components/JobsMyResume/KeySkillsComponent";
-import EmploymentComponent from "../Components/JobsMyResume/EmploymentComponent";
-import EducationComponent from "../Components/JobsMyResume/EducationComponent";
-import ItSkillsComponent from "../Components/JobsMyResume/ItSkillsComponent";
-import ProjectsComponent from "../Components/JobsMyResume/ProjectsComponent";
 import ProfileSummary from "../Components/JobsMyResume/ProfileSummary";
-import AccomplishmentsComponent from "../Components/JobsMyResume/AccomplishmentsComponent";
+import SkillsComponent from "../Components/JobsMyResume/SkillsComponent";
+import EducationsComponent from "../Components/JobsMyResume/EducationsComponent";
+import EmploymentsComponent from "../Components/JobsMyResume/EmploymentsComponent";
+import ProjectsComponent from "../Components/JobsMyResume/ProjectsComponent";
+import CertificatesComponent from "../Components/JobsMyResume/CertificatesComponent";
+import ReferencesComponent from "../Components/JobsMyResume/ReferencesComponent";
+import SocialProfilesComponent from "../Components/JobsMyResume/SocialProfilesComponent";
 import DesiredCareerProfileComponent from "../Components/JobsMyResume/DesiredCareerProfileComponent";
-import ReferenceComponent from "../Components/JobsMyResume/ReferenceComponent";
 import ProfileDetailsComponent from "../Components/JobsMyResume/ProfileDetailsComponent";
 import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeComponent";
-import OnlineProfileContainer from "../Components/JobsMyResume/OnlineProfileContainer";
 
 import HeaderMyResume from "../Components/JobsMyResume/HeaderMyResume";
 var bnr = require("./../../images/banner/bnr1.jpg");
@@ -232,28 +231,25 @@ export default function Jobmyresume() {
                   <ProfileSummary />
 
                   {/* Employment */}
-                  <EmploymentComponent />
+                  <EmploymentsComponent />
 
                   {/* Education */}
-                  <EducationComponent />
+                  <EducationsComponent />
 
-                  {/* Key skills
-                  <KeySkillsComponent /> */}
-
-                  {/* ItSkillsComponent */}
-                  <ItSkillsComponent />
+                  {/* SkillsComponent */}
+                  <SkillsComponent />
 
                   {/* ProjectsComponent */}
                   <ProjectsComponent />
 
                   {/* Certification */}
-                  <AccomplishmentsComponent />
+                  <CertificatesComponent />
 
                   {/* Social  */}
-                  <OnlineProfileContainer />
+                  <SocialProfilesComponent />
 
                   {/* Reference Component */}
-                  <ReferenceComponent />
+                  <ReferencesComponent />
 
                   {/* DesiredCareerProfileComponent */}
                   <DesiredCareerProfileComponent />

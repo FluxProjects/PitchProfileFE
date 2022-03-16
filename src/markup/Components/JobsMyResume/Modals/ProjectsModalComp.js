@@ -1,7 +1,5 @@
-import React, { useDebugValue, useState } from "react";
-import { Modal } from "react-bootstrap";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import {
   AddCandidateProject,
   UpdateCandidateProject,
@@ -17,10 +15,10 @@ export default function ProjectsModalComp({
 }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+
   const [ProjectsTitle, setProjectsTitle] = useState(
     isUpdate == true ? data?.title : ""
   );
-  const [TagProject, setTagProject] = useState(data);
   const [Client, setClient] = useState(
     isUpdate == true ? data?.client_name : ""
   );
@@ -97,24 +95,7 @@ export default function ProjectsModalComp({
                     />
                   </div>
                 </div>
-                {/* <div className="col-lg-12 col-md-12">
-                    <div className="form-group">
-                      <label>
-                        Tag this project with your Employment/Education
-                      </label>
-                      <DropDownModalComponent
-                        onChange={(e) => {
-                          console.log("eee", e.target.value);
-                          setTagProject(e.target.value);
-                        }}
-                        value={TagProject}
-                        options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
-                        ]}
-                      />
-                    </div>
-                  </div> */}
+
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
                     <label>Client</label>
@@ -125,51 +106,6 @@ export default function ProjectsModalComp({
                     />
                   </div>
                 </div>
-                {/* <div className="col-lg-12 col-md-12">
-                  <div className="form-group">
-                    <label>Status</label>
-                    <div className="row">
-                      <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                        <div className="custom-control custom-radio">
-                          <input
-                            type="radio"
-                            className="custom-control-input"
-                            id="employ_yes"
-                            name="example1"
-                            checked={ProgressStatus == 1 ? true : false}
-                            value={1}
-                            onChange={() => setProgressStatus(1)}
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor="employ_yes"
-                          >
-                            In Progress
-                          </label>
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                        <div className="custom-control custom-radio">
-                          <input
-                            type="radio"
-                            className="custom-control-input"
-                            id="employ_no"
-                            name="example1"
-                            checked={ProgressStatus == 2 ? true : false}
-                            value={2}
-                            onChange={() => setProgressStatus(2)}
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor="employ_no"
-                          >
-                            Finished
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
                     <label>Start Date</label>

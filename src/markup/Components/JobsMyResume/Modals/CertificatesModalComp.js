@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Modal } from "react-bootstrap";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import { Link } from "react-router-dom";
 import {
   AddCandidateCertificate,
   UpdateCandidateCertificate,
 } from "../../../../redux/action";
 import TextInputModal from "../TextInputModal";
 
-export default function AccomplishmentModalComp({
+export default function CertificatesModalComp({
   data,
   isUpdate,
   index,
@@ -71,9 +68,6 @@ export default function AccomplishmentModalComp({
                 <div className="form-group">
                   <label>Certification Name</label>
                   <TextInputModal
-                    onChange={(e) => {
-                      console.log(e.target.value);
-                    }}
                     placeholder="Enter Certification Name"
                     onChange={(e) => {
                       setName(e.target.value);
@@ -86,9 +80,6 @@ export default function AccomplishmentModalComp({
                 <div className="form-group">
                   <label>Certification Body</label>
                   <TextInputModal
-                    onChange={(e) => {
-                      console.log(e.target.value);
-                    }}
                     placeholder="Enter Certification Body"
                     onChange={(e) => {
                       setBody(e.target.value);
