@@ -47,7 +47,7 @@ export default function HeaderMyResume({}) {
                 src={
                   state.userDetails.pic != null
                     ? state.userDetails.pic
-                    : require(".././../../images/team/pic1.jpg")
+                    : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
                 }
               />
             </Link>
@@ -101,16 +101,18 @@ export default function HeaderMyResume({}) {
             </p>
             <ul className="clearfix">
               <li>
-                <i className="ti-location-pin"></i> city, state
+                <i className="ti-location-pin"></i> {state.userDetails.city_id},{" "}
+                {state.userDetails.state_id}
               </li>
               <li>
-                <i className="ti-mobile"></i> +1 123 456 7890
+                <i className="ti-mobile"></i> {state.userDetails.phone}
               </li>
               <li>
-                <i className="ti-location-pin"></i> country
+                <i className="ti-location-pin"></i>{" "}
+                {state.userDetails.country_id}
               </li>
               <li>
-                <i className="ti-email"></i> info@example.com
+                <i className="ti-email"></i> {state.userDetails.email}
               </li>
             </ul>
             <div className="progress-box m-t10">

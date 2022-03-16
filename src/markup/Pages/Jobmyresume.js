@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
@@ -18,14 +18,39 @@ import ProfileDetailsComponent from "../Components/JobsMyResume/ProfileDetailsCo
 import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeComponent";
 
 import HeaderMyResume from "../Components/JobsMyResume/HeaderMyResume";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  GetCities,
+  GetCountries,
+  GetLanguages,
+  GetStates,
+} from "../../redux/action";
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
 export default function Jobmyresume() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false);
+  };
+  useEffect(() => {
+    //  to get languages
+    CallGetDropDown();
+  }, []);
+
+  const CallGetDropDown = async () => {
+    if (state.languages.length < 1) await dispatch(GetLanguages());
+
+    if (state.countries.length < 1) await dispatch(GetCountries());
+    if (state.states.length < 1) await dispatch(GetStates(230));
+    if (state.cities.length < 1) await dispatch(GetCities(3866));
+
+    setLoading(false);
   };
 
   return (

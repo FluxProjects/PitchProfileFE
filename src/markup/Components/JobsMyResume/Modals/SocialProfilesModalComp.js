@@ -7,6 +7,7 @@ import {
 import TextAreaModalComponent from "../TextAreaModalComponent";
 import DropDownModalComponent from "../DropDownModalComponent";
 import TextInputModal from "../TextInputModal";
+import { socialPlatformDrop } from "../../../../utils/DropDownUtils";
 
 export default function EmploymentsModalComp({
   data,
@@ -84,11 +85,7 @@ export default function EmploymentsModalComp({
                         setSocialProfile(e.target.value);
                       }}
                       value={socialProfile}
-                      options={[
-                        { id: 1, name: "Facebook" },
-                        { id: 2, name: "Linkedin" },
-                        { id: 3, name: "Instagram" },
-                      ]}
+                      options={socialPlatformDrop}
                     />
                   </div>
                 </div>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddCandidateReference,
+  GetCities,
+  GetStates,
   UpdateCandidateReference,
 } from "../../../../redux/action";
 // import { GetCities, GetCountries, GetStates } from "../../../redux/action";
@@ -24,30 +26,27 @@ export default function ReferencesModalComp({
   const [show, setShow] = useState(false);
 
   const [refererName, setRefererName] = useState(
-    isUpdate == true ? data?.refererName : ""
+    isUpdate == true ? data?.referer_name : ""
   );
   const [organization, setOrganization] = useState(
     isUpdate == true ? data?.organization : ""
   );
   const [jobTitle, setJobTitle] = useState(
-    isUpdate == true ? data?.jobTitle : ""
+    isUpdate == true ? data?.job_title : ""
   );
-  const [city, setCity] = useState(cityProp);
-  const [cstate, setCState] = useState(cstateProp);
-  const [country, setCountry] = useState(countryProp);
+  const [city, setCity] = useState(isUpdate == true ? cityProp : 0);
+  const [cstate, setCState] = useState(isUpdate == true ? cstateProp : 3866);
+  const [country, setCountry] = useState(isUpdate == true ? countryProp : 230);
   const [phone, setPhone] = useState(isUpdate == true ? data?.phone : "");
   const [email, setEmail] = useState(isUpdate == true ? data?.email : "");
 
-  // const CallGetDropDown = async () => {
-  //   if (state.countries.length < 1) await dispatch(GetCountries());
-  //   if (state.states.length < 1) await dispatch(GetStates());
-  //   if (state.cities.length < 1) await dispatch(GetCities(4));
+  const CallGetCities = async (stateId) => {
+    await dispatch(GetCities(stateId));
+  };
 
-  //   setLoading(false);
-  // };
-  // const CallGetCities = async (stateId) => {
-  //   await dispatch(GetCities(stateId));
-  // };
+  const CallGetStates = async (stateId) => {
+    await dispatch(GetStates(stateId));
+  };
 
   const callAction = async () => {
     if (isUpdate) {
@@ -79,7 +78,6 @@ export default function ReferencesModalComp({
           country,
           phone,
           email,
-          index,
           handleClose()
         )
       );
@@ -92,13 +90,13 @@ export default function ReferencesModalComp({
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="DesiredprofileModalLongTitle">
-              Desired Career Profile{" "}
+              References{" "}
             </h5>
             <button
               type="button"
               className="close"
               onClick={() => {
-                setShow(false);
+                handleClose();
               }}
             >
               <span aria-hidden="true">&times;</span>
@@ -144,6 +142,7 @@ export default function ReferencesModalComp({
                     <DropDownModalComponent
                       onChange={(e) => {
                         console.log("eee", e.target.value);
+                        CallGetStates(e.target.value);
                         setCountry(e.target.value);
                       }}
                       value={country}
@@ -158,6 +157,7 @@ export default function ReferencesModalComp({
                     <DropDownModalComponent
                       onChange={(e) => {
                         console.log("eee", e.target.value);
+                        CallGetCities(e.target.value);
                         setCState(e.target.value);
                       }}
                       value={cstate}

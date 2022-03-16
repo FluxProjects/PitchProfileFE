@@ -88,41 +88,51 @@ export default function EducationsComponent({}) {
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">Institute Name</label>
-                  <span className="clearfix font-13">Uni</span>
+                  <span className="clearfix font-13">{item.institute}</span>
                 </div>
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">Education Level</label>
-                  <span className="clearfix font-13">Doctorate/PHD</span>
+                  <span className="clearfix font-13">
+                    {/* {
+                      state?.educationLevels[
+                        state?.educationLevels.findIndex(
+                          (x) => x?.id == item?.education_level_id
+                        )
+                      ].name
+                    } */}
+                  </span>
                 </div>
               </div>
               <div className="col-lg-4 col-md-12 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">Course</label>
-                  <span className="clearfix font-13">Doctorate/PHD</span>
+                  <span className="clearfix font-13">{item.course}</span>
                 </div>
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">Start Date</label>
-                  <span className="clearfix font-13">12/2/2020</span>
+                  <span className="clearfix font-13">{item.start_date}</span>
                 </div>
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">End Date</label>
-                  <span className="clearfix font-13">12/2/2022</span>
+                  <span className="clearfix font-13">{item.end_date}</span>
                 </div>
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">Current Institute</label>
-                  <span className="clearfix font-13">Yes</span>
+                  <span className="clearfix font-13">
+                    {item.is_current == true ? "Yes" : "No"}
+                  </span>
                 </div>
               </div>
             </div>

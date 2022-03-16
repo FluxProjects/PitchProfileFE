@@ -89,7 +89,7 @@ export default function ProjectsComponent({}) {
                 <p className="m-b0">{item.title}</p>
               </div>
 
-              <div className="col-md-6 col-lg-3 col-sm-12 mb-2 mt-2">
+              <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
                 <h6 className="font-14 m-b0">Client</h6>
                 <p className="m-b0">{item.client_name}</p>
               </div>
@@ -99,12 +99,12 @@ export default function ProjectsComponent({}) {
                 <p className="m-b0">{item.description}</p>
               </div>
 
-              <div className="col-md-6 col-lg-3 col-sm-12 mb-2 mt-2">
+              <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
                 <h6 className="font-14 m-b0">Start Date</h6>
                 <p className="m-b0">{item.start_date}</p>
               </div>
 
-              <div className="col-md-6 col-lg-3 col-sm-12 mb-2 mt-2">
+              <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
                 <h6 className="font-14 m-b0">End Date</h6>
                 <p className="m-b0">{item.end_date}</p>
               </div>

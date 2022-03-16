@@ -61,8 +61,8 @@ export default function Jobprofile() {
     if (state.languages.length < 1) await dispatch(GetLanguages());
 
     if (state.countries.length < 1) await dispatch(GetCountries());
-    if (state.states.length < 1) await dispatch(GetStates());
-    if (state.cities.length < 1) await dispatch(GetCities(4));
+    if (state.states.length < 1) await dispatch(GetStates(230));
+    if (state.cities.length < 1) await dispatch(GetCities(3866));
 
     setLoading(false);
   };

@@ -257,7 +257,6 @@ export const DeleteCandidateSkill = (id, index) => async (dispatch, state) => {
 
 export const AddCandidateEducation =
   (
-    candidate_id,
     institute,
     department_id,
     education_level,
@@ -269,6 +268,7 @@ export const AddCandidateEducation =
   ) =>
   async (dispatch, state) => {
     console.log("logging", state().authToken);
+
     var data = JSON.stringify({
       data: {
         candidate_id: state().userDetails.id,
@@ -296,7 +296,7 @@ export const AddCandidateEducation =
       .then(function (response) {
         console.log("res tu ran", response.data);
 
-        if (response.data.successful) {
+        if (response.data.status) {
           toast.success("Updated Successfully!", {
             position: "top-right",
             autoClose: 5000,
@@ -306,7 +306,9 @@ export const AddCandidateEducation =
             draggable: true,
             progress: undefined,
           });
-          var resData = state().candidateEducations.push(response.data.data[0]);
+          var resData = state().candidateEducations;
+
+          resData.push(response.data.data[0]);
           dispatch({
             type: "SetCandidateEducation",
             data: resData,
@@ -393,8 +395,8 @@ export const UpdateCandidateEducation =
             progress: undefined,
           });
 
-          var resData = state().candidateEducations.splice(index, 1);
-          resData.push(response.data.data);
+          var resData = state().candidateEducations;
+          resData[index] = response.data.data;
           console.log("testing tdyew", resData);
           dispatch({
             type: "SetCandidateEducation",
@@ -497,7 +499,8 @@ export const DeleteCandidateEducation =
             draggable: true,
             progress: undefined,
           });
-          var resData = state().candidateEducations.splice(index, 1);
+          var resData = state().candidateEducations;
+          resData.splice(index, 1);
           console.log("index", resData);
           dispatch({
             type: "SetCandidateEducation",
@@ -531,7 +534,6 @@ export const DeleteCandidateEducation =
 
 export const AddCandidateEmployment =
   (
-    candidate_id,
     organization,
     industry_id,
     department_id,
@@ -543,7 +545,7 @@ export const AddCandidateEmployment =
     setModal
   ) =>
   async (dispatch, state) => {
-    console.log("logging", state().authToken);
+    console.log("logging", industry_id, department_id);
     var data = JSON.stringify({
       data: {
         candidate_id: state().userDetails.id,
@@ -572,7 +574,7 @@ export const AddCandidateEmployment =
       .then(function (response) {
         console.log("res tu ran", response.data);
 
-        if (response.data.successful) {
+        if (response.data.status) {
           toast.success("Updated Successfully!", {
             position: "top-right",
             autoClose: 5000,
@@ -582,9 +584,8 @@ export const AddCandidateEmployment =
             draggable: true,
             progress: undefined,
           });
-          var resData = state().candidateEmployments.push(
-            response.data.data[0]
-          );
+          var resData = state().candidateEmployments;
+          resData.push(response.data.data[0]);
           dispatch({
             type: "SetCandidateEmployment",
             data: resData,
@@ -673,8 +674,8 @@ export const UpdateCandidateEmployment =
             progress: undefined,
           });
 
-          var resData = state().candidateEmployments.splice(index, 1);
-          resData.push(response.data.data);
+          var resData = state().candidateEmployments;
+          resData[index] = response.data.data;
           console.log("testing tdyew", resData);
           dispatch({
             type: "SetCandidateEmployment",
@@ -777,7 +778,8 @@ export const DeleteCandidateEmployment =
             draggable: true,
             progress: undefined,
           });
-          var resData = state().candidateEmployments.splice(index, 1);
+          var resData = state().candidateEmployments;
+          resData.splice(index, 1);
           console.log("index", resData);
           dispatch({
             type: "SetCandidateEmployment",
@@ -1322,7 +1324,6 @@ export const DeleteCandidateCertificate =
 
 export const AddCandidateReference =
   (
-    candidate_id,
     referer_name,
     organization,
     job_title,
@@ -1363,7 +1364,7 @@ export const AddCandidateReference =
       .then(function (response) {
         console.log("res tu ran", response.data);
 
-        if (response.data.successful) {
+        if (response.data.status) {
           toast.success("Updated Successfully!", {
             position: "top-right",
             autoClose: 5000,
@@ -1373,7 +1374,8 @@ export const AddCandidateReference =
             draggable: true,
             progress: undefined,
           });
-          var resData = state().candidateReferences.push(response.data.data[0]);
+          var resData = state().candidateReferences;
+          resData.push(response.data.data[0]);
           dispatch({
             type: "SetCandidateReference",
             data: resData,
@@ -1462,8 +1464,8 @@ export const UpdateCandidateReference =
             progress: undefined,
           });
 
-          var resData = state().candidateReferences.splice(index, 1);
-          resData.push(response.data.data);
+          var resData = state().candidateReferences;
+          resData[index] = response.data.data;
           console.log("testing tdyew", resData);
           dispatch({
             type: "SetCandidateReference",
@@ -1524,10 +1526,10 @@ export const GetCandidateReferences = () => async (dispatch, state) => {
           draggable: true,
           progress: undefined,
         });
-        dispatch({
-          type: "SetCandidateReference",
-          data: [],
-        });
+        // dispatch({
+        //   type: "SetCandidateReference",
+        //   data: [],
+        // });
       }
     })
     .catch(function (error) {
@@ -1565,7 +1567,8 @@ export const DeleteCandidateReference =
             draggable: true,
             progress: undefined,
           });
-          var resData = state().candidateReferences.splice(index, 1);
+          var resData = state().candidateReferences;
+          resData.splice(index, 1);
           console.log("index", resData);
           dispatch({
             type: "SetCandidateReference",
@@ -1598,7 +1601,7 @@ export const DeleteCandidateReference =
   };
 
 export const AddCandidateSocialProfile =
-  (candidate_id, social_profile_id, url, description, setModal) =>
+  (social_profile_id, url, description, setModal) =>
   async (dispatch, state) => {
     console.log("logging", state().authToken);
     var data = JSON.stringify({
@@ -1624,7 +1627,7 @@ export const AddCandidateSocialProfile =
       .then(function (response) {
         console.log("res tu ran", response.data);
 
-        if (response.data.successful) {
+        if (response.data.status) {
           toast.success("Updated Successfully!", {
             position: "top-right",
             autoClose: 5000,
@@ -1634,9 +1637,8 @@ export const AddCandidateSocialProfile =
             draggable: true,
             progress: undefined,
           });
-          var resData = state().candidateSocialProfiles.push(
-            response.data.data[0]
-          );
+          var resData = state().candidateSocialProfiles;
+          resData.push(response.data.data[0]);
           dispatch({
             type: "SetCandidateSocialProfile",
             data: resData,
@@ -1708,8 +1710,8 @@ export const UpdateCandidateSocialProfile =
             progress: undefined,
           });
 
-          var resData = state().candidateSocialProfiles.splice(index, 1);
-          resData.push(response.data.data);
+          var resData = state().candidateSocialProfiles;
+          resData[index] = response.data.data;
           console.log("testing tdyew", resData);
           dispatch({
             type: "SetCandidateSocialProfile",
@@ -1756,7 +1758,7 @@ export const GetCandidateSocialProfiles = () => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log(response.data);
+      console.log("Social profile res", response.data);
 
       if (response.data.successful) {
         dispatch({
@@ -1775,7 +1777,7 @@ export const GetCandidateSocialProfiles = () => async (dispatch, state) => {
         });
         dispatch({
           type: "SetCandidateSocialProfile",
-          data: [],
+          data: response.data.data,
         });
       }
     })
@@ -1814,7 +1816,8 @@ export const DeleteCandidateSocialProfile =
             draggable: true,
             progress: undefined,
           });
-          var resData = state().candidateSocialProfiles.splice(index, 1);
+          var resData = state().candidateSocialProfiles;
+          resData.splice(index, 1);
           console.log("index", resData);
           dispatch({
             type: "SetCandidateSocialProfile",
@@ -2111,6 +2114,79 @@ export const UploadProfileStatus = (status) => async (dispatch, state) => {
           type: "SetAuthToken",
           data: response.data.accessToken,
         });
+      } else {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.error(error);
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    });
+};
+
+export const UpdateDesiredCareer = (status) => async (dispatch, state) => {
+  var data = JSON.stringify({
+    dc_data: {
+      candidate_id: state().userDetails.id,
+      industry_id: "1",
+      department_id: "1",
+      role: "Manager Finance",
+      job_type: "1",
+      employment_type: "1",
+      preferred_shift: "1",
+      available_join: "12-10-2022",
+      expected_salary: "2000",
+      city_id: "31320",
+      state_id: "2728",
+      country_id: "166",
+    },
+  });
+
+  var config = {
+    method: "post",
+    url: `${URL}/profile/update_desiredcareer`,
+    headers: {
+      Authorization: `Bearer ${state.authToken}`,
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      if (response.data.successful) {
+        toast.success("Updated Successfully!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        dispatch({
+          type: "SetDesiredCareer",
+          data: response.data.data,
+        });
+
+      
       } else {
         toast.error(response.data.message, {
           position: "top-right",

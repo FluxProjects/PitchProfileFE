@@ -87,46 +87,61 @@ export default function EmploymentsComponent({}) {
             <div className="row">
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">Organization</h6>
-                <p className="m-b0">W3itexperts</p>
+                <p className="m-b0">{item.organization}</p>
               </div>
 
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">Industry</h6>
-                <p className="m-b0">W3itexperts</p>
+                <p className="m-b0">
+                  {state?.industries.findIndex(
+                    (x) => x?.id == item?.industry_id
+                  ) == -1
+                    ? ""
+                    : state?.industries[
+                        state?.industries.findIndex(
+                          (x) => x?.id == item?.industry_id
+                        )
+                      ].name}
+                </p>
               </div>
 
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">Department</h6>
-                <p className="m-b0">lorem</p>
+                <p className="m-b0">
+                  {state?.departments.findIndex(
+                    (x) => x?.id == item?.industry_id
+                  ) == -1
+                    ? ""
+                    : state?.departments[
+                        state?.departments.findIndex(
+                          (x) => x?.id == item?.industry_id
+                        )
+                      ].name}
+                </p>
               </div>
 
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">Designation</h6>
-                <p className="m-b0">doret</p>
+                <p className="m-b0">{item.role}</p>
               </div>
 
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">Start Date</h6>
-                <p className="m-b0">doret</p>
+                <p className="m-b0">{item.start_date}</p>
               </div>
 
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">End Date</h6>
-                <p className="m-b0">doret</p>
+                <p className="m-b0">{item.end_date}</p>
               </div>
 
               <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
                 <h6 className="font-14 m-b0">Description</h6>
-                <p className="m-b0">
-                  lorem ipsum doret lorem ipsum doretlorem ipsum doretlorem
-                  ipsum doretlorem ipsum doretlorem ipsum doretlorem ipsum
-                  doretlorem ipsum doretlorem ipsum doretlorem ipsum doretlorem
-                  ipsum doretlorem ipsum doretlorem ipsum doret
-                </p>
+                <p className="m-b0">{item.description}</p>
               </div>
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">Current Job</h6>
-                <p className="m-b0">Yes</p>
+                <p className="m-b0">{item.is_current == true ? "Yes" : "No"}</p>
               </div>
             </div>
           </>
@@ -140,26 +155,6 @@ export default function EmploymentsComponent({}) {
       >
         <EmploymentsModalComp
           data={state.candidateEmployments[modalDataIndex]}
-          id={
-            state.candidateEmployments[modalDataIndex]
-              ? state.candidateEmployments[modalDataIndex].id
-              : ""
-          }
-          industryProp={
-            state.candidateEmployments[modalDataIndex]
-              ? state.candidateEmployments[modalDataIndex].industry_id
-              : ""
-          }
-          departmentProp={
-            state.candidateEmployments[modalDataIndex]
-              ? state.candidateEmployments[modalDataIndex].department_id
-              : ""
-          }
-          isCurrentProp={
-            state.candidateEmployments[modalDataIndex]
-              ? state.candidateEmployments[modalDataIndex].is_current
-              : ""
-          }
           isUpdate={updateData}
           index={modalDataIndex}
           handleClose={() => handleClose()}

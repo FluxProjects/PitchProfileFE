@@ -21,6 +21,7 @@ const initialState = {
   candidateCertificates: [],
   candidateReferences: [],
   candidateSocialProfiles: [],
+  candidateDesiredCareer: {},
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -87,8 +88,14 @@ const changeState = (state = initialState, { type, ...rest }) => {
     case "SetCandidateSocialProfile":
       return {
         ...state,
-        candidateReferences: rest.data,
+        candidateSocialProfiles: rest.data,
       };
+    case "SetDesiredCareer":
+      return {
+        ...state,
+        candidateDesiredCareer: rest.data,
+      };
+
     default:
       return state;
   }

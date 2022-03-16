@@ -9,9 +9,6 @@ import TextInputModal from "../TextInputModal";
 
 export default function EducationsModalComp({
   data,
-  educationLevelProp,
-  departmentProp,
-  isCurrentProp,
   index,
   handleClose,
   isUpdate,
@@ -23,9 +20,13 @@ export default function EducationsModalComp({
   const [institute, setInstitute] = useState(
     isUpdate == true ? data?.institute : ""
   );
-  const [educationLevel, setEducationLevel] = useState(educationLevelProp);
+  const [educationLevel, setEducationLevel] = useState(
+    isUpdate == true ? data?.education_level_id : 0
+  );
 
-  const [department, setDepartment] = useState(departmentProp);
+  const [department, setDepartment] = useState(
+    isUpdate == true ? data?.department_id : 0
+  );
 
   const [course, setCourse] = useState(isUpdate == true ? data?.course : "");
 
@@ -33,7 +34,9 @@ export default function EducationsModalComp({
     isUpdate == true ? data?.startDate : ""
   );
   const [endDate, setEndDate] = useState(isUpdate == true ? data?.endDate : "");
-  const [isCurrent, setIsCurrent] = useState(isCurrentProp);
+  const [isCurrent, setIsCurrent] = useState(
+    isUpdate == true ? data?.is_current : true
+  );
 
   const callAction = async () => {
     if (isUpdate) {
@@ -57,13 +60,12 @@ export default function EducationsModalComp({
       await dispatch(
         AddCandidateEducation(
           institute,
-          educationLevel,
           department,
+          educationLevel,
           course,
           startDate,
           endDate,
           isCurrent,
-          index,
           handleClose()
         )
       );

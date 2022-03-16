@@ -3,7 +3,12 @@ import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { GetCities, GetCountries, GetStates } from "../../../redux/action";
+import {
+  GetCities,
+  GetCountries,
+  GetStates,
+  UpdateDesiredCareer,
+} from "../../../redux/action";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
@@ -69,6 +74,10 @@ export default function DesiredCareerProfileComponent({}) {
   };
   const CallGetCities = async (stateId) => {
     await dispatch(GetCities(stateId));
+  };
+
+  const callUpdateDesiredCareer = async () => {
+    await dispatch(UpdateDesiredCareer());
   };
 
   if (loading) {
@@ -375,7 +384,14 @@ export default function DesiredCareerProfileComponent({}) {
                   >
                     Cancel
                   </button>
-                  <button type="button" className="site-button">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      callUpdateDesiredCareer();
+                    }}
+                    type="button"
+                    className="site-button"
+                  >
                     Save
                   </button>
                 </div>

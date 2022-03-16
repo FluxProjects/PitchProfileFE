@@ -6,6 +6,7 @@ import {
   DeleteCandidateSocialProfile,
   GetCandidateSocialProfiles,
 } from "../../../redux/action";
+import { socialPlatformDrop } from "../../../utils/DropDownUtils";
 import SocialProfilesModalComp from "./Modals/SocialProfilesModalComp";
 
 export default function SocialProfilesComponent({}) {
@@ -56,47 +57,57 @@ export default function SocialProfilesComponent({}) {
         </div>
 
         {/* map */}
-        {state.candidateSocialProfiles.map((item, index) => (
-          <>
-            <h6 className="font-14 mt-5 m-b0">
-              {/* Project Board Edit{" "} */}
-              <span className="float-right">
-                <span
-                  onClick={() => {
-                    setUpdateData(true);
-                    setModalDataIndex(index);
-                    handleShow();
-                  }}
-                  className="site-button add-btn button-sm"
-                >
-                  <i className="fa fa-pencil m-r5"></i> Edit
+        {state.candidateSocialProfiles != null &&
+          state.candidateSocialProfiles.map((item, index) => (
+            <>
+              <h6 className="font-14 mt-5 m-b0">
+                {/* Project Board Edit{" "} */}
+                <span className="float-right">
+                  <span
+                    onClick={() => {
+                      setUpdateData(true);
+                      setModalDataIndex(index);
+                      handleShow();
+                    }}
+                    className="site-button add-btn button-sm"
+                  >
+                    <i className="fa fa-pencil m-r5"></i> Edit
+                  </span>
+                  <span
+                    onClick={() => {
+                      console.log("tests", index);
+
+                      deleteCandidateVal(item.id, index);
+                    }}
+                    className="m-l15 cursorPointer font-14"
+                  >
+                    <i className="fa fa-minus text-danger"></i>
+                  </span>
                 </span>
-                <span
-                  onClick={() => {
-                    console.log("tests", index);
+              </h6>
 
-                    deleteCandidateVal(item.id, index);
-                  }}
-                  className="m-l15 cursorPointer font-14"
-                >
-                  <i className="fa fa-minus text-danger"></i>
-                </span>
-              </span>
-            </h6>
+              <div className="row">
+                <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+                  <h6 className="font-14 m-b0">Platform</h6>
 
-            <div className="row">
-              <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-                <h6 className="font-14 m-b0">Platform</h6>
-                <p className="m-b0">facebook</p>
+                  <p className="m-b0">
+                    {
+                      socialPlatformDrop[
+                        socialPlatformDrop.findIndex(
+                          (x) => x.id == item.social_profile_id
+                        )
+                      ].name
+                    }
+                  </p>
+                </div>
+
+                <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
+                  <h6 className="font-14 m-b0">URL</h6>
+                  <p className="m-b0">{item.url}</p>
+                </div>
               </div>
-
-              <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-                <h6 className="font-14 m-b0">URL</h6>
-                <p className="m-b0">fb.com</p>
-              </div>
-            </div>
-          </>
-        ))}
+            </>
+          ))}
       </div>
       <Modal
         show={show}
@@ -104,15 +115,19 @@ export default function SocialProfilesComponent({}) {
         className="modal fade modal-bx-info editor"
       >
         <SocialProfilesModalComp
-          data={state.candidateSocialProfiles[modalDataIndex]}
+          data={
+            state?.candidateSocialProfiles != null &&
+            state?.candidateSocialProfiles[modalDataIndex]
+          }
           id={
-            state.candidateSocialProfiles[modalDataIndex]
-              ? state.candidateSocialProfiles[modalDataIndex].id
+            state?.candidateSocialProfiles != null
+              ? state?.candidateSocialProfiles[modalDataIndex]?.id
               : ""
           }
           socialProfileProp={
-            state.candidateSocialProfiles[modalDataIndex]
-              ? state.candidateSocialProfiles[modalDataIndex].social_profile_id
+            state?.candidateSocialProfiles != null
+              ? state?.candidateSocialProfiles[modalDataIndex]
+                  ?.social_profile_id
               : ""
           }
           isUpdate={updateData}

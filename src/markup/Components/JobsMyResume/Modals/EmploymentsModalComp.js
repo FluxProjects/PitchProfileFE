@@ -10,9 +10,6 @@ import TextInputModal from "../TextInputModal";
 
 export default function EmploymentsModalComp({
   data,
-  industryProp,
-  departmentProp,
-  isCurrentProp,
   index,
   handleClose,
   isUpdate,
@@ -24,17 +21,25 @@ export default function EmploymentsModalComp({
   const [organization, setOrganization] = useState(
     isUpdate == true ? data?.organization : ""
   );
-  const [industry, setIndustry] = useState(industryProp);
-  const [department, setDepartment] = useState(departmentProp);
+  const [industry, setIndustry] = useState(
+    isUpdate == true ? data?.industry_id : 0
+  );
+  const [department, setDepartment] = useState(
+    isUpdate == true ? data?.department_id : 0
+  );
   const [role, setRole] = useState(isUpdate == true ? data?.role : "");
   const [description, setDescription] = useState(
     isUpdate == true ? data?.description : ""
   );
   const [startDate, setStartDate] = useState(
-    isUpdate == true ? data?.startDate : ""
+    isUpdate == true ? data?.start_date : ""
   );
-  const [endDate, setEndDate] = useState(isUpdate == true ? data?.endDate : "");
-  const [isCurrent, setIsCurrent] = useState(isCurrentProp);
+  const [endDate, setEndDate] = useState(
+    isUpdate == true ? data?.end_date : ""
+  );
+  const [isCurrent, setIsCurrent] = useState(
+    isUpdate == true ? data?.is_current : true
+  );
 
   const callAction = async () => {
     if (isUpdate) {
@@ -66,7 +71,6 @@ export default function EmploymentsModalComp({
           startDate,
           endDate,
           isCurrent,
-          index,
           handleClose()
         )
       );

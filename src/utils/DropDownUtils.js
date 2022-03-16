@@ -9,3 +9,9 @@ export const skillTypeDrop = [
   { id: 1, name: "Business" },
   { id: 2, name: "Technical" },
 ];
+
+export const socialPlatformDrop = [
+  { id: 1, name: "Facebook" },
+  { id: 2, name: "Linkedin" },
+  { id: 3, name: "Instagram" },
+];
