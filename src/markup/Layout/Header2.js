@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Modal } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 var bnr3 = require("./../../images/background/bg3.jpg");
 
 export default function Header2() {
+  const state = useSelector((state) => state);
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -106,7 +108,9 @@ export default function Header2() {
                 <div className="testimonial-picHead radius">
                   <img
                     src={
-                      "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+                      state.userDetails.pic != null
+                        ? state.userDetails.pic
+                        : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
                     }
                     alt=""
                     width="20"

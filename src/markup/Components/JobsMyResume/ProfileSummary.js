@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { UpdateCandidateSummary } from "../../../redux/action";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 
 export default function ProfileSummary({}) {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState(state.userDetails.summary);
 
   const handleClose = () => {
     setShow(false);
   };
   const handleShow = () => {
     setShow(true);
+  };
+
+  const callUpdateCandidateSummary = async () => {
+    dispatch(UpdateCandidateSummary(description, handleClose()));
   };
 
   return (
@@ -89,7 +97,14 @@ export default function ProfileSummary({}) {
                 >
                   Cancel
                 </button>
-                <button type="button" className="site-button">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    callUpdateCandidateSummary();
+                  }}
+                  type="button"
+                  className="site-button"
+                >
                   Save
                 </button>
               </div>
