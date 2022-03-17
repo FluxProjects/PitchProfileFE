@@ -1442,7 +1442,7 @@ export const UpdateCandidateReference =
 
     var config = {
       method: "post",
-      url: `${URL}/profile/update_candidatecereference`,
+      url: `${URL}/profile/update_candidatereference`,
       headers: {
         Authorization: `Bearer ${state().authToken}`,
         "Content-Type": "application/json",
@@ -2185,8 +2185,6 @@ export const UpdateDesiredCareer = (status) => async (dispatch, state) => {
           type: "SetDesiredCareer",
           data: response.data.data,
         });
-
-      
       } else {
         toast.error(response.data.message, {
           position: "top-right",

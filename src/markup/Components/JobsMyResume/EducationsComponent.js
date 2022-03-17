@@ -96,13 +96,15 @@ export default function EducationsComponent({}) {
                 <div className="clearfix m-b20">
                   <label className="m-b0">Education Level</label>
                   <span className="clearfix font-13">
-                    {/* {
-                      state?.educationLevels[
-                        state?.educationLevels.findIndex(
-                          (x) => x?.id == item?.education_level_id
-                        )
-                      ].name
-                    } */}
+                    {state?.educationLevels.findIndex(
+                      (x) => x?.id == item?.education_level_id
+                    ) != -1
+                      ? state?.educationLevels[
+                          state?.educationLevels.findIndex(
+                            (x) => x?.id == item?.education_level_id
+                          )
+                        ].name
+                      : ""}
                   </span>
                 </div>
               </div>

@@ -18,7 +18,7 @@ export default function EducationsModalComp({
   const dispatch = useDispatch();
 
   const [institute, setInstitute] = useState(
-    isUpdate == true ? data?.institute : ""
+    isUpdate == true ? data.institute : ""
   );
   const [educationLevel, setEducationLevel] = useState(
     isUpdate == true ? data?.education_level_id : 0
@@ -31,9 +31,11 @@ export default function EducationsModalComp({
   const [course, setCourse] = useState(isUpdate == true ? data?.course : "");
 
   const [startDate, setStartDate] = useState(
-    isUpdate == true ? data?.startDate : ""
+    isUpdate == true ? data?.start_date : ""
   );
-  const [endDate, setEndDate] = useState(isUpdate == true ? data?.endDate : "");
+  const [endDate, setEndDate] = useState(
+    isUpdate == true ? data?.end_date : ""
+  );
   const [isCurrent, setIsCurrent] = useState(
     isUpdate == true ? data?.is_current : true
   );
@@ -123,6 +125,7 @@ export default function EducationsModalComp({
                     <label>Education Level</label>
                     <DropDownModalComponent
                       onChange={(e) => {
+                        console.log("testing ", e.target.value);
                         setEducationLevel(e.target.value);
                       }}
                       value={educationLevel}
