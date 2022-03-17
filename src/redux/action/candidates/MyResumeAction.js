@@ -2054,19 +2054,44 @@ export const UploadProfileVid = (filePath) => async (dispatch, state) => {
     redirect: "follow",
   };
 
-  fetch(`${URL}/profile/profilevideo`, requestOptions)
-    .then((response) => response.text())
-    .then((result) => {
-      toast.success("Update Success!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      console.log(result);
+  await fetch(`${URL}/profile/profilevideo`, requestOptions)
+    .then((res) => res.json())
+    .then((response) => {
+      console.log(",video up", response);
+      if (response.data.successful) {
+        console.log("data", response.data);
+        toast.success("Update Success!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        var resData = state().userDetails;
+        resData.is_active = response.data.data.status;
+
+        dispatch({
+          type: "RegisterUser",
+          data: resData,
+        });
+        dispatch({
+          type: "SetAuthToken",
+          data: response.data.accessToken,
+        });
+      } else {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     })
     .catch((error) => console.log("error", error));
 };
@@ -2140,39 +2165,84 @@ export const UploadProfileStatus = (status) => async (dispatch, state) => {
     });
 };
 
-export const UpdateDesiredCareer = (status) => async (dispatch, state) => {
-  var data = JSON.stringify({
-    dc_data: {
-      candidate_id: state().userDetails.id,
-      industry_id: "1",
-      department_id: "1",
-      role: "Manager Finance",
-      job_type: "1",
-      employment_type: "1",
-      preferred_shift: "1",
-      available_join: "12-10-2022",
-      expected_salary: "2000",
-      city_id: "31320",
-      state_id: "2728",
-      country_id: "166",
-    },
-  });
+export const UpdateDesiredCareer =
+  (
+    industry_id,
+    department_id,
+    role,
+    job_type,
+    employment_type,
+    preferred_shift,
+    available_join,
+    expected_salary,
+    city_id,
+    state_id,
+    country_id,
+    handleClose
+  ) =>
+  async (dispatch, state) => {
+    var data = JSON.stringify({
+      data: {
+        candidate_id: state().userDetails.id,
+        industry_id,
+        department_id,
+        role,
+        job_type,
+        employment_type,
+        preferred_shift,
+        available_join,
+        expected_salary,
+        city_id,
+        state_id,
+        country_id,
+      },
+    });
 
-  var config = {
-    method: "post",
-    url: `${URL}/profile/update_desiredcareer`,
-    headers: {
-      Authorization: `Bearer ${state.authToken}`,
-      "Content-Type": "application/json",
-    },
-    data: data,
-  };
+    var config = {
+      method: "post",
+      url: `${URL}/profile/update_desiredcareer`,
+      headers: {
+        Authorization: `Bearer ${state.authToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
 
-  axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      if (response.data.successful) {
-        toast.success("Updated Successfully!", {
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        if (response.data.successful) {
+          toast.success("Updated Successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          dispatch({
+            type: "SetDesiredCareer",
+            data: response.data.data,
+          });
+          if (handleClose) {
+            handleClose();
+          }
+        } else {
+          toast.error(response.data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+        toast.error(error, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -2181,9 +2251,23 @@ export const UpdateDesiredCareer = (status) => async (dispatch, state) => {
           draggable: true,
           progress: undefined,
         });
+      });
+  };
+
+export const GetDesiredCareer = () => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/profile/get_desiredcareer/${state().userDetails.id}`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log("GetDesiredCareer", response.data);
+      if (response.data.successful) {
         dispatch({
           type: "SetDesiredCareer",
-          data: response.data.data,
+          data: response.data.data[0],
         });
       } else {
         toast.error(response.data.message, {
@@ -2198,15 +2282,6 @@ export const UpdateDesiredCareer = (status) => async (dispatch, state) => {
       }
     })
     .catch(function (error) {
-      console.error(error);
-      toast.error(error, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      console.log(error);
     });
 };

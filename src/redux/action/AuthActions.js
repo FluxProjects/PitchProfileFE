@@ -74,7 +74,7 @@ export const registerUser =
 export const LogoutUser = (router) => async (dispatch) => {
   dispatch({
     type: "RegisterUser",
-    data: [],
+    data: {},
   });
   dispatch({
     type: "SetAuthToken",

@@ -6,47 +6,105 @@ import { Link } from "react-router-dom";
 import {
   GetCities,
   GetCountries,
+  GetDesiredCareer,
   GetStates,
   UpdateDesiredCareer,
 } from "../../../redux/action";
+import {
+  employmentTypeDrop,
+  jobTypeDrop,
+  shiftDrop,
+} from "../../../utils/DropDownUtils";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
 export default function DesiredCareerProfileComponent({}) {
+  const item = useSelector((state) => state.candidateDesiredCareer);
+  const state = useSelector((state) => state);
+
   const DesiredCareerProfileFields = [
     {
       name: "Industry",
-      desc: "IT-Software/Software Services",
+      desc:
+        state?.industries.findIndex((x) => x?.id == item?.industry_id) == -1
+          ? ""
+          : state?.industries[
+              state?.industries.findIndex((x) => x?.id == item?.industry_id)
+            ].name,
     },
     {
       name: "Department",
-      desc: "Design / Creative / User Experience",
+      desc:
+        state?.departments.findIndex((x) => x?.id == item?.department_id) == -1
+          ? ""
+          : state?.departments[
+              state?.departments.findIndex((x) => x?.id == item?.department_id)
+            ].name,
     },
     {
       name: "Role",
-      desc: "Web Designer",
+      desc: item.role,
     },
     {
       name: "Employment Type",
-      desc: "Full Time",
+      desc:
+        employmentTypeDrop.findIndex((x) => x?.id == item.employment_type) == -1
+          ? ""
+          : employmentTypeDrop[
+              employmentTypeDrop.findIndex((x) => x?.id == item.employment_type)
+            ].name,
     },
     {
       name: "Job Type",
-      desc: "Permanent",
+      desc:
+        shiftDrop.findIndex((x) => x?.id == item.job_type) == -1
+          ? ""
+          : shiftDrop[shiftDrop.findIndex((x) => x?.id == item.job_type)].name,
     },
     {
       name: "Shift",
-      desc: "Morning",
+      desc:
+        jobTypeDrop.findIndex((x) => x?.id == item.preferred_shift) == -1
+          ? ""
+          : jobTypeDrop[
+              jobTypeDrop.findIndex((x) => x?.id == item.preferred_shift)
+            ].name,
     },
     {
       name: "Expected Salary",
-      desc: "$ 2000",
+      desc: item?.expected_salary,
     },
     {
       name: "Availability To Join",
-      desc: "12 July 2022",
+      desc: item.available_join,
     },
   ];
+
+  const [industry, setIndustry] = useState(
+    item?.industry_id ? item?.industry_id : 1
+  );
+  const [department, setDepartment] = useState(
+    item?.department_id ? item?.department_id : 1
+  );
+  const [role, setRole] = useState(item?.role ? item?.role : "");
+  const [jobType, setJobType] = useState(item?.job_type ? item?.job_type : "");
+  const [employmentType, setEmploymentType] = useState(
+    item?.employment_type ? item?.employment_type : ""
+  );
+  const [shift, setShift] = useState(
+    item?.preferred_shift ? item?.preferred_shift : ""
+  );
+  const [availableJoin, setAvailableJoin] = useState(
+    item?.available_join ? item?.available_join : ""
+  );
+  const [expSalary, setExpSalary] = useState(
+    item?.expected_salary ? item?.expected_salary : ""
+  );
+  const [country, setCountry] = useState(
+    item?.country_id ? item?.country_id : ""
+  );
+  const [city, setCity] = useState(item?.city_id ? item?.city_id : "");
+  const [cstate, setCState] = useState(item?.state_id ? item?.state_id : "");
 
   const [show, setShow] = useState(false);
 
@@ -57,14 +115,23 @@ export default function DesiredCareerProfileComponent({}) {
     setShow(true);
   };
 
+  const CallGetStates = async (stateId) => {
+    await dispatch(GetStates(stateId));
+  };
+
   const [loading, setLoading] = useState(true);
 
-  const state = useSelector((state) => state);
   const dispatch = useDispatch();
   useEffect(() => {
     //  to get languages
     CallGetDropDown();
+    callGetDesiredCareer();
   }, []);
+
+  const callGetDesiredCareer = async () => {
+    dispatch(GetDesiredCareer());
+  };
+
   const CallGetDropDown = async () => {
     if (state.countries.length < 1) await dispatch(GetCountries());
     if (state.states.length < 1) await dispatch(GetStates());
@@ -77,7 +144,22 @@ export default function DesiredCareerProfileComponent({}) {
   };
 
   const callUpdateDesiredCareer = async () => {
-    await dispatch(UpdateDesiredCareer());
+    await dispatch(
+      UpdateDesiredCareer(
+        industry,
+        department,
+        role,
+        jobType,
+        employmentType,
+        shift,
+        availableJoin,
+        expSalary,
+        city,
+        cstate,
+        country,
+        handleClose()
+      )
+    );
   };
 
   if (loading) {
@@ -131,41 +213,40 @@ export default function DesiredCareerProfileComponent({}) {
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
                           <label>Industry</label>
-                          <Form.Control as="select">
-                            <option>Accounting / Finance</option>
-                            <option>
-                              Banking / Financial Services / Broking
-                            </option>
-                            <option>Education / Teaching / Training</option>
-                            <option>IT-Hardware &amp; Networking</option>
-                            <option>Other</option>
-                          </Form.Control>
+                          <DropDownModalComponent
+                            onChange={(e) => {
+                              console.log("eee", e.target.value);
+                              setIndustry(e.target.value);
+                            }}
+                            value={industry}
+                            options={state.industries}
+                          />
                         </div>
                       </div>
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
                           <label>Department</label>
-                          <Form.Control as="select">
-                            <option>Agent</option>
-                            <option>Architecture / Interior Design</option>
-                            <option>Beauty / Fitness / Spa Services</option>
-                            <option>IT Hardware / Technical Support</option>
-                            <option>IT Software - System Programming</option>
-                            <option>Other</option>
-                          </Form.Control>
+                          <DropDownModalComponent
+                            onChange={(e) => {
+                              console.log("eee", e.target.value);
+                              setDepartment(e.target.value);
+                            }}
+                            value={department}
+                            options={state.departments}
+                          />
                         </div>
                       </div>
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
                           <label>Role</label>
-                          <Form.Control as="select">
-                            <option>Creative</option>
-                            <option>Web Designer</option>
-                            <option>Graphic Designer</option>
-                            <option>National Creative Director</option>
-                            <option>Fresher</option>
-                            <option>Other</option>
-                          </Form.Control>
+                          <TextInputModal
+                            onChange={(e) => {
+                              console.log(e.target.value);
+                              setRole(e.target.value);
+                            }}
+                            value={role}
+                            placeholder="Enter Role"
+                          />
                         </div>
                       </div>
                       <div className="col-lg-12 col-md-12 ">
@@ -179,6 +260,9 @@ export default function DesiredCareerProfileComponent({}) {
                                   className="custom-control-input"
                                   id="permanent"
                                   name="example1"
+                                  checked={jobType == 0 ? true : false}
+                                  value={0}
+                                  onChange={() => setJobType(0)}
                                 />
                                 <label
                                   className="custom-control-label"
@@ -195,6 +279,9 @@ export default function DesiredCareerProfileComponent({}) {
                                   className="custom-control-input"
                                   id="contractual"
                                   name="example1"
+                                  checked={jobType == 1 ? true : false}
+                                  value={1}
+                                  onChange={() => setJobType(1)}
                                 />
                                 <label
                                   className="custom-control-label"
@@ -218,6 +305,9 @@ export default function DesiredCareerProfileComponent({}) {
                                   className="custom-control-input"
                                   id="fulltime"
                                   name="example1"
+                                  checked={employmentType == 1 ? true : false}
+                                  value={1}
+                                  onChange={() => setEmploymentType(1)}
                                 />
                                 <label
                                   className="custom-control-label"
@@ -234,6 +324,9 @@ export default function DesiredCareerProfileComponent({}) {
                                   className="custom-control-input"
                                   id="parttime"
                                   name="example1"
+                                  checked={employmentType == 2 ? true : false}
+                                  value={2}
+                                  onChange={() => setEmploymentType(2)}
                                 />
                                 <label
                                   className="custom-control-label"
@@ -257,6 +350,9 @@ export default function DesiredCareerProfileComponent({}) {
                                   className="custom-control-input"
                                   id="day"
                                   name="example1"
+                                  checked={shift == 1 ? true : false}
+                                  value={1}
+                                  onChange={() => setShift(1)}
                                 />
                                 <label
                                   className="custom-control-label"
@@ -273,6 +369,9 @@ export default function DesiredCareerProfileComponent({}) {
                                   className="custom-control-input"
                                   id="night"
                                   name="example1"
+                                  checked={shift == 2 ? true : false}
+                                  value={2}
+                                  onChange={() => setShift(2)}
                                 />
                                 <label
                                   className="custom-control-label"
@@ -289,6 +388,9 @@ export default function DesiredCareerProfileComponent({}) {
                                   className="custom-control-input"
                                   id="flexible"
                                   name="example1"
+                                  checked={shift == 3 ? true : false}
+                                  value={3}
+                                  onChange={() => setShift(3)}
                                 />
                                 <label
                                   className="custom-control-label"
@@ -307,8 +409,9 @@ export default function DesiredCareerProfileComponent({}) {
                           <TextInputModal
                             type="date"
                             onChange={(e) => {
-                              console.log(e.target.value);
+                              setAvailableJoin(e.target.value);
                             }}
+                            value={availableJoin}
                           />
                         </div>
                       </div>
@@ -317,9 +420,11 @@ export default function DesiredCareerProfileComponent({}) {
                           <label>Expected Salary</label>
                           <TextInputModal
                             placeholder="Enter your Expected Salary"
-                            onChange={() => {
-                              console.log("test");
+                            onChange={(e) => {
+                              console.log("tesing ", e.target.value);
+                              setExpSalary(e.target.value);
                             }}
+                            value={expSalary}
                           />
                         </div>
                       </div>
@@ -334,12 +439,13 @@ export default function DesiredCareerProfileComponent({}) {
                       <div className="col-lg-4 col-md-4 mt-0 col-sm-12">
                         <div className="form-group">
                           <label>Country:</label>
-                          {/* <DropdownSearch items={state.countries} /> */}
                           <DropDownModalComponent
                             onChange={(e) => {
                               console.log("eee", e.target.value);
-                              CallGetCities(e.target.value);
+                              CallGetStates(e.target.value);
+                              setCountry(e.target.value);
                             }}
+                            value={country}
                             options={state.countries}
                           />
                         </div>
@@ -351,8 +457,10 @@ export default function DesiredCareerProfileComponent({}) {
                           <DropDownModalComponent
                             onChange={(e) => {
                               console.log("eee", e.target.value);
-                              //   setLastUsed(e.target.value);
+                              CallGetCities(e.target.value);
+                              setCState(e.target.value);
                             }}
+                            value={cstate}
                             options={state.states}
                           />
                         </div>
@@ -364,8 +472,9 @@ export default function DesiredCareerProfileComponent({}) {
                           <DropDownModalComponent
                             onChange={(e) => {
                               console.log("eee", e.target.value);
-                              //   setLastUsed(e.target.value);
+                              setCity(e.target.value);
                             }}
+                            value={city}
                             options={state.cities}
                           />
                         </div>
@@ -414,17 +523,17 @@ export default function DesiredCareerProfileComponent({}) {
 
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
               <h6 className="font-14 m-b0">City</h6>
-              <p className="m-b0">London</p>
+              <p className="m-b0">{item.city_id}</p>
             </div>
 
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
               <h6 className="font-14 m-b0">State</h6>
-              <p className="m-b0">England</p>
+              <p className="m-b0">{item.state_id}</p>
             </div>
 
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
               <h6 className="font-14 m-b0">Country</h6>
-              <p className="m-b0">United Kingdom</p>
+              <p className="m-b0">{item.country_id}</p>
             </div>
           </div>
         </div>

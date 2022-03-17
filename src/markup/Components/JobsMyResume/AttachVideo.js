@@ -33,24 +33,45 @@ export default function AttachVideo({}) {
           }}
         >
           <div className="row">
-            <div className="col-lg-12 col-md-12">
-              <div className="form-group">
-                <div className="custom-file">
-                  <p className="m-auto text-white align-self-center">
-                    <i className="fa  fa-upload"></i>
-                    Upload Video File
-                  </p>
-                  <input
-                    type="file"
-                    className="site-button form-control"
-                    id="customFile"
-                    onChange={(e) => {
-                      dispatch(UploadProfileVid(e.target.value));
-                    }}
-                  />
+            {state.userDetails.video != null ? (
+              <div className="col-lg-12 col-md-12">
+                <div className="form-group">
+                  <div className="custom-file">
+                    <video width="320" height="240" controls>
+                      <source src={state.userDetails.video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    <input
+                      type="file"
+                      className="site-button form-control"
+                      id="customFile"
+                      onChange={(e) => {
+                        dispatch(UploadProfileVid(e.target.value));
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="col-lg-12 col-md-12">
+                <div className="form-group">
+                  <div className="custom-file">
+                    <p className="m-auto text-white align-self-center">
+                      <i className="fa  fa-upload"></i>
+                      Upload Video File
+                    </p>
+                    <input
+                      type="file"
+                      className="site-button form-control"
+                      id="customFile"
+                      onChange={(e) => {
+                        dispatch(UploadProfileVid(e.target.value));
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </form>
       </div>

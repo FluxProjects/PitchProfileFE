@@ -15,3 +15,19 @@ export const socialPlatformDrop = [
   { id: 2, name: "Linkedin" },
   { id: 3, name: "Instagram" },
 ];
+
+export const employmentTypeDrop = [
+  { id: 1, name: "Full Time" },
+  { id: 2, name: "Part Time" },
+];
+
+export const shiftDrop = [
+  { id: 0, name: "Permanent" },
+  { id: 1, name: "Contractual" },
+];
+
+export const jobTypeDrop = [
+  { id: 1, name: "Day" },
+  { id: 2, name: "Night" },
+  { id: 2, name: "Part Time" },
+];
