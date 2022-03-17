@@ -22,7 +22,9 @@ export default function EmploymentsModalComp({
 
   const [show, setShow] = useState(false);
 
-  const [socialProfile, setSocialProfile] = useState(socialProfileProp);
+  const [socialProfile, setSocialProfile] = useState(
+    isUpdate == true ? socialProfileProp : 1
+  );
   const [url, setUrl] = useState(isUpdate == true ? data?.url : "");
   const [description, setDescription] = useState(
     isUpdate == true ? data?.description : ""

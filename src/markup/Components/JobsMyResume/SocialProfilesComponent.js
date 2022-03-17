@@ -91,13 +91,15 @@ export default function SocialProfilesComponent({}) {
                   <h6 className="font-14 m-b0">Platform</h6>
 
                   <p className="m-b0">
-                    {
-                      socialPlatformDrop[
-                        socialPlatformDrop.findIndex(
-                          (x) => x.id == item.social_profile_id
-                        )
-                      ].name
-                    }
+                    {socialPlatformDrop.findIndex(
+                      (x) => x.id == item.social_profile_id
+                    ) != -1
+                      ? socialPlatformDrop[
+                          socialPlatformDrop.findIndex(
+                            (x) => x.id == item.social_profile_id
+                          )
+                        ].name
+                      : ""}
                   </p>
                 </div>
 

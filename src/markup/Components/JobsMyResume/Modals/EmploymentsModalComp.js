@@ -38,7 +38,7 @@ export default function EmploymentsModalComp({
     isUpdate == true ? data?.end_date : ""
   );
   const [isCurrent, setIsCurrent] = useState(
-    isUpdate == true ? data?.is_current : true
+    isUpdate == true ? data?.is_current : false
   );
 
   const callAction = async () => {
