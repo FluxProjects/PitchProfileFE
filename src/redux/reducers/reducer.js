@@ -28,9 +28,11 @@ const changeState = (state = initialState, { type, ...rest }) => {
   switch (type) {
     case "set":
       return { ...state, ...rest };
+
     //  Auth actions
     case "RegisterUser":
       return { ...state, userDetails: rest.data };
+
     case "SetAuthToken":
       return { ...state, authToken: rest.data };
 

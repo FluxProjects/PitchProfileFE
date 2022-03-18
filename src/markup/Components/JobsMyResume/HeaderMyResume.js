@@ -6,6 +6,7 @@ import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import {
   UpdateCandidateSummary,
+  UploadImage,
   UploadProfileImg,
 } from "../../../redux/action";
 import AttachVideo from "./AttachVideo";
@@ -21,7 +22,6 @@ export default function HeaderMyResume({}) {
   const [ResumeHeadline, setResumeHeadline] = useState(
     state.userDetails.summary
   );
-  const [ProfileImg, setProfileImg] = useState("");
 
   const userDetail = useSelector((state) => state.userDetails);
 
@@ -61,8 +61,8 @@ export default function HeaderMyResume({}) {
                 type="file"
                 onChange={(e) => {
                   console.log("eeee", e.target.value);
-                  setProfileImg(e.target.value);
-                  dispatch(UploadProfileImg(e.target.value));
+
+                  dispatch(UploadImage(e.target.files));
                 }}
                 className="update-flie"
               />
