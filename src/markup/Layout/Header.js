@@ -235,6 +235,12 @@ export default function Header() {
                                 ? state.userDetails.pic
                                 : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
                             }
+                            style={{
+                              minHeight: "55px",
+                              maxHeight: "55px",
+                              maxWidth: "60px",
+                              minWidth: "60px",
+                            }}
                             alt=""
                             width="20"
                             height="20"

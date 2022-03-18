@@ -82,6 +82,12 @@ export default function Header2() {
                     src={require("./../../images/logo.png")}
                     className="logo"
                     alt=""
+                    style={{
+                      minHeight: "55px",
+                      maxHeight: "55px",
+                      maxWidth: "60px",
+                      minWidth: "60px",
+                    }}
                   />
                 </Link>
               </div>

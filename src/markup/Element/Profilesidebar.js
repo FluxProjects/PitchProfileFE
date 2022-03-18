@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { UploadImage } from "../../redux/action";
 
 export default function Profilesidebar(props) {
   const state = useSelector((state) => state);
@@ -31,7 +32,18 @@ export default function Profilesidebar(props) {
         <div className="candidate-detail text-center">
           <div className="canditate-des">
             <Link to={""}>
-              <img alt="" src={props.image} />
+              <img
+                alt=""
+                src={
+                  state.userDetails.pic != null
+                    ? state.userDetails.pic
+                    : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+                }
+                style={{
+                  minHeight: "145px",
+                  maxHeight: "145px",
+                }}
+              />
             </Link>
             <div
               className="upload-link"
@@ -39,7 +51,15 @@ export default function Profilesidebar(props) {
               data-toggle="tooltip"
               data-placement="right"
             >
-              <input type="file" className="update-flie" />
+              <input
+                type="file"
+                onChange={(e) => {
+                  console.log("eeee", e.target.value);
+
+                  dispatch(UploadImage(e.target.files));
+                }}
+                className="update-flie"
+              />
               <i className="fa fa-camera"></i>
             </div>
           </div>

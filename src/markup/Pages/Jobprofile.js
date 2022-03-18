@@ -132,14 +132,7 @@ export default function Jobprofile() {
               <div className="container">
                 <div className="row">
                   <div className="col-xl-3 col-lg-4 m-b30">
-                    <Profilesidebar
-                      image={
-                        state.userDetails.pic != null
-                          ? state.userDetails.pic
-                          : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
-                      }
-                      isActive="Profile"
-                    />
+                    <Profilesidebar isActive="Profile" />
                   </div>
                   <div className="col-xl-9 col-lg-8 m-b30">
                     <div className="job-bx job-profile">

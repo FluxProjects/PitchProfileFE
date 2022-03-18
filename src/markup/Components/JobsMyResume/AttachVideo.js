@@ -38,6 +38,8 @@ export default function AttachVideo({}) {
                 <div class="embed-responsive embed-responsive-16by9">
                   <video width="320" height="240" controls>
                     <source src={state.userDetails.video} type="video/mp4" />
+                    <source src={state.userDetails.video} type="video/wmv" />
+                    <source src={state.userDetails.video} type="video/mkv" />
                     <source src={state.userDetails.video} type="video/mov" />
                     Your browser does not support the video tag.
                   </video>

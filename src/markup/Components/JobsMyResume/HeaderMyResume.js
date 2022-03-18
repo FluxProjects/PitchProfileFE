@@ -49,6 +49,12 @@ export default function HeaderMyResume({}) {
                     ? state.userDetails.pic
                     : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
                 }
+                style={{
+                  minHeight: "110px",
+                  maxHeight: "145px",
+                  maxWidth: "110px",
+                  minWidth: "110px",
+                }}
               />
             </Link>
             <div
