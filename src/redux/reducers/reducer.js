@@ -21,6 +21,7 @@ const initialState = {
   candidateCertificates: [],
   candidateReferences: [],
   candidateSocialProfiles: [],
+  candidateLanguages: [],
   candidateDesiredCareer: {},
 };
 
@@ -32,7 +33,6 @@ const changeState = (state = initialState, { type, ...rest }) => {
     //  Auth actions
     case "RegisterUser":
       return { ...state, userDetails: rest.data };
-
     case "SetAuthToken":
       return { ...state, authToken: rest.data };
 
@@ -96,6 +96,11 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         candidateDesiredCareer: rest.data,
+      };
+    case "SetCandidateLanguages":
+      return {
+        ...state,
+        candidateLanguages: rest.data,
       };
 
     default:

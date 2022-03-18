@@ -13,10 +13,13 @@ import {
   GetLanguages,
   GetStates,
   updateUser,
+  GetCandidateLanguages,
+  AddCandidateLanguages,
 } from "../../redux/action";
 import Header from "../Layout/Header";
 import DropdownSearch from "../Components/JobsMyResume/DropdownSearch";
 import { proficiencyLevelDrop } from "../../utils/DropDownUtils";
+import AddLanguagesForm from "../Components/JobsMyResume/Modals/AddLanguagesForm";
 
 export default function Jobprofile() {
   const state = useSelector((state) => state);
@@ -55,7 +58,12 @@ export default function Jobprofile() {
   useEffect(() => {
     //  to get languages
     CallGetDropDown();
+    CallGetCandidateLanguages();
   }, []);
+
+  const CallGetCandidateLanguages = async () => {
+    await dispatch(GetCandidateLanguages());
+  };
 
   const CallGetDropDown = async () => {
     if (state.languages.length < 1) await dispatch(GetLanguages());
@@ -101,17 +109,20 @@ export default function Jobprofile() {
 
   // handle click event of the Remove button
   const handleRemoveClick = (index) => {
-    const list = [...LangArr];
-    list.splice(index, 1);
-    setLangArr(list);
+    // dispatch(DeleteCandidateLanguages(,index))
+    // const list = [...LangArr];
+    // list.splice(index, 1);
+    // setLangArr(list);
   };
 
   // handle click event of the Add button
   const handleAddClickOption = (i) => {
-    const list = [...LangArr];
-    list.push("");
+    dispatch(AddCandidateLanguages());
 
-    setLangArr(list);
+    // const list = [...LangArr];
+    // list.push("");
+
+    // setLangArr(list);
   };
 
   if (loading) {
@@ -369,56 +380,8 @@ export default function Jobprofile() {
                         </div>
 
                         <div className="col-12">
-                          {LangArr.map((item, i) => (
-                            <div className="row">
-                              <div className="col-lg-3 col-md-3 col-sm-12">
-                                <div className="form-group">
-                                  <label>Languages:</label>
-                                  {/* <DropdownSearch items={state.languages} /> */}
-                                  <DropDownModalComponent
-                                    onChange={(e) => {
-                                      console.log("eee", e.target.value);
-                                    }}
-                                    options={state.languages}
-                                  />
-                                </div>
-                              </div>
-
-                              <div className="col-lg-3 col-md-3 col-sm-12">
-                                <div className="form-group">
-                                  <label>Proficiency Level:</label>
-                                  <DropDownModalComponent
-                                    onChange={(e) => {
-                                      console.log("eee", e.target.value);
-                                    }}
-                                    options={proficiencyLevelDrop}
-                                  />
-                                </div>
-                              </div>
-                              <div className="col-lg-3 col-md-3 col-sm-12">
-                                <span
-                                  onClick={() => {
-                                    handleAddClickOption(i);
-                                  }}
-                                  className="btn btn-primary mt-4"
-                                >
-                                  <i className="fa fa-plus m-r5"></i> Add
-                                </span>
-                              </div>
-
-                              {LangArr.length !== 1 && (
-                                <div className="col-lg-3 col-md-3 col-sm-12">
-                                  <span
-                                    onClick={() => {
-                                      handleRemoveClick(i);
-                                    }}
-                                    className="btn btn-danger mt-4"
-                                  >
-                                    <i className="fa fa-minus m-r5"></i> Remove
-                                  </span>
-                                </div>
-                              )}
-                            </div>
+                          {state.candidateLanguages.map((item, i) => (
+                            <AddLanguagesForm i={i} item={item} />
                           ))}
                         </div>
 

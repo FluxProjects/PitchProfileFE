@@ -44,11 +44,11 @@ export default function Jobmyresume() {
   }, []);
 
   const CallGetDropDown = async () => {
-    if (state.languages.length < 1) await dispatch(GetLanguages());
+    if (state.languages != null) await dispatch(GetLanguages());
 
-    if (state.countries.length < 1) await dispatch(GetCountries());
-    if (state.states.length < 1) await dispatch(GetStates(230));
-    if (state.cities.length < 1) await dispatch(GetCities(3866));
+    if (state.countries != null) await dispatch(GetCountries());
+    if (state.states != null) await dispatch(GetStates(230));
+    if (state.cities != null) await dispatch(GetCities(3866));
 
     setLoading(false);
   };
@@ -239,9 +239,26 @@ export default function Jobmyresume() {
                   <div className="pending-info text-white p-a25">
                     <h5>Pending Action</h5>
                     <ul className="list-check secondry">
-                      <li>Verify Mobile Number</li>
-                      <li>Add Preferred Location</li>
-                      <li>Add Resume</li>
+                      {state.candidateSkills == null ||
+                        (state.candidateSkills.length < 1 && (
+                          <li>No skills added</li>
+                        ))}
+                      {state.candidateEducations == null ||
+                        (state.candidateEducations.length < 1 && (
+                          <li>No education added</li>
+                        ))}
+                      {state.candidateEmployments == null ||
+                        (state.candidateEmployments.length < 1 && (
+                          <li>No employments added</li>
+                        ))}
+                      {state.candidateSocialProfiles == null ||
+                        (state.candidateSocialProfiles.length < 1 && (
+                          <li>No social profiles added</li>
+                        ))}
+
+                      {state.candidateDesiredCareer.role == "" && (
+                        <li>No desired career added</li>
+                      )}
                     </ul>
                   </div>
                 </div>

@@ -173,15 +173,15 @@ export const GetCandidateSkills = () => async (dispatch, state) => {
           data: response.data.data,
         });
       } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.error(response.data.message, {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
         dispatch({
           type: "SetCandidateSkill",
           data: [],
@@ -449,15 +449,15 @@ export const GetCandidateEducations = () => async (dispatch, state) => {
           data: response.data.data,
         });
       } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.error(response.data.message, {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
         dispatch({
           type: "SetCandidateEducation",
           data: [],
@@ -728,15 +728,15 @@ export const GetCandidateEmployments = () => async (dispatch, state) => {
           data: response.data.data,
         });
       } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.error(response.data.message, {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
         dispatch({
           type: "SetCandidateEmployment",
           data: [],
@@ -972,6 +972,120 @@ export const UpdateCandidateProject =
       });
   };
 
+export const GetCandidateLanguages = () => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/profile/get_candidatelanguages/${state().userDetails.id}`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      if (response.data.successful) {
+        dispatch({
+          type: "SetCandidateLanguages",
+          data: response.data.data,
+        });
+      } else {
+        dispatch({
+          type: "SetCandidateLanguages",
+          data: [],
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const AddCandidateLanguages = () => async (dispatch, state) => {
+  var data = {
+    data: {
+      candidate_id: state().userDetails.id,
+      language_id: 1,
+      proficiency_level: 5,
+    },
+  };
+
+  var config = {
+    method: "post",
+    url: `${URL}/profile/add_candidatelanguage`,
+    headers: {},
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      if (response.data.successful) {
+        var resData = state().candidateLanguages;
+        resData.push(response.data.data[0]);
+        dispatch({
+          type: "SetCandidateLanguages",
+          data: resData,
+        });
+      } else {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const DeleteCandidateLanguages = (id,index) => async (dispatch, state) => {
+  var data = JSON.stringify({
+    data: {
+      candidate_id: state().userDetails.id,
+      language_id: id,
+    },
+  });
+
+  var config = {
+    method: "post",
+    url: `${URL}/profile/delete_candidatelanguage`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      if (response.data.successful) {
+        var resData = state().candidateLanguages;
+        resData.splice(index, 1);
+        dispatch({
+          type: "SetCandidateLanguages",
+          data: resData,
+        });
+      } else {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
 export const GetCandidateProjects = () => async (dispatch, state) => {
   console.log("testing");
   var config = {
@@ -991,15 +1105,15 @@ export const GetCandidateProjects = () => async (dispatch, state) => {
           data: response.data.data,
         });
       } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.error(response.data.message, {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
         dispatch({
           type: "SetCandidateProject",
           data: [],
@@ -1239,15 +1353,15 @@ export const GetCandidateCertificates = () => async (dispatch, state) => {
           data: response.data.data,
         });
       } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.error(response.data.message, {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
         dispatch({
           type: "SetCandidateCertificate",
           data: [],
@@ -1517,15 +1631,15 @@ export const GetCandidateReferences = () => async (dispatch, state) => {
           data: response.data.data,
         });
       } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.error(response.data.message, {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
         // dispatch({
         //   type: "SetCandidateReference",
         //   data: [],
@@ -1766,15 +1880,15 @@ export const GetCandidateSocialProfiles = () => async (dispatch, state) => {
           data: response.data.data,
         });
       } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.error(response.data.message, {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
         dispatch({
           type: "SetCandidateSocialProfile",
           data: response.data.data,
@@ -2188,15 +2302,15 @@ export const GetDesiredCareer = () => async (dispatch, state) => {
           data: response.data.data[0],
         });
       } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.error(response.data.message, {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
       }
     })
     .catch(function (error) {

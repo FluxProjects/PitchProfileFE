@@ -69,7 +69,7 @@ export default function Profilesidebar(props) {
                 {state.userDetails.f_name} {state.userDetails.l_name}
               </h4>
               <p className="m-b0">
-                <Link to={""}>Web developer</Link>
+                <Link to={""}>{state.userDetails.summary}</Link>
               </p>
             </div>
           </div>
