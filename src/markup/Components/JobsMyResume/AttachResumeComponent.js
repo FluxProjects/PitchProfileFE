@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { UploadCoverLetter } from "../../../redux/action";
 
 export default function AttachResumeComponent({}) {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-
-  const handleClose = () => {
-    setShow(false);
-  };
-  //   const handleShow = () => {
-  //     setShow(true);
-  //   };
 
   return (
     <>
@@ -23,6 +19,11 @@ export default function AttachResumeComponent({}) {
         <form className="attach-resume">
           <div className="row">
             <div className="col-lg-12 col-md-12">
+              {state.userDetails.cover_letter && (
+                <a download href={state.userDetails.cover_letter}>
+                  Download link
+                </a>
+              )}
               <div className="form-group">
                 <div className="custom-file">
                   <p className="m-auto align-self-center">
@@ -33,6 +34,9 @@ export default function AttachResumeComponent({}) {
                     type="file"
                     className="site-button form-control"
                     id="customFile"
+                    onChange={(e) => {
+                      dispatch(UploadCoverLetter(e.target.files));
+                    }}
                   />
                 </div>
               </div>
@@ -48,12 +52,6 @@ export default function AttachResumeComponent({}) {
           .
         </p> */}
       </div>
-
-      <Modal
-        show={show}
-        onHide={() => handleClose()}
-        className="modal fade modal-bx-info editor"
-      ></Modal>
     </>
   );
 }

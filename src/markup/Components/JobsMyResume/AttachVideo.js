@@ -75,7 +75,8 @@ export default function AttachVideo({}) {
                       className="site-button form-control"
                       id="customFile"
                       onChange={(e) => {
-                        dispatch(UploadProfileVid(e.target.value));
+                        console.log("files", e.target.files);
+                        dispatch(UploadProfileVid(e.target.files));
                       }}
                     />
                   </div>

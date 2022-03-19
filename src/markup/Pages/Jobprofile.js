@@ -7,6 +7,7 @@ import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
 import { useDispatch, useSelector } from "react-redux";
+import { proficiencyLevelDrop } from "../../utils/DropDownUtils";
 import {
   GetCities,
   GetCountries,
@@ -15,11 +16,12 @@ import {
   updateUser,
   GetCandidateLanguages,
   AddCandidateLanguages,
+  DeleteCandidateLanguages,
 } from "../../redux/action";
 import Header from "../Layout/Header";
 import DropdownSearch from "../Components/JobsMyResume/DropdownSearch";
-import { proficiencyLevelDrop } from "../../utils/DropDownUtils";
 import AddLanguagesForm from "../Components/JobsMyResume/Modals/AddLanguagesForm";
+import { Modal } from "react-bootstrap";
 
 export default function Jobprofile() {
   const state = useSelector((state) => state);
@@ -107,22 +109,19 @@ export default function Jobprofile() {
     );
   };
 
-  // handle click event of the Remove button
-  const handleRemoveClick = (index) => {
-    // dispatch(DeleteCandidateLanguages(,index))
-    // const list = [...LangArr];
-    // list.splice(index, 1);
-    // setLangArr(list);
+  const deleteCandidateVal = async (id, index) => {
+    await dispatch(DeleteCandidateLanguages(id, index));
   };
 
-  // handle click event of the Add button
-  const handleAddClickOption = (i) => {
-    dispatch(AddCandidateLanguages());
+  const [show, setShow] = useState(false);
+  const [updateData, setUpdateData] = useState(false);
+  const [modalDataIndex, setModalDataIndex] = useState(0);
 
-    // const list = [...LangArr];
-    // list.push("");
-
-    // setLangArr(list);
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleShow = () => {
+    setShow(true);
   };
 
   if (loading) {
@@ -380,8 +379,88 @@ export default function Jobprofile() {
                         </div>
 
                         <div className="col-12">
-                          {state.candidateLanguages.map((item, i) => (
-                            <AddLanguagesForm i={i} item={item} />
+                          <div className="d-flex">
+                            <h5 className="m-b15">Languages</h5>
+                            <Link
+                              to={"#"}
+                              data-toggle="modal"
+                              data-target="#educations"
+                              onClick={() => {
+                                // setUpdateData(false);
+                                handleShow();
+                              }}
+                              className="site-button add-btn button-sm"
+                            >
+                              <i className="fa fa-plus m-r5"></i> Add
+                            </Link>
+                          </div>
+                          {state.candidateLanguages.map((item, index) => (
+                            <>
+                              <h6 className="font-14 mt-5 m-b0">
+                                {/* Education Board Edit{" "} */}
+                                <span className="float-right">
+                                  <span
+                                    onClick={() => {
+                                      setUpdateData(true);
+                                      setModalDataIndex(index);
+                                      handleShow();
+                                    }}
+                                    className="site-button add-btn button-sm"
+                                  >
+                                    <i className="fa fa-pencil m-r5"></i> Edit
+                                  </span>
+                                  <span
+                                    onClick={() => {
+                                      console.log("tests", index);
+
+                                      deleteCandidateVal(item.id, index);
+                                    }}
+                                    className="m-l15 cursorPointer font-14"
+                                  >
+                                    <i className="fa fa-minus text-danger"></i>
+                                  </span>
+                                </span>
+                              </h6>
+
+                              <div className="row">
+                                <div className="col-lg-4 col-md-6 col-sm-12">
+                                  <div className="clearfix m-b20">
+                                    <label className="m-b0">Language</label>
+                                    <span className="clearfix font-13">
+                                      {state?.languages.findIndex(
+                                        (x) => x?.id == item?.language_id
+                                      ) != -1
+                                        ? state?.languages[
+                                            state?.languages.findIndex(
+                                              (x) => x?.id == item?.language_id
+                                            )
+                                          ].name
+                                        : ""}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div className="col-lg-4 col-md-6 col-sm-12">
+                                  <div className="clearfix m-b20">
+                                    <label className="m-b0">
+                                      Proficiency Level
+                                    </label>
+                                    <span className="clearfix font-13">
+                                      {proficiencyLevelDrop.findIndex(
+                                        (x) => x?.id == item?.proficiency_level
+                                      ) != -1
+                                        ? proficiencyLevelDrop[
+                                            proficiencyLevelDrop.findIndex(
+                                              (x) =>
+                                                x?.id == item?.proficiency_level
+                                            )
+                                          ].name
+                                        : ""}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </>
                           ))}
                         </div>
 
@@ -508,6 +587,19 @@ export default function Jobprofile() {
           </div>
         </div>
         <Footer />
+
+        <Modal
+          show={show}
+          onHide={() => handleClose()}
+          className="modal fade modal-bx-info editor"
+        >
+          <AddLanguagesForm
+            data={state.candidateLanguages[modalDataIndex]}
+            index={modalDataIndex}
+            isUpdate={updateData}
+            handleClose={() => handleClose()}
+          />
+        </Modal>
       </div>
     );
   }

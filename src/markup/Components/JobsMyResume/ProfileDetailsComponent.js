@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { GetLanguages, updateUser } from "../../../redux/action";
+import {
+  DeleteCandidateLanguages,
+  GetLanguages,
+  updateUser,
+} from "../../../redux/action";
 import { proficiencyLevelDrop } from "../../../utils/DropDownUtils";
 import DropDownModalComponent from "./DropDownModalComponent";
 import DropdownSearch from "./DropdownSearch";
@@ -54,6 +58,13 @@ export default function ProfileDetailsComponent({}) {
         setShow()
       )
     );
+  };
+
+  const [updateData, setUpdateData] = useState(false);
+  const [modalDataIndex, setModalDataIndex] = useState(0);
+
+  const deleteCandidateVal = async (id, index) => {
+    await dispatch(DeleteCandidateLanguages(id, index));
   };
 
   useEffect(() => {
@@ -299,54 +310,6 @@ export default function ProfileDetailsComponent({}) {
                         </div>
                       </div>
                     )}
-                    <div className="col-12">
-                      {LangArr.map((item, i) => (
-                        <div className="row">
-                          <div className="col-lg-3 col-md-3 col-sm-12">
-                            <div className="form-group">
-                              <label>Languages:</label>
-                              <DropdownSearch items={state.languages} />
-                              {/* <TextInputModal placeholder={"Enter Language"} /> */}
-                            </div>
-                          </div>
-
-                          <div className="col-lg-4 col-md-4 col-sm-12">
-                            <div className="form-group">
-                              <label>Proficiency Level:</label>
-                              <DropDownModalComponent
-                                onChange={(e) => {
-                                  console.log("eee", e.target.value);
-                                }}
-                                options={proficiencyLevelDrop}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-2 col-md-2 col-sm-12">
-                            <span
-                              onClick={() => {
-                                handleAddClickOption(i);
-                              }}
-                              className="btn btn-primary mt-4"
-                            >
-                              <i className="fa fa-plus m-r5"></i> Add
-                            </span>
-                          </div>
-
-                          {LangArr.length !== 1 && (
-                            <div className="col-lg-3 col-md-3 col-sm-12">
-                              <span
-                                onClick={() => {
-                                  handleRemoveClick(i);
-                                }}
-                                className="btn btn-danger mt-4"
-                              >
-                                <i className="fa fa-minus m-r5"></i> Remove
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 </form>
               </div>
@@ -373,6 +336,19 @@ export default function ProfileDetailsComponent({}) {
             </div>
           </div>
         </Modal>
+        {/* 
+        <Modal
+          show={showLang}
+          onHide={() => handleClose()}
+          className="modal fade modal-bx-info editor"
+        >
+          <AddLanguagesForm
+            data={state.candidateLanguages[modalDataIndex]}
+            index={modalDataIndex}
+            isUpdate={updateData}
+            handleClose={() => handleClose()}
+          />
+        </Modal> */}
 
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12">
@@ -411,12 +387,72 @@ export default function ProfileDetailsComponent({}) {
                   {userDetails.disability ? "Yes" : "No"}
                 </span>
               </div>
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-8">
-                <label className="m-b0">Languages</label>
-                <span className="clearfix font-13">
-                  English (Fluent), Spanish (Native), French (Basic)
-                </span>
-              </div>
+              {/* <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
+                {state.candidateLanguages.map((item, index) => (
+                  <>
+                    <h6 className="font-14 mt-5 m-b0">
+                      <span className="float-right">
+                        <span
+                          onClick={() => {
+                            setUpdateData(true);
+                            setModalDataIndex(index);
+                            handleShow();
+                          }}
+                          className="site-button add-btn button-sm"
+                        >
+                          <i className="fa fa-pencil m-r5"></i> Edit
+                        </span>
+                        <span
+                          onClick={() => {
+                            console.log("tests", index);
+
+                            deleteCandidateVal(item.id, index);
+                          }}
+                          className="m-l15 cursorPointer font-14"
+                        >
+                          <i className="fa fa-minus text-danger"></i>
+                        </span>
+                      </span>
+                    </h6>
+
+                    <div className="row">
+                      <div className="col-lg-4 col-md-6 col-sm-12">
+                        <div className="clearfix m-b20">
+                          <label className="m-b0">Language</label>
+                          <span className="clearfix font-13">
+                            {state?.languages.findIndex(
+                              (x) => x?.id == item?.language_id
+                            ) != -1
+                              ? state?.languages[
+                                  state?.languages.findIndex(
+                                    (x) => x?.id == item?.language_id
+                                  )
+                                ].name
+                              : ""}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="col-lg-4 col-md-6 col-sm-12">
+                        <div className="clearfix m-b20">
+                          <label className="m-b0">Proficiency Level</label>
+                          <span className="clearfix font-13">
+                            {proficiencyLevelDrop.findIndex(
+                              (x) => x?.id == item?.proficiency_level
+                            ) != -1
+                              ? proficiencyLevelDrop[
+                                  proficiencyLevelDrop.findIndex(
+                                    (x) => x?.id == item?.proficiency_level
+                                  )
+                                ].name
+                              : ""}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ))}
+              </div> */}
             </div>
           </div>
         </div>

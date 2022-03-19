@@ -9,75 +9,162 @@ import * as fs from "fs";
 export const AddCandidateSkill =
   (skill_id, skill_type, skill_level, is_top, setModal) =>
   async (dispatch, state) => {
-    console.log("logging,");
-    var data = JSON.stringify({
-      data: {
-        candidate_id: state().userDetails.id,
-        skill_id,
-        skill_type,
-        skill_level,
-        is_top,
-      },
-    });
+    var count = 0;
+    state().candidateSkills.forEach((v) => v.is_top === true && count++);
 
-    var config = {
-      method: "post",
-      url: `${URL}/profile/add_candidateskill`,
-      headers: {
-        Authorization: `Bearer ${state().authToken}`,
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
+    if (is_top == true && count < 3) {
+      console.log("countssss", count);
 
-    axios(config)
-      .then(function (response) {
-        console.log("res tu ran", response.data);
-
-        if (response.data.status) {
-          toast.success("Updated Successfully!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          var resData = state().candidateSkills;
-          resData.push(response.data.data[0]);
-          dispatch({
-            type: "SetCandidateSkill",
-            data: resData,
-          });
-
-          if (setModal) {
-            setModal(false);
-          }
-        } else {
-          toast.error(response.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-        toast.error(error, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+      var data = JSON.stringify({
+        data: {
+          candidate_id: state().userDetails.id,
+          skill_id,
+          skill_type,
+          skill_level,
+          is_top,
+        },
       });
+
+      var config = {
+        method: "post",
+        url: `${URL}/profile/add_candidateskill`,
+        headers: {
+          Authorization: `Bearer ${state().authToken}`,
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log("res tu ran", response.data);
+
+          if (response.data.status) {
+            toast.success("Updated Successfully!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            var resData = state().candidateSkills;
+            resData.push(response.data.data[0]);
+            dispatch({
+              type: "SetCandidateSkill",
+              data: resData,
+            });
+
+            if (setModal) {
+              setModal(false);
+            }
+          } else {
+            toast.error(response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
+    } else if (is_top == false) {
+      console.log("countssss", count);
+
+      var data = JSON.stringify({
+        data: {
+          candidate_id: state().userDetails.id,
+          skill_id,
+          skill_type,
+          skill_level,
+          is_top,
+        },
+      });
+
+      var config = {
+        method: "post",
+        url: `${URL}/profile/add_candidateskill`,
+        headers: {
+          Authorization: `Bearer ${state().authToken}`,
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log("res tu ran", response.data);
+
+          if (response.data.status) {
+            toast.success("Updated Successfully!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            var resData = state().candidateSkills;
+            resData.push(response.data.data[0]);
+            dispatch({
+              type: "SetCandidateSkill",
+              data: resData,
+            });
+
+            if (setModal) {
+              setModal(false);
+            }
+          } else {
+            toast.error(response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
+    } else {
+      toast.error("Cannot Have More Than 3 Top Skills", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
 export const UpdateCandidateSkill =
@@ -999,92 +1086,184 @@ export const GetCandidateLanguages = () => async (dispatch, state) => {
     });
 };
 
-export const AddCandidateLanguages = () => async (dispatch, state) => {
-  var data = {
-    data: {
-      candidate_id: state().userDetails.id,
-      language_id: 1,
-      proficiency_level: 5,
-    },
-  };
-
-  var config = {
-    method: "post",
-    url: `${URL}/profile/add_candidatelanguage`,
-    headers: {},
-    data: data,
-  };
-
-  axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      if (response.data.successful) {
-        var resData = state().candidateLanguages;
-        resData.push(response.data.data[0]);
-        dispatch({
-          type: "SetCandidateLanguages",
-          data: resData,
-        });
-      } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
+export const UpdateCandidateLanguages =
+  (id, language_id, proficiency_level, index, setModal) =>
+  async (dispatch, state) => {
+    var data = JSON.stringify({
+      data: {
+        id,
+        candidate_id: state().userDetails.id,
+        language_id,
+        proficiency_level,
+      },
     });
-};
 
-export const DeleteCandidateLanguages = (id,index) => async (dispatch, state) => {
-  var data = JSON.stringify({
-    data: {
-      candidate_id: state().userDetails.id,
-      language_id: id,
-    },
-  });
+    var config = {
+      method: "post",
+      url: `${URL}/profile/update_candidatelanguage`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
 
-  var config = {
-    method: "post",
-    url: `${URL}/profile/delete_candidatelanguage`,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data: data,
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+
+        var count = 0;
+        state().candidateLanguages.forEach((v) => {
+          if (v.language_id == language_id && v.id != id) {
+            count++;
+          }
+        });
+
+        if (count < 1) {
+          if (response.data.successful) {
+            var resData = state().candidateLanguages;
+            resData[index] = response.data.data;
+            dispatch({
+              type: "SetCandidateLanguages",
+              data: resData,
+            });
+            if (setModal) {
+              setModal();
+            }
+          } else {
+            toast.error(response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        } else {
+          toast.error("Language already exists", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
-  axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      if (response.data.successful) {
-        var resData = state().candidateLanguages;
-        resData.splice(index, 1);
-        dispatch({
-          type: "SetCandidateLanguages",
-          data: resData,
+export const AddCandidateLanguages =
+  (language_id, proficiency_level, setModal) => async (dispatch, state) => {
+    var count = 0;
+    state().candidateLanguages.forEach(
+      (v) => v.language_id === language_id && count++
+    );
+
+    if (count < 1) {
+      var data = {
+        data: {
+          candidate_id: state().userDetails.id,
+          language_id,
+          proficiency_level,
+        },
+      };
+
+      var config = {
+        method: "post",
+        url: `${URL}/profile/add_candidatelanguage`,
+        headers: {
+          Authorization: `Bearer ${state().authToken}`,
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+          if (response.data.status) {
+            var resData = state().candidateLanguages;
+            resData.push(response.data.data[0]);
+            dispatch({
+              type: "SetCandidateLanguages",
+              data: resData,
+            });
+            if (setModal) {
+              setModal();
+            }
+          } else {
+            toast.error(response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
         });
-      } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
+    } else {
+      toast.error("Language already exists", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
+export const DeleteCandidateLanguages =
+  (id, index) => async (dispatch, state) => {
+    var data = JSON.stringify({
+      data: {
+        candidate_id: state().userDetails.id,
+        language_id: id,
+      },
     });
-};
+    var config = {
+      method: "get",
+      url: `${URL}/profile/delete_candidatelanguage/${id}`,
+      headers: {},
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        if (response.data.successful) {
+          var resData = state().candidateLanguages;
+          resData.splice(index, 1);
+          dispatch({
+            type: "SetCandidateLanguages",
+            data: resData,
+          });
+        } else {
+          toast.error(response.data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
 export const GetCandidateProjects = () => async (dispatch, state) => {
   console.log("testing");
@@ -1891,7 +2070,7 @@ export const GetCandidateSocialProfiles = () => async (dispatch, state) => {
         // });
         dispatch({
           type: "SetCandidateSocialProfile",
-          data: response.data.data,
+          data: [],
         });
       }
     })

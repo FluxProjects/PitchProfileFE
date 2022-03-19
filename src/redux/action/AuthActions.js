@@ -241,6 +241,70 @@ export const UploadImage = (files) => async (dispatch, state) => {
   });
 };
 
+export const UploadCoverLetter = (files) => async (dispatch, state) => {
+  const formData = new FormData();
+  formData.append("file", files[0]);
+  formData.append("upload_preset", "pitchprofile");
+
+  await axios.post(`${cloudURL}/image/upload`, formData).then(async (res) => {
+    console.log("ressss", res.data);
+    var data = JSON.stringify({
+      data: {
+        id: state().userDetails.id,
+        cover_letter: res.data.secure_url,
+      },
+    });
+
+    var config = {
+      method: "post",
+      url: `${URL}/profile/update_profile_cover_letter`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    await axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        if (response.data.successful) {
+          console.log("data", response.data.data);
+          toast.success("Update Success!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+          dispatch({
+            type: "RegisterUser",
+            data: response.data.data,
+          });
+          dispatch({
+            type: "SetAuthToken",
+            data: response.data.accessToken,
+          });
+        } else {
+          toast.error(response.data.Message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  });
+};
+
 export const UploadProfileVid = (files) => async (dispatch, state) => {
   const formData = new FormData();
   formData.append("file", files[0]);
