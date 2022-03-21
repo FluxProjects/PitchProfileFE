@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -6,9 +6,15 @@ import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import {
   UpdateCandidateSummary,
+  UpdateIsActive,
   UploadImage,
   UploadProfileImg,
 } from "../../../redux/action";
+import {
+  GetCityName,
+  GetCountryName,
+  GetStateName,
+} from "../../../utils/functions";
 import AttachVideo from "./AttachVideo";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
@@ -18,12 +24,24 @@ export default function HeaderMyResume({}) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [ToggleIsActive, setToggleIsActive] = useState(false);
+  const [ToggleIsActive, setToggleIsActive] = useState(
+    state.userDetails.is_active
+  );
   const [ResumeHeadline, setResumeHeadline] = useState(
     state.userDetails.summary
   );
 
   const userDetail = useSelector((state) => state.userDetails);
+
+  const [stateName, setStateName] = useState();
+  const [cityName, setCityName] = useState();
+  const [countryName, setCountryName] = useState();
+
+  useEffect(() => {
+    GetStateName(userDetail.state_id, setStateName);
+    GetCityName(userDetail.city_id, setCityName);
+    GetCountryName(userDetail.country_id, setCountryName);
+  }, []);
 
   const handleClose = () => {
     setShow(false);
@@ -34,6 +52,11 @@ export default function HeaderMyResume({}) {
 
   const callUpdateCandidateSummary = async () => {
     dispatch(UpdateCandidateSummary(ResumeHeadline, handleClose()));
+  };
+
+  const callUpdateIsActive = async (val) => {
+    await dispatch(UpdateIsActive(val));
+    setToggleIsActive(val);
   };
 
   return (
@@ -54,6 +77,7 @@ export default function HeaderMyResume({}) {
                   maxHeight: "145px",
                   maxWidth: "110px",
                   minWidth: "110px",
+                  height: "10px",
                 }}
               />
             </Link>
@@ -78,7 +102,9 @@ export default function HeaderMyResume({}) {
             <div className="mt-2">
               <Toggle
                 defaultChecked={ToggleIsActive}
-                onChange={() => setToggleIsActive(!ToggleIsActive)}
+                onChange={() => {
+                  callUpdateIsActive(!ToggleIsActive);
+                }}
               />
 
               <p className="text-white font-weight-bold m-b15">
@@ -97,7 +123,7 @@ export default function HeaderMyResume({}) {
               </span>
             </h4>
             <p className="m-b15">
-              {state.userDetails.summary}
+              {state.userDetails.headline}
               {/* <span
                 onClick={() => handleShow()}
                 className="m-l15 font-16 text-white"
@@ -107,15 +133,13 @@ export default function HeaderMyResume({}) {
             </p>
             <ul className="clearfix">
               <li>
-                <i className="ti-location-pin"></i> {state.userDetails.city_id},{" "}
-                {state.userDetails.state_id}
+                <i className="ti-location-pin"></i> {cityName}, {stateName}
               </li>
               <li>
                 <i className="ti-mobile"></i> {state.userDetails.phone}
               </li>
               <li>
-                <i className="ti-location-pin"></i>{" "}
-                {state.userDetails.country_id}
+                <i className="ti-location-pin"></i> {countryName}
               </li>
               <li>
                 <i className="ti-email"></i> {state.userDetails.email}
@@ -176,7 +200,7 @@ export default function HeaderMyResume({}) {
             <div className="modal-body">
               <form>
                 <div className="row">
-                  {/* <div className="col-lg-6 col-md-6 col-sm-12">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
                       <label>First Name</label>
                       <TextInputModal
@@ -185,9 +209,9 @@ export default function HeaderMyResume({}) {
                         // value={ProjectsTitle}
                       />
                     </div>
-                  </div> */}
+                  </div>
 
-                  {/* <div className="col-lg-6 col-md-6 col-sm-12">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
                       <label>Last Name</label>
                       <TextInputModal
@@ -196,7 +220,7 @@ export default function HeaderMyResume({}) {
                         // value={ProjectsTitle}
                       />
                     </div>
-                  </div> */}
+                  </div>
 
                   <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="form-group">
@@ -209,7 +233,7 @@ export default function HeaderMyResume({}) {
                     </div>
                   </div>
 
-                  {/*  <div className="col-lg-6 col-md-6 col-sm-12">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
                       <label>Country:</label>
                       <DropDownModalComponent
@@ -255,8 +279,8 @@ export default function HeaderMyResume({}) {
                         ]}
                       />
                     </div>
-                  </div> */}
-                  {/* <div className="col-lg-6 col-md-6 col-sm-12">
+                  </div>
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
                       <label>Hometown:</label>
                       <DropDownModalComponent
@@ -291,7 +315,7 @@ export default function HeaderMyResume({}) {
                         placeholder="Phone number"
                       />
                     </div>
-                  </div> */}
+                  </div>
                 </div>
               </form>
             </div>

@@ -44,6 +44,8 @@ export default function ProfileSummary({}) {
           career you are looking for. Write a meaningful summary of more than 50
           characters.
         </p>
+        <br />
+        <p className="m-b0">{state.userDetails.summary}</p>
       </div>
 
       <Modal
@@ -101,7 +103,14 @@ export default function ProfileSummary({}) {
               >
                 Cancel
               </button>
-              <button type="button" className="site-button">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  callUpdateCandidateSummary();
+                }}
+                type="button"
+                className="site-button"
+              >
                 Save
               </button>
             </div>

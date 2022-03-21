@@ -13,6 +13,7 @@ export default function AttachVideo({}) {
   const handleShow = () => {
     setShow(true);
   };
+  let inputRef;
 
   return (
     <>
@@ -22,7 +23,26 @@ export default function AttachVideo({}) {
         style={{ backgroundColor: "transparent" }}
         className=" margin_bx_AttachVid m-b30"
       >
-        <h5 className="m-b10 text-white">Attach Video</h5>
+        {state.userDetails.video == null && (
+          <h5 className="m-b10 text-white">Attach Video</h5>
+        )}
+        {state.userDetails.video != null && (
+          <div className="d-flex">
+            <h5 className="m-b15">My Video</h5>
+
+            <span
+              to={"#"}
+              data-toggle="modal"
+              data-target="#educations"
+              onClick={() => {
+                inputRef.click();
+              }}
+              className="site-button add-btn button-sm"
+            >
+              <i className="fa fa-pencil m-r5"></i> Edit
+            </span>
+          </div>
+        )}
 
         <form
           className="attach-resume-Video "
@@ -44,23 +64,6 @@ export default function AttachVideo({}) {
                     Your browser does not support the video tag.
                   </video>
                 </div>
-
-                {/* <div className="form-group">
-                  <div className="custom-file">
-                    <p className="m-auto text-white align-self-center">
-                      <i className="fa  fa-upload"></i>
-                      Upload Video File
-                    </p>
-                    <input
-                      type="file"
-                      className="site-button form-control"
-                      id="customFile"
-                      onChange={(e) => {
-                        dispatch(UploadProfileVid(e.target.files));
-                      }}
-                    />
-                  </div>
-                </div> */}
               </div>
             ) : (
               <div className="col-lg-12 col-md-12">
@@ -85,6 +88,17 @@ export default function AttachVideo({}) {
             )}
           </div>
         </form>
+        <input
+          type="file"
+          style={{
+            visibility: "hidden",
+          }}
+          id="customFile"
+          ref={(refParam) => (inputRef = refParam)}
+          onChange={(e) => {
+            dispatch(UploadProfileVid(e.target.files));
+          }}
+        />
       </div>
     </>
   );

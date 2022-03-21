@@ -10,6 +10,7 @@ import {
 import { proficiencyLevelDrop } from "../../../utils/DropDownUtils";
 import DropDownModalComponent from "./DropDownModalComponent";
 import DropdownSearch from "./DropdownSearch";
+import AddLanguagesForm from "./Modals/AddLanguagesForm";
 import TextInputModal from "./TextInputModal";
 
 export default function ProfileDetailsComponent({}) {
@@ -62,6 +63,7 @@ export default function ProfileDetailsComponent({}) {
 
   const [updateData, setUpdateData] = useState(false);
   const [modalDataIndex, setModalDataIndex] = useState(0);
+  const [showLang, setShowLang] = useState(false);
 
   const deleteCandidateVal = async (id, index) => {
     await dispatch(DeleteCandidateLanguages(id, index));
@@ -80,6 +82,13 @@ export default function ProfileDetailsComponent({}) {
   };
   const handleShow = () => {
     setShow(true);
+  };
+
+  const handleCloseLang = () => {
+    setShowLang(false);
+  };
+  const handleShowLang = () => {
+    setShowLang(true);
   };
 
   // handle click event of the Remove button
@@ -336,19 +345,19 @@ export default function ProfileDetailsComponent({}) {
             </div>
           </div>
         </Modal>
-        {/* 
+
         <Modal
           show={showLang}
-          onHide={() => handleClose()}
+          onHide={() => handleCloseLang()}
           className="modal fade modal-bx-info editor"
         >
           <AddLanguagesForm
             data={state.candidateLanguages[modalDataIndex]}
             index={modalDataIndex}
             isUpdate={updateData}
-            handleClose={() => handleClose()}
+            handleClose={() => handleCloseLang()}
           />
-        </Modal> */}
+        </Modal>
 
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12">
@@ -387,7 +396,22 @@ export default function ProfileDetailsComponent({}) {
                   {userDetails.disability ? "Yes" : "No"}
                 </span>
               </div>
-              {/* <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
+              <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
+                <div className="d-flex">
+                  <h5 className="m-b15">Languages</h5>
+                  <Link
+                    to={"#"}
+                    data-toggle="modal"
+                    data-target="#educations"
+                    onClick={() => {
+                      setUpdateData(false);
+                      handleShowLang();
+                    }}
+                    className="site-button add-btn button-sm"
+                  >
+                    <i className="fa fa-plus m-r5"></i> Add
+                  </Link>
+                </div>
                 {state.candidateLanguages.map((item, index) => (
                   <>
                     <h6 className="font-14 mt-5 m-b0">
@@ -396,7 +420,7 @@ export default function ProfileDetailsComponent({}) {
                           onClick={() => {
                             setUpdateData(true);
                             setModalDataIndex(index);
-                            handleShow();
+                            handleShowLang();
                           }}
                           className="site-button add-btn button-sm"
                         >
@@ -452,7 +476,7 @@ export default function ProfileDetailsComponent({}) {
                     </div>
                   </>
                 ))}
-              </div> */}
+              </div>
             </div>
           </div>
         </div>

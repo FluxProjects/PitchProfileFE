@@ -12,6 +12,9 @@ const initialState = {
   industries: [],
   skills: [],
   educationLevels: [],
+  userState: {},
+  userCity: {},
+  userCountry: {},
 
   // Candidate my resume
   candidateSkills: [],
@@ -53,6 +56,12 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, skills: rest.data };
     case "GetEducationLevels":
       return { ...state, educationLevels: rest.data };
+    case "GetUserState":
+      return { ...state, userState: rest.data };
+    case "GetUserCountry":
+      return { ...state, userCountry: rest.data };
+    case "GetUserCity":
+      return { ...state, userCity: rest.data };
 
     //  Candidate my resume
     case "SetCandidateSkill":

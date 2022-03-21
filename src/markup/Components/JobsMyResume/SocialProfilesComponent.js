@@ -106,7 +106,7 @@ export default function SocialProfilesComponent({}) {
                 <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                   <h6 className="font-14 m-b0">URL</h6>
                   <a href={item.url} target="_blank" className="m-b0">
-                    Link
+                    {item.url}
                   </a>
                 </div>
               </div>

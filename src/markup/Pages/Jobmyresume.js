@@ -235,33 +235,38 @@ export default function Jobmyresume() {
           <div className="section-full browse-job content-inner-2">
             <div className="container">
               <div className="row">
-                <div className="col-12 m-b30">
-                  <div className="pending-info text-white p-a25">
-                    <h5>Pending Action</h5>
-                    <ul className="list-check secondry">
-                      {state.candidateSkills == null ||
-                        (state.candidateSkills.length < 1 && (
-                          <li>No skills added</li>
-                        ))}
-                      {state.candidateEducations == null ||
-                        (state.candidateEducations.length < 1 && (
-                          <li>No education added</li>
-                        ))}
-                      {state.candidateEmployments == null ||
-                        (state.candidateEmployments.length < 1 && (
-                          <li>No employments added</li>
-                        ))}
-                      {state.candidateSocialProfiles == null ||
-                        (state.candidateSocialProfiles.length < 1 && (
-                          <li>No social profiles added</li>
-                        ))}
+                {state.candidateSkills.length < 1 ||
+                  state.candidateEducations.length < 1 ||
+                  state.candidateEmployments.length < 1 ||
+                  (state.candidateSocialProfiles.length < 1 && (
+                    <div className="col-12 m-b30">
+                      <div className="pending-info text-white p-a25">
+                        <h5>Pending Action</h5>
+                        <ul className="list-check secondry">
+                          {state.candidateSkills == null ||
+                            (state.candidateSkills.length < 1 && (
+                              <li>No skills added</li>
+                            ))}
+                          {state.candidateEducations == null ||
+                            (state.candidateEducations.length < 1 && (
+                              <li>No education added</li>
+                            ))}
+                          {state.candidateEmployments == null ||
+                            (state.candidateEmployments.length < 1 && (
+                              <li>No employments added</li>
+                            ))}
+                          {state.candidateSocialProfiles == null ||
+                            (state.candidateSocialProfiles.length < 1 && (
+                              <li>No social profiles added</li>
+                            ))}
 
-                      {state.candidateDesiredCareer.role == "" && (
-                        <li>No desired career added</li>
-                      )}
-                    </ul>
-                  </div>
-                </div>
+                          {state.candidateDesiredCareer.role == "" && (
+                            <li>No desired career added</li>
+                          )}
+                        </ul>
+                      </div>
+                    </div>
+                  ))}
                 <div className="col-xl-3 col-lg-4 col-md-4 col-sm-12 m-b30">
                   <Listingsidebar />
                 </div>
@@ -305,6 +310,7 @@ export default function Jobmyresume() {
               </div>
             </div>
           </div>
+
           <div
             className="modal fade lead-form-modal"
             id="car-details"

@@ -17,6 +17,9 @@ import {
   GetCandidateLanguages,
   AddCandidateLanguages,
   DeleteCandidateLanguages,
+  GetStateName,
+  GetCountryName,
+  GetCityName,
 } from "../../redux/action";
 import Header from "../Layout/Header";
 import DropdownSearch from "../Components/JobsMyResume/DropdownSearch";
@@ -386,7 +389,7 @@ export default function Jobprofile() {
                               data-toggle="modal"
                               data-target="#educations"
                               onClick={() => {
-                                // setUpdateData(false);
+                                setUpdateData(false);
                                 handleShow();
                               }}
                               className="site-button add-btn button-sm"

@@ -5,6 +5,11 @@ import { toast } from "react-toastify";
 import { lazySlidesOnLeft } from "react-slick/lib/utils/innerSliderUtils";
 
 import * as fs from "fs";
+import {
+  GetCityName,
+  GetCountryName,
+  GetStateName,
+} from "../../../utils/functions";
 
 export const AddCandidateSkill =
   (skill_id, skill_type, skill_level, is_top, setModal) =>
@@ -1523,7 +1528,7 @@ export const GetCandidateCertificates = () => async (dispatch, state) => {
   };
 
   axios(config)
-    .then(function (response) {
+    .then(async function (response) {
       console.log(response.data);
 
       if (response.data.successful) {
@@ -1801,10 +1806,75 @@ export const GetCandidateReferences = () => async (dispatch, state) => {
   };
 
   axios(config)
-    .then(function (response) {
+    .then(async function (response) {
       console.log(response.data);
 
       if (response.data.successful) {
+        var newArr = [];
+
+        // await Promise.all(
+        //   response.data.data.map(async (item) => {
+        //     var myData = item;
+
+        //     // get state name
+        //     var configState = {
+        //       method: "get",
+        //       url: `${URL}/locations/get_state/${item.state_id}`,
+        //       headers: {},
+        //     };
+
+        //     await axios(configState)
+        //       .then(function (state) {
+        //         console.log("NWO", state.data.data[0].name);
+        //         if (state.data.successful) {
+        //           myData.stateName = state.data.data[0].name;
+        //           newArr.push(myData);
+        //         }
+        //       })
+        //       .catch(function (error) {
+        //         console.log(error);
+        //       });
+
+        //     // get city name
+        //     var configCity = {
+        //       method: "get",
+        //       url: `${URL}/locations/get_city/${item.city_id}`,
+        //       headers: {},
+        //     };
+
+        //     await axios(configCity)
+        //       .then(function (city) {
+        //         console.log("NWO", city.data.data[0].name);
+        //         if (city.data.successful) {
+        //           myData.CityName = city.data.data[0].name;
+        //           newArr.push(myData);
+        //         }
+        //       })
+        //       .catch(function (error) {
+        //         console.log(error);
+        //       });
+
+        //     //  get Country name
+        //     var configCountry = {
+        //       method: "get",
+        //       url: `${URL}/locations/get_country/${item.country_id}`,
+        //       headers: {},
+        //     };
+
+        //     await axios(configCountry)
+        //       .then(function (country) {
+        //         console.log("NWO", country.data.data[0].name);
+        //         if (country.data.successful) {
+        //           myData.CountryName = country.data.data[0].name;
+        //           newArr.push(myData);
+        //         }
+        //       })
+        //       .catch(function (error) {
+        //         console.log(error);
+        //       });
+        //   })
+        // );
+        // console.log("myDate", newArr);
         dispatch({
           type: "SetCandidateReference",
           data: response.data.data,

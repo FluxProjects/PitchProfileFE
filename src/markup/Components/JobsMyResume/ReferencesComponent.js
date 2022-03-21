@@ -111,21 +111,21 @@ export default function ReferencesComponent({}) {
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">City</label>
-                  <span className="clearfix font-13">{item.city_id}</span>
+                  <span className="clearfix font-13">{item.CityName}</span>
                 </div>
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">State</label>
-                  <span className="clearfix font-13">{item.state_id}</span>
+                  <span className="clearfix font-13">{item.stateName}</span>
                 </div>
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">Country</label>
-                  <span className="clearfix font-13">{item.country_id}</span>
+                  <span className="clearfix font-13">{item.CountryName}</span>
                 </div>
               </div>
 

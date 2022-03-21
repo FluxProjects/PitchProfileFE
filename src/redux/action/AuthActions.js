@@ -177,6 +177,65 @@ export const updateUser =
       });
   };
 
+// Update is active
+export const UpdateIsActive = (is_active) => async (dispatch, state) => {
+  var data = JSON.stringify({
+    data: {
+      id: state().userDetails.id,
+      is_active,
+    },
+  });
+
+  var config = {
+    method: "post",
+    url: `${URL}/profile/update_candidateprofile_is_active`,
+    headers: {
+      Authorization: `Bearer ${state().authToken}`,
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      if (response.data.successful) {
+        console.log("data", response.data.data);
+        toast.success("Update Success!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        dispatch({
+          type: "RegisterUser",
+          data: response.data.data,
+        });
+        dispatch({
+          type: "SetAuthToken",
+          data: response.data.accessToken,
+        });
+      } else {
+        toast.error(response.data.Message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
 export const UploadImage = (files) => async (dispatch, state) => {
   const formData = new FormData();
   formData.append("file", files[0]);

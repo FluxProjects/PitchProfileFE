@@ -15,12 +15,18 @@ import {
   jobTypeDrop,
   shiftDrop,
 } from "../../../utils/DropDownUtils";
+import {
+  GetCityName,
+  GetCountryName,
+  GetStateName,
+} from "../../../utils/functions";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
 export default function DesiredCareerProfileComponent({}) {
   const item = useSelector((state) => state.candidateDesiredCareer);
   const state = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const DesiredCareerProfileFields = [
     {
@@ -120,9 +126,15 @@ export default function DesiredCareerProfileComponent({}) {
   };
 
   const [loading, setLoading] = useState(true);
+  const [stateName, setStateName] = useState();
+  const [cityName, setCityName] = useState();
+  const [countryName, setCountryName] = useState();
 
-  const dispatch = useDispatch();
   useEffect(() => {
+    GetStateName(item.state_id, setStateName);
+    GetCityName(item.city_id, setCityName);
+    GetCountryName(item.country_id, setCountryName);
+
     //  to get languages
     CallGetDropDown();
     callGetDesiredCareer();
@@ -523,17 +535,17 @@ export default function DesiredCareerProfileComponent({}) {
 
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
               <h6 className="font-14 m-b0">City</h6>
-              <p className="m-b0">{item.city_id}</p>
+              <p className="m-b0">{cityName}</p>
             </div>
 
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
               <h6 className="font-14 m-b0">State</h6>
-              <p className="m-b0">{item.state_id}</p>
+              <p className="m-b0">{stateName}</p>
             </div>
 
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
               <h6 className="font-14 m-b0">Country</h6>
-              <p className="m-b0">{item.country_id}</p>
+              <p className="m-b0">{countryName}</p>
             </div>
           </div>
         </div>
