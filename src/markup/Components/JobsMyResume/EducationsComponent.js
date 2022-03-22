@@ -6,6 +6,7 @@ import {
   DeleteCandidateEducation,
   GetCandidateEducations,
 } from "../../../redux/action";
+import { formatDate } from "../../../utils/functions";
 import EducationsModalComp from "./Modals/EducationsModalComp";
 
 export default function EducationsComponent({}) {
@@ -110,7 +111,7 @@ export default function EducationsComponent({}) {
               </div>
               <div className="col-lg-4 col-md-12 col-sm-12">
                 <div className="clearfix m-b20">
-                  <label className="m-b0">Course</label>
+                  <label className="m-b0">Major</label>
                   <span className="clearfix font-13">{item.course}</span>
                 </div>
               </div>
@@ -118,14 +119,18 @@ export default function EducationsComponent({}) {
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">Start Date</label>
-                  <span className="clearfix font-13">{item.start_date}</span>
+                  <span className="clearfix font-13">
+                    {formatDate(item.start_date)}
+                  </span>
                 </div>
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">End Date</label>
-                  <span className="clearfix font-13">{item.end_date}</span>
+                  <span className="clearfix font-13">
+                    {formatDate(item.end_date)}
+                  </span>
                 </div>
               </div>
 

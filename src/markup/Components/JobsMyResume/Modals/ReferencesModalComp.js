@@ -136,7 +136,8 @@ export default function ReferencesModalComp({
                   </div>
                 </div>
 
-                <div className="col-lg-4 col-md-4 mt-0 col-sm-12">
+                {/* Commented for enroll ment */}
+                {/* <div className="col-lg-4 col-md-4 mt-0 col-sm-12">
                   <div className="form-group">
                     <label>Country:</label>
                     <DropDownModalComponent
@@ -178,7 +179,7 @@ export default function ReferencesModalComp({
                       options={state.cities}
                     />
                   </div>
-                </div>
+                </div> */}
 
                 <div className="col-lg-6 col-md-6 col-sm-12">
                   <div className="form-group">

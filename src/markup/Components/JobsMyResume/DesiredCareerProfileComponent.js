@@ -98,7 +98,7 @@ export default function DesiredCareerProfileComponent({}) {
     item?.employment_type ? item?.employment_type : ""
   );
   const [shift, setShift] = useState(
-    item?.preferred_shift ? item?.preferred_shift : ""
+    item?.preferred_shift ? item?.preferred_shift : 1
   );
   const [availableJoin, setAvailableJoin] = useState(
     item?.available_join ? item?.available_join : ""
@@ -107,10 +107,10 @@ export default function DesiredCareerProfileComponent({}) {
     item?.expected_salary ? item?.expected_salary : ""
   );
   const [country, setCountry] = useState(
-    item?.country_id ? item?.country_id : ""
+    item?.country_id ? item?.country_id : 0
   );
-  const [city, setCity] = useState(item?.city_id ? item?.city_id : "");
-  const [cstate, setCState] = useState(item?.state_id ? item?.state_id : "");
+  const [city, setCity] = useState(item?.city_id ? item?.city_id : 0);
+  const [cstate, setCState] = useState(item?.state_id ? item?.state_id : 0);
 
   const [show, setShow] = useState(false);
 

@@ -2,6 +2,7 @@ const initialState = {
   //  Auth actions
   userDetails: {},
   authToken: "",
+  pedningActions: [],
 
   // Dropdown data actions
   languages: [],
@@ -32,10 +33,43 @@ const changeState = (state = initialState, { type, ...rest }) => {
   switch (type) {
     case "set":
       return { ...state, ...rest };
-
+    case "setPendingAction":
+      return { ...state, pedningActions: rest.data };
     //  Auth actions
     case "RegisterUser":
       return { ...state, userDetails: rest.data };
+    case "LogoutUser":
+      return {
+        ...state,
+
+        userDetails: {},
+        authToken: "",
+        pedningActions: [],
+
+        // Dropdown data actions
+        languages: [],
+        countries: [],
+        states: [],
+        cities: [],
+        departments: [],
+        industries: [],
+        skills: [],
+        educationLevels: [],
+        userState: {},
+        userCity: {},
+        userCountry: {},
+
+        // Candidate my resume
+        candidateSkills: [],
+        candidateEducations: [],
+        candidateEmployments: [],
+        candidateProjects: [],
+        candidateCertificates: [],
+        candidateReferences: [],
+        candidateSocialProfiles: [],
+        candidateLanguages: [],
+        candidateDesiredCareer: {},
+      };
     case "SetAuthToken":
       return { ...state, authToken: rest.data };
 

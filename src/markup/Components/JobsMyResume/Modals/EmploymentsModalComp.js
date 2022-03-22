@@ -22,10 +22,10 @@ export default function EmploymentsModalComp({
     isUpdate == true ? data?.organization : ""
   );
   const [industry, setIndustry] = useState(
-    isUpdate == true ? data?.industry_id : 0
+    isUpdate == false ? 1 : data?.industry_id ? data?.industry_id : 1
   );
   const [department, setDepartment] = useState(
-    isUpdate == true ? data?.department_id : 0
+    isUpdate == false ? 1 : data?.department_id ? data?.department_id : 1
   );
   const [role, setRole] = useState(isUpdate == true ? data?.role : "");
   const [description, setDescription] = useState(

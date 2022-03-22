@@ -6,6 +6,7 @@ import {
   DeleteCandidateEmployment,
   GetCandidateEmployments,
 } from "../../../redux/action";
+import { formatDate } from "../../../utils/functions";
 import EmploymentsModalComp from "./Modals/EmploymentsModalComp";
 
 export default function EmploymentsComponent({}) {
@@ -127,12 +128,12 @@ export default function EmploymentsComponent({}) {
 
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">Start Date</h6>
-                <p className="m-b0">{item.start_date}</p>
+                <p className="m-b0">{formatDate(item.start_date)}</p>
               </div>
 
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">End Date</h6>
-                <p className="m-b0">{item.end_date}</p>
+                <p className="m-b0">{formatDate(item.end_date)}</p>
               </div>
 
               <div className="col-md-12 col-sm-12 col-lg-12 mb-2">

@@ -21,11 +21,11 @@ export default function EducationsModalComp({
     isUpdate == true ? data.institute : ""
   );
   const [educationLevel, setEducationLevel] = useState(
-    isUpdate == true ? data?.education_level_id : 0
+    isUpdate == true ? data?.education_level_id : 1
   );
 
   const [department, setDepartment] = useState(
-    isUpdate == true ? data?.department_id : 0
+    isUpdate == true ? data?.department_id : 1
   );
 
   const [course, setCourse] = useState(isUpdate == true ? data?.course : "");
@@ -106,7 +106,7 @@ export default function EducationsModalComp({
                   </div>
                 </div>
 
-                <div className="col-lg-12 col-md-12">
+                {/* <div className="col-lg-12 col-md-12">
                   <div className="form-group">
                     <label>Department</label>
                     <DropDownModalComponent
@@ -118,7 +118,7 @@ export default function EducationsModalComp({
                       options={state.departments}
                     />
                   </div>
-                </div>
+                </div> */}
 
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
@@ -136,9 +136,9 @@ export default function EducationsModalComp({
 
                 <div className="col-lg-12 col-md-12 col-sm-12">
                   <div className="form-group">
-                    <label>Course</label>
+                    <label>Major</label>
                     <TextInputModal
-                      placeholder="Enter Course"
+                      placeholder="Enter Major"
                       onChange={(e) => setCourse(e.target.value)}
                       value={course}
                     />

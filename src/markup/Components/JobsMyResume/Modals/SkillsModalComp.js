@@ -22,10 +22,12 @@ export default function SkillsModalComponent({
 
   const dispatch = useDispatch();
 
-  const [ItSkills, setItSkills] = useState(ItSkillsProp);
-  const [skillType, setSkillType] = useState(SkillTypeProp);
-  const [ProLev, setProLev] = useState(ProLevProp);
-  const [IsTopSkill, setIsTopSkill] = useState(IsTopSkillProp);
+  const [ItSkills, setItSkills] = useState(ItSkillsProp ? ItSkillsProp : 1);
+  const [skillType, setSkillType] = useState(SkillTypeProp ? SkillTypeProp : 1);
+  const [ProLev, setProLev] = useState(ProLevProp ? ProLevProp : 1);
+  const [IsTopSkill, setIsTopSkill] = useState(
+    IsTopSkillProp ? IsTopSkillProp : false
+  );
 
   const callAddCandidateSkill = async () => {
     if (isUpdate) {
@@ -107,15 +109,21 @@ export default function SkillsModalComponent({
 
                 <div className="col-lg-6 col-md-12">
                   <div className="form-group">
-                    <label>Proficiency</label>
+                    <div>
+                      <label>Proficiency</label>
+                    </div>
+
                     <TextInputModal
-                      placeholder="Rate your Skill from 1 to 10"
+                      placeholder=""
                       type="number"
                       min={1}
                       max={10}
                       onChange={(e) => setProLev(e.target.value)}
                       value={ProLev}
                     />
+                    <div style={{ marginBottom: 10 }}>
+                      <small>Rate your Skill from 1 to 10</small>
+                    </div>
                   </div>
                 </div>
 

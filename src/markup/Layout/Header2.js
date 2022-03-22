@@ -114,7 +114,7 @@ export default function Header2() {
                 <div className="testimonial-picHead radius">
                   <img
                     src={
-                      state.userDetails.pic != null
+                      state.userDetails?.pic != null
                         ? state.userDetails.pic
                         : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
                     }

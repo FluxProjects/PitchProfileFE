@@ -107,3 +107,18 @@ export const GetCountryName = async (id, setVal) => {
       console.log(error);
     });
 };
+
+export const formatDate = (date) => {
+  let tempDate = [...date];
+  let day = tempDate.slice(8);
+  let month = tempDate.slice(5, 7);
+  let year = tempDate.slice(0, 4);
+  let newDate = `${day}-${month}-${year}`;
+  return newDate.split(",").join(""); // Change This Line
+};
+
+export const SortSameVals = (a) => {
+  return a.sort().filter(function (item, pos, ary) {
+    return !pos || item != ary[pos - 1];
+  });
+};

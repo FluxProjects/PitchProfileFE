@@ -25,6 +25,7 @@ import {
   GetLanguages,
   GetStates,
 } from "../../redux/action";
+import { GetStateName, SortSameVals } from "../../utils/functions";
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
@@ -42,6 +43,10 @@ export default function Jobmyresume() {
     //  to get languages
     CallGetDropDown();
   }, []);
+
+  const callGetStateName = async () => {
+    GetStateName();
+  };
 
   const CallGetDropDown = async () => {
     if (state.languages != null) await dispatch(GetLanguages());
@@ -235,38 +240,21 @@ export default function Jobmyresume() {
           <div className="section-full browse-job content-inner-2">
             <div className="container">
               <div className="row">
-                {state.candidateSkills.length < 1 ||
-                  state.candidateEducations.length < 1 ||
-                  state.candidateEmployments.length < 1 ||
-                  (state.candidateSocialProfiles.length < 1 && (
-                    <div className="col-12 m-b30">
-                      <div className="pending-info text-white p-a25">
-                        <h5>Pending Action</h5>
-                        <ul className="list-check secondry">
-                          {state.candidateSkills == null ||
-                            (state.candidateSkills.length < 1 && (
-                              <li>No skills added</li>
-                            ))}
-                          {state.candidateEducations == null ||
-                            (state.candidateEducations.length < 1 && (
-                              <li>No education added</li>
-                            ))}
-                          {state.candidateEmployments == null ||
-                            (state.candidateEmployments.length < 1 && (
-                              <li>No employments added</li>
-                            ))}
-                          {state.candidateSocialProfiles == null ||
-                            (state.candidateSocialProfiles.length < 1 && (
-                              <li>No social profiles added</li>
-                            ))}
+                {state.pedningActions.length >= 1 && (
+                  <div className="col-12 m-b30">
+                    <div className="pending-info text-white p-a25">
+                      <h5>Pending Action</h5>
 
-                          {state.candidateDesiredCareer.role == "" && (
-                            <li>No desired career added</li>
-                          )}
-                        </ul>
-                      </div>
+                      <ul className="list-check secondry">
+                        {SortSameVals(state.pedningActions).map((item) => (
+                          <li>{item.message}</li>
+                        ))}
+
+                        {state.candidateDesiredCareer.role == "" && <li></li>}
+                      </ul>
                     </div>
-                  ))}
+                  </div>
+                )}
                 <div className="col-xl-3 col-lg-4 col-md-4 col-sm-12 m-b30">
                   <Listingsidebar />
                 </div>

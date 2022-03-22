@@ -260,11 +260,27 @@ export const GetCandidateSkills = () => async (dispatch, state) => {
       console.log(response.data);
 
       if (response.data.successful) {
+        var arr = state().pedningActions;
+        arr.push({
+          message: "No skills added",
+        });
+        dispatch({
+          type: "setPendingAction",
+          data: arr,
+        });
         dispatch({
           type: "SetCandidateSkill",
           data: response.data.data,
         });
       } else {
+        var arr = state().pedningActions;
+        arr.push({
+          message: "No skills added",
+        });
+        dispatch({
+          type: "setPendingAction",
+          data: arr,
+        });
         // toast.error(response.data.message, {
         //   position: "top-right",
         //   autoClose: 5000,
@@ -359,80 +375,96 @@ export const AddCandidateEducation =
     setModal
   ) =>
   async (dispatch, state) => {
-    console.log("logging", state().authToken);
-
-    var data = JSON.stringify({
-      data: {
-        candidate_id: state().userDetails.id,
-        institute,
-        department_id,
-        education_level,
-        course,
-        start_date,
-        end_date,
-        is_current,
-      },
+    var count = 0;
+    state().candidateEducations.forEach((v, i) => {
+      if (v.is_current === true) {
+        count++;
+      }
     });
-
-    var config = {
-      method: "post",
-      url: `${URL}/profile/add_candidateeducation`,
-      headers: {
-        Authorization: `Bearer ${state().authToken}`,
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        console.log("res tu ran", response.data);
-
-        if (response.data.status) {
-          toast.success("Updated Successfully!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          var resData = state().candidateEducations;
-
-          resData.push(response.data.data[0]);
-          dispatch({
-            type: "SetCandidateEducation",
-            data: resData,
-          });
-
-          if (setModal) {
-            setModal(false);
-          }
-        } else {
-          toast.error(response.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-        toast.error(error, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+    if (count > 0 && is_current == true) {
+      toast.error("Cannot have more than one current institutes", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
+    } else {
+      var data = JSON.stringify({
+        data: {
+          candidate_id: state().userDetails.id,
+          institute,
+          department_id,
+          education_level,
+          course,
+          start_date,
+          end_date,
+          is_current,
+        },
+      });
+
+      var config = {
+        method: "post",
+        url: `${URL}/profile/add_candidateeducation`,
+        headers: {
+          Authorization: `Bearer ${state().authToken}`,
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log("res tu ran", response.data);
+
+          if (response.data.status) {
+            toast.success("Updated Successfully!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            var resData = state().candidateEducations;
+
+            resData.push(response.data.data[0]);
+            dispatch({
+              type: "SetCandidateEducation",
+              data: resData,
+            });
+
+            if (setModal) {
+              setModal(false);
+            }
+          } else {
+            toast.error(response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
+    }
   };
 
 export const UpdateCandidateEducation =
@@ -449,79 +481,98 @@ export const UpdateCandidateEducation =
     setModal
   ) =>
   async (dispatch, state) => {
-    var data = JSON.stringify({
-      data: {
-        id,
-        candidate_id: state().userDetails.id,
-        institute,
-        department_id,
-        education_level,
-        course,
-        start_date,
-        end_date,
-        is_current,
-      },
+    var count = 0;
+    state().candidateEducations.forEach((v, i) => {
+      if (v.is_current === true && index != i) {
+        count++;
+      }
     });
-
-    var config = {
-      method: "post",
-      url: `${URL}/profile/update_candidateeducation`,
-      headers: {
-        Authorization: `Bearer ${state().authToken}`,
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        console.log("res vals", response.data);
-        if (response.data.successful) {
-          toast.success("Updated Successfully!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-
-          var resData = state().candidateEducations;
-          resData[index] = response.data.data;
-          console.log("testing tdyew", resData);
-          dispatch({
-            type: "SetCandidateEducation",
-            data: resData,
-          });
-
-          if (setModal) {
-            setModal(false);
-          }
-        } else {
-          toast.error(response.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-        toast.error(error, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+    console.log("testing the test mk11", count);
+    if (count > 0 && is_current == true) {
+      toast.error("Cannot have more than one current institutes", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
+    } else {
+      var data = JSON.stringify({
+        data: {
+          id,
+          candidate_id: state().userDetails.id,
+          institute,
+          department_id,
+          education_level,
+          course,
+          start_date,
+          end_date,
+          is_current,
+        },
+      });
+
+      var config = {
+        method: "post",
+        url: `${URL}/profile/update_candidateeducation`,
+        headers: {
+          Authorization: `Bearer ${state().authToken}`,
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log("res vals", response.data);
+          if (response.data.successful) {
+            toast.success("Updated Successfully!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+
+            var resData = state().candidateEducations;
+            resData[index] = response.data.data;
+            console.log("testing tdyew", resData);
+            dispatch({
+              type: "SetCandidateEducation",
+              data: resData,
+            });
+
+            if (setModal) {
+              setModal(false);
+            }
+          } else {
+            toast.error(response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
+    }
   };
 
 export const GetCandidateEducations = () => async (dispatch, state) => {
@@ -541,15 +592,14 @@ export const GetCandidateEducations = () => async (dispatch, state) => {
           data: response.data.data,
         });
       } else {
-        // toast.error(response.data.message, {
-        //   position: "top-right",
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        // });
+        var arr = state().pedningActions;
+        arr.push({
+          message: "No education added",
+        });
+        dispatch({
+          type: "setPendingAction",
+          data: arr,
+        });
         dispatch({
           type: "SetCandidateEducation",
           data: [],
@@ -557,6 +607,14 @@ export const GetCandidateEducations = () => async (dispatch, state) => {
       }
     })
     .catch(function (error) {
+      var arr = state().pedningActions;
+      arr.push({
+        message: "No education added",
+      });
+      dispatch({
+        type: "setPendingAction",
+        data: arr,
+      });
       console.log(error);
       toast.error(error, {
         position: "top-right",
@@ -637,79 +695,99 @@ export const AddCandidateEmployment =
     setModal
   ) =>
   async (dispatch, state) => {
-    console.log("logging", industry_id, department_id);
-    var data = JSON.stringify({
-      data: {
-        candidate_id: state().userDetails.id,
-        organization,
-        industry_id,
-        department_id,
-        role,
-        description,
-        start_date,
-        end_date,
-        is_current,
-      },
-    });
+    var count = 0;
+    state().candidateEmployments.forEach(
+      (v) => v.is_current === true && count++
+    );
 
-    var config = {
-      method: "post",
-      url: `${URL}/profile/add_candidateemployment`,
-      headers: {
-        Authorization: `Bearer ${state().authToken}`,
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        console.log("res tu ran", response.data);
-
-        if (response.data.status) {
-          toast.success("Updated Successfully!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          var resData = state().candidateEmployments;
-          resData.push(response.data.data[0]);
-          dispatch({
-            type: "SetCandidateEmployment",
-            data: resData,
-          });
-
-          if (setModal) {
-            setModal(false);
-          }
-        } else {
-          toast.error(response.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-        toast.error(error, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+    console.log("countdesgdrg", count);
+    if (count > 0 && is_current == true) {
+      toast.error("Cannot have more than one current employments", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
+    } else {
+      {
+        console.log("logging", industry_id, department_id);
+        var data = JSON.stringify({
+          data: {
+            candidate_id: state().userDetails.id,
+            organization,
+            industry_id,
+            department_id,
+            role,
+            description,
+            start_date,
+            end_date,
+            is_current,
+          },
+        });
+
+        var config = {
+          method: "post",
+          url: `${URL}/profile/add_candidateemployment`,
+          headers: {
+            Authorization: `Bearer ${state().authToken}`,
+            "Content-Type": "application/json",
+          },
+          data: data,
+        };
+
+        axios(config)
+          .then(function (response) {
+            console.log("res tu ran", response.data);
+
+            if (response.data.status) {
+              toast.success("Updated Successfully!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+              var resData = state().candidateEmployments;
+              resData.push(response.data.data[0]);
+              dispatch({
+                type: "SetCandidateEmployment",
+                data: resData,
+              });
+
+              if (setModal) {
+                setModal(false);
+              }
+            } else {
+              toast.error(response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+            }
+          })
+          .catch(function (error) {
+            console.error(error);
+            toast.error(error, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          });
+      }
+    }
   };
 
 export const UpdateCandidateEmployment =
@@ -727,80 +805,99 @@ export const UpdateCandidateEmployment =
     setModal
   ) =>
   async (dispatch, state) => {
-    var data = JSON.stringify({
-      data: {
-        id,
-        candidate_id: state().userDetails.id,
-        organization,
-        industry_id,
-        department_id,
-        role,
-        description,
-        start_date,
-        end_date,
-        is_current,
-      },
+    var count = 0;
+    state().candidateEmployments.forEach((v, i) => {
+      if (v.is_current === true && index != i) {
+        count++;
+      }
     });
-
-    var config = {
-      method: "post",
-      url: `${URL}/profile/update_candidateemployment`,
-      headers: {
-        Authorization: `Bearer ${state().authToken}`,
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        console.log("res vals", response.data);
-        if (response.data.successful) {
-          toast.success("Updated Successfully!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-
-          var resData = state().candidateEmployments;
-          resData[index] = response.data.data;
-          console.log("testing tdyew", resData);
-          dispatch({
-            type: "SetCandidateEmployment",
-            data: resData,
-          });
-
-          if (setModal) {
-            setModal(false);
-          }
-        } else {
-          toast.error(response.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-        toast.error(error, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+    console.log("testing the test mk11", count);
+    if (count > 0 && is_current == true) {
+      toast.error("Cannot have more than one current employments", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
+    } else {
+      var data = JSON.stringify({
+        data: {
+          id,
+          candidate_id: state().userDetails.id,
+          organization,
+          industry_id,
+          department_id,
+          role,
+          description,
+          start_date,
+          end_date,
+          is_current,
+        },
+      });
+
+      var config = {
+        method: "post",
+        url: `${URL}/profile/update_candidateemployment`,
+        headers: {
+          Authorization: `Bearer ${state().authToken}`,
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log("res vals", response.data);
+          if (response.data.successful) {
+            toast.success("Updated Successfully!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+
+            var resData = state().candidateEmployments;
+            resData[index] = response.data.data;
+            console.log("testing tdyew", resData);
+            dispatch({
+              type: "SetCandidateEmployment",
+              data: resData,
+            });
+
+            if (setModal) {
+              setModal(false);
+            }
+          } else {
+            toast.error(response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
+    }
   };
 
 export const GetCandidateEmployments = () => async (dispatch, state) => {
@@ -829,6 +926,14 @@ export const GetCandidateEmployments = () => async (dispatch, state) => {
         //   draggable: true,
         //   progress: undefined,
         // });
+        var arr = state().pedningActions;
+        arr.push({
+          message: "No employments added",
+        });
+        dispatch({
+          type: "setPendingAction",
+          data: arr,
+        });
         dispatch({
           type: "SetCandidateEmployment",
           data: [],
@@ -836,6 +941,14 @@ export const GetCandidateEmployments = () => async (dispatch, state) => {
       }
     })
     .catch(function (error) {
+      var arr = state().pedningActions;
+      arr.push({
+        message: "No employments added",
+      });
+      dispatch({
+        type: "setPendingAction",
+        data: arr,
+      });
       console.log(error);
       toast.error(error, {
         position: "top-right",
@@ -1812,69 +1925,6 @@ export const GetCandidateReferences = () => async (dispatch, state) => {
       if (response.data.successful) {
         var newArr = [];
 
-        // await Promise.all(
-        //   response.data.data.map(async (item) => {
-        //     var myData = item;
-
-        //     // get state name
-        //     var configState = {
-        //       method: "get",
-        //       url: `${URL}/locations/get_state/${item.state_id}`,
-        //       headers: {},
-        //     };
-
-        //     await axios(configState)
-        //       .then(function (state) {
-        //         console.log("NWO", state.data.data[0].name);
-        //         if (state.data.successful) {
-        //           myData.stateName = state.data.data[0].name;
-        //           newArr.push(myData);
-        //         }
-        //       })
-        //       .catch(function (error) {
-        //         console.log(error);
-        //       });
-
-        //     // get city name
-        //     var configCity = {
-        //       method: "get",
-        //       url: `${URL}/locations/get_city/${item.city_id}`,
-        //       headers: {},
-        //     };
-
-        //     await axios(configCity)
-        //       .then(function (city) {
-        //         console.log("NWO", city.data.data[0].name);
-        //         if (city.data.successful) {
-        //           myData.CityName = city.data.data[0].name;
-        //           newArr.push(myData);
-        //         }
-        //       })
-        //       .catch(function (error) {
-        //         console.log(error);
-        //       });
-
-        //     //  get Country name
-        //     var configCountry = {
-        //       method: "get",
-        //       url: `${URL}/locations/get_country/${item.country_id}`,
-        //       headers: {},
-        //     };
-
-        //     await axios(configCountry)
-        //       .then(function (country) {
-        //         console.log("NWO", country.data.data[0].name);
-        //         if (country.data.successful) {
-        //           myData.CountryName = country.data.data[0].name;
-        //           newArr.push(myData);
-        //         }
-        //       })
-        //       .catch(function (error) {
-        //         console.log(error);
-        //       });
-        //   })
-        // );
-        // console.log("myDate", newArr);
         dispatch({
           type: "SetCandidateReference",
           data: response.data.data,
@@ -2138,6 +2188,14 @@ export const GetCandidateSocialProfiles = () => async (dispatch, state) => {
         //   draggable: true,
         //   progress: undefined,
         // });
+        var arr = state().pedningActions;
+        arr.push({
+          message: "No social profiles added",
+        });
+        dispatch({
+          type: "setPendingAction",
+          data: arr,
+        });
         dispatch({
           type: "SetCandidateSocialProfile",
           data: [],
@@ -2145,6 +2203,14 @@ export const GetCandidateSocialProfiles = () => async (dispatch, state) => {
       }
     })
     .catch(function (error) {
+      var arr = state().pedningActions;
+      arr.push({
+        message: "No social profiles added",
+      });
+      dispatch({
+        type: "setPendingAction",
+        data: arr,
+      });
       console.log(error);
       toast.error(error, {
         position: "top-right",
@@ -2483,7 +2549,7 @@ export const UpdateDesiredCareer =
       method: "post",
       url: `${URL}/profile/update_desiredcareer`,
       headers: {
-        Authorization: `Bearer ${state.authToken}`,
+        Authorization: `Bearer ${state().authToken}`,
         "Content-Type": "application/json",
       },
       data: data,
@@ -2542,6 +2608,7 @@ export const GetDesiredCareer = () => async (dispatch, state) => {
     headers: {},
   };
 
+  console.log("workied");
   axios(config)
     .then(function (response) {
       console.log("GetDesiredCareer", response.data);
@@ -2551,6 +2618,15 @@ export const GetDesiredCareer = () => async (dispatch, state) => {
           data: response.data.data[0],
         });
       } else {
+        var arr = state().pedningActions;
+        arr.push({
+          message: "No desired career added",
+        });
+        dispatch({
+          type: "setPendingAction",
+          data: arr,
+        });
+
         // toast.error(response.data.message, {
         //   position: "top-right",
         //   autoClose: 5000,
@@ -2563,6 +2639,14 @@ export const GetDesiredCareer = () => async (dispatch, state) => {
       }
     })
     .catch(function (error) {
+      var arr = state().pedningActions;
+      arr.push({
+        message: "No desired career added",
+      });
+      dispatch({
+        type: "setPendingAction",
+        data: arr,
+      });
       console.log(error);
     });
 };

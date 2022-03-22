@@ -6,6 +6,7 @@ import {
   DeleteCandidateProject,
   GetCandidateProjects,
 } from "../../../redux/action";
+import { formatDate } from "../../../utils/functions";
 import ProjectsModalComp from "./Modals/ProjectsModalComp";
 
 export default function ProjectsComponent({}) {
@@ -101,12 +102,12 @@ export default function ProjectsComponent({}) {
 
               <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
                 <h6 className="font-14 m-b0">Start Date</h6>
-                <p className="m-b0">{item.start_date}</p>
+                <p className="m-b0">{formatDate(item.start_date)}</p>
               </div>
 
               <div className="col-md-6 col-lg-4 col-sm-12 mb-2 mt-2">
                 <h6 className="font-14 m-b0">End Date</h6>
-                <p className="m-b0">{item.end_date}</p>
+                <p className="m-b0">{formatDate(item.end_date)}</p>
               </div>
             </div>
           </>

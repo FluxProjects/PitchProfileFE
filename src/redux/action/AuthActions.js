@@ -73,13 +73,10 @@ export const registerUser =
 
 export const LogoutUser = (router) => async (dispatch) => {
   dispatch({
-    type: "RegisterUser",
+    type: "LogoutUser",
     data: {},
   });
-  dispatch({
-    type: "SetAuthToken",
-    data: "",
-  });
+
   router.push("/login");
 };
 

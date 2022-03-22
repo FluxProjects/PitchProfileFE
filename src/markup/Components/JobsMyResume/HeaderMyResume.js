@@ -68,8 +68,8 @@ export default function HeaderMyResume({}) {
               <img
                 alt=""
                 src={
-                  state.userDetails.pic != null
-                    ? state.userDetails.pic
+                  state.userDetails?.pic != null
+                    ? state.userDetails?.pic
                     : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
                 }
                 style={{

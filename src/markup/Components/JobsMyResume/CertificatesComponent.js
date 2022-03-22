@@ -5,6 +5,7 @@ import {
   DeleteCandidateCertificate,
   GetCandidateCertificates,
 } from "../../../redux/action";
+import { formatDate } from "../../../utils/functions";
 import CertificatesModalComp from "./Modals/CertificatesModalComp";
 
 export default function CertificatesComponent({}) {
@@ -92,7 +93,7 @@ export default function CertificatesComponent({}) {
 
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
               <h6 className="font-14 m-b0">Year Obtained</h6>
-              <p className="m-b0">{item.year_obtained}</p>
+              <p className="m-b0">{formatDate(item.year_obtained)}</p>
             </div>
             <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
               <h6 className="font-14 m-b0">Referance No.</h6>

@@ -90,7 +90,7 @@ export default function ReferencesComponent({}) {
             <div className="row">
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
-                  <label className="m-b0">Referer Name</label>
+                  <label className="m-b0">Referee Name</label>
                   <span className="clearfix font-13">{item.referer_name}</span>
                 </div>
               </div>
@@ -108,7 +108,8 @@ export default function ReferencesComponent({}) {
                 </div>
               </div>
 
-              <div className="col-lg-4 col-md-6 col-sm-12">
+              {/* Commented for enroll ment */}
+              {/* <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
                   <label className="m-b0">City</label>
                   <span className="clearfix font-13">{item.CityName}</span>
@@ -127,7 +128,7 @@ export default function ReferencesComponent({}) {
                   <label className="m-b0">Country</label>
                   <span className="clearfix font-13">{item.CountryName}</span>
                 </div>
-              </div>
+              </div> */}
 
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">

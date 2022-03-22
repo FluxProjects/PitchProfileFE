@@ -101,7 +101,7 @@ export default function EmploymentsModalComp({
                     />
                   </div>
                 </div>
-                <div className="col-lg-12 col-md-12">
+                {/* <div className="col-lg-12 col-md-12">
                   <div className="form-group">
                     <label>Description</label>
                     <TextAreaModalComponent
@@ -112,7 +112,7 @@ export default function EmploymentsModalComp({
                       placeholder="Type Description"
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
             </form>
           </div>
