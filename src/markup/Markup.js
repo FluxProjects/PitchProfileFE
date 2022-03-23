@@ -40,7 +40,6 @@ export default function Markup() {
           {/* Candidate Resume Page */}
           <Route path="/jobs-my-resume" component={Jobmyresume} />
           <Route path="/jobs-my-resume-view" component={MyResumeView} />
-
           {/* Candidate Profile Page */}
           <Route path="/jobs-profile" component={Jobprofile} />
           {/* Login/Register */}
