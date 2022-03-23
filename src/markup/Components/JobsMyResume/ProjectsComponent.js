@@ -9,7 +9,7 @@ import {
 import { formatDate } from "../../../utils/functions";
 import ProjectsModalComp from "./Modals/ProjectsModalComp";
 
-export default function ProjectsComponent({}) {
+export default function ProjectsComponent({ isView }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -42,46 +42,50 @@ export default function ProjectsComponent({}) {
       <div id="projects_bx" className="job-bx bg-white m-b30">
         <div className="d-flex">
           <h5 className="m-b15">Projects </h5>
-          <Link
-            to={"#"}
-            data-toggle="modal"
-            data-target="#projects"
-            onClick={() => {
-              setUpdateData(false);
-              handleShow();
-            }}
-            className="site-button add-btn button-sm"
-          >
-            <i className="fa fa-plus m-r5"></i> Add
-          </Link>
+          {!isView && (
+            <Link
+              to={"#"}
+              data-toggle="modal"
+              data-target="#projects"
+              onClick={() => {
+                setUpdateData(false);
+                handleShow();
+              }}
+              className="site-button add-btn button-sm"
+            >
+              <i className="fa fa-plus m-r5"></i> Add
+            </Link>
+          )}
         </div>
         {/* map */}
         {state.candidateProjects.map((item, index) => (
           <>
             <h6 className="font-14 mt-5 m-b0">
               {/* Project Board Edit{" "} */}
-              <span className="float-right">
-                <span
-                  onClick={() => {
-                    setUpdateData(true);
-                    setModalDataIndex(index);
-                    handleShow();
-                  }}
-                  className="site-button add-btn button-sm"
-                >
-                  <i className="fa fa-pencil m-r5"></i> Edit
-                </span>
-                <span
-                  onClick={() => {
-                    console.log("tests", index);
+              {!isView && (
+                <span className="float-right">
+                  <span
+                    onClick={() => {
+                      setUpdateData(true);
+                      setModalDataIndex(index);
+                      handleShow();
+                    }}
+                    className="site-button add-btn button-sm"
+                  >
+                    <i className="fa fa-pencil m-r5"></i> Edit
+                  </span>
+                  <span
+                    onClick={() => {
+                      console.log("tests", index);
 
-                    deleteCandidateVal(item.id, index);
-                  }}
-                  className="m-l15 cursorPointer font-14"
-                >
-                  <i className="fa fa-minus text-danger"></i>
+                      deleteCandidateVal(item.id, index);
+                    }}
+                    className="m-l15 cursorPointer font-14"
+                  >
+                    <i className="fa fa-minus text-danger"></i>
+                  </span>
                 </span>
-              </span>
+              )}
             </h6>
 
             <div className="row">

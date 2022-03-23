@@ -115,8 +115,25 @@
 1. GENERAL
 ---------------------------------------------------------------*/
 
-.cursorPointer{
-  cursor: pointer
+.cursorPointer {
+  cursor: pointer;
+}
+
+.textColorGold {
+  color: gold !important;
+  margin-bottom: 2px;
+}
+
+.customFlexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .customFlexRow {
+    flex-direction: column;
+  }
 }
 
 body,
@@ -13539,21 +13556,19 @@ ol.commentlist li .star-rating {
 /* Support and Buy Button END */
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-
-
 /* My styles */
-.gPkpwR > .wrapper{
-  border-radius: 10px!important
+.gPkpwR > .wrapper {
+  border-radius: 10px !important;
 }
 
-.ekwNMM{
-  display: none !important
+.ekwNMM {
+  display: none !important;
 }

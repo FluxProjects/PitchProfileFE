@@ -8,7 +8,7 @@ import {
 import { formatDate } from "../../../utils/functions";
 import CertificatesModalComp from "./Modals/CertificatesModalComp";
 
-export default function CertificatesComponent({}) {
+export default function CertificatesComponent({ isView }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -41,15 +41,17 @@ export default function CertificatesComponent({}) {
       <h5 clas2sName=" ">
         Certification{" "}
         <span className="float-right ml-2 ">
-          <span
-            onClick={() => {
-              setUpdateData(false);
-              setShow(true);
-            }}
-            className="site-button add-btn button-sm"
-          >
-            <i className="fa fa-plus m-r5"></i> Add
-          </span>
+          {!isView && (
+            <span
+              onClick={() => {
+                setUpdateData(false);
+                setShow(true);
+              }}
+              className="site-button add-btn button-sm"
+            >
+              <i className="fa fa-plus m-r5"></i> Add
+            </span>
+          )}
         </span>
       </h5>
 
@@ -57,28 +59,30 @@ export default function CertificatesComponent({}) {
         <>
           <h6 className="font-14 mt-5 m-b0">
             {/* Job BoardEdit{" "} */}
-            <span className="float-right">
-              <span
-                onClick={() => {
-                  setUpdateData(true);
-                  setModalDataIndex(index);
-                  handleShow();
-                }}
-                className="site-button add-btn button-sm"
-              >
-                <i className="fa fa-pencil m-r5"></i> Edit
-              </span>
-              <span
-                onClick={() => {
-                  console.log("tests", index);
+            {!isView && (
+              <span className="float-right">
+                <span
+                  onClick={() => {
+                    setUpdateData(true);
+                    setModalDataIndex(index);
+                    handleShow();
+                  }}
+                  className="site-button add-btn button-sm"
+                >
+                  <i className="fa fa-pencil m-r5"></i> Edit
+                </span>
+                <span
+                  onClick={() => {
+                    console.log("tests", index);
 
-                  deleteCandidateVal(item.id, index);
-                }}
-                className="m-l15 cursorPointer font-14"
-              >
-                <i className="fa fa-minus text-danger"></i>
+                    deleteCandidateVal(item.id, index);
+                  }}
+                  className="m-l15 cursorPointer font-14"
+                >
+                  <i className="fa fa-minus text-danger"></i>
+                </span>
               </span>
-            </span>
+            )}
           </h6>
           <div className="row">
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">

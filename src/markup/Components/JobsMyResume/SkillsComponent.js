@@ -9,7 +9,7 @@ import {
 import SkillsModalComp from "./Modals/SkillsModalComp";
 import { skillTypeDrop } from "../../../utils/DropDownUtils";
 
-export default function SkillsComponent({}) {
+export default function SkillsComponent({ isView }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -43,18 +43,20 @@ export default function SkillsComponent({}) {
       <div id="it_skills_bx" className="job-bx table-job-bx bg-white m-b30">
         <div className="d-flex">
           <h5 className="m-b15">Skills</h5>
-          <Link
-            to={"#"}
-            data-toggle="modal"
-            data-target="#itskills"
-            onClick={() => {
-              setUpdateData(false);
-              handleShow();
-            }}
-            className="site-button add-btn button-sm"
-          >
-            <i className="fa fa-pencil m-r5"></i> Add
-          </Link>
+          {!isView && (
+            <Link
+              to={"#"}
+              data-toggle="modal"
+              data-target="#itskills"
+              onClick={() => {
+                setUpdateData(false);
+                handleShow();
+              }}
+              className="site-button add-btn button-sm"
+            >
+              <i className="fa fa-pencil m-r5"></i> Add
+            </Link>
+          )}
         </div>
         <p>
           Skills are the first thing recruiters notice in your profile. List
@@ -67,7 +69,7 @@ export default function SkillsComponent({}) {
               <th>Skill Name</th>
               <th>Skill Type</th>
               <th>Proficiency</th>
-              <th>Select Top 3 Skills</th>
+              <th>Top 3 Skills</th>
               <th></th>
             </tr>
           </thead>
@@ -89,33 +91,48 @@ export default function SkillsComponent({}) {
                   }
                 </td>
                 <td>{item.skill_level}</td>
-                <td>{item.is_top ? "True" : "False"}</td>
                 <td>
-                  <span
-                    onClick={() => {
-                      console.log("tests", index);
-                      setUpdateData(true);
-                      setModalDataIndex(index);
-                      handleShow();
-                    }}
-                    className="m-l15 cursorPointer font-14"
-                    data-toggle="modal"
-                    data-target="#itskills"
-                  >
-                    <i className="fa fa-pencil"></i>
-                  </span>
-                  <span
-                    onClick={() => {
-                      console.log("tests", index);
+                  {item.is_top ? (
+                    <i class="fa fa-check" style={{ color: "green" }}></i>
+                  ) : (
+                    <span
+                      class=""
+                      style={{ color: "red", fontWeight: "bolder" }}
+                    >
+                      X
+                    </span>
+                  )}
+                </td>
+                <td>
+                  {!isView && (
+                    <>
+                      <span
+                        onClick={() => {
+                          console.log("tests", index);
+                          setUpdateData(true);
+                          setModalDataIndex(index);
+                          handleShow();
+                        }}
+                        className="m-l15 cursorPointer font-14"
+                        data-toggle="modal"
+                        data-target="#itskills"
+                      >
+                        <i className="fa fa-pencil"></i>
+                      </span>
+                      <span
+                        onClick={() => {
+                          console.log("tests", index);
 
-                      deleteCandidateSkill(item.id, index);
-                    }}
-                    className="m-l15 cursorPointer font-14"
-                    data-toggle="modal"
-                    data-target="#itskills"
-                  >
-                    <i className="fa fa-minus text-danger"></i>
-                  </span>
+                          deleteCandidateSkill(item.id, index);
+                        }}
+                        className="m-l15 cursorPointer font-14"
+                        data-toggle="modal"
+                        data-target="#itskills"
+                      >
+                        <i className="fa fa-minus text-danger"></i>
+                      </span>
+                    </>
+                  )}
                 </td>
               </tr>
             ))}

@@ -29,6 +29,7 @@ import Contact from "./Pages/Contact";
 import ScrollToTop from "./Element/ScrollToTop";
 import Register from "./Pages/Register";
 import Browsejobgrid from "./Pages/Browsejobgrid";
+import MyResumeView from "./Pages/MyResumeView";
 
 export default function Markup() {
   return (
@@ -38,6 +39,8 @@ export default function Markup() {
           {/* Routes to use */}
           {/* Candidate Resume Page */}
           <Route path="/jobs-my-resume" component={Jobmyresume} />
+          <Route path="/jobs-my-resume-view" component={MyResumeView} />
+
           {/* Candidate Profile Page */}
           <Route path="/jobs-profile" component={Jobprofile} />
           {/* Login/Register */}

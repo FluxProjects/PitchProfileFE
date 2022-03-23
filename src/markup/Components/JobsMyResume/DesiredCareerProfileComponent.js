@@ -23,7 +23,7 @@ import {
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
-export default function DesiredCareerProfileComponent({}) {
+export default function DesiredCareerProfileComponent({ isView }) {
   const item = useSelector((state) => state.candidateDesiredCareer);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -187,15 +187,17 @@ export default function DesiredCareerProfileComponent({}) {
         <div id="desired_career_profile_bx" className="job-bx bg-white m-b30">
           <div className="d-flex">
             <h5 className="m-b30">Desired Career Profile</h5>
-            <Link
-              to={"#"}
-              data-toggle="modal"
-              data-target="#desiredprofile"
-              onClick={() => handleShow()}
-              className="site-button add-btn button-sm"
-            >
-              <i className="fa fa-pencil m-r5"></i> Edit
-            </Link>
+            {!isView && (
+              <Link
+                to={"#"}
+                data-toggle="modal"
+                data-target="#desiredprofile"
+                onClick={() => handleShow()}
+                className="site-button add-btn button-sm"
+              >
+                <i className="fa fa-pencil m-r5"></i> Edit
+              </Link>
+            )}
           </div>
 
           <Modal

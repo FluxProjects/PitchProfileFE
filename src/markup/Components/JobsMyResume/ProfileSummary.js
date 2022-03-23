@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { UpdateCandidateSummary } from "../../../redux/action";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 
-export default function ProfileSummary({}) {
+export default function ProfileSummary({ isView }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -28,15 +28,17 @@ export default function ProfileSummary({}) {
       <div id="profile_summary_bx" className="job-bx bg-white m-b30">
         <div className="d-flex">
           <h5 className="m-b15">Profile Summary</h5>
-          <Link
-            to={"#"}
-            data-toggle="modal"
-            data-target="#profilesummary"
-            onClick={() => handleShow()}
-            className="site-button add-btn button-sm"
-          >
-            <i className="fa fa-pencil m-r5"></i> Edit
-          </Link>
+          {!isView && (
+            <Link
+              to={"#"}
+              data-toggle="modal"
+              data-target="#profilesummary"
+              onClick={() => handleShow()}
+              className="site-button add-btn button-sm"
+            >
+              <i className="fa fa-pencil m-r5"></i> Edit
+            </Link>
+          )}
         </div>
         <p className="m-b0">
           Your Profile Summary should mention the highlights of your career and

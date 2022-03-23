@@ -13,7 +13,7 @@ import DropdownSearch from "./DropdownSearch";
 import AddLanguagesForm from "./Modals/AddLanguagesForm";
 import TextInputModal from "./TextInputModal";
 
-export default function ProfileDetailsComponent({}) {
+export default function ProfileDetailsComponent({ isView }) {
   const [show, setShow] = useState(false);
 
   const [LangArr, setLangArr] = useState([
@@ -112,15 +112,17 @@ export default function ProfileDetailsComponent({}) {
       <div id="personal_details_bx" className="job-bx bg-white m-b30">
         <div className="d-flex">
           <h5 className="m-b30">Personal Details</h5>
-          <Link
-            to={"#"}
-            data-toggle="modal"
-            data-target="#personaldetails"
-            onClick={() => handleShow()}
-            className="site-button add-btn button-sm"
-          >
-            <i className="fa fa-pencil m-r5"></i> Edit
-          </Link>
+          {!isView && (
+            <Link
+              to={"#"}
+              data-toggle="modal"
+              data-target="#personaldetails"
+              onClick={() => handleShow()}
+              className="site-button add-btn button-sm"
+            >
+              <i className="fa fa-pencil m-r5"></i> Edit
+            </Link>
+          )}
         </div>
 
         <Modal
@@ -399,43 +401,49 @@ export default function ProfileDetailsComponent({}) {
               <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
                 <div className="d-flex">
                   <h5 className="m-b15">Languages</h5>
-                  <Link
-                    to={"#"}
-                    data-toggle="modal"
-                    data-target="#educations"
-                    onClick={() => {
-                      setUpdateData(false);
-                      handleShowLang();
-                    }}
-                    className="site-button add-btn button-sm"
-                  >
-                    <i className="fa fa-plus m-r5"></i> Add
-                  </Link>
+                  {!isView && (
+                    <Link
+                      to={"#"}
+                      data-toggle="modal"
+                      data-target="#educations"
+                      onClick={() => {
+                        setUpdateData(false);
+                        handleShowLang();
+                      }}
+                      className="site-button add-btn button-sm"
+                    >
+                      <i className="fa fa-plus m-r5"></i> Add
+                    </Link>
+                  )}
                 </div>
                 {state.candidateLanguages.map((item, index) => (
                   <>
                     <h6 className="font-14 mt-5 m-b0">
                       <span className="float-right">
-                        <span
-                          onClick={() => {
-                            setUpdateData(true);
-                            setModalDataIndex(index);
-                            handleShowLang();
-                          }}
-                          className="site-button add-btn button-sm"
-                        >
-                          <i className="fa fa-pencil m-r5"></i> Edit
-                        </span>
-                        <span
-                          onClick={() => {
-                            console.log("tests", index);
+                        {!isView && (
+                          <>
+                            <span
+                              onClick={() => {
+                                setUpdateData(true);
+                                setModalDataIndex(index);
+                                handleShowLang();
+                              }}
+                              className="site-button add-btn button-sm"
+                            >
+                              <i className="fa fa-pencil m-r5"></i> Edit
+                            </span>
+                            <span
+                              onClick={() => {
+                                console.log("tests", index);
 
-                            deleteCandidateVal(item.id, index);
-                          }}
-                          className="m-l15 cursorPointer font-14"
-                        >
-                          <i className="fa fa-minus text-danger"></i>
-                        </span>
+                                deleteCandidateVal(item.id, index);
+                              }}
+                              className="m-l15 cursorPointer font-14"
+                            >
+                              <i className="fa fa-minus text-danger"></i>
+                            </span>
+                          </>
+                        )}
                       </span>
                     </h6>
 

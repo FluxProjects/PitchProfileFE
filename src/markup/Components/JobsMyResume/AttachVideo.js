@@ -67,9 +67,16 @@ export default function AttachVideo({}) {
               </div>
             ) : (
               <div className="col-lg-12 col-md-12">
-                <div className="form-group">
+                <div
+                  // style={{
+                  //   height: "155px",
+                  //   maxHeight: "155px",
+                  //   minHeight: "155px",
+                  // }}
+                  className="form-group"
+                >
                   <div className="custom-file">
-                    <p className="m-auto text-white align-self-center">
+                    <p className="m-auto mt-3 text-white align-self-center">
                       <i className="fa  fa-upload"></i>
                       Upload Video File
                     </p>

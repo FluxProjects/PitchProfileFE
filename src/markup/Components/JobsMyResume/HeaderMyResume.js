@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import {
+  GetCities,
+  GetStates,
   UpdateCandidateSummary,
   UpdateIsActive,
   UploadImage,
@@ -20,7 +22,7 @@ import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 import TextInputModal from "./TextInputModal";
 
-export default function HeaderMyResume({}) {
+export default function HeaderMyResume({ isView }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -31,11 +33,22 @@ export default function HeaderMyResume({}) {
     state.userDetails.summary
   );
 
+  const [fname, setFname] = useState(state.userDetails.f_name);
+  const [lname, setLname] = useState(state.userDetails.l_name);
+
   const userDetail = useSelector((state) => state.userDetails);
 
   const [stateName, setStateName] = useState();
   const [cityName, setCityName] = useState();
   const [countryName, setCountryName] = useState();
+  const [city, setCity] = useState(state.userDetails.city_id);
+  const [stateNameDrop, setStateNameDrop] = useState(
+    state.userDetails.state_id
+  );
+  const [country, setCountry] = useState(state.userDetails.country_id);
+  const [hometownCountry, setHometownCountry] = useState(
+    state.userDetails.hometown_country_id
+  );
 
   useEffect(() => {
     GetStateName(userDetail.state_id, setStateName);
@@ -57,6 +70,14 @@ export default function HeaderMyResume({}) {
   const callUpdateIsActive = async (val) => {
     await dispatch(UpdateIsActive(val));
     setToggleIsActive(val);
+  };
+
+  const CallGetCities = async (stateId) => {
+    await dispatch(GetCities(stateId));
+  };
+
+  const CallGetStates = async (stateId) => {
+    await dispatch(GetStates(stateId));
   };
 
   return (
@@ -98,29 +119,18 @@ export default function HeaderMyResume({}) {
               />
               <i className="fa fa-camera"></i>
             </div>
-
-            <div className="mt-2">
-              <Toggle
-                defaultChecked={ToggleIsActive}
-                onChange={() => {
-                  callUpdateIsActive(!ToggleIsActive);
-                }}
-              />
-
-              <p className="text-white font-weight-bold m-b15">
-                {ToggleIsActive ? "Available" : "Unavailable"}
-              </p>
-            </div>
           </div>
           <div className="text-white browse-job text-left">
             <h4 className="m-b0">
               {userDetail.f_name} {userDetail.l_name}
-              <span
-                onClick={() => handleShow()}
-                className="m-l15 font-16 text-white"
-              >
-                <i className="fa fa-pencil"></i>
-              </span>
+              {!isView && (
+                <span
+                  onClick={() => handleShow()}
+                  className="m-l15 font-16 text-white"
+                >
+                  <i className="fa fa-pencil"></i>
+                </span>
+              )}
             </h4>
             <p className="m-b15">
               {state.userDetails.headline}
@@ -132,29 +142,62 @@ export default function HeaderMyResume({}) {
               </span> */}
             </p>
             <ul className="clearfix">
-              <li>
-                <i className="ti-location-pin"></i> {cityName}, {stateName}
+              <li className="w-100">
+                <i className="ti-location-pin"></i>{" "}
+                {countryName == "" && <p>{countryName},</p>}{" "}
+                {cityName == "" && <p>{cityName},</p>}{" "}
+                {stateName == "" && <p>{stateName},</p>}
               </li>
-              <li>
+              <li className="w-100">
                 <i className="ti-mobile"></i> {state.userDetails.phone}
               </li>
-              <li>
-                <i className="ti-location-pin"></i> {countryName}
-              </li>
-              <li>
+              <li className="w-100">
                 <i className="ti-email"></i> {state.userDetails.email}
               </li>
             </ul>
             <div className="progress-box m-t10">
-              <div className="progress-info">
-                Profile Strength (Average)<span>70%</span>
+              <div className="customFlexRow">
+                <p className="textColorGold mr-2">Top Skills</p>
+                <div className="customFlexRow ">
+                  {state.candidateSkills.map((item) => (
+                    <>
+                      {item.is_top == true && (
+                        <div className="mr-2">
+                          <p>
+                            ⭐{" "}
+                            {
+                              state.skills[
+                                state.skills.findIndex(
+                                  (x) => x.id == item.skill_id
+                                )
+                              ].name
+                            }
+                          </p>
+                        </div>
+                      )}
+                    </>
+                  ))}
+                </div>
               </div>
-              <div className="progress">
-                <div
-                  className="progress-bar bg-primary"
-                  style={{ width: "80%" }}
-                  role="progressbar"
-                ></div>
+
+              <div className="customFlexRow mt-0">
+                <p className="textColorGold mr-2">Status</p>
+                <div className="mt-0 customFlexRow">
+                  {!isView && (
+                    <div>
+                      <Toggle
+                        defaultChecked={ToggleIsActive}
+                        onChange={() => {
+                          callUpdateIsActive(!ToggleIsActive);
+                        }}
+                      />
+                    </div>
+                  )}
+
+                  <p className="ml-2 text-white font-weight-bold m-b15">
+                    {ToggleIsActive ? "Available" : "Unavailable"}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -205,8 +248,8 @@ export default function HeaderMyResume({}) {
                       <label>First Name</label>
                       <TextInputModal
                         placeholder="Enter First Name"
-                        // onChange={(e) => setProjectsTitle(e.target.value)}
-                        // value={ProjectsTitle}
+                        onChange={(e) => setFname(e.target.value)}
+                        value={fname}
                       />
                     </div>
                   </div>
@@ -216,8 +259,8 @@ export default function HeaderMyResume({}) {
                       <label>Last Name</label>
                       <TextInputModal
                         placeholder="Enter Last Name"
-                        // onChange={(e) => setProjectsTitle(e.target.value)}
-                        // value={ProjectsTitle}
+                        onChange={(e) => setLname(e.target.value)}
+                        value={lname}
                       />
                     </div>
                   </div>
@@ -239,12 +282,11 @@ export default function HeaderMyResume({}) {
                       <DropDownModalComponent
                         onChange={(e) => {
                           console.log("eee", e.target.value);
-                          //   setLastUsed(e.target.value);
+                          CallGetStates(e.target.value);
+                          setCountry(e.target.value);
                         }}
-                        options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
-                        ]}
+                        value={country}
+                        options={state.countries}
                       />
                     </div>
                   </div>
@@ -255,12 +297,13 @@ export default function HeaderMyResume({}) {
                       <DropDownModalComponent
                         onChange={(e) => {
                           console.log("eee", e.target.value);
+                          CallGetCities(e.target.value);
+
+                          setStateNameDrop(e.target.value);
                           //   setLastUsed(e.target.value);
                         }}
-                        options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
-                        ]}
+                        value={stateName}
+                        options={state.states}
                       />
                     </div>
                   </div>
@@ -271,12 +314,11 @@ export default function HeaderMyResume({}) {
                       <DropDownModalComponent
                         onChange={(e) => {
                           console.log("eee", e.target.value);
+                          setCity(e.target.value);
                           //   setLastUsed(e.target.value);
                         }}
-                        options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
-                        ]}
+                        value={city}
+                        options={state.cities}
                       />
                     </div>
                   </div>
@@ -286,12 +328,11 @@ export default function HeaderMyResume({}) {
                       <DropDownModalComponent
                         onChange={(e) => {
                           console.log("eee", e.target.value);
+                          setHometownCountry(e.target.value);
                           //   setLastUsed(e.target.value);
                         }}
-                        options={[
-                          { id: 1, name: "test 1" },
-                          { id: 2, name: "test 2" },
-                        ]}
+                        value={hometownCountry}
+                        options={state.countries}
                       />
                     </div>
                   </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UploadCoverLetter } from "../../../redux/action";
 
-export default function AttachResumeComponent({}) {
+export default function AttachResumeComponent({ isView }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -25,20 +25,22 @@ export default function AttachResumeComponent({}) {
                 </a>
               )}
               <div className="form-group">
-                <div className="custom-file">
-                  <p className="m-auto align-self-center">
-                    <i className="fa fa-upload"></i>
-                    Upload Cover Letter File size is 3 MB
-                  </p>
-                  <input
-                    type="file"
-                    className="site-button form-control"
-                    id="customFile"
-                    onChange={(e) => {
-                      dispatch(UploadCoverLetter(e.target.files));
-                    }}
-                  />
-                </div>
+                {!isView && (
+                  <div className="custom-file">
+                    <p className="m-auto align-self-center">
+                      <i className="fa fa-upload"></i>
+                      Upload Cover Letter File size is 3 MB
+                    </p>
+                    <input
+                      type="file"
+                      className="site-button form-control"
+                      id="customFile"
+                      onChange={(e) => {
+                        dispatch(UploadCoverLetter(e.target.files));
+                      }}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>
