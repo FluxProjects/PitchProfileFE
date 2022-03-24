@@ -31,7 +31,7 @@ export default function HeaderMyResume({ isView }) {
     state.userDetails.is_active
   );
   const [ResumeHeadline, setResumeHeadline] = useState(
-    state.userDetails.summary
+    state.userDetails.headline
   );
 
   const [fname, setFname] = useState(state.userDetails.f_name);
@@ -53,7 +53,7 @@ export default function HeaderMyResume({ isView }) {
     state.userDetails.hometown_country_id
   );
 
-  useEffect(() => {
+  useEffect(async () => {
     GetStateName(userDetail.state_id, setStateName);
     GetCityName(userDetail.city_id, setCityName);
     GetCountryName(userDetail.country_id, setCountryName);
@@ -153,7 +153,7 @@ export default function HeaderMyResume({ isView }) {
               )}
             </h4>
             <p className="m-b15">
-              {state.userDetails.headline}
+              {ResumeHeadline}
               {/* <span
                 onClick={() => handleShow()}
                 className="m-l15 font-16 text-white"
@@ -371,6 +371,7 @@ export default function HeaderMyResume({ isView }) {
                         onChange={(e) => {
                           setEmail(e.target.value);
                         }}
+                        value={email}
                       />
                     </div>
                   </div>
@@ -384,6 +385,7 @@ export default function HeaderMyResume({ isView }) {
                         onChange={(e) => {
                           setPhone(e.target.value);
                         }}
+                        value={phone}
                       />
                     </div>
                   </div>

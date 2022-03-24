@@ -23,6 +23,7 @@ import {
   GetCities,
   GetCountries,
   GetLanguages,
+  GetSkills,
   GetStates,
 } from "../../redux/action";
 import { GetStateName, SortSameVals } from "../../utils/functions";
@@ -50,6 +51,7 @@ export default function Jobmyresume() {
 
   const CallGetDropDown = async () => {
     if (state.languages != null) await dispatch(GetLanguages());
+    await dispatch(GetSkills());
 
     if (state.countries != null) await dispatch(GetCountries());
     if (state.states != null) await dispatch(GetStates(230));

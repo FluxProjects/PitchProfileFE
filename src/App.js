@@ -28,16 +28,16 @@ function App() {
 
   const callGetDrop = async () => {
     if (state.departments.length < 1) {
-      dispatch(GetDepartments());
+      await dispatch(GetDepartments());
     }
     if (state.industries.length < 1) {
-      dispatch(GetIndustries());
+      await dispatch(GetIndustries());
     }
-    if (state.skills.length < 1) {
-      dispatch(GetSkills());
-    }
+    // if (state.skills.length < 1) {
+    await dispatch(GetSkills());
+    // }
     if (state.educationLevels.length < 1) {
-      dispatch(GetEducationLevels());
+      await dispatch(GetEducationLevels());
     }
   };
 

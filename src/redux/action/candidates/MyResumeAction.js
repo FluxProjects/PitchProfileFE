@@ -175,77 +175,164 @@ export const AddCandidateSkill =
 export const UpdateCandidateSkill =
   (id, skill_id, skill_type, skill_level, is_top, index, setModal) =>
   async (dispatch, state) => {
-    console.log("modalDataIndex", index);
-    var data = JSON.stringify({
-      data: {
-        id,
-        candidate_id: state().userDetails.id,
-        skill_id,
-        skill_type,
-        skill_level,
-        is_top,
-      },
-    });
+    var count = 0;
+    state().candidateSkills.forEach((v) => v.is_top === true && count++);
 
-    var config = {
-      method: "post",
-      url: `${URL}/profile/update_candidateskill`,
-      headers: {
-        Authorization: `Bearer ${state().authToken}`,
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        console.log("res vals", response.data);
-        if (response.data.successful) {
-          toast.success("Updated Successfully!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-
-          var resData = state().candidateSkills;
-          resData[index] = response.data.data;
-          console.log("testing tdyew", resData);
-          dispatch({
-            type: "SetCandidateSkill",
-            data: resData,
-          });
-
-          if (setModal) {
-            setModal(false);
-          }
-        } else {
-          toast.error(response.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-        toast.error(error, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+    if (is_top == true && count < 3) {
+      console.log("modalDataIndex", index);
+      var data = JSON.stringify({
+        data: {
+          id,
+          candidate_id: state().userDetails.id,
+          skill_id,
+          skill_type,
+          skill_level,
+          is_top,
+        },
       });
+
+      var config = {
+        method: "post",
+        url: `${URL}/profile/update_candidateskill`,
+        headers: {
+          Authorization: `Bearer ${state().authToken}`,
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log("res vals", response.data);
+          if (response.data.successful) {
+            toast.success("Updated Successfully!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+
+            var resData = state().candidateSkills;
+            resData[index] = response.data.data;
+            console.log("testing tdyew", resData);
+            dispatch({
+              type: "SetCandidateSkill",
+              data: resData,
+            });
+
+            if (setModal) {
+              setModal(false);
+            }
+          } else {
+            toast.error(response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
+    } else if (is_top == false) {
+      console.log("modalDataIndex", index);
+      var data = JSON.stringify({
+        data: {
+          id,
+          candidate_id: state().userDetails.id,
+          skill_id,
+          skill_type,
+          skill_level,
+          is_top,
+        },
+      });
+
+      var config = {
+        method: "post",
+        url: `${URL}/profile/update_candidateskill`,
+        headers: {
+          Authorization: `Bearer ${state().authToken}`,
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log("res vals", response.data);
+          if (response.data.successful) {
+            toast.success("Updated Successfully!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+
+            var resData = state().candidateSkills;
+            resData[index] = response.data.data;
+            console.log("testing tdyew", resData);
+            dispatch({
+              type: "SetCandidateSkill",
+              data: resData,
+            });
+
+            if (setModal) {
+              setModal(false);
+            }
+          } else {
+            toast.error(response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
+    } else {
+      toast.error("Cannot Have More Than 3 Top Skills", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
 export const GetCandidateSkills = () => async (dispatch, state) => {
@@ -261,13 +348,7 @@ export const GetCandidateSkills = () => async (dispatch, state) => {
 
       if (response.data.successful) {
         var arr = state().pedningActions;
-        arr.push({
-          message: "No skills added",
-        });
-        dispatch({
-          type: "setPendingAction",
-          data: arr,
-        });
+
         dispatch({
           type: "SetCandidateSkill",
           data: response.data.data,
