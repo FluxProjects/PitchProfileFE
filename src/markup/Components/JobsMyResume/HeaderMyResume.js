@@ -9,6 +9,7 @@ import {
   GetStates,
   UpdateCandidateSummary,
   UpdateIsActive,
+  UpdateResumeHeader,
   UploadImage,
   UploadProfileImg,
 } from "../../../redux/action";
@@ -35,6 +36,8 @@ export default function HeaderMyResume({ isView }) {
 
   const [fname, setFname] = useState(state.userDetails.f_name);
   const [lname, setLname] = useState(state.userDetails.l_name);
+  const [phone, setPhone] = useState(state.userDetails.phone);
+  const [email, setEmail] = useState(state.userDetails.email);
 
   const userDetail = useSelector((state) => state.userDetails);
 
@@ -65,6 +68,23 @@ export default function HeaderMyResume({ isView }) {
 
   const callUpdateCandidateSummary = async () => {
     dispatch(UpdateCandidateSummary(ResumeHeadline, handleClose()));
+  };
+
+  const callUpdateResumeHeader = async () => {
+    dispatch(
+      UpdateResumeHeader(
+        fname,
+        lname,
+        ResumeHeadline,
+        city,
+        stateNameDrop,
+        country,
+        hometownCountry,
+        phone,
+        email,
+        handleClose()
+      )
+    );
   };
 
   const callUpdateIsActive = async (val) => {
@@ -144,17 +164,21 @@ export default function HeaderMyResume({ isView }) {
             <ul className="clearfix">
               <li className="w-100">
                 <i className="ti-location-pin"></i>{" "}
-                {countryName == "" && <p>{countryName},</p>}{" "}
-                {cityName == "" && <p>{cityName},</p>}{" "}
-                {stateName == "" && <p>{stateName},</p>}
+                {countryName != "" && <>{countryName},</>}{" "}
+                {cityName != "" && <>{cityName},</>}{" "}
+                {stateName != "" && <>{stateName},</>}
               </li>
-              <li className="w-100">
-                <i className="ti-mobile"></i> {state.userDetails.phone}
-              </li>
+              {state.userDetails.phone != "" ||
+                (state.userDetails.phone != null && (
+                  <li className="w-100">
+                    <i className="ti-mobile"></i> {state.userDetails.phone}
+                  </li>
+                ))}
               <li className="w-100">
                 <i className="ti-email"></i> {state.userDetails.email}
               </li>
             </ul>
+
             <div className="progress-box m-t10">
               <div className="customFlexRow">
                 <p className="textColorGold mr-2">Top Skills</p>
@@ -344,6 +368,9 @@ export default function HeaderMyResume({ isView }) {
                         type="text"
                         className="form-control"
                         placeholder="info@example.com"
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
@@ -354,6 +381,9 @@ export default function HeaderMyResume({ isView }) {
                         type="text"
                         className="form-control"
                         placeholder="Phone number"
+                        onChange={(e) => {
+                          setPhone(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
@@ -372,7 +402,7 @@ export default function HeaderMyResume({ isView }) {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  callUpdateCandidateSummary();
+                  callUpdateResumeHeader();
                 }}
                 type="button"
                 className="site-button"

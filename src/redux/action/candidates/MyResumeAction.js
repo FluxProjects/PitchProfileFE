@@ -2650,3 +2650,84 @@ export const GetDesiredCareer = () => async (dispatch, state) => {
       console.log(error);
     });
 };
+
+export const UpdateResumeHeader =
+  (
+    f_name,
+    l_name,
+    headline,
+    city_id,
+    state_id,
+    country_id,
+    hometown_country_id,
+    phone,
+    email,
+    setModal
+  ) =>
+  async (dispatch, state) => {
+    var data = JSON.stringify({
+      data: {
+        id: state().userDetails.id,
+        f_name,
+        l_name,
+        city_id,
+        state_id,
+        country_id,
+        hometown_country_id,
+        phone,
+        email,
+        headline,
+      },
+    });
+
+    var config = {
+      method: "post",
+      url: `${URL}/profile/update_resueme_headline`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        if (response.data.successful) {
+          console.log("data", response.data.data);
+          toast.success("Update Success!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+          dispatch({
+            type: "RegisterUser",
+            data: response.data.data,
+          });
+          dispatch({
+            type: "SetAuthToken",
+            data: response.data.accessToken,
+          });
+          if (setModal) {
+            setModal(false);
+          }
+        } else {
+          toast.error(response.data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };

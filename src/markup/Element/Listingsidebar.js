@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-scroll";
+import ListingSidebarRouterLink from "./ListingSidebarRouterLink";
 
 class Listingsidebar extends Component {
   render() {
@@ -166,6 +167,7 @@ class Listingsidebar extends Component {
                 <span>Attach Cover Letter</span>
               </Link>
             </li>
+            <ListingSidebarRouterLink />
           </ul>
         </div>
       </div>
