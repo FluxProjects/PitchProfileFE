@@ -164,9 +164,9 @@ export default function HeaderMyResume({ isView }) {
             <ul className="clearfix">
               <li className="w-100">
                 <i className="ti-location-pin"></i>{" "}
-                {countryName != "" && <>{countryName},</>}{" "}
                 {cityName != "" && <>{cityName},</>}{" "}
-                {stateName != "" && <>{stateName},</>}
+                {stateName != "" && <>{stateName},</>}{" "}
+                {countryName != "" && <>{countryName}</>}
               </li>
               {state.userDetails.phone != "" ||
                 (state.userDetails.phone != null && (

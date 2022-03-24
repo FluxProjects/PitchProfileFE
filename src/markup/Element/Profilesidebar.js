@@ -10,11 +10,11 @@ export default function Profilesidebar(props) {
   const links = [
     { name: "Profile", link: "/jobs-profile", icon: "fa fa-user-o" },
     { name: "My Resume", link: "/jobs-my-resume", icon: "fa fa-file-text-o" },
-    {
-      name: "View My Resume",
-      link: "/jobs-my-resume-view",
-      icon: "fa fa-file-text-o",
-    },
+    // {
+    //   name: "View My Resume",
+    //   link: "/jobs-my-resume-view",
+    //   icon: "fa fa-file-text-o",
+    // },
     { name: "Saved Jobs", link: "/jobs-saved-jobs", icon: "fa fa-heart-o" },
     {
       name: "Applied Jobs",
