@@ -122,23 +122,25 @@ export default function HeaderMyResume({ isView }) {
                 }}
               />
             </Link>
-            <div
-              className="upload-link"
-              title="update"
-              data-toggle="tooltip"
-              data-placement="right"
-            >
-              <input
-                type="file"
-                onChange={(e) => {
-                  console.log("eeee", e.target.value);
+            {!isView && (
+              <div
+                className="upload-link"
+                title="update"
+                data-toggle="tooltip"
+                data-placement="right"
+              >
+                <input
+                  type="file"
+                  onChange={(e) => {
+                    console.log("eeee", e.target.value);
 
-                  dispatch(UploadImage(e.target.files));
-                }}
-                className="update-flie"
-              />
-              <i className="fa fa-camera"></i>
-            </div>
+                    dispatch(UploadImage(e.target.files));
+                  }}
+                  className="update-flie"
+                />
+                <i className="fa fa-camera"></i>
+              </div>
+            )}
           </div>
           <div className="text-white browse-job text-left">
             <h4 className="m-b0">
@@ -168,12 +170,11 @@ export default function HeaderMyResume({ isView }) {
                 {stateName != "" && <>{stateName},</>}{" "}
                 {countryName != "" && <>{countryName}</>}
               </li>
-              {state.userDetails.phone != "" ||
-                (state.userDetails.phone != null && (
-                  <li className="w-100">
-                    <i className="ti-mobile"></i> {state.userDetails.phone}
-                  </li>
-                ))}
+              {state.userDetails.phone != "" && (
+                <li className="w-100">
+                  <i className="ti-mobile"></i> {state.userDetails.phone}
+                </li>
+              )}
               <li className="w-100">
                 <i className="ti-email"></i> {state.userDetails.email}
               </li>
@@ -231,7 +232,7 @@ export default function HeaderMyResume({ isView }) {
         {/* <Link to={""}> */}
         {/* AttachVideo */}
         <div className=" text-white ">
-          <AttachVideo />
+          <AttachVideo isView={isView} />
 
           {/* <h5>Pending Action</h5>
     <ul className="list-check secondry">

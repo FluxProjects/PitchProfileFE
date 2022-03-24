@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UploadProfileVid } from "../../../redux/action";
 
-export default function AttachVideo({}) {
+export default function AttachVideo({ isView }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -27,20 +27,22 @@ export default function AttachVideo({}) {
           <h5 className="m-b10 text-white">Attach Video</h5>
         )}
         {state.userDetails.video != null && (
-          <div className="d-flex">
-            <h5 className="m-b15">My Video</h5>
+          <div className="d-flex m-b15">
+            {/* <h5 className="m-b15">My Video</h5> */}
 
-            <span
-              to={"#"}
-              data-toggle="modal"
-              data-target="#educations"
-              onClick={() => {
-                inputRef.click();
-              }}
-              className="site-button add-btn button-sm"
-            >
-              <i className="fa fa-pencil m-r5"></i> Edit
-            </span>
+            {!isView && (
+              <span
+                to={"#"}
+                data-toggle="modal"
+                data-target="#educations"
+                onClick={() => {
+                  inputRef.click();
+                }}
+                className="site-button add-btn button-sm"
+              >
+                <i className="fa fa-pencil m-r5"></i> Edit
+              </span>
+            )}
           </div>
         )}
 

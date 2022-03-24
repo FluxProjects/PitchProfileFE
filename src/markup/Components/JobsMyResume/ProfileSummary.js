@@ -40,12 +40,12 @@ export default function ProfileSummary({ isView }) {
             </Link>
           )}
         </div>
-        <p className="m-b0">
+        {/* <p className="m-b0">
           Your Profile Summary should mention the highlights of your career and
           education, what your professional interests are, and what kind of a
           career you are looking for. Write a meaningful summary of more than 50
           characters.
-        </p>
+        </p> */}
         <br />
         <p className="m-b0">{state.userDetails.summary}</p>
       </div>
@@ -72,12 +72,12 @@ export default function ProfileSummary({ isView }) {
               </button>
             </div>
             <div className="modal-body">
-              <p>
+              {/* <p>
                 Your Profile Summary should mention the highlights of your
                 career and education, what your professional interests are, and
                 what kind of a career you are looking for. Write a meaningful
                 summary of more than 50 characters.
-              </p>
+              </p> */}
               <form>
                 <div className="row">
                   <div className="col-lg-12 col-md-12">

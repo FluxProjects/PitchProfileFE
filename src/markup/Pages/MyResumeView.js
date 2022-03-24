@@ -256,7 +256,7 @@ export default function MyResumeView() {
                   </div>
                 )} */}
                 <div className="col-xl-3 col-lg-4 col-md-4 col-sm-12 m-b30">
-                  <Listingsidebar />
+                  <Listingsidebar isView={true} />
                 </div>
                 <div className="col-xl-9 col-lg-8 col-md-8 col-sm-12">
                   {/* Resume Headline */}
