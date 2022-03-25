@@ -104,7 +104,13 @@ export default function HeaderMyResume({ isView }) {
     <>
       <div className="col-lg-8 col-md-7 candidate-info">
         <div className="candidate-detail">
-          <div className="canditate-des text-center">
+          <div
+            style={{
+              height: "200px",
+              width: "200px",
+            }}
+            className="canditate-des text-center"
+          >
             <Link to={""}>
               <img
                 alt=""
@@ -114,10 +120,10 @@ export default function HeaderMyResume({ isView }) {
                     : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
                 }
                 style={{
-                  minHeight: "110px",
-                  maxHeight: "145px",
-                  maxWidth: "110px",
-                  minWidth: "110px",
+                  minHeight: "200px",
+                  maxHeight: "200px",
+                  maxWidth: "200px",
+                  minWidth: "200px",
                   height: "10px",
                   borderRadius: "30%",
                 }}
