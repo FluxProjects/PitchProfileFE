@@ -52,6 +52,11 @@ export default function Header() {
       index: "0",
     },
     {
+      name: "All Candidates",
+      link: "/browse-job-grid",
+      index: "8",
+    },
+    {
       name: "Companies",
       link: "/company-post-jobs",
       index: "1",
