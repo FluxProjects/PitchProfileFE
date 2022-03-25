@@ -87,9 +87,9 @@ export default function ProjectsModalComp({
               <div className="row">
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Projects Title</label>
+                    <label>Project Title</label>
                     <TextInputModal
-                      placeholder="Enter Projects Title"
+                      placeholder="Enter Project Title"
                       onChange={(e) => setProjectsTitle(e.target.value)}
                       value={ProjectsTitle}
                     />

@@ -55,7 +55,7 @@ export default function ProfileSummary({ isView }) {
         onHide={() => handleClose()}
         className="modal fade modal-bx-info editor"
       >
-        <div className="modal-dialog my-0" role="document">
+        <div className="modal-dialog my-0 mx-0" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="ResumeheadlineModalLongTitle">

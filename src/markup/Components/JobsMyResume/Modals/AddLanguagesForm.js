@@ -20,10 +20,10 @@ export default function AddLanguagesForm({
 
   const dispatch = useDispatch();
   const [level, setLevel] = useState(
-    data?.proficiency_level ? data?.proficiency_level : 0
+    data?.proficiency_level ? data?.proficiency_level : 1
   );
   const [languages, setLanguages] = useState(
-    data?.language_id ? data?.language_id : 0
+    data?.language_id ? data?.language_id : 1
   );
   const callAction = async () => {
     if (isUpdate) {

@@ -98,27 +98,34 @@ export default function SkillsComponent({ isView }) {
                     <span
                       class=""
                       style={{ color: "red", fontWeight: "bolder" }}
-                    >
-                      X
-                    </span>
+                    ></span>
                   )}
                 </td>
                 <td>
                   {!isView && (
                     <>
-                      <span
+                      <Link
+                        to={"#"}
+                        data-toggle="modal"
+                        data-target="#itskills"
                         onClick={() => {
                           console.log("tests", index);
                           setUpdateData(true);
                           setModalDataIndex(index);
                           handleShow();
                         }}
+                        className="site-button add-btn button-sm"
+                      >
+                        <i className="fa fa-pencil m-r5"></i> Edit
+                      </Link>
+                      {/* <span
+                       
                         className="m-l15 cursorPointer font-14"
                         data-toggle="modal"
                         data-target="#itskills"
                       >
                         <i className="fa fa-pencil"></i>
-                      </span>
+                      </span> */}
                       <span
                         onClick={() => {
                           console.log("tests", index);

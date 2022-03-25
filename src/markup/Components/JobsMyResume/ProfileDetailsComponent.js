@@ -8,6 +8,7 @@ import {
   updateUser,
 } from "../../../redux/action";
 import { proficiencyLevelDrop } from "../../../utils/DropDownUtils";
+import { formatDate } from "../../../utils/functions";
 import DropDownModalComponent from "./DropDownModalComponent";
 import DropdownSearch from "./DropdownSearch";
 import AddLanguagesForm from "./Modals/AddLanguagesForm";
@@ -260,7 +261,7 @@ export default function ProfileDetailsComponent({ isView }) {
                     </div>
 
                     <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
+                      {/* <div className="form-group">
                         <label>Any disability?</label>
                         <div className="row">
                           <div className="col-lg-3 col-md-6 col-sm-6 col-6">
@@ -305,7 +306,7 @@ export default function ProfileDetailsComponent({ isView }) {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                     {Disability && (
                       <div className="col-lg-12 col-md-12">
@@ -368,7 +369,9 @@ export default function ProfileDetailsComponent({ isView }) {
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Date of Birth</label>
                 <span className="clearfix font-13">
-                  {userDetails.dob ? userDetails.dob : "Not Entered"}
+                  {userDetails.dob
+                    ? formatDate(userDetails.dob)
+                    : "Not Entered"}
                 </span>
               </div>
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
@@ -392,12 +395,12 @@ export default function ProfileDetailsComponent({ isView }) {
                 </span>
               </div>
 
-              <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
+              {/* <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Differently Abled</label>
                 <span className="clearfix font-13">
                   {userDetails.disability ? "Yes" : "No"}
                 </span>
-              </div>
+              </div> */}
               <div className="clearfix m-b20 col-md-12 col-sm-12 col-lg-12">
                 <div className="d-flex">
                   <h5 className="m-b15">Languages</h5>
@@ -418,7 +421,7 @@ export default function ProfileDetailsComponent({ isView }) {
                 </div>
                 {state.candidateLanguages.map((item, index) => (
                   <>
-                    <h6 className="font-14 mt-5 m-b0">
+                    <h6 className="font-14 mt-3 m-b0">
                       <span className="float-right">
                         {!isView && (
                           <>

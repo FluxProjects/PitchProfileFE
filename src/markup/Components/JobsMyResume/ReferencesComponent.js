@@ -63,7 +63,7 @@ export default function ReferencesComponent({ isView }) {
         {/* map */}
         {state.candidateReferences.map((item, index) => (
           <>
-            <h6 className="font-14 mt-5 m-b0">
+            <h6 className="font-14 mt-3 m-b0">
               {/* Education Board Edit{" "} */}
               {!isView && (
                 <span className="float-right">

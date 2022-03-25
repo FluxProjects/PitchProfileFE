@@ -49,7 +49,7 @@ export default function CertificatesModalComp({
       <div className="modal-content">
         <div className="modal-header">
           <h5 className="modal-title" id="CertificationModalLongTitle">
-            Certification
+            Certifications
           </h5>
           <button
             type="button"
@@ -104,7 +104,7 @@ export default function CertificatesModalComp({
 
               <div className="col-lg-12 col-md-12">
                 <div className="form-group">
-                  <label>Referance No.</label>
+                  <label>Credentail Id.</label>
                   <TextInputModal
                     type=""
                     onChange={(e) => {

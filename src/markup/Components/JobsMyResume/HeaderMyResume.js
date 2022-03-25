@@ -119,6 +119,7 @@ export default function HeaderMyResume({ isView }) {
                   maxWidth: "110px",
                   minWidth: "110px",
                   height: "10px",
+                  borderRadius: "30%",
                 }}
               />
             </Link>

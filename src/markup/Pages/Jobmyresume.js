@@ -20,6 +20,7 @@ import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeCompon
 import HeaderMyResume from "../Components/JobsMyResume/HeaderMyResume";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  GetCandidateLanguages,
   GetCities,
   GetCountries,
   GetLanguages,
@@ -43,10 +44,15 @@ export default function Jobmyresume() {
   useEffect(() => {
     //  to get languages
     CallGetDropDown();
+    CallGetCandidateLanguages();
   }, []);
 
   const callGetStateName = async () => {
     GetStateName();
+  };
+
+  const CallGetCandidateLanguages = async () => {
+    await dispatch(GetCandidateLanguages());
   };
 
   const CallGetDropDown = async () => {

@@ -41,7 +41,7 @@ export default function EducationsComponent({ isView }) {
       {/* Education */}
       <div id="education_bx" className="job-bx bg-white m-b30">
         <div className="d-flex">
-          <h5 className="m-b15">Educations</h5>
+          <h5 className="m-b15">Education</h5>
           {!isView && (
             <Link
               to={"#"}
@@ -61,7 +61,7 @@ export default function EducationsComponent({ isView }) {
         {/* map */}
         {state.candidateEducations.map((item, index) => (
           <>
-            <h6 className="font-14 mt-5 m-b0">
+            <h6 className="font-14 mt-3 m-b0">
               {/* Education Board Edit{" "} */}
               {!isView && (
                 <span className="float-right">

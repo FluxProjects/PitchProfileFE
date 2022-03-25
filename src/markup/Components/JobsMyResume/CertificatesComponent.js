@@ -57,7 +57,7 @@ export default function CertificatesComponent({ isView }) {
 
       {state.candidateCertificates.map((item, index) => (
         <>
-          <h6 className="font-14 mt-5 m-b0">
+          <h6 className="font-14 mt-3 m-b0">
             {/* Job BoardEdit{" "} */}
             {!isView && (
               <span className="float-right">

@@ -62,7 +62,7 @@ export default function SocialProfilesComponent({ isView }) {
         {state.candidateSocialProfiles != null &&
           state.candidateSocialProfiles.map((item, index) => (
             <>
-              <h6 className="font-14 mt-5 m-b0">
+              <h6 className="font-14 mt-3 m-b0">
                 {/* Project Board Edit{" "} */}
                 {!isView && (
                   <span className="float-right">

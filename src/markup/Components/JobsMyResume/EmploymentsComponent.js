@@ -41,7 +41,7 @@ export default function EmploymentsComponent({ isView }) {
       {/* Employment */}
       <div id="employment_bx" className="job-bx bg-white m-b30 ">
         <div className="d-flex">
-          <h5 className=" mb-2">Employments </h5>
+          <h5 className=" mb-2">Employment </h5>
           {!isView && (
             <Link
               to={"#"}
@@ -61,7 +61,7 @@ export default function EmploymentsComponent({ isView }) {
         {/* map */}
         {state.candidateEmployments.map((item, index) => (
           <>
-            <h6 className="font-14 mt-5 m-b0">
+            <h6 className="font-14 mt-3 m-b0">
               {/* Employment Board Edit{" "} */}
               {!isView && (
                 <span className="float-right">

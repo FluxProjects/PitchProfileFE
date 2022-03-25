@@ -77,7 +77,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
             ].name,
     },
     {
-      name: "Expected Salary",
+      name: "Expected Annual Salary in GBP",
       desc: item?.expected_salary,
     },
     {
@@ -433,7 +433,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                         <div className="form-group">
                           <label>Expected Salary</label>
                           <TextInputModal
-                            placeholder="Enter your Expected Salary"
+                            placeholder="Enter your Expected Annual Salary in GBP"
                             onChange={(e) => {
                               console.log("tesing ", e.target.value);
                               setExpSalary(e.target.value);

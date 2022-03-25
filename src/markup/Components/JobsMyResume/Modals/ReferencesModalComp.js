@@ -107,9 +107,9 @@ export default function ReferencesModalComp({
               <div className="row">
                 <div className="col-lg-12 col-md-12 ">
                   <div className="form-group">
-                    <label>Referer Name</label>
+                    <label>Referee Name</label>
                     <TextInputModal
-                      placeholder={"Enter Referer Name"}
+                      placeholder={"Enter Referee Name"}
                       onChange={(e) => setRefererName(e.target.value)}
                       value={refererName}
                     />
@@ -119,7 +119,7 @@ export default function ReferencesModalComp({
                   <div className="form-group">
                     <label>Organization</label>
                     <TextInputModal
-                      placeholder={"Enter Referer Organization Name"}
+                      placeholder={"Enter Referee Organization Name"}
                       onChange={(e) => setOrganization(e.target.value)}
                       value={organization}
                     />
@@ -129,7 +129,7 @@ export default function ReferencesModalComp({
                   <div className="form-group">
                     <label>Designation</label>
                     <TextInputModal
-                      placeholder={"Enter Referer Designation"}
+                      placeholder={"Enter Referee Designation"}
                       onChange={(e) => setJobTitle(e.target.value)}
                       value={jobTitle}
                     />
@@ -185,7 +185,7 @@ export default function ReferencesModalComp({
                   <div className="form-group">
                     <label>Phone</label>
                     <TextInputModal
-                      placeholder={"Enter Referer Phone"}
+                      placeholder={"Enter Referee Phone"}
                       onChange={(e) => setPhone(e.target.value)}
                       value={phone}
                     />
@@ -196,7 +196,7 @@ export default function ReferencesModalComp({
                   <div className="form-group">
                     <label>Email</label>
                     <TextInputModal
-                      placeholder={"Enter Referer Email"}
+                      placeholder={"Enter Referee Email"}
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
                     />
