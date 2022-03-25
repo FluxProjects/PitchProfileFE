@@ -115,6 +115,24 @@
 1. GENERAL
 ---------------------------------------------------------------*/
 
+/* Grid view  */
+.containerImageGrid {
+  position: relative;
+}
+.containerImageGrid img {
+  display: block;
+}
+.containerImageGrid .playBtn {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+.containerImageGrid .isAvail {
+  position: absolute;
+  bottom: 0;
+  left: 38%;
+}
+
 .cursorPointer {
   cursor: pointer;
 }

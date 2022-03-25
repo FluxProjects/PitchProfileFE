@@ -1267,7 +1267,7 @@ export const GetCandidateLanguages = () => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log("mydata", (response.data.data));
+      console.log("mydata", response.data.data);
       if (response.data.successful) {
         dispatch({
           type: "SetCandidateLanguages",

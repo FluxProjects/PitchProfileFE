@@ -69,6 +69,9 @@ const changeState = (state = initialState, { type, ...rest }) => {
         candidateSocialProfiles: [],
         candidateLanguages: [],
         candidateDesiredCareer: {},
+
+        // Browsecandicate actions
+        allCandidates: [],
       };
     case "SetAuthToken":
       return { ...state, authToken: rest.data };
@@ -144,6 +147,13 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         candidateLanguages: rest.data,
+      };
+
+    // Browse candidates page actions
+    case "GetAllCandidates":
+      return {
+        ...state,
+        allCandidates: rest.data,
       };
 
     default:
