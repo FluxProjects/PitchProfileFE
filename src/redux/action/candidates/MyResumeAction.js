@@ -61,7 +61,13 @@ export const AddCandidateSkill =
               type: "SetCandidateSkill",
               data: resData,
             });
-
+            var arr = state().pedningActions;
+            SortSameVals(arr);
+            arr.splice(arr.indexOf("No skills added"), 1);
+            dispatch({
+              type: "setPendingAction",
+              data: arr,
+            });
             if (setModal) {
               setModal(false);
             }
@@ -132,7 +138,13 @@ export const AddCandidateSkill =
               type: "SetCandidateSkill",
               data: resData,
             });
-
+            var arr = state().pedningActions;
+            SortSameVals(arr);
+            arr.splice(arr.indexOf("No skills added"), 1);
+            dispatch({
+              type: "setPendingAction",
+              data: arr,
+            });
             if (setModal) {
               setModal(false);
             }
@@ -223,7 +235,13 @@ export const UpdateCandidateSkill =
               type: "SetCandidateSkill",
               data: resData,
             });
-
+            var arr = state().pedningActions;
+            SortSameVals(arr);
+            arr.splice(arr.indexOf("No skills added"), 1);
+            dispatch({
+              type: "setPendingAction",
+              data: arr,
+            });
             if (setModal) {
               setModal(false);
             }
@@ -295,7 +313,13 @@ export const UpdateCandidateSkill =
               type: "SetCandidateSkill",
               data: resData,
             });
-
+            var arr = state().pedningActions;
+            SortSameVals(arr);
+            arr.splice(arr.indexOf("No skills added"), 1);
+            dispatch({
+              type: "setPendingAction",
+              data: arr,
+            });
             if (setModal) {
               setModal(false);
             }
@@ -519,7 +543,13 @@ export const AddCandidateEducation =
               type: "SetCandidateEducation",
               data: resData,
             });
-
+            var arr = state().pedningActions;
+            SortSameVals(arr);
+            arr.splice(arr.indexOf("No education added"), 1);
+            dispatch({
+              type: "setPendingAction",
+              data: arr,
+            });
             if (setModal) {
               setModal(false);
             }
@@ -627,7 +657,13 @@ export const UpdateCandidateEducation =
               type: "SetCandidateEducation",
               data: resData,
             });
-
+            var arr = state().pedningActions;
+            SortSameVals(arr);
+            arr.splice(arr.indexOf("No education added"), 1);
+            dispatch({
+              type: "setPendingAction",
+              data: arr,
+            });
             if (setModal) {
               setModal(false);
             }
@@ -843,7 +879,13 @@ export const AddCandidateEmployment =
                 type: "SetCandidateEmployment",
                 data: resData,
               });
-
+              var arr = state().pedningActions;
+              SortSameVals(arr);
+              arr.splice(arr.indexOf("No employments added"), 1);
+              dispatch({
+                type: "setPendingAction",
+                data: arr,
+              });
               if (setModal) {
                 setModal(false);
               }
@@ -954,7 +996,13 @@ export const UpdateCandidateEmployment =
               type: "SetCandidateEmployment",
               data: resData,
             });
-
+            var arr = state().pedningActions;
+            SortSameVals(arr);
+            arr.splice(arr.indexOf("No employments added"), 1);
+            dispatch({
+              type: "setPendingAction",
+              data: arr,
+            });
             if (setModal) {
               setModal(false);
             }
@@ -2143,7 +2191,13 @@ export const AddCandidateSocialProfile =
             type: "SetCandidateSocialProfile",
             data: resData,
           });
-
+          var arr = state().pedningActions;
+          SortSameVals(arr);
+          arr.splice(arr.indexOf("No social profiles added"), 1);
+          dispatch({
+            type: "setPendingAction",
+            data: arr,
+          });
           if (setModal) {
             setModal(false);
           }
@@ -2217,7 +2271,13 @@ export const UpdateCandidateSocialProfile =
             type: "SetCandidateSocialProfile",
             data: resData,
           });
-
+          var arr = state().pedningActions;
+          SortSameVals(arr);
+          arr.splice(arr.indexOf("No social profiles added"), 1);
+          dispatch({
+            type: "setPendingAction",
+            data: arr,
+          });
           if (setModal) {
             setModal(false);
           }
@@ -2617,17 +2677,20 @@ export const UpdateDesiredCareer =
     handleClose
   ) =>
   async (dispatch, state) => {
-    console.log("dedw",    industry_id,
-    department_id,
-    role,
-    job_type,
-    employment_type,
-    preferred_shift,
-    available_join,
-    expected_salary,
-    city_id,
-    state_id,
-    country_id,);
+    console.log(
+      "dedw",
+      industry_id,
+      department_id,
+      role,
+      job_type,
+      employment_type,
+      preferred_shift,
+      available_join,
+      expected_salary,
+      city_id,
+      state_id,
+      country_id
+    );
     var data = JSON.stringify({
       data: {
         candidate_id: state().userDetails.id,

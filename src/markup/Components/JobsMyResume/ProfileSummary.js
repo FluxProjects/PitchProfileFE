@@ -27,7 +27,7 @@ export default function ProfileSummary({ isView }) {
       {/* Profile Summary */}
       <div id="profile_summary_bx" className="job-bx bg-white m-b30">
         <div className="d-flex">
-          <h5 className="m-b15">Profile Summary</h5>
+          <h5 className="">Profile Summary</h5>
           {!isView && (
             <Link
               to={"#"}
@@ -46,8 +46,7 @@ export default function ProfileSummary({ isView }) {
           career you are looking for. Write a meaningful summary of more than 50
           characters.
         </p> */}
-        <br />
-        <p className="m-b0">{state.userDetails.summary}</p>
+        <p className="m-b0 ">{state.userDetails.summary}</p>
       </div>
 
       <Modal
@@ -72,12 +71,6 @@ export default function ProfileSummary({ isView }) {
               </button>
             </div>
             <div className="modal-body">
-              {/* <p>
-                Your Profile Summary should mention the highlights of your
-                career and education, what your professional interests are, and
-                what kind of a career you are looking for. Write a meaningful
-                summary of more than 50 characters.
-              </p> */}
               <form>
                 <div className="row">
                   <div className="col-lg-12 col-md-12">
