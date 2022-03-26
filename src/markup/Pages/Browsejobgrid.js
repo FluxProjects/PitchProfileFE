@@ -116,14 +116,14 @@ export default function Browsejobgrid({}) {
                           </span>
                         </div>
                         <div className="card-body">
-                          <h5 className="card-title">
+                          <h5 className=" card-title">
                             {item.f_name} {item.l_name}
                           </h5>
-                          <p>
+                          <p className="mb-0">
                             {item.headline}, {item.employments[0].organization}
                           </p>
                           <br />
-
+                          <p className="mb-0 playBtn">Top Skill</p>
                           <ul>
                             {item.candidate_skills.map((skill) => (
                               <li style={{ display: "block" }} className="">
