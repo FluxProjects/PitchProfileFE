@@ -105,6 +105,8 @@ export default function Browsejobgrid({}) {
                               zIndex: 10,
                               backgroundColor: "red",
                               color: "white",
+                              width: "100%",
+                              textAlign: "center",
                             }}
                             className="isAvail"
                           >
@@ -117,8 +119,9 @@ export default function Browsejobgrid({}) {
                           <h5 className="card-title">
                             {item.f_name} {item.l_name}
                           </h5>
-                          <p>{item.headline}</p>
-                          <p>{item.employments[0].organization}</p>
+                          <p>
+                            {item.headline}, {item.employments[0].organization}
+                          </p>
                           <br />
 
                           <ul>
