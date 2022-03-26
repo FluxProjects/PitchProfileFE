@@ -9,6 +9,7 @@ import {
   GetCityName,
   GetCountryName,
   GetStateName,
+  SortSameVals,
 } from "../../../utils/functions";
 
 export const AddCandidateSkill =
@@ -358,6 +359,7 @@ export const GetCandidateSkills = () => async (dispatch, state) => {
         arr.push({
           message: "No skills added",
         });
+        SortSameVals(arr);
         dispatch({
           type: "setPendingAction",
           data: arr,
@@ -677,6 +679,7 @@ export const GetCandidateEducations = () => async (dispatch, state) => {
         arr.push({
           message: "No education added",
         });
+        SortSameVals(arr);
         dispatch({
           type: "setPendingAction",
           data: arr,
@@ -692,6 +695,7 @@ export const GetCandidateEducations = () => async (dispatch, state) => {
       arr.push({
         message: "No education added",
       });
+      SortSameVals(arr);
       dispatch({
         type: "setPendingAction",
         data: arr,
@@ -1011,6 +1015,7 @@ export const GetCandidateEmployments = () => async (dispatch, state) => {
         arr.push({
           message: "No employments added",
         });
+        SortSameVals(arr);
         dispatch({
           type: "setPendingAction",
           data: arr,
@@ -1026,6 +1031,7 @@ export const GetCandidateEmployments = () => async (dispatch, state) => {
       arr.push({
         message: "No employments added",
       });
+      SortSameVals(arr);
       dispatch({
         type: "setPendingAction",
         data: arr,
@@ -2273,6 +2279,7 @@ export const GetCandidateSocialProfiles = () => async (dispatch, state) => {
         arr.push({
           message: "No social profiles added",
         });
+        SortSameVals(arr);
         dispatch({
           type: "setPendingAction",
           data: arr,
@@ -2288,6 +2295,7 @@ export const GetCandidateSocialProfiles = () => async (dispatch, state) => {
       arr.push({
         message: "No social profiles added",
       });
+      SortSameVals(arr);
       dispatch({
         type: "setPendingAction",
         data: arr,
@@ -2609,9 +2617,21 @@ export const UpdateDesiredCareer =
     handleClose
   ) =>
   async (dispatch, state) => {
+    console.log("dedw",    industry_id,
+    department_id,
+    role,
+    job_type,
+    employment_type,
+    preferred_shift,
+    available_join,
+    expected_salary,
+    city_id,
+    state_id,
+    country_id,);
     var data = JSON.stringify({
       data: {
         candidate_id: state().userDetails.id,
+        id: state().candidateDesiredCareer.id,
         industry_id,
         department_id,
         role,
@@ -2703,6 +2723,7 @@ export const GetDesiredCareer = () => async (dispatch, state) => {
         arr.push({
           message: "No desired career added",
         });
+        SortSameVals(arr);
         dispatch({
           type: "setPendingAction",
           data: arr,
@@ -2724,6 +2745,7 @@ export const GetDesiredCareer = () => async (dispatch, state) => {
       arr.push({
         message: "No desired career added",
       });
+      SortSameVals(arr);
       dispatch({
         type: "setPendingAction",
         data: arr,

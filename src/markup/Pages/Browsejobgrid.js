@@ -33,14 +33,14 @@ export default function Browsejobgrid({}) {
         >
           <div className="container">
             <div className="dez-bnr-inr-entry">
-              <h1 className="text-white">Browse Jobs Grid</h1>
+              <h1 className="text-white">Browse Candidates Grid</h1>
 
               <div className="breadcrumb-row">
                 <ul className="list-inline">
                   <li>
                     <Link to={"#"}>Home</Link>
                   </li>
-                  <li>Browse Jobs Grid</li>
+                  <li>Browse Candidates Grid</li>
                 </ul>
               </div>
             </div>
@@ -53,9 +53,9 @@ export default function Browsejobgrid({}) {
             <div className="container">
               <div className="job-bx-title clearfix">
                 <h5 className="font-weight-700 pull-left text-uppercase">
-                  2269 Jobs Found
+                  2269 Candidates Found
                 </h5>
-                <div className="float-right">
+                {/* <div className="float-right">
                   <span className="select-title">Sort by freshness</span>
                   <select className="custom-btn">
                     <option>Last 2 Months</option>
@@ -63,7 +63,7 @@ export default function Browsejobgrid({}) {
                     <option>Last Weeks</option>
                     <option>Last 3 Days</option>
                   </select>
-                </div>
+                </div> */}
               </div>
 
               <div className="post-job-bx browse-job-grid row">

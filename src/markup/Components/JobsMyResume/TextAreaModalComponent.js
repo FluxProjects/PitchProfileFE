@@ -8,6 +8,7 @@ export default function TextAreaModalComponent({
   return (
     <>
       <textarea
+        maxLength={255}
         className="form-control"
         placeholder={placeholder}
         onChange={onChange}

@@ -93,7 +93,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
     item?.department_id ? item?.department_id : 1
   );
   const [role, setRole] = useState(item?.role ? item?.role : "");
-  const [jobType, setJobType] = useState(item?.job_type ? item?.job_type : "");
+  const [jobType, setJobType] = useState(item?.job_type ? item?.job_type : 1);
   const [employmentType, setEmploymentType] = useState(
     item?.employment_type ? item?.employment_type : ""
   );

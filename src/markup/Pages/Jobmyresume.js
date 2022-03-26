@@ -23,6 +23,9 @@ import {
   GetCandidateLanguages,
   GetCities,
   GetCountries,
+  GetDepartments,
+  GetEducationLevels,
+  GetIndustries,
   GetLanguages,
   GetSkills,
   GetStates,
@@ -58,6 +61,9 @@ export default function Jobmyresume() {
   const CallGetDropDown = async () => {
     if (state.languages != null) await dispatch(GetLanguages());
     await dispatch(GetSkills());
+    await dispatch(GetEducationLevels());
+    await dispatch(GetDepartments());
+    await dispatch(GetIndustries());
 
     if (state.countries != null) await dispatch(GetCountries());
     if (state.states != null) await dispatch(GetStates(230));
