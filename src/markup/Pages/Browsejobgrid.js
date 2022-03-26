@@ -100,7 +100,14 @@ export default function Browsejobgrid({}) {
                             alt="Card image cap"
                           /> */}
                           <p className="playBtn">Play</p>
-                          <span className="isAvail">
+                          <span
+                            style={{
+                              zIndex: 10,
+                              backgroundColor: "red",
+                              color: "white",
+                            }}
+                            className="isAvail"
+                          >
                             {item.is_active == true
                               ? "Available"
                               : "Unavailable"}
@@ -110,7 +117,8 @@ export default function Browsejobgrid({}) {
                           <h5 className="card-title">
                             {item.f_name} {item.l_name}
                           </h5>
-                          <span>{item.headline}</span>
+                          <p>{item.headline}</p>
+                          <p>{item.employments[0].organization}</p>
                           <br />
 
                           <ul>
