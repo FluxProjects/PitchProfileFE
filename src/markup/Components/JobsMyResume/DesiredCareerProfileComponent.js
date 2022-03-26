@@ -16,6 +16,7 @@ import {
   shiftDrop,
 } from "../../../utils/DropDownUtils";
 import {
+  formatDate,
   GetCityName,
   GetCountryName,
   GetStateName,
@@ -82,7 +83,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
     },
     {
       name: "Availability To Join",
-      desc: item.available_join,
+      desc: formatDate(item.available_join),
     },
   ];
 
@@ -126,9 +127,9 @@ export default function DesiredCareerProfileComponent({ isView }) {
   };
 
   const [loading, setLoading] = useState(true);
-  const [stateName, setStateName] = useState();
-  const [cityName, setCityName] = useState();
-  const [countryName, setCountryName] = useState();
+  const [stateName, setStateName] = useState("");
+  const [cityName, setCityName] = useState("");
+  const [countryName, setCountryName] = useState("");
 
   useEffect(() => {
     GetStateName(item.state_id, setStateName);
