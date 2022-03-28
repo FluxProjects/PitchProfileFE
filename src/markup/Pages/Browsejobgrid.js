@@ -82,23 +82,27 @@ export default function Browsejobgrid({}) {
                         }}
                       >
                         <div className="containerImageGrid">
-                          <video
-                            className="card-img-top"
-                            width="320"
-                            height="240"
-                            controls
-                          >
-                            <source src={item.video} type="video/mp4" />
-                            <source src={item.video} type="video/wmv" />
-                            <source src={item.video} type="video/mkv" />
-                            <source src={item.video} type="video/mov" />
-                            Your browser does not support the video tag.
-                          </video>
-                          {/* <img
-                            className="card-img-top"
-                            src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
-                            alt="Card image cap"
-                          /> */}
+                          {item.video ? (
+                            <video
+                              className="card-img-top"
+                              width="320"
+                              height="240"
+                              controls
+                            >
+                              <source src={item.video} type="video/mp4" />
+                              <source src={item.video} type="video/wmv" />
+                              <source src={item.video} type="video/mkv" />
+                              <source src={item.video} type="video/mov" />
+                              Your browser does not support the video tag.
+                            </video>
+                          ) : (
+                            <img
+                              className="card-img-top"
+                              src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
+                              alt="Card image cap"
+                            />
+                          )}
+
                           <p className="playBtn">Play</p>
                           <span
                             style={{
@@ -117,16 +121,36 @@ export default function Browsejobgrid({}) {
                         </div>
                         <div className="card-body">
                           <h5 className=" card-title">
-                            {item.f_name} {item.l_name}
+                            <i class="fa fa-user"></i> {item.f_name}{" "}
+                            {item.l_name}
                           </h5>
-                          <p className="mb-0">
-                            {item.headline}, {item.employments[0].organization}
+                          <p
+                            style={{
+                              marginTop: "-10px",
+                            }}
+                            className="mb-0 cardGridFont"
+                          >
+                            {item.headline && <>{item.headline},</>}{" "}
+                            {item.employments[0].organization}
                           </p>
                           <br />
-                          <p className="mb-0 playBtn">Top Skill</p>
+                          <h5
+                            style={{
+                              marginTop: "-10px",
+                            }}
+                            className="mb-0  card-title"
+                          >
+                            <i class="fa fa-list"></i> Top Skill
+                          </h5>
                           <ul>
                             {item.candidate_skills.map((skill) => (
-                              <li style={{ display: "block" }} className="">
+                              <li
+                                style={{
+                                  display: "block",
+                                  color: "#6f6f6f",
+                                }}
+                                className="cardGridFont"
+                              >
                                 {
                                   state.skills[
                                     state.skills.findIndex(
@@ -143,7 +167,7 @@ export default function Browsejobgrid({}) {
                   ))
                 )}
               </div>
-              <div className="pagination-bx m-t30">
+              {/* <div className="pagination-bx m-t30">
                 <ul className="pagination">
                   <li className="previous">
                     <Link to={""}>
@@ -165,7 +189,7 @@ export default function Browsejobgrid({}) {
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

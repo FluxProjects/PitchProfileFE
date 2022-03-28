@@ -72,6 +72,7 @@ const changeState = (state = initialState, { type, ...rest }) => {
 
         // Browsecandicate actions
         allCandidates: [],
+        backupCandidates: [],
       };
     case "SetAuthToken":
       return { ...state, authToken: rest.data };
@@ -154,6 +155,11 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         allCandidates: rest.data,
+      };
+    case "BackupAllCandidates":
+      return {
+        ...state,
+        backupCandidates: rest.data,
       };
 
     default:

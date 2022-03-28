@@ -116,6 +116,10 @@
 ---------------------------------------------------------------*/
 
 /* Grid view  */
+.cardGridFont{
+  font-size: 11px;
+}
+
 .containerImageGrid {
   position: relative;
 }

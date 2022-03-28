@@ -5,6 +5,12 @@ export const proficiencyLevelDrop = [
   { id: 4, name: "Mother Tongue" },
 ];
 
+export const AvailabliltyDrop = [
+  { id: 0, name: "Availablilty" },
+  { id: true, name: "true" },
+  { id: false, name: "false" },
+];
+
 export const skillTypeDrop = [
   { id: 1, name: "Business" },
   { id: 2, name: "Technical" },

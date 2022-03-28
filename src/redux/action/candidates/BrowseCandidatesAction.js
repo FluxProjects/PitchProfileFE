@@ -28,6 +28,10 @@ export const GetAllCandidates = () => async (dispatch, state) => {
           type: "GetAllCandidates",
           data: response.data.data,
         });
+        dispatch({
+          type: "BackupAllCandidates",
+          data: response.data.data,
+        });
       }
     })
     .catch(function (error) {
