@@ -74,51 +74,60 @@ export default function SkillsComponent({ isView }) {
             </tr>
           </thead>
           <tbody>
-            {state.candidateSkills.map((item, index) => (
-              <tr key={index}>
-                <td>
-                  {
-                    state.skills[
-                      state.skills.findIndex((x) => x.id == item.skill_id)
-                    ].name
-                  }
-                </td>
-                <td>
-                  {
-                    skillTypeDrop[
-                      skillTypeDrop.findIndex((x) => x.id == item.skill_type)
-                    ].name
-                  }
-                </td>
-                <td>{item.skill_level}</td>
-                <td>
-                  {item.is_top ? (
-                    <i class="fa fa-check" style={{ color: "green" }}></i>
-                  ) : (
-                    <span
-                      class=""
-                      style={{ color: "red", fontWeight: "bolder" }}
-                    ></span>
-                  )}
-                </td>
-                <td>
-                  {!isView && (
-                    <>
-                      <Link
-                        to={"#"}
-                        data-toggle="modal"
-                        data-target="#itskills"
-                        onClick={() => {
-                          console.log("tests", index);
-                          setUpdateData(true);
-                          setModalDataIndex(index);
-                          handleShow();
-                        }}
-                        className="site-button add-btn button-sm"
-                      >
-                        <i className="fa fa-pencil m-r5"></i> Edit
-                      </Link>
-                      {/* <span
+            {state.candidateSkills?.length > 1 &&
+              state.candidateSkills.map((item, index) => (
+                <tr key={index}>
+                  <td>
+                    {
+                      state?.skills.findIndex((x) => x?.id == item?.skill_id) ==
+                      -1
+                        ? ""
+                        : state?.skills[
+                            state?.skills.findIndex(
+                              (x) => x?.id == item?.skill_id
+                            )
+                          ].name
+                      // state.skills[
+                      //   state.skills.findIndex((x) => x.id == item.skill_id)
+                      // ].name
+                    }
+                  </td>
+                  <td>
+                    {
+                      skillTypeDrop[
+                        skillTypeDrop.findIndex((x) => x.id == item.skill_type)
+                      ].name
+                    }
+                  </td>
+                  <td>{item.skill_level}</td>
+                  <td>
+                    {item.is_top ? (
+                      <i class="fa fa-check" style={{ color: "green" }}></i>
+                    ) : (
+                      <span
+                        class=""
+                        style={{ color: "red", fontWeight: "bolder" }}
+                      ></span>
+                    )}
+                  </td>
+                  <td>
+                    {!isView && (
+                      <>
+                        <Link
+                          to={"#"}
+                          data-toggle="modal"
+                          data-target="#itskills"
+                          onClick={() => {
+                            console.log("tests", index);
+                            setUpdateData(true);
+                            setModalDataIndex(index);
+                            handleShow();
+                          }}
+                          className="site-button add-btn button-sm"
+                        >
+                          <i className="fa fa-pencil m-r5"></i> Edit
+                        </Link>
+                        {/* <span
                        
                         className="m-l15 cursorPointer font-14"
                         data-toggle="modal"
@@ -126,23 +135,23 @@ export default function SkillsComponent({ isView }) {
                       >
                         <i className="fa fa-pencil"></i>
                       </span> */}
-                      <span
-                        onClick={() => {
-                          console.log("tests", index);
+                        <span
+                          onClick={() => {
+                            console.log("tests", index);
 
-                          deleteCandidateSkill(item.id, index);
-                        }}
-                        className="m-l15 cursorPointer font-14"
-                        data-toggle="modal"
-                        data-target="#itskills"
-                      >
-                        <i className="fa fa-minus text-danger"></i>
-                      </span>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
+                            deleteCandidateSkill(item.id, index);
+                          }}
+                          className="m-l15 cursorPointer font-14"
+                          data-toggle="modal"
+                          data-target="#itskills"
+                        >
+                          <i className="fa fa-minus text-danger"></i>
+                        </span>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

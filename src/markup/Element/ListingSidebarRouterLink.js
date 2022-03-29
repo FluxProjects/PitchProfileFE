@@ -26,7 +26,7 @@ export default function ListingSidebarRouterLink({ isView }) {
           className="scroll-bar nav-link"
           to="/jobs-my-resume-view"
         >
-          <span>View my resume</span>
+          <span>View My Resume</span>
         </Link>
       )}
     </li>

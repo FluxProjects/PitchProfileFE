@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
 import { Form, ToggleButton } from "react-bootstrap";
@@ -20,6 +20,7 @@ import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeCompon
 import HeaderMyResume from "../Components/JobsMyResume/HeaderMyResume";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getAuthToken,
   GetCandidateLanguages,
   GetCities,
   GetCountries,
@@ -38,6 +39,21 @@ export default function Jobmyresume() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+
+  const router = useHistory();
+
+  useEffect(() => {
+    // auth
+    if (state.authToken) {
+      callGetAuth();
+    } else {
+      router.push("/login");
+    }
+  }, []);
+
+  const callGetAuth = async () => {
+    await dispatch(getAuthToken(state.authToken, router));
+  };
 
   const [show, setShow] = useState(false);
 
@@ -82,7 +98,7 @@ export default function Jobmyresume() {
         >
           <div className="container">
             <div className="row">
-              <HeaderMyResume />
+              <HeaderMyResume isView={false} />
             </div>
           </div>
           <div

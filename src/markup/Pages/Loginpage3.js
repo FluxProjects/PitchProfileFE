@@ -13,7 +13,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
 
   const callLoginUser = async () => {
-    await dispatch(LoginUser(email, password, history));
+    await dispatch(LoginUser(email.toLowerCase(), password, history));
     // router.push("/registration/");
   };
 
@@ -28,7 +28,7 @@ export default function Register() {
       onChange: (e) => {
         setEmail(e.target.value);
       },
-      value: email,
+      value: email.toLowerCase(),
     },
     {
       name: "password",

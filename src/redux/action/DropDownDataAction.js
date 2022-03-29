@@ -12,7 +12,7 @@ export const GetLanguages = () => async (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      // console.log("languages get", response.data);
+      console.log("languages get", response.data);
       if (response.data.successful) {
         dispatch({
           type: "setLangs",

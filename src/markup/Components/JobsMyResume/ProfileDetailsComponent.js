@@ -10,7 +10,6 @@ import {
 import { proficiencyLevelDrop } from "../../../utils/DropDownUtils";
 import { formatDate } from "../../../utils/functions";
 import DropDownModalComponent from "./DropDownModalComponent";
-import DropdownSearch from "./DropdownSearch";
 import AddLanguagesForm from "./Modals/AddLanguagesForm";
 import TextInputModal from "./TextInputModal";
 
@@ -54,7 +53,7 @@ export default function ProfileDetailsComponent({ isView }) {
         userDetails.country,
         userDetails.hometownCountry,
         userDetails.phone,
-        userDetails.email,
+        userDetails.email.toLowerCase(),
         state.userDetails.authToken,
         // router
         setShow()

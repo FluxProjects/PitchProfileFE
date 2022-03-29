@@ -17,6 +17,9 @@ const initialState = {
   userCity: {},
   userCountry: {},
 
+  organizationDrop: [],
+  DesignationDrop: [],
+
   // Candidate my resume
   candidateSkills: [],
   candidateEducations: [],
@@ -78,6 +81,12 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, authToken: rest.data };
 
     // Dropdown data actions
+    case "SetOrganizationDrop":
+      return {
+        ...state,
+        organizationDrop: rest.data,
+        DesignationDrop: rest.DesignationDrop,
+      };
     case "setLangs":
       return { ...state, languages: rest.data };
     case "setCountries":

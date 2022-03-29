@@ -11,6 +11,7 @@ import "./plugins/slick/slick-theme.min.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
+  getAuthToken,
   GetCandidateLanguages,
   GetDepartments,
   GetEducationLevels,
@@ -18,6 +19,7 @@ import {
   GetSkills,
 } from "./redux/action";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const state = useSelector((state) => state);
@@ -48,14 +50,11 @@ function App() {
 
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
       />
     </div>
   );

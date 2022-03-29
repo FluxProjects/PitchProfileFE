@@ -18,7 +18,9 @@ export default function Loginpage3() {
 
   const callRegisterUser = async () => {
     if (password == CnfrmPassword) {
-      await dispatch(registerUser(fname, lname, email, password, history));
+      await dispatch(
+        registerUser(fname, lname, email.toLowerCase(), password, history)
+      );
     }
     // router.push("/registration/");
   };
@@ -58,7 +60,7 @@ export default function Loginpage3() {
       onChange: (e) => {
         setEmail(e.target.value);
       },
-      value: email,
+      value: email.toLowerCase(),
     },
     {
       name: "password",

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddCandidateEducation,
   AddCandidateLanguages,
+  GetLanguages,
   UpdateCandidateEducation,
   UpdateCandidateLanguages,
 } from "../../../../redux/action";
@@ -17,8 +18,15 @@ export default function AddLanguagesForm({
   isUpdate,
 }) {
   const state = useSelector((state) => state);
-
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  useEffect(() => {
+    callGetLanguages();
+  }, []);
+  const callGetLanguages = async () => {
+    await dispatch(GetLanguages());
+    setLoading(false);
+  };
   const [level, setLevel] = useState(
     data?.proficiency_level ? data?.proficiency_level : 1
   );
@@ -65,18 +73,22 @@ export default function AddLanguagesForm({
             <form>
               <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-12">
-                  <div className="form-group">
-                    <label>Languages:</label>
-                    {/* <DropdownSearch items={state.languages} /> */}
-                    <DropDownModalComponent
-                      onChange={(e) => {
-                        console.log("eee", e.target.value);
-                        setLanguages(e.target.value);
-                      }}
-                      value={languages}
-                      options={state.languages}
-                    />
-                  </div>
+                  {!loading ? (
+                    <div className="form-group">
+                      <label>Languages:</label>
+                      {/* <DropdownSearch items={state.languages} /> */}
+                      <DropDownModalComponent
+                        onChange={(e) => {
+                          console.log("eee", e.target.value);
+                          setLanguages(e.target.value);
+                        }}
+                        value={languages}
+                        options={state.languages}
+                      />
+                    </div>
+                  ) : (
+                    <p>Loading...</p>
+                  )}
                 </div>
 
                 <div className="col-lg-6 col-md-6 col-sm-12">

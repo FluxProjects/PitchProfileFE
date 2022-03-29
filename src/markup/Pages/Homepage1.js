@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
@@ -10,7 +10,6 @@ import Jobsection from "./../Element/Jobsection";
 import Owltestimonial from "./../Element/Owlblog1";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuthToken } from "../../redux/action";
-import { useHistory } from "react-router-dom";
 
 var bnr1 = require("./../../images/main-slider/slide2.jpg");
 var bnr2 = require("./../../images/background/bg4.jpg");
@@ -47,6 +46,7 @@ export default function Homepage() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const router = useHistory();
+
   useEffect(() => {
     // auth
     if (state.authToken) {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Header2 from "./../Layout/Header2";
 import Footer from "./../Layout/Footer";
 import Profilesidebar from "./../Element/Profilesidebar";
@@ -20,6 +20,7 @@ import {
   GetStateName,
   GetCountryName,
   GetCityName,
+  getAuthToken,
 } from "../../redux/action";
 import Header from "../Layout/Header";
 import DropdownSearch from "../Components/JobsMyResume/DropdownSearch";
@@ -29,6 +30,21 @@ import { Modal } from "react-bootstrap";
 export default function Jobprofile() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  const router = useHistory();
+
+  useEffect(() => {
+    // auth
+    if (state.authToken) {
+      callGetAuth();
+    } else {
+      router.push("/login");
+    }
+  }, []);
+
+  const callGetAuth = async () => {
+    await dispatch(getAuthToken(state.authToken, router));
+  };
 
   // states
   const [fname, setFname] = useState(state.userDetails.f_name);
@@ -71,11 +87,11 @@ export default function Jobprofile() {
   };
 
   const CallGetDropDown = async () => {
-    if (state.languages.length < 1) await dispatch(GetLanguages());
+    await dispatch(GetLanguages());
 
-    if (state.countries.length < 1) await dispatch(GetCountries());
-    if (state.states.length < 1) await dispatch(GetStates(230));
-    if (state.cities.length < 1) await dispatch(GetCities(3866));
+    await dispatch(GetCountries());
+    await dispatch(GetStates(230));
+    await dispatch(GetCities(3866));
 
     setLoading(false);
   };
@@ -105,7 +121,7 @@ export default function Jobprofile() {
         country,
         hometownCountry,
         phone,
-        email,
+        email.toLowerCase(),
         state.userDetails.authToken
         // router
       )
@@ -313,7 +329,7 @@ export default function Jobprofile() {
                             </div>
                           </div>
 
-                          <div className="col-lg-12 col-md-12">
+                          {/* <div className="col-lg-12 col-md-12">
                             <div className="form-group">
                               <label>Any disability?</label>
                               <div className="row">
@@ -378,7 +394,7 @@ export default function Jobprofile() {
                                 ></textarea>
                               </div>
                             </div>
-                          )}
+                          )} */}
                         </div>
 
                         <div className="col-12">
@@ -532,7 +548,7 @@ export default function Jobprofile() {
                               />
                             </div>
                           </div>
-                          <div className="col-lg-6 col-md-6 col-sm-12">
+                          {/* <div className="col-lg-6 col-md-6 col-sm-12">
                             <div className="form-group">
                               <label>Hometown:</label>
                               <DropDownModalComponent
@@ -545,7 +561,7 @@ export default function Jobprofile() {
                                 options={state.countries}
                               />
                             </div>
-                          </div>
+                          </div> */}
 
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">

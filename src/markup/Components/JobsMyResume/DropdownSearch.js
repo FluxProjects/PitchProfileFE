@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
+// import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 export default function DropdownSearch({ items }) {
   const handleOnSearch = (string, results) => {
@@ -31,17 +31,19 @@ export default function DropdownSearch({ items }) {
   );
 
   return (
-    <ReactSearchAutocomplete
-      items={items}
-      onSearch={handleOnSearch}
-      onHover={handleOnHover}
-      onSelect={handleOnSelect}
-      onFocus={handleOnFocus}
-      autoFocus
-      placeholder="English"
-      formatResult={formatResult}
-      className="form-control"
-      style={{ zIndex: 100 }}
-    />
+    <>
+      {/* // <ReactSearchAutocomplete
+    //   items={items}
+    //   onSearch={handleOnSearch}
+    //   onHover={handleOnHover}
+    //   onSelect={handleOnSelect}
+    //   onFocus={handleOnFocus}
+    //   autoFocus
+    //   placeholder="English"
+    //   formatResult={formatResult}
+    //   className="form-control"
+    //   style={{ zIndex: 100 }}
+    // /> */}
+    </>
   );
 }

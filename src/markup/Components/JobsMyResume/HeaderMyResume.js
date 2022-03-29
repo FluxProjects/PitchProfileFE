@@ -52,12 +52,24 @@ export default function HeaderMyResume({ isView }) {
   const [hometownCountry, setHometownCountry] = useState(
     state.userDetails.hometown_country_id
   );
+  const [cityLoading, setCityLoading] = useState(true);
 
   useEffect(async () => {
-    GetStateName(userDetail.state_id, setStateName);
-    GetCityName(userDetail.city_id, setCityName);
-    GetCountryName(userDetail.country_id, setCountryName);
+    callGetCityState(
+      userDetail.state_id,
+      userDetail.city_id,
+      userDetail.country_id
+    );
   }, []);
+
+  const callGetCityState = async (state_id, city_id, country_id) => {
+    console.log("test workddddd", state_id, city_id, country_id);
+    setCityLoading(true);
+    await GetStateName(state_id, setStateName);
+    await GetCityName(city_id, setCityName);
+    await GetCountryName(country_id, setCountryName);
+    setCityLoading(false);
+  };
 
   const handleClose = () => {
     setShow(false);
@@ -81,8 +93,9 @@ export default function HeaderMyResume({ isView }) {
         country,
         hometownCountry,
         phone,
-        email,
-        handleClose()
+        email.toLowerCase(),
+        handleClose(),
+        callGetCityState
       )
     );
   };
@@ -173,9 +186,21 @@ export default function HeaderMyResume({ isView }) {
             <ul className="clearfix">
               <li className="w-100">
                 <i className="ti-location-pin"></i>{" "}
-                {cityName != "" && <>{cityName},</>}{" "}
-                {stateName != "" && <>{stateName},</>}{" "}
-                {countryName != "" && <>{countryName}</>}
+                {cityName != null && cityName != "" ? (
+                  <>{cityName},</>
+                ) : (
+                  <>City,</>
+                )}{" "}
+                {stateName != null && stateName != "" ? (
+                  <>{stateName},</>
+                ) : (
+                  <>State,</>
+                )}{" "}
+                {countryName != null && countryName != "" ? (
+                  <>{countryName}</>
+                ) : (
+                  <>Country</>
+                )}
               </li>
               {state.userDetails.phone != "" && (
                 <li className="w-100">
@@ -197,13 +222,15 @@ export default function HeaderMyResume({ isView }) {
                         <div className="mr-2">
                           <p>
                             ⭐{" "}
-                            {
-                              state.skills[
-                                state.skills.findIndex(
-                                  (x) => x.id == item.skill_id
-                                )
-                              ].name
-                            }
+                            {state?.skills.findIndex(
+                              (x) => x?.id == item?.skill_id
+                            ) == -1
+                              ? ""
+                              : state?.skills[
+                                  state?.skills.findIndex(
+                                    (x) => x?.id == item?.skill_id
+                                  )
+                                ].name}
                           </p>
                         </div>
                       )}
@@ -260,7 +287,7 @@ export default function HeaderMyResume({ isView }) {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="EmploymentModalLongTitle">
-                Resume Title
+                Basic Information
               </h5>
               <button
                 type="button"
@@ -334,7 +361,7 @@ export default function HeaderMyResume({ isView }) {
                           setStateNameDrop(e.target.value);
                           //   setLastUsed(e.target.value);
                         }}
-                        value={stateName}
+                        value={stateNameDrop}
                         options={state.states}
                       />
                     </div>
@@ -354,7 +381,7 @@ export default function HeaderMyResume({ isView }) {
                       />
                     </div>
                   </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12">
+                  {/* <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="form-group">
                       <label>Hometown:</label>
                       <DropDownModalComponent
@@ -367,7 +394,7 @@ export default function HeaderMyResume({ isView }) {
                         options={state.countries}
                       />
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="col-lg-6 col-md-6">
                     <div className="form-group">

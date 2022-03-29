@@ -15,6 +15,7 @@ export default function AttachVideo({ isView }) {
   };
   let inputRef;
 
+  console.log("isView", isView);
   return (
     <>
       {/* Attach resume */}
@@ -23,7 +24,7 @@ export default function AttachVideo({ isView }) {
         style={{ backgroundColor: "transparent" }}
         className=" margin_bx_AttachVid m-b30"
       >
-        {state.userDetails.video == null && (
+        {state.userDetails.video == null && !isView && (
           <h5 className="m-b10 text-white">Attach Video</h5>
         )}
         {state.userDetails.video != null && (
@@ -50,7 +51,7 @@ export default function AttachVideo({ isView }) {
           className="attach-resume-Video "
           style={{
             backgroundColor: "transparent",
-            border: "1px solid white",
+            border: !isView ? "1px solid white" : 0,
             borderRadius: 10,
           }}
         >
@@ -68,32 +69,34 @@ export default function AttachVideo({ isView }) {
                 </div>
               </div>
             ) : (
-              <div className="col-lg-12 col-md-12">
-                <div
-                  // style={{
-                  //   height: "155px",
-                  //   maxHeight: "155px",
-                  //   minHeight: "155px",
-                  // }}
-                  className="form-group"
-                >
-                  <div className="custom-file">
-                    <p className="m-auto mt-3 text-white align-self-center">
-                      <i className="fa  fa-upload"></i>
-                      Upload Video File
-                    </p>
-                    <input
-                      type="file"
-                      className="site-button form-control"
-                      id="customFile"
-                      onChange={(e) => {
-                        console.log("files", e.target.files);
-                        dispatch(UploadProfileVid(e.target.files));
-                      }}
-                    />
+              !isView && (
+                <div className="col-lg-12 col-md-12">
+                  <div
+                    // style={{
+                    //   height: "155px",
+                    //   maxHeight: "155px",
+                    //   minHeight: "155px",
+                    // }}
+                    className="form-group"
+                  >
+                    <div className="custom-file">
+                      <p className="m-auto mt-3 text-white align-self-center">
+                        <i className="fa  fa-upload"></i>
+                        Upload Video File
+                      </p>
+                      <input
+                        type="file"
+                        className="site-button form-control"
+                        id="customFile"
+                        onChange={(e) => {
+                          console.log("files", e.target.files);
+                          dispatch(UploadProfileVid(e.target.files));
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              )
             )}
           </div>
         </form>

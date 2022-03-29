@@ -33,14 +33,14 @@ export default function Browsejobgrid({}) {
         >
           <div className="container">
             <div className="dez-bnr-inr-entry">
-              <h1 className="text-white">Browse Candidates Grid</h1>
+              <h1 className="text-white">Browse Candidates</h1>
 
               <div className="breadcrumb-row">
                 <ul className="list-inline">
                   <li>
                     <Link to={"#"}>Home</Link>
                   </li>
-                  <li>Browse Candidates Grid</li>
+                  <li>All Candidates</li>
                 </ul>
               </div>
             </div>
@@ -53,7 +53,12 @@ export default function Browsejobgrid({}) {
             <div className="container">
               <div className="job-bx-title clearfix">
                 <h5 className="font-weight-700 pull-left text-uppercase">
-                  2269 Candidates Found
+                  {loading
+                    ? "Loading..."
+                    : state.allCandidates.length > 0
+                    ? state.allCandidates.length
+                    : "No Candidates Found"}{" "}
+                  Candidates Found
                 </h5>
                 {/* <div className="float-right">
                   <span className="select-title">Sort by freshness</span>
@@ -66,17 +71,17 @@ export default function Browsejobgrid({}) {
                 </div> */}
               </div>
 
-              <div className="post-job-bx browse-job-grid row">
+              <div className=" row">
                 {loading ? (
                   <p>Loading...</p>
                 ) : (
                   state.allCandidates.map((item, index) => (
-                    <div className="col-md-3 col-lg-4 col-xs-12 col-sm-12 mb-4">
+                    <div className=" col-md-4 col-lg-3 col-xs-12 col-sm-6  mb-4">
                       <div
-                        className="card"
+                        className="card p-3"
                         style={{
-                          width: "18rem",
-                          borderWidth: 2,
+                          // width: "18rem",
+                          borderWidth: 4,
                           borderRadius: 20,
                           borderColor: "#0275d8",
                         }}
@@ -85,8 +90,8 @@ export default function Browsejobgrid({}) {
                           {item.video ? (
                             <video
                               className="card-img-top"
-                              width="320"
-                              height="240"
+                              width="auto"
+                              height="165"
                               controls
                             >
                               <source src={item.video} type="video/mp4" />
@@ -98,7 +103,11 @@ export default function Browsejobgrid({}) {
                           ) : (
                             <img
                               className="card-img-top"
-                              src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
+                              src={
+                                state.userDetails?.pic != null
+                                  ? state.userDetails?.pic
+                                  : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
+                              }
                               alt="Card image cap"
                             />
                           )}
@@ -119,19 +128,48 @@ export default function Browsejobgrid({}) {
                               : "Unavailable"}
                           </span>
                         </div>
-                        <div className="card-body">
-                          <h5 className=" card-title">
-                            <i class="fa fa-user"></i> {item.f_name}{" "}
+                        <div
+                          style={{
+                            padding: 0,
+                            paddingTop: 10,
+                          }}
+                          className="card-body"
+                        >
+                          <h5
+                            style={{
+                              whiteSpace: "nowrap",
+                              overflow: "hidden",
+                              textOverflow: "clip",
+                            }}
+                            className=" card-title"
+                          >
+                            <i className="fa mr-2  fa-user"></i> {item.f_name}{" "}
                             {item.l_name}
                           </h5>
                           <p
                             style={{
                               marginTop: "-10px",
+                              marginLeft: "25px",
                             }}
                             className="mb-0 cardGridFont"
                           >
-                            {item.headline && <>{item.headline},</>}{" "}
-                            {item.employments[0].organization}
+                            {item.headline != null && item.headline != "" ? (
+                              <>{item.headline},</>
+                            ) : (
+                              "Designation"
+                            )}{" "}
+                          </p>
+                          <p
+                            style={{
+                              marginTop: "-10px",
+                              marginLeft: "25px",
+                            }}
+                            className="mb-0 cardGridFont"
+                          >
+                            {item.employments[0]?.organization != null &&
+                            item.employments[0]?.organization != ""
+                              ? item.employments[0].organization
+                              : "Confidential"}
                           </p>
                           <br />
                           <h5
@@ -140,26 +178,62 @@ export default function Browsejobgrid({}) {
                             }}
                             className="mb-0  card-title"
                           >
-                            <i class="fa fa-list"></i> Top Skill
+                            <i className="fa fa-list"></i> Top Skill
                           </h5>
-                          <ul>
-                            {item.candidate_skills.map((skill) => (
-                              <li
-                                style={{
-                                  display: "block",
-                                  color: "#6f6f6f",
-                                }}
-                                className="cardGridFont"
-                              >
-                                {
-                                  state.skills[
-                                    state.skills.findIndex(
-                                      (x) => x.id == skill.skill_id
-                                    )
-                                  ].name
-                                }
-                              </li>
-                            ))}
+                          <ul className="mb-0">
+                            {item.candidate_skills.length > 1 ? (
+                              item.candidate_skills.map((skill) => (
+                                <li
+                                  style={{
+                                    display: "block",
+                                    color: "#6f6f6f",
+                                    marginLeft: "25px",
+                                  }}
+                                  className="cardGridFont"
+                                >
+                                  {
+                                    state.skills[
+                                      state.skills.findIndex(
+                                        (x) => x.id == skill.skill_id
+                                      )
+                                    ].name
+                                  }
+                                </li>
+                              ))
+                            ) : (
+                              <>
+                                <li
+                                  style={{
+                                    display: "block",
+                                    color: "#6f6f6f",
+                                    marginLeft: "25px",
+                                  }}
+                                  className="cardGridFont"
+                                >
+                                  Skill 1
+                                </li>
+                                <li
+                                  style={{
+                                    display: "block",
+                                    color: "#6f6f6f",
+                                    marginLeft: "25px",
+                                  }}
+                                  className="cardGridFont"
+                                >
+                                  Skill 2
+                                </li>
+                                <li
+                                  style={{
+                                    display: "block",
+                                    color: "#6f6f6f",
+                                    marginLeft: "25px",
+                                  }}
+                                  className="cardGridFont"
+                                >
+                                  Skill 3
+                                </li>
+                              </>
+                            )}
                           </ul>
                         </div>
                       </div>

@@ -2674,7 +2674,8 @@ export const UpdateDesiredCareer =
     city_id,
     state_id,
     country_id,
-    handleClose
+    handleClose,
+    callGetCityState
   ) =>
   async (dispatch, state) => {
     console.log(
@@ -2720,7 +2721,7 @@ export const UpdateDesiredCareer =
     };
 
     axios(config)
-      .then(function (response) {
+      .then(async function (response) {
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           toast.success("Updated Successfully!", {
@@ -2732,10 +2733,22 @@ export const UpdateDesiredCareer =
             draggable: true,
             progress: undefined,
           });
+
           dispatch({
             type: "SetDesiredCareer",
             data: response.data.data,
           });
+          console.log(
+            "response.data.data.state_id",
+            response.data.data.state_id
+          );
+          if (callGetCityState) {
+            await callGetCityState(
+              response.data.data.state_id,
+              response.data.data.city_id,
+              response.data.data.country_id
+            );
+          }
           if (handleClose) {
             handleClose();
           }
@@ -2828,7 +2841,8 @@ export const UpdateResumeHeader =
     hometown_country_id,
     phone,
     email,
-    setModal
+    setModal,
+    callGetCityState
   ) =>
   async (dispatch, state) => {
     var data = JSON.stringify({
@@ -2878,6 +2892,13 @@ export const UpdateResumeHeader =
             type: "SetAuthToken",
             data: response.data.accessToken,
           });
+          if (callGetCityState) {
+            callGetCityState(
+              response.data.data.state_id,
+              response.data.data.city_id,
+              response.data.data.country_id
+            );
+          }
           if (setModal) {
             setModal(false);
           }

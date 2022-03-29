@@ -83,7 +83,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
     },
     {
       name: "Availability To Join",
-      desc: formatDate(item.available_join),
+      desc: item.available_join != null ? formatDate(item.available_join) : "",
     },
   ];
 
@@ -127,19 +127,26 @@ export default function DesiredCareerProfileComponent({ isView }) {
   };
 
   const [loading, setLoading] = useState(true);
+  const [cityLoading, setCityLoading] = useState(true);
   const [stateName, setStateName] = useState("");
   const [cityName, setCityName] = useState("");
   const [countryName, setCountryName] = useState("");
 
   useEffect(() => {
-    GetStateName(item.state_id, setStateName);
-    GetCityName(item.city_id, setCityName);
-    GetCountryName(item.country_id, setCountryName);
-
+    callGetCityState(item.state_id, item.city_id, item.country_id);
     //  to get languages
     CallGetDropDown();
     callGetDesiredCareer();
   }, []);
+
+  const callGetCityState = async (state_id, city_id, country_id) => {
+    console.log("test workddddd", state_id, city_id, country_id);
+    setCityLoading(true);
+    await GetStateName(state_id, setStateName);
+    await GetCityName(city_id, setCityName);
+    await GetCountryName(country_id, setCountryName);
+    setCityLoading(false);
+  };
 
   const callGetDesiredCareer = async () => {
     dispatch(GetDesiredCareer());
@@ -170,7 +177,8 @@ export default function DesiredCareerProfileComponent({ isView }) {
         city,
         cstate,
         country,
-        handleClose()
+        handleClose(),
+        callGetCityState
       )
     );
   };
@@ -184,10 +192,10 @@ export default function DesiredCareerProfileComponent({ isView }) {
   } else {
     return (
       <>
-        {/* Desired career profile */}
+        {/* Desired career */}
         <div id="desired_career_profile_bx" className="job-bx bg-white m-b30">
           <div className="d-flex">
-            <h5 className="m-b30">Desired Career Profile</h5>
+            <h5 className="m-b30">Desired Career</h5>
             {!isView && (
               <Link
                 to={"#"}
@@ -210,7 +218,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title" id="DesiredprofileModalLongTitle">
-                    Desired Career Profile{" "}
+                    Desired Career{" "}
                   </h5>
                   <button
                     type="button"
@@ -253,7 +261,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                       </div>
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
-                          <label>Role</label>
+                          <label>Designation</label>
                           <TextInputModal
                             onChange={(e) => {
                               console.log(e.target.value);
@@ -396,25 +404,6 @@ export default function DesiredCareerProfileComponent({ isView }) {
                                 </label>
                               </div>
                             </div>
-                            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                              <div className="custom-control custom-radio">
-                                <input
-                                  type="radio"
-                                  className="custom-control-input"
-                                  id="flexible"
-                                  name="example1"
-                                  checked={shift == 3 ? true : false}
-                                  value={3}
-                                  onChange={() => setShift(3)}
-                                />
-                                <label
-                                  className="custom-control-label"
-                                  htmlFor="flexible"
-                                >
-                                  Part Time
-                                </label>
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>
@@ -538,17 +527,17 @@ export default function DesiredCareerProfileComponent({ isView }) {
 
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
               <h6 className="font-14 m-b0">City</h6>
-              <p className="m-b0">{cityName}</p>
+              <p className="m-b0">{cityLoading ? "Loading..." : cityName}</p>
             </div>
 
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
               <h6 className="font-14 m-b0">State</h6>
-              <p className="m-b0">{stateName}</p>
+              <p className="m-b0">{cityLoading ? "Loading..." : stateName}</p>
             </div>
 
             <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
               <h6 className="font-14 m-b0">Country</h6>
-              <p className="m-b0">{countryName}</p>
+              <p className="m-b0">{cityLoading ? "Loading..." : countryName}</p>
             </div>
           </div>
         </div>

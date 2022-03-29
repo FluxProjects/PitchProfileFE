@@ -36,11 +36,11 @@ export const filterCandidateAvailability =
 
     // ? company filter
     resultCompany = resultSkill.filter(function (item) {
-      if (item.employments[0].organization == companyFilter) return item;
+      if (item?.employments[0]?.organization == companyFilter) return item;
     });
 
     resultDesignation = resultCompany.filter(function (item) {
-      if (item.employments[0].role == designationFilter) return item;
+      if (item?.employments[0]?.role == designationFilter) return item;
     });
 
     console.log("My sample orgafnization Accountant", resultDesignation);
@@ -61,3 +61,10 @@ export const filterCandidateAvailability =
       data: resultDesignation,
     });
   };
+
+export const ResetfilterCandidate = () => async (dispatch, state) => {
+  dispatch({
+    type: "GetAllCandidates",
+    data: state().backupCandidates,
+  });
+};

@@ -61,7 +61,7 @@ export default function ReferencesModalComp({
           cstate,
           country,
           phone,
-          email,
+          email.toLowerCase(),
           index,
           handleClose()
         )
@@ -77,7 +77,7 @@ export default function ReferencesModalComp({
           cstate,
           country,
           phone,
-          email,
+          email.toLowerCase(),
           handleClose()
         )
       );
