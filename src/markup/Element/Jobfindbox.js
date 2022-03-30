@@ -8,7 +8,11 @@ import {
   GetSkills,
 } from "../../redux/action";
 import {
+  filterCandidateAll,
   filterCandidateAvailability,
+  filterCandidateCompany,
+  filterCandidateRole,
+  filterCandidateSkill,
   ResetfilterCandidate,
 } from "../../redux/action/candidates/FilterMyResumeAction";
 import { AvailabliltyDrop } from "../../utils/DropDownUtils";
@@ -29,10 +33,10 @@ export default function Jobfindbox({ isView }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  const [availabliltyFilter, setAvailabliltyFilter] = useState();
-  const [skillFilter, setSkillFilter] = useState();
-  const [companyFilter, setCompanyFilter] = useState("");
-  const [designationFilter, setDesignationFilter] = useState("");
+  const [availabliltyFilter, setAvailabliltyFilter] = useState(null);
+  const [skillFilter, setSkillFilter] = useState(null);
+  const [companyFilter, setCompanyFilter] = useState(null);
+  const [designationFilter, setDesignationFilter] = useState(null);
 
   useEffect(() => {
     callGetDrop();
@@ -78,14 +82,49 @@ export default function Jobfindbox({ isView }) {
   };
 
   const callFilter = () => {
-    dispatch(
-      filterCandidateAvailability(
-        availabliltyFilter,
-        skillFilter,
-        companyFilter,
-        designationFilter
-      )
-    );
+    if (
+      availabliltyFilter != null &&
+      availabliltyFilter != "" &&
+      skillFilter != null &&
+      skillFilter != "" &&
+      companyFilter != null &&
+      companyFilter != "" &&
+      designationFilter != null &&
+      designationFilter != ""
+    ) {
+      dispatch(
+        filterCandidateAll(
+          availabliltyFilter,
+          skillFilter,
+          companyFilter,
+          designationFilter
+        )
+      );
+      return;
+    }
+    if (availabliltyFilter != null && availabliltyFilter != "") {
+      console.log("availabliltyFilter");
+      dispatch(filterCandidateAvailability(availabliltyFilter));
+      return;
+    }
+    if (skillFilter != null && skillFilter != "") {
+      console.log("skillFilter");
+
+      dispatch(filterCandidateSkill(skillFilter));
+      return;
+    }
+    if (companyFilter != null && companyFilter != "") {
+      console.log("companyFilter");
+
+      dispatch(filterCandidateCompany(companyFilter));
+      return;
+    }
+    if (designationFilter != null && designationFilter != "") {
+      console.log("designationFilter");
+
+      dispatch(filterCandidateRole(designationFilter));
+      return;
+    }
   };
 
   return (
@@ -245,6 +284,10 @@ export default function Jobfindbox({ isView }) {
                 <button
                   onClick={(e) => {
                     e.preventDefault();
+                    setAvailabliltyFilter("");
+                    setSkillFilter("");
+                    setCompanyFilter("");
+                    setDesignationFilter("");
                     dispatch(ResetfilterCandidate());
                   }}
                   type="submit"
