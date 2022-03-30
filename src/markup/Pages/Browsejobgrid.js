@@ -76,7 +76,13 @@ export default function Browsejobgrid({}) {
                   <p>Loading...</p>
                 ) : (
                   state.allCandidates.map((item, index) => (
-                    <div className=" col-md-4 col-lg-3 col-xs-12 col-sm-6  mb-4">
+                    <div
+                      style={{
+                        paddingRight: 3,
+                        paddingLeft: 3,
+                      }}
+                      className=" col-md-4 col-lg-3 col-xs-12 col-sm-6  mb-4"
+                    >
                       <div
                         className="card p-3"
                         style={{
@@ -84,6 +90,9 @@ export default function Browsejobgrid({}) {
                           borderWidth: 4,
                           borderRadius: 20,
                           borderColor: "#0275d8",
+                          paddingBottom: 9,
+                          minHeight: "380px",
+                          maxHeight: "380px",
                         }}
                       >
                         <div className="containerImageGrid">
@@ -104,8 +113,8 @@ export default function Browsejobgrid({}) {
                             <img
                               className="card-img-top"
                               src={
-                                state.userDetails?.pic != null
-                                  ? state.userDetails?.pic
+                                item?.pic != null
+                                  ? item?.pic
                                   : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
                               }
                               alt="Card image cap"
@@ -156,7 +165,7 @@ export default function Browsejobgrid({}) {
                             {item.headline != null && item.headline != "" ? (
                               <>{item.headline},</>
                             ) : (
-                              "Designation"
+                              "Role"
                             )}{" "}
                           </p>
                           <p

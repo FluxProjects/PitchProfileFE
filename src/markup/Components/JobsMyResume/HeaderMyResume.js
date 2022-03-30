@@ -81,8 +81,21 @@ export default function HeaderMyResume({ isView }) {
   const callUpdateCandidateSummary = async () => {
     dispatch(UpdateCandidateSummary(ResumeHeadline, handleClose()));
   };
+  const [fieldAlert, setFieldAlert] = useState(false);
 
   const callUpdateResumeHeader = async () => {
+    if (fname == null || fname == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (lname == null || lname == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (ResumeHeadline == null || ResumeHeadline == "") {
+      setFieldAlert(true);
+      return;
+    }
     dispatch(
       UpdateResumeHeader(
         fname,
@@ -175,7 +188,7 @@ export default function HeaderMyResume({ isView }) {
               )}
             </h4>
             <p className="m-b15">
-              {ResumeHeadline}
+              {state.userDetails.headline}
               {/* <span
                 onClick={() => handleShow()}
                 className="m-l15 font-16 text-white"
@@ -426,6 +439,11 @@ export default function HeaderMyResume({ isView }) {
                   </div>
                 </div>
               </form>
+              {fieldAlert && (
+                <p className="text-danger">
+                  Please fill all the required fields.
+                </p>
+              )}
             </div>
             <div className="modal-footer">
               <button

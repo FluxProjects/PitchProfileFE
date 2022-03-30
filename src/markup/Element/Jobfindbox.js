@@ -170,7 +170,7 @@ export default function Jobfindbox({ isView }) {
               </div>
               <div className="col-lg-2 col-md-6">
                 <div className="form-group">
-                  <label>Organization</label>
+                  <label>Organisation</label>
                   <div className="input-group ">
                     <input
                       onChange={(e) => {
@@ -201,7 +201,7 @@ export default function Jobfindbox({ isView }) {
               </div>
               <div className="col-lg-2 col-md-6">
                 <div className="form-group">
-                  <label>Designation</label>
+                  <label>Role</label>
                   <div className="input-group">
                     <input
                       onChange={(e) => {

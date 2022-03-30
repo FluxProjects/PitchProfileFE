@@ -39,8 +39,38 @@ export default function EducationsModalComp({
   const [isCurrent, setIsCurrent] = useState(
     isUpdate == true ? data?.is_current : false
   );
+  const [fieldAlert, setFieldAlert] = useState(false);
 
   const callAction = async () => {
+    if (institute == null || institute == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (educationLevel == null || educationLevel == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (department == null || department == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (course == null || course == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (startDate == null || startDate == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (endDate == null || endDate == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (isCurrent == null || isCurrent == "") {
+      setFieldAlert(true);
+      return;
+    }
+
     if (isUpdate) {
       console.log("update called");
       await dispatch(
@@ -176,7 +206,7 @@ export default function EducationsModalComp({
 
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Is this your current Institute Name?</label>
+                    <label>Is this your current Institute?</label>
                     <div className="row">
                       <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                         <div className="custom-control custom-radio">
@@ -221,6 +251,11 @@ export default function EducationsModalComp({
                 </div>
               </div>
             </form>
+            {fieldAlert && (
+              <p className="text-danger">
+                Please fill all the required fields.
+              </p>
+            )}
           </div>
           <div className="modal-footer">
             <button

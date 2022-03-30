@@ -100,7 +100,7 @@ export default function CertificatesComponent({ isView }) {
               <p className="m-b0">{formatDate(item.year_obtained)}</p>
             </div>
             <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
-              <h6 className="font-14 m-b0">Referance No.</h6>
+              <h6 className="font-14 m-b0">Certification ID</h6>
               <p className="m-b0">{item.ref_no}</p>
             </div>
           </div>

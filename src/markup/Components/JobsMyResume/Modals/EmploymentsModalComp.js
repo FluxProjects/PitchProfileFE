@@ -40,8 +40,42 @@ export default function EmploymentsModalComp({
   const [isCurrent, setIsCurrent] = useState(
     isUpdate == true ? data?.is_current : false
   );
+  const [fieldAlert, setFieldAlert] = useState(false);
 
   const callAction = async () => {
+    if (organization == null || organization == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (industry == null || industry == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (department == null || department == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (role == null || role == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (description == null || description == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (startDate == null || startDate == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (endDate == null || endDate == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (isCurrent == null || isCurrent == "") {
+      setFieldAlert(true);
+      return;
+    }
+
     if (isUpdate) {
       console.log("update called");
       await dispatch(
@@ -100,9 +134,9 @@ export default function EmploymentsModalComp({
               <div className="row">
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Organization</label>
+                    <label>Organisation</label>
                     <TextInputModal
-                      placeholder="Enter Organization"
+                      placeholder="Enter Organisation"
                       onChange={(e) => setOrganization(e.target.value)}
                       value={organization}
                     />
@@ -138,9 +172,9 @@ export default function EmploymentsModalComp({
 
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Designation</label>
+                    <label>Role</label>
                     <TextInputModal
-                      placeholder="Enter Designation"
+                      placeholder="Enter Role"
                       onChange={(e) => setRole(e.target.value)}
                       value={role}
                     />
@@ -243,6 +277,11 @@ export default function EmploymentsModalComp({
                 </div>
               </div>
             </form>
+            {fieldAlert && (
+              <p className="text-danger">
+                Please fill all the required fields.
+              </p>
+            )}
           </div>
           <div className="modal-footer">
             <button

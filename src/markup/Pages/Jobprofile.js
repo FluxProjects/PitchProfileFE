@@ -66,6 +66,7 @@ export default function Jobprofile() {
   const [address, setAddress] = useState(state.userDetails.address);
   const [phone, setPhone] = useState(state.userDetails.phone);
   const [email, setEmail] = useState(state.userDetails.email);
+  const [fieldAlert, setFieldAlert] = useState(false);
 
   const [LangArr, setLangArr] = useState([
     {
@@ -104,6 +105,42 @@ export default function Jobprofile() {
   };
 
   const callUpdateUser = async () => {
+    if (fname == null || fname == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (lname == null || lname == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (gender == null || gender == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (address == null || address == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (country == null || country == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (city == null || city == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (stateName == null || stateName == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (email == null || email == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (phone == null || phone == "") {
+      setFieldAlert(true);
+      return;
+    }
     await dispatch(
       updateUser(
         state.userDetails.id,
@@ -180,7 +217,10 @@ export default function Jobprofile() {
                         <div className="row m-b30">
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
-                              <label>First Name:</label>
+                              <label>
+                                First Name:{" "}
+                                <span className="text-danger"> *</span>
+                              </label>
                               <TextInputModal
                                 placeholder={"Enter First Name"}
                                 value={fname}
@@ -192,7 +232,10 @@ export default function Jobprofile() {
                           </div>
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
-                              <label>Last Name:</label>
+                              <label>
+                                Last Name:{" "}
+                                <span className="text-danger"> *</span>
+                              </label>
 
                               <TextInputModal
                                 placeholder={"Enter Last Name"}
@@ -588,6 +631,11 @@ export default function Jobprofile() {
                             </div>
                           </div>
                         </div>
+                        {fieldAlert && (
+                          <p className="text-danger">
+                            Please fill all the required fields.
+                          </p>
+                        )}
                         <button
                           onClick={(e) => {
                             e.preventDefault();

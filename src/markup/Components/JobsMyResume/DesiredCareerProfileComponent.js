@@ -261,7 +261,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                       </div>
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
-                          <label>Designation</label>
+                          <label>Role</label>
                           <TextInputModal
                             onChange={(e) => {
                               console.log(e.target.value);

@@ -28,8 +28,27 @@ export default function SkillsModalComponent({
   const [IsTopSkill, setIsTopSkill] = useState(
     IsTopSkillProp ? IsTopSkillProp : false
   );
+  const [fieldAlert, setFieldAlert] = useState(false);
 
   const callAddCandidateSkill = async () => {
+    if (ItSkills == null || ItSkills == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (skillType == null || skillType == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (ProLev == null || ProLev == "") {
+      setFieldAlert(true);
+      return;
+    }
+
+    if (IsTopSkill == null || IsTopSkill == "") {
+      setFieldAlert(true);
+      return;
+    }
+
     if (isUpdate) {
       console.log("update called");
       await dispatch(
@@ -174,6 +193,11 @@ export default function SkillsModalComponent({
                 </div>
               </div>
             </form>
+            {fieldAlert && (
+              <p className="text-danger">
+                Please fill all the required fields.
+              </p>
+            )}
           </div>
           <div className="modal-footer">
             <button

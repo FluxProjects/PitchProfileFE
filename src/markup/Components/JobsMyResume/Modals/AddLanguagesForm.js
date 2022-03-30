@@ -33,7 +33,17 @@ export default function AddLanguagesForm({
   const [languages, setLanguages] = useState(
     data?.language_id ? data?.language_id : 1
   );
+  const [fieldAlert, setFieldAlert] = useState(false);
+
   const callAction = async () => {
+    if (languages == null || languages == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (level == null || level == "") {
+      setFieldAlert(true);
+      return;
+    }
     if (isUpdate) {
       console.log("update called");
       await dispatch(
@@ -106,6 +116,11 @@ export default function AddLanguagesForm({
                 </div>
               </div>
             </form>
+            {fieldAlert && (
+              <p className="text-danger">
+                Please fill all the required fields.
+              </p>
+            )}
           </div>
           <div className="modal-footer">
             <button

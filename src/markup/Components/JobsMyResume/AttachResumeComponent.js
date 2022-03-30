@@ -7,6 +7,8 @@ export default function AttachResumeComponent({ isView }) {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
+  let inputRef;
+
   return (
     <>
       {/* Attach resume */}
@@ -19,29 +21,50 @@ export default function AttachResumeComponent({ isView }) {
         <form className="attach-resume">
           <div className="row">
             <div className="col-lg-12 col-md-12">
-              {state.userDetails.cover_letter && (
-                <a download href={state.userDetails.cover_letter}>
-                  Download link
-                </a>
-              )}
-              <div className="form-group">
-                {!isView && (
-                  <div className="custom-file">
-                    <p className="m-auto align-self-center">
-                      <i className="fa fa-upload"></i>
-                      Upload Cover Letter File size is 3 MB
-                    </p>
+              {state.userDetails.cover_letter ? (
+                <>
+                  <span
+                    onClick={() => inputRef.click()}
+                    className="site-button add-btn button-sm float-right"
+                  >
+                    <i className="fa fa-pencil m-r5"></i> Edit
                     <input
+                      ref={(refParam) => (inputRef = refParam)}
                       type="file"
                       className="site-button form-control"
                       id="customFile"
+                      style={{ display: "none" }}
                       onChange={(e) => {
                         dispatch(UploadCoverLetter(e.target.files));
                       }}
                     />
-                  </div>
-                )}
-              </div>
+                  </span>
+                  <br />
+                  <br />
+                  <a download href={state.userDetails.cover_letter}>
+                    {state.userDetails.cover_letter}
+                  </a>
+                </>
+              ) : (
+                <div className="form-group">
+                  {!isView && (
+                    <div className="custom-file">
+                      <p className="m-auto align-self-center">
+                        <i className="fa fa-upload"></i>
+                        Upload Cover Letter File size is 3 MB
+                      </p>
+                      <input
+                        type="file"
+                        className="site-button form-control"
+                        id="customFile"
+                        onChange={(e) => {
+                          dispatch(UploadCoverLetter(e.target.files));
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </form>

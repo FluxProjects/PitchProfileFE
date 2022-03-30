@@ -88,7 +88,7 @@ class Categoryalljob extends Component {
                       </li>
                       <li>
                         <Link to={"/category-designations-jobs"}>
-                          Jobs by Designation
+                          Jobs by Role
                         </Link>
                       </li>
                       <li>
@@ -302,7 +302,7 @@ class Categoryalljob extends Component {
                     <div className="job-bx bg-white">
                       <div className="job-bx-title clearfix">
                         <h6 className="text-uppercase">
-                          Browse Jobs by Designations
+                          Browse Jobs by Roles
                           <Link
                             to={"#"}
                             className="float-right font-12 text-primary"

@@ -101,13 +101,13 @@ export default function ReferencesComponent({ isView }) {
 
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="clearfix m-b20">
-                  <label className="m-b0">Organization</label>
+                  <label className="m-b0">Organisation</label>
                   <span className="clearfix font-13">{item.organization}</span>
                 </div>
               </div>
               <div className="col-lg-4 col-md-12 col-sm-12">
                 <div className="clearfix m-b20">
-                  <label className="m-b0">Designation</label>
+                  <label className="m-b0">Role</label>
                   <span className="clearfix font-13">{item.job_title}</span>
                 </div>
               </div>

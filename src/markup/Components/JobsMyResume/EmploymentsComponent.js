@@ -91,7 +91,7 @@ export default function EmploymentsComponent({ isView }) {
 
             <div className="row">
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-                <h6 className="font-14 m-b0">Organization</h6>
+                <h6 className="font-14 m-b0">Organisation</h6>
                 <p className="m-b0">{item.organization}</p>
               </div>
 
@@ -126,7 +126,7 @@ export default function EmploymentsComponent({ isView }) {
               </div>
 
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-                <h6 className="font-14 m-b0">Designation</h6>
+                <h6 className="font-14 m-b0">Role</h6>
                 <p className="m-b0">{item.role}</p>
               </div>
 
@@ -145,7 +145,7 @@ export default function EmploymentsComponent({ isView }) {
                 <p className="m-b0">{item.description}</p>
               </div>
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
-                <h6 className="font-14 m-b0">Current Job</h6>
+                <h6 className="font-14 m-b0">Current Role</h6>
                 <p className="m-b0">{item.is_current == true ? "Yes" : "No"}</p>
               </div>
             </div>

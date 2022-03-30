@@ -21,8 +21,21 @@ export default function CertificatesModalComp({
     isUpdate == true ? data?.year_obtained : ""
   );
   const [refNo, setrefNo] = useState(isUpdate == true ? data?.ref_no : "");
+  const [fieldAlert, setFieldAlert] = useState(false);
 
   const callAction = async () => {
+    if (name == null || name == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (yearObtained == null || yearObtained == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (refNo == null || refNo == "") {
+      setFieldAlert(true);
+      return;
+    }
     if (isUpdate) {
       console.log("update called");
       await dispatch(
@@ -66,7 +79,9 @@ export default function CertificatesModalComp({
             <div className="row">
               <div className="col-lg-12 col-md-12">
                 <div className="form-group">
-                  <label>Certification Name</label>
+                  <label>
+                    Certification Name <span className="text-danger"> *</span>
+                  </label>
                   <TextInputModal
                     placeholder="Enter Certification Name"
                     onChange={(e) => {
@@ -90,7 +105,9 @@ export default function CertificatesModalComp({
               </div>
               <div className="col-lg-12 col-md-12">
                 <div className="form-group">
-                  <label>Year Obtained</label>
+                  <label>
+                    Year Obtained <span className="text-danger"> *</span>
+                  </label>
                   <TextInputModal
                     type="date"
                     onChange={(e) => {
@@ -104,7 +121,9 @@ export default function CertificatesModalComp({
 
               <div className="col-lg-12 col-md-12">
                 <div className="form-group">
-                  <label>Credentail Id.</label>
+                  <label>
+                    Credential ID. <span className="text-danger"> *</span>
+                  </label>
                   <TextInputModal
                     type=""
                     onChange={(e) => {
@@ -117,6 +136,9 @@ export default function CertificatesModalComp({
               </div>
             </div>
           </form>
+          {fieldAlert && (
+            <p className="text-danger">Please fill all the required fields.</p>
+          )}
         </div>
         <div className="modal-footer">
           <button

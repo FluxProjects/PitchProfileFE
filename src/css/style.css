@@ -116,8 +116,14 @@
 ---------------------------------------------------------------*/
 
 /* Grid view  */
-.cardGridFont{
+.cardGridFont {
   font-size: 11px;
+}
+
+img.card-img-top {
+  height: 170px;
+  width: auto;
+  margin: 0 auto;
 }
 
 .containerImageGrid {

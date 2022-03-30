@@ -113,7 +113,7 @@ export default function SkillsComponent({ isView }) {
                   <td>
                     {!isView && (
                       <>
-                        <Link
+                        {/* <Link
                           to={"#"}
                           data-toggle="modal"
                           data-target="#itskills"
@@ -126,7 +126,7 @@ export default function SkillsComponent({ isView }) {
                           className="site-button add-btn button-sm"
                         >
                           <i className="fa fa-pencil m-r5"></i> Edit
-                        </Link>
+                        </Link> */}
                         {/* <span
                        
                         className="m-l15 cursorPointer font-14"

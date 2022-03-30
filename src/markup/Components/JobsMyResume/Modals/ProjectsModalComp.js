@@ -32,8 +32,25 @@ export default function ProjectsModalComp({
   const [WorkedTill, setWorkedTill] = useState(
     isUpdate == true ? data?.end_date : ""
   );
+  const [fieldAlert, setFieldAlert] = useState(false);
 
   const callAction = async () => {
+    if (ProjectsTitle == null || ProjectsTitle == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (description == null || description == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (startedWorking == null || startedWorking == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (WorkedTill == null || WorkedTill == "") {
+      setFieldAlert(true);
+      return;
+    }
     if (isUpdate) {
       console.log("update called");
       await dispatch(
@@ -87,7 +104,9 @@ export default function ProjectsModalComp({
               <div className="row">
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Project Title</label>
+                    <label>
+                      Project Title <span className="text-danger"> *</span>
+                    </label>
                     <TextInputModal
                       placeholder="Enter Project Title"
                       onChange={(e) => setProjectsTitle(e.target.value)}
@@ -108,7 +127,9 @@ export default function ProjectsModalComp({
                 </div>
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Start Date</label>
+                    <label>
+                      Start Date <span className="text-danger"> *</span>
+                    </label>
                     <div className="row">
                       <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                         <TextInputModal
@@ -126,7 +147,9 @@ export default function ProjectsModalComp({
                 </div>
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>End Date</label>
+                    <label>
+                      End Date <span className="text-danger"> *</span>
+                    </label>
                     <div className="row">
                       <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                         <TextInputModal
@@ -144,7 +167,9 @@ export default function ProjectsModalComp({
                 </div>
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Description</label>
+                    <label>
+                      Description <span className="text-danger"> *</span>
+                    </label>
                     <TextAreaModalComponent
                       onChange={(e) => {
                         setDescription(e.target.value);
@@ -156,6 +181,11 @@ export default function ProjectsModalComp({
                 </div>
               </div>
             </form>
+            {fieldAlert && (
+              <p className="text-danger">
+                Please fill all the required fields.
+              </p>
+            )}
           </div>
           <div className="modal-footer">
             <button

@@ -29,8 +29,17 @@ export default function EmploymentsModalComp({
   const [description, setDescription] = useState(
     isUpdate == true ? data?.description : ""
   );
+  const [fieldAlert, setFieldAlert] = useState(false);
 
   const callAction = async () => {
+    if (socialProfile == null || socialProfile == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (url == null || url == "") {
+      setFieldAlert(true);
+      return;
+    }
     if (isUpdate) {
       console.log("update called");
       await dispatch(
@@ -115,6 +124,11 @@ export default function EmploymentsModalComp({
                 </div> */}
               </div>
             </form>
+            {fieldAlert && (
+              <p className="text-danger">
+                Please fill all the required fields.
+              </p>
+            )}
           </div>
           <div className="modal-footer">
             <button

@@ -39,6 +39,7 @@ export default function ReferencesModalComp({
   const [country, setCountry] = useState(isUpdate == true ? countryProp : 230);
   const [phone, setPhone] = useState(isUpdate == true ? data?.phone : "");
   const [email, setEmail] = useState(isUpdate == true ? data?.email : "");
+  const [fieldAlert, setFieldAlert] = useState(false);
 
   const CallGetCities = async (stateId) => {
     await dispatch(GetCities(stateId));
@@ -49,6 +50,18 @@ export default function ReferencesModalComp({
   };
 
   const callAction = async () => {
+    if (refererName == null || refererName == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (organization == null || organization == "") {
+      setFieldAlert(true);
+      return;
+    }
+    if (jobTitle == null || jobTitle == "") {
+      setFieldAlert(true);
+      return;
+    }
     if (isUpdate) {
       console.log("update called");
       await dispatch(
@@ -107,7 +120,9 @@ export default function ReferencesModalComp({
               <div className="row">
                 <div className="col-lg-12 col-md-12 ">
                   <div className="form-group">
-                    <label>Referee Name</label>
+                    <label>
+                      Referee Name <span className="text-danger"> *</span>
+                    </label>
                     <TextInputModal
                       placeholder={"Enter Referee Name"}
                       onChange={(e) => setRefererName(e.target.value)}
@@ -117,9 +132,11 @@ export default function ReferencesModalComp({
                 </div>
                 <div className="col-lg-12 col-md-12 ">
                   <div className="form-group">
-                    <label>Organization</label>
+                    <label>
+                      Organisation <span className="text-danger"> *</span>
+                    </label>
                     <TextInputModal
-                      placeholder={"Enter Referee Organization Name"}
+                      placeholder={"Enter Referee Organisation Name"}
                       onChange={(e) => setOrganization(e.target.value)}
                       value={organization}
                     />
@@ -127,9 +144,11 @@ export default function ReferencesModalComp({
                 </div>
                 <div className="col-lg-12 col-md-12 ">
                   <div className="form-group">
-                    <label>Designation</label>
+                    <label>
+                      Role <span className="text-danger"> *</span>
+                    </label>
                     <TextInputModal
-                      placeholder={"Enter Referee Designation"}
+                      placeholder={"Enter Referee Role"}
                       onChange={(e) => setJobTitle(e.target.value)}
                       value={jobTitle}
                     />
@@ -204,6 +223,11 @@ export default function ReferencesModalComp({
                 </div>
               </div>
             </form>
+            {fieldAlert && (
+              <p className="text-danger">
+                Please fill all the required fields.
+              </p>
+            )}
           </div>
           <div className="modal-footer">
             <button
