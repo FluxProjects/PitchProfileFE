@@ -102,16 +102,48 @@ export default function SkillsModalComponent({
                 <div className="col-lg-6 col-md-12">
                   <div className="form-group">
                     <label>Skill Name</label>
-                    <DropDownModalComponent
+                    <select
+                      value={ItSkills}
                       onChange={(e) => {
                         console.log("ret", e.target.value);
                         setItSkills(e.target.value);
                       }}
-                      value={ItSkills}
-                      options={state.skills}
-                    />
+                      className="form-control"
+                    >
+                      {state.skills.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.name}
+                        </option>
+                      ))}
+                      <option key={"other"} value={"other"}>
+                        other
+                      </option>
+                    </select>
                   </div>
                 </div>
+                {ItSkills == "other" && (
+                  <div className="col-lg-6 col-md-12">
+                    <div className="form-group">
+                      <div>
+                        <label>Add New Skill</label>
+                      </div>
+
+                      <TextInputModal
+                        placeholder=""
+                        type="number"
+                        min={1}
+                        max={10}
+                        onChange={(e) => {
+                          // setProLev(e.target.value)
+                        }}
+                        // value={ProLev}
+                      />
+                      <div style={{ marginBottom: 10 }}>
+                        <small></small>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 <div className="col-lg-6 col-md-6 col-sm-12">
                   <div className="form-group">
                     <label>Skill Type</label>

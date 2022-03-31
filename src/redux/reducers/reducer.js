@@ -30,6 +30,10 @@ const initialState = {
   candidateSocialProfiles: [],
   candidateLanguages: [],
   candidateDesiredCareer: {},
+
+  // Browsecandicate actions
+  allCandidates: [],
+  backupCandidates: [],
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {

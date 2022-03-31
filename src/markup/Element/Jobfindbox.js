@@ -35,6 +35,7 @@ export default function Jobfindbox({ isView }) {
 
   const [availabliltyFilter, setAvailabliltyFilter] = useState(null);
   const [skillFilter, setSkillFilter] = useState(null);
+  const [skillFilterLabel, setSkillFilterLabel] = useState(null);
   const [companyFilter, setCompanyFilter] = useState(null);
   const [designationFilter, setDesignationFilter] = useState(null);
 
@@ -179,7 +180,7 @@ export default function Jobfindbox({ isView }) {
                         console.log("eee", e.target.value);
                         setSkillFilter(e.target.value);
                       }}
-                      value={skillFilter}
+                      value={skillFilterLabel}
                       placeholder=""
                       className="form-control w-85"
                       type="text"
@@ -188,7 +189,14 @@ export default function Jobfindbox({ isView }) {
 
                     <datalist id="SkillsDropDown">
                       {state.skills.map((item, key) => (
-                        <option key={key} label={item.name} value={item.id} />
+                        <span
+                          onClick={() => {
+                            console.log("testing teh ");
+                            setSkillFilterLabel(item.name);
+                          }}
+                        >
+                          <option key={key} label={item.name} value={item.id} />
+                        </span>
                       ))}
                     </datalist>
                     {/* <DropDownModalComponent
