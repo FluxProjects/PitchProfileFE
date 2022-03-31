@@ -180,7 +180,7 @@ export default function Jobfindbox({ isView }) {
                         console.log("eee", e.target.value);
                         setSkillFilter(e.target.value);
                       }}
-                      value={skillFilterLabel}
+                      value={skillFilter}
                       placeholder=""
                       className="form-control w-85"
                       type="text"
@@ -189,14 +189,7 @@ export default function Jobfindbox({ isView }) {
 
                     <datalist id="SkillsDropDown">
                       {state.skills.map((item, key) => (
-                        <span
-                          onClick={() => {
-                            console.log("testing teh ");
-                            setSkillFilterLabel(item.name);
-                          }}
-                        >
-                          <option key={key} label={item.name} value={item.id} />
-                        </span>
+                        <option key={key} label={item.name} value={item.id} />
                       ))}
                     </datalist>
                     {/* <DropDownModalComponent
@@ -212,6 +205,16 @@ export default function Jobfindbox({ isView }) {
                         <i className="fa fa-search"></i>
                       </span>
                     </div> */}
+                  </div>
+                  <div style={{ marginBottom: 10 }}>
+                    <small>
+                      {state?.skills.findIndex((x) => x?.id == skillFilter) ==
+                      -1
+                        ? ""
+                        : state?.skills[
+                            state?.skills.findIndex((x) => x?.id == skillFilter)
+                          ].name}
+                    </small>
                   </div>
                 </div>
               </div>
