@@ -129,20 +129,25 @@ export const filterCandidateAll =
     state().backupCandidates.map((itemM) => {
       itemM.candidate_skills.filter((item) => {
         if (item.skill_name == skill_id) {
-          resultSkill.push(itemM);
+          // resultSkill.push();
+          result.push(itemM);
         }
       });
     });
 
     // ? company filter
 
-    resultCompany = state().backupCandidates.filter(function (item) {
-      if (item?.employments[0]?.organization == companyFilter) return item;
+    resultCompany = result.filter(function (item) {
+      if (
+        item?.employments[0]?.organization == companyFilter ||
+        item?.employments[0]?.role == designationFilter
+      )
+        return item;
     });
 
-    resultDesignation = state().backupCandidates.filter(function (item) {
-      if (item?.employments[0]?.role == designationFilter) return item;
-    });
+    // resultDesignation = state().backupCandidates.filter(function (item) {
+    //   if () return item;
+    // });
 
     // var arr = result.concat(
     //   resultSkill.concat(resultCompany.concat(resultDesignation))
@@ -154,7 +159,7 @@ export const filterCandidateAll =
     //   }
     // );
 
-    console.log("My sample orgafnization Accountant", resultDesignation);
+    console.log("My sample orgafnization Accountant", result);
 
     // return;
 
@@ -169,7 +174,7 @@ export const filterCandidateAll =
     });
     dispatch({
       type: "GetAllCandidates",
-      data: resultDesignation,
+      data: resultCompany,
     });
   };
 
