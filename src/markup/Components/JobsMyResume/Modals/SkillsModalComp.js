@@ -12,6 +12,7 @@ export default function SkillsModalComponent({
   id,
   index,
   ItSkillsProp,
+  ItSkillsNameProp,
   ProLevProp,
   IsTopSkillProp,
   SkillTypeProp,
@@ -23,6 +24,18 @@ export default function SkillsModalComponent({
   const dispatch = useDispatch();
 
   const [ItSkills, setItSkills] = useState(ItSkillsProp ? ItSkillsProp : 1);
+  const [skillsName, setSkillsName] = useState(
+    ItSkillsNameProp
+      ? state?.skills.findIndex((x) => x?.id == ItSkillsNameProp) == -1
+        ? ""
+        : state?.skills[
+            state?.skills.findIndex((x) => x?.id == ItSkillsNameProp)
+          ].name
+      : state?.skills.findIndex((x) => x?.id == 1) == -1
+      ? ""
+      : state?.skills[state?.skills.findIndex((x) => x?.id == 1)].name
+  );
+
   const [skillType, setSkillType] = useState(SkillTypeProp ? SkillTypeProp : 1);
   const [ProLev, setProLev] = useState(ProLevProp ? ProLevProp : 1);
   const [IsTopSkill, setIsTopSkill] = useState(
@@ -32,30 +45,38 @@ export default function SkillsModalComponent({
 
   const callAddCandidateSkill = async () => {
     if (ItSkills == null || ItSkills == "") {
+      console.log("update ItSkills");
+
       setFieldAlert(true);
       return;
     }
     if (skillType == null || skillType == "") {
+      console.log("update skillType");
+
       setFieldAlert(true);
       return;
     }
     if (ProLev == null || ProLev == "") {
+      console.log("update ProLev");
+
       setFieldAlert(true);
       return;
     }
 
-    if (IsTopSkill == null || IsTopSkill == "") {
+    if (IsTopSkill == null) {
+      console.log("update IsTopSkill", IsTopSkill == null, IsTopSkill == "");
+
       setFieldAlert(true);
       return;
     }
 
     if (isUpdate) {
-      console.log("update called");
       await dispatch(
         UpdateCandidateSkill(
           id,
           ItSkills,
           skillType,
+          skillsName,
           ProLev,
           IsTopSkill,
           index,
@@ -68,6 +89,7 @@ export default function SkillsModalComponent({
         AddCandidateSkill(
           ItSkills,
           skillType,
+          skillsName,
           ProLev,
           IsTopSkill,
           handleClose()
@@ -107,6 +129,19 @@ export default function SkillsModalComponent({
                       onChange={(e) => {
                         console.log("ret", e.target.value);
                         setItSkills(e.target.value);
+
+                        var c =
+                          state?.skills.findIndex(
+                            (x) => x?.id == e.target.value
+                          ) == -1
+                            ? ""
+                            : setSkillsName(
+                                state?.skills[
+                                  state?.skills.findIndex(
+                                    (x) => x?.id == e.target.value
+                                  )
+                                ].name
+                              );
                       }}
                       className="form-control"
                     >

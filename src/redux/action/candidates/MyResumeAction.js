@@ -13,7 +13,7 @@ import {
 } from "../../../utils/functions";
 
 export const AddCandidateSkill =
-  (skill_id, skill_type, skill_level, is_top, setModal) =>
+  (skill_id, skill_type, skill_name, skill_level, is_top, setModal) =>
   async (dispatch, state) => {
     var count = 0;
     state().candidateSkills.forEach((v) => v.is_top === true && count++);
@@ -27,6 +27,7 @@ export const AddCandidateSkill =
           skill_id,
           skill_type,
           skill_level,
+          skill_name,
           is_top,
         },
       });
@@ -186,7 +187,16 @@ export const AddCandidateSkill =
   };
 
 export const UpdateCandidateSkill =
-  (id, skill_id, skill_type, skill_level, is_top, index, setModal) =>
+  (
+    id,
+    skill_id,
+    skill_type,
+    skill_name,
+    skill_level,
+    is_top,
+    index,
+    setModal
+  ) =>
   async (dispatch, state) => {
     var count = 0;
     state().candidateSkills.forEach((v) => v.is_top === true && count++);
@@ -200,6 +210,7 @@ export const UpdateCandidateSkill =
           skill_id,
           skill_type,
           skill_level,
+          skill_name,
           is_top,
         },
       });

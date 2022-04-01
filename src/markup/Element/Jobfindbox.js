@@ -83,19 +83,23 @@ export default function Jobfindbox({ isView }) {
   };
 
   const callFilter = () => {
-    if (
-      availabliltyFilter != null &&
-      availabliltyFilter != "" &&
-      skillFilter != null &&
-      skillFilter != "" &&
-      companyFilter != null &&
-      companyFilter != "" &&
-      designationFilter != null &&
-      designationFilter != ""
-    ) {
+    var count = 0;
+    if (availabliltyFilter != null && availabliltyFilter != "") {
+      count++;
+    }
+    if (skillFilter != null && skillFilter != "") {
+      count++;
+    }
+    if (companyFilter != null && companyFilter != "") {
+      count++;
+    }
+    if (designationFilter != null && designationFilter != "") {
+      count++;
+    }
+    if (count > 1) {
       dispatch(
         filterCandidateAll(
-          availabliltyFilter,
+          availabliltyFilter == "Available" ? true : "Unavailable" && false,
           skillFilter,
           companyFilter,
           designationFilter
@@ -105,7 +109,11 @@ export default function Jobfindbox({ isView }) {
     }
     if (availabliltyFilter != null && availabliltyFilter != "") {
       console.log("availabliltyFilter");
-      dispatch(filterCandidateAvailability(availabliltyFilter));
+      dispatch(
+        filterCandidateAvailability(
+          availabliltyFilter == "Available" ? true : "Unavailable" && false
+        )
+      );
       return;
     }
     if (skillFilter != null && skillFilter != "") {
@@ -189,7 +197,7 @@ export default function Jobfindbox({ isView }) {
 
                     <datalist id="SkillsDropDown">
                       {state.skills.map((item, key) => (
-                        <option key={key} label={item.name} value={item.id} />
+                        <option key={key} label={item.name} value={item.name} />
                       ))}
                     </datalist>
                     {/* <DropDownModalComponent

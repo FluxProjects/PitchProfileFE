@@ -66,10 +66,11 @@ export default function EducationsModalComp({
       setFieldAlert(true);
       return;
     }
-    if (isCurrent == null || isCurrent == "") {
+    if (isCurrent == null) {
       setFieldAlert(true);
       return;
     }
+    setFieldAlert(false);
 
     if (isUpdate) {
       console.log("update called");

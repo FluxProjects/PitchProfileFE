@@ -128,14 +128,14 @@ export default function HeaderMyResume({ isView }) {
 
   return (
     <>
-      <div className="col-lg-8 col-md-7 candidate-info">
-        <div className="candidate-detail">
+      <div className="col-lg-7 col-md-7  candidate-info">
+        <div className="candidate-detail  ">
           <div
             style={{
               height: "200px",
               width: "200px",
             }}
-            className="canditate-des text-center"
+            className="canditate-des  text-center"
           >
             <Link to={""}>
               <img
@@ -175,7 +175,7 @@ export default function HeaderMyResume({ isView }) {
               </div>
             )}
           </div>
-          <div className="text-white browse-job text-left">
+          <div className="text-white  browse-job text-left">
             <h4 className="m-b0">
               {userDetail.f_name} {userDetail.l_name}
               {!isView && (
@@ -226,14 +226,14 @@ export default function HeaderMyResume({ isView }) {
             </ul>
 
             <div className="progress-box m-t10">
-              <div className="customFlexRow">
+              <div className="customFlexRow mb-2">
                 <p className="textColorGold mr-2">Top Skills</p>
-                <div className="customFlexRow ">
+                <div className=" ">
                   {state.candidateSkills.map((item) => (
                     <>
                       {item.is_top == true && (
                         <div className="mr-2">
-                          <p>
+                          <p className="mb-0">
                             ⭐{" "}
                             {state?.skills.findIndex(
                               (x) => x?.id == item?.skill_id

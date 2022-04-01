@@ -113,7 +113,7 @@ export default function Jobprofile() {
       setFieldAlert(true);
       return;
     }
-    if (gender == null || gender == "") {
+    if (gender == null) {
       setFieldAlert(true);
       return;
     }
@@ -141,6 +141,7 @@ export default function Jobprofile() {
       setFieldAlert(true);
       return;
     }
+    setFieldAlert(false);
     await dispatch(
       updateUser(
         state.userDetails.id,

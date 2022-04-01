@@ -22,7 +22,7 @@ export default function AttachVideo({ isView }) {
       <div
         id="attach_resume_bx "
         style={{ backgroundColor: "transparent" }}
-        className=" margin_bx_AttachVid m-b30"
+        className=" margin_bx_AttachVid m-b30 w-100"
       >
         {state.userDetails.video == null && !isView && (
           <h5 className="m-b10 text-white">Attach Video</h5>

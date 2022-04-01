@@ -172,6 +172,11 @@ export default function SkillsComponent({ isView }) {
               ? state.candidateSkills[modalDataIndex].skill_id
               : ""
           }
+          ItSkillsNameProp={
+            state.candidateSkills[modalDataIndex]
+              ? state.candidateSkills[modalDataIndex].skill_id
+              : ""
+          }
           IsTopSkillProp={
             state.candidateSkills[modalDataIndex]
               ? state.candidateSkills[modalDataIndex].is_top

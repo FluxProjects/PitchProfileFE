@@ -81,7 +81,7 @@ export default function Browsejobgrid({}) {
                         paddingRight: 3,
                         paddingLeft: 3,
                       }}
-                      className=" col-md-4 col-lg-3 col-xs-12 col-sm-6  mb-4"
+                      className=" col-md-4 col-lg-3 col-xs-12 col-sm-6  mb-2 "
                     >
                       <div
                         className="card p-3"
@@ -162,8 +162,9 @@ export default function Browsejobgrid({}) {
                             }}
                             className="mb-0 cardGridFont"
                           >
-                            {item.headline != null && item.headline != "" ? (
-                              <>{item.headline},</>
+                            {item?.employments[0]?.role != null &&
+                            item?.employments[0]?.role != "" ? (
+                              <>{item?.employments[0]?.role},</>
                             ) : (
                               "Role"
                             )}{" "}
@@ -187,7 +188,7 @@ export default function Browsejobgrid({}) {
                             }}
                             className="mb-0  card-title"
                           >
-                            <i className="fa fa-list"></i> Top Skill
+                            <i className="fa fa-list"></i> Top Skills
                           </h5>
                           <ul className="mb-0">
                             {item.candidate_skills.length > 1 ? (
