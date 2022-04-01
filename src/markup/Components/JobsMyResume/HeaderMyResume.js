@@ -128,7 +128,7 @@ export default function HeaderMyResume({ isView }) {
 
   return (
     <>
-      <div className="col-lg-7 col-md-7  candidate-info">
+      <div className="col-lg-7 col-md-7 col-sm-12 candidate-info">
         <div className="candidate-detail  ">
           <div
             style={{
@@ -275,7 +275,7 @@ export default function HeaderMyResume({ isView }) {
           </div>
         </div>
       </div>
-      <div className="col-lg-4  col-md-5">
+      <div className="col-lg-5 col-md-5 col-sm-12">
         {/* <Link to={""}> */}
         {/* AttachVideo */}
         <div className=" text-white ">
