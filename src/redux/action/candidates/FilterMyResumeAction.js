@@ -143,7 +143,6 @@ export const filterCandidateAll =
     });
 
     // ? company filter
-
     resultCompany = resultSkill.filter(function (item) {
       if (companyFilter == null || companyFilter == "") {
         console.log("companyFilter null");
@@ -152,6 +151,7 @@ export const filterCandidateAll =
       } else if (item?.employments[0]?.organization == companyFilter) return item;
     });
 
+    
     resultDesignation = resultCompany.filter(function (item) {
       if (designationFilter == null || designationFilter == "") {
         console.log("designationFilter null", designationFilter);

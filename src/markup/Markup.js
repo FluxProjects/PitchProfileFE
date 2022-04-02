@@ -31,6 +31,7 @@ import Register from "./Pages/Register";
 import Browsejobgrid from "./Pages/Browsejobgrid";
 import MyResumeView from "./Pages/MyResumeView";
 import ViewCandidateProfile from "./Pages/ViewCandidateProfile";
+import { useLocation } from 'react-router-dom'
 
 export default function Markup() {
   return (

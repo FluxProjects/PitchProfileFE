@@ -83,8 +83,7 @@ export default function Browsejobgrid({}) {
                       }}
                       to={{
                         pathname: "view-candidate-profile",
-
-                        state: { thing: "asdf", another1: "stuff" },
+                        state: {  },
                       }}
                       className=" col-md-4 col-lg-3 col-xs-12 col-sm-6  mb-2 marginMobileBrowseCard "
                     >
