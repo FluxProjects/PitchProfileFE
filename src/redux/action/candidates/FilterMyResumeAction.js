@@ -118,31 +118,46 @@ export const filterCandidateAll =
     var resultDesignation = [];
     //    ? is available filter
     state().backupCandidates.filter((item) => {
-      if (item.is_active.toString() === is_active.toString()) {
-        console.log("item.isactive", item.is_active, is_active);
+      if (is_active == null || is_active == "") {
+        console.log("is_active null");
+
+        result.push(item);
+      } else if (item.is_active.toString() === is_active.toString()) {
         result.push(item);
       }
     });
 
     //  ? skill filter
 
-    state().backupCandidates.map((itemM) => {
+    result.map((itemM) => {
       itemM.candidate_skills.filter((item) => {
-        if (item.skill_name == skill_id) {
-          // resultSkill.push();
-          result.push(itemM);
+        if (skill_id == null || skill_id == "") {
+          console.log("skill_id null");
+          resultSkill.push(itemM);
+          // result.push(itemM);
+        } else if (item.skill_name == skill_id) {
+          resultSkill.push(itemM);
+          // result.push(itemM);
         }
       });
     });
 
     // ? company filter
 
-    resultCompany = result.filter(function (item) {
-      if (
-        item?.employments[0]?.organization == companyFilter ||
-        item?.employments[0]?.role == designationFilter
-      )
+    resultCompany = resultSkill.filter(function (item) {
+      if (companyFilter == null || companyFilter == "") {
+        console.log("companyFilter null");
+
         return item;
+      } else if (item?.employments[0]?.organization == companyFilter) return item;
+    });
+
+    resultDesignation = resultCompany.filter(function (item) {
+      if (designationFilter == null || designationFilter == "") {
+        console.log("designationFilter null", designationFilter);
+
+        return item;
+      } else if (item?.employments[0]?.role == designationFilter) return item;
     });
 
     // resultDesignation = state().backupCandidates.filter(function (item) {
@@ -159,10 +174,6 @@ export const filterCandidateAll =
     //   }
     // );
 
-    console.log("My sample orgafnization Accountant", result);
-
-    // return;
-
     toast.success("Updated Successfully!", {
       position: "top-right",
       autoClose: 5000,
@@ -174,7 +185,7 @@ export const filterCandidateAll =
     });
     dispatch({
       type: "GetAllCandidates",
-      data: resultCompany,
+      data: resultDesignation,
     });
   };
 
