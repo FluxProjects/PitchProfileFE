@@ -76,12 +76,17 @@ export default function Browsejobgrid({}) {
                   <p>Loading...</p>
                 ) : (
                   state.allCandidates.map((item, index) => (
-                    <div
+                    <Link
                       style={{
                         paddingRight: 3,
                         paddingLeft: 3,
                       }}
-                      className=" col-md-4 col-lg-3 col-xs-12 col-sm-6  mb-2 "
+                      to={{
+                        pathname: "view-candidate-profile",
+
+                        state: { thing: "asdf", another1: "stuff" },
+                      }}
+                      className=" col-md-4 col-lg-3 col-xs-12 col-sm-6  mb-2 marginMobileBrowseCard "
                     >
                       <div
                         className="card p-3"
@@ -247,7 +252,7 @@ export default function Browsejobgrid({}) {
                           </ul>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   ))
                 )}
               </div>

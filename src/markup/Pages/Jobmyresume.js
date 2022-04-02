@@ -88,12 +88,23 @@ export default function Jobmyresume() {
     setLoading(false);
   };
 
+  const uniqueResults = Array.from(
+    new Set(state.pedningActions.map((a) => a.message))
+  ).map((id) => {
+    return state.pedningActions.find((a) => a.message === id);
+  });
+  console.log(
+    "uniqueResultsuniqueResults",
+    state.pedningActions,
+    uniqueResults
+  );
+
   return (
     <>
       <Header />
       <div className="page-content">
         <div
-          className="overlay-black-dark profile-edit p-t50 p-b20"
+          className="overlay-black-dark profile-edit p-t50 "
           style={{ backgroundImage: "url(" + bnr + ")" }}
         >
           <div className="container">
@@ -276,7 +287,7 @@ export default function Jobmyresume() {
                       <h5>Pending Action</h5>
 
                       <ul className="list-check secondry">
-                        {SortSameVals(state.pedningActions).map((item) => (
+                        {uniqueResults.map((item) => (
                           <li>{item.message}</li>
                         ))}
 

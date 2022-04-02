@@ -151,7 +151,7 @@ export default function SkillsModalComponent({
                         </option>
                       ))}
                       <option key={"other"} value={"other"}>
-                        other
+                        Other
                       </option>
                     </select>
                   </div>
@@ -165,9 +165,6 @@ export default function SkillsModalComponent({
 
                       <TextInputModal
                         placeholder=""
-                        type="number"
-                        min={1}
-                        max={10}
                         onChange={(e) => {
                           // setProLev(e.target.value)
                         }}

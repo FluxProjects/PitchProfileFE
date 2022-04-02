@@ -234,7 +234,7 @@ export default function HeaderMyResume({ isView }) {
                       {item.is_top == true && (
                         <div className="mr-2">
                           <p className="mb-0">
-                            ⭐{" "}
+                            <span className="mr-2"> ⭐ </span>
                             {state?.skills.findIndex(
                               (x) => x?.id == item?.skill_id
                             ) == -1
@@ -254,7 +254,7 @@ export default function HeaderMyResume({ isView }) {
 
               <div className="customFlexRow mt-0">
                 <p className="textColorGold mr-2">Status</p>
-                <div className="mt-0 customFlexRow">
+                <div className="mt-0 ml-4 customFlexRow">
                   {!isView && (
                     <div>
                       <Toggle

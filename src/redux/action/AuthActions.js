@@ -307,7 +307,8 @@ export const UploadCoverLetter = (files) => async (dispatch, state) => {
     var data = JSON.stringify({
       data: {
         id: state().userDetails.id,
-        cover_letter: res.data.secure_url,
+        cover_letter_url: res.data.secure_url,
+        cover_letter: res.data.original_filename,
       },
     });
 

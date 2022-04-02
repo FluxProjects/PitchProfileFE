@@ -13373,6 +13373,14 @@ ol.commentlist li .star-rating {
 
 /* Google Recaptcha */
 @media screen and (max-width: 991px) {
+  .profile-edit .candidate-info .candidate-detail {
+    display: block !important;
+  }
+
+  .marginMobileBrowseCard {
+    margin: 0px 10px;
+  }
+
   .mo-left .header-nav.nav-dark {
     background-color: #202020;
   }

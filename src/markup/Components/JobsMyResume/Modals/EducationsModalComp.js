@@ -66,10 +66,10 @@ export default function EducationsModalComp({
       setFieldAlert(true);
       return;
     }
-    if (isCurrent == null) {
-      setFieldAlert(true);
-      return;
-    }
+    // if (isCurrent == null) {
+    //   setFieldAlert(true);
+    //   return;
+    // }
     setFieldAlert(false);
 
     if (isUpdate) {
@@ -204,52 +204,54 @@ export default function EducationsModalComp({
                     />
                   </div>
                 </div>
-
-                <div className="col-lg-12 col-md-12">
-                  <div className="form-group">
-                    <label>Is this your current Institute?</label>
-                    <div className="row">
-                      <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                        <div className="custom-control custom-radio">
-                          <input
-                            type="radio"
-                            className="custom-control-input"
-                            id="employ_yes"
-                            name="example1"
-                            checked={isCurrent == true ? true : false}
-                            value={true}
-                            onChange={() => setIsCurrent(true)}
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor="employ_yes"
-                          >
-                            Yes
-                          </label>
+                {!endDate && (
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Is this your current Institute?</label>
+                      <div className="row">
+                        <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div className="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              className="custom-control-input"
+                              id="employ_yes"
+                              name="example1"
+                              checked={isCurrent == true ? true : false}
+                              value={true}
+                              onChange={() => setIsCurrent(true)}
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="employ_yes"
+                            >
+                              Yes
+                            </label>
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                        <div className="custom-control custom-radio">
-                          <input
-                            type="radio"
-                            className="custom-control-input"
-                            id="employ_no"
-                            name="example1"
-                            checked={isCurrent == false ? true : false}
-                            value={false}
-                            onChange={() => setIsCurrent(false)}
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor="employ_no"
-                          >
-                            No
-                          </label>
+
+                        <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div className="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              className="custom-control-input"
+                              id="employ_no"
+                              name="example1"
+                              checked={isCurrent == false ? true : false}
+                              value={false}
+                              onChange={() => setIsCurrent(false)}
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="employ_no"
+                            >
+                              No
+                            </label>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </form>
             {fieldAlert && (
