@@ -168,11 +168,11 @@ export const filterCandidateAll =
     //   resultSkill.concat(resultCompany.concat(resultDesignation))
     // );
 
-    // const uniqueResults = Array.from(new Set(arr.map((a) => a.id))).map(
-    //   (id) => {
-    //     return arr.find((a) => a.id === id);
-    //   }
-    // );
+    const uniqueResults = Array.from(
+      new Set(resultDesignation.map((a) => a.id))
+    ).map((id) => {
+      return resultDesignation.find((a) => a.id === id);
+    });
 
     toast.success("Updated Successfully!", {
       position: "top-right",
@@ -185,7 +185,7 @@ export const filterCandidateAll =
     });
     dispatch({
       type: "GetAllCandidates",
-      data: resultDesignation,
+      data: uniqueResults,
     });
   };
 
