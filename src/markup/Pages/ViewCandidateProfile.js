@@ -5,9 +5,8 @@ import Footer from "./../Layout/Footer";
 import { Form, ToggleButton } from "react-bootstrap";
 import Listingsidebar from "./../Element/Listingsidebar";
 import ResumeHeadlineComponent from "../Components/JobsMyResume/ResumeHeadlineComponent";
-import ProfileSummary from "../Components/JobsMyResume/ProfileSummary";
 import SkillsComponent from "../Components/JobsMyResume/SkillsComponent";
-import EducationsComponent from "../Components/JobsMyResume/EducationsComponent";
+import EducaionCandidate from "../Components/JobsMyResume/EducaionCandidate";
 import EmploymentsComponent from "../Components/JobsMyResume/EmploymentsComponent";
 import ProjectsComponent from "../Components/JobsMyResume/ProjectsComponent";
 import CertificatesComponent from "../Components/JobsMyResume/CertificatesComponent";
@@ -21,6 +20,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleUserData } from "../../redux/action";
 import { GetStateName, SortSameVals } from "../../utils/functions";
 import HeaderCandidateResume from "../Components/JobsMyResume/HeaderCandidateResume";
+import ProfileCandidateSummary from "../Components/JobsMyResume/ProfileCandidateSummary";
+import EmploymentCandidate from "../Components/JobsMyResume/EmploymentCandidate";
+import ProfileCandidate from "../Components/JobsMyResume/ProfileCandidate";
+import AttachResumeCandidate from "../Components/JobsMyResume/AttachResumeCandidate";
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
@@ -62,169 +65,6 @@ export default function ViewCandidateProfile(props) {
                 <HeaderCandidateResume isView={true} />
               </div>
             </div>
-            <div
-              className="modal fade browse-job modal-bx-info editor"
-              id="profilename"
-              tabIndex="-1"
-              role="dialog"
-              aria-labelledby="ProfilenameModalLongTitle"
-              aria-hidden="true"
-            >
-              <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="ProfilenameModalLongTitle">
-                      Basic Details
-                    </h5>
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div className="modal-body">
-                    <form>
-                      <div className="row">
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>Your Name</label>
-                            <input
-                              type="email"
-                              className="form-control"
-                              placeholder="Enter Your Name"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <div className="row">
-                              <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                                <div className="custom-control custom-radio">
-                                  <input
-                                    type="radio"
-                                    className="custom-control-input"
-                                    id="fresher"
-                                    name="example1"
-                                  />
-                                  <label
-                                    className="custom-control-label"
-                                    htmlFor="fresher"
-                                  >
-                                    Fresher
-                                  </label>
-                                </div>
-                              </div>
-                              <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                                <div className="custom-control custom-radio">
-                                  <input
-                                    type="radio"
-                                    className="custom-control-input"
-                                    id="experienced"
-                                    name="example1"
-                                  />
-                                  <label
-                                    className="custom-control-label"
-                                    htmlFor="experienced"
-                                  >
-                                    Experienced
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-6 col-md-6">
-                          <div className="form-group">
-                            <label>Select Your Country</label>
-                            <Form.Control as="select">
-                              <option>India</option>
-                              <option>Australia</option>
-                              <option>Bahrain</option>
-                              <option>China</option>
-                              <option>Dubai</option>
-                              <option>France</option>
-                              <option>Germany</option>
-                              <option>Hong Kong</option>
-                              <option>Kuwait</option>
-                            </Form.Control>
-                          </div>
-                        </div>
-                        <div className="col-lg-6 col-md-6">
-                          <div className="form-group">
-                            <label>Select Your Country</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Select Your Country"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>Select Your City</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Select Your City"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>Telephone Number</label>
-                            <div className="row">
-                              <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Country Code"
-                                />
-                              </div>
-                              <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Area Code"
-                                />
-                              </div>
-                              <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Phone Number"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>Email Address</label>
-                            <h6 className="m-a0 font-14">info@example.com</h6>
-                            <Link to={""}>Change Email Address</Link>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="modal-footer">
-                    <button
-                      type="button"
-                      className="site-button"
-                      data-dismiss="modal"
-                    >
-                      Cancel
-                    </button>
-                    <button type="button" className="site-button">
-                      Save
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="content-block">
@@ -239,13 +79,13 @@ export default function ViewCandidateProfile(props) {
                     {/* <ResumeHeadlineComponent /> */}
 
                     {/* ProfileSummaryComponent */}
-                    <ProfileSummary isView={true} />
+                    <ProfileCandidateSummary isView={true} />
 
                     {/* Employment */}
-                    <EmploymentsComponent isView={true} />
+                    <EmploymentCandidate isView={true} />
 
                     {/* Education */}
-                    <EducationsComponent isView={true} />
+                    <EducaionCandidate isView={true} />
 
                     {/* SkillsComponent */}
                     <SkillsComponent isView={true} />
@@ -266,10 +106,10 @@ export default function ViewCandidateProfile(props) {
                     <DesiredCareerProfileComponent isView={true} />
 
                     {/* ProfileDetailsComponent */}
-                    <ProfileDetailsComponent isView={true} />
+                    <ProfileCandidate isView={true} />
 
                     {/* AttachResumeComponent */}
-                    <AttachResumeComponent isView={true} />
+                    <AttachResumeCandidate isView={true} />
                   </div>
                 </div>
               </div>

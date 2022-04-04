@@ -28,29 +28,29 @@ export default function HeaderCandidateResume({ isView }) {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [ToggleIsActive, setToggleIsActive] = useState(
-    state.userDetails.is_active
+    state.singleUserData.is_active
   );
   const [ResumeHeadline, setResumeHeadline] = useState(
-    state.userDetails.headline
+    state.singleUserData.headline
   );
 
-  const [fname, setFname] = useState(state.userDetails.f_name);
-  const [lname, setLname] = useState(state.userDetails.l_name);
-  const [phone, setPhone] = useState(state.userDetails.phone);
-  const [email, setEmail] = useState(state.userDetails.email);
+  const [fname, setFname] = useState(state.singleUserData.f_name);
+  const [lname, setLname] = useState(state.singleUserData.l_name);
+  const [phone, setPhone] = useState(state.singleUserData.phone);
+  const [email, setEmail] = useState(state.singleUserData.email);
 
-  const userDetail = useSelector((state) => state.userDetails);
+  const userDetail = useSelector((state) => state.singleUserData);
 
   const [stateName, setStateName] = useState();
   const [cityName, setCityName] = useState();
   const [countryName, setCountryName] = useState();
-  const [city, setCity] = useState(state.userDetails.city_id);
+  const [city, setCity] = useState(state.singleUserData.city_id);
   const [stateNameDrop, setStateNameDrop] = useState(
-    state.userDetails.state_id
+    state.singleUserData.state_id
   );
-  const [country, setCountry] = useState(state.userDetails.country_id);
+  const [country, setCountry] = useState(state.singleUserData.country_id);
   const [hometownCountry, setHometownCountry] = useState(
-    state.userDetails.hometown_country_id
+    state.singleUserData.hometown_country_id
   );
   const [cityLoading, setCityLoading] = useState(true);
 
@@ -141,8 +141,8 @@ export default function HeaderCandidateResume({ isView }) {
               <img
                 alt=""
                 src={
-                  state.userDetails?.pic != null
-                    ? state.userDetails?.pic
+                  state.singleUserData?.pic != null
+                    ? state.singleUserData?.pic
                     : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
                 }
                 style={{
@@ -161,7 +161,7 @@ export default function HeaderCandidateResume({ isView }) {
               {userDetail.f_name} {userDetail.l_name}
             </h4>
             <p className="m-b15">
-              {state.userDetails.headline}
+              {state.singleUserData.headline}
               {/* <span
                 onClick={() => handleShow()}
                 className="m-l15 font-16 text-white"
@@ -188,13 +188,13 @@ export default function HeaderCandidateResume({ isView }) {
                   <>Country</>
                 )}
               </li>
-              {state.userDetails.phone != "" && (
+              {state.singleUserData.phone != "" && (
                 <li className="w-100">
-                  <i className="ti-mobile"></i> {state.userDetails.phone}
+                  <i className="ti-mobile"></i> {state.singleUserData.phone}
                 </li>
               )}
               <li className="w-100">
-                <i className="ti-email"></i> {state.userDetails.email}
+                <i className="ti-email"></i> {state.singleUserData.email}
               </li>
             </ul>
 

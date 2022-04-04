@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UploadCoverLetter } from "../../../redux/action";
 
-export default function AttachResumeComponent({ isView }) {
+export default function AttachResumeCandidate({ isView }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -21,7 +21,7 @@ export default function AttachResumeComponent({ isView }) {
         <form className="attach-resume">
           <div className="row">
             <div className="col-lg-12 col-md-12">
-              {state.singleUserData.cover_letter ? (
+              {state.userDetails.cover_letter ? (
                 <>
                   <span
                     onClick={() => inputRef.click()}
@@ -41,8 +41,8 @@ export default function AttachResumeComponent({ isView }) {
                   </span>
                   <br />
                   <br />
-                  <a download href={state.singleUserData.cover_letter}>
-                    {state.singleUserData.cover_letter}
+                  <a download href={state.userDetails.cover_letter}>
+                    {state.userDetails.cover_letter}
                   </a>
                 </>
               ) : (
