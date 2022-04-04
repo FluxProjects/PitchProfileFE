@@ -31,6 +31,8 @@ const initialState = {
   candidateLanguages: [],
   candidateDesiredCareer: {},
 
+  singleUserData: {},
+
   // Browsecandicate actions
   allCandidates: [],
   backupCandidates: [],
@@ -45,6 +47,9 @@ const changeState = (state = initialState, { type, ...rest }) => {
     //  Auth actions
     case "RegisterUser":
       return { ...state, userDetails: rest.data };
+    case "setSingleUserData": {
+      return { ...state, singleUserData: rest.data };
+    }
     case "LogoutUser":
       return {
         ...state,

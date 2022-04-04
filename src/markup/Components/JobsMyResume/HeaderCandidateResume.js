@@ -23,7 +23,7 @@ import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 import TextInputModal from "./TextInputModal";
 
-export default function HeaderMyResume({ isView }) {
+export default function HeaderCandidateResume({ isView }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -155,37 +155,10 @@ export default function HeaderMyResume({ isView }) {
                 }}
               />
             </Link>
-            {!isView && (
-              <div
-                className="upload-link"
-                title="update"
-                data-toggle="tooltip"
-                data-placement="right"
-              >
-                <input
-                  type="file"
-                  onChange={(e) => {
-                    console.log("eeee", e.target.value);
-
-                    dispatch(UploadImage(e.target.files));
-                  }}
-                  className="update-flie"
-                />
-                <i className="fa fa-camera"></i>
-              </div>
-            )}
           </div>
           <div className="text-white  browse-job text-left">
             <h4 className="m-b0">
               {userDetail.f_name} {userDetail.l_name}
-              {!isView && (
-                <span
-                  onClick={() => handleShow()}
-                  className="m-l15 font-16 text-white"
-                >
-                  <i className="fa fa-pencil"></i>
-                </span>
-              )}
             </h4>
             <p className="m-b15">
               {state.userDetails.headline}
@@ -255,17 +228,6 @@ export default function HeaderMyResume({ isView }) {
               <div className="customFlexRow mt-0">
                 <p className="textColorGold mr-2">Status</p>
                 <div className="mt-0 ml-4 customFlexRow">
-                  {!isView && (
-                    <div>
-                      <Toggle
-                        defaultChecked={ToggleIsActive}
-                        onChange={() => {
-                          callUpdateIsActive(!ToggleIsActive);
-                        }}
-                      />
-                    </div>
-                  )}
-
                   <p className="ml-2 text-white font-weight-bold m-b15">
                     {ToggleIsActive ? "Available" : "Unavailable"}
                   </p>

@@ -57,7 +57,7 @@ export default function Browsejobgrid({}) {
                     ? "Loading..."
                     : state.allCandidates.length > 0
                     ? state.allCandidates.length
-                    : "No Candidates Found"}{" "}
+                    : "No"}{" "}
                   Candidates Found
                 </h5>
                 {/* <div className="float-right">
@@ -83,7 +83,7 @@ export default function Browsejobgrid({}) {
                       }}
                       to={{
                         pathname: "view-candidate-profile",
-                        state: {  },
+                        state: { id: item.id },
                       }}
                       className=" col-md-4 col-lg-3 col-xs-12 col-sm-6  mb-2 marginMobileBrowseCard "
                     >

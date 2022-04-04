@@ -71,6 +71,28 @@ export const registerUser =
       });
   };
 
+export const getSingleUserData = (id) => async (dispatch) => {
+  var config = {
+    method: "get",
+    url: `${URL}/profile/get_candidateprofile/${id}`,
+    headers: {},
+  };
+
+  await axios(config)
+    .then(function (response) {
+      console.log("Ayoooo", response.data);
+      if (response.data.successful) {
+        dispatch({
+          type: "setSingleUserData",
+          data: response.data.data[0],
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
 export const LogoutUser = (router) => async (dispatch) => {
   dispatch({
     type: "LogoutUser",

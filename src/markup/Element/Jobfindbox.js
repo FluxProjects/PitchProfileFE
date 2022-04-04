@@ -33,11 +33,12 @@ export default function Jobfindbox({ isView }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  const [availabliltyFilter, setAvailabliltyFilter] = useState(null);
+  const [availabliltyFilter, setAvailabliltyFilter] = useState("");
   const [skillFilter, setSkillFilter] = useState(null);
   const [skillFilterLabel, setSkillFilterLabel] = useState(null);
   const [companyFilter, setCompanyFilter] = useState(null);
   const [designationFilter, setDesignationFilter] = useState(null);
+  const [availaibityBool, setAvailaibityBool] = useState(null);
 
   useEffect(() => {
     callGetDrop();
@@ -96,10 +97,11 @@ export default function Jobfindbox({ isView }) {
     if (designationFilter != null && designationFilter != "") {
       count++;
     }
+
     if (count > 1) {
       dispatch(
         filterCandidateAll(
-          availabliltyFilter == "Available" ? true : "Unavailable" && false,
+          availaibityBool,
           skillFilter,
           companyFilter,
           designationFilter
@@ -150,6 +152,12 @@ export default function Jobfindbox({ isView }) {
                       onChange={(e) => {
                         console.log("eee", e.target.value);
                         setAvailabliltyFilter(e.target.value);
+                        if (e.target.value == "Available")
+                          setAvailaibityBool(true);
+                        else if (e.target.value == "Unavailable")
+                          setAvailaibityBool(false);
+                        else if (e.target.value == "") setAvailaibityBool("");
+                        else if (e.target.value == null) setAvailaibityBool("");
                       }}
                       value={availabliltyFilter}
                       placeholder=""

@@ -112,61 +112,68 @@ export const filterCandidateRole =
 export const filterCandidateAll =
   (is_active, skill_id, companyFilter, designationFilter) =>
   async (dispatch, state) => {
+    console.log("filterCandidateAllfilterCandidateAll", is_active);
+    // return;
     var result = [];
     var resultSkill = [];
     var resultCompany = [];
     var resultDesignation = [];
     //    ? is available filter
     state().backupCandidates.filter((item) => {
-      if (is_active == null || is_active == "") {
+      if (is_active?.length == 0 || is_active == null) {
         console.log("is_active null");
 
         result.push(item);
-      } else if (item.is_active.toString() === is_active.toString()) {
+      } else if (item.is_active.toString() == is_active.toString()) {
+        console.log("is_active else");
+
         result.push(item);
       }
     });
-
+    console.log("resulte unavailable", result);
     //  ? skill filter
-
     result.map((itemM) => {
-      itemM.candidate_skills.filter((item) => {
-        if (skill_id == null || skill_id == "") {
+      if (itemM.candidate_skills.length > 0) {
+        itemM.candidate_skills.filter((item) => {
+          if (skill_id == null || skill_id?.length == 0) {
+            console.log("skill_id null");
+            resultSkill.push(itemM);
+            // result.push(itemM);
+          } else if (item.skill_name == skill_id) {
+            resultSkill.push(itemM);
+            // result.push(itemM);
+          }
+        });
+      } else {
+        if (skill_id == null || skill_id?.length == 0) {
           console.log("skill_id null");
           resultSkill.push(itemM);
           // result.push(itemM);
-        } else if (item.skill_name == skill_id) {
-          resultSkill.push(itemM);
-          // result.push(itemM);
         }
-      });
+      }
     });
+
+    console.log("resultSkill unavailable", resultSkill);
 
     // ? company filter
     resultCompany = resultSkill.filter(function (item) {
-      if (companyFilter == null || companyFilter == "") {
+      if (companyFilter == null || companyFilter?.length == 0) {
         console.log("companyFilter null");
 
         return item;
       } else if (item?.employments[0]?.organization == companyFilter) return item;
     });
+    console.log("resultCompany unavailable", resultCompany);
 
-    
     resultDesignation = resultCompany.filter(function (item) {
-      if (designationFilter == null || designationFilter == "") {
+      if (designationFilter == null || designationFilter?.length == 0) {
         console.log("designationFilter null", designationFilter);
 
         return item;
       } else if (item?.employments[0]?.role == designationFilter) return item;
     });
 
-    // resultDesignation = state().backupCandidates.filter(function (item) {
-    //   if () return item;
-    // });
-
-    // var arr = result.concat(
-    //   resultSkill.concat(resultCompany.concat(resultDesignation))
-    // );
+    console.log("resultDesignation unavailable", resultDesignation);
 
     const uniqueResults = Array.from(
       new Set(resultDesignation.map((a) => a.id))
