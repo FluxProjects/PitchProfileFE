@@ -56,11 +56,7 @@ export default function Header() {
       link: "/browse-job-grid",
       index: "8",
     },
-    {
-      name: "Companies",
-      link: "/company-post-jobs",
-      index: "1",
-    },
+
     {
       name: "My Resume",
       link: "/jobs-my-resume",
@@ -76,6 +72,11 @@ export default function Header() {
       name: "Contact",
       link: "/contact",
       index: "5",
+    },
+    {
+      name: "",
+      link: "#",
+      index: "2",
     },
   ];
 
