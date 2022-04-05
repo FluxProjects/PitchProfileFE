@@ -5,7 +5,7 @@ import Footer from "./../Layout/Footer";
 import { Form, ToggleButton } from "react-bootstrap";
 import Listingsidebar from "./../Element/Listingsidebar";
 import ResumeHeadlineComponent from "../Components/JobsMyResume/ResumeHeadlineComponent";
-import SkillsComponent from "../Components/JobsMyResume/SkillsComponent";
+import SkillCandidate from "../Components/JobsMyResume/SkillCandidate";
 import EducaionCandidate from "../Components/JobsMyResume/EducaionCandidate";
 import EmploymentsComponent from "../Components/JobsMyResume/EmploymentsComponent";
 import ProjectsComponent from "../Components/JobsMyResume/ProjectsComponent";
@@ -24,6 +24,11 @@ import ProfileCandidateSummary from "../Components/JobsMyResume/ProfileCandidate
 import EmploymentCandidate from "../Components/JobsMyResume/EmploymentCandidate";
 import ProfileCandidate from "../Components/JobsMyResume/ProfileCandidate";
 import AttachResumeCandidate from "../Components/JobsMyResume/AttachResumeCandidate";
+import ProjectCandidate from "../Components/JobsMyResume/ProjectCandidate";
+import CertificateCandidate from "../Components/JobsMyResume/CertificateCandidate";
+import SocialProfileCandidate from "../Components/JobsMyResume/SocialProfileCandidate";
+import ReferencesCandidate from "../Components/JobsMyResume/ReferencesCandidate";
+import DesiredCandidateCareerProfile from "../Components/JobsMyResume/DesiredCandidateCareerProfile";
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
@@ -80,30 +85,29 @@ export default function ViewCandidateProfile(props) {
 
                     {/* ProfileSummaryComponent */}
                     <ProfileCandidateSummary isView={true} />
-
                     {/* Employment */}
                     <EmploymentCandidate isView={true} />
 
                     {/* Education */}
                     <EducaionCandidate isView={true} />
 
-                    {/* SkillsComponent */}
-                    <SkillsComponent isView={true} />
+                    {/* SkillCandidate */}
+                    <SkillCandidate isView={true} />
 
                     {/* ProjectsComponent */}
-                    <ProjectsComponent isView={true} />
+                    <ProjectCandidate isView={true} />
 
                     {/* Certification */}
-                    <CertificatesComponent isView={true} />
+                    <CertificateCandidate isView={true} />
 
                     {/* Social  */}
-                    <SocialProfilesComponent isView={true} />
+                    <SocialProfileCandidate isView={true} />
 
                     {/* Reference Component */}
-                    <ReferencesComponent isView={true} />
+                    <ReferencesCandidate isView={true} />
 
                     {/* DesiredCareerProfileComponent */}
-                    <DesiredCareerProfileComponent isView={true} />
+                    <DesiredCandidateCareerProfile isView={true} />
 
                     {/* ProfileDetailsComponent */}
                     <ProfileCandidate isView={true} />

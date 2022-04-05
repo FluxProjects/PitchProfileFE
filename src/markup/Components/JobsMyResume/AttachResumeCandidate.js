@@ -21,7 +21,7 @@ export default function AttachResumeCandidate({ isView }) {
         <form className="attach-resume">
           <div className="row">
             <div className="col-lg-12 col-md-12">
-              {state.userDetails.cover_letter ? (
+              {state.singleUserData.cover_letter ? (
                 <>
                   <span
                     onClick={() => inputRef.click()}
@@ -41,8 +41,8 @@ export default function AttachResumeCandidate({ isView }) {
                   </span>
                   <br />
                   <br />
-                  <a download href={state.userDetails.cover_letter}>
-                    {state.userDetails.cover_letter}
+                  <a download href={state.singleUserData.cover_letter}>
+                    {state.singleUserData.cover_letter}
                   </a>
                 </>
               ) : (

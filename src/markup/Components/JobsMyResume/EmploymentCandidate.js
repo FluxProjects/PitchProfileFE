@@ -42,24 +42,10 @@ export default function EmploymentCandidate({ isView }) {
       <div id="employment_bx" className="job-bx bg-white m-b30 ">
         <div className="d-flex">
           <h5 className=" mb-2">Employment </h5>
-          {!isView && (
-            <Link
-              to={"#"}
-              data-toggle="modal"
-              data-target="#employments"
-              onClick={() => {
-                setUpdateData(false);
-                handleShow();
-              }}
-              className="site-button add-btn button-sm"
-            >
-              <i className="fa fa-plus m-r5"></i> Add
-            </Link>
-          )}
         </div>
 
         {/* map */}
-        {state.candidateEmployments.map((item, index) => (
+        {state.singleUserData?.employments.map((item, index) => (
           <>
             <h6 className="font-14 mt-3 m-b0">
               {/* Employment Board Edit{" "} */}
