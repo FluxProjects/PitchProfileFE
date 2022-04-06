@@ -133,10 +133,9 @@ export default function Componypostjobs() {
                               custom
                               className="custom-select"
                             >
-                              <option>Full Time</option>
-                              <option>Part Time</option>
-                              <option>Internship</option>
-                              <option>Freelance</option>
+                              <option>Permanent</option>
+                              <option>Contract</option>
+                              <option>Fixed Term</option>
                             </Form.Control>
                           </div>
                         </div>
@@ -150,8 +149,6 @@ export default function Componypostjobs() {
                             >
                               <option>Full Time</option>
                               <option>Part Time</option>
-                              <option>Internship</option>
-                              <option>Freelance</option>
                             </Form.Control>
                           </div>
                         </div>

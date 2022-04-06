@@ -54,7 +54,6 @@ export default function Markup() {
           {/* Login/Register */}
           <Route path="/login" component={Loginpage3} />
           <Route path="/company-login" component={CompanyLogin} />
-
           <Route path="/register" component={Register} />
           <Route path="/company-register" component={CompanyRegister} />
           {/* Update Password - Candidate/Company */}

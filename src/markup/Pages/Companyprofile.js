@@ -338,7 +338,7 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Contry
+                              Country
                               <span className="text-danger"> *</span>
                             </label>
                             <input
@@ -366,7 +366,7 @@ export default function Companyprofile() {
 
                       <div className="job-bx-title clearfix">
                         <h5 className="font-weight-700 pull-left text-uppercase">
-                          Social link
+                          Social links
                         </h5>
                       </div>
                       <div className="row">
