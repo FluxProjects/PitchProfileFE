@@ -74,9 +74,9 @@ export default function Header() {
       index: "5",
     },
     {
-      name: "",
-      link: "#",
-      index: "2",
+      name: "Company",
+      link: "/company-profile",
+      index: "6",
     },
   ];
 
