@@ -5,7 +5,7 @@ import { registerUser } from "../../redux/action";
 import RegisterTextInput from "../Components/RegisterTextInput";
 import { useHistory } from "react-router-dom";
 
-export default function Loginpage3() {
+export default function CompanyRegister() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -30,26 +30,26 @@ export default function Loginpage3() {
       name: "firstName",
       required: "true",
       className: "form-control ",
-      placeholder: "Your first name",
+      placeholder: "Your Company Name",
       type: "text",
-      label: "First Name",
+      label: "Company Name",
       onChange: (e) => {
         setFName(e.target.value);
       },
       value: fname,
     },
-    {
-      name: "lastName",
-      required: "true",
-      className: "form-control ",
-      placeholder: "Your last name",
-      type: "text",
-      label: "Last Name",
-      onChange: (e) => {
-        setLName(e.target.value);
-      },
-      value: lname,
-    },
+    // {
+    //   name: "lastName",
+    //   required: "true",
+    //   className: "form-control ",
+    //   placeholder: "Your last name",
+    //   type: "text",
+    //   label: "Last Name",
+    //   onChange: (e) => {
+    //     setLName(e.target.value);
+    //   },
+    //   value: lname,
+    // },
     {
       name: "email",
       required: "true",
@@ -103,12 +103,6 @@ export default function Loginpage3() {
                     <p className="font-weight-600 text-center">
                       If you have an account with us,{" "}
                       <Link to={"/login"}>Log in</Link>.
-                    </p>
-                    <p className="font-weight-600 text-center">
-                      <Link to={"/company-register"}>
-                        Resgister as a comapny
-                      </Link>
-                      .
                     </p>
                     {textInputFields.map((item, index) => (
                       <RegisterTextInput

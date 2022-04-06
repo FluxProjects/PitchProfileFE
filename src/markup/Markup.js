@@ -31,7 +31,9 @@ import Register from "./Pages/Register";
 import Browsejobgrid from "./Pages/Browsejobgrid";
 import MyResumeView from "./Pages/MyResumeView";
 import ViewCandidateProfile from "./Pages/ViewCandidateProfile";
-import { useLocation } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
+import CompanyLogin from "./Pages/CompanyLogin";
+import CompanyRegister from "./Pages/CompanyRegister";
 
 export default function Markup() {
   return (
@@ -51,7 +53,10 @@ export default function Markup() {
           <Route path="/jobs-profile" component={Jobprofile} />
           {/* Login/Register */}
           <Route path="/login" component={Loginpage3} />
+          <Route path="/company-login" component={CompanyLogin} />
+
           <Route path="/register" component={Register} />
+          <Route path="/company-register" component={CompanyRegister} />
           {/* Update Password - Candidate/Company */}
           <Route path="/jobs-change-password" component={Changepasswordpage} />
           {/* Candidate Applied Jobs List */}

@@ -1,55 +1,23 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { registerUser } from "../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { LoginUser } from "../../redux/action";
 import RegisterTextInput from "../Components/RegisterTextInput";
-import { useHistory } from "react-router-dom";
 
-export default function Loginpage3() {
+export default function CompanyLogin() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [fname, setFName] = useState("");
-  const [lname, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [CnfrmPassword, setCnfrmPassword] = useState("");
 
-  const callRegisterUser = async () => {
-    if (password == CnfrmPassword) {
-      await dispatch(
-        registerUser(fname, lname, email.toLowerCase(), password, history)
-      );
-    }
+  const callLoginUser = async () => {
+    await dispatch(LoginUser(email.toLowerCase(), password, history));
     // router.push("/registration/");
   };
 
   const textInputFields = [
-    {
-      name: "firstName",
-      required: "true",
-      className: "form-control ",
-      placeholder: "Your first name",
-      type: "text",
-      label: "First Name",
-      onChange: (e) => {
-        setFName(e.target.value);
-      },
-      value: fname,
-    },
-    {
-      name: "lastName",
-      required: "true",
-      className: "form-control ",
-      placeholder: "Your last name",
-      type: "text",
-      label: "Last Name",
-      onChange: (e) => {
-        setLName(e.target.value);
-      },
-      value: lname,
-    },
     {
       name: "email",
       required: "true",
@@ -74,18 +42,6 @@ export default function Loginpage3() {
       },
       value: password,
     },
-    {
-      name: "cnfrmpassword",
-      required: "true",
-      className: "form-control ",
-      placeholder: "Confirm Password",
-      type: "password",
-      label: "Confirm Password",
-      onChange: (e) => {
-        setCnfrmPassword(e.target.value);
-      },
-      value: CnfrmPassword,
-    },
   ];
 
   return (
@@ -101,14 +57,8 @@ export default function Loginpage3() {
                 <div className="tab-content nav">
                   <form id="login" className="tab-pane active col-12 p-a0 ">
                     <p className="font-weight-600 text-center">
-                      If you have an account with us,{" "}
-                      <Link to={"/login"}>Log in</Link>.
-                    </p>
-                    <p className="font-weight-600 text-center">
-                      <Link to={"/company-register"}>
-                        Resgister as a comapny
-                      </Link>
-                      .
+                      Don't have an account with us,{" "}
+                      <Link to={"/register"}>Sign up</Link>.
                     </p>
                     {textInputFields.map((item, index) => (
                       <RegisterTextInput
@@ -126,12 +76,47 @@ export default function Loginpage3() {
                       <button
                         onClick={(e) => {
                           e.preventDefault();
-                          callRegisterUser(e);
+                          callLoginUser(e);
                         }}
                         className="site-button"
                       >
-                        Sign up
+                        login
                       </button>
+                      <Link
+                        data-toggle="tab"
+                        to="#forgot-password"
+                        className="site-button-link forget-pass pull-right m-t15"
+                      >
+                        <i className="fa fa-unlock-alt"></i> Forgot Password
+                      </Link>
+                    </div>
+                  </form>
+                  <form
+                    id="forgot-password"
+                    className="tab-pane fade col-12 p-a0"
+                  >
+                    <p>We will send you an email to reset your password. </p>
+                    <div className="form-group">
+                      <label>E-Mail address *</label>
+                      <div className="input-group">
+                        <input
+                          name="dzName"
+                          required=""
+                          className="form-control"
+                          placeholder="Your Email Address"
+                          type="email"
+                        />
+                      </div>
+                    </div>
+                    <div className="text-left">
+                      <Link
+                        className="site-button outline gray"
+                        data-toggle="tab"
+                        to="#login"
+                      >
+                        Back
+                      </Link>
+                      <button className="site-button pull-right">Submit</button>
                     </div>
                   </form>
                 </div>

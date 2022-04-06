@@ -4,8 +4,19 @@ import Header2 from "./../Layout/Header2";
 import Footer from "./../Layout/Footer";
 import { Form } from "react-bootstrap";
 import GoogleMaps from "simple-react-google-maps";
+import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
+import {
+  CompanySizeLevel,
+  CompanyType,
+  defaultPlaceholder,
+} from "../../utils/DropDownUtils";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Companyprofile() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  let inputRef;
+
   return (
     <>
       <Header2 />
@@ -117,7 +128,11 @@ export default function Companyprofile() {
                       <div className="row m-b30">
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Company Name</label>
+                            <label>
+                              Company Name
+                              <span className="text-danger"> *</span>
+                            </label>
+
                             <input
                               type="text"
                               className="form-control"
@@ -125,16 +140,7 @@ export default function Companyprofile() {
                             />
                           </div>
                         </div>
-                        <div className="col-lg-6 col-md-6">
-                          <div className="form-group">
-                            <label>Your Email</label>
-                            <input
-                              type="email"
-                              className="form-control"
-                              placeholder="info@gmail.com"
-                            />
-                          </div>
-                        </div>
+
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Website</label>
@@ -147,36 +153,116 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Founded Date </label>
+                            <label>Tagline</label>
                             <input
-                              type="email"
+                              type="text"
                               className="form-control"
-                              placeholder="17/12/2018"
+                              placeholder="Website Link"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
+                            <label>
+                              Industry
+                              <span className="text-danger"> *</span>
+                            </label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                // setIndustry(e.target.value);
+                              }}
+                              // value={industry}
+                              options={defaultPlaceholder}
                             />
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Category</label>
-                            <Form.Control
-                              as="select"
-                              custom
-                              className="custom-select"
-                            >
-                              <option>Web Designer</option>
-                              <option>Web Developer1</option>
-                            </Form.Control>
+                            <label>Company Size</label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                              }}
+                              // value={industry}
+                              options={CompanySizeLevel}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Country</label>
-                            <input
-                              type="email"
-                              className="form-control"
-                              placeholder="London"
+                            <label>
+                              Company Type
+                              <span className="text-danger"> *</span>
+                            </label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                              }}
+                              // value={industry}
+                              options={CompanyType}
                             />
                           </div>
+                        </div>
+                        <div className="col-lg-12 col-md-12">
+                          <form className="attach-resume">
+                            <div className="row">
+                              <div className="col-lg-12 col-md-12">
+                                {state.singleUserData.cover_letter ? (
+                                  <>
+                                    <span
+                                      onClick={() => inputRef.click()}
+                                      className="site-button add-btn button-sm float-right"
+                                    >
+                                      <i className="fa fa-pencil m-r5"></i> Edit
+                                      <input
+                                        ref={(refParam) =>
+                                          (inputRef = refParam)
+                                        }
+                                        type="file"
+                                        className="site-button form-control"
+                                        id="customFile"
+                                        style={{ display: "none" }}
+                                        onChange={(e) => {
+                                          // dispatch(
+                                          //   UploadCoverLetter(e.target.files)
+                                          // );
+                                        }}
+                                      />
+                                    </span>
+                                    <br />
+                                    <br />
+                                    <a
+                                      download
+                                      href={state.singleUserData.cover_letter}
+                                    >
+                                      {state.singleUserData.cover_letter}
+                                    </a>
+                                  </>
+                                ) : (
+                                  <div className="form-group">
+                                    <div className="custom-file">
+                                      <p className="m-auto align-self-center">
+                                        <i className="fa fa-upload"></i>
+                                        Upload Logo File size is 3 MB
+                                      </p>
+                                      <input
+                                        type="file"
+                                        className="site-button form-control"
+                                        id="customFile"
+                                        onChange={(e) => {
+                                          // dispatch(
+                                          //   UploadCoverLetter(e.target.files)
+                                          // );
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </form>
                         </div>
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
@@ -214,7 +300,10 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Contry</label>
+                            <label>
+                              Contry
+                              <span className="text-danger"> *</span>
+                            </label>
                             <input
                               type="text"
                               className="form-control"
@@ -224,7 +313,10 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>City</label>
+                            <label>
+                              City
+                              <span className="text-danger"> *</span>
+                            </label>
                             <input
                               type="email"
                               className="form-control"
@@ -234,7 +326,10 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Zip</label>
+                            <label>
+                              State
+                              <span className="text-danger"> *</span>
+                            </label>
                             <input
                               type="email"
                               className="form-control"
@@ -244,15 +339,33 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Address</label>
+                            <label>
+                              Zip
+                              <span className="text-danger"> *</span>
+                            </label>
                             <input
                               type="email"
                               className="form-control"
-                              placeholder="New york city"
+                              placeholder="504030"
                             />
                           </div>
                         </div>
-                        <div className="col-lg-12">
+                        <div className="col-lg-12 col-md-12">
+                          <div className="form-group">
+                            <label>
+                              Address
+                              <span className="text-danger"> *</span>
+                            </label>
+                            <textarea className="form-control"></textarea>
+
+                            {/* <input  
+                              type="email"
+                              className="form-control"
+                              placeholder="New york city"
+                            /> */}
+                          </div>
+                        </div>
+                        {/* <div className="col-lg-12">
                           <GoogleMaps
                             apiKey={"AIzaSyBPDjB2qkV4Yxn9h0tGSk2X5uH6NKmssXw"}
                             style={{
@@ -264,7 +377,7 @@ export default function Companyprofile() {
                             center={{ lat: 37.4224764, lng: -122.0842499 }}
                             markers={{ lat: 37.4224764, lng: -122.0842499 }} //optional
                           />
-                        </div>
+                        </div> */}
                       </div>
 
                       <div className="job-bx-title clearfix">
@@ -312,6 +425,26 @@ export default function Companyprofile() {
                               placeholder="https://www.linkedin.com/"
                             />
                           </div>
+                        </div>
+                      </div>
+                      <div className="job-bx-title clearfix">
+                        <h5 className="font-weight-700 pull-left text-uppercase">
+                          Disclaimer
+                        </h5>
+                      </div>
+
+                      <div className="row">
+                        <div class="form-group form-check">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            id="exampleCheck1"
+                          />
+                          <label class="" for="exampleCheck1">
+                            I can confirm that I am an authorised representative
+                            of this company and then have the permission to
+                            create this page on company's behalf.
+                          </label>
                         </div>
                       </div>
                       <button type="submit" className="site-button m-b30">
