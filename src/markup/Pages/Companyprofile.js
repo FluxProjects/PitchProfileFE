@@ -298,19 +298,16 @@ export default function Companyprofile() {
                             />
                           </div>
                         </div>
-                        <div className="col-lg-6 col-md-6">
+                        <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
-                              Contry
+                              Address
                               <span className="text-danger"> *</span>
                             </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="India"
-                            />
+                            <textarea className="form-control"></textarea>
                           </div>
                         </div>
+
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
@@ -340,31 +337,17 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Zip
+                              Contry
                               <span className="text-danger"> *</span>
                             </label>
                             <input
-                              type="email"
+                              type="text"
                               className="form-control"
-                              placeholder="504030"
+                              placeholder="India"
                             />
                           </div>
                         </div>
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>
-                              Address
-                              <span className="text-danger"> *</span>
-                            </label>
-                            <textarea className="form-control"></textarea>
 
-                            {/* <input  
-                              type="email"
-                              className="form-control"
-                              placeholder="New york city"
-                            /> */}
-                          </div>
-                        </div>
                         {/* <div className="col-lg-12">
                           <GoogleMaps
                             apiKey={"AIzaSyBPDjB2qkV4Yxn9h0tGSk2X5uH6NKmssXw"}
