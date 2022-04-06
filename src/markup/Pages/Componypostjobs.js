@@ -180,19 +180,6 @@ export default function Componypostjobs() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Contry
-                              <span className="text-danger"> *</span>
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="India"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-6 col-md-6">
-                          <div className="form-group">
-                            <label>
                               City
                               <span className="text-danger"> *</span>
                             </label>
@@ -219,16 +206,17 @@ export default function Componypostjobs() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Zip
+                              Contry
                               <span className="text-danger"> *</span>
                             </label>
                             <input
-                              type="email"
+                              type="text"
                               className="form-control"
-                              placeholder="504030"
+                              placeholder="India"
                             />
                           </div>
                         </div>
+
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>

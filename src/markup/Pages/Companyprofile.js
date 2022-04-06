@@ -140,17 +140,6 @@ export default function Companyprofile() {
                             />
                           </div>
                         </div>
-
-                        <div className="col-lg-6 col-md-6">
-                          <div className="form-group">
-                            <label>Website</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Website Link"
-                            />
-                          </div>
-                        </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Tagline</label>
@@ -162,19 +151,25 @@ export default function Companyprofile() {
                           </div>
                         </div>
 
+                        <div className="col-lg-12 col-md-12">
+                          <div className="form-group">
+                            <label>Description:</label>
+                            <textarea className="form-control"></textarea>
+                          </div>
+                        </div>
+
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Industry
+                              Company Type
                               <span className="text-danger"> *</span>
                             </label>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
-                                // setIndustry(e.target.value);
                               }}
                               // value={industry}
-                              options={defaultPlaceholder}
+                              options={CompanyType}
                             />
                           </div>
                         </div>
@@ -193,18 +188,30 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Company Type
+                              Industry
                               <span className="text-danger"> *</span>
                             </label>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
+                                // setIndustry(e.target.value);
                               }}
                               // value={industry}
-                              options={CompanyType}
+                              options={defaultPlaceholder}
                             />
                           </div>
                         </div>
+                        <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
+                            <label>Website</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Website Link"
+                            />
+                          </div>
+                        </div>
+
                         {/* <div className="col-lg-12 col-md-12">
                           <form className="attach-resume">
                             <div className="row">
@@ -264,12 +271,6 @@ export default function Companyprofile() {
                             </div>
                           </form>
                         </div> */}
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>Description:</label>
-                            <textarea className="form-control"></textarea>
-                          </div>
-                        </div>
                       </div>
 
                       <div className="job-bx-title clearfix">
