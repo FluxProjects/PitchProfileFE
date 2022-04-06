@@ -205,7 +205,7 @@ export default function Companyprofile() {
                             />
                           </div>
                         </div>
-                        <div className="col-lg-12 col-md-12">
+                        {/* <div className="col-lg-12 col-md-12">
                           <form className="attach-resume">
                             <div className="row">
                               <div className="col-lg-12 col-md-12">
@@ -263,7 +263,7 @@ export default function Companyprofile() {
                               </div>
                             </div>
                           </form>
-                        </div>
+                        </div> */}
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>Description:</label>
