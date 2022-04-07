@@ -297,10 +297,10 @@ export default function Jobfindbox({ isView }) {
               </div>
               <div className="col-lg-2 col-md-6">
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    callFilter();
-                  }}
+                  //   onClick={(e) => {
+                  //     e.preventDefault();
+                  //     callFilter();
+                  //   }}
                   type="submit"
                   className="site-button btn-block"
                 >
@@ -309,14 +309,14 @@ export default function Jobfindbox({ isView }) {
               </div>
               <div className="col-lg-2 col-md-6">
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setAvailabliltyFilter("");
-                    setSkillFilter("");
-                    setCompanyFilter("");
-                    setDesignationFilter("");
-                    dispatch(ResetfilterCandidate());
-                  }}
+                  //   onClick={(e) => {
+                  //     e.preventDefault();
+                  //     setAvailabliltyFilter("");
+                  //     setSkillFilter("");
+                  //     setCompanyFilter("");
+                  //     setDesignationFilter("");
+                  //     dispatch(ResetfilterCandidate());
+                  //   }}
                   type="submit"
                   className="site-button btn-block"
                 >
