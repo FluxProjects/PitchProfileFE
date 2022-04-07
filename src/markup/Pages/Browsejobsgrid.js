@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
-import Jobfindbox from "../Element/Jobfindbox";
+import CompanyFindbox from "../Element/CompanyFindbox";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -44,7 +44,7 @@ class Browsejobgrid extends Component {
             </div>
           </div>
           <div className="content-block">
-            <Jobfindbox />
+            <CompanyFindbox />
 
             <div className="section-full bg-white browse-job p-b50">
               <div className="container">
