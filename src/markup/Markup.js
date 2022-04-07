@@ -28,12 +28,15 @@ import Contact from "./Pages/Contact";
 
 import ScrollToTop from "./Element/ScrollToTop";
 import Register from "./Pages/Register";
-import Browsejobgrid from "./Pages/Browsejobgrid";
+import Browsecandidategrid from "./Pages/Browsecandidategrid";
 import MyResumeView from "./Pages/MyResumeView";
 import ViewCandidateProfile from "./Pages/ViewCandidateProfile";
 import { useLocation } from "react-router-dom";
 import CompanyLogin from "./Pages/CompanyLogin";
 import CompanyRegister from "./Pages/CompanyRegister";
+import CompanyPostJobView from "./Pages/CompanyPostJobView";
+import Browsejobgrid from "./Pages/Browsejobsgrid";
+import Browsejoblist from "./Pages/Browsejoblist";
 
 export default function Markup() {
   return (
@@ -64,6 +67,11 @@ export default function Markup() {
           <Route path="/company-profile" component={Companyprofile} />
           {/* Company Job Post */}
           <Route path="/company-post-jobs" component={Componypostjobs} />
+          <Route
+            path="/view-company-post-jobs"
+            component={CompanyPostJobView}
+          />
+
           {/* Company Posted Jobs List */}
           <Route path="/company-manage-job" component={Companymanage} />
           {/* Company Resume Received List */}
@@ -74,7 +82,13 @@ export default function Markup() {
           <Route path="/category-all-jobs" component={Categoryalljob} />
           <Route path="/" exact component={Homepage} />
           <Route path="/job-detail" component={Jobdetail} />
+          <Route
+            path="/browse-candidate-grid"
+            component={Browsecandidategrid}
+          />
+
           <Route path="/browse-job-grid" component={Browsejobgrid} />
+          <Route path="/browse-job-list" component={Browsejoblist} />
 
           {/* Routes to use */}
 

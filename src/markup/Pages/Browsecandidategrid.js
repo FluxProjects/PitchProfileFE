@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Header from "./../Layout/Header";
-import Footer from "./../Layout/Footer";
-import Jobfindbox from "./../Element/Jobfindbox";
+import Header from "../Layout/Header";
+import Footer from "../Layout/Footer";
+import Jobfindbox from "../Element/Jobfindbox";
 import { useDispatch, useSelector } from "react-redux";
 import { GetAllCandidates } from "../../redux/action/candidates/BrowseCandidatesAction";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
-export default function Browsejobgrid({}) {
+export default function Browsecandidategrid({}) {
   const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();

@@ -122,7 +122,7 @@ export default function Companyresume() {
                         Back
                       </Link>
                     </div>
-                    <ul className="post-job-bx browse-job-grid post-resume row">
+                    <ul className="post-job-bx browse-candidate-grid post-resume row">
                       {postResume.map((item, index) => (
                         <li className="col-lg-6 col-md-6" key={index}>
                           <div className="post-bx">

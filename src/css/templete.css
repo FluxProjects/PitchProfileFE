@@ -1438,13 +1438,13 @@
   background-color: #fff;
   border-radius: 5px;
 }
-.post-job-bx.browse-job-grid {
+.post-job-bx.browse-candidate-grid {
   margin: 0 -15px;
 }
-.post-job-bx.browse-job-grid > li {
+.post-job-bx.browse-candidate-grid > li {
   padding: 0 15px;
 }
-.post-job-bx.browse-job-grid .salary-bx span {
+.post-job-bx.browse-candidate-grid .salary-bx span {
   font-size: 18px;
 }
 
@@ -1618,7 +1618,7 @@
 
 /* Hover Effect */
 .table-job-bx .job-name a:hover,
-.browse-job-grid a:hover,
+.browse-candidate-grid a:hover,
 .post-job-bx .job-post-info li a:hover,
 .cv-manager .job-post-info a:hover,
 .browse-job .job-post-info a:hover,

@@ -48,12 +48,12 @@ export default function Header() {
   const links = [
     {
       name: "Browse Job",
-      link: "/browse-job-grid",
+      link: "/browse-candidate-grid",
       index: "0",
     },
     {
       name: "All Candidates",
-      link: "/browse-job-grid",
+      link: "/browse-candidate-grid",
       index: "8",
     },
 
@@ -83,7 +83,7 @@ export default function Header() {
   // const linksTest = [
   //   {
   //     name: "Browse Job",
-  //     link: "/browse-job-grid",
+  //     link: "/browse-candidate-grid",
   //     index: "0",
   //   },
 

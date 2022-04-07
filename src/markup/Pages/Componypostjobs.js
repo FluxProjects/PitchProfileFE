@@ -285,9 +285,12 @@ export default function Componypostjobs() {
                           </div>
                         </div>
                       </div>
-                      <button type="button" className="site-button m-b30">
-                        Upload
+                      <button type="button" className="site-button mr-4 m-b30">
+                        Save
                       </button>
+                      <Link to={"/job-detail"} className="site-button  m-b30">
+                        Preview
+                      </Link>
                     </form>
                   </div>
                 </div>
