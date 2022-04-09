@@ -1,11 +1,40 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header2 from "./../Layout/Header2";
 import Footer from "./../Layout/Footer";
 import { Form } from "react-bootstrap";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
+import { useSelector, useDispatch } from "react-redux";
+import { GetCities, GetCountries, GetStates } from "../../redux/action";
+import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
 
 export default function Componypostjobs() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const [city, setCity] = useState(state.userDetails.city_id);
+  const [stateName, setStateName] = useState(state.userDetails.state_id);
+  const [country, setCountry] = useState(state.userDetails.country_id);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    //  to get languages
+    CallGetDropDown();
+  }, []);
+
+  const CallGetDropDown = async () => {
+    await dispatch(GetCountries());
+    await dispatch(GetStates(230));
+    await dispatch(GetCities(3866));
+
+    setLoading(false);
+  };
+  const CallGetCities = async (stateId) => {
+    await dispatch(GetCities(stateId));
+  };
+
+  const CallGetStates = async (stateId) => {
+    await dispatch(GetStates(stateId));
+  };
+
   return (
     <>
       <Header2 />
@@ -174,42 +203,50 @@ export default function Componypostjobs() {
                           </div>
                         </div>
 
-                        <div className="col-lg-6 col-md-6">
+                        <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>
-                              City
-                              <span className="text-danger"> *</span>
-                            </label>
-                            <input
-                              type="email"
-                              className="form-control"
-                              placeholder="Delhi"
+                            <label>Country:</label>
+
+                            {/* <DropdownSearch items={state.countries} /> */}
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                CallGetStates(e.target.value);
+                                setCountry(e.target.value);
+                              }}
+                              value={country}
+                              options={state.countries}
                             />
                           </div>
                         </div>
-                        <div className="col-lg-6 col-md-6">
+
+                        <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>
-                              State
-                              <span className="text-danger"> *</span>
-                            </label>
-                            <input
-                              type="email"
-                              className="form-control"
-                              placeholder="504030"
+                            <label>State:</label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                CallGetCities(e.target.value);
+
+                                setStateName(e.target.value);
+                                //   setLastUsed(e.target.value);
+                              }}
+                              value={stateName}
+                              options={state.states}
                             />
                           </div>
                         </div>
-                        <div className="col-lg-6 col-md-6">
+                        <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>
-                              Contry
-                              <span className="text-danger"> *</span>
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="India"
+                            <label>City:</label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                setCity(e.target.value);
+                                //   setLastUsed(e.target.value);
+                              }}
+                              value={city}
+                              options={state.cities}
                             />
                           </div>
                         </div>

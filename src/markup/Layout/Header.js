@@ -48,7 +48,7 @@ export default function Header() {
   const links = [
     {
       name: "Browse Job",
-      link: "/browse-candidate-grid",
+      link: "/browse-job-list",
       index: "0",
     },
     {
@@ -74,7 +74,7 @@ export default function Header() {
       index: "5",
     },
     {
-      name: "Company",
+      name: "Companies",
       link: "/company-profile",
       index: "6",
     },

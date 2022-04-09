@@ -39,24 +39,25 @@ export default function Header2() {
 
   const links = [
     {
-      name: "Browse Candidates",
-      link: "/",
-      index: "0",
-    },
-    {
       name: "Post A Job",
-      link: "/",
+      link: "/company-post-jobs",
       index: "1",
     },
     {
       name: "Manage Jobs",
-      link: "/jobs-applied-job",
+      link: "/company-manage-job",
       index: "2",
     },
+
     {
-      name: "My Resume",
-      link: "/jobs-my-resume",
+      name: "All Candidates",
+      link: "/browse-candidate-grid",
       index: "3",
+    },
+    {
+      name: "Companies",
+      link: "/company-manage-job",
+      index: "2",
     },
     {
       name: "About",

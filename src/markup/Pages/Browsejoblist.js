@@ -39,13 +39,13 @@ class Browsejoblist extends Component {
           >
             <div className="container">
               <div className="dez-bnr-inr-entry">
-                <h1 className="text-white">Browse Jobs List</h1>
+                <h1 className="text-white">Browse Jobs</h1>
                 <div className="breadcrumb-row">
                   <ul className="list-inline">
                     <li>
                       <Link to={"#"}>Home</Link>
                     </li>
-                    <li>Browse Jobs List</li>
+                    <li>All Jobs</li>
                   </ul>
                 </div>
               </div>
