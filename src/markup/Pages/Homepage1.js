@@ -10,6 +10,7 @@ import Jobsection from "./../Element/Jobsection";
 import Owltestimonial from "./../Element/Owlblog1";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuthToken } from "../../redux/action";
+import Header2 from "../Layout/Header2";
 
 var bnr1 = require("./../../images/main-slider/slide2.jpg");
 var bnr2 = require("./../../images/background/bg4.jpg");
@@ -62,7 +63,7 @@ export default function Homepage() {
 
   return (
     <div className="page-wraper">
-      <Header />
+      {state.userDetails?.company_name ? <Header2 /> : <Header />}
 
       <div className="page-content">
         <div

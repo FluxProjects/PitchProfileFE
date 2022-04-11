@@ -11,7 +11,13 @@ import {
   defaultPlaceholder,
 } from "../../utils/DropDownUtils";
 import { useDispatch, useSelector } from "react-redux";
-import { GetCities, GetCountries, GetStates } from "../../redux/action";
+import {
+  GetCities,
+  GetCountries,
+  GetStates,
+  updateCompany,
+} from "../../redux/action";
+import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 
 export default function Companyprofile() {
   const state = useSelector((state) => state);
@@ -20,7 +26,55 @@ export default function Companyprofile() {
   const [stateName, setStateName] = useState(state.userDetails.state_id);
   const [country, setCountry] = useState(state.userDetails.country_id);
   const [loading, setLoading] = useState(true);
+  const [companyName, setCompanyName] = useState(
+    state.userDetails.company_name
+  );
+  const [tagline, setTagline] = useState(state.userDetails?.tagline);
+  const [Description, setDescription] = useState(
+    state.userDetails?.description
+  );
+  const [CompanyTypeVal, setCompanyTypeVal] = useState(
+    state.userDetails?.company_type ? state.userDetails?.company_type : 0
+  );
+  const [CompanySize, setCompanySize] = useState(
+    state.userDetails?.company_size ? state.userDetails?.company_size : 0
+  );
+  const [industry, setIndustry] = useState(
+    state.userDetails?.industry ? state.userDetails?.industry : 0
+  );
+  const [website, setWebsite] = useState(state.userDetails?.website);
+  const [address, setAddress] = useState(state.userDetails.address);
+  const [phone, setPhone] = useState(state.userDetails.phone);
+  const [email, setEmail] = useState(state.userDetails.email);
+  const [facebook, setFacebook] = useState(state.userDetails?.facebook);
+  const [twitter, setTwitter] = useState(state.userDetails?.twitter);
+  const [google, setGoogle] = useState(state.userDetails?.google);
+  const [linkedin, setLinkedin] = useState(state.userDetails?.linkedin);
   let inputRef;
+
+  const callUpdateCompany = async () => {
+    await dispatch(
+      updateCompany(
+        companyName,
+        tagline,
+        Description,
+        CompanyTypeVal,
+        CompanySize,
+        industry,
+        website,
+        address,
+        phone,
+        email,
+        facebook,
+        twitter,
+        google,
+        linkedin,
+        city,
+        stateName,
+        country
+      )
+    );
+  };
 
   useEffect(() => {
     //  to get languages
@@ -157,10 +211,12 @@ export default function Companyprofile() {
                               Company Name
                               <span className="text-danger"> *</span>
                             </label>
-
-                            <input
-                              type="text"
-                              className="form-control"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setCompanyName(e.target.value);
+                              }}
+                              value={companyName}
                               placeholder="Enter Company Name"
                             />
                           </div>
@@ -168,10 +224,13 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Tagline</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Website Link"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setTagline(e.target.value);
+                              }}
+                              value={tagline}
+                              placeholder="Enter Company Tagline"
                             />
                           </div>
                         </div>
@@ -179,7 +238,13 @@ export default function Companyprofile() {
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>Description:</label>
-                            <textarea className="form-control"></textarea>
+                            <textarea
+                              value={Description}
+                              onChange={(e) => {
+                                setDescription(e.target.value);
+                              }}
+                              className="form-control"
+                            ></textarea>
                           </div>
                         </div>
 
@@ -192,8 +257,9 @@ export default function Companyprofile() {
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
+                                setCompanyTypeVal(e.target.value);
                               }}
-                              // value={industry}
+                              value={CompanyTypeVal}
                               options={CompanyType}
                             />
                           </div>
@@ -204,8 +270,9 @@ export default function Companyprofile() {
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
+                                setCompanySize(e.target.value);
                               }}
-                              // value={industry}
+                              value={CompanySize}
                               options={CompanySizeLevel}
                             />
                           </div>
@@ -219,9 +286,9 @@ export default function Companyprofile() {
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
-                                // setIndustry(e.target.value);
+                                setIndustry(e.target.value);
                               }}
-                              // value={industry}
+                              value={industry}
                               options={defaultPlaceholder}
                             />
                           </div>
@@ -229,73 +296,16 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Website</label>
-                            <input
-                              type="text"
-                              className="form-control"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setWebsite(e.target.value);
+                              }}
+                              value={website}
                               placeholder="Website Link"
                             />
                           </div>
                         </div>
-
-                        {/* <div className="col-lg-12 col-md-12">
-                          <form className="attach-resume">
-                            <div className="row">
-                              <div className="col-lg-12 col-md-12">
-                                {state.singleUserData.cover_letter ? (
-                                  <>
-                                    <span
-                                      onClick={() => inputRef.click()}
-                                      className="site-button add-btn button-sm float-right"
-                                    >
-                                      <i className="fa fa-pencil m-r5"></i> Edit
-                                      <input
-                                        ref={(refParam) =>
-                                          (inputRef = refParam)
-                                        }
-                                        type="file"
-                                        className="site-button form-control"
-                                        id="customFile"
-                                        style={{ display: "none" }}
-                                        onChange={(e) => {
-                                          // dispatch(
-                                          //   UploadCoverLetter(e.target.files)
-                                          // );
-                                        }}
-                                      />
-                                    </span>
-                                    <br />
-                                    <br />
-                                    <a
-                                      download
-                                      href={state.singleUserData.cover_letter}
-                                    >
-                                      {state.singleUserData.cover_letter}
-                                    </a>
-                                  </>
-                                ) : (
-                                  <div className="form-group">
-                                    <div className="custom-file">
-                                      <p className="m-auto align-self-center">
-                                        <i className="fa fa-upload"></i>
-                                        Upload Logo File size is 3 MB
-                                      </p>
-                                      <input
-                                        type="file"
-                                        className="site-button form-control"
-                                        id="customFile"
-                                        onChange={(e) => {
-                                          // dispatch(
-                                          //   UploadCoverLetter(e.target.files)
-                                          // );
-                                        }}
-                                      />
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          </form>
-                        </div> */}
                       </div>
 
                       <div className="job-bx-title clearfix">
@@ -307,20 +317,26 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Phone</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="+1 123 456 7890"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setPhone(e.target.value);
+                              }}
+                              value={phone}
+                              placeholder="Phone"
                             />
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Email</label>
-                            <input
-                              type="email"
-                              className="form-control"
-                              placeholder="exemple@gmail.com"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setEmail(e.target.value);
+                              }}
+                              value={email}
+                              placeholder="Email"
                             />
                           </div>
                         </div>
@@ -330,7 +346,13 @@ export default function Companyprofile() {
                               Address
                               <span className="text-danger"> *</span>
                             </label>
-                            <textarea className="form-control"></textarea>
+                            <textarea
+                              value={address}
+                              onChange={(e) => {
+                                setAddress(e.target.value);
+                              }}
+                              className="form-control"
+                            ></textarea>
                           </div>
                         </div>
 
@@ -405,9 +427,12 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Facebook</label>
-                            <input
-                              type="text"
-                              className="form-control"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setFacebook(e.target.value);
+                              }}
+                              value={facebook}
                               placeholder="https://www.facebook.com/"
                             />
                           </div>
@@ -415,9 +440,12 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Twitter</label>
-                            <input
-                              type="email"
-                              className="form-control"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setTwitter(e.target.value);
+                              }}
+                              value={twitter}
                               placeholder="https://www.twitter.com/"
                             />
                           </div>
@@ -425,9 +453,12 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Google</label>
-                            <input
-                              type="text"
-                              className="form-control"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setGoogle(e.target.value);
+                              }}
+                              value={google}
                               placeholder="https://www.google.com/"
                             />
                           </div>
@@ -435,9 +466,12 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Linkedin</label>
-                            <input
-                              type="email"
-                              className="form-control"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setLinkedin(e.target.value);
+                              }}
+                              value={linkedin}
                               placeholder="https://www.linkedin.com/"
                             />
                           </div>
@@ -463,8 +497,15 @@ export default function Companyprofile() {
                           </label>
                         </div>
                       </div>
-                      <button type="submit" className="site-button m-b30">
-                        Update Setting
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          callUpdateCompany();
+                        }}
+                        type="submit"
+                        className="site-button m-b30"
+                      >
+                        Save
                       </button>
                     </form>
                   </div>

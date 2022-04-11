@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { LoginUser } from "../../redux/action";
+import { LoginCompany, LoginUser } from "../../redux/action";
 import RegisterTextInput from "../Components/RegisterTextInput";
 
 export default function CompanyLogin() {
@@ -13,7 +13,7 @@ export default function CompanyLogin() {
   const [password, setPassword] = useState("");
 
   const callLoginUser = async () => {
-    await dispatch(LoginUser(email.toLowerCase(), password, history));
+    await dispatch(LoginCompany(email.toLowerCase(), password, history));
     // router.push("/registration/");
   };
 

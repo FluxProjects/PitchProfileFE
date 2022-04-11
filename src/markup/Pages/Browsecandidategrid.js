@@ -5,6 +5,7 @@ import Footer from "../Layout/Footer";
 import Jobfindbox from "../Element/Jobfindbox";
 import { useDispatch, useSelector } from "react-redux";
 import { GetAllCandidates } from "../../redux/action/candidates/BrowseCandidatesAction";
+import Header2 from "../Layout/Header2";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -25,7 +26,7 @@ export default function Browsecandidategrid({}) {
 
   return (
     <div className="page-wraper">
-      <Header />
+      {state.userDetails.company_name ? <Header2 /> : <Header />}
       <div className="page-content bg-white">
         <div
           className="dez-bnr-inr overlay-black-middle"

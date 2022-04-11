@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { registerUser } from "../../redux/action";
+import { registerCompany, registerUser } from "../../redux/action";
 import RegisterTextInput from "../Components/RegisterTextInput";
 import { useHistory } from "react-router-dom";
 
@@ -10,8 +10,7 @@ export default function CompanyRegister() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [fname, setFName] = useState("");
-  const [lname, setLName] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [CnfrmPassword, setCnfrmPassword] = useState("");
@@ -19,7 +18,7 @@ export default function CompanyRegister() {
   const callRegisterUser = async () => {
     if (password == CnfrmPassword) {
       await dispatch(
-        registerUser(fname, lname, email.toLowerCase(), password, history)
+        registerCompany(companyName, email.toLowerCase(), password, history)
       );
     }
     // router.push("/registration/");
@@ -27,16 +26,16 @@ export default function CompanyRegister() {
 
   const textInputFields = [
     {
-      name: "firstName",
+      name: "companyName",
       required: "true",
       className: "form-control ",
       placeholder: "Your Company Name",
       type: "text",
       label: "Company Name",
       onChange: (e) => {
-        setFName(e.target.value);
+        setCompanyName(e.target.value);
       },
-      value: fname,
+      value: companyName,
     },
     // {
     //   name: "lastName",

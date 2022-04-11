@@ -60,6 +60,9 @@ export default function Register() {
                       Don't have an account with us,{" "}
                       <Link to={"/register"}>Sign up</Link>.
                     </p>
+                    <p className="font-weight-600 text-center">
+                      <Link to={"/company-login"}>Login as a comapny</Link>.
+                    </p>
                     {textInputFields.map((item, index) => (
                       <RegisterTextInput
                         name={item.name}

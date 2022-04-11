@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Modal } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { LogoutUser } from "../../redux/action";
 
 var bnr3 = require("./../../images/background/bg3.jpg");
 
 export default function Header2() {
   const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const router = useHistory();
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -71,6 +74,10 @@ export default function Header2() {
     },
   ];
 
+  const callLogoutUser = async () => {
+    await dispatch(LogoutUser(router));
+  };
+
   return (
     <>
       <header className="site-header mo-left header border-bottom fullwidth">
@@ -108,22 +115,48 @@ export default function Header2() {
               </button>
 
               <div className="extra-nav">
-                <Link to={"/login"} className="site-button">
-                  <i className="fa fa-user"></i> Sign Up
-                </Link>
+                {state.authToken ? (
+                  <>
+                    <span className="active float-right">
+                      <Link
+                        onClick={(e) => {
+                          e.preventDefault();
+                          callLogoutUser();
+                        }}
+                        className="site-button mt-2"
+                      >
+                        <i className="fa fa-user"></i> Logout
+                      </Link>
+                    </span>
 
-                <div className="testimonial-picHead radius">
-                  <img
-                    src={
-                      state.userDetails?.pic != null
-                        ? state.userDetails.pic
-                        : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
-                    }
-                    alt=""
-                    width="20"
-                    height="20"
-                  />
-                </div>
+                    <Link to={"/company-profile"}>
+                      <div className="testimonial-picHead radius ">
+                        <img
+                          src={
+                            state.userDetails?.pic != null
+                              ? state.userDetails.pic
+                              : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+                          }
+                          style={{
+                            minHeight: "55px",
+                            maxHeight: "55px",
+                            maxWidth: "60px",
+                            minWidth: "60px",
+                          }}
+                          alt=""
+                          width="20"
+                          height="20"
+                        />
+                      </div>
+                    </Link>
+                  </>
+                ) : (
+                  <li className="active float-right">
+                    <Link to={"/company-login"} className="site-button">
+                      <i className="fa fa-user"></i> Login
+                    </Link>
+                  </li>
+                )}
               </div>
 
               <div
