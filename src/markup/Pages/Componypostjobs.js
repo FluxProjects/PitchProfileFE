@@ -5,8 +5,16 @@ import Footer from "./../Layout/Footer";
 import { Form } from "react-bootstrap";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 import { useSelector, useDispatch } from "react-redux";
-import { GetCities, GetCountries, GetStates } from "../../redux/action";
+import {
+  AddJobPost,
+  GetCities,
+  GetCountries,
+  GetStates,
+} from "../../redux/action";
 import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
+import { employmentTypeDrop, jobTypeDrop } from "../../utils/DropDownUtils";
+import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
+import AttachVideoCompanyJob from "../Components/JobsMyResume/AttachVideoCompanyJob";
 
 export default function Componypostjobs() {
   const state = useSelector((state) => state);
@@ -15,6 +23,21 @@ export default function Componypostjobs() {
   const [stateName, setStateName] = useState(state.userDetails.state_id);
   const [country, setCountry] = useState(state.userDetails.country_id);
   const [loading, setLoading] = useState(true);
+
+  const [jobTitle, setJobTitle] = useState("");
+  const [jobType, setJobType] = useState(0);
+  const [employmentType, setEmploymentType] = useState(0);
+  const [minSalary, setMinSalary] = useState(0);
+  const [maxSalary, setMaxSalary] = useState(0);
+  const [closingDate, setClosingDate] = useState("");
+  const [role, setRole] = useState("");
+  const [keyRes, setKeyRes] = useState("");
+  const [lookingFor, setLookingFor] = useState("");
+  const [perks, setPerks] = useState("");
+  const [video, setVideo] = useState("");
+
+  // const [perks, setPerks] = useState("");
+
   useEffect(() => {
     //  to get languages
     CallGetDropDown();
@@ -30,9 +53,32 @@ export default function Componypostjobs() {
   const CallGetCities = async (stateId) => {
     await dispatch(GetCities(stateId));
   };
-
   const CallGetStates = async (stateId) => {
     await dispatch(GetStates(stateId));
+  };
+
+  const callAddJobPost = async () => {
+    console.log("callAddJobPostcallAddJobPost");
+    setLoading(true);
+    await dispatch(
+      AddJobPost(
+        jobTitle,
+        jobType,
+        employmentType,
+        minSalary,
+        maxSalary,
+        city,
+        stateName,
+        country,
+        role,
+        keyRes,
+        lookingFor,
+        perks,
+        closingDate,
+        video
+      )
+    );
+    setLoading(false);
   };
 
   return (
@@ -147,9 +193,12 @@ export default function Componypostjobs() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Job Title</label>
-                            <input
-                              type="text"
-                              className="form-control"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setJobTitle(e.target.value);
+                              }}
+                              value={jobTitle}
                               placeholder="Enter Job Title"
                             />
                           </div>
@@ -157,37 +206,39 @@ export default function Componypostjobs() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Job Type</label>
-                            <Form.Control
-                              as="select"
-                              custom
-                              className="custom-select"
-                            >
-                              <option>Permanent</option>
-                              <option>Contract</option>
-                              <option>Fixed Term</option>
-                            </Form.Control>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                setJobType(e.target.value);
+                              }}
+                              value={jobType}
+                              options={jobTypeDrop}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>Employment Type</label>
-                            <Form.Control
-                              as="select"
-                              custom
-                              className="custom-select"
-                            >
-                              <option>Full Time</option>
-                              <option>Part Time</option>
-                            </Form.Control>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                setEmploymentType(e.target.value);
+                              }}
+                              value={employmentType}
+                              options={employmentTypeDrop}
+                            />
                           </div>
                         </div>
 
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Minimum Salary ($):</label>
-                            <input
-                              type="email"
-                              className="form-control"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setMinSalary(e.target.value);
+                              }}
+                              value={minSalary}
                               placeholder="e.g. 10000"
                             />
                           </div>
@@ -195,9 +246,12 @@ export default function Componypostjobs() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Maximum Salary ($):</label>
-                            <input
-                              type="text"
-                              className="form-control"
+                            <TextInputModal
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setMaxSalary(e.target.value);
+                              }}
+                              value={maxSalary}
                               placeholder="e.g. 20000"
                             />
                           </div>
@@ -260,10 +314,10 @@ export default function Componypostjobs() {
                             <TextInputModal
                               onChange={(e) => {
                                 console.log(e.target.value);
-                                // setRole(e.target.value);
+                                setClosingDate(e.target.value);
                               }}
                               type={"date"}
-                              //   value={role}
+                              value={closingDate}
                             />
                           </div>
                         </div>
@@ -274,7 +328,11 @@ export default function Componypostjobs() {
                               The Role
                               <span className="text-danger"> *</span>
                             </label>
-                            <textarea className="form-control"></textarea>
+                            <TextAreaModalComponent
+                              placeholder="Enter Role Description"
+                              onChange={(e) => setRole(e.target.value)}
+                              value={role}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12">
@@ -283,7 +341,11 @@ export default function Componypostjobs() {
                               Key Responibilities
                               <span className="text-danger"> *</span>
                             </label>
-                            <textarea className="form-control"></textarea>
+                            <TextAreaModalComponent
+                              placeholder="Enter Key Responsibilities"
+                              onChange={(e) => setKeyRes(e.target.value)}
+                              value={keyRes}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12">
@@ -292,7 +354,11 @@ export default function Componypostjobs() {
                               What are we looking for?
                               <span className="text-danger"> *</span>
                             </label>
-                            <textarea className="form-control"></textarea>
+                            <TextAreaModalComponent
+                              placeholder="Enter What you're looking for?"
+                              onChange={(e) => setLookingFor(e.target.value)}
+                              value={lookingFor}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12">
@@ -301,30 +367,42 @@ export default function Componypostjobs() {
                               The Perks
                               <span className="text-danger"> *</span>
                             </label>
-                            <textarea className="form-control"></textarea>
+                            <TextAreaModalComponent
+                              placeholder="Enter Perks"
+                              onChange={(e) => setPerks(e.target.value)}
+                              value={perks}
+                            />
                           </div>
                         </div>
 
                         <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>Upload Video File</label>
-                            <div className="custom-file">
-                              <p className="m-a0">
-                                <i className="fa fa-upload"></i>
-                                Upload Video File
-                              </p>
-                              <input
-                                type="file"
-                                className="site-button form-control"
-                                id="customFile"
-                              />
-                            </div>
-                          </div>
+                          <AttachVideoCompanyJob
+                            setVideoFile={(e) => {
+                              console.log("files", e[0]);
+                              setVideo(e);
+                            }}
+                          />
                         </div>
                       </div>
-                      <button type="button" className="site-button mr-4 m-b30">
-                        Save
-                      </button>
+                      {!loading ? (
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            callAddJobPost();
+                          }}
+                          type="button"
+                          className="site-button mr-4 m-b30"
+                        >
+                          Save
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="site-button mr-4 m-b30"
+                        >
+                          Loading...
+                        </button>
+                      )}
                       <Link to={"/job-detail"} className="site-button  m-b30">
                         Preview
                       </Link>

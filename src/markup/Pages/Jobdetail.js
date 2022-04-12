@@ -5,6 +5,9 @@ import Footer from "./../Layout/Footer";
 import { Modal } from "react-bootstrap";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 import UploadDataComponent from "../Components/UIComponents/UploadDataComponent";
+import { useDispatch, useSelector } from "react-redux";
+import Header2 from "../Layout/Header2";
+import { formatDate } from "../../utils/functions";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -26,6 +29,9 @@ const blogGrid = [
 export default function Jobdetail() {
   const [show, setShow] = useState(false);
 
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const handleClose = () => {
     setShow(false);
   };
@@ -34,7 +40,7 @@ export default function Jobdetail() {
   };
   return (
     <div className="page-wraper">
-      <Header />
+      {state.userDetails.company_name ? <Header2 /> : <Header />}
 
       <div className="page-content bg-white">
         <div
@@ -65,10 +71,25 @@ export default function Jobdetail() {
                     <div className="row">
                       <div className="col-lg-12 col-md-6">
                         <div className="m-b30">
-                          <img
-                            src={require("./../../images/blog/grid/pic1.jpg")}
-                            alt=""
-                          />
+                          <video width="320" height="240" controls>
+                            <source
+                              src={state.PreviewPost.video}
+                              type="video/mp4"
+                            />
+                            <source
+                              src={state.PreviewPost.video}
+                              type="video/wmv"
+                            />
+                            <source
+                              src={state.PreviewPost.video}
+                              type="video/mkv"
+                            />
+                            <source
+                              src={state.PreviewPost.video}
+                              type="video/mov"
+                            />
+                            Your browser does not support the video tag.
+                          </video>
                         </div>
                       </div>
                       <div className="col-lg-12 col-md-6">
@@ -83,9 +104,9 @@ export default function Jobdetail() {
                                 Address
                               </strong>
                               <span className="text-black-light">
-                                {" "}
-                                Demo Address #8901 Marmora Road Chi Minh City,
-                                Vietnam{" "}
+                                {state.PreviewPost?.country_id}{" "}
+                                {state.PreviewPost?.city_id}{" "}
+                                {state.PreviewPost?.state_id}
                               </span>
                             </li>
                             <li>
@@ -93,7 +114,8 @@ export default function Jobdetail() {
                               <strong className="font-weight-700 text-black">
                                 Salary
                               </strong>{" "}
-                              $800 Monthy
+                              $ {state.PreviewPost?.max_salary} - ${" "}
+                              {state.PreviewPost?.min_salary}
                             </li>
                             <li>
                               <i className="ti-shield"></i>
@@ -112,7 +134,7 @@ export default function Jobdetail() {
                   <div className="job-info-box">
                     <h3 className="m-t0 m-b10 font-weight-700 title-head">
                       <Link to={""} className="text-secondry m-r30">
-                        Digital Marketing Executive
+                        {state.PreviewPost.job_title}
                       </Link>
                     </h3>
                     <ul className="job-info">
@@ -120,7 +142,8 @@ export default function Jobdetail() {
                         <strong>Education</strong> Web Designer
                       </li>
                       <li>
-                        <strong>Deadline:</strong> 25th January 2018
+                        <strong>Deadline:</strong>{" "}
+                        {formatDate(state.PreviewPost?.closing_date)}
                       </li>
                       <li>
                         <i className="ti-location-pin text-black m-r5"></i>{" "}
@@ -140,52 +163,18 @@ export default function Jobdetail() {
                       software like Aldus PageMaker including versions of Lorem
                       Ipsum.
                     </p>
-                    <h5 className="font-weight-600">Job Description</h5>
+                    <h5 className="font-weight-600">Key Responsibilities</h5>
                     <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five
-                      centuries, but also the leap into electronic typesetting,
-                      remaining essentially unchanged. It was popularised in the
-                      1960s with the release of Letraset sheets containing Lorem
-                      Ipsum passages, and more recently with desktop publishing
-                      software like Aldus PageMaker including versions of Lorem
-                      Ipsum.
-                    </p>
-                    <h5 className="font-weight-600">How to Apply</h5>
+                    <p>{state.PreviewPost?.key_responsibilities}</p>
+                    <h5 className="font-weight-600">Looking for</h5>
                     <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five
-                      centuries, but also the leap into electronic typesetting,
-                      remaining essentially unchanged. It was popularised in the
-                      1960s with the release of Letraset sheets containing Lorem
-                      Ipsum passages.
-                    </p>
-                    <h5 className="font-weight-600">Job Requirements</h5>
+                    <p>{state.PreviewPost?.looking_for}</p>
+                    <h5 className="font-weight-600">Perks</h5>
                     <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                    <ul className="list-num-count no-round">
-                      <li>
-                        The DexignLab Privacy Policy was updated on 25 June
-                        2018.
-                      </li>
-                      <li>Who We Are and What This Policy Covers</li>
-                      <li>
-                        Remaining essentially unchanged It was popularised in
-                        the 1960s{" "}
-                      </li>
-                      <li>
-                        Lorem Ipsum has been the industry's standard dummy text
-                        ever since the 1500s,
-                      </li>
-                      <li>DexignLab standard dummy text ever since</li>
-                    </ul>
+                    <p>{state.PreviewPost?.the_perks}</p>
+                    <h5 className="font-weight-600">Role</h5>
+                    <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+                    <p>{state.PreviewPost?.role}</p>
                     <Link
                       onClick={() => handleShow()}
                       // to={"/jobs-applied-job"}

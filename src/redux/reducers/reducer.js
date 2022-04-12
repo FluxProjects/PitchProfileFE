@@ -36,6 +36,9 @@ const initialState = {
   // Browsecandicate actions
   allCandidates: [],
   backupCandidates: [],
+
+  // Job Candidates
+  PreviewPost: {},
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -178,6 +181,13 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         backupCandidates: rest.data,
+      };
+
+    // Job posts
+    case "PreviewPost":
+      return {
+        ...state,
+        PreviewPost: rest.data,
       };
 
     default:
