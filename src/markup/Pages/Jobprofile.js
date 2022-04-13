@@ -614,7 +614,7 @@ export default function Jobprofile() {
                                 placeholder={"info@example.com"}
                                 value={email}
                                 onChange={(e) => {
-                                  setEmail(e.target.value);
+                                  setEmail(e.target.value.toLowerCase());
                                 }}
                               />
                             </div>

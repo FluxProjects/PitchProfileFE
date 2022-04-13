@@ -216,7 +216,7 @@ export default function ReferencesModalComp({
                     <label>Email</label>
                     <TextInputModal
                       placeholder={"Enter Referee Email"}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => setEmail(e.target.value.toLowerCase())}
                       value={email}
                     />
                   </div>

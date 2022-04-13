@@ -58,8 +58,8 @@ export default function Header2() {
       index: "3",
     },
     {
-      name: "Companies",
-      link: "/company-manage-job",
+      name: "All Jobs",
+      link: "/browse-job-grid",
       index: "2",
     },
     {

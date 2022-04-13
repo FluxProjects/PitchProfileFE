@@ -26,7 +26,7 @@ export default function CompanyLogin() {
       type: "text",
       label: "Email",
       onChange: (e) => {
-        setEmail(e.target.value);
+        setEmail(e.target.value.toLowerCase());
       },
       value: email.toLowerCase(),
     },

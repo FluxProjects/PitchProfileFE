@@ -26,7 +26,7 @@ export default function Register() {
       type: "text",
       label: "Email",
       onChange: (e) => {
-        setEmail(e.target.value);
+        setEmail(e.target.value.toLowerCase());
       },
       value: email.toLowerCase(),
     },

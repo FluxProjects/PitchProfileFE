@@ -18,6 +18,7 @@ export const AddJobPost =
     looking_for,
     the_perks,
     closing_date,
+    expirience,
     files
   ) =>
   async (dispatch, state) => {
@@ -42,6 +43,7 @@ export const AddJobPost =
           looking_for,
           the_perks,
           closing_date,
+          expirience: expirience,
           video: res.data.secure_url,
         },
       });

@@ -15,6 +15,7 @@ import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComp
 import { employmentTypeDrop, jobTypeDrop } from "../../utils/DropDownUtils";
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
 import AttachVideoCompanyJob from "../Components/JobsMyResume/AttachVideoCompanyJob";
+import Profilesidebar from "../Element/CompanyProfileSidebar";
 
 export default function Componypostjobs() {
   const state = useSelector((state) => state);
@@ -26,6 +27,7 @@ export default function Componypostjobs() {
 
   const [jobTitle, setJobTitle] = useState("");
   const [jobType, setJobType] = useState(0);
+  const [Expirience, setExpirience] = useState(0);
   const [employmentType, setEmploymentType] = useState(0);
   const [minSalary, setMinSalary] = useState(0);
   const [maxSalary, setMaxSalary] = useState(0);
@@ -75,6 +77,7 @@ export default function Componypostjobs() {
         lookingFor,
         perks,
         closingDate,
+        Expirience,
         video
       )
     );
@@ -91,88 +94,7 @@ export default function Componypostjobs() {
               <div className="row">
                 <div className="col-xl-3 col-lg-4 m-b30">
                   <div className="sticky-top">
-                    <div className="candidate-info company-info">
-                      <div className="candidate-detail text-center">
-                        <div className="canditate-des">
-                          <Link to={""}>
-                            <img
-                              alt=""
-                              src={require("./../../images/logo/icon3.jpg")}
-                            />
-                          </Link>
-                          <div
-                            className="upload-link"
-                            title="update"
-                            data-toggle="tooltip"
-                            data-placement="right"
-                          >
-                            <input type="file" className="update-flie" />
-                            <i className="fa fa-pencil"></i>
-                          </div>
-                        </div>
-                        <div className="candidate-title">
-                          <h4 className="m-b5">
-                            <Link to={""}>@COMPANY</Link>
-                          </h4>
-                        </div>
-                      </div>
-                      <ul>
-                        <li>
-                          <Link to={"/company-profile"}>
-                            <i className="fa fa-user-o" aria-hidden="true"></i>
-                            <span>Company Profile</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={"/company-post-jobs"} className="active">
-                            <i
-                              className="fa fa-file-text-o"
-                              aria-hidden="true"
-                            ></i>
-                            <span>Post A Job</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={"/company-transactions"}>
-                            <i className="fa fa-random" aria-hidden="true"></i>
-                            <span>Transactions</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={"/company-manage-job"}>
-                            <i
-                              className="fa fa-briefcase"
-                              aria-hidden="true"
-                            ></i>
-                            <span>Manage jobs</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={"/company-resume"}>
-                            <i
-                              className="fa fa-id-card-o"
-                              aria-hidden="true"
-                            ></i>
-                            <span>Resume</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={"/jobs-change-password"}>
-                            <i className="fa fa-key" aria-hidden="true"></i>
-                            <span>Change Password</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={"./"}>
-                            <i
-                              className="fa fa-sign-out"
-                              aria-hidden="true"
-                            ></i>
-                            <span>Log Out</span>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
+                    <Profilesidebar />
                   </div>
                 </div>
                 <div className="col-xl-9 col-lg-8 m-b30">
@@ -216,7 +138,8 @@ export default function Componypostjobs() {
                             />
                           </div>
                         </div>
-                        <div className="col-lg-12 col-md-12">
+
+                        <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Employment Type</label>
                             <DropDownModalComponent
@@ -226,6 +149,20 @@ export default function Componypostjobs() {
                               }}
                               value={employmentType}
                               options={employmentTypeDrop}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
+                            <label>Expirience</label>
+                            <TextInputModal
+                              type={"number"}
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setExpirience(e.target.value);
+                              }}
+                              value={Expirience}
+                              placeholder="2"
                             />
                           </div>
                         </div>

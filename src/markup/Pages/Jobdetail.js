@@ -8,6 +8,7 @@ import UploadDataComponent from "../Components/UIComponents/UploadDataComponent"
 import { useDispatch, useSelector } from "react-redux";
 import Header2 from "../Layout/Header2";
 import { formatDate } from "../../utils/functions";
+import { employmentTypeDrop, jobTypeDrop } from "../../utils/DropDownUtils";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -99,15 +100,45 @@ export default function Jobdetail() {
                           </h4>
                           <ul>
                             <li>
-                              <i className="ti-location-pin"></i>
+                              <i className="fa fa-user"></i>
                               <strong className="font-weight-700 text-black">
-                                Address
+                                Employment Type
+                              </strong>{" "}
+                              {employmentTypeDrop?.findIndex(
+                                (x) =>
+                                  x?.id == state.PreviewPost?.employment_type
+                              ) == -1
+                                ? ""
+                                : employmentTypeDrop[
+                                    employmentTypeDrop.findIndex(
+                                      (x) =>
+                                        x?.id ==
+                                        state.PreviewPost?.employment_type
+                                    )
+                                  ].name}
+                            </li>
+                            <li>
+                              <i className="fa fa-clock-o"></i>
+                              <strong className="font-weight-700 text-black">
+                                Job Type
+                              </strong>{" "}
+                              {jobTypeDrop?.findIndex(
+                                (x) => x?.id == state.PreviewPost?.job_type
+                              ) == -1
+                                ? ""
+                                : jobTypeDrop[
+                                    jobTypeDrop.findIndex(
+                                      (x) =>
+                                        x?.id == state.PreviewPost?.job_type
+                                    )
+                                  ].name}
+                            </li>
+                            <li>
+                              <i className="ti-shield"></i>
+                              <strong className="font-weight-700 text-black">
+                                Experience
                               </strong>
-                              <span className="text-black-light">
-                                {state.PreviewPost?.country_id}{" "}
-                                {state.PreviewPost?.city_id}{" "}
-                                {state.PreviewPost?.state_id}
-                              </span>
+                              {state.PreviewPost?.expirience} Year Experience
                             </li>
                             <li>
                               <i className="ti-money"></i>
@@ -116,13 +147,6 @@ export default function Jobdetail() {
                               </strong>{" "}
                               $ {state.PreviewPost?.max_salary} - ${" "}
                               {state.PreviewPost?.min_salary}
-                            </li>
-                            <li>
-                              <i className="ti-shield"></i>
-                              <strong className="font-weight-700 text-black">
-                                Experience
-                              </strong>
-                              6 Year Experience
                             </li>
                           </ul>
                         </div>
@@ -133,14 +157,17 @@ export default function Jobdetail() {
                 <div className="col-lg-8">
                   <div className="job-info-box">
                     <h3 className="m-t0 m-b10 font-weight-700 title-head">
-                      <Link to={""} className="text-secondry m-r30">
+                      <Link
+                        to={""}
+                        className="text-secondry text-capitalize m-r30"
+                      >
                         {state.PreviewPost.job_title}
                       </Link>
                     </h3>
                     <ul className="job-info">
-                      <li>
-                        <strong>Education</strong> Web Designer
-                      </li>
+                      {/* <li>
+                         <strong>Education</strong> {state.PreviewPost?.closing_date 
+                      </li> */}
                       <li>
                         <strong>Deadline:</strong>{" "}
                         {formatDate(state.PreviewPost?.closing_date)}
@@ -150,7 +177,7 @@ export default function Jobdetail() {
                         NewYark{" "}
                       </li>
                     </ul>
-                    <p className="p-t20">
+                    {/* <p className="p-t20">
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry's
                       standard dummy text ever since the 1500s, when an unknown
@@ -162,8 +189,10 @@ export default function Jobdetail() {
                       Ipsum passages, and more recently with desktop publishing
                       software like Aldus PageMaker including versions of Lorem
                       Ipsum.
-                    </p>
-                    <h5 className="font-weight-600">Key Responsibilities</h5>
+                    </p> */}
+                    <h5 className="font-weight-600 mt-4">
+                      Key Responsibilities
+                    </h5>
                     <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
                     <p>{state.PreviewPost?.key_responsibilities}</p>
                     <h5 className="font-weight-600">Looking for</h5>
@@ -180,7 +209,7 @@ export default function Jobdetail() {
                       // to={"/jobs-applied-job"}
                       className="site-button"
                     >
-                      Apply This Job
+                      Apply To This Job
                     </Link>
                   </div>
                 </div>

@@ -369,7 +369,7 @@ export default function HeaderCandidateResume({ isView }) {
                         className="form-control"
                         placeholder="info@example.com"
                         onChange={(e) => {
-                          setEmail(e.target.value);
+                          setEmail(e.target.value.toLowerCase());
                         }}
                         value={email}
                       />
