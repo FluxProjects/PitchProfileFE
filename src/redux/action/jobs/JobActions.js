@@ -81,3 +81,19 @@ export const AddJobPost =
         });
     });
   };
+
+export const GetMyJobPosts = () => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/jobs/get_all_my_listed_jobs/${state().userDetails.id}`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
