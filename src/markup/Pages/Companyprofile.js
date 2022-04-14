@@ -27,6 +27,8 @@ export default function Companyprofile() {
   const [stateName, setStateName] = useState(state.userDetails.state_id);
   const [country, setCountry] = useState(state.userDetails.country_id);
   const [loading, setLoading] = useState(true);
+  const [BtnLoading, setBtnLoading] = useState(false);
+
   const [companyName, setCompanyName] = useState(
     state.userDetails.company_name
   );
@@ -51,9 +53,49 @@ export default function Companyprofile() {
   const [twitter, setTwitter] = useState(state.userDetails?.twitter);
   const [google, setGoogle] = useState(state.userDetails?.google);
   const [linkedin, setLinkedin] = useState(state.userDetails?.linkedin);
+  const [fieldAlert, setFieldAlert] = useState(false);
+  const [agreement, setAgreement] = useState(state.userDetails?.agreement);
+
   let inputRef;
 
   const callUpdateCompany = async () => {
+    if (companyName == "") {
+      console.log("companyName", companyName);
+      setBtnLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (CompanyTypeVal == "") {
+      console.log("CompanyTypeVal", CompanyTypeVal);
+      setBtnLoading(false);
+
+      setFieldAlert(true);
+      return;
+    }
+    if (industry == null) {
+      console.log("industry", industry);
+      setBtnLoading(false);
+
+      setFieldAlert(true);
+      return;
+    }
+    if (address == "") {
+      console.log("address", address);
+      setBtnLoading(false);
+
+      setFieldAlert(true);
+      return;
+    }
+    if (agreement == false) {
+      console.log("agreement", agreement);
+      setBtnLoading(false);
+
+      setFieldAlert(true);
+      return;
+    }
+
+    setFieldAlert(false);
+
     await dispatch(
       updateCompany(
         companyName,
@@ -72,9 +114,11 @@ export default function Companyprofile() {
         linkedin,
         city,
         stateName,
-        country
+        country,
+        agreement
       )
     );
+    setBtnLoading(false);
   };
 
   useEffect(() => {
@@ -370,7 +414,7 @@ export default function Companyprofile() {
                             />
                           </div>
                         </div>
-                        <div className="col-lg-6 col-md-6">
+                        {/* <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Google</label>
                             <TextInputModal
@@ -382,7 +426,7 @@ export default function Companyprofile() {
                               placeholder="https://www.google.com/"
                             />
                           </div>
-                        </div>
+                        </div> */}
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Linkedin</label>
@@ -408,8 +452,18 @@ export default function Companyprofile() {
                           <input
                             type="checkbox"
                             class="form-check-input"
-                            id="exampleCheck1"
+                            id="permanent"
+                            name="exampleCheck1"
+                            checked={agreement == true ? true : false}
+                            value={0}
+                            onChange={() => setAgreement(!agreement)}
                           />
+                          {/* <input
+                            type="checkbox"
+                            class="form-check-input"
+                            id="exampleCheck1"
+                            onChange={e}
+                          /> */}
                           <label class="" for="exampleCheck1">
                             I can confirm that I am an authorised representative
                             of this company and then have the permission to
@@ -417,16 +471,29 @@ export default function Companyprofile() {
                           </label>
                         </div>
                       </div>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          callUpdateCompany();
-                        }}
-                        type="submit"
-                        className="site-button m-b30"
-                      >
-                        Save
-                      </button>
+                      {fieldAlert && (
+                        <p className="text-danger">
+                          Please fill all the required fields.
+                        </p>
+                      )}
+                      {!BtnLoading ? (
+                        <button
+                          onClick={(e) => {
+                            setBtnLoading(true);
+                            setFieldAlert(false);
+                            e.preventDefault();
+                            callUpdateCompany();
+                          }}
+                          type="submit"
+                          className="site-button m-b30"
+                        >
+                          Save
+                        </button>
+                      ) : (
+                        <button type="submit" className="site-button m-b30">
+                          Loading....
+                        </button>
+                      )}
                     </form>
                   </div>
                 </div>

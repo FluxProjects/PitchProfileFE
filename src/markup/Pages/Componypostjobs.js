@@ -9,10 +9,16 @@ import {
   AddJobPost,
   GetCities,
   GetCountries,
+  GetDepartments,
+  GetIndustries,
   GetStates,
 } from "../../redux/action";
 import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
-import { employmentTypeDrop, jobTypeDrop } from "../../utils/DropDownUtils";
+import {
+  employmentTypeDrop,
+  jobTypeDrop,
+  shiftDrop,
+} from "../../utils/DropDownUtils";
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
 import AttachVideoCompanyJob from "../Components/JobsMyResume/AttachVideoCompanyJob";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
@@ -24,6 +30,12 @@ export default function Componypostjobs() {
   const [stateName, setStateName] = useState(state.userDetails.state_id);
   const [country, setCountry] = useState(state.userDetails.country_id);
   const [loading, setLoading] = useState(true);
+  const [department, setDepartment] = useState(
+    state.userDetails?.department_id ? state.userDetails?.department_id : 1
+  );
+  const [shiftVal, setShiftVal] = useState(
+    state.userDetails?.preferred_shift ? state.userDetails?.preferred_shift : 1
+  );
 
   const [jobTitle, setJobTitle] = useState("");
   const [jobType, setJobType] = useState(0);
@@ -38,6 +50,7 @@ export default function Componypostjobs() {
   const [perks, setPerks] = useState("");
   const [video, setVideo] = useState("");
 
+  const [fieldAlert, setFieldAlert] = useState(false);
   // const [perks, setPerks] = useState("");
 
   useEffect(() => {
@@ -47,8 +60,15 @@ export default function Componypostjobs() {
 
   const CallGetDropDown = async () => {
     await dispatch(GetCountries());
-    await dispatch(GetStates(230));
-    await dispatch(GetCities(3866));
+    // await dispatch(GetStates(230));
+    // await dispatch(GetCities(3866));
+
+    if (state.departments.length < 1) {
+      await dispatch(GetDepartments());
+    }
+    if (state.industries.length < 1) {
+      await dispatch(GetIndustries());
+    }
 
     setLoading(false);
   };
@@ -60,8 +80,54 @@ export default function Componypostjobs() {
   };
 
   const callAddJobPost = async () => {
-    console.log("callAddJobPostcallAddJobPost");
     setLoading(true);
+
+    if (jobTitle == "") {
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (jobType == null) {
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (employmentType == "") {
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (minSalary == "") {
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (maxSalary == "") {
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (role == "") {
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (keyRes == "") {
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (closingDate == "") {
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (department == null) {
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+
     await dispatch(
       AddJobPost(
         jobTitle,
@@ -78,6 +144,8 @@ export default function Componypostjobs() {
         perks,
         closingDate,
         Expirience,
+        department,
+        shiftVal,
         video
       )
     );
@@ -127,6 +195,32 @@ export default function Componypostjobs() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
+                            <label>Department</label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                setDepartment(e.target.value);
+                              }}
+                              value={department}
+                              options={state.departments}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
+                            <label>Shift</label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                setShiftVal(e.target.value);
+                              }}
+                              value={shiftVal}
+                              options={shiftDrop}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
                             <label>Job Type</label>
                             <DropDownModalComponent
                               onChange={(e) => {
@@ -154,7 +248,7 @@ export default function Componypostjobs() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Expirience</label>
+                            <label>Expirience (Years)</label>
                             <TextInputModal
                               type={"number"}
                               onChange={(e) => {
@@ -321,6 +415,11 @@ export default function Componypostjobs() {
                           />
                         </div>
                       </div>
+                      {fieldAlert && (
+                        <p className="text-danger">
+                          Please fill all the required fields.
+                        </p>
+                      )}
                       {!loading ? (
                         <button
                           onClick={(e) => {

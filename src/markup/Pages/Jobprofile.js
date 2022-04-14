@@ -35,11 +35,11 @@ export default function Jobprofile() {
 
   useEffect(() => {
     // auth
-    if (state.authToken) {
-      callGetAuth();
-    } else {
-      router.push("/login");
-    }
+    // if (state.authToken) {
+    //   // callGetAuth();
+    // } else {
+    //   router.push("/login");
+    // }
   }, []);
 
   const callGetAuth = async () => {

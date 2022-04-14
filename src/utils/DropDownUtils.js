@@ -53,6 +53,7 @@ export const employmentTypeDrop = [
 export const shiftDrop = [
   { id: 0, name: "Permanent" },
   { id: 1, name: "Contractual" },
+  { id: 2, name: "Fixed Term" },
 ];
 
 export const jobTypeDrop = [

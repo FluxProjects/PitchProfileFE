@@ -19,6 +19,8 @@ export const AddJobPost =
     the_perks,
     closing_date,
     expirience,
+    department_id,
+    preferred_shift,
     files
   ) =>
   async (dispatch, state) => {
@@ -44,6 +46,8 @@ export const AddJobPost =
           the_perks,
           closing_date,
           expirience: expirience,
+          department_id,
+          preferred_shift,
           video: res.data.secure_url,
         },
       });

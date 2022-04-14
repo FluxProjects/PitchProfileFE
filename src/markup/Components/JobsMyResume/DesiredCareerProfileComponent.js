@@ -276,26 +276,29 @@ export default function DesiredCareerProfileComponent({ isView }) {
                         <div className="form-group">
                           <label>Job Type</label>
                           <div className="row">
-                            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                              <div className="custom-control custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  id="permanent"
-                                  name="example1"
-                                  checked={jobType == 0 ? true : false}
-                                  value={0}
-                                  onChange={() => setJobType(0)}
-                                />
-                                <label
-                                  className="custom-control-label"
-                                  htmlFor="permanent"
-                                >
-                                  Permanent
-                                </label>
+                            {shiftDrop.map((item) => (
+                              <div className="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div className="custom-control custom-checkbox">
+                                  <input
+                                    type="checkbox"
+                                    className="custom-control-input"
+                                    id={item.name}
+                                    name="example1"
+                                    checked={jobType == item.id ? true : false}
+                                    value={item.id}
+                                    onChange={() => setJobType(item.id)}
+                                  />
+                                  <label
+                                    className="custom-control-label"
+                                    htmlFor={item.name}
+                                  >
+                                    {item.name}
+                                  </label>
+                                </div>
                               </div>
-                            </div>
-                            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
+                            ))}
+
+                            {/* <div className="col-lg-3 col-md-6 col-sm-6 col-6">
                               <div className="custom-control custom-checkbox">
                                 <input
                                   type="checkbox"
@@ -313,7 +316,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                                   Contractual
                                 </label>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>

@@ -519,12 +519,12 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
 };
 
 export const getAuthToken = (authToken, router) => async (dispatch, state) => {
-  console.log("testing auth wor", authToken);
+  console.log("testing auth wor", state().authToken);
   var config = {
     method: "get",
     url: `${URL}/profile/getauth`,
     headers: {
-      Authorization: `Bearer ${authToken}`,
+      Authorization: `Bearer ${state().authToken}`,
     },
   };
 

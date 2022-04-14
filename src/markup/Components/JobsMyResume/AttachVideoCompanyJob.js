@@ -74,7 +74,8 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
                     <div className="custom-file">
                       <p className="m-auto mt-3  align-self-center">
                         <i className="fa  fa-upload"></i>
-                        Upload Video File
+                        Attract the top talent by providing a Video Job
+                        Description
                       </p>
                       <input
                         type="file"

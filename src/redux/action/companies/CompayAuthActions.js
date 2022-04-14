@@ -183,6 +183,7 @@ export const updateCompany =
     city_id,
     state_id,
     country_id,
+    agreement,
     authToken,
     setModal
   ) =>
@@ -192,6 +193,7 @@ export const updateCompany =
         id: state().userDetails.id,
         company_name,
         tagline,
+        agreement,
         description,
         company_type,
         company_size,
@@ -582,98 +584,3 @@ export const LoginCompany = (email, password, router) => async (dispatch) => {
       });
     });
 };
-
-// export const getAuthToken = (authToken, router) => async (dispatch, state) => {
-//   console.log("testing auth wor", authToken);
-//   var config = {
-//     method: "get",
-//     url: `${URL}/company_profile/getauth`,
-//     headers: {
-//       Authorization: `Bearer ${authToken}`,
-//     },
-//   };
-
-//   axios(config)
-//     .then(function (response) {
-//       console.log("workd", response);
-//       if (response.data.successful) {
-//         dispatch({
-//           type: "RegisterUser",
-//           data: response.data.data,
-//         });
-//       } else {
-//         router.push("/login");
-//         toast.error("Something went wrong! Please login.", {
-//           position: "top-right",
-//           autoClose: 5000,
-//           hideProgressBar: false,
-//           closeOnClick: true,
-//           pauseOnHover: true,
-//           draggable: true,
-//           progress: undefined,
-//         });
-//       }
-//     })
-//     .catch(function (error) {
-//       router.push("/login");
-//       toast.error(`Something went wrong! Please login. ${error}`, {
-//         position: "top-right",
-//         autoClose: 5000,
-//         hideProgressBar: false,
-//         closeOnClick: true,
-//         pauseOnHover: true,
-//         draggable: true,
-//         progress: undefined,
-//       });
-//       console.log(error);
-//     });
-// };
-
-// export const UpdateUserPassword =
-//   (id, password, authToken, router) => async (dispatch, state) => {
-//     var data = JSON.stringify({
-//       pr_data: {
-//         password,
-//         id,
-//       },
-//     });
-
-//     var config = {
-//       method: "post",
-//       url: `${URL}/profile/passwordreset`,
-//       headers: {
-//         Authorization: `Bearer ${authToken}`,
-//         "Content-Type": "application/json",
-//       },
-//       data: data,
-//     };
-
-//     axios(config)
-//       .then(function (response) {
-//         console.log(JSON.stringify(response.data));
-//         if (response.data.status) {
-//           toast.success("Password Updated Successfully!", {
-//             position: "top-right",
-//             autoClose: 5000,
-//             hideProgressBar: false,
-//             closeOnClick: true,
-//             pauseOnHover: true,
-//             draggable: true,
-//             progress: undefined,
-//           });
-//         } else {
-//           toast.error("Something went wrong!", {
-//             position: "top-right",
-//             autoClose: 5000,
-//             hideProgressBar: false,
-//             closeOnClick: true,
-//             pauseOnHover: true,
-//             draggable: true,
-//             progress: undefined,
-//           });
-//         }
-//       })
-//       .catch(function (error) {
-//         console.log(error);
-//       });
-//   };
