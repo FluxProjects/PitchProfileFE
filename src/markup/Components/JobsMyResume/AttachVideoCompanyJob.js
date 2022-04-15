@@ -23,27 +23,26 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
         style={{ backgroundColor: "transparent" }}
         className=" margin_bx_AttachVid m-b30 w-100"
       >
-        {state.userDetails.video == null && !isView && (
-          <h5 className="m-b10 ">Attach Video</h5>
-        )}
         {state.userDetails.video != null && (
-          <div className="d-flex m-b15">
-            {/* <h5 className="m-b15">My Video</h5> */}
+          <>
+            <div className="d-flex m-b15">
+              {/* <h5 className="m-b15">My Video</h5> */}
 
-            {!isView && (
-              <span
-                to={"#"}
-                data-toggle="modal"
-                data-target="#educations"
-                onClick={() => {
-                  inputRef.click();
-                }}
-                className="site-button add-btn button-sm"
-              >
-                <i className="fa fa-pencil m-r5"></i> Edit
-              </span>
-            )}
-          </div>
+              {!isView && (
+                <span
+                  to={"#"}
+                  data-toggle="modal"
+                  data-target="#educations"
+                  onClick={() => {
+                    inputRef.click();
+                  }}
+                  className="site-button add-btn button-sm"
+                >
+                  <i className="fa fa-pencil m-r5"></i> Edit
+                </span>
+              )}
+            </div>
+          </>
         )}
 
         <form
@@ -71,16 +70,33 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
               !isView && (
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <div className="custom-file">
-                      <p className="m-auto mt-3  align-self-center">
-                        <i className="fa  fa-upload"></i>
-                        Attract the top talent by providing a Video Job
-                        Description
-                      </p>
+                    <div className="custom-file row">
+                      <div className="col-md-6 cl-sm-12 col-lg-6">
+                        {state.userDetails.video == null && !isView && (
+                          <h5 className="m-b10 z-10 text-left ">
+                            Attach Video
+                          </h5>
+                        )}
+                        <p className="m-auto mt-3  align-self-center">
+                          {/* <i className="fa  fa-upload"></i> */}
+                          Attract the top talent by providing a Video Job
+                          Description
+                        </p>
+                      </div>
+
+                      <div className="bg-primary h-100 w-100 align-self-center d-flex justify-content-center col-md-6 cl-sm-12 col-lg-6">
+                        <button
+                          className="align-self-center"
+                          style={{ height: "50px" }}
+                        >
+                          Choose file
+                        </button>
+                      </div>
+
                       <input
                         type="file"
                         className="site-button form-control"
-                        id="customFile"
+                        // id="customFile"
                         onChange={(e) => {
                           setVideoFile(e.target.files);
                         }}

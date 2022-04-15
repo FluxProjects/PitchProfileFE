@@ -39,6 +39,8 @@ const initialState = {
 
   // Job Candidates
   PreviewPost: {},
+  MyPostedJobs: [],
+  Alljobs: [],
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -188,6 +190,17 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         PreviewPost: rest.data,
+      };
+    case "MyPostedJobs":
+      return {
+        ...state,
+        MyPostedJobs: rest.data,
+      };
+
+    case "Alljobs":
+      return {
+        ...state,
+        Alljobs: rest.data,
       };
 
     default:

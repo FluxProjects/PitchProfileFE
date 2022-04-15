@@ -234,7 +234,6 @@ export const GetIndustries = (id) => async (dispatch) => {
 };
 
 export const GetSkills = (id) => async (dispatch) => {
-  console.log("api callsed get skilled");
   var config = {
     method: "get",
     url: `${URL}/profile/get_skills`,

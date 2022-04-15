@@ -42,14 +42,14 @@ export default function Jobmyresume() {
 
   const router = useHistory();
 
-  useEffect(() => {
-    // auth
-    if (state.authToken) {
-      callGetAuth();
-    } else {
-      router.push("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   // auth
+  //   if (state.authToken) {
+  //     callGetAuth();
+  //   } else {
+  //     router.push("/login");
+  //   }
+  // }, []);
 
   const callGetAuth = async () => {
     await dispatch(getAuthToken(state.authToken, router));

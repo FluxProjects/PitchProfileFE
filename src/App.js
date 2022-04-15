@@ -36,9 +36,9 @@ function App() {
     if (state.industries.length < 1) {
       await dispatch(GetIndustries());
     }
-    // if (state.skills.length < 1) {
-    await dispatch(GetSkills());
-    // }
+    if (state.skills.length < 1) {
+      await dispatch(GetSkills());
+    }
     if (state.educationLevels.length < 1) {
       await dispatch(GetEducationLevels());
     }

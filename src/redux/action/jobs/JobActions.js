@@ -46,7 +46,7 @@ export const AddJobPost =
           the_perks,
           closing_date,
           expirience: expirience,
-          department_id,
+          department_id: department_id,
           preferred_shift,
           video: res.data.secure_url,
         },
@@ -92,6 +92,30 @@ export const GetMyJobPosts = () => async (dispatch, state) => {
   axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
+      dispatch({
+        type: "MyPostedJobs",
+        data: response.data.data,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const GetAllJobPosts = () => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/jobs/get_all_jobs`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      dispatch({
+        type: "Alljobs",
+        data: response.data.data,
+      });
     })
     .catch(function (error) {
       console.log(error);
