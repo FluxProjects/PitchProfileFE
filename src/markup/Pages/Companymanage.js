@@ -114,15 +114,7 @@ export default function Companymanage() {
                                     fontWeight: "normal",
                                   }}
                                 >
-                                  {state?.departments.findIndex(
-                                    (x) => x?.id == item?.department_id
-                                  ) == -1
-                                    ? ""
-                                    : state?.departments[
-                                        state?.departments.findIndex(
-                                          (x) => x?.id == item?.department_id
-                                        )
-                                      ].name}
+                                  {item.department?.name}
                                 </span>
                               </Link>
                               <ul className="job-post-info">

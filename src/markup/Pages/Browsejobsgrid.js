@@ -5,20 +5,15 @@ import Footer from "../Layout/Footer";
 import CompanyFindbox from "../Element/CompanyFindbox";
 import { useSelector, useDispatch } from "react-redux";
 import { GetAllJobPosts } from "../../redux/action";
+import {
+  employmentTypeDrop,
+  jobTypeDrop,
+  shiftDrop,
+} from "../../utils/DropDownUtils";
+import { daysSinceGivenDate } from "../../utils/functions";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
-const postBox = [
-  { title: "Digital Marketing Executive" },
-  { title: "Digital Marketing Executive" },
-  { title: "Digital Marketing Executive" },
-  { title: "Digital Marketing Executive" },
-  { title: "Digital Marketing Executive" },
-  { title: "Digital Marketing Executive" },
-  { title: "Digital Marketing Executive" },
-  { title: "Digital Marketing Executive" },
-  { title: "Digital Marketing Executive" },
-];
 export default function Browsejobgrid() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -75,44 +70,143 @@ export default function Browsejobgrid() {
                 </div>
               </div>
               <ul className="post-job-bx browse-job-grid row">
-                {postBox.map((item, index) => (
+                {state.Alljobs.map((item, index) => (
                   <li className="col-lg-4 col-md-6" key={index}>
-                    <div className="post-bx">
-                      <div className="d-flex m-b30">
-                        <div className="job-post-info">
-                          <h5>
-                            <Link to={"/job-detail"}>{item.title}</Link>
-                          </h5>
-                          <ul>
-                            <li>
-                              <i className="fa fa-map-marker"></i> Sacramento,
-                              California
-                            </li>
-                            <li>
-                              <i className="fa fa-bookmark-o"></i> Full Time
-                            </li>
-                            <li>
-                              <i className="fa fa-clock-o"></i> Published 11
-                              months ago
-                            </li>
-                          </ul>
+                    <Link
+                      to={{
+                        pathname: "/job-detail",
+                        state: {
+                          company_id: item?.company_id,
+                          post_id: item?.id,
+                        },
+                      }}
+                    >
+                      <div className="post-bx">
+                        <div className="mb-4">
+                          {item.video ? (
+                            <video
+                              className="card-img-top"
+                              width="auto"
+                              height="165"
+                              controls
+                            >
+                              <source src={item.video} type="video/mp4" />
+                              <source src={item.video} type="video/wmv" />
+                              <source src={item.video} type="video/mkv" />
+                              <source src={item.video} type="video/mov" />
+                              Your browser does not support the video tag.
+                            </video>
+                          ) : (
+                            <img
+                              className="card-img-top"
+                              src={
+                                item?.pic != null
+                                  ? item?.pic
+                                  : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
+                              }
+                              alt="Card image cap"
+                            />
+                          )}
                         </div>
+                        <div className="d-flex m-b30">
+                          <div className="job-post-info">
+                            <h5>
+                              <Link
+                                to={{
+                                  pathname: "/job-detail",
+                                  state: {
+                                    company_id: item?.company_id,
+                                    post_id: item?.id,
+                                  },
+                                }}
+                              >
+                                {item.job_title} {item.department && "- "}
+                                <span
+                                  className="text-uppercase"
+                                  style={{
+                                    fontSize: "12px",
+                                    fontWeight: "normal",
+                                  }}
+                                >
+                                  {item.department?.name}
+                                </span>
+                              </Link>
+                            </h5>
+                            <ul>
+                              <li>
+                                <i className="fa fa-map-marker"></i>
+                                {item.city?.name}
+                                {item.city && ", "} {item.state?.name}
+                                {item.state && ", "}
+                                {item.country?.sortname}
+                              </li>
+
+                              {/* <li>
+                              <i className="fa fa-clock-o"></i>{" "}
+                              {daysSinceGivenDate(new Date(item.created_at))}
+                            </li> */}
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div
+                          className="mb-2 d-flex "
+                          style={{ marginTop: "-30px" }}
+                        >
+                          <div className="text-primary">
+                            <i className="fa fa-bookmark-o"></i>{" "}
+                            {employmentTypeDrop.findIndex(
+                              (x) => x?.id == item.employment_type
+                            ) == -1
+                              ? ""
+                              : employmentTypeDrop[
+                                  employmentTypeDrop.findIndex(
+                                    (x) => x?.id == item.employment_type
+                                  )
+                                ].name}
+                          </div>
+                          <div className="ml-3 text-primary">
+                            <i className="fa fa-clock-o"></i>{" "}
+                            {jobTypeDrop.findIndex(
+                              (x) => x?.id == item.preferred_shift
+                            ) == -1
+                              ? ""
+                              : jobTypeDrop[
+                                  jobTypeDrop.findIndex(
+                                    (x) => x?.id == item.preferred_shift
+                                  )
+                                ].name}
+                          </div>
+                        </div>
+
+                        <div className="d-flex">
+                          <div className="job-time mr-auto">
+                            <Link to={""}>
+                              <span>
+                                {shiftDrop.findIndex(
+                                  (x) => x?.id == item.job_type
+                                ) == -1
+                                  ? ""
+                                  : shiftDrop[
+                                      shiftDrop.findIndex(
+                                        (x) => x?.id == item.job_type
+                                      )
+                                    ].name}
+                              </span>
+                            </Link>
+                          </div>
+                          <div className="salary-bx">
+                            <span>
+                              ${item.min_salary} - ${item.max_salary}
+                            </span>
+                          </div>
+                        </div>
+                        <label className="like-btn">
+                          <input type="checkbox" />
+                          <span className="checkmark"></span>
+                        </label>
                       </div>
-                      <div className="d-flex">
-                        <div className="job-time mr-auto">
-                          <Link to={""}>
-                            <span>Full Time</span>
-                          </Link>
-                        </div>
-                        <div className="salary-bx">
-                          <span>$1200 - $ 2500</span>
-                        </div>
-                      </div>
-                      <label className="like-btn">
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                      </label>
-                    </div>
+                    </Link>
                   </li>
                 ))}
               </ul>

@@ -122,3 +122,12 @@ export const SortSameVals = (a) => {
     return !pos || item != ary[pos - 1];
   });
 };
+
+export const daysSinceGivenDate = (date) => {
+  const dateInSeconds = Math.floor(
+    (new Date().valueOf() - date.valueOf()) / 1000
+  );
+  const oneDayInSeconds = 86400;
+
+  return (dateInSeconds / oneDayInSeconds) | 0; // casted to int
+};

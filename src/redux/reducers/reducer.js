@@ -41,6 +41,7 @@ const initialState = {
   PreviewPost: {},
   MyPostedJobs: [],
   Alljobs: [],
+  SavePreviewPost: {},
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -201,6 +202,11 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         Alljobs: rest.data,
+      };
+    case "SavePreviewPost":
+      return {
+        ...state,
+        SavePreviewPost: rest.data,
       };
 
     default:

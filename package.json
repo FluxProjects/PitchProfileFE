@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.26.0",
+    "moment": "^2.29.2",
     "react": "^17.0.0",
     "react-animated-slider": "^1.1.4",
     "react-bootstrap": "^1.4.0",

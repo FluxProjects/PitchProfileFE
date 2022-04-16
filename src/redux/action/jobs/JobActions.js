@@ -62,19 +62,31 @@ export const AddJobPost =
       axios(config)
         .then(function (response) {
           console.log(JSON.stringify(response.data));
-          toast.success("Job added Successfully!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          dispatch({
-            type: "PreviewPost",
-            data: response.data.data,
-          });
+          if (response.data.successful) {
+            toast.success("Job added Successfully!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            dispatch({
+              type: "SavePreviewPost",
+              data: response.data.data,
+            });
+          } else {
+            toast.success(response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
         })
         .catch(function (error) {
           console.log(error);
@@ -115,6 +127,26 @@ export const GetAllJobPosts = () => async (dispatch, state) => {
       dispatch({
         type: "Alljobs",
         data: response.data.data,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const GetSingleJob = (company_id, id) => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/jobs/get_single_job/${company_id}/${id}`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      dispatch({
+        type: "PreviewPost",
+        data: response.data.data[0],
       });
     })
     .catch(function (error) {

@@ -17,7 +17,12 @@ import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
   key: "root",
-  blacklist: ["pedningActions", "setSingleUserData"],
+  blacklist: [
+    "pedningActions",
+    "setSingleUserData",
+    "PreviewPost",
+    "SavePreviewPost",
+  ],
   storage,
 };
 

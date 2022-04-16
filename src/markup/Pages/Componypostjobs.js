@@ -439,9 +439,27 @@ export default function Componypostjobs() {
                           Loading...
                         </button>
                       )}
-                      <Link to={"/job-detail"} className="site-button  m-b30">
-                        Preview
-                      </Link>
+                      {!loading ? (
+                        <Link
+                          to={{
+                            pathname: "job-detail",
+                            state: {
+                              company_id: state.SavePreviewPost?.company_id,
+                              post_id: state.SavePreviewPost?.id,
+                            },
+                          }}
+                          className="site-button  m-b30"
+                        >
+                          Preview
+                        </Link>
+                      ) : (
+                        <button
+                          type="button"
+                          className="site-button mr-4 m-b30"
+                        >
+                          Loading...
+                        </button>
+                      )}
                     </form>
                   </div>
                 </div>
