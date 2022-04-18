@@ -584,3 +584,52 @@ export const LoginCompany = (email, password, router) => async (dispatch) => {
       });
     });
 };
+
+export const UpdateCompanyPassword =
+  (id, password, authToken, router) => async (dispatch, state) => {
+    var data = JSON.stringify({
+      pr_data: {
+        password,
+        id,
+      },
+    });
+
+    var config = {
+      method: "post",
+      url: `${URL}/company_profile/passwordreset`,
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        if (response.data.status) {
+          toast.success("Password Updated Successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else {
+          toast.error("Something went wrong!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };

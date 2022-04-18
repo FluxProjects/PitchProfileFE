@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
 import CompanyFindbox from "./../Element/CompanyFindbox";
+import Header2 from "../Layout/Header2";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -28,10 +29,14 @@ const brandLogo = [
 ];
 
 class Browsejoblist extends Component {
+  // const state = useSelector((state) => state);
+  // const dispatch = useDispatch();
   render() {
     return (
       <div className="page-wraper">
-        <Header />
+        {/* {state.userDetails?.company_name ? */}
+        <Header2 />
+        {/* // : <Header />} */}
         <div className="page-content bg-white">
           <div
             className="dez-bnr-inr overlay-black-middle"

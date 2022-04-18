@@ -7,10 +7,12 @@ import Jobprofile from "./Pages/Jobprofile";
 import Jobmyresume from "./Pages/Jobmyresume";
 import Jobsappliedjob from "./Pages/Jobsappliedjob";
 import Changepasswordpage from "./Pages/Changepasswordpage";
+import CompanyChangePass from "./Pages/CompanyChangePass";
 
 import Companyprofile from "./Pages/Companyprofile";
 import Companyresume from "./Pages/Companyresume";
 import Componypostjobs from "./Pages/Componypostjobs";
+import CompanyEditJobs from "./Pages/CompanyEditJobs";
 import Companymanage from "./Pages/Companymanage";
 import Browsecandidates from "./Pages/Browsecandidates";
 
@@ -61,12 +63,17 @@ export default function Markup() {
           <Route path="/company-register" component={CompanyRegister} />
           {/* Update Password - Candidate/Company */}
           <Route path="/jobs-change-password" component={Changepasswordpage} />
+          <Route
+            path="/company-change-password"
+            component={CompanyChangePass}
+          />
           {/* Candidate Applied Jobs List */}
           <Route path="/jobs-applied-job" component={Jobsappliedjob} />
           {/* Company Profile */}
           <Route path="/company-profile" component={Companyprofile} />
           {/* Company Job Post */}
           <Route path="/company-post-jobs" component={Componypostjobs} />
+          <Route path="/company-edit-job" component={CompanyEditJobs} />
           <Route
             path="/view-company-post-jobs"
             component={CompanyPostJobView}

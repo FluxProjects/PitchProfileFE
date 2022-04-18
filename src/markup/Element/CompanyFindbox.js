@@ -2,10 +2,13 @@ import React, { Component, useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  filterCompanyName,
+  filterIndustryName,
   GetDepartments,
   GetEducationLevels,
   GetIndustries,
   GetSkills,
+  ResetfilterJobs,
 } from "../../redux/action";
 import {
   filterCandidateAll,
@@ -15,7 +18,7 @@ import {
   filterCandidateSkill,
   ResetfilterCandidate,
 } from "../../redux/action/candidates/FilterMyResumeAction";
-import { AvailabliltyDrop } from "../../utils/DropDownUtils";
+import { AvailabliltyDrop, CompanySizeLevel } from "../../utils/DropDownUtils";
 import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 
@@ -33,11 +36,10 @@ export default function Jobfindbox({ isView }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  const [availabliltyFilter, setAvailabliltyFilter] = useState("");
-  const [skillFilter, setSkillFilter] = useState(null);
-  const [skillFilterLabel, setSkillFilterLabel] = useState(null);
-  const [companyFilter, setCompanyFilter] = useState(null);
-  const [designationFilter, setDesignationFilter] = useState(null);
+  const [CompanyNameFilter, setCompanyNameFilter] = useState("");
+  const [LocationFilter, setLocationFilter] = useState(null);
+  const [IndustryFilter, setIndustryFilter] = useState(null);
+  const [CompanySizeFilter, setCompanySizeFilter] = useState(null);
   const [availaibityBool, setAvailaibityBool] = useState(null);
 
   useEffect(() => {
@@ -83,59 +85,64 @@ export default function Jobfindbox({ isView }) {
     }
   };
 
+  // const callFilter = () => {
+  //   var count = 0;
+  //   if (CompanyNameFilter != null && CompanyNameFilter != "") {
+  //     count++;
+  //   }
+  //   if (LocationFilter != null && LocationFilter != "") {
+  //     count++;
+  //   }
+  //   if (IndustryFilter != null && IndustryFilter != "") {
+  //     count++;
+  //   }
+  //   if (CompanySizeFilter != null && CompanySizeFilter != "") {
+  //     count++;
+  //   }
+
+  //   if (count > 1) {
+  //     dispatch(
+  //       filterCandidateAll(
+  //         availaibityBool,
+  //         LocationFilter,
+  //         IndustryFilter,
+  //         CompanySizeFilter
+  //       )
+  //     );
+  //     return;
+  //   }
+  //   if (CompanyNameFilter != null && CompanyNameFilter != "") {
+  //     console.log("CompanyNameFilter");
+  //     dispatch(
+  //       filterCandidateAvailability(
+  //         CompanyNameFilter == "Available" ? true : "Unavailable" && false
+  //       )
+  //     );
+  //     return;
+  //   }
+  //   if (LocationFilter != null && LocationFilter != "") {
+  //     console.log("LocationFilter");
+
+  //     dispatch(filterCandidateSkill(LocationFilter));
+  //     return;
+  //   }
+  //   if (IndustryFilter != null && IndustryFilter != "") {
+  //     console.log("IndustryFilter");
+
+  //     dispatch(filterCandidateCompany(IndustryFilter));
+  //     return;
+  //   }
+  //   if (CompanySizeFilter != null && CompanySizeFilter != "") {
+  //     console.log("CompanySizeFilter");
+
+  //     dispatch(filterCandidateRole(CompanySizeFilter));
+  //     return;
+  //   }
+  // };
+
   const callFilter = () => {
-    var count = 0;
-    if (availabliltyFilter != null && availabliltyFilter != "") {
-      count++;
-    }
-    if (skillFilter != null && skillFilter != "") {
-      count++;
-    }
-    if (companyFilter != null && companyFilter != "") {
-      count++;
-    }
-    if (designationFilter != null && designationFilter != "") {
-      count++;
-    }
-
-    if (count > 1) {
-      dispatch(
-        filterCandidateAll(
-          availaibityBool,
-          skillFilter,
-          companyFilter,
-          designationFilter
-        )
-      );
-      return;
-    }
-    if (availabliltyFilter != null && availabliltyFilter != "") {
-      console.log("availabliltyFilter");
-      dispatch(
-        filterCandidateAvailability(
-          availabliltyFilter == "Available" ? true : "Unavailable" && false
-        )
-      );
-      return;
-    }
-    if (skillFilter != null && skillFilter != "") {
-      console.log("skillFilter");
-
-      dispatch(filterCandidateSkill(skillFilter));
-      return;
-    }
-    if (companyFilter != null && companyFilter != "") {
-      console.log("companyFilter");
-
-      dispatch(filterCandidateCompany(companyFilter));
-      return;
-    }
-    if (designationFilter != null && designationFilter != "") {
-      console.log("designationFilter");
-
-      dispatch(filterCandidateRole(designationFilter));
-      return;
-    }
+    // dispatch(filterCompanyName(CompanyNameFilter));
+    dispatch(filterIndustryName(IndustryFilter));
   };
 
   return (
@@ -151,32 +158,26 @@ export default function Jobfindbox({ isView }) {
                     <input
                       onChange={(e) => {
                         console.log("eee", e.target.value);
-                        setAvailabliltyFilter(e.target.value);
-                        if (e.target.value == "Available")
-                          setAvailaibityBool(true);
-                        else if (e.target.value == "Unavailable")
-                          setAvailaibityBool(false);
-                        else if (e.target.value == "") setAvailaibityBool("");
-                        else if (e.target.value == null) setAvailaibityBool("");
+                        setCompanyNameFilter(e.target.value);
                       }}
-                      value={availabliltyFilter}
+                      value={CompanyNameFilter}
                       placeholder=""
                       className="form-control w-85"
                       type="text"
-                      list="availabliltyFilter"
+                      list="CompanyNameFilter"
                     />
 
-                    <datalist id="availabliltyFilter">
-                      {AvailabliltyDrop.map((item, key) => (
-                        <option key={key} label={item.name} value={item.id} />
+                    <datalist id="CompanyNameFilter">
+                      {state.AllCompanyNames.map((item, key) => (
+                        <option key={key} value={item} />
                       ))}
                     </datalist>
                     {/* <DropDownModalComponent
                       onChange={(e) => {
                         console.log("eee", e.target.value);
-                        setAvailabliltyFilter(e.target.value);
+                        setCompanyNameFilter(e.target.value);
                       }}
-                      value={availabliltyFilter}
+                      value={CompanyNameFilter}
                       options={AvailabliltyDrop}
                     /> */}
                     {/* <div className="input-group-append">
@@ -194,9 +195,9 @@ export default function Jobfindbox({ isView }) {
                     <input
                       onChange={(e) => {
                         console.log("eee", e.target.value);
-                        setSkillFilter(e.target.value);
+                        setLocationFilter(e.target.value);
                       }}
-                      value={skillFilter}
+                      value={LocationFilter}
                       placeholder=""
                       className="form-control w-85"
                       type="text"
@@ -211,9 +212,9 @@ export default function Jobfindbox({ isView }) {
                     {/* <DropDownModalComponent
                       onChange={(e) => {
                         console.log("eee", e.target.value);
-                        setSkillFilter(e.target.value);
+                        setLocationFilter(e.target.value);
                       }}
-                      value={skillFilter}
+                      value={LocationFilter}
                       options={state.skills}
                     /> */}
                     {/* <div className="input-group-append">
@@ -224,11 +225,14 @@ export default function Jobfindbox({ isView }) {
                   </div>
                   <div style={{ marginBottom: 10 }}>
                     <small>
-                      {state?.skills.findIndex((x) => x?.id == skillFilter) ==
-                      -1
+                      {state?.skills.findIndex(
+                        (x) => x?.id == LocationFilter
+                      ) == -1
                         ? ""
                         : state?.skills[
-                            state?.skills.findIndex((x) => x?.id == skillFilter)
+                            state?.skills.findIndex(
+                              (x) => x?.id == LocationFilter
+                            )
                           ].name}
                     </small>
                   </div>
@@ -241,10 +245,10 @@ export default function Jobfindbox({ isView }) {
                     <input
                       onChange={(e) => {
                         // console.log(e.target.value);
-                        setCompanyFilter(e.target.value);
-                        console.log(companyFilter);
+                        setIndustryFilter(e.target.value);
+                        console.log(IndustryFilter);
                       }}
-                      value={companyFilter}
+                      value={IndustryFilter}
                       placeholder=""
                       className="form-control"
                       type="text"
@@ -252,8 +256,8 @@ export default function Jobfindbox({ isView }) {
                     />
 
                     <datalist id="organizationDrop">
-                      {state.organizationDrop.map((item, key) => (
-                        <option key={key} value={item} />
+                      {state.industries.map((item, key) => (
+                        <option key={key} value={item.id} label={item.name} />
                       ))}
                     </datalist>
 
@@ -272,9 +276,9 @@ export default function Jobfindbox({ isView }) {
                     <input
                       onChange={(e) => {
                         console.log(e.target.value);
-                        setDesignationFilter(e.target.value);
+                        setCompanySizeFilter(e.target.value);
                       }}
-                      value={designationFilter}
+                      value={CompanySizeFilter}
                       placeholder=""
                       className="form-control w-85"
                       type="text"
@@ -282,8 +286,8 @@ export default function Jobfindbox({ isView }) {
                     />
 
                     <datalist id="DesignationDrop">
-                      {state.DesignationDrop.map((item, key) => (
-                        <option key={key} value={item} />
+                      {CompanySizeLevel.map((item, key) => (
+                        <option key={key} value={item.id} label={item.name} />
                       ))}
                     </datalist>
 
@@ -297,10 +301,10 @@ export default function Jobfindbox({ isView }) {
               </div>
               <div className="col-lg-2 col-md-6">
                 <button
-                  //   onClick={(e) => {
-                  //     e.preventDefault();
-                  //     callFilter();
-                  //   }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    callFilter();
+                  }}
                   type="submit"
                   className="site-button btn-block"
                 >
@@ -309,14 +313,14 @@ export default function Jobfindbox({ isView }) {
               </div>
               <div className="col-lg-2 col-md-6">
                 <button
-                  //   onClick={(e) => {
-                  //     e.preventDefault();
-                  //     setAvailabliltyFilter("");
-                  //     setSkillFilter("");
-                  //     setCompanyFilter("");
-                  //     setDesignationFilter("");
-                  //     dispatch(ResetfilterCandidate());
-                  //   }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCompanyNameFilter("");
+                    setLocationFilter("");
+                    setIndustryFilter("");
+                    setCompanySizeFilter("");
+                    dispatch(ResetfilterJobs());
+                  }}
                   type="submit"
                   className="site-button btn-block"
                 >

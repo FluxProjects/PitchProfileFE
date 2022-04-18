@@ -18,6 +18,7 @@ const initialState = {
   userCountry: {},
 
   organizationDrop: [],
+  AllCompanyNames: [],
   DesignationDrop: [],
 
   // Candidate my resume
@@ -41,6 +42,7 @@ const initialState = {
   PreviewPost: {},
   MyPostedJobs: [],
   Alljobs: [],
+  BackupAlljobs: [],
   SavePreviewPost: {},
 };
 
@@ -101,6 +103,11 @@ const changeState = (state = initialState, { type, ...rest }) => {
         ...state,
         organizationDrop: rest.data,
         DesignationDrop: rest.DesignationDrop,
+      };
+    case "AllCompanyNames":
+      return {
+        ...state,
+        AllCompanyNames: rest.data,
       };
     case "setLangs":
       return { ...state, languages: rest.data };
@@ -199,6 +206,12 @@ const changeState = (state = initialState, { type, ...rest }) => {
       };
 
     case "Alljobs":
+      return {
+        ...state,
+        Alljobs: rest.data,
+        BackupAlljobs: rest.data,
+      };
+    case "FilterAllJobs":
       return {
         ...state,
         Alljobs: rest.data,

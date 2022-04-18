@@ -11,6 +11,7 @@ import {
   shiftDrop,
 } from "../../utils/DropDownUtils";
 import { daysSinceGivenDate } from "../../utils/functions";
+import Header2 from "../Layout/Header2";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -27,7 +28,7 @@ export default function Browsejobgrid() {
   }, []);
   return (
     <div className="page-wraper">
-      <Header />
+      {state.userDetails?.company_name ? <Header2 /> : <Header />}
       <div className="page-content bg-white">
         <div
           className="dez-bnr-inr overlay-black-middle"
@@ -55,7 +56,7 @@ export default function Browsejobgrid() {
             <div className="container">
               <div className="job-bx-title clearfix">
                 <h5 className="font-weight-700 pull-left text-uppercase">
-                  2269 Jobs Found
+                  {state.Alljobs.length} Jobs Found
                 </h5>
                 <div className="float-right">
                   <Link to={"/browse-job-grid"} className=" mr-4 ">

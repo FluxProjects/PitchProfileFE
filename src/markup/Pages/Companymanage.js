@@ -4,10 +4,11 @@ import Header2 from "./../Layout/Header2";
 import Footer from "./../Layout/Footer";
 import { Modal } from "react-bootstrap";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
-import { GetMyJobPosts } from "../../redux/action";
+import { GetMyJobPosts, DeleteSingle } from "../../redux/action";
 import { useSelector, useDispatch } from "react-redux";
 import { employmentTypeDrop, jobTypeDrop } from "../../utils/DropDownUtils";
 import { formatDate } from "../../utils/functions";
+import { textSpanContainsTextSpan } from "typescript";
 
 export default function Companymanage() {
   const state = useSelector((state) => state);
@@ -15,6 +16,10 @@ export default function Companymanage() {
 
   const CallGetMyJobPosts = async () => {
     await dispatch(GetMyJobPosts());
+  };
+
+  const CallDeleteSingle = async (id, index) => {
+    await dispatch(DeleteSingle(id, index));
   };
 
   useEffect(() => {
@@ -85,7 +90,7 @@ export default function Companymanage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {state.MyPostedJobs.map((item) => (
+                        {state.MyPostedJobs.map((item, index) => (
                           <tr>
                             <td className="feature">
                               <div className="custom-control custom-checkbox">
@@ -102,7 +107,7 @@ export default function Companymanage() {
                               </div>
                             </td>
                             <td className="job-name">
-                              <Link to={""}>
+                              <Link>
                                 <span className=" text-capitalize">
                                   {item.job_title}
                                 </span>{" "}
@@ -162,16 +167,22 @@ export default function Companymanage() {
                             </td>
                             <td className="job-links">
                               <Link
-                                to={"#"}
-                                data-toggle="modal"
-                                data-target="#exampleModalLong"
-                                onClick={() => handleShow()}
+                                to={{
+                                  pathname: "company-edit-job",
+                                  state: { item: item },
+                                }}
+                                // onClick={() => handleShow()}
                               >
-                                <i className="fa fa-eye"></i>
+                                <i className="fa fa-edit"></i>
                               </Link>
-                              <Link to={""}>
-                                <i className="ti-trash"></i>
-                              </Link>
+                              <span
+                                className="cursorPointer"
+                                onClick={() => {
+                                  CallDeleteSingle(item.id, index);
+                                }}
+                              >
+                                <i className="ti-trash cursorPointer"></i>
+                              </span>
                             </td>
                           </tr>
                         ))}

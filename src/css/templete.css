@@ -1338,6 +1338,14 @@
   padding: 7px;
   line-height: 16px;
 }
+.job-links .fa-edit {
+  background-color: #2e55fa;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  padding: 7px;
+  line-height: 16px;
+}
 .job-links .ti-trash {
   background-color: #e53232;
   color: #fff;

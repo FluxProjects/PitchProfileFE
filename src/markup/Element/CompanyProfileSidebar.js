@@ -33,7 +33,7 @@ export default function Profilesidebar(props) {
     { name: "CV Manager", link: "/jobs-cv-manager", icon: "fa fa-id-card-o" },
     {
       name: "Change Password",
-      link: "/jobs-change-password",
+      link: "/company-change-password",
       icon: "fa fa-key",
     },
     { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
