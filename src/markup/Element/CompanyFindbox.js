@@ -141,8 +141,8 @@ export default function Jobfindbox({ isView }) {
   // };
 
   const callFilter = () => {
-    // dispatch(filterCompanyName(CompanyNameFilter));
-    dispatch(filterIndustryName(IndustryFilter));
+    dispatch(filterCompanyName(CompanyNameFilter));
+    // dispatch(filterIndustryName(IndustryFilter));
   };
 
   return (
