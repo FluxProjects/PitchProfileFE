@@ -6,7 +6,7 @@ import { UpdateCompanyPassword } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 import { toast } from "react-toastify";
-import Profilesidebar from "../Element/Profilesidebar";
+import Profilesidebar from "../Element/CompanyProfileSidebar";
 
 export default function Changepasswordpage() {
   const state = useSelector((state) => state);

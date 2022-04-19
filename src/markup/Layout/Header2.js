@@ -117,18 +117,6 @@ export default function Header2() {
               <div className="extra-nav">
                 {state.authToken ? (
                   <>
-                    <span className="active float-right">
-                      <Link
-                        onClick={(e) => {
-                          e.preventDefault();
-                          callLogoutUser();
-                        }}
-                        className="site-button mt-2"
-                      >
-                        <i className="fa fa-user"></i> Logout
-                      </Link>
-                    </span>
-
                     <Link to={"/company-profile"}>
                       <div className="testimonial-picHead radius ">
                         <img
@@ -149,6 +137,17 @@ export default function Header2() {
                         />
                       </div>
                     </Link>
+                    <span className="active float-left">
+                      <Link
+                        onClick={(e) => {
+                          e.preventDefault();
+                          callLogoutUser();
+                        }}
+                        className="site-button mt-2"
+                      >
+                        <i className="fa fa-user"></i> Logout
+                      </Link>
+                    </span>
                   </>
                 ) : (
                   <li className="active float-right">

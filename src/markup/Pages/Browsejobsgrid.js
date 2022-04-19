@@ -59,7 +59,7 @@ export default function Browsejobgrid() {
                   {state.Alljobs.length} Jobs Found
                 </h5>
                 <div className="float-right">
-                  <Link to={"/browse-job-grid"} className=" mr-4 ">
+                  {/* <Link to={"/browse-job-grid"} className=" mr-4 ">
                     Grid
                   </Link>
                   <Link
@@ -67,7 +67,7 @@ export default function Browsejobgrid() {
                     //   className="site-button  m-b30"
                   >
                     List
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
               <ul className="post-job-bx browse-job-grid row">

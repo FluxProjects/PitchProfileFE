@@ -29,6 +29,7 @@ import CertificateCandidate from "../Components/JobsMyResume/CertificateCandidat
 import SocialProfileCandidate from "../Components/JobsMyResume/SocialProfileCandidate";
 import ReferencesCandidate from "../Components/JobsMyResume/ReferencesCandidate";
 import DesiredCandidateCareerProfile from "../Components/JobsMyResume/DesiredCandidateCareerProfile";
+import Header2 from "../Layout/Header2";
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
@@ -58,7 +59,7 @@ export default function ViewCandidateProfile(props) {
 
   return (
     <>
-      <Header />
+      {state.userDetails?.company_name ? <Header2 /> : <Header />}
       {!loading ? (
         <div className="page-content">
           <div
@@ -77,7 +78,10 @@ export default function ViewCandidateProfile(props) {
               <div className="container">
                 <div className="row">
                   <div className="col-xl-3 col-lg-4 col-md-4 col-sm-12 m-b30">
-                    <Listingsidebar isView={true} />
+                    <Listingsidebar
+                      isCompany={state.userDetails?.company_name ? true : false}
+                      isView={true}
+                    />
                   </div>
                   <div className="col-xl-9 col-lg-8 col-md-8 col-sm-12">
                     {/* Resume Headline */}

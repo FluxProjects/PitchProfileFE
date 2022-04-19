@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-scroll";
 import ListingSidebarRouterLink from "./ListingSidebarRouterLink";
 
-export default function Listingsidebar({ isView }) {
+export default function Listingsidebar({ isView, isCompany }) {
   return (
     <div className="sticky-top bg-white">
       <div className="candidate-info onepage">
@@ -166,7 +166,7 @@ export default function Listingsidebar({ isView }) {
               <span>Attach Cover Letter</span>
             </Link>
           </li>
-          <ListingSidebarRouterLink isView={isView} />
+          {!isCompany && <ListingSidebarRouterLink isView={isView} />}
         </ul>
       </div>
     </div>

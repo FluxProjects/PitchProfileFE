@@ -90,7 +90,7 @@ export default function Companymanage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {state.MyPostedJobs.map((item, index) => (
+                        {state.MyPostedJobs?.map((item, index) => (
                           <tr>
                             <td className="feature">
                               <div className="custom-control custom-checkbox">
