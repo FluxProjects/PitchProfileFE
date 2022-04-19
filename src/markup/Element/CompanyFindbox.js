@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   filterCompanyName,
   filterIndustryName,
+  filterCompanySize,
+  filterJobAll,
   GetDepartments,
   GetEducationLevels,
   GetIndustries,
@@ -141,8 +143,34 @@ export default function Jobfindbox({ isView }) {
   // };
 
   const callFilter = () => {
-    dispatch(filterCompanyName(CompanyNameFilter));
-    // dispatch(filterIndustryName(IndustryFilter));
+    var count = 0;
+    if (CompanyNameFilter != null && CompanyNameFilter != "") {
+      count++;
+    }
+    if (IndustryFilter != null && IndustryFilter != "") {
+      count++;
+    }
+    if (CompanySizeFilter != null && CompanySizeFilter != "") {
+      count++;
+    }
+    if (count > 1) {
+      dispatch(
+        filterJobAll(CompanyNameFilter, IndustryFilter, CompanySizeFilter)
+      );
+      return;
+    }
+    if (CompanyNameFilter != null && CompanyNameFilter != "") {
+      dispatch(filterCompanyName(CompanyNameFilter));
+      return;
+    }
+    if (IndustryFilter != null && IndustryFilter != "") {
+      dispatch(filterIndustryName(IndustryFilter));
+      return;
+    }
+    if (CompanySizeFilter != null && CompanySizeFilter != "") {
+      dispatch(filterCompanySize(CompanySizeFilter));
+      return;
+    }
   };
 
   return (
@@ -188,7 +216,7 @@ export default function Jobfindbox({ isView }) {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-2 col-md-6">
+              {/* <div className="col-lg-2 col-md-6">
                 <div className="form-group">
                   <label>Location</label>
                   <div className="input-group ">
@@ -209,19 +237,7 @@ export default function Jobfindbox({ isView }) {
                         <option key={key} label={item.name} value={item.name} />
                       ))}
                     </datalist>
-                    {/* <DropDownModalComponent
-                      onChange={(e) => {
-                        console.log("eee", e.target.value);
-                        setLocationFilter(e.target.value);
-                      }}
-                      value={LocationFilter}
-                      options={state.skills}
-                    /> */}
-                    {/* <div className="input-group-append">
-                      <span className="input-group-text">
-                        <i className="fa fa-search"></i>
-                      </span>
-                    </div> */}
+                   
                   </div>
                   <div style={{ marginBottom: 10 }}>
                     <small>
@@ -237,7 +253,7 @@ export default function Jobfindbox({ isView }) {
                     </small>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="col-lg-2 col-md-6">
                 <div className="form-group">
                   <label>Industry</label>
