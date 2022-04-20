@@ -3,8 +3,11 @@ import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   filterCompanyName,
+  filterDepartmentName,
   filterIndustryName,
   filterCompanySize,
+  filterShiftType,
+  filterJobType,
   filterJobAll,
   GetDepartments,
   GetEducationLevels,
@@ -20,7 +23,12 @@ import {
   filterCandidateSkill,
   ResetfilterCandidate,
 } from "../../redux/action/candidates/FilterMyResumeAction";
-import { AvailabliltyDrop, CompanySizeLevel } from "../../utils/DropDownUtils";
+import {
+  AvailabliltyDrop,
+  CompanySizeLevel,
+  jobTypeDrop,
+  shiftDrop,
+} from "../../utils/DropDownUtils";
 import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 
@@ -39,6 +47,10 @@ export default function Jobfindbox({ isView }) {
   const state = useSelector((state) => state);
 
   const [CompanyNameFilter, setCompanyNameFilter] = useState("");
+  const [DepartmentNameFilter, setDepartmentNameFilter] = useState("");
+  const [JobTypeFilter, setJobTypeFilter] = useState("");
+  const [ShiftTypeFilter, setShiftTypeFilter] = useState("");
+  const [showMoreFilters, setshowMoreFilters] = useState(false);
   const [LocationFilter, setLocationFilter] = useState(null);
   const [IndustryFilter, setIndustryFilter] = useState(null);
   const [CompanySizeFilter, setCompanySizeFilter] = useState(null);
@@ -76,6 +88,7 @@ export default function Jobfindbox({ isView }) {
     if (state.departments.length < 1) {
       await dispatch(GetDepartments());
     }
+
     if (state.industries.length < 1) {
       await dispatch(GetIndustries());
     }
@@ -87,64 +100,12 @@ export default function Jobfindbox({ isView }) {
     }
   };
 
-  // const callFilter = () => {
-  //   var count = 0;
-  //   if (CompanyNameFilter != null && CompanyNameFilter != "") {
-  //     count++;
-  //   }
-  //   if (LocationFilter != null && LocationFilter != "") {
-  //     count++;
-  //   }
-  //   if (IndustryFilter != null && IndustryFilter != "") {
-  //     count++;
-  //   }
-  //   if (CompanySizeFilter != null && CompanySizeFilter != "") {
-  //     count++;
-  //   }
-
-  //   if (count > 1) {
-  //     dispatch(
-  //       filterCandidateAll(
-  //         availaibityBool,
-  //         LocationFilter,
-  //         IndustryFilter,
-  //         CompanySizeFilter
-  //       )
-  //     );
-  //     return;
-  //   }
-  //   if (CompanyNameFilter != null && CompanyNameFilter != "") {
-  //     console.log("CompanyNameFilter");
-  //     dispatch(
-  //       filterCandidateAvailability(
-  //         CompanyNameFilter == "Available" ? true : "Unavailable" && false
-  //       )
-  //     );
-  //     return;
-  //   }
-  //   if (LocationFilter != null && LocationFilter != "") {
-  //     console.log("LocationFilter");
-
-  //     dispatch(filterCandidateSkill(LocationFilter));
-  //     return;
-  //   }
-  //   if (IndustryFilter != null && IndustryFilter != "") {
-  //     console.log("IndustryFilter");
-
-  //     dispatch(filterCandidateCompany(IndustryFilter));
-  //     return;
-  //   }
-  //   if (CompanySizeFilter != null && CompanySizeFilter != "") {
-  //     console.log("CompanySizeFilter");
-
-  //     dispatch(filterCandidateRole(CompanySizeFilter));
-  //     return;
-  //   }
-  // };
-
   const callFilter = () => {
     var count = 0;
     if (CompanyNameFilter != null && CompanyNameFilter != "") {
+      count++;
+    }
+    if (DepartmentNameFilter != null && DepartmentNameFilter != "") {
       count++;
     }
     if (IndustryFilter != null && IndustryFilter != "") {
@@ -155,7 +116,25 @@ export default function Jobfindbox({ isView }) {
     }
     if (count > 1) {
       dispatch(
-        filterJobAll(CompanyNameFilter, IndustryFilter, CompanySizeFilter)
+        filterJobAll(
+          CompanyNameFilter,
+          DepartmentNameFilter,
+          IndustryFilter,
+          CompanySizeLevel.findIndex((x) => x?.name == CompanySizeFilter) == -1
+            ? ""
+            : CompanySizeLevel[
+                CompanySizeLevel.findIndex((x) => x?.name == CompanySizeFilter)
+              ].id,
+          shiftDrop.findIndex((x) => x?.name == ShiftTypeFilter) == -1
+            ? ""
+            : shiftDrop[shiftDrop.findIndex((x) => x?.name == ShiftTypeFilter)]
+                .id,
+          jobTypeDrop.findIndex((x) => x?.name == JobTypeFilter) == -1
+            ? ""
+            : jobTypeDrop[
+                jobTypeDrop.findIndex((x) => x?.name == JobTypeFilter)
+              ].id
+        )
       );
       return;
     }
@@ -168,7 +147,43 @@ export default function Jobfindbox({ isView }) {
       return;
     }
     if (CompanySizeFilter != null && CompanySizeFilter != "") {
-      dispatch(filterCompanySize(CompanySizeFilter));
+      dispatch(
+        filterCompanySize(
+          CompanySizeLevel.findIndex((x) => x?.name == CompanySizeFilter) == -1
+            ? ""
+            : CompanySizeLevel[
+                CompanySizeLevel.findIndex((x) => x?.name == CompanySizeFilter)
+              ].id
+        )
+      );
+      return;
+    }
+    if (DepartmentNameFilter != null && DepartmentNameFilter != "") {
+      dispatch(filterDepartmentName(DepartmentNameFilter));
+      return;
+    }
+    if (ShiftTypeFilter != null && ShiftTypeFilter != "") {
+      dispatch(
+        filterShiftType(
+          shiftDrop.findIndex((x) => x?.name == ShiftTypeFilter) == -1
+            ? ""
+            : shiftDrop[shiftDrop.findIndex((x) => x?.name == ShiftTypeFilter)]
+                .id
+        )
+      );
+
+      return;
+    }
+    if (JobTypeFilter != null && JobTypeFilter != "") {
+      dispatch(
+        filterJobType(
+          jobTypeDrop.findIndex((x) => x?.name == JobTypeFilter) == -1
+            ? ""
+            : jobTypeDrop[
+                jobTypeDrop.findIndex((x) => x?.name == JobTypeFilter)
+              ].id
+        )
+      );
       return;
     }
   };
@@ -200,60 +215,10 @@ export default function Jobfindbox({ isView }) {
                         <option key={key} value={item} />
                       ))}
                     </datalist>
-                    {/* <DropDownModalComponent
-                      onChange={(e) => {
-                        console.log("eee", e.target.value);
-                        setCompanyNameFilter(e.target.value);
-                      }}
-                      value={CompanyNameFilter}
-                      options={AvailabliltyDrop}
-                    /> */}
-                    {/* <div className="input-group-append">
-                      <span className="input-group-text">
-                        <i className="fa fa-search"></i>
-                      </span>
-                    </div> */}
                   </div>
                 </div>
               </div>
-              {/* <div className="col-lg-2 col-md-6">
-                <div className="form-group">
-                  <label>Location</label>
-                  <div className="input-group ">
-                    <input
-                      onChange={(e) => {
-                        console.log("eee", e.target.value);
-                        setLocationFilter(e.target.value);
-                      }}
-                      value={LocationFilter}
-                      placeholder=""
-                      className="form-control w-85"
-                      type="text"
-                      list="SkillsDropDown"
-                    />
 
-                    <datalist id="SkillsDropDown">
-                      {state.skills.map((item, key) => (
-                        <option key={key} label={item.name} value={item.name} />
-                      ))}
-                    </datalist>
-                   
-                  </div>
-                  <div style={{ marginBottom: 10 }}>
-                    <small>
-                      {state?.skills.findIndex(
-                        (x) => x?.id == LocationFilter
-                      ) == -1
-                        ? ""
-                        : state?.skills[
-                            state?.skills.findIndex(
-                              (x) => x?.id == LocationFilter
-                            )
-                          ].name}
-                    </small>
-                  </div>
-                </div>
-              </div> */}
               <div className="col-lg-2 col-md-6">
                 <div className="form-group">
                   <label>Industry</label>
@@ -273,7 +238,7 @@ export default function Jobfindbox({ isView }) {
 
                     <datalist id="organizationDrop">
                       {state.industries.map((item, key) => (
-                        <option key={key} value={item.id} label={item.name} />
+                        <option key={key} value={item.name} label={item.name} />
                       ))}
                     </datalist>
 
@@ -303,7 +268,7 @@ export default function Jobfindbox({ isView }) {
 
                     <datalist id="DesignationDrop">
                       {CompanySizeLevel.map((item, key) => (
-                        <option key={key} value={item.id} label={item.name} />
+                        <option key={key} value={item.name} label={item.name} />
                       ))}
                     </datalist>
 
@@ -315,7 +280,9 @@ export default function Jobfindbox({ isView }) {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-2 col-md-6">
+
+              {/* <div ></div> */}
+              <div className="col-lg-2 col-md-2">
                 <button
                   onClick={(e) => {
                     e.preventDefault();
@@ -327,7 +294,7 @@ export default function Jobfindbox({ isView }) {
                   <i className="fa fa-search"></i> Apply Filter
                 </button>
               </div>
-              <div className="col-lg-2 col-md-6">
+              <div className="col-lg-2 col-md-2">
                 <button
                   onClick={(e) => {
                     e.preventDefault();
@@ -335,6 +302,10 @@ export default function Jobfindbox({ isView }) {
                     setLocationFilter("");
                     setIndustryFilter("");
                     setCompanySizeFilter("");
+                    setDepartmentNameFilter("");
+                    setJobTypeFilter("");
+                    setShiftTypeFilter("");
+                    setshowMoreFilters("");
                     dispatch(ResetfilterJobs());
                   }}
                   type="submit"
@@ -343,6 +314,113 @@ export default function Jobfindbox({ isView }) {
                   Reset Filter
                 </button>
               </div>
+              <div className="col-lg-2 col-md-2">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // callFilter();
+                    setshowMoreFilters(!showMoreFilters);
+                  }}
+                  type="submit"
+                  className="site-button btn-block"
+                >
+                  <i className="fa fa-search"></i> More Filters
+                </button>
+              </div>
+
+              {showMoreFilters && (
+                <>
+                  <div className="col-lg-2 col-md-6">
+                    <div className="form-group">
+                      <label className="">Department Name</label>
+                      <div className="input-group  ">
+                        <input
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+
+                            setDepartmentNameFilter(e.target.value);
+                          }}
+                          value={DepartmentNameFilter}
+                          placeholder=""
+                          className="form-control w-85"
+                          type="text"
+                          list="DepartmentNameFilter"
+                        />
+
+                        <datalist id="DepartmentNameFilter">
+                          {state.departments.map((item, key) => (
+                            <option
+                              key={key}
+                              value={item.name}
+                              label={item.name}
+                            />
+                          ))}
+                        </datalist>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-2 col-md-6">
+                    <div className="form-group">
+                      <label className="">Job Type</label>
+                      <div className="input-group  ">
+                        <input
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+
+                            setJobTypeFilter(e.target.value);
+                          }}
+                          value={JobTypeFilter}
+                          placeholder=""
+                          className="form-control w-85"
+                          type="text"
+                          list="JobTypeFilter"
+                        />
+
+                        <datalist id="JobTypeFilter">
+                          {jobTypeDrop.map((item, key) => (
+                            <option
+                              key={key}
+                              value={item.name}
+                              label={item.name}
+                            />
+                          ))}
+                        </datalist>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-2 col-md-6">
+                    <div className="form-group">
+                      <label className="">Shift Type</label>
+                      <div className="input-group  ">
+                        <input
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+
+                            setShiftTypeFilter(e.target.value);
+                          }}
+                          value={ShiftTypeFilter}
+                          placeholder=""
+                          className="form-control w-85"
+                          type="text"
+                          list="ShiftTypeFilter"
+                        />
+
+                        <datalist id="ShiftTypeFilter">
+                          {shiftDrop.map((item, key) => (
+                            <option
+                              key={key}
+                              value={item.name}
+                              label={item.name}
+                            />
+                          ))}
+                        </datalist>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </form>
         </div>

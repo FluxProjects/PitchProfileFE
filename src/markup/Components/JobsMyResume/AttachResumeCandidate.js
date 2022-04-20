@@ -13,32 +13,44 @@ export default function AttachResumeCandidate({ isView }) {
     <>
       {/* Attach resume */}
       <div id="attach_resume_bx" className="job-bx bg-white m-b30">
-        <h5 className="m-b10">Attach Cover Letter</h5>
-        <p>
-          Cover Letter is the most important document recruiters look for.
-          Recruiters generally do not look at profiles without Cover Letters.
-        </p>
+        {!isView ? (
+          <>
+            <h5 className="m-b10">Attach Cover Letter</h5>
+            <p>
+              Cover Letter is the most important document recruiters look for.
+              Recruiters generally do not look at profiles without Cover
+              Letters.
+            </p>
+          </>
+        ) : (
+          <>
+            <h5 className="m-b10">Cover Letter</h5>
+          </>
+        )}
+
         <form className="attach-resume">
           <div className="row">
             <div className="col-lg-12 col-md-12">
               {state.singleUserData.cover_letter ? (
                 <>
-                  <span
-                    onClick={() => inputRef.click()}
-                    className="site-button add-btn button-sm float-right"
-                  >
-                    <i className="fa fa-pencil m-r5"></i> Edit
-                    <input
-                      ref={(refParam) => (inputRef = refParam)}
-                      type="file"
-                      className="site-button form-control"
-                      id="customFile"
-                      style={{ display: "none" }}
-                      onChange={(e) => {
-                        dispatch(UploadCoverLetter(e.target.files));
-                      }}
-                    />
-                  </span>
+                  {!isView && (
+                    <span
+                      onClick={() => inputRef.click()}
+                      className="site-button add-btn button-sm float-right"
+                    >
+                      <i className="fa fa-pencil m-r5"></i> Edit
+                      <input
+                        ref={(refParam) => (inputRef = refParam)}
+                        type="file"
+                        className="site-button form-control"
+                        id="customFile"
+                        style={{ display: "none" }}
+                        onChange={(e) => {
+                          dispatch(UploadCoverLetter(e.target.files));
+                        }}
+                      />
+                    </span>
+                  )}
                   <br />
                   <br />
                   <a download href={state.singleUserData.cover_letter}>

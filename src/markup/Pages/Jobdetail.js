@@ -245,13 +245,15 @@ export default function Jobdetail(props) {
                       <h5 className="font-weight-600">Role</h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
                       <p>{state.PreviewPost?.role}</p>
-                      <Link
-                        onClick={() => handleShow()}
-                        // to={"/jobs-applied-job"}
-                        className="site-button"
-                      >
-                        Apply To This Job
-                      </Link>
+                      {!state.userDetails.company_name && (
+                        <Link
+                          onClick={() => handleShow()}
+                          // to={"/jobs-applied-job"}
+                          className="site-button"
+                        >
+                          Apply To This Job
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -58,17 +58,7 @@ export default function Browsejobgrid() {
                 <h5 className="font-weight-700 pull-left text-uppercase">
                   {state.Alljobs.length} Jobs Found
                 </h5>
-                <div className="float-right">
-                  {/* <Link to={"/browse-job-grid"} className=" mr-4 ">
-                    Grid
-                  </Link>
-                  <Link
-                    to={"/browse-job-list"}
-                    //   className="site-button  m-b30"
-                  >
-                    List
-                  </Link> */}
-                </div>
+                <div className="float-right"></div>
               </div>
               <ul className="post-job-bx browse-job-grid row">
                 {state.Alljobs.map((item, index) => (
@@ -169,12 +159,12 @@ export default function Browsejobgrid() {
                           <div className="ml-3 text-primary">
                             <i className="fa fa-clock-o"></i>{" "}
                             {jobTypeDrop.findIndex(
-                              (x) => x?.id == item.preferred_shift
+                              (x) => x?.id == item.job_type
                             ) == -1
                               ? ""
                               : jobTypeDrop[
                                   jobTypeDrop.findIndex(
-                                    (x) => x?.id == item.preferred_shift
+                                    (x) => x?.id == item.job_type
                                   )
                                 ].name}
                           </div>
@@ -185,12 +175,12 @@ export default function Browsejobgrid() {
                             <Link to={""}>
                               <span>
                                 {shiftDrop.findIndex(
-                                  (x) => x?.id == item.job_type
+                                  (x) => x?.id == item.preferred_shift
                                 ) == -1
                                   ? ""
                                   : shiftDrop[
                                       shiftDrop.findIndex(
-                                        (x) => x?.id == item.job_type
+                                        (x) => x?.id == item.preferred_shift
                                       )
                                     ].name}
                               </span>

@@ -25,7 +25,7 @@ import DropDownModalComponent from "./DropDownModalComponent";
 import TextInputModal from "./TextInputModal";
 
 export default function DesiredCandidateCareerProfile({ isView }) {
-  const item = useSelector((state) => state.candidateDesiredCareer);
+  const item = useSelector((state) => state.singleUserData?.desired_careers[0]);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -210,7 +210,7 @@ export default function DesiredCandidateCareerProfile({ isView }) {
           </div>
 
           <div className="row">
-            {state.singleUserData.desired_careers.map((item) => (
+            {DesiredCareerProfileFields.map((item) => (
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">{item.name}</h6>
                 <p className="m-b0">{item.desc}</p>

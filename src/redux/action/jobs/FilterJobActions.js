@@ -39,7 +39,7 @@ export const filterIndustryName =
     var resultCompanySize = [];
     // ? company filter
     resultCompanySize = state().BackupAlljobs.filter(function (item) {
-      if (item?.company?.industry == IndustryFilter) return item;
+      if (item?.company?.industry_name == IndustryFilter) return item;
     });
 
     toast.success("Updated Successfully!", {
@@ -80,13 +80,94 @@ export const filterCompanySize = (CompanySize) => async (dispatch, state) => {
   });
 };
 
+export const filterDepartmentName =
+  (DepartmentName) => async (dispatch, state) => {
+    console.log("companyNamecompanyName", DepartmentName);
+    var resultDepartmentName = [];
+    // ? company filter
+    resultDepartmentName = state().BackupAlljobs.filter(function (item) {
+      if (item?.department?.name == DepartmentName) return item;
+    });
+
+    toast.success("Updated Successfully!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    dispatch({
+      type: "FilterAllJobs",
+      data: resultDepartmentName,
+    });
+  };
+
+export const filterShiftType = (ShiftType) => async (dispatch, state) => {
+  console.log("companyNamecompanyName", ShiftType);
+  var resultShiftType = [];
+  // ? company filter
+  resultShiftType = state().BackupAlljobs.filter(function (item) {
+    if (item?.preferred_shift == ShiftType) return item;
+  });
+
+  toast.success("Updated Successfully!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+  dispatch({
+    type: "FilterAllJobs",
+    data: resultShiftType,
+  });
+};
+
+export const filterJobType = (JobType) => async (dispatch, state) => {
+  console.log("companyNamecompanyName", JobType);
+  var resultJobType = [];
+  // ? company filter
+  resultJobType = state().BackupAlljobs.filter(function (item) {
+    if (item?.job_type == JobType) return item;
+  });
+
+  toast.success("Updated Successfully!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+  dispatch({
+    type: "FilterAllJobs",
+    data: resultJobType,
+  });
+};
+
 export const filterJobAll =
-  (companyName, IndustryFilter, CompanySize) => async (dispatch, state) => {
+  (
+    companyName,
+    DepartmentName,
+    IndustryFilter,
+    CompanySize,
+    ShiftType,
+    JobType
+  ) =>
+  async (dispatch, state) => {
     // return;
     var result = [];
     var resultIndustry = [];
     var resultCompanySize = [];
-    // var resultDesignation = [];
+    var resultDepartmentName = [];
+    var resultJobType = [];
+    var resultShiftType = [];
+
     //    ? is company name filter
     console.log("this is result dep", companyName);
 
@@ -103,7 +184,7 @@ export const filterJobAll =
     result.filter(function (item) {
       if (IndustryFilter?.length == 0 || IndustryFilter == null) {
         resultIndustry.push(item);
-      } else if (item?.company?.industry == IndustryFilter) {
+      } else if (item?.company?.industry_name == IndustryFilter) {
         resultIndustry.push(item);
       }
     });
@@ -117,10 +198,34 @@ export const filterJobAll =
       }
     });
 
+    resultCompanySize.filter(function (item) {
+      if (DepartmentName?.length == 0 || DepartmentName == null) {
+        resultDepartmentName.push(item);
+      } else if (item?.department?.name == DepartmentName) {
+        resultDepartmentName.push(item);
+      }
+    });
+
+    resultDepartmentName.filter(function (item) {
+      if (JobType?.length == 0 || JobType == null) {
+        resultJobType.push(item);
+      } else if (item?.job_type == JobType) {
+        resultJobType.push(item);
+      }
+    });
+
+    resultJobType.filter(function (item) {
+      if (ShiftType?.length == 0 || ShiftType == null) {
+        resultShiftType.push(item);
+      } else if (item?.preferred_shift == ShiftType) {
+        resultShiftType.push(item);
+      }
+    });
+
     const uniqueResults = Array.from(
-      new Set(resultCompanySize.map((a) => a.id))
+      new Set(resultShiftType.map((a) => a.id))
     ).map((id) => {
-      return resultCompanySize.find((a) => a.id === id);
+      return resultShiftType.find((a) => a.id === id);
     });
 
     toast.success("Updated Successfully!", {

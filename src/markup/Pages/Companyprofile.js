@@ -104,6 +104,11 @@ export default function Companyprofile() {
         CompanyTypeVal,
         CompanySize,
         industry,
+        state?.industries.findIndex((x) => x?.id == industry) == -1
+          ? ""
+          : state?.industries[
+              state?.industries.findIndex((x) => x?.id == industry)
+            ].name,
         website,
         address,
         phone,

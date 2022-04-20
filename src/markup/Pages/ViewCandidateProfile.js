@@ -88,36 +88,57 @@ export default function ViewCandidateProfile(props) {
                     {/* <ResumeHeadlineComponent /> */}
 
                     {/* ProfileSummaryComponent */}
-                    <ProfileCandidateSummary isView={true} />
+                    {state.singleUserData.summary && (
+                      <ProfileCandidateSummary isView={true} />
+                    )}
                     {/* Employment */}
-                    <EmploymentCandidate isView={true} />
+                    {state.singleUserData.employments.length > 0 && (
+                      <EmploymentCandidate isView={true} />
+                    )}
 
                     {/* Education */}
-                    <EducaionCandidate isView={true} />
+                    {state.singleUserData.educations.length > 0 && (
+                      <EducaionCandidate isView={true} />
+                    )}
 
                     {/* SkillCandidate */}
-                    <SkillCandidate isView={true} />
+                    {state.singleUserData.candidate_skills.length > 0 && (
+                      <SkillCandidate isView={true} />
+                    )}
 
                     {/* ProjectsComponent */}
-                    <ProjectCandidate isView={true} />
+                    {state.singleUserData.projects.length > 0 && (
+                      <ProjectCandidate isView={true} />
+                    )}
 
                     {/* Certification */}
-                    <CertificateCandidate isView={true} />
+                    {state.singleUserData.certificates.length > 0 && (
+                      <CertificateCandidate isView={true} />
+                    )}
 
                     {/* Social  */}
-                    <SocialProfileCandidate isView={true} />
+                    {state.singleUserData.social_profiles.length > 0 && (
+                      <SocialProfileCandidate isView={true} />
+                    )}
 
                     {/* Reference Component */}
-                    <ReferencesCandidate isView={true} />
-
+                    {state.singleUserData.references.length > 0 && (
+                      <ReferencesCandidate isView={true} />
+                    )}
                     {/* DesiredCareerProfileComponent */}
-                    <DesiredCandidateCareerProfile isView={true} />
+                    {state.singleUserData?.desired_careers?.length > 0 && (
+                      <DesiredCandidateCareerProfile isView={true} />
+                    )}
 
                     {/* ProfileDetailsComponent */}
-                    <ProfileCandidate isView={true} />
+                    {state.singleUserData.dob && (
+                      <ProfileCandidate isView={true} />
+                    )}
 
                     {/* AttachResumeComponent */}
-                    <AttachResumeCandidate isView={true} />
+                    {state.singleUserData.cover_letter && (
+                      <AttachResumeCandidate isView={true} />
+                    )}
                   </div>
                 </div>
               </div>
