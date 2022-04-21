@@ -140,8 +140,14 @@ export default function Companyprofile() {
 
   const CallGetDropDown = async () => {
     await dispatch(GetCountries());
-    await dispatch(GetStates(230));
-    await dispatch(GetCities(3866));
+    await dispatch(
+      GetStates(
+        state.userDetails.country_id ? state.userDetails.country_id : 230
+      )
+    );
+    await dispatch(
+      GetCities(state.userDetails.state_id ? state.userDetails.state_id : 3866)
+    );
     if (state.industries.length < 1) {
       await dispatch(GetIndustries());
     }
