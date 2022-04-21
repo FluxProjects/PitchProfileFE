@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   GetCities,
   GetCountries,
+  GetIndustries,
   GetStates,
   updateCompany,
 } from "../../redux/action";
@@ -61,6 +62,12 @@ export default function Companyprofile() {
   const callUpdateCompany = async () => {
     if (companyName == "") {
       console.log("companyName", companyName);
+      setBtnLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (email == "") {
+      console.log("email", email);
       setBtnLoading(false);
       setFieldAlert(true);
       return;
@@ -135,7 +142,9 @@ export default function Companyprofile() {
     await dispatch(GetCountries());
     await dispatch(GetStates(230));
     await dispatch(GetCities(3866));
-
+    if (state.industries.length < 1) {
+      await dispatch(GetIndustries());
+    }
     setLoading(false);
   };
   const CallGetCities = async (stateId) => {
@@ -298,7 +307,9 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Email</label>
+                            <label>
+                              Email <span className="text-danger"> *</span>
+                            </label>
                             <TextInputModal
                               onChange={(e) => {
                                 console.log(e.target.value);
