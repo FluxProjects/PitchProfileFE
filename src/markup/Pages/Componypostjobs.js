@@ -22,6 +22,7 @@ import {
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
 import AttachVideoCompanyJob from "../Components/JobsMyResume/AttachVideoCompanyJob";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
+import { toast } from "react-toastify";
 
 export default function Componypostjobs() {
   const state = useSelector((state) => state);
@@ -40,7 +41,7 @@ export default function Componypostjobs() {
   const [jobTitle, setJobTitle] = useState("");
   const [jobType, setJobType] = useState(0);
   const [Expirience, setExpirience] = useState(0);
-  const [employmentType, setEmploymentType] = useState(0);
+  const [employmentType, setEmploymentType] = useState(1);
   const [minSalary, setMinSalary] = useState(0);
   const [maxSalary, setMaxSalary] = useState(0);
   const [closingDate, setClosingDate] = useState("");
@@ -83,46 +84,70 @@ export default function Componypostjobs() {
     setLoading(true);
 
     if (jobTitle == "") {
+      console.log("jobTitle");
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (video == "") {
+      console.log("video");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (jobType == null) {
+      console.log("jobType");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (employmentType == "") {
+      console.log("employmentType");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (minSalary == "") {
+      console.log("minSalary");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (maxSalary == "") {
+      console.log("maxSalary");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (role == "") {
+      console.log("role");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (keyRes == "") {
+      console.log("keyRes");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (closingDate == "") {
+      console.log("closingDate");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (department == null) {
+      console.log("department");
+
       setLoading(false);
       setFieldAlert(true);
       return;
@@ -364,6 +389,7 @@ export default function Componypostjobs() {
                               onChange={(e) => setRole(e.target.value)}
                               value={role}
                             />
+                            <small>Characters left: {150 - role.length}</small>
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12">
@@ -377,6 +403,9 @@ export default function Componypostjobs() {
                               onChange={(e) => setKeyRes(e.target.value)}
                               value={keyRes}
                             />
+                            <small>
+                              Characters left: {150 - keyRes.length}
+                            </small>
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12">
@@ -390,6 +419,9 @@ export default function Componypostjobs() {
                               onChange={(e) => setLookingFor(e.target.value)}
                               value={lookingFor}
                             />
+                            <small>
+                              Characters left: {150 - lookingFor.length}
+                            </small>
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12">
@@ -400,9 +432,13 @@ export default function Componypostjobs() {
                             </label>
                             <TextAreaModalComponent
                               placeholder="Enter Perks"
-                              onChange={(e) => setPerks(e.target.value)}
+                              onChange={(e) => {
+                                // 150 - perks.length >= 0 &&
+                                setPerks(e.target.value);
+                              }}
                               value={perks}
                             />
+                            <small>Characters left: {150 - perks.length}</small>
                           </div>
                         </div>
 

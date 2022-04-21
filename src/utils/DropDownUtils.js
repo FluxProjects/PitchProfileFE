@@ -12,6 +12,12 @@ export const CompanySizeLevel = [
   { id: 9, name: "10,000+ Employees" },
 ];
 
+export const JobStatus = [
+  { id: 0, name: "Applied" },
+  { id: 1, name: "Selected" },
+  { id: 2, name: "Rejected" },
+];
+
 export const CompanyType = [
   { id: 1, name: "Public Company" },
   { id: 2, name: "Self-Employed" },

@@ -43,11 +43,11 @@ export default function Jobdetail(props) {
   };
 
   useEffect(() => {
-    console.log(
-      ".location.state.company_id",
-      props.location.state.company_id,
-      props.location.state.post_id
-    );
+    // console.log(
+    //   ".location.state.company_id",
+    //   props.location.state.company_id,
+    //   props.location.state.post_id
+    // );
     callGetSingleJob();
   }, []);
 
@@ -218,19 +218,7 @@ export default function Jobdetail(props) {
                           {state.PreviewPost.country?.sortname}
                         </li>
                       </ul>
-                      {/* <p className="p-t20">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five
-                      centuries, but also the leap into electronic typesetting,
-                      remaining essentially unchanged. It was popularised in the
-                      1960s with the release of Letraset sheets containing Lorem
-                      Ipsum passages, and more recently with desktop publishing
-                      software like Aldus PageMaker including versions of Lorem
-                      Ipsum.
-                    </p> */}
+
                       <h5 className="font-weight-600 mt-4">
                         Key Responsibilities
                       </h5>
@@ -248,7 +236,6 @@ export default function Jobdetail(props) {
                       {!state.userDetails.company_name && (
                         <Link
                           onClick={() => handleShow()}
-                          // to={"/jobs-applied-job"}
                           className="site-button"
                         >
                           Apply To This Job
@@ -323,7 +310,7 @@ export default function Jobdetail(props) {
           onHide={() => handleClose()}
           className="modal fade modal-bx-info editor"
         >
-          <div className="modal-dialog my-0" role="document">
+          <div className="modal-dialog my-0 mx-0" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="CertificationModalLongTitle">
@@ -334,6 +321,7 @@ export default function Jobdetail(props) {
                   className="close"
                   data-dismiss="modal"
                   aria-label="Close"
+                  onClick={() => handleClose()}
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -354,7 +342,7 @@ export default function Jobdetail(props) {
                       </div>
                     </div>
 
-                    <div className="col-lg-12 col-md-12">
+                    {/* <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>Upload Resume</label>
                         <UploadDataComponent
@@ -373,12 +361,13 @@ export default function Jobdetail(props) {
                           }}
                         />
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </form>
               </div>
               <div className="modal-footer">
                 <button
+                  onClick={() => handleClose()}
                   type="button"
                   className="site-button"
                   data-dismiss="modal"
@@ -386,7 +375,7 @@ export default function Jobdetail(props) {
                   Cancel
                 </button>
                 <Link
-                  to={"/jobs-applied-job"}
+                  // to={"/jobs-applied-job"}
                   type="button"
                   className="site-button"
                 >

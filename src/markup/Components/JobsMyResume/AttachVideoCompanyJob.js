@@ -5,14 +5,9 @@ import { UploadProfileVid } from "../../../redux/action";
 export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
+  const [videoSelected, setvideoSelected] = useState(false);
+  const [videoName, setvideoName] = useState(false);
 
-  const handleClose = () => {
-    setShow(false);
-  };
-  const handleShow = () => {
-    setShow(true);
-  };
   let inputRef;
 
   return (
@@ -23,7 +18,7 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
         style={{ backgroundColor: "transparent" }}
         className=" margin_bx_AttachVid m-b30 w-100"
       >
-        {state.userDetails.video != null && (
+        {videoName?.name != null && (
           <>
             <div className="d-flex m-b15">
               {/* <h5 className="m-b15">My Video</h5> */}
@@ -54,14 +49,20 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
           }}
         >
           <div className="row">
-            {state.userDetails.video != null ? (
+            {videoName?.name != null ? (
               <div className="col-lg-12 col-md-12">
+                {videoSelected && (
+                  <p className="m-auto mt-3  align-self-center">
+                    Video Selected {videoName?.name}
+                  </p>
+                )}
+
                 <div class="embed-responsive embed-responsive-16by9">
                   <video width="320" height="240" controls>
-                    <source src={state.userDetails.video} type="video/mp4" />
-                    <source src={state.userDetails.video} type="video/wmv" />
-                    <source src={state.userDetails.video} type="video/mkv" />
-                    <source src={state.userDetails.video} type="video/mov" />
+                    <source src={videoName?.name} type="video/mp4" />
+                    <source src={videoName?.name} type="video/wmv" />
+                    <source src={videoName?.name} type="video/mkv" />
+                    <source src={videoName?.name} type="video/mov" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
@@ -72,20 +73,31 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
                   <div className="form-group">
                     <div className="custom-file row">
                       <div className="col-md-6 cl-sm-12 col-lg-6">
-                        {state.userDetails.video == null && !isView && (
+                        {videoName?.name == null && !isView && (
                           <h5 className="m-b10 z-10 text-left ">
                             Attach Video
                           </h5>
                         )}
                         <p className="m-auto mt-3  align-self-center">
                           {/* <i className="fa  fa-upload"></i> */}
-                          Attract the top talent by providing a Video Job
-                          Description
+                          {videoSelected ? (
+                            <p className="m-auto mt-3  align-self-center">
+                              Video Selected {videoName?.name}
+                            </p>
+                          ) : (
+                            <>
+                              Attract the top talent by providing a Video Job
+                              Description
+                            </>
+                          )}
                         </p>
                       </div>
 
                       <div className="bg-primary h-100 w-100 align-self-center d-flex justify-content-center col-md-6 cl-sm-12 col-lg-6">
                         <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                          }}
                           className="align-self-center"
                           style={{ height: "50px" }}
                         >
@@ -98,7 +110,10 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
                         className="site-button form-control"
                         // id="customFile"
                         onChange={(e) => {
+                          console.log("e.targete.flee", e.target.files[0].name);
                           setVideoFile(e.target.files);
+                          setvideoName(e.target.files);
+                          setvideoSelected(true);
                         }}
                       />
                     </div>
@@ -117,6 +132,8 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
           ref={(refParam) => (inputRef = refParam)}
           onChange={(e) => {
             setVideoFile(e.target.files);
+            setvideoName(e.target.files);
+            setvideoSelected(true);
           }}
         />
       </div>
