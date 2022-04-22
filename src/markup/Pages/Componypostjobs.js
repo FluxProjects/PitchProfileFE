@@ -17,6 +17,8 @@ import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComp
 import {
   employmentTypeDrop,
   jobTypeDrop,
+  SalaryRange,
+  SeniorityLevel,
   shiftDrop,
 } from "../../utils/DropDownUtils";
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
@@ -32,10 +34,24 @@ export default function Componypostjobs() {
   const [country, setCountry] = useState(state.userDetails.country_id);
   const [loading, setLoading] = useState(true);
   const [department, setDepartment] = useState(
-    state.userDetails?.department_id ? state.userDetails?.department_id : 1
+    state.userDetails?.department_id != null
+      ? state.userDetails?.department_id
+      : 1
+  );
+  const [seniorityLevelVal, setSeniorityLevelVal] = useState(
+    state.userDetails?.seniority_level != null
+      ? state.userDetails?.seniority_level
+      : 0
+  );
+  const [salaryRangeVal, setSalaryRangeVal] = useState(
+    state.userDetails?.salary_range != null
+      ? state.userDetails?.salary_range
+      : 0
   );
   const [shiftVal, setShiftVal] = useState(
-    state.userDetails?.preferred_shift ? state.userDetails?.preferred_shift : 1
+    state.userDetails?.preferred_shift != null
+      ? state.userDetails?.preferred_shift
+      : 1
   );
 
   const [jobTitle, setJobTitle] = useState("");
@@ -89,6 +105,18 @@ export default function Componypostjobs() {
       setFieldAlert(true);
       return;
     }
+    if (salaryRangeVal == null) {
+      console.log("salaryRangeVal", salaryRangeVal);
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (seniorityLevelVal == null) {
+      console.log("seniorityLevelVal");
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
     if (video == "") {
       console.log("video");
 
@@ -110,20 +138,20 @@ export default function Componypostjobs() {
       setFieldAlert(true);
       return;
     }
-    if (minSalary == "") {
-      console.log("minSalary");
+    // if (minSalary == "") {
+    //   console.log("minSalary");
 
-      setLoading(false);
-      setFieldAlert(true);
-      return;
-    }
-    if (maxSalary == "") {
-      console.log("maxSalary");
+    //   setLoading(false);
+    //   setFieldAlert(true);
+    //   return;
+    // }
+    // if (maxSalary == "") {
+    //   console.log("maxSalary");
 
-      setLoading(false);
-      setFieldAlert(true);
-      return;
-    }
+    //   setLoading(false);
+    //   setFieldAlert(true);
+    //   return;
+    // }
     if (role == "") {
       console.log("role");
 
@@ -171,6 +199,8 @@ export default function Componypostjobs() {
         Expirience,
         department,
         shiftVal,
+        salaryRangeVal,
+        seniorityLevelVal,
         video
       )
     );
@@ -233,6 +263,33 @@ export default function Componypostjobs() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
+                            <label>Seniority Level</label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                setSeniorityLevelVal(e.target.value);
+                              }}
+                              value={seniorityLevelVal}
+                              options={SeniorityLevel}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
+                            <label>Salary Range</label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                setSalaryRangeVal(e.target.value);
+                              }}
+                              value={salaryRangeVal}
+                              options={SalaryRange}
+                            />
+                          </div>
+                        </div>
+
+                        {/* <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
                             <label>Shift</label>
                             <DropDownModalComponent
                               onChange={(e) => {
@@ -243,7 +300,7 @@ export default function Componypostjobs() {
                               options={shiftDrop}
                             />
                           </div>
-                        </div>
+                        </div> */}
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Job Type</label>
@@ -286,7 +343,7 @@ export default function Componypostjobs() {
                           </div>
                         </div>
 
-                        <div className="col-lg-6 col-md-6">
+                        {/* <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Minimum Salary ($):</label>
                             <TextInputModal
@@ -311,7 +368,7 @@ export default function Componypostjobs() {
                               placeholder="e.g. 20000"
                             />
                           </div>
-                        </div>
+                        </div> */}
 
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
@@ -381,7 +438,7 @@ export default function Componypostjobs() {
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
-                              The Role
+                              Job Description
                               <span className="text-danger"> *</span>
                             </label>
                             <TextAreaModalComponent
@@ -389,7 +446,7 @@ export default function Componypostjobs() {
                               onChange={(e) => setRole(e.target.value)}
                               value={role}
                             />
-                            <small>Characters left: {150 - role.length}</small>
+                            {/* <small>Characters left: {150 - role.length}</small> */}
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12">
@@ -403,9 +460,9 @@ export default function Componypostjobs() {
                               onChange={(e) => setKeyRes(e.target.value)}
                               value={keyRes}
                             />
-                            <small>
+                            {/* <small>
                               Characters left: {150 - keyRes.length}
-                            </small>
+                            </small> */}
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12">
@@ -419,9 +476,9 @@ export default function Componypostjobs() {
                               onChange={(e) => setLookingFor(e.target.value)}
                               value={lookingFor}
                             />
-                            <small>
+                            {/* <small>
                               Characters left: {150 - lookingFor.length}
-                            </small>
+                            </small> */}
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12">
@@ -438,7 +495,7 @@ export default function Componypostjobs() {
                               }}
                               value={perks}
                             />
-                            <small>Characters left: {150 - perks.length}</small>
+                            {/* <small>Characters left: {150 - perks.length}</small> */}
                           </div>
                         </div>
 

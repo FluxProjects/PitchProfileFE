@@ -107,20 +107,29 @@ export default function Companymanage() {
                               </div>
                             </td>
                             <td className="job-name">
-                              <Link>
+                              <Link
+                                to={{
+                                  pathname: "/job-detail",
+                                  state: {
+                                    company_id: item?.company_id,
+                                    post_id: item?.id,
+                                  },
+                                }}
+                              >
                                 <span className=" text-capitalize">
                                   {item.job_title}
                                 </span>{" "}
-                                -{" "}
-                                <span
-                                  className="text-uppercase"
-                                  style={{
-                                    fontSize: "12px",
-                                    fontWeight: "normal",
-                                  }}
-                                >
-                                  {item.department?.name}
-                                </span>
+                                {item.department?.name && (
+                                  <span
+                                    className="text-uppercase"
+                                    style={{
+                                      fontSize: "12px",
+                                      fontWeight: "normal",
+                                    }}
+                                  >
+                                    - {item.department?.name}
+                                  </span>
+                                )}
                               </Link>
                               <ul className="job-post-info">
                                 <li>

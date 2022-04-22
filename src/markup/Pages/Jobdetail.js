@@ -8,7 +8,11 @@ import UploadDataComponent from "../Components/UIComponents/UploadDataComponent"
 import { useDispatch, useSelector } from "react-redux";
 import Header2 from "../Layout/Header2";
 import { formatDate } from "../../utils/functions";
-import { employmentTypeDrop, jobTypeDrop } from "../../utils/DropDownUtils";
+import {
+  employmentTypeDrop,
+  jobTypeDrop,
+  SalaryRange,
+} from "../../utils/DropDownUtils";
 import { GetSingleJob } from "../../redux/action";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
@@ -96,27 +100,46 @@ export default function Jobdetail(props) {
                     <div className="sticky-top">
                       <div className="row">
                         <div className="col-lg-12 col-md-6">
-                          <div className="m-b30">
-                            <video width="320" height="240" controls>
-                              <source
-                                src={state.PreviewPost.video}
-                                type="video/mp4"
-                              />
-                              <source
-                                src={state.PreviewPost.video}
-                                type="video/wmv"
-                              />
-                              <source
-                                src={state.PreviewPost.video}
-                                type="video/mkv"
-                              />
-                              <source
-                                src={state.PreviewPost.video}
-                                type="video/mov"
-                              />
-                              Your browser does not support the video tag.
-                            </video>
-                          </div>
+                          {state.PreviewPost != null &&
+                            state.PreviewPost.video && (
+                              <div className="m-b30">
+                                <video width="320" height="240" controls>
+                                  <source
+                                    src={
+                                      state.PreviewPost?.video
+                                        ? state.PreviewPost?.video
+                                        : state.SavePreviewPost?.video
+                                    }
+                                    type="video/mp4"
+                                  />
+                                  <source
+                                    src={
+                                      state.PreviewPost?.video
+                                        ? state.PreviewPost?.video
+                                        : state.SavePreviewPost?.video
+                                    }
+                                    type="video/wmv"
+                                  />
+                                  <source
+                                    src={
+                                      state.PreviewPost?.video
+                                        ? state.PreviewPost?.video
+                                        : state.SavePreviewPost?.video
+                                    }
+                                    type="video/mkv"
+                                  />
+                                  <source
+                                    src={
+                                      state.PreviewPost?.video
+                                        ? state.PreviewPost?.video
+                                        : state.SavePreviewPost?.video
+                                    }
+                                    type="video/mov"
+                                  />
+                                  Your browser does not support the video tag.
+                                </video>
+                              </div>
+                            )}
                         </div>
                         <div className="col-lg-12 col-md-6">
                           <div className="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
@@ -170,8 +193,18 @@ export default function Jobdetail(props) {
                                 <strong className="font-weight-700 text-black">
                                   Salary
                                 </strong>{" "}
-                                $ {state.PreviewPost?.max_salary} - ${" "}
-                                {state.PreviewPost?.min_salary}
+                                {SalaryRange.findIndex(
+                                  (x) =>
+                                    x?.id == state.PreviewPost?.salary_range
+                                ) == -1
+                                  ? ""
+                                  : SalaryRange[
+                                      SalaryRange.findIndex(
+                                        (x) =>
+                                          x?.id ==
+                                          state.PreviewPost?.salary_range
+                                      )
+                                    ].name}
                               </li>
                             </ul>
                           </div>
@@ -218,7 +251,9 @@ export default function Jobdetail(props) {
                           {state.PreviewPost.country?.sortname}
                         </li>
                       </ul>
-
+                      <h5 className="font-weight-600">Job Description</h5>
+                      <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+                      <p>{state.PreviewPost?.role}</p>
                       <h5 className="font-weight-600 mt-4">
                         Key Responsibilities
                       </h5>
@@ -230,9 +265,7 @@ export default function Jobdetail(props) {
                       <h5 className="font-weight-600">Perks</h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
                       <p>{state.PreviewPost?.the_perks}</p>
-                      <h5 className="font-weight-600">Role</h5>
-                      <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{state.PreviewPost?.role}</p>
+
                       {!state.userDetails.company_name && (
                         <Link
                           onClick={() => handleShow()}

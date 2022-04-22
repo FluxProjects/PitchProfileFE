@@ -18,6 +18,30 @@ export const JobStatus = [
   { id: 2, name: "Rejected" },
 ];
 
+export const SeniorityLevel = [
+  { id: 0, name: "Intern" },
+  { id: 1, name: "Senior Manager" },
+  { id: 2, name: "Manager" },
+  { id: 3, name: "Associate" },
+  { id: 4, name: "Executive" },
+  { id: 5, name: "Director" },
+];
+
+export const SalaryRange = [
+  { id: 0, name: "0 - $10k" },
+  { id: 1, name: "$10k - $20k" },
+  { id: 2, name: "$20k - $30k" },
+  { id: 3, name: "$30k - $40k" },
+  { id: 4, name: "$40k - $50k" },
+  { id: 5, name: "$50k - $60k" },
+  { id: 6, name: "$60k - $70k" },
+  { id: 7, name: "$70k - $80k" },
+  { id: 8, name: "$80k - $90k" },
+  { id: 9, name: "$90k - $100k" },
+  { id: 10, name: "$100k - $125k" },
+  { id: 11, name: "$125k +" },
+];
+
 export const CompanyType = [
   { id: 1, name: "Public Company" },
   { id: 2, name: "Self-Employed" },

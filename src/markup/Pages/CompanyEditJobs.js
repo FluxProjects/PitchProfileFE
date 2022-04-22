@@ -12,11 +12,14 @@ import {
   GetDepartments,
   GetIndustries,
   GetStates,
+  UpdateJobWithVideoPost,
 } from "../../redux/action";
 import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
 import {
   employmentTypeDrop,
   jobTypeDrop,
+  SalaryRange,
+  SeniorityLevel,
   shiftDrop,
 } from "../../utils/DropDownUtils";
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
@@ -34,6 +37,12 @@ export default function Componypostjobs(props) {
   const [department, setDepartment] = useState(
     item?.department_id ? item?.department_id : 1
   );
+  const [seniorityLevelVal, setSeniorityLevelVal] = useState(
+    item?.seniority_level ? item?.seniority_level : 0
+  );
+  const [salaryRangeVal, setSalaryRangeVal] = useState(
+    item?.salary_range ? item?.salary_range : 0
+  );
   const [shiftVal, setShiftVal] = useState(
     item?.preferred_shift ? item?.preferred_shift : 1
   );
@@ -50,6 +59,7 @@ export default function Componypostjobs(props) {
   const [lookingFor, setLookingFor] = useState(item?.looking_for);
   const [perks, setPerks] = useState(item?.the_perks);
   const [video, setVideo] = useState(item?.video);
+  const [UpdatedVideo, setUpdatedVideo] = useState(false);
 
   const [fieldAlert, setFieldAlert] = useState(false);
   // const [perks, setPerks] = useState("");
@@ -86,6 +96,20 @@ export default function Componypostjobs(props) {
   const callUpdateJobPost = async () => {
     setLoading(true);
 
+    // console.log("UpdatedVideo", UpdatedVideo);
+    // return;
+    if (salaryRangeVal == null) {
+      console.log("salaryRangeVal", salaryRangeVal);
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
+    if (seniorityLevelVal == null) {
+      console.log("seniorityLevelVal");
+      setLoading(false);
+      setFieldAlert(true);
+      return;
+    }
     if (jobTitle == "") {
       setLoading(false);
       setFieldAlert(true);
@@ -97,16 +121,6 @@ export default function Componypostjobs(props) {
       return;
     }
     if (employmentType == "") {
-      setLoading(false);
-      setFieldAlert(true);
-      return;
-    }
-    if (minSalary == "") {
-      setLoading(false);
-      setFieldAlert(true);
-      return;
-    }
-    if (maxSalary == "") {
       setLoading(false);
       setFieldAlert(true);
       return;
@@ -132,28 +146,58 @@ export default function Componypostjobs(props) {
       return;
     }
 
-    await dispatch(
-      UpdateJobPost(
-        item.id,
-        jobTitle,
-        jobType,
-        employmentType,
-        minSalary,
-        maxSalary,
-        city,
-        stateName,
-        country,
-        role,
-        keyRes,
-        lookingFor,
-        perks,
-        closingDate,
-        Expirience,
-        department,
-        shiftVal,
-        video
-      )
-    );
+    if (UpdatedVideo) {
+      await dispatch(
+        UpdateJobWithVideoPost(
+          item.id,
+          jobTitle,
+          jobType,
+          employmentType,
+          minSalary,
+          maxSalary,
+          city,
+          stateName,
+          country,
+          role,
+          keyRes,
+          lookingFor,
+          perks,
+          closingDate,
+          Expirience,
+          department,
+          shiftVal,
+          seniorityLevelVal,
+          salaryRangeVal,
+          video
+        )
+      );
+    } else {
+      await dispatch(
+        UpdateJobPost(
+          item.id,
+          jobTitle,
+          jobType,
+          employmentType,
+          minSalary,
+          maxSalary,
+          city,
+          stateName,
+          country,
+          role,
+          keyRes,
+          lookingFor,
+          perks,
+          closingDate,
+          Expirience,
+          department,
+          shiftVal,
+          seniorityLevelVal,
+          salaryRangeVal,
+          video
+        )
+      );
+    }
+
     setLoading(false);
   };
 
@@ -213,6 +257,32 @@ export default function Componypostjobs(props) {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
+                            <label>Seniority Level</label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                setSeniorityLevelVal(e.target.value);
+                              }}
+                              value={seniorityLevelVal}
+                              options={SeniorityLevel}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
+                            <label>Salary Range</label>
+                            <DropDownModalComponent
+                              onChange={(e) => {
+                                console.log("eee", e.target.value);
+                                setSalaryRangeVal(e.target.value);
+                              }}
+                              value={salaryRangeVal}
+                              options={SalaryRange}
+                            />
+                          </div>
+                        </div>
+                        {/* <div className="col-lg-6 col-md-6">
+                          <div className="form-group">
                             <label>Shift</label>
                             <DropDownModalComponent
                               onChange={(e) => {
@@ -223,7 +293,7 @@ export default function Componypostjobs(props) {
                               options={shiftDrop}
                             />
                           </div>
-                        </div>
+                        </div> */}
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Job Type</label>
@@ -266,7 +336,7 @@ export default function Componypostjobs(props) {
                           </div>
                         </div>
 
-                        <div className="col-lg-6 col-md-6">
+                        {/* <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Minimum Salary ($):</label>
                             <TextInputModal
@@ -291,7 +361,7 @@ export default function Componypostjobs(props) {
                               placeholder="e.g. 20000"
                             />
                           </div>
-                        </div>
+                        </div> */}
 
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
@@ -361,7 +431,7 @@ export default function Componypostjobs(props) {
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
-                              The Role
+                              Job Description
                               <span className="text-danger"> *</span>
                             </label>
                             <TextAreaModalComponent
@@ -415,6 +485,7 @@ export default function Componypostjobs(props) {
                           <AttachVideoCompanyJob
                             setVideoFile={(e) => {
                               console.log("files", e[0]);
+                              setUpdatedVideo(true);
                               setVideo(e);
                             }}
                           />
@@ -444,7 +515,7 @@ export default function Componypostjobs(props) {
                           Loading...
                         </button>
                       )}
-                      {!loading ? (
+                      {/* {!loading ? (
                         <Link
                           to={{
                             pathname: "job-detail",
@@ -464,7 +535,7 @@ export default function Componypostjobs(props) {
                         >
                           Loading...
                         </button>
-                      )}
+                      )} */}
                     </form>
                   </div>
                 </div>
