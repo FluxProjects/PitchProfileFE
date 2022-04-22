@@ -8,6 +8,8 @@ import { GetAllJobPosts } from "../../redux/action";
 import {
   employmentTypeDrop,
   jobTypeDrop,
+  SalaryRange,
+  SeniorityLevel,
   shiftDrop,
 } from "../../utils/DropDownUtils";
 import { daysSinceGivenDate } from "../../utils/functions";
@@ -111,7 +113,7 @@ export default function Browsejobgrid() {
                                   },
                                 }}
                               >
-                                {item.job_title} {item.department && "- "}
+                                {item.job_title} {item.seniority_level && "- "}
                                 <span
                                   className="text-uppercase"
                                   style={{
@@ -119,11 +121,36 @@ export default function Browsejobgrid() {
                                     fontWeight: "normal",
                                   }}
                                 >
-                                  {item.department?.name}
+                                  {SeniorityLevel.findIndex(
+                                    (x) => x?.id == item.seniority_level
+                                  ) == -1
+                                    ? ""
+                                    : SeniorityLevel[
+                                        SeniorityLevel.findIndex(
+                                          (x) => x?.id == item.seniority_level
+                                        )
+                                      ].name}
+                                  {/* {item.department?.name} */}
+                                </span>
+                                <br />
+                                <span
+                                  className="text-uppercase"
+                                  style={{
+                                    fontSize: "12px",
+                                    fontWeight: "normal",
+                                    color: "#2e55fa",
+                                  }}
+                                >
+                                  {item.company.company_name}
+                                  {/* {item.department?.name} */}
                                 </span>
                               </Link>
                             </h5>
-                            <ul>
+                            <ul
+                              style={{
+                                marginTop: "-12px",
+                              }}
+                            >
                               <li>
                                 <i className="fa fa-map-marker"></i>
                                 {item.city?.name}
@@ -173,22 +200,20 @@ export default function Browsejobgrid() {
                         <div className="d-flex">
                           <div className="job-time mr-auto">
                             <Link to={""}>
-                              <span>
-                                {shiftDrop.findIndex(
-                                  (x) => x?.id == item.preferred_shift
-                                ) == -1
-                                  ? ""
-                                  : shiftDrop[
-                                      shiftDrop.findIndex(
-                                        (x) => x?.id == item.preferred_shift
-                                      )
-                                    ].name}
-                              </span>
+                              <span>1 day ago</span>
                             </Link>
                           </div>
                           <div className="salary-bx">
                             <span>
-                              ${item.min_salary} - ${item.max_salary}
+                              {SalaryRange.findIndex(
+                                (x) => x?.id == item?.salary_range
+                              ) == -1
+                                ? ""
+                                : SalaryRange[
+                                    SalaryRange.findIndex(
+                                      (x) => x?.id == item?.salary_range
+                                    )
+                                  ].name}
                             </span>
                           </div>
                         </div>
