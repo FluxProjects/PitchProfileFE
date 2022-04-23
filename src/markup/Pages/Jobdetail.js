@@ -218,7 +218,7 @@ export default function Jobdetail(props) {
                         </li>
                         <li>
                           <strong>Deadline:</strong>{" "}
-                          {!loading && state.PreviewPost?.closing_date}
+                          {!loading && state.PreviewPost?.closingDate}
                         </li>
                         <li>
                           <i className="ti-location-pin text-black m-r5"></i>{" "}

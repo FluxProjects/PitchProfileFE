@@ -2,6 +2,7 @@ import axios from "axios";
 import { cloudURL, URL } from "../../../utils/APIUtils";
 
 import { toast } from "react-toastify";
+import { formatDate } from "../../../utils/functions";
 
 export const AddJobPost =
   (
@@ -377,10 +378,12 @@ export const GetSingleJob = (company_id, id) => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
+      console.log("mydatatat", response.data.data[0].closing_date);
+      var newVal = response.data.data[0];
+      newVal.closingDate = formatDate(response.data.data[0].closing_date);
       dispatch({
         type: "PreviewPost",
-        data: response.data.data[0],
+        data: newVal,
       });
     })
     .catch(function (error) {
