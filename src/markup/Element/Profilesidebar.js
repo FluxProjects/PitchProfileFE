@@ -15,14 +15,14 @@ export default function Profilesidebar(props) {
     //   link: "/jobs-my-resume-view",
     //   icon: "fa fa-file-text-o",
     // },
-    { name: "Saved Jobs", link: "/jobs-saved-jobs", icon: "fa fa-heart-o" },
+    // { name: "Saved Jobs", link: "/jobs-saved-jobs", icon: "fa fa-heart-o" },
     {
       name: "Applied Jobs",
       link: "/jobs-applied-job",
       icon: "fa fa-briefcase",
     },
-    { name: "Job Alerts", link: "/jobs-alerts", icon: "fa fa-bell-o" },
-    { name: "CV Manager", link: "/jobs-cv-manager", icon: "fa fa-id-card-o" },
+    // { name: "Job Alerts", link: "/jobs-alerts", icon: "fa fa-bell-o" },
+    // { name: "CV Manager", link: "/jobs-cv-manager", icon: "fa fa-id-card-o" },
     {
       name: "Change Password",
       link: "/jobs-change-password",

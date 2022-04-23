@@ -100,6 +100,13 @@ export default function Companyprofile() {
       setFieldAlert(true);
       return;
     }
+    if (Description == "") {
+      console.log("Description", Description);
+      setBtnLoading(false);
+
+      setFieldAlert(true);
+      return;
+    }
 
     setFieldAlert(false);
 
@@ -171,7 +178,10 @@ export default function Companyprofile() {
               <div className="row">
                 <div className="col-xl-3 col-lg-4 m-b30">
                   <div className="sticky-top">
-                    <Profilesidebar />
+                    <Profilesidebar
+                      image={`require("./../../images/team/pic1.jpg")`}
+                      isActive="Company Profile"
+                    />
                   </div>
                 </div>
                 <div className="col-xl-9 col-lg-8 m-b30">
@@ -221,7 +231,10 @@ export default function Companyprofile() {
 
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
-                            <label>Description:</label>
+                            <label>
+                              Description{" "}
+                              <span className="text-danger"> *</span>
+                            </label>
                             <textarea
                               value={Description}
                               onChange={(e) => {

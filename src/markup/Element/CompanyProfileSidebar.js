@@ -19,18 +19,18 @@ export default function Profilesidebar(props) {
     //   link: "/jobs-my-resume-view",
     //   icon: "fa fa-file-text-o",
     // },
-    {
-      name: "Transactions",
-      link: "/company-transactions",
-      icon: "fa fa-heart-o",
-    },
+    // {
+    //   name: "Transactions",
+    //   link: "/company-transactions",
+    //   icon: "fa fa-heart-o",
+    // },
     {
       name: "Manage jobs",
       link: "/company-manage-job",
       icon: "fa fa-briefcase",
     },
     { name: "Resume", link: "/company-resume", icon: "fa fa-bell-o" },
-    { name: "CV Manager", link: "/jobs-cv-manager", icon: "fa fa-id-card-o" },
+    // { name: "CV Manager", link: "/jobs-cv-manager", icon: "fa fa-id-card-o" },
     {
       name: "Change Password",
       link: "/company-change-password",

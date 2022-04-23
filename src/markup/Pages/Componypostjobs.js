@@ -217,7 +217,10 @@ export default function Componypostjobs() {
               <div className="row">
                 <div className="col-xl-3 col-lg-4 m-b30">
                   <div className="sticky-top">
-                    <Profilesidebar />
+                    <Profilesidebar
+                      image={`require("./../../images/team/pic1.jpg")`}
+                      isActive="Post A Job"
+                    />
                   </div>
                 </div>
                 <div className="col-xl-9 col-lg-8 m-b30">
