@@ -26,77 +26,102 @@ export const AddJobPost =
     files
   ) =>
   async (dispatch, state) => {
-    const formData = new FormData();
-    formData.append("file", files[0]);
-    formData.append("upload_preset", "pitchprofile");
-
-    await axios.post(`${cloudURL}/video/upload`, formData).then(async (res) => {
-      var data = JSON.stringify({
-        data: {
-          company_id: state().userDetails.id,
-          job_title,
-          job_type,
-          employment_type,
-          min_salary,
-          max_salary,
-          city_id,
-          state_id,
-          country_id,
-          role,
-          key_responsibilities,
-          looking_for,
-          the_perks,
-          closing_date,
-          expirience: expirience,
-          department_id: department_id,
-          preferred_shift,
-          seniority_level,
-          salary_range,
-          video: res.data.secure_url,
-        },
-      });
-      var config = {
-        method: "post",
-        url: `${URL}/jobs/add_job`,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
-      };
-      axios(config)
-        .then(function (response) {
-          console.log(JSON.stringify(response.data));
-          if (response.data.successful) {
-            toast.success("Job added Successfully!", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-            dispatch({
-              type: "SavePreviewPost",
-              data: response.data.data,
-            });
-          } else {
-            toast.success(response.data.message, {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    var data = JSON.stringify({
+      data: {
+        company_id: state().userDetails.id,
+        job_title,
+        job_type,
+        employment_type,
+        min_salary,
+        max_salary,
+        city_id,
+        state_id,
+        country_id,
+        role,
+        key_responsibilities,
+        looking_for,
+        the_perks,
+        closing_date,
+        expirience: expirience,
+        department_id: department_id,
+        preferred_shift,
+        seniority_level,
+        salary_range,
+        video: files,
+      },
     });
+    var config = {
+      method: "post",
+      url: `${URL}/jobs/add_job`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        if (response.data.successful) {
+          toast.success("Job added Successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          dispatch({
+            type: "SavePreviewPost",
+            data: response.data.data,
+          });
+        } else {
+          toast.success(response.data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
+
+export const SaveJobVideo = (files) => async (dispatch, state) => {
+  const formData = new FormData();
+  formData.append("file", files[0]);
+  formData.append("upload_preset", "pitchprofile");
+
+  await axios.post(`${cloudURL}/video/upload`, formData).then(async (res) => {
+    if (res.data.secure_url) {
+      toast.success("Video uploaded Successfully!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      dispatch({
+        type: "SaveJobVideo",
+        data: res.data.secure_url,
+      });
+    }
+  });
+};
+
+export const UpdateJobVideo = (files) => async (dispatch, state) => {
+  dispatch({
+    type: "SaveJobVideo",
+    data: files,
+  });
+};
 
 export const UpdateJobPost =
   (

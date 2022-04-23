@@ -4,7 +4,11 @@ import Header2 from "./../Layout/Header2";
 import Footer from "./../Layout/Footer";
 import { Modal } from "react-bootstrap";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
-import { GetMyJobPosts, DeleteSingle } from "../../redux/action";
+import {
+  GetMyJobPosts,
+  DeleteSingle,
+  UpdateJobVideo,
+} from "../../redux/action";
 import { useSelector, useDispatch } from "react-redux";
 import { employmentTypeDrop, jobTypeDrop } from "../../utils/DropDownUtils";
 import { formatDate } from "../../utils/functions";
@@ -180,7 +184,9 @@ export default function Companymanage() {
                                   pathname: "company-edit-job",
                                   state: { item: item },
                                 }}
-                                // onClick={() => handleShow()}
+                                onClick={() => {
+                                  dispatch(UpdateJobVideo(item.video));
+                                }}
                               >
                                 <i className="fa fa-edit"></i>
                               </Link>

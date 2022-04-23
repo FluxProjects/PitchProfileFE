@@ -168,7 +168,7 @@ export default function Componypostjobs(props) {
           shiftVal,
           seniorityLevelVal,
           salaryRangeVal,
-          video
+          state.SaveJobVideo
         )
       );
     } else {
@@ -193,7 +193,7 @@ export default function Componypostjobs(props) {
           shiftVal,
           seniorityLevelVal,
           salaryRangeVal,
-          video
+          state.SaveJobVideo
         )
       );
     }

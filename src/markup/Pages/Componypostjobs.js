@@ -117,7 +117,7 @@ export default function Componypostjobs() {
       setFieldAlert(true);
       return;
     }
-    if (video == "") {
+    if (state.SaveJobVideo == "") {
       console.log("video");
 
       setLoading(false);
@@ -201,7 +201,7 @@ export default function Componypostjobs() {
         shiftVal,
         salaryRangeVal,
         seniorityLevelVal,
-        video
+        state.SaveJobVideo
       )
     );
     setLoading(false);
@@ -532,7 +532,7 @@ export default function Componypostjobs() {
                           Loading...
                         </button>
                       )}
-                      {!loading ? (
+                      {/* {!loading ? (
                         <Link
                           to={{
                             pathname: "job-detail",
@@ -552,7 +552,7 @@ export default function Componypostjobs() {
                         >
                           Loading...
                         </button>
-                      )}
+                      )} */}
                     </form>
                   </div>
                 </div>

@@ -316,10 +316,14 @@ export default function Companyprofile() {
                             <label>
                               Email <span className="text-danger"> *</span>
                             </label>
+                            <br />
+                            {/* <label>{email}</label> */}
+
                             <TextInputModal
+                              disabled={true}
                               onChange={(e) => {
                                 console.log(e.target.value);
-                                setEmail(e.target.value.toLowerCase());
+                                // setEmail(e.target.value.toLowerCase());
                               }}
                               value={email}
                               placeholder="Email"

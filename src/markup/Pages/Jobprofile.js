@@ -91,8 +91,14 @@ export default function Jobprofile() {
     await dispatch(GetLanguages());
 
     await dispatch(GetCountries());
-    await dispatch(GetStates(230));
-    await dispatch(GetCities(3866));
+    await dispatch(
+      GetStates(
+        state.userDetails.country_id ? state.userDetails.country_id : 230
+      )
+    );
+    await dispatch(
+      GetCities(state.userDetails.state_id ? state.userDetails.state_id : 3866)
+    );
 
     setLoading(false);
   };
@@ -610,7 +616,10 @@ export default function Jobprofile() {
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                               <label>Email Address:</label>
+                              <br />
+                              {/* <label>{email}</label> */}
                               <TextInputModal
+                                disabled={true}
                                 placeholder={"info@example.com"}
                                 value={email}
                                 onChange={(e) => {

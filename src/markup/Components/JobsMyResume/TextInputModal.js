@@ -8,10 +8,12 @@ export default function TextInputModal({
   min,
   max,
   value,
+  disabled,
 }) {
   return (
     <>
       <input
+        disabled={disabled}
         type={type}
         className="form-control"
         placeholder={placeholder}
