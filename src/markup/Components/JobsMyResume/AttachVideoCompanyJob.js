@@ -50,7 +50,7 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
           }}
         >
           <div className="row">
-            {state.SaveJobVideo != null ? (
+            {state.SaveJobVideo != null && state.SaveJobVideo != "" ? (
               <div className="col-lg-12 col-md-12">
                 <ReactPlayer
                   url={state.SaveJobVideo}

@@ -1,7 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { UploadCompanyProfileImage, UploadImage } from "../../redux/action";
+import {
+  UpdateJobVideo,
+  UploadCompanyProfileImage,
+  UploadImage,
+} from "../../redux/action";
 
 export default function Profilesidebar(props) {
   const state = useSelector((state) => state);
@@ -13,6 +17,9 @@ export default function Profilesidebar(props) {
       name: "Post A Job",
       link: "/company-post-jobs",
       icon: "fa fa-file-text-o",
+      onClick: () => {
+        dispatch(UpdateJobVideo(""));
+      },
     },
     // {
     //   name: "View My Resume",
@@ -89,6 +96,7 @@ export default function Profilesidebar(props) {
           {links.map((item) => (
             <li>
               <Link
+                onClick={item.onClick}
                 to={item.link}
                 className={props.isActive == item.name ? "active" : ""}
               >

@@ -12,8 +12,10 @@ import {
   employmentTypeDrop,
   jobTypeDrop,
   SalaryRange,
+  SeniorityLevel,
 } from "../../utils/DropDownUtils";
 import { GetSingleJob } from "../../redux/action";
+import JobDetailHeader from "../Components/JobsMyResume/JobDetailHeader";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -73,21 +75,21 @@ export default function Jobdetail(props) {
         {state.userDetails.company_name ? <Header2 /> : <Header />}
 
         <div className="page-content bg-white">
-          <div
+          {/* <div
             className="dez-bnr-inr overlay-black-middle"
             style={{ backgroundImage: "url(" + bnr + ")" }}
           >
             <div className="container">
-              <div className="dez-bnr-inr-entry">
-                <h1 className="text-white">Job Detail</h1>
-                <div className="breadcrumb-row">
-                  <ul className="list-inline">
-                    <li>
-                      <Link to={"#"}>Home</Link>
-                    </li>
-                    <li>Job Detail</li>
-                  </ul>
-                </div>
+
+            </div>
+          </div> */}
+          <div
+            className="overlay-black-dark profile-edit p-t50 "
+            style={{ backgroundImage: "url(" + bnr + ")" }}
+          >
+            <div className="container">
+              <div className="row">
+                <JobDetailHeader isView={false} />
               </div>
             </div>
           </div>
@@ -100,53 +102,29 @@ export default function Jobdetail(props) {
                     <div className="sticky-top">
                       <div className="row">
                         <div className="col-lg-12 col-md-6">
-                          {state.PreviewPost != null &&
-                            state.PreviewPost.video && (
-                              <div className="m-b30">
-                                <video width="320" height="240" controls>
-                                  <source
-                                    src={
-                                      state.PreviewPost?.video
-                                        ? state.PreviewPost?.video
-                                        : state.SavePreviewPost?.video
-                                    }
-                                    type="video/mp4"
-                                  />
-                                  <source
-                                    src={
-                                      state.PreviewPost?.video
-                                        ? state.PreviewPost?.video
-                                        : state.SavePreviewPost?.video
-                                    }
-                                    type="video/wmv"
-                                  />
-                                  <source
-                                    src={
-                                      state.PreviewPost?.video
-                                        ? state.PreviewPost?.video
-                                        : state.SavePreviewPost?.video
-                                    }
-                                    type="video/mkv"
-                                  />
-                                  <source
-                                    src={
-                                      state.PreviewPost?.video
-                                        ? state.PreviewPost?.video
-                                        : state.SavePreviewPost?.video
-                                    }
-                                    type="video/mov"
-                                  />
-                                  Your browser does not support the video tag.
-                                </video>
-                              </div>
-                            )}
-                        </div>
-                        <div className="col-lg-12 col-md-6">
                           <div className="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                             <h4 className="text-black font-weight-700 p-t10 m-b15">
                               Job Details
                             </h4>
                             <ul>
+                              <li>
+                                <i className="fa fa-user"></i>
+                                <strong className="font-weight-700 text-black">
+                                  Seniority Level
+                                </strong>{" "}
+                                {SeniorityLevel.findIndex(
+                                  (x) =>
+                                    x?.id == state.PreviewPost?.seniority_level
+                                ) == -1
+                                  ? ""
+                                  : SeniorityLevel[
+                                      SeniorityLevel.findIndex(
+                                        (x) =>
+                                          x?.id ==
+                                          state.PreviewPost?.seniority_level
+                                      )
+                                    ].name}
+                              </li>
                               <li>
                                 <i className="fa fa-user"></i>
                                 <strong className="font-weight-700 text-black">

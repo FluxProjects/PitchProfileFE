@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { LogoutUser } from "../../redux/action";
+import { LogoutUser, UpdateJobVideo } from "../../redux/action";
 
 var bnr3 = require("./../../images/background/bg3.jpg");
 
@@ -45,6 +45,9 @@ export default function Header2() {
       name: "Post A Job",
       link: "/company-post-jobs",
       index: "1",
+      onClick: () => {
+        dispatch(UpdateJobVideo(""));
+      },
     },
     {
       name: "Manage Jobs",
@@ -190,7 +193,11 @@ export default function Header2() {
                           : ""
                       }
                     >
-                      <Link to={item.link} className="dez-page">
+                      <Link
+                        onClick={item.onClick}
+                        to={item.link}
+                        className="dez-page"
+                      >
                         {item.name}
                       </Link>
                     </li>
