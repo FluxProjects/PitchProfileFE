@@ -137,7 +137,7 @@ export default function JobDetailHeader({ isView }) {
             <h4 className="m-b0">{state.PreviewPost?.company?.company_name}</h4>
             <p className="m-b15">{state.PreviewPost?.company?.tagline}</p>
             <ul className="clearfix">
-              <li className="w-100">
+              {/* <li className="w-100">
                 <i className="ti-location-pin"></i>{" "}
                 {cityName != null && cityName != "" ? (
                   <>{cityName},</>
@@ -154,7 +154,7 @@ export default function JobDetailHeader({ isView }) {
                 ) : (
                   <>Country</>
                 )}
-              </li>
+              </li> */}
               {state.userDetails.phone != "" && (
                 <li className="w-100">
                   <i className="ti-mobile"></i>{" "}
@@ -170,7 +170,7 @@ export default function JobDetailHeader({ isView }) {
       </div>
       <div className="col-lg-5 col-md-5 col-sm-12">
         <div className=" text-white ">
-          {state.PreviewPost != null && state.PreviewPost.video && (
+          {/* {state.PreviewPost != null && state.PreviewPost.video && (
             <div className="m-b30">
               <ReactPlayer
                 url={
@@ -183,7 +183,7 @@ export default function JobDetailHeader({ isView }) {
                 controls={true}
               />
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </>

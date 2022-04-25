@@ -16,6 +16,7 @@ import {
 } from "../../utils/DropDownUtils";
 import { GetSingleJob } from "../../redux/action";
 import JobDetailHeader from "../Components/JobsMyResume/JobDetailHeader";
+import ReactPlayer from "react-player";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -101,6 +102,23 @@ export default function Jobdetail(props) {
                   <div className="col-lg-4">
                     <div className="sticky-top">
                       <div className="row">
+                        <div className="col-lg-12 col-md-6">
+                          {state.PreviewPost != null &&
+                            state.PreviewPost.video && (
+                              <div className="m-b30">
+                                <ReactPlayer
+                                  url={
+                                    state.PreviewPost?.video
+                                      ? state.PreviewPost?.video
+                                      : state.SavePreviewPost?.video
+                                  }
+                                  width="100%"
+                                  height="100%"
+                                  controls={true}
+                                />
+                              </div>
+                            )}
+                        </div>
                         <div className="col-lg-12 col-md-6">
                           <div className="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                             <h4 className="text-black font-weight-700 p-t10 m-b15">

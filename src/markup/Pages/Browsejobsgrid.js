@@ -102,8 +102,13 @@ export default function Browsejobgrid() {
                           )}
                         </div>
                         <div className="d-flex m-b30">
-                          <div className="job-post-info">
-                            <h5>
+                          <div className="job-post-info ">
+                            <h5
+                              className="text-uppercase text-decoration-none"
+                              style={{
+                                textDecoration: "none !important",
+                              }}
+                            >
                               <Link
                                 to={{
                                   pathname: "/job-detail",
@@ -139,6 +144,7 @@ export default function Browsejobgrid() {
                                     fontSize: "12px",
                                     fontWeight: "normal",
                                     color: "#2e55fa",
+                                    textDecoration: "none",
                                   }}
                                 >
                                   {item.company.company_name}
@@ -149,6 +155,7 @@ export default function Browsejobgrid() {
                             <ul
                               style={{
                                 marginTop: "-12px",
+                                textDecoration: "none",
                               }}
                             >
                               <li>
@@ -158,11 +165,6 @@ export default function Browsejobgrid() {
                                 {item.state && ", "}
                                 {item.country?.sortname}
                               </li>
-
-                              {/* <li>
-                              <i className="fa fa-clock-o"></i>{" "}
-                              {daysSinceGivenDate(new Date(item.created_at))}
-                            </li> */}
                             </ul>
                           </div>
                         </div>
@@ -200,7 +202,10 @@ export default function Browsejobgrid() {
                         <div className="d-flex">
                           <div className="job-time mr-auto">
                             <Link to={""}>
-                              <span>1 day ago</span>
+                              <span>
+                                {daysSinceGivenDate(new Date(item.created_at))}{" "}
+                                ago
+                              </span>
                             </Link>
                           </div>
                           <div className="salary-bx">

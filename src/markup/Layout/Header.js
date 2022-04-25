@@ -73,6 +73,7 @@ export default function Header() {
       link: "/contact",
       index: "5",
     },
+
     // {
     //   name: "Companies",
     //   link: "/company-profile",

@@ -143,6 +143,16 @@ img.card-img-top {
   left: 0;
 }
 
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
+.AttachCompanyVid {
+  height: 100% !important;
+  border: 2px dotted #ced4da !important;
+  /* border-radius: 20px !important; */
+}
+
 .cursorPointer {
   cursor: pointer;
 }

@@ -44,7 +44,7 @@ const initialState = {
   Alljobs: [],
   BackupAlljobs: [],
   SavePreviewPost: {},
-  SaveJobVideo: {},
+  SaveJobVideo: "",
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {

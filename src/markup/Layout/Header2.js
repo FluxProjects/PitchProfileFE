@@ -83,7 +83,7 @@ export default function Header2() {
 
   return (
     <>
-      <header className="site-header mo-left header border-bottom fullwidth">
+      <header className="site-header mo-left header fullwidth">
         <div className="sticky-header main-bar-wraper navbar-expand-lg">
           <div className="main-bar clearfix">
             <div className="container clearfix">
@@ -92,13 +92,7 @@ export default function Header2() {
                   <img
                     src={require("./../../images/logo.png")}
                     className="logo"
-                    alt=""
-                    style={{
-                      minHeight: "55px",
-                      maxHeight: "55px",
-                      maxWidth: "60px",
-                      minWidth: "60px",
-                    }}
+                    alt="img"
                   />
                 </Link>
               </div>
@@ -117,74 +111,12 @@ export default function Header2() {
                 <span></span>
               </button>
 
-              <div className="extra-nav">
-                {state.authToken ? (
-                  <>
-                    <Link to={"/company-profile"}>
-                      <div className="testimonial-picHead radius ">
-                        <img
-                          src={
-                            state.userDetails?.pic != null
-                              ? state.userDetails.pic
-                              : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
-                          }
-                          style={{
-                            minHeight: "55px",
-                            maxHeight: "55px",
-                            maxWidth: "60px",
-                            minWidth: "60px",
-                          }}
-                          alt=""
-                          width="20"
-                          height="20"
-                        />
-                      </div>
-                    </Link>
-                    <span className="active float-left">
-                      <Link
-                        onClick={(e) => {
-                          e.preventDefault();
-                          callLogoutUser();
-                        }}
-                        className="site-button mt-2"
-                      >
-                        <i className="fa fa-user"></i> Logout
-                      </Link>
-                    </span>
-                  </>
-                ) : (
-                  <li className="active float-right">
-                    <Link to={"/company-login"} className="site-button">
-                      <i className="fa fa-user"></i> Login
-                    </Link>
-                  </li>
-                )}
-              </div>
-
               <div
                 style={{ marginTop: 5 }}
                 className="header-nav navbar-collapse collapse myNavbar justify-content-start"
                 id="navbarNavDropdown"
               >
                 <ul className="nav navbar-nav">
-                  {/* <li className="active">
-                    <Link to={"#"}>
-                      Home <i className="fa fa-chevron-down"></i>
-                    </Link>
-                    <ul className="sub-menu">
-                      <li>
-                        <Link to={"./"} className="dez-page">
-                          Home 1
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={"index-2"} className="dez-page">
-                          Home 2
-                        </Link>
-                      </li>
-                    </ul>
-                  </li> */}
-
                   {links.map((item, index) => (
                     <li
                       className={
@@ -193,15 +125,83 @@ export default function Header2() {
                           : ""
                       }
                     >
-                      <Link
-                        onClick={item.onClick}
-                        to={item.link}
-                        className="dez-page"
-                      >
+                      <Link to={item.link} className="dez-page">
                         {item.name}
                       </Link>
                     </li>
                   ))}
+                  <li></li>
+                  <li style={{ marginLeft: 100 }}></li>
+
+                  {state.authToken ? (
+                    <>
+                      <li className="active float-right">
+                        <Link
+                          onClick={(e) => {
+                            e.preventDefault();
+                            callLogoutUser();
+                          }}
+                          className="site-button"
+                        >
+                          <i className="fa fa-user"></i> Logout
+                        </Link>
+                      </li>
+
+                      <Link to={"/company-profile"}>
+                        <div className="testimonial-picHead radius mt-2">
+                          <img
+                            src={
+                              state.userDetails?.pic != null
+                                ? state.userDetails.pic
+                                : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+                            }
+                            style={{
+                              minHeight: "55px",
+                              maxHeight: "55px",
+                              maxWidth: "60px",
+                              minWidth: "60px",
+                            }}
+                            alt=""
+                            width="20"
+                            height="20"
+                          />
+                        </div>
+                      </Link>
+                    </>
+                  ) : (
+                    <li className="active float-right">
+                      <Link to={"/login"} className="site-button">
+                        <i className="fa fa-user"></i> Login
+                      </Link>
+                    </li>
+                  )}
+
+                  {/* <li className="float-right noselect" style={{ padding: 0 }}>
+                    <Link className="dez-page">All links</Link>
+                    <ul className="sub-menu">
+                      {links.map((item) => (
+                        <li>
+                          <Link to={item.link} className="dez-page">
+                            {item.name}
+                            <span className="new-page">New</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li> */}
+                  {/* <li className="float-right noselect" style={{ padding: 0 }}> */}
+
+                  {/*  <ul className="sub-menu">
+                      {linksTest.map((item) => (
+                        <li>
+                          <Link to={item.link} className="dez-page">
+                            {item.name}
+                            <span className="new-page">New</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li> */}
                 </ul>
               </div>
             </div>

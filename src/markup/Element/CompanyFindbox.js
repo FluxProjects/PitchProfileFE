@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   filterCompanyName,
-  filterDepartmentName,
+  filterSalaryRange,
   filterIndustryName,
   filterCompanySize,
   filterShiftType,
@@ -27,6 +27,7 @@ import {
   AvailabliltyDrop,
   CompanySizeLevel,
   jobTypeDrop,
+  SalaryRange,
   shiftDrop,
 } from "../../utils/DropDownUtils";
 import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
@@ -47,7 +48,7 @@ export default function Jobfindbox({ isView }) {
   const state = useSelector((state) => state);
 
   const [CompanyNameFilter, setCompanyNameFilter] = useState("");
-  const [DepartmentNameFilter, setDepartmentNameFilter] = useState("");
+  const [SalaryRangeVal, setSalaryRange] = useState("");
   const [JobTypeFilter, setJobTypeFilter] = useState("");
   const [ShiftTypeFilter, setShiftTypeFilter] = useState("");
   const [showMoreFilters, setshowMoreFilters] = useState(false);
@@ -105,7 +106,7 @@ export default function Jobfindbox({ isView }) {
     if (CompanyNameFilter != null && CompanyNameFilter != "") {
       count++;
     }
-    if (DepartmentNameFilter != null && DepartmentNameFilter != "") {
+    if (SalaryRangeVal != null && SalaryRangeVal != "") {
       count++;
     }
     if (IndustryFilter != null && IndustryFilter != "") {
@@ -118,7 +119,7 @@ export default function Jobfindbox({ isView }) {
       dispatch(
         filterJobAll(
           CompanyNameFilter,
-          DepartmentNameFilter,
+          SalaryRangeVal,
           IndustryFilter,
           CompanySizeLevel.findIndex((x) => x?.name == CompanySizeFilter) == -1
             ? ""
@@ -158,8 +159,15 @@ export default function Jobfindbox({ isView }) {
       );
       return;
     }
-    if (DepartmentNameFilter != null && DepartmentNameFilter != "") {
-      dispatch(filterDepartmentName(DepartmentNameFilter));
+    if (SalaryRangeVal != null && SalaryRangeVal != "") {
+      dispatch(
+        filterSalaryRange(
+          SalaryRange.findIndex((x) => x?.name == SalaryRangeVal) == -1
+            ? ""
+            : SalaryRange[SalaryRange.findIndex((x) => x?.id == SalaryRangeVal)]
+                .id
+        )
+      );
       return;
     }
     if (ShiftTypeFilter != null && ShiftTypeFilter != "") {
@@ -302,7 +310,7 @@ export default function Jobfindbox({ isView }) {
                     setLocationFilter("");
                     setIndustryFilter("");
                     setCompanySizeFilter("");
-                    setDepartmentNameFilter("");
+                    setSalaryRange("");
                     setJobTypeFilter("");
                     setShiftTypeFilter("");
                     setshowMoreFilters("");
@@ -332,23 +340,22 @@ export default function Jobfindbox({ isView }) {
                 <>
                   <div className="col-lg-2 col-md-6">
                     <div className="form-group">
-                      <label className="">Department Name</label>
+                      <label className="">Salary Range</label>
                       <div className="input-group  ">
                         <input
                           onChange={(e) => {
                             console.log("eee", e.target.value);
-
-                            setDepartmentNameFilter(e.target.value);
+                            setSalaryRange(e.target.value);
                           }}
-                          value={DepartmentNameFilter}
+                          value={SalaryRangeVal}
                           placeholder=""
                           className="form-control w-85"
                           type="text"
-                          list="DepartmentNameFilter"
+                          list="SalaryRangeVal"
                         />
 
-                        <datalist id="DepartmentNameFilter">
-                          {state.departments.map((item, key) => (
+                        <datalist id="SalaryRangeVal">
+                          {SalaryRange.map((item, key) => (
                             <option
                               key={key}
                               value={item.name}

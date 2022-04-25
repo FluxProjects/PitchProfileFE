@@ -80,29 +80,28 @@ export const filterCompanySize = (CompanySize) => async (dispatch, state) => {
   });
 };
 
-export const filterDepartmentName =
-  (DepartmentName) => async (dispatch, state) => {
-    console.log("companyNamecompanyName", DepartmentName);
-    var resultDepartmentName = [];
-    // ? company filter
-    resultDepartmentName = state().BackupAlljobs.filter(function (item) {
-      if (item?.department?.name == DepartmentName) return item;
-    });
+export const filterSalaryRange = (SalaryRange) => async (dispatch, state) => {
+  console.log("companyNamecompanyName", SalaryRange);
+  var resultSalaryRange = [];
+  // ? company filter
+  resultSalaryRange = state().BackupAlljobs.filter(function (item) {
+    if (item?.salary_range == SalaryRange) return item;
+  });
 
-    toast.success("Updated Successfully!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-    dispatch({
-      type: "FilterAllJobs",
-      data: resultDepartmentName,
-    });
-  };
+  toast.success("Updated Successfully!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+  dispatch({
+    type: "FilterAllJobs",
+    data: resultSalaryRange,
+  });
+};
 
 export const filterShiftType = (ShiftType) => async (dispatch, state) => {
   console.log("companyNamecompanyName", ShiftType);
