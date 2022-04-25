@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   filterCompanyName,
   filterSalaryRange,
+  filterDepartmentName,
   filterIndustryName,
+  filterSeniorityLevel,
+  filterEmploymentType,
   filterCompanySize,
   filterShiftType,
   filterJobType,
@@ -26,8 +29,10 @@ import {
 import {
   AvailabliltyDrop,
   CompanySizeLevel,
+  employmentTypeDrop,
   jobTypeDrop,
   SalaryRange,
+  SeniorityLevel,
   shiftDrop,
 } from "../../utils/DropDownUtils";
 import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
@@ -49,13 +54,15 @@ export default function Jobfindbox({ isView }) {
 
   const [CompanyNameFilter, setCompanyNameFilter] = useState("");
   const [SalaryRangeVal, setSalaryRange] = useState("");
-  const [JobTypeFilter, setJobTypeFilter] = useState("");
+  const [EmploymentTypeFilter, setEmploymentTypeFilter] = useState("");
   const [ShiftTypeFilter, setShiftTypeFilter] = useState("");
   const [showMoreFilters, setshowMoreFilters] = useState(false);
   const [LocationFilter, setLocationFilter] = useState(null);
   const [IndustryFilter, setIndustryFilter] = useState(null);
   const [CompanySizeFilter, setCompanySizeFilter] = useState(null);
   const [availaibityBool, setAvailaibityBool] = useState(null);
+  const [DepartmentNameFilter, setDepartmentNameFilter] = useState("");
+  const [SeniorityLevelFilter, setSeniorityLevelFilter] = useState("");
 
   useEffect(() => {
     callGetDrop();
@@ -119,7 +126,7 @@ export default function Jobfindbox({ isView }) {
       dispatch(
         filterJobAll(
           CompanyNameFilter,
-          SalaryRangeVal,
+          DepartmentNameFilter,
           IndustryFilter,
           CompanySizeLevel.findIndex((x) => x?.name == CompanySizeFilter) == -1
             ? ""
@@ -130,10 +137,10 @@ export default function Jobfindbox({ isView }) {
             ? ""
             : shiftDrop[shiftDrop.findIndex((x) => x?.name == ShiftTypeFilter)]
                 .id,
-          jobTypeDrop.findIndex((x) => x?.name == JobTypeFilter) == -1
+          jobTypeDrop.findIndex((x) => x?.name == EmploymentTypeFilter) == -1
             ? ""
             : jobTypeDrop[
-                jobTypeDrop.findIndex((x) => x?.name == JobTypeFilter)
+                jobTypeDrop.findIndex((x) => x?.name == EmploymentTypeFilter)
               ].id
         )
       );
@@ -145,6 +152,22 @@ export default function Jobfindbox({ isView }) {
     }
     if (IndustryFilter != null && IndustryFilter != "") {
       dispatch(filterIndustryName(IndustryFilter));
+      return;
+    }
+    if (DepartmentNameFilter != null && DepartmentNameFilter != "") {
+      dispatch(filterDepartmentName(DepartmentNameFilter));
+      return;
+    }
+    if (SeniorityLevelFilter != null && SeniorityLevelFilter != "") {
+      dispatch(
+        filterSeniorityLevel(
+          SeniorityLevel.findIndex((x) => x?.name == SeniorityLevelFilter) == -1
+            ? ""
+            : SeniorityLevel[
+                SeniorityLevel.findIndex((x) => x?.name == SeniorityLevelFilter)
+              ].id
+        )
+      );
       return;
     }
     if (CompanySizeFilter != null && CompanySizeFilter != "") {
@@ -182,13 +205,17 @@ export default function Jobfindbox({ isView }) {
 
       return;
     }
-    if (JobTypeFilter != null && JobTypeFilter != "") {
+    if (EmploymentTypeFilter != null && EmploymentTypeFilter != "") {
       dispatch(
-        filterJobType(
-          jobTypeDrop.findIndex((x) => x?.name == JobTypeFilter) == -1
+        filterEmploymentType(
+          employmentTypeDrop.findIndex(
+            (x) => x?.name == EmploymentTypeFilter
+          ) == -1
             ? ""
-            : jobTypeDrop[
-                jobTypeDrop.findIndex((x) => x?.name == JobTypeFilter)
+            : employmentTypeDrop[
+                employmentTypeDrop.findIndex(
+                  (x) => x?.name == EmploymentTypeFilter
+                )
               ].id
         )
       );
@@ -258,6 +285,7 @@ export default function Jobfindbox({ isView }) {
                   </div>
                 </div>
               </div>
+
               <div className="col-lg-2 col-md-6">
                 <div className="form-group">
                   <label>Company Size</label>
@@ -307,11 +335,13 @@ export default function Jobfindbox({ isView }) {
                   onClick={(e) => {
                     e.preventDefault();
                     setCompanyNameFilter("");
+                    setSeniorityLevelFilter("");
                     setLocationFilter("");
                     setIndustryFilter("");
                     setCompanySizeFilter("");
+                    setDepartmentNameFilter("");
                     setSalaryRange("");
-                    setJobTypeFilter("");
+                    setEmploymentTypeFilter("");
                     setShiftTypeFilter("");
                     setshowMoreFilters("");
                     dispatch(ResetfilterJobs());
@@ -338,6 +368,64 @@ export default function Jobfindbox({ isView }) {
 
               {showMoreFilters && (
                 <>
+                  <div className="col-lg-2 col-md-6">
+                    <div className="form-group">
+                      <label className="">Department Name</label>
+                      <div className="input-group  ">
+                        <input
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+
+                            setDepartmentNameFilter(e.target.value);
+                          }}
+                          value={DepartmentNameFilter}
+                          placeholder=""
+                          className="form-control w-85"
+                          type="text"
+                          list="DepartmentNameFilter"
+                        />
+
+                        <datalist id="DepartmentNameFilter">
+                          {state.departments.map((item, key) => (
+                            <option
+                              key={key}
+                              value={item.name}
+                              label={item.name}
+                            />
+                          ))}
+                        </datalist>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-2 col-md-6">
+                    <div className="form-group">
+                      <label className="">Seniority Level</label>
+                      <div className="input-group  ">
+                        <input
+                          onChange={(e) => {
+                            console.log("eee", e.target.value);
+                            setSeniorityLevelFilter(e.target.value);
+                          }}
+                          value={SeniorityLevelFilter}
+                          placeholder=""
+                          className="form-control w-85"
+                          type="text"
+                          list="SeniorityLevelFilter"
+                        />
+
+                        <datalist id="SeniorityLevelFilter">
+                          {SeniorityLevel.map((item, key) => (
+                            <option
+                              key={key}
+                              value={item.name}
+                              label={item.name}
+                            />
+                          ))}
+                        </datalist>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="col-lg-2 col-md-6">
                     <div className="form-group">
                       <label className="">Salary Range</label>
@@ -369,23 +457,23 @@ export default function Jobfindbox({ isView }) {
 
                   <div className="col-lg-2 col-md-6">
                     <div className="form-group">
-                      <label className="">Job Type</label>
+                      <label className="">Employment Type</label>
                       <div className="input-group  ">
                         <input
                           onChange={(e) => {
                             console.log("eee", e.target.value);
 
-                            setJobTypeFilter(e.target.value);
+                            setEmploymentTypeFilter(e.target.value);
                           }}
-                          value={JobTypeFilter}
+                          value={EmploymentTypeFilter}
                           placeholder=""
                           className="form-control w-85"
                           type="text"
-                          list="JobTypeFilter"
+                          list="EmploymentTypeFilter"
                         />
 
-                        <datalist id="JobTypeFilter">
-                          {jobTypeDrop.map((item, key) => (
+                        <datalist id="EmploymentTypeFilter">
+                          {employmentTypeDrop.map((item, key) => (
                             <option
                               key={key}
                               value={item.name}
@@ -397,7 +485,7 @@ export default function Jobfindbox({ isView }) {
                     </div>
                   </div>
 
-                  <div className="col-lg-2 col-md-6">
+                  {/* <div className="col-lg-2 col-md-6">
                     <div className="form-group">
                       <label className="">Shift Type</label>
                       <div className="input-group  ">
@@ -425,7 +513,7 @@ export default function Jobfindbox({ isView }) {
                         </datalist>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </>
               )}
             </div>

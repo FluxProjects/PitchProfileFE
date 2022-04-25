@@ -80,6 +80,77 @@ export const filterCompanySize = (CompanySize) => async (dispatch, state) => {
   });
 };
 
+export const filterDepartmentName =
+  (DepartmentName) => async (dispatch, state) => {
+    console.log("companyNamecompanyName", DepartmentName);
+    var resultDepartmentName = [];
+    // ? company filter
+    resultDepartmentName = state().BackupAlljobs.filter(function (item) {
+      if (item?.department?.name == DepartmentName) return item;
+    });
+
+    toast.success("Updated Successfully!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    dispatch({
+      type: "FilterAllJobs",
+      data: resultDepartmentName,
+    });
+  };
+
+export const filterEmploymentType =
+  (EmploymentType) => async (dispatch, state) => {
+    console.log("companyNamecompanyName", EmploymentType);
+    var resultEmploymentType = [];
+    // ? company filter
+    resultEmploymentType = state().BackupAlljobs.filter(function (item) {
+      if (item?.employment_type == EmploymentType) return item;
+    });
+
+    toast.success("Updated Successfully!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    dispatch({
+      type: "FilterAllJobs",
+      data: resultEmploymentType,
+    });
+  };
+export const filterSeniorityLevel =
+  (SeniorityLevel) => async (dispatch, state) => {
+    console.log("companyNamecompanyName", SeniorityLevel);
+    var resultSeniorityLevel = [];
+    // ? company filter
+    resultSeniorityLevel = state().BackupAlljobs.filter(function (item) {
+      if (item?.seniority_level == SeniorityLevel) return item;
+    });
+
+    toast.success("Updated Successfully!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    dispatch({
+      type: "FilterAllJobs",
+      data: resultSeniorityLevel,
+    });
+  };
+
 export const filterSalaryRange = (SalaryRange) => async (dispatch, state) => {
   console.log("companyNamecompanyName", SalaryRange);
   var resultSalaryRange = [];
