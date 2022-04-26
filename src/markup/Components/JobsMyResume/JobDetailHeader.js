@@ -133,9 +133,9 @@ export default function JobDetailHeader({ isView }) {
               />
             </Link>
           </div>
-          <div className="text-white  browse-job text-left">
+          <div className="text-white mt-1 browse-job text-left">
             <h4 className="m-b0">{state.PreviewPost?.company?.company_name}</h4>
-            <p className="m-b15">{state.PreviewPost?.company?.tagline}</p>
+            <p className="m-b15">{state.PreviewPost?.company?.description}</p>
             <ul className="clearfix">
               {/* <li className="w-100">
                 <i className="ti-location-pin"></i>{" "}
@@ -155,15 +155,29 @@ export default function JobDetailHeader({ isView }) {
                   <>Country</>
                 )}
               </li> */}
-              {state.userDetails.phone != "" && (
+              {/*? Add social icons replace phone email  constent should be vertocally middle */}
+
+              {state.PreviewPost.company?.facebook != "" && (
                 <li className="w-100">
-                  <i className="ti-mobile"></i>{" "}
-                  {state.PreviewPost?.company?.phone}
+                  <i className="ti-facebook"></i>{" "}
+                  {state.PreviewPost?.company?.facebook}
                 </li>
               )}
-              <li className="w-100">
+              {state.PreviewPost.company?.linkedin != "" && (
+                <li className="w-100">
+                  <i className="ti-linkedin"></i>{" "}
+                  {state.PreviewPost?.company?.linkedin}
+                </li>
+              )}
+              {state.PreviewPost.company?.twitter != "" && (
+                <li className="w-100">
+                  <i className="ti-twitter"></i>{" "}
+                  {state.PreviewPost?.company?.twitter}
+                </li>
+              )}
+              {/* <li className="w-100">
                 <i className="ti-email"></i> {state.PreviewPost?.company?.email}
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

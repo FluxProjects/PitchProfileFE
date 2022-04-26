@@ -94,6 +94,9 @@ const changeState = (state = initialState, { type, ...rest }) => {
         // Browsecandicate actions
         allCandidates: [],
         backupCandidates: [],
+
+        // Jobs
+        AllCompanies: [],
       };
     case "SetAuthToken":
       return { ...state, authToken: rest.data };
@@ -226,6 +229,12 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         SavePreviewPost: rest.data,
+      };
+
+    case "AllCompanies":
+      return {
+        ...state,
+        AllCompanies: rest.data,
       };
 
     default:

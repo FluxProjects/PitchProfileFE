@@ -635,3 +635,24 @@ export const UpdateCompanyPassword =
         console.log(error);
       });
   };
+
+export const GetAllCompanies = () => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/company_profile/get_all_companies`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log("res.dattatata", response.data.data);
+
+      dispatch({
+        type: "AllCompanies",
+        data: response.data.data,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};

@@ -49,12 +49,16 @@ export default function Header2() {
         dispatch(UpdateJobVideo(""));
       },
     },
+    // {
+    //   name: "Manage Jobs",
+    //   link: "/company-manage-job",
+    //   index: "2",
+    // },
     {
-      name: "Manage Jobs",
-      link: "/company-manage-job",
+      name: "Companies",
+      link: "/companies",
       index: "2",
     },
-
     {
       name: "All Candidates",
       link: "/browse-candidate-grid",
@@ -63,17 +67,17 @@ export default function Header2() {
     {
       name: "All Jobs",
       link: "/browse-job-grid",
-      index: "2",
+      index: "4",
     },
     {
       name: "About",
       link: "/about-us",
-      index: "4",
+      index: "5",
     },
     {
       name: "Contact",
       link: "/contact",
-      index: "5",
+      index: "6",
     },
   ];
 

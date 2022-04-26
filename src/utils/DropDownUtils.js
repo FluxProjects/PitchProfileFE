@@ -28,18 +28,18 @@ export const SeniorityLevel = [
 ];
 
 export const SalaryRange = [
-  { id: 0, name: "0 - $10k" },
-  { id: 1, name: "$10k - $20k" },
-  { id: 2, name: "$20k - $30k" },
-  { id: 3, name: "$30k - $40k" },
-  { id: 4, name: "$40k - $50k" },
-  { id: 5, name: "$50k - $60k" },
-  { id: 6, name: "$60k - $70k" },
-  { id: 7, name: "$70k - $80k" },
-  { id: 8, name: "$80k - $90k" },
-  { id: 9, name: "$90k - $100k" },
-  { id: 10, name: "$100k - $125k" },
-  { id: 11, name: "$125k +" },
+  { id: 0, name: "0 - 10k" },
+  { id: 1, name: "10k - 20k" },
+  { id: 2, name: "20k - 30k" },
+  { id: 3, name: "30k - 40k" },
+  { id: 4, name: "40k - 50k" },
+  { id: 5, name: "50k - 60k" },
+  { id: 6, name: "60k - 70k" },
+  { id: 7, name: "70k - 80k" },
+  { id: 8, name: "80k - 90k" },
+  { id: 9, name: "90k - 100k" },
+  { id: 10, name: "100k - 125k" },
+  { id: 11, name: "125k +" },
 ];
 
 export const CompanyType = [

@@ -230,16 +230,17 @@ export default function Jobdetail(props) {
                         </Link>
                       </h3>
                       <ul className="job-info">
-                        <li>
+                        {/* <li>
                           <strong>Company</strong>{" "}
                           {state.userDetails?.company_name}
-                        </li>
+                        </li> */}
                         <li>
                           <strong>Deadline:</strong>{" "}
                           {!loading && state.PreviewPost?.closingDate}
                         </li>
                         <li>
-                          <i className="ti-location-pin text-black m-r5"></i>{" "}
+                          <strong>Location:</strong>{" "}
+                          {/* <i className="ti-location-pin text-black m-r5"></i>{" "} */}
                           {state.PreviewPost.city?.name}
                           {state.PreviewPost.city && ", "}{" "}
                           {state.PreviewPost.state?.name}
@@ -247,7 +248,7 @@ export default function Jobdetail(props) {
                           {state.PreviewPost.country?.sortname}
                         </li>
                       </ul>
-                      <h5 className="font-weight-600">Job Description</h5>
+                      <h5 className="mt-5 font-weight-600">Job Description</h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
                       <p>{state.PreviewPost?.role}</p>
                       <h5 className="font-weight-600 mt-4">
@@ -276,7 +277,7 @@ export default function Jobdetail(props) {
               </div>
             </div>
 
-            <div className="section-full content-inner">
+            {/* <div className="section-full content-inner">
               <div className="container">
                 <div className="row">
                   {blogGrid.map((item, index) => (
@@ -330,7 +331,7 @@ export default function Jobdetail(props) {
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
