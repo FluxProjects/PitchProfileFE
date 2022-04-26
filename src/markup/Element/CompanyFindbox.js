@@ -17,6 +17,8 @@ import {
   GetIndustries,
   GetSkills,
   ResetfilterJobs,
+  GetCities,
+  filterLocationFilter,
 } from "../../redux/action";
 import {
   filterCandidateAll,
@@ -52,20 +54,21 @@ export default function Jobfindbox({ isView }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  const [CompanyNameFilter, setCompanyNameFilter] = useState("");
-  const [SalaryRangeVal, setSalaryRange] = useState("");
-  const [EmploymentTypeFilter, setEmploymentTypeFilter] = useState("");
-  const [ShiftTypeFilter, setShiftTypeFilter] = useState("");
+  const [CompanyNameFilter, setCompanyNameFilter] = useState(null);
+  const [SalaryRangeVal, setSalaryRange] = useState(null);
+  const [EmploymentTypeFilter, setEmploymentTypeFilter] = useState(null);
+  const [ShiftTypeFilter, setShiftTypeFilter] = useState(null);
   const [showMoreFilters, setshowMoreFilters] = useState(false);
   const [LocationFilter, setLocationFilter] = useState(null);
   const [IndustryFilter, setIndustryFilter] = useState(null);
   const [CompanySizeFilter, setCompanySizeFilter] = useState(null);
   const [availaibityBool, setAvailaibityBool] = useState(null);
-  const [DepartmentNameFilter, setDepartmentNameFilter] = useState("");
-  const [SeniorityLevelFilter, setSeniorityLevelFilter] = useState("");
+  const [DepartmentNameFilter, setDepartmentNameFilter] = useState(null);
+  const [SeniorityLevelFilter, setSeniorityLevelFilter] = useState(null);
 
   useEffect(() => {
     callGetDrop();
+    CallGetCities(state.userDetails?.state_id);
     var i = 0;
 
     // Placeholder Animation Start
@@ -108,18 +111,34 @@ export default function Jobfindbox({ isView }) {
     }
   };
 
+  const CallGetCities = async (stateId) => {
+    await dispatch(GetCities(stateId));
+  };
+
   const callFilter = () => {
     var count = 0;
     if (CompanyNameFilter != null && CompanyNameFilter != "") {
       count++;
     }
-    if (SalaryRangeVal != null && SalaryRangeVal != "") {
-      count++;
-    }
     if (IndustryFilter != null && IndustryFilter != "") {
       count++;
     }
+    if (SeniorityLevelFilter != null && SeniorityLevelFilter != "") {
+      count++;
+    }
     if (CompanySizeFilter != null && CompanySizeFilter != "") {
+      count++;
+    }
+    if (SalaryRangeVal != null && SalaryRangeVal != "") {
+      count++;
+    }
+    if (ShiftTypeFilter != null && ShiftTypeFilter != "") {
+      count++;
+    }
+    if (EmploymentTypeFilter != null && EmploymentTypeFilter != "") {
+      count++;
+    }
+    if (LocationFilter != null && LocationFilter != "") {
       count++;
     }
     if (count > 1) {
@@ -128,19 +147,50 @@ export default function Jobfindbox({ isView }) {
           CompanyNameFilter,
           DepartmentNameFilter,
           IndustryFilter,
+
           CompanySizeLevel.findIndex((x) => x?.name == CompanySizeFilter) == -1
             ? ""
             : CompanySizeLevel[
                 CompanySizeLevel.findIndex((x) => x?.name == CompanySizeFilter)
               ].id,
+
           shiftDrop.findIndex((x) => x?.name == ShiftTypeFilter) == -1
             ? ""
             : shiftDrop[shiftDrop.findIndex((x) => x?.name == ShiftTypeFilter)]
                 .id,
+
           jobTypeDrop.findIndex((x) => x?.name == EmploymentTypeFilter) == -1
             ? ""
             : jobTypeDrop[
                 jobTypeDrop.findIndex((x) => x?.name == EmploymentTypeFilter)
+              ].id,
+
+          state.cities.findIndex((x) => x?.name == LocationFilter) == -1
+            ? ""
+            : state.cities[
+                state.cities.findIndex((x) => x?.name == LocationFilter)
+              ].id,
+
+          employmentTypeDrop.findIndex(
+            (x) => x?.name == EmploymentTypeFilter
+          ) == -1
+            ? ""
+            : employmentTypeDrop[
+                employmentTypeDrop.findIndex(
+                  (x) => x?.name == EmploymentTypeFilter
+                )
+              ].id,
+
+          SeniorityLevel.findIndex((x) => x?.name == SeniorityLevelFilter) == -1
+            ? ""
+            : SeniorityLevel[
+                SeniorityLevel.findIndex((x) => x?.name == SeniorityLevelFilter)
+              ].id,
+
+          SalaryRange.findIndex((x) => x?.name == SalaryRangeVal) == -1
+            ? ""
+            : SalaryRange[
+                SalaryRange.findIndex((x) => x?.name == SalaryRangeVal)
               ].id
         )
       );
@@ -187,8 +237,9 @@ export default function Jobfindbox({ isView }) {
         filterSalaryRange(
           SalaryRange.findIndex((x) => x?.name == SalaryRangeVal) == -1
             ? ""
-            : SalaryRange[SalaryRange.findIndex((x) => x?.id == SalaryRangeVal)]
-                .id
+            : SalaryRange[
+                SalaryRange.findIndex((x) => x?.name == SalaryRangeVal)
+              ].id
         )
       );
       return;
@@ -216,6 +267,18 @@ export default function Jobfindbox({ isView }) {
                 employmentTypeDrop.findIndex(
                   (x) => x?.name == EmploymentTypeFilter
                 )
+              ].id
+        )
+      );
+      return;
+    }
+    if (LocationFilter != null && LocationFilter != "") {
+      dispatch(
+        filterLocationFilter(
+          state.cities.findIndex((x) => x?.name == LocationFilter) == -1
+            ? ""
+            : state.cities[
+                state.cities.findIndex((x) => x?.name == LocationFilter)
               ].id
         )
       );
@@ -484,36 +547,37 @@ export default function Jobfindbox({ isView }) {
                       </div>
                     </div>
                   </div>
+                  {state.userDetails?.state_id != null && state.authToken && (
+                    <div className="col-lg-2 col-md-6">
+                      <div className="form-group">
+                        <label className="">Location</label>
+                        <div className="input-group  ">
+                          <input
+                            onChange={(e) => {
+                              console.log("eee", e.target.value);
 
-                  {/* <div className="col-lg-2 col-md-6">
-                    <div className="form-group">
-                      <label className="">Shift Type</label>
-                      <div className="input-group  ">
-                        <input
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
+                              setLocationFilter(e.target.value);
+                            }}
+                            value={LocationFilter}
+                            placeholder=""
+                            className="form-control w-85"
+                            type="text"
+                            list="LocationFilter"
+                          />
 
-                            setShiftTypeFilter(e.target.value);
-                          }}
-                          value={ShiftTypeFilter}
-                          placeholder=""
-                          className="form-control w-85"
-                          type="text"
-                          list="ShiftTypeFilter"
-                        />
-
-                        <datalist id="ShiftTypeFilter">
-                          {shiftDrop.map((item, key) => (
-                            <option
-                              key={key}
-                              value={item.name}
-                              label={item.name}
-                            />
-                          ))}
-                        </datalist>
+                          <datalist id="LocationFilter">
+                            {state.cities.map((item, key) => (
+                              <option
+                                key={key}
+                                value={item.name}
+                                label={item.name}
+                              />
+                            ))}
+                          </datalist>
+                        </div>
                       </div>
                     </div>
-                  </div> */}
+                  )}
                 </>
               )}
             </div>

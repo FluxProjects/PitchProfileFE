@@ -127,6 +127,31 @@ export const filterEmploymentType =
       data: resultEmploymentType,
     });
   };
+
+export const filterLocationFilter =
+  (LocationFilter) => async (dispatch, state) => {
+    console.log("LocationFilter", LocationFilter);
+    var resultLocationFilter = [];
+    // ? company filter
+    resultLocationFilter = state().BackupAlljobs.filter(function (item) {
+      if (item?.city_id == LocationFilter) return item;
+    });
+
+    toast.success("Updated Successfully!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    dispatch({
+      type: "FilterAllJobs",
+      data: resultLocationFilter,
+    });
+  };
+
 export const filterSeniorityLevel =
   (SeniorityLevel) => async (dispatch, state) => {
     console.log("companyNamecompanyName", SeniorityLevel);
@@ -227,7 +252,11 @@ export const filterJobAll =
     IndustryFilter,
     CompanySize,
     ShiftType,
-    JobType
+    JobType,
+    LocationFilter,
+    EmploymentType,
+    SeniorityLevel,
+    SalaryRange
   ) =>
   async (dispatch, state) => {
     // return;
@@ -237,9 +266,10 @@ export const filterJobAll =
     var resultDepartmentName = [];
     var resultJobType = [];
     var resultShiftType = [];
-
-    //    ? is company name filter
-    console.log("this is result dep", companyName);
+    var resultLocationFilter = [];
+    var resultEmploymentType = [];
+    var resultSeniorityLevel = [];
+    var resultSalaryRange = [];
 
     state().BackupAlljobs.filter(function (item) {
       if (companyName?.length == 0 || companyName == null) {
@@ -292,10 +322,44 @@ export const filterJobAll =
       }
     });
 
+    // ? location filter
+    resultShiftType.filter(function (item) {
+      if (LocationFilter?.length == 0 || LocationFilter == null) {
+        resultLocationFilter.push(item);
+      } else if (item?.city_id == LocationFilter) {
+        resultLocationFilter.push(item);
+      }
+    });
+
+    resultLocationFilter.filter(function (item) {
+      if (EmploymentType?.length == 0 || EmploymentType == null) {
+        resultEmploymentType.push(item);
+      } else if (item?.employment_type == EmploymentType) {
+        resultEmploymentType.push(item);
+      }
+    });
+
+    resultEmploymentType.filter(function (item) {
+      if (SeniorityLevel?.length == 0 || SeniorityLevel == null) {
+        resultSeniorityLevel.push(item);
+      } else if (item?.seniority_level == SeniorityLevel) {
+        resultSeniorityLevel.push(item);
+      }
+    });
+
+    //? Salary range
+    resultSeniorityLevel.filter(function (item) {
+      if (SalaryRange?.length == 0 || SalaryRange == null) {
+        resultSalaryRange.push(item);
+      } else if (item?.salary_range == SalaryRange) {
+        resultSalaryRange.push(item);
+      }
+    });
+
     const uniqueResults = Array.from(
-      new Set(resultShiftType.map((a) => a.id))
+      new Set(resultSalaryRange.map((a) => a.id))
     ).map((id) => {
-      return resultShiftType.find((a) => a.id === id);
+      return resultSalaryRange.find((a) => a.id === id);
     });
 
     toast.success("Updated Successfully!", {
