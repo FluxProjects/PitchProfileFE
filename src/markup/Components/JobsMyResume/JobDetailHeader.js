@@ -133,72 +133,33 @@ export default function JobDetailHeader({ isView }) {
               />
             </Link>
           </div>
-          <div className="text-white mt-1 browse-job text-left">
+          <div className="text-white   align-self-center  browse-job text-left">
             <h4 className="m-b0">{state.PreviewPost?.company?.company_name}</h4>
-            <p className="m-b15">{state.PreviewPost?.company?.description}</p>
+            <p className="m-b15 text-justify">
+              {state.PreviewPost?.company?.description}
+            </p>
             <ul className="clearfix">
-              {/* <li className="w-100">
-                <i className="ti-location-pin"></i>{" "}
-                {cityName != null && cityName != "" ? (
-                  <>{cityName},</>
-                ) : (
-                  <>City,</>
-                )}{" "}
-                {stateName != null && stateName != "" ? (
-                  <>{stateName},</>
-                ) : (
-                  <>State,</>
-                )}{" "}
-                {countryName != null && countryName != "" ? (
-                  <>{countryName}</>
-                ) : (
-                  <>Country</>
-                )}
-              </li> */}
-              {/*? Add social icons replace phone email  constent should be vertocally middle */}
-
               {state.PreviewPost.company?.facebook != "" && (
-                <li className="w-100">
-                  <i className="ti-facebook"></i>{" "}
-                  {state.PreviewPost?.company?.facebook}
-                </li>
+                <a href={state.PreviewPost?.company?.facebook} target="_blank">
+                  <i className="ti-facebook text-white mr-2"></i>{" "}
+                </a>
               )}
               {state.PreviewPost.company?.linkedin != "" && (
-                <li className="w-100">
-                  <i className="ti-linkedin"></i>{" "}
-                  {state.PreviewPost?.company?.linkedin}
-                </li>
+                <a href={state.PreviewPost?.company?.linkedin} target="_blank">
+                  <i className="ti-linkedin text-white mr-2 "></i>{" "}
+                </a>
               )}
               {state.PreviewPost.company?.twitter != "" && (
-                <li className="w-100">
-                  <i className="ti-twitter"></i>{" "}
-                  {state.PreviewPost?.company?.twitter}
-                </li>
+                <a href={state.PreviewPost?.company?.twitter} target="_blank">
+                  <i className="ti-twitter text-white mr-2"></i>{" "}
+                </a>
               )}
-              {/* <li className="w-100">
-                <i className="ti-email"></i> {state.PreviewPost?.company?.email}
-              </li> */}
             </ul>
           </div>
         </div>
       </div>
       <div className="col-lg-5 col-md-5 col-sm-12">
-        <div className=" text-white ">
-          {/* {state.PreviewPost != null && state.PreviewPost.video && (
-            <div className="m-b30">
-              <ReactPlayer
-                url={
-                  state.PreviewPost?.video
-                    ? state.PreviewPost?.video
-                    : state.SavePreviewPost?.video
-                }
-                width="50%"
-                height="50%"
-                controls={true}
-              />
-            </div>
-          )} */}
-        </div>
+        <div className=" text-white "></div>
       </div>
     </>
   );

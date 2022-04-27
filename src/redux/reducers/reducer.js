@@ -45,6 +45,8 @@ const initialState = {
   BackupAlljobs: [],
   SavePreviewPost: {},
   SaveJobVideo: "",
+
+  PreviewSingleCompany: {},
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -235,6 +237,12 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         AllCompanies: rest.data,
+      };
+
+    case "PreviewSingleCompany":
+      return {
+        ...state,
+        PreviewSingleCompany: rest.data,
       };
 
     default:

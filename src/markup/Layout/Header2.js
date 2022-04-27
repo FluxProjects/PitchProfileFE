@@ -41,21 +41,21 @@ export default function Header2() {
   }, []);
 
   const links = [
-    {
-      name: "Post A Job",
-      link: "/company-post-jobs",
-      index: "1",
-      onClick: () => {
-        dispatch(UpdateJobVideo(""));
-      },
-    },
+    // {
+    //   name: "Post A Job",
+    //   link: "/company-post-jobs",
+    //   index: "1",
+    //   onClick: () => {
+    //     dispatch(UpdateJobVideo(""));
+    //   },
+    // },
     // {
     //   name: "Manage Jobs",
     //   link: "/company-manage-job",
     //   index: "2",
     // },
     {
-      name: "Companies",
+      name: "All Companies",
       link: "/companies",
       index: "2",
     },
@@ -117,7 +117,7 @@ export default function Header2() {
 
               <div
                 style={{ marginTop: 5 }}
-                className="header-nav navbar-collapse collapse myNavbar justify-content-start"
+                className="float-right header-nav navbar-collapse collapse myNavbar justify-content-start"
                 id="navbarNavDropdown"
               >
                 <ul className="nav navbar-nav">
@@ -135,7 +135,7 @@ export default function Header2() {
                     </li>
                   ))}
                   <li></li>
-                  <li style={{ marginLeft: 100 }}></li>
+                  {/* <li style={{ marginLeft: 100 }}></li> */}
 
                   {state.authToken ? (
                     <>

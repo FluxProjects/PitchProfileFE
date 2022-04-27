@@ -200,7 +200,7 @@ export default function Header() {
 
               <div
                 style={{ marginTop: 5 }}
-                className="header-nav navbar-collapse collapse myNavbar justify-content-start"
+                className="float-right header-nav navbar-collapse collapse myNavbar justify-content-start"
                 id="navbarNavDropdown"
               >
                 <ul className="nav navbar-nav">

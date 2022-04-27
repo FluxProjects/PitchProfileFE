@@ -18,6 +18,7 @@ import Browsecandidates from "./Pages/Browsecandidates";
 
 import Aboutus from "./Pages/Aboutus";
 import Jobdetail from "./Pages/Jobdetail";
+import CompanyDetail from "./Pages/CompanyDetail";
 import Companies from "./Pages/Companies";
 
 import Categoryalljob from "./Pages/Categoryalljob";
@@ -101,6 +102,7 @@ export default function Markup() {
 
           <Route path="/about-us" component={Aboutus} />
           <Route path="/companies" component={Companies} />
+          <Route path="/company-detail" component={CompanyDetail} />
 
           <Route path="/error-404" component={Error404} />
 

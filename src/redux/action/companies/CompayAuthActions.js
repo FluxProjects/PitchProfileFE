@@ -656,3 +656,25 @@ export const GetAllCompanies = () => async (dispatch, state) => {
       console.log(error);
     });
 };
+
+export const GetSingleCompany = (id) => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/company_profile/get_single_company/${id}`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log("mydatatat", response.data.data[0].closing_date);
+      var newVal = response.data.data[0];
+      // newVal.closingDate = formatDate(response.data.data[0].closing_date);
+      dispatch({
+        type: "PreviewSingleCompany",
+        data: newVal,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};

@@ -177,13 +177,18 @@ export default function Jobdetail(props) {
                                       )
                                     ].name}
                               </li>
-                              <li>
-                                <i className="ti-shield"></i>
-                                <strong className="font-weight-700 text-black">
-                                  Experience
-                                </strong>
-                                {state.PreviewPost?.expirience} Year Experience
-                              </li>
+                              {state.PreviewPost?.expirience != 0 && (
+                                <li>
+                                  <i className="ti-shield"></i>
+                                  <strong className="font-weight-700 text-black">
+                                    Experience
+                                  </strong>
+                                  {state.PreviewPost?.expirience}{" "}
+                                  {state.PreviewPost?.expirience > 1
+                                    ? "Years"
+                                    : "Year"}
+                                </li>
+                              )}
                               <li>
                                 <i className="ti-money"></i>
                                 <strong className="font-weight-700 text-black">
@@ -248,18 +253,18 @@ export default function Jobdetail(props) {
                           {state.PreviewPost.country?.sortname}
                         </li>
                       </ul>
-                      <h5 className="mt-5 font-weight-600">Job Description</h5>
+                      <h5 className="mt-5 font-weight-600">Job Description:</h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
                       <p>{state.PreviewPost?.role}</p>
                       <h5 className="font-weight-600 mt-4">
-                        Key Responsibilities
+                        Key Responsibilities:
                       </h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
                       <p>{state.PreviewPost?.key_responsibilities}</p>
-                      <h5 className="font-weight-600">Looking for</h5>
+                      <h5 className="font-weight-600">Looking for:</h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
                       <p>{state.PreviewPost?.looking_for}</p>
-                      <h5 className="font-weight-600">Perks</h5>
+                      <h5 className="font-weight-600">Perks:</h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
                       <p>{state.PreviewPost?.the_perks}</p>
 

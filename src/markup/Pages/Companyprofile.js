@@ -25,8 +25,12 @@ export default function Companyprofile() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [city, setCity] = useState(state.userDetails.city_id);
-  const [stateName, setStateName] = useState(state.userDetails.state_id);
-  const [country, setCountry] = useState(state.userDetails.country_id);
+  const [stateName, setStateName] = useState(
+    state.userDetails.state_id ? state.userDetails.state_id : 3805
+  );
+  const [country, setCountry] = useState(
+    state.userDetails.country_id ? state.userDetails.country_id : 230
+  );
   const [loading, setLoading] = useState(true);
   const [BtnLoading, setBtnLoading] = useState(false);
 
@@ -38,13 +42,13 @@ export default function Companyprofile() {
     state.userDetails?.description
   );
   const [CompanyTypeVal, setCompanyTypeVal] = useState(
-    state.userDetails?.company_type ? state.userDetails?.company_type : 0
+    state.userDetails?.company_type ? state.userDetails?.company_type : 1
   );
   const [CompanySize, setCompanySize] = useState(
-    state.userDetails?.company_size ? state.userDetails?.company_size : 0
+    state.userDetails?.company_size ? state.userDetails?.company_size : 1
   );
   const [industry, setIndustry] = useState(
-    state.userDetails?.industry ? state.userDetails?.industry : 0
+    state.userDetails?.industry ? state.userDetails?.industry : 1
   );
   const [website, setWebsite] = useState(state.userDetails?.website);
   const [address, setAddress] = useState(state.userDetails.address);
@@ -153,7 +157,7 @@ export default function Companyprofile() {
       )
     );
     await dispatch(
-      GetCities(state.userDetails.state_id ? state.userDetails.state_id : 3866)
+      GetCities(state.userDetails.state_id ? state.userDetails.state_id : 3805)
     );
     if (state.industries.length < 1) {
       await dispatch(GetIndustries());
@@ -202,7 +206,7 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Company Name
+                              Company Name:
                               <span className="text-danger"> *</span>
                             </label>
                             <TextInputModal
@@ -217,7 +221,7 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Tagline</label>
+                            <label>Tagline:</label>
                             <TextInputModal
                               onChange={(e) => {
                                 console.log(e.target.value);
@@ -232,7 +236,7 @@ export default function Companyprofile() {
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
-                              Description{" "}
+                              Description:{" "}
                               <span className="text-danger"> *</span>
                             </label>
                             <textarea
@@ -242,13 +246,16 @@ export default function Companyprofile() {
                               }}
                               className="form-control"
                             ></textarea>
+                            <small>
+                              Characters left: {255 - Description.length}
+                            </small>
                           </div>
                         </div>
 
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Company Type
+                              Company Type:
                               <span className="text-danger"> *</span>
                             </label>
                             <DropDownModalComponent
@@ -263,7 +270,7 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Company Size</label>
+                            <label>Company Size:</label>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
@@ -277,7 +284,7 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Industry
+                              Industry:
                               <span className="text-danger"> *</span>
                             </label>
                             <DropDownModalComponent
@@ -292,7 +299,7 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Website</label>
+                            <label>Website:</label>
                             <TextInputModal
                               onChange={(e) => {
                                 console.log(e.target.value);
@@ -313,7 +320,7 @@ export default function Companyprofile() {
                       <div className="row m-b30">
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Phone</label>
+                            <label>Phone:</label>
                             <TextInputModal
                               onChange={(e) => {
                                 console.log(e.target.value);
@@ -327,7 +334,7 @@ export default function Companyprofile() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Email <span className="text-danger"> *</span>
+                              Email: <span className="text-danger"> *</span>
                             </label>
                             <br />
                             {/* <label>{email}</label> */}
@@ -346,7 +353,7 @@ export default function Companyprofile() {
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
-                              Address
+                              Address:
                               <span className="text-danger"> *</span>
                             </label>
                             <textarea
@@ -361,7 +368,9 @@ export default function Companyprofile() {
 
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>Country:</label>
+                            <label>
+                              Country: <span className="text-danger"> *</span>
+                            </label>
 
                             {/* <DropdownSearch items={state.countries} /> */}
                             <DropDownModalComponent
@@ -378,7 +387,9 @@ export default function Companyprofile() {
 
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>State:</label>
+                            <label>
+                              State: <span className="text-danger"> *</span>
+                            </label>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
@@ -394,7 +405,9 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>City:</label>
+                            <label>
+                              City: <span className="text-danger"> *</span>
+                            </label>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
@@ -429,7 +442,7 @@ export default function Companyprofile() {
                       <div className="row">
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Facebook</label>
+                            <label>Facebook:</label>
                             <TextInputModal
                               onChange={(e) => {
                                 console.log(e.target.value);
@@ -442,7 +455,7 @@ export default function Companyprofile() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Twitter</label>
+                            <label>Twitter:</label>
                             <TextInputModal
                               onChange={(e) => {
                                 console.log(e.target.value);
@@ -468,7 +481,7 @@ export default function Companyprofile() {
                         </div> */}
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Linkedin</label>
+                            <label>Linkedin:</label>
                             <TextInputModal
                               onChange={(e) => {
                                 console.log(e.target.value);
@@ -482,7 +495,7 @@ export default function Companyprofile() {
                       </div>
                       <div className="job-bx-title clearfix">
                         <h5 className="font-weight-700 pull-left text-uppercase">
-                          Disclaimer
+                          Disclaimer <span className="text-danger"> *</span>
                         </h5>
                       </div>
 

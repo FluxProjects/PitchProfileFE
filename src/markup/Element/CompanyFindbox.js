@@ -380,7 +380,141 @@ export default function Jobfindbox({ isView }) {
                 </div>
               </div>
 
+              <div className="col-lg-2 col-md-6">
+                <div className="form-group">
+                  <label className="">Department Name</label>
+                  <div className="input-group  ">
+                    <input
+                      onChange={(e) => {
+                        console.log("eee", e.target.value);
+
+                        setDepartmentNameFilter(e.target.value);
+                      }}
+                      value={DepartmentNameFilter}
+                      placeholder=""
+                      className="form-control w-85"
+                      type="text"
+                      list="DepartmentNameFilter"
+                    />
+
+                    <datalist id="DepartmentNameFilter">
+                      {state.departments.map((item, key) => (
+                        <option key={key} value={item.name} label={item.name} />
+                      ))}
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-2 col-md-6">
+                <div className="form-group">
+                  <label className="">Seniority Level</label>
+                  <div className="input-group  ">
+                    <input
+                      onChange={(e) => {
+                        console.log("eee", e.target.value);
+                        setSeniorityLevelFilter(e.target.value);
+                      }}
+                      value={SeniorityLevelFilter}
+                      placeholder=""
+                      className="form-control w-85"
+                      type="text"
+                      list="SeniorityLevelFilter"
+                    />
+
+                    <datalist id="SeniorityLevelFilter">
+                      {SeniorityLevel.map((item, key) => (
+                        <option key={key} value={item.name} label={item.name} />
+                      ))}
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-lg-2 col-md-6">
+                <div className="form-group">
+                  <label className="">Salary Range</label>
+                  <div className="input-group  ">
+                    <input
+                      onChange={(e) => {
+                        console.log("eee", e.target.value);
+                        setSalaryRange(e.target.value);
+                      }}
+                      value={SalaryRangeVal}
+                      placeholder=""
+                      className="form-control w-85"
+                      type="text"
+                      list="SalaryRangeVal"
+                    />
+
+                    <datalist id="SalaryRangeVal">
+                      {SalaryRange.map((item, key) => (
+                        <option key={key} value={item.name} label={item.name} />
+                      ))}
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-lg-2 col-md-6">
+                <div className="form-group">
+                  <label className="">Employment Type</label>
+                  <div className="input-group  ">
+                    <input
+                      onChange={(e) => {
+                        console.log("eee", e.target.value);
+
+                        setEmploymentTypeFilter(e.target.value);
+                      }}
+                      value={EmploymentTypeFilter}
+                      placeholder=""
+                      className="form-control w-85"
+                      type="text"
+                      list="EmploymentTypeFilter"
+                    />
+
+                    <datalist id="EmploymentTypeFilter">
+                      {employmentTypeDrop.map((item, key) => (
+                        <option key={key} value={item.name} label={item.name} />
+                      ))}
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+              {state.userDetails?.state_id != null && state.authToken && (
+                <div className="col-lg-2 col-md-6">
+                  <div className="form-group">
+                    <label className="">Location</label>
+                    <div className="input-group  ">
+                      <input
+                        onChange={(e) => {
+                          console.log("eee", e.target.value);
+
+                          setLocationFilter(e.target.value);
+                        }}
+                        value={LocationFilter}
+                        placeholder=""
+                        className="form-control w-85"
+                        type="text"
+                        list="LocationFilter"
+                      />
+
+                      <datalist id="LocationFilter">
+                        {state.cities.map((item, key) => (
+                          <option
+                            key={key}
+                            value={item.name}
+                            label={item.name}
+                          />
+                        ))}
+                      </datalist>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* <div ></div> */}
+              <div className="col-lg-2 col-md-2"></div>
+              <div className="col-lg-2 col-md-2"></div>
               <div className="col-lg-2 col-md-2">
                 <button
                   onClick={(e) => {
@@ -415,171 +549,6 @@ export default function Jobfindbox({ isView }) {
                   Reset Filter
                 </button>
               </div>
-              <div className="col-lg-2 col-md-2">
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    // callFilter();
-                    setshowMoreFilters(!showMoreFilters);
-                  }}
-                  type="submit"
-                  className="site-button btn-block"
-                >
-                  <i className="fa fa-search"></i> More Filters
-                </button>
-              </div>
-
-              {showMoreFilters && (
-                <>
-                  <div className="col-lg-2 col-md-6">
-                    <div className="form-group">
-                      <label className="">Department Name</label>
-                      <div className="input-group  ">
-                        <input
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
-
-                            setDepartmentNameFilter(e.target.value);
-                          }}
-                          value={DepartmentNameFilter}
-                          placeholder=""
-                          className="form-control w-85"
-                          type="text"
-                          list="DepartmentNameFilter"
-                        />
-
-                        <datalist id="DepartmentNameFilter">
-                          {state.departments.map((item, key) => (
-                            <option
-                              key={key}
-                              value={item.name}
-                              label={item.name}
-                            />
-                          ))}
-                        </datalist>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-2 col-md-6">
-                    <div className="form-group">
-                      <label className="">Seniority Level</label>
-                      <div className="input-group  ">
-                        <input
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
-                            setSeniorityLevelFilter(e.target.value);
-                          }}
-                          value={SeniorityLevelFilter}
-                          placeholder=""
-                          className="form-control w-85"
-                          type="text"
-                          list="SeniorityLevelFilter"
-                        />
-
-                        <datalist id="SeniorityLevelFilter">
-                          {SeniorityLevel.map((item, key) => (
-                            <option
-                              key={key}
-                              value={item.name}
-                              label={item.name}
-                            />
-                          ))}
-                        </datalist>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-lg-2 col-md-6">
-                    <div className="form-group">
-                      <label className="">Salary Range (per annum)</label>
-                      <div className="input-group  ">
-                        <input
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
-                            setSalaryRange(e.target.value);
-                          }}
-                          value={SalaryRangeVal}
-                          placeholder=""
-                          className="form-control w-85"
-                          type="text"
-                          list="SalaryRangeVal"
-                        />
-
-                        <datalist id="SalaryRangeVal">
-                          {SalaryRange.map((item, key) => (
-                            <option
-                              key={key}
-                              value={item.name}
-                              label={item.name}
-                            />
-                          ))}
-                        </datalist>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-lg-2 col-md-6">
-                    <div className="form-group">
-                      <label className="">Employment Type</label>
-                      <div className="input-group  ">
-                        <input
-                          onChange={(e) => {
-                            console.log("eee", e.target.value);
-
-                            setEmploymentTypeFilter(e.target.value);
-                          }}
-                          value={EmploymentTypeFilter}
-                          placeholder=""
-                          className="form-control w-85"
-                          type="text"
-                          list="EmploymentTypeFilter"
-                        />
-
-                        <datalist id="EmploymentTypeFilter">
-                          {employmentTypeDrop.map((item, key) => (
-                            <option
-                              key={key}
-                              value={item.name}
-                              label={item.name}
-                            />
-                          ))}
-                        </datalist>
-                      </div>
-                    </div>
-                  </div>
-                  {state.userDetails?.state_id != null && state.authToken && (
-                    <div className="col-lg-2 col-md-6">
-                      <div className="form-group">
-                        <label className="">Location</label>
-                        <div className="input-group  ">
-                          <input
-                            onChange={(e) => {
-                              console.log("eee", e.target.value);
-
-                              setLocationFilter(e.target.value);
-                            }}
-                            value={LocationFilter}
-                            placeholder=""
-                            className="form-control w-85"
-                            type="text"
-                            list="LocationFilter"
-                          />
-
-                          <datalist id="LocationFilter">
-                            {state.cities.map((item, key) => (
-                              <option
-                                key={key}
-                                value={item.name}
-                                label={item.name}
-                              />
-                            ))}
-                          </datalist>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </>
-              )}
             </div>
           </form>
         </div>

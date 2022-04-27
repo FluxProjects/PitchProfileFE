@@ -90,15 +90,18 @@ export default function Browsejobgrid() {
                               Your browser does not support the video tag.
                             </video>
                           ) : (
-                            <img
-                              className="card-img-top"
-                              src={
-                                item?.pic != null
-                                  ? item?.pic
-                                  : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
-                              }
-                              alt="Card image cap"
-                            />
+                            <div style={{ width: "auto", height: "165px" }}>
+                              <img
+                                className="card-img-top"
+                                src={
+                                  item?.company?.pic != null
+                                    ? item?.company?.pic
+                                    : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
+                                }
+                                style={{ width: "100%", height: "auto" }}
+                                alt="Card image cap"
+                              />
+                            </div>
                           )}
                         </div>
                         <div className="d-flex m-b30">
@@ -118,7 +121,8 @@ export default function Browsejobgrid() {
                                   },
                                 }}
                               >
-                                {item.job_title} {item.seniority_level && "- "}
+                                {item.job_title}{" "}
+                                {item.seniority_level != null && "- "}
                                 <span
                                   className="text-uppercase"
                                   style={{
@@ -137,11 +141,21 @@ export default function Browsejobgrid() {
                                       ].name}
                                   {/* {item.department?.name} */}
                                 </span>
-                                <br />
+                              </Link>
+
+                              <br />
+                              <Link
+                                to={{
+                                  pathname: "/company-detail",
+                                  state: {
+                                    company_id: item?.company_id,
+                                  },
+                                }}
+                              >
                                 <span
                                   className="text-uppercase"
                                   style={{
-                                    fontSize: "12px",
+                                    fontSize: "14px",
                                     fontWeight: "normal",
                                     color: "#2e55fa",
                                     textDecoration: "none",
@@ -173,7 +187,7 @@ export default function Browsejobgrid() {
                           className="mb-2 d-flex "
                           style={{ marginTop: "-30px" }}
                         >
-                          <div className="text-primary">
+                          {/* <div className="text-primary">
                             <i className="fa fa-bookmark-o"></i>{" "}
                             {employmentTypeDrop.findIndex(
                               (x) => x?.id == item.employment_type
@@ -184,8 +198,8 @@ export default function Browsejobgrid() {
                                     (x) => x?.id == item.employment_type
                                   )
                                 ].name}
-                          </div>
-                          <div className="ml-3 text-primary">
+                          </div> */}
+                          <div className=" text-primary">
                             <i className="fa fa-clock-o"></i>{" "}
                             {jobTypeDrop.findIndex(
                               (x) => x?.id == item.job_type

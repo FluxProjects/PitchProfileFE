@@ -36,7 +36,7 @@ export default function Profilesidebar(props) {
       link: "/company-manage-job",
       icon: "fa fa-briefcase",
     },
-    { name: "Resume", link: "/company-resume", icon: "fa fa-bell-o" },
+    { name: "Applications", link: "/company-resume", icon: "fa fa-bell-o" },
     // { name: "CV Manager", link: "/jobs-cv-manager", icon: "fa fa-id-card-o" },
     {
       name: "Change Password",

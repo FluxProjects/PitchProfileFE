@@ -146,57 +146,58 @@ export default function Componypostjobs(props) {
       return;
     }
 
-    if (UpdatedVideo) {
-      await dispatch(
-        UpdateJobWithVideoPost(
-          item.id,
-          jobTitle,
-          jobType,
-          employmentType,
-          minSalary,
-          maxSalary,
-          city,
-          stateName,
-          country,
-          role,
-          keyRes,
-          lookingFor,
-          perks,
-          closingDate,
-          Expirience,
-          department,
-          shiftVal,
-          seniorityLevelVal,
-          salaryRangeVal,
-          state.SaveJobVideo
-        )
-      );
-    } else {
-      await dispatch(
-        UpdateJobPost(
-          item.id,
-          jobTitle,
-          jobType,
-          employmentType,
-          minSalary,
-          maxSalary,
-          city,
-          stateName,
-          country,
-          role,
-          keyRes,
-          lookingFor,
-          perks,
-          closingDate,
-          Expirience,
-          department,
-          shiftVal,
-          seniorityLevelVal,
-          salaryRangeVal,
-          state.SaveJobVideo
-        )
-      );
-    }
+    // // if (UpdatedVideo) {
+    // await dispatch(
+    //   UpdateJobWithVideoPost(
+    //     item.id,
+    //     jobTitle,
+    //     jobType,
+    //     employmentType,
+    //     minSalary,
+    //     maxSalary,
+    //     city,
+    //     stateName,
+    //     country,
+    //     role,
+    //     keyRes,
+    //     lookingFor,
+    //     perks,
+    //     closingDate,
+    //     Expirience,
+    //     department,
+    //     shiftVal,
+    //     seniorityLevelVal,
+    //     salaryRangeVal,
+    //     state.SaveJobVideo
+    //   )
+    // );
+    // }
+    // else {
+    await dispatch(
+      UpdateJobPost(
+        item.id,
+        jobTitle,
+        jobType,
+        employmentType,
+        minSalary,
+        maxSalary,
+        city,
+        stateName,
+        country,
+        role,
+        keyRes,
+        lookingFor,
+        perks,
+        closingDate,
+        Expirience,
+        department,
+        shiftVal,
+        seniorityLevelVal,
+        salaryRangeVal,
+        state.SaveJobVideo
+      )
+    );
+    // }
 
     setLoading(false);
   };
@@ -270,7 +271,7 @@ export default function Componypostjobs(props) {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Salary Range (per annum)</label>
+                            <label>Salary Range (Per Annum)</label>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
