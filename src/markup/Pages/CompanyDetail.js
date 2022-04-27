@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Header2 from "../Layout/Header2";
 import { formatDate } from "../../utils/functions";
 import {
+  CompanySizeLevel,
   employmentTypeDrop,
   jobTypeDrop,
   SalaryRange,
@@ -108,87 +109,33 @@ export default function Jobdetail(props) {
                         </div>
                         <div className="col-lg-12 col-md-6">
                           <div className="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                            <strong className="font-weight-700 text-black">
+                            <strong className="font-weight-700 text-black m-b15">
                               Contact Details
                             </strong>
                             <ul>
                               <li>
-                                <i className="fa fa-user"></i>
-                                <strong className="font-weight-700 text-black">
-                                  Email
-                                </strong>{" "}
-                                {state.PreviewSingleCompany?.email}
+                                <i className="fa fa-map-marker"></i>
+                                <p className="mt-1 text-black">
+                                  {/* Phone */}
+                                  {state.PreviewSingleCompany?.address}{" "}
+                                  {state.PreviewSingleCompany?.city?.name},{" "}
+                                  {state.PreviewSingleCompany?.state?.name},{" "}
+                                  {state.PreviewSingleCompany?.country?.name}
+                                </p>{" "}
                               </li>
                               <li>
-                                <i className="fa fa-user"></i>
-                                <strong className="font-weight-700 text-black">
-                                  Employment Type
-                                </strong>{" "}
-                                {employmentTypeDrop?.findIndex(
-                                  (x) =>
-                                    x?.id ==
-                                    state.PreviewSingleCompany?.employment_type
-                                ) == -1
-                                  ? ""
-                                  : employmentTypeDrop[
-                                      employmentTypeDrop.findIndex(
-                                        (x) =>
-                                          x?.id ==
-                                          state.PreviewSingleCompany
-                                            ?.employment_type
-                                      )
-                                    ].name}
+                                <i className="fa fa-phone"></i>
+                                <p className="mt-1 text-black">
+                                  {/* Phone */}
+                                  {state.PreviewSingleCompany?.phone}
+                                </p>{" "}
                               </li>
                               <li>
-                                <i className="fa fa-clock-o"></i>
-                                <strong className="font-weight-700 text-black">
-                                  Job Type
-                                </strong>{" "}
-                                {jobTypeDrop?.findIndex(
-                                  (x) =>
-                                    x?.id ==
-                                    state.PreviewSingleCompany?.job_type
-                                ) == -1
-                                  ? ""
-                                  : jobTypeDrop[
-                                      jobTypeDrop.findIndex(
-                                        (x) =>
-                                          x?.id ==
-                                          state.PreviewSingleCompany?.job_type
-                                      )
-                                    ].name}
-                              </li>
-                              {state.PreviewSingleCompany?.expirience != 0 && (
-                                <li>
-                                  <i className="ti-shield"></i>
-                                  <strong className="font-weight-700 text-black">
-                                    Experience
-                                  </strong>
-                                  {state.PreviewSingleCompany?.expirience}{" "}
-                                  {state.PreviewSingleCompany?.expirience > 1
-                                    ? "Years"
-                                    : "Year"}
-                                </li>
-                              )}
-                              <li>
-                                <i className="ti-money"></i>
-                                <strong className="font-weight-700 text-black">
-                                  Salary
-                                </strong>{" "}
-                                {SalaryRange.findIndex(
-                                  (x) =>
-                                    x?.id ==
-                                    state.PreviewSingleCompany?.salary_range
-                                ) == -1
-                                  ? ""
-                                  : SalaryRange[
-                                      SalaryRange.findIndex(
-                                        (x) =>
-                                          x?.id ==
-                                          state.PreviewSingleCompany
-                                            ?.salary_range
-                                      )
-                                    ].name}
+                                <i className="fa fa-envelope"></i>
+                                <p className="mt-1 text-black">
+                                  {/* Phone */}
+                                  {state.PreviewSingleCompany?.email}
+                                </p>{" "}
                               </li>
                             </ul>
                           </div>
@@ -203,62 +150,41 @@ export default function Jobdetail(props) {
                           to={""}
                           className="text-secondry text-capitalize m-r30"
                         >
-                          Comapny Details
+                          About Comapny
                           <span
                             className="text-uppercase"
                             style={{
                               fontSize: "12px",
                               fontWeight: "normal",
                             }}
-                          >
-                            {state.PreviewSingleCompany?.department && "- "}
-
-                            {state.PreviewSingleCompany?.department?.name}
-                          </span>
+                          ></span>
                         </Link>
                       </h4>
-                      <ul className="job-info">
-                        {/* <li>
-                          <strong>Company</strong>{" "}
-                          {state.userDetails?.company_name}
-                        </li> */}
-                        <li>
-                          <strong>Deadline:</strong>{" "}
-                          {!loading && state.PreviewSingleCompany?.closingDate}
-                        </li>
-                        <li>
-                          <strong>Location:</strong>{" "}
-                          {/* <i className="ti-location-pin text-black m-r5"></i>{" "} */}
-                          {state.PreviewSingleCompany?.city?.name}
-                          {state.PreviewSingleCompany?.city && ", "}{" "}
-                          {state.PreviewSingleCompany?.state?.name}
-                          {state.PreviewSingleCompany?.state && ", "}
-                          {state.PreviewSingleCompany?.country?.sortname}
-                        </li>
-                      </ul>
-                      <h5 className="mt-5 font-weight-600">Job Description:</h5>
-                      <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{state.PreviewSingleCompany?.role}</p>
-                      <h5 className="font-weight-600 mt-4">
-                        Key Responsibilities:
-                      </h5>
-                      <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{state.PreviewSingleCompany?.key_responsibilities}</p>
-                      <h5 className="font-weight-600">Looking for:</h5>
-                      <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{state.PreviewSingleCompany?.looking_for}</p>
-                      <h5 className="font-weight-600">Perks:</h5>
-                      <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{state.PreviewSingleCompany?.the_perks}</p>
 
-                      {!state.userDetails.company_name && (
-                        <Link
-                          onClick={() => handleShow()}
-                          className="site-button"
-                        >
-                          Apply To This Job
-                        </Link>
-                      )}
+                      {/* <h5 className="mt-5 font-weight-600">Job Description:</h5> */}
+                      <div className="bg-gray-dark mb-4 mt-0"></div>
+                      <p>{state.PreviewSingleCompany?.description}</p>
+
+                      <h5 className="mt-5 font-weight-600">Company Size:</h5>
+                      <div className="bg-gray-dark mb-4 mt-0"></div>
+                      <p>
+                        {CompanySizeLevel.findIndex(
+                          (x) =>
+                            x?.id == state.PreviewSingleCompany?.company_size
+                        ) == -1
+                          ? ""
+                          : CompanySizeLevel[
+                              CompanySizeLevel.findIndex(
+                                (x) =>
+                                  x?.id ==
+                                  state.PreviewSingleCompany?.company_size
+                              )
+                            ].name}
+                      </p>
+
+                      <h5 className="mt-5 font-weight-600">Industry:</h5>
+                      <div className="bg-gray-dark mb-4 mt-0"></div>
+                      <p>{state.PreviewSingleCompany?.industry_name}</p>
                     </div>
                   </div>
                 </div>
