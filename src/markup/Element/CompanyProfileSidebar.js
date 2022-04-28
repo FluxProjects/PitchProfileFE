@@ -85,9 +85,9 @@ export default function Profilesidebar(props) {
           </div>
           <div className="candidate-title">
             <div className="">
-              <h4 className="m-b5">{state.userDetails.company_name}</h4>
+              <h4 className="m-b5">{state.userDetails?.company_name}</h4>
               <p className="m-b0">
-                <Link to={""}>{state.userDetails.tagline}</Link>
+                <Link to={""}>{state.userDetails?.tagline}</Link>
               </p>
             </div>
           </div>

@@ -82,6 +82,7 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
                       <button
                         onClick={(e) => {
                           e.preventDefault();
+                          inputRef.click();
                         }}
                         className="align-self-center"
                         style={{ height: "45px", border: 0 }}

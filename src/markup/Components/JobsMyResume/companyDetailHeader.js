@@ -61,7 +61,7 @@ export default function CompanyDetailHeader({ isView }) {
           <div className="text-white   align-self-center browse-job text-left">
             <h4 className="m-b0">{state.PreviewSingleCompany?.company_name}</h4>
             <p className="m-b15 text-justify">
-              {state.PreviewSingleCompany?.description}
+              {state.PreviewSingleCompany?.tagline}
             </p>
             <ul className="clearfix">
               {state.PreviewPost.company?.facebook != "" && (

@@ -24,6 +24,7 @@ export const registerCompany =
       .then(function (response) {
         console.log("datsss", response.data.successful);
         if (response.data.successful) {
+          console.log("response.data.data register", response.data);
           toast.success("Registered Successfully!", {
             position: "top-right",
             autoClose: 5000,
@@ -35,13 +36,13 @@ export const registerCompany =
           });
           dispatch({
             type: "RegisterUser",
-            data: response.data.data[0],
+            data: response.data.data,
           });
           dispatch({
             type: "SetAuthToken",
             data: response.data.accessToken,
           });
-          router.push("/");
+          router.push("/company-profile");
         } else {
           toast.error("Something went wrong!", {
             position: "top-right",
