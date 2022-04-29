@@ -17,6 +17,7 @@ import {
 import { GetSingleJob } from "../../redux/action";
 import JobDetailHeader from "../Components/JobsMyResume/JobDetailHeader";
 import ReactPlayer from "react-player";
+import { ApplyJobPost } from "../../redux/action/jobApplications/jobApplicationsActions";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -38,6 +39,7 @@ const blogGrid = [
 export default function Jobdetail(props) {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [description, setDescription] = useState("");
 
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -50,11 +52,6 @@ export default function Jobdetail(props) {
   };
 
   useEffect(() => {
-    // console.log(
-    //   ".location.state.company_id",
-    //   props.location.state.company_id,
-    //   props.location.state.post_id
-    // );
     callGetSingleJob();
   }, []);
 
@@ -66,6 +63,19 @@ export default function Jobdetail(props) {
       )
     );
     setLoading(false);
+  };
+
+  const callApplyJobPost = () => {
+    console.log("testing te apply post");
+    dispatch(
+      ApplyJobPost(
+        state.PreviewPost.id,
+        state.PreviewPost.company_id,
+        0,
+        description
+      )
+    );
+    handleClose();
   };
 
   if (loading) {
@@ -270,7 +280,9 @@ export default function Jobdetail(props) {
 
                       {!state.userDetails.company_name && (
                         <Link
-                          onClick={() => handleShow()}
+                          onClick={() => {
+                            handleShow();
+                          }}
                           className="site-button"
                         >
                           Apply To This Job
@@ -370,8 +382,10 @@ export default function Jobdetail(props) {
                         <TextInputModal
                           placeholder="Enter Cover Letter"
                           type="text"
+                          value={description}
                           onChange={(e) => {
                             console.log(e.target.value);
+                            setDescription(e.target.value);
                           }}
                         />
                       </div>
@@ -402,20 +416,25 @@ export default function Jobdetail(props) {
               </div>
               <div className="modal-footer">
                 <button
-                  onClick={() => handleClose()}
+                  onClick={(e) => {
+                    handleClose();
+                  }}
                   type="button"
                   className="site-button"
                   data-dismiss="modal"
                 >
                   Cancel
                 </button>
-                <Link
-                  // to={"/jobs-applied-job"}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    callApplyJobPost();
+                  }}
                   type="button"
                   className="site-button"
                 >
                   Save
-                </Link>
+                </button>
               </div>
             </div>
           </div>

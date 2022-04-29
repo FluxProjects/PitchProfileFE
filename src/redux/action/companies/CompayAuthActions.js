@@ -44,7 +44,7 @@ export const registerCompany =
           });
           router.push("/company-profile");
         } else {
-          toast.error("Something went wrong!", {
+          toast.error(`${response.data.message}`, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -650,6 +650,10 @@ export const GetAllCompanies = () => async (dispatch, state) => {
 
       dispatch({
         type: "AllCompanies",
+        data: response.data.data,
+      });
+      dispatch({
+        type: "BackupAllCompanies",
         data: response.data.data,
       });
     })

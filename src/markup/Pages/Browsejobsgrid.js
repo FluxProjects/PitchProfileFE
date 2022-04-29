@@ -153,7 +153,7 @@ export default function Browsejobgrid() {
                                 }}
                               >
                                 <span
-                                  className="text-uppercase"
+                                  className="text-uppercase mb-0 cardGridFont"
                                   style={{
                                     fontSize: "14px",
                                     fontWeight: "normal",
@@ -172,7 +172,7 @@ export default function Browsejobgrid() {
                                 textDecoration: "none",
                               }}
                             >
-                              <li>
+                              <li className="mb-0 cardGridFont">
                                 <i className="fa fa-map-marker"></i>
                                 {item.city?.name}
                                 {item.city && ", "} {item.state?.name}
@@ -199,7 +199,7 @@ export default function Browsejobgrid() {
                                   )
                                 ].name}
                           </div> */}
-                          <div className=" text-primary">
+                          <div className="mb-0 cardGridFont text-primary">
                             <i className="fa fa-clock-o"></i>{" "}
                             {jobTypeDrop.findIndex(
                               (x) => x?.id == item.job_type
@@ -214,7 +214,7 @@ export default function Browsejobgrid() {
                         </div>
 
                         <div className="d-flex">
-                          <div className="job-time mr-auto">
+                          <div className="mb-0  cardGridFont job-time mr-auto">
                             <Link to={""}>
                               <span>
                                 {daysSinceGivenDate(new Date(item.created_at))}{" "}
@@ -222,7 +222,7 @@ export default function Browsejobgrid() {
                               </span>
                             </Link>
                           </div>
-                          <div className="salary-bx">
+                          <div className="mb-0 cardGridFont salary-bx">
                             <span>
                               {SalaryRange.findIndex(
                                 (x) => x?.id == item?.salary_range
