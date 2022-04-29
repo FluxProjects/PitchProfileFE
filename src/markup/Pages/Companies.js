@@ -369,7 +369,7 @@ export default function Companies(props) {
                 <p>Loading...</p>
               ) : (
                 <ul className="post-job-bx browse-job-grid row">
-                  {state.AllCompanies.map((item, index) => (
+                  {state?.AllCompanies?.map((item, index) => (
                     <li className="col-lg-4 col-md-6" key={index}>
                       <Link
                         to={{
@@ -456,10 +456,10 @@ export default function Companies(props) {
                               >
                                 <li className="mb-0 cardGridFont">
                                   <i className="fa fa-map-marker"></i>
-                                  {item.city?.name}
-                                  {item.city && ", "} {item.state?.name}
-                                  {item.state && ", "}
-                                  {item.country?.sortname}
+                                  {item?.city?.name}
+                                  {item?.city && ", "} {item.state?.name}
+                                  {item?.state && ", "}
+                                  {item?.country?.sortname}
                                 </li>
                               </ul>
                             </div>

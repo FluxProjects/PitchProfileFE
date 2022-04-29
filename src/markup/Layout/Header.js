@@ -47,6 +47,11 @@ export default function Header() {
 
   const links = [
     {
+      name: "All Companies",
+      link: "/companies",
+      index: "2",
+    },
+    {
       name: "Browse Job",
       link: "/browse-job-grid",
       index: "0",
