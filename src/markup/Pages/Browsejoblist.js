@@ -132,7 +132,7 @@ class Browsejoblist extends Component {
                         </li>
                       ))}
                     </ul>
-                    <div className="pagination-bx m-t30">
+                    {/* <div className="pagination-bx m-t30">
                       <ul className="pagination">
                         <li className="previous">
                           <Link to={""}>
@@ -154,7 +154,7 @@ class Browsejoblist extends Component {
                           </Link>
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="col-xl-3 col-lg-4 col-md-5">
                     <div className="sticky-top">

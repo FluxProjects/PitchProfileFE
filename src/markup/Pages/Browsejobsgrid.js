@@ -245,7 +245,7 @@ export default function Browsejobgrid() {
                   </li>
                 ))}
               </ul>
-              <div className="pagination-bx m-t30">
+              {/* <div className="pagination-bx m-t30">
                 <ul className="pagination">
                   <li className="previous">
                     <Link to={""}>
@@ -267,7 +267,7 @@ export default function Browsejobgrid() {
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ export default function Companyresume() {
   };
 
   const downloadFile = async (fileURL) => {
-    fetch(URL + fileURL, {
+    fetch(fileURL, {
       method: "GET",
       headers: {
         "Content-Type": "application/pdf",
@@ -107,7 +107,12 @@ export default function Companyresume() {
                                 <div className="d-flex m-b20">
                                   <div className="job-post-info">
                                     <h5 className="m-b0">
-                                      <Link to={"/jobs-profile"}>
+                                      <Link
+                                        to={{
+                                          pathname: "view-candidate-profile",
+                                          state: { id: item.candidate_id },
+                                        }}
+                                      >
                                         {item?.candidate?.f_name}{" "}
                                         {item?.candidate?.l_name}
                                       </Link>
@@ -120,10 +125,14 @@ export default function Companyresume() {
                                       {/* at Atract Solutions */}
                                     </p>
                                     <ul>
-                                      {/* <li>
-                                      <i className="fa fa-map-marker"></i>
-                                      Sacramento, California
-                                    </li> */}
+                                      <li>
+                                        <i className="fa fa-map-marker"></i>
+                                        {item?.candidate?.city?.name}
+                                        {item?.candidate?.city && ", "}{" "}
+                                        {item?.candidate?.state?.name}
+                                        {item?.candidate?.state && ", "}
+                                        {item?.candidate?.country?.sortname}
+                                      </li>
                                       <li>
                                         <i className="fa fa-money"></i> ${" "}
                                         {SalaryRange.findIndex(
@@ -142,25 +151,37 @@ export default function Companyresume() {
                                     </ul>
                                   </div>
                                 </div>
-                                {/* <div className="job-time m-t15 m-b10">
-                                <Link to={""} className="mr-1">
-                                  <span>PHP</span>
-                                </Link>
-                                <Link to={""} className="mr-1">
-                                  <span>Angular</span>
-                                </Link>
-                                <Link to={""} className="mr-1">
-                                  <span>Bootstrap</span>
-                                </Link>
-                              </div> */}
-                                {/* <Link
-                                  onClick={() => {
-                                    // downloadFile(item.);
-                                  }}
-                                  className="job-links"
-                                >
-                                  <i className="fa fa-download "></i>
-                                </Link> */}
+
+                                <div className="job-time m-t15 m-b10">
+                                  {item?.candidate?.candidate_skills.map(
+                                    (skill) => (
+                                      <Link to={""} className="mr-1">
+                                        <span>
+                                          {" "}
+                                          {
+                                            state.skills[
+                                              state.skills.findIndex(
+                                                (x) => x.id == skill.skill_id
+                                              )
+                                            ].name
+                                          }
+                                        </span>
+                                      </Link>
+                                    )
+                                  )}
+                                </div>
+                                {item?.candidate?.cover_letter_url && (
+                                  <Link
+                                    onClick={() => {
+                                      downloadFile(
+                                        item?.candidate?.cover_letter_url
+                                      );
+                                    }}
+                                    className="job-links"
+                                  >
+                                    <i className="fa fa-download "></i>
+                                  </Link>
+                                )}
                                 {/* <Link
                               to={"/files/pdf-sample.pdf"}
                               target="blank"
@@ -173,7 +194,7 @@ export default function Companyresume() {
                           </li>
                         ))}
                       </ul>
-                      <div className="pagination-bx float-right">
+                      {/* <div className="pagination-bx float-right">
                         <ul className="pagination">
                           <li className="previous">
                             <Link to={""}>
@@ -195,7 +216,7 @@ export default function Companyresume() {
                             </Link>
                           </li>
                         </ul>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

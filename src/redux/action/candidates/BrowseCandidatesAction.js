@@ -14,7 +14,7 @@ import {
 export const GetAllCandidates = () => async (dispatch, state) => {
   var config = {
     method: "get",
-    url: "https://pitchprofile.herokuapp.com/profile/get_all_candidates",
+    url: `${URL}/profile/get_all_candidates`,
     headers: {},
   };
 

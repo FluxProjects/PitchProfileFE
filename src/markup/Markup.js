@@ -40,6 +40,7 @@ import CompanyRegister from "./Pages/CompanyRegister";
 import CompanyPostJobView from "./Pages/CompanyPostJobView";
 import Browsejobgrid from "./Pages/Browsejobsgrid";
 import Browsejoblist from "./Pages/Browsejoblist";
+import MyWishlists from "./Pages/MyWishlists";
 
 export default function Markup() {
   return (
@@ -84,6 +85,8 @@ export default function Markup() {
           <Route path="/company-manage-job" component={Companymanage} />
           {/* Company Resume Received List */}
           <Route path="/company-resume" component={Companyresume} />
+          <Route path="/my-wishlists" component={MyWishlists} />
+
           {/* Search Candidates/Candidates List for Company */}
           <Route path="/browse-candidates" component={Browsecandidates} />
           {/* Search Job /Job List for Candidates */}

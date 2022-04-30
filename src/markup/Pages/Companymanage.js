@@ -206,7 +206,7 @@ export default function Companymanage() {
                         ))}
                       </tbody>
                     </table>
-                    <div className="pagination-bx m-t30 float-right">
+                    {/* <div className="pagination-bx m-t30 float-right">
                       <ul className="pagination">
                         <li className="previous">
                           <Link to={""}>
@@ -228,7 +228,7 @@ export default function Companymanage() {
                           </Link>
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
 
                     <Modal
                       show={show}
