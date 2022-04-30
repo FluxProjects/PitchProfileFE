@@ -153,14 +153,14 @@ export default function Companyresume() {
                                   <span>Bootstrap</span>
                                 </Link>
                               </div> */}
-                                <Link
+                                {/* <Link
                                   onClick={() => {
                                     // downloadFile(item.);
                                   }}
                                   className="job-links"
                                 >
                                   <i className="fa fa-download "></i>
-                                </Link>
+                                </Link> */}
                                 {/* <Link
                               to={"/files/pdf-sample.pdf"}
                               target="blank"
