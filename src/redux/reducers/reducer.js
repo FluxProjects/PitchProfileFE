@@ -100,6 +100,8 @@ const changeState = (state = initialState, { type, ...rest }) => {
         // Jobs
         AllCompanies: [],
         BackupAllCompanies: [],
+        JobApplications: [],
+        FeaturedJobs: [],
       };
     case "SetAuthToken":
       return { ...state, authToken: rest.data };
@@ -249,6 +251,17 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         PreviewSingleCompany: rest.data,
+      };
+
+    case "GetJobApplications":
+      return {
+        ...state,
+        JobApplications: rest.data,
+      };
+    case "GetFeaturedJobs":
+      return {
+        ...state,
+        FeaturedJobs: rest.data,
       };
 
     default:

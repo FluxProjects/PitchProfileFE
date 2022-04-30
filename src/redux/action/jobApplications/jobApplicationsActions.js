@@ -57,3 +57,26 @@ export const ApplyJobPost =
         console.log(error);
       });
   };
+
+export const GetJobApplications = (id) => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/apply_jobs/get_all_applications/${state().userDetails.id}`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log("GetJobApplications", response.data);
+
+      if (response.data.successful) {
+        dispatch({
+          type: "GetJobApplications",
+          data: response.data.data,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};

@@ -418,3 +418,24 @@ export const DeleteSingle = (id, index) => async (dispatch, state) => {
       console.log(error);
     });
 };
+
+export const GetFeaturedJobs = (company_id) => async (dispatch, state) => {
+  console.log("FeaturedJobsFeaturedJobs", company_id);
+  var config = {
+    method: "get",
+    url: `${URL}/jobs/get_my_featured_listed_jobs/${company_id}`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      dispatch({
+        type: "GetFeaturedJobs",
+        data: response.data.data,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
