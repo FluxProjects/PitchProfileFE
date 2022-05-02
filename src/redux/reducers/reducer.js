@@ -47,6 +47,8 @@ const initialState = {
   SaveJobVideo: "",
 
   PreviewSingleCompany: {},
+
+  wishlist: [],
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -262,6 +264,12 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         FeaturedJobs: rest.data,
+      };
+
+    case "GetWishlist":
+      return {
+        ...state,
+        wishlist: rest.data,
       };
 
     default:
