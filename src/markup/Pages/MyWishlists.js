@@ -2,22 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header2 from "./../Layout/Header2";
 import Footer from "./../Layout/Footer";
-import Profilesidebar from "../Element/CompanyProfileSidebar";
+import CompanyProfileSidebar from "../Element/CompanyProfileSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { GetJobApplications } from "../../redux/action/jobApplications/jobApplicationsActions";
 import { SalaryRange } from "../../utils/DropDownUtils";
 import { URL } from "../../utils/APIUtils";
-
-const postResume = [
-  { title: "Tammy Dixon" },
-  { title: "John Doe" },
-  { title: "Ali Tufan" },
-  { title: "David kamal" },
-  { title: "Tammy Dixon" },
-  { title: "John Doe" },
-  { title: "David kamal" },
-  { title: "Ali Tufan" },
-];
+import { GetWishlistCandidate, GetWishlistCompany } from "../../redux/action";
+import Profilesidebar from "../Element/Profilesidebar";
+import Header from "../Layout/Header";
 
 export default function MyWishlists() {
   const state = useSelector((state) => state);
@@ -25,40 +17,20 @@ export default function MyWishlists() {
 
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    callGetJobApplications();
-  }, []);
-
-  const callGetJobApplications = async () => {
-    await dispatch(GetJobApplications());
+  const callGetWishlists = async () => {
+    if (state?.userDetails?.company_name) {
+      console.log("called companu");
+      await dispatch(GetWishlistCompany());
+    } else {
+      console.log("called acndid");
+      await dispatch(GetWishlistCandidate());
+    }
     setLoading(false);
   };
 
-  const downloadFile = async (fileURL) => {
-    fetch(URL + fileURL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/pdf",
-      },
-    })
-      .then((response) => response.blob())
-      .then((blob) => {
-        // Create blob link to download
-        const url = window.URL.createObjectURL(new Blob([blob]));
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", `FileName.pdf`);
-
-        // Append to html link element page
-        document.body.appendChild(link);
-
-        // Start download
-        link.click();
-
-        // Clean up and remove the link
-        link.parentNode.removeChild(link);
-      });
-  };
+  useEffect(() => {
+    callGetWishlists();
+  }, []);
 
   if (loading) {
     return (
@@ -69,17 +41,24 @@ export default function MyWishlists() {
   } else {
     return (
       <>
-        <Header2 />
+        {state.userDetails?.company_name ? <Header2 /> : <Header />}
         <div className="page-content bg-white">
           <div className="content-block">
             <div className="section-full bg-white p-t50 p-b20">
               <div className="container">
                 <div className="row">
                   <div className="col-xl-3 col-lg-4 m-b30">
-                    <Profilesidebar
-                      image={`require("./../../images/team/pic1.jpg")`}
-                      isActive="Resume"
-                    />
+                    {state.userDetails?.company_name ? (
+                      <CompanyProfileSidebar
+                        image={`require("./../../images/team/pic1.jpg")`}
+                        isActive="My Wishlists"
+                      />
+                    ) : (
+                      <Profilesidebar
+                        image={`require("./../../images/team/pic1.jpg")`}
+                        isActive="My Wishlists"
+                      />
+                    )}
                   </div>
                   <div className="col-xl-9 col-lg-8 m-b30">
                     <div className="job-bx clearfix">
@@ -95,35 +74,45 @@ export default function MyWishlists() {
                         </Link>
                       </div>
                       <ul className="post-job-bx browse-candidate-grid post-resume row">
-                        {state.JobApplications?.map((item, index) => (
+                        {state.wishlist?.map((item, index) => (
                           <li className="col-lg-6 col-md-6" key={index}>
                             <Link
                               to={{
-                                pathname: "view-candidate-profile",
-                                state: { id: item.candidate_id },
+                                pathname: "/company-detail",
+                                state: {
+                                  company_id: item?.company_id,
+                                },
                               }}
                             >
                               <div className="post-bx">
                                 <div className="d-flex m-b20">
                                   <div className="job-post-info">
                                     <h5 className="m-b0">
-                                      <Link to={"/jobs-profile"}>
-                                        {item?.candidate?.f_name}{" "}
-                                        {item?.candidate?.l_name}
+                                      <Link
+                                        to={{
+                                          pathname: "view-candidate-profile",
+                                          state: { id: item.candidate_id },
+                                        }}
+                                      >
+                                        {item?.job?.job_title}
                                       </Link>
                                     </h5>
                                     <p className="m-b5 font-13">
-                                      {item?.candidate?.headline}
+                                      {item?.job?.company?.company_name}
                                       <Link to={""} className="text-primary">
                                         {" "}
                                       </Link>
                                       {/* at Atract Solutions */}
                                     </p>
                                     <ul>
-                                      {/* <li>
-                                      <i className="fa fa-map-marker"></i>
-                                      Sacramento, California
-                                    </li> */}
+                                      <li>
+                                        <i className="fa fa-map-marker"></i>
+                                        {item?.job?.city?.name}
+                                        {item?.job?.city && ", "}{" "}
+                                        {item?.job?.state?.name}
+                                        {item?.job?.state && ", "}
+                                        {item?.job?.country?.sortname}
+                                      </li>
                                       <li>
                                         <i className="fa fa-money"></i> ${" "}
                                         {SalaryRange.findIndex(
@@ -142,32 +131,25 @@ export default function MyWishlists() {
                                     </ul>
                                   </div>
                                 </div>
-                                {/* <div className="job-time m-t15 m-b10">
-                                <Link to={""} className="mr-1">
-                                  <span>PHP</span>
-                                </Link>
-                                <Link to={""} className="mr-1">
-                                  <span>Angular</span>
-                                </Link>
-                                <Link to={""} className="mr-1">
-                                  <span>Bootstrap</span>
-                                </Link>
-                              </div> */}
-                                {/* <Link
-                                  onClick={() => {
-                                    // downloadFile(item.);
-                                  }}
-                                  className="job-links"
-                                >
-                                  <i className="fa fa-download "></i>
-                                </Link> */}
-                                {/* <Link
-                              to={"/files/pdf-sample.pdf"}
-                              target="blank"
-                              className="job-links"
-                            >
-                              <i className="fa fa-play "></i>
-                            </Link> */}
+
+                                <div className="job-time m-t15 m-b10">
+                                  {item?.candidate?.candidate_skills.map(
+                                    (skill) => (
+                                      <Link to={""} className="mr-1">
+                                        <span>
+                                          {" "}
+                                          {
+                                            state.skills[
+                                              state.skills.findIndex(
+                                                (x) => x.id == skill.skill_id
+                                              )
+                                            ].name
+                                          }
+                                        </span>
+                                      </Link>
+                                    )
+                                  )}
+                                </div>
                               </div>
                             </Link>
                           </li>

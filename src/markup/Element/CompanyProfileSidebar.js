@@ -43,6 +43,11 @@ export default function Profilesidebar(props) {
       link: "/company-change-password",
       icon: "fa fa-key",
     },
+    {
+      name: "My Wishlists",
+      link: "/my-wishlists-company",
+      icon: "fa fa-key",
+    },
     { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
   ];
 

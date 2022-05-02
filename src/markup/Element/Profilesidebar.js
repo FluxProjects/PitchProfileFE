@@ -28,6 +28,11 @@ export default function Profilesidebar(props) {
       link: "/jobs-change-password",
       icon: "fa fa-key",
     },
+    {
+      name: "My Wishlists",
+      link: "/my-wishlists-candidate",
+      icon: "fa fa-key",
+    },
     { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
   ];
 
