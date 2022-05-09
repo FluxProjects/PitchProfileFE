@@ -25,10 +25,13 @@ import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComp
 import AttachVideoCompanyJob from "../Components/JobsMyResume/AttachVideoCompanyJob";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 export default function Componypostjobs() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [city, setCity] = useState(state.userDetails.city_id);
   const [stateName, setStateName] = useState(state.userDetails.state_id);
   const [country, setCountry] = useState(state.userDetails.country_id);
@@ -201,7 +204,8 @@ export default function Componypostjobs() {
         shiftVal,
         salaryRangeVal,
         seniorityLevelVal,
-        state.SaveJobVideo
+        state.SaveJobVideo,
+        history
       )
     );
     setLoading(false);
@@ -513,7 +517,7 @@ export default function Componypostjobs() {
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
-                              The Perks:
+                              Perks:
                               <span className="text-danger"> *</span>
                             </label>
                             <TextAreaModalComponent

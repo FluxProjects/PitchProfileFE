@@ -591,7 +591,7 @@
   margin-right: 25px;
 }
 .submit-resume .form-control {
-  height: 50px;
+  /* height: 50px; */
   border-radius: 5px !important;
 }
 .submit-resume textarea {
@@ -1318,7 +1318,7 @@
   position: relative;
   padding: 12px;
   text-align: center;
-  border: 0 ;
+  border: 0;
   box-shadow: 0 0 10px 0 rgba(0, 24, 128, 0.1) !important;
   height: 50px;
 }

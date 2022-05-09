@@ -58,7 +58,7 @@ export default function BrowsejobgridCard({ item, index }) {
   };
 
   return (
-    <li className="col-lg-4 col-md-6" key={index}>
+    <li className="col-lg-3 col-md-6" key={index}>
       <div className="post-bx">
         <div className="mb-4">
           {item.video ? (
@@ -101,7 +101,9 @@ export default function BrowsejobgridCard({ item, index }) {
                   },
                 }}
               >
-                {item.job_title} {item.seniority_level != null && "- "}
+                {item?.job_title?.substring(0, 5)}
+                {"... "}
+                {item.seniority_level != null && "- "}
                 <span
                   className="text-uppercase"
                   style={{

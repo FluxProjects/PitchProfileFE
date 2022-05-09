@@ -370,7 +370,7 @@ export default function Companies(props) {
               ) : (
                 <ul className="post-job-bx browse-job-grid row">
                   {state?.AllCompanies?.map((item, index) => (
-                    <li className="col-lg-4 col-md-6" key={index}>
+                    <li className="col-lg-3 col-md-6" key={index}>
                       <Link
                         to={{
                           pathname: "/company-detail",
@@ -414,7 +414,8 @@ export default function Companies(props) {
                                     },
                                   }}
                                 >
-                                  {item?.company_name}{" "}
+                                  {item?.company_name.substring(0, 5)}
+                                  {"... "}
                                 </Link>
 
                                 <br />

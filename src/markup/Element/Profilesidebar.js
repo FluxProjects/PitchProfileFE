@@ -29,7 +29,7 @@ export default function Profilesidebar(props) {
       icon: "fa fa-key",
     },
     {
-      name: "My Wishlists",
+      name: "Saved Jobs",
       link: "/my-wishlists-candidate",
       icon: "fa fa-key",
     },

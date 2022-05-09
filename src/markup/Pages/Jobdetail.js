@@ -272,7 +272,9 @@ export default function Jobdetail(props) {
                       </h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
                       <p>{state.PreviewPost?.key_responsibilities}</p>
-                      <h5 className="font-weight-600">Looking for:</h5>
+                      <h5 className="font-weight-600">
+                        What are we looking for?:
+                      </h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
                       <p>{state.PreviewPost?.looking_for}</p>
                       <h5 className="font-weight-600">Perks:</h5>

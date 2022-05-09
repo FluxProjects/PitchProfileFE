@@ -264,10 +264,11 @@ export default function Companyprofile() {
                                 onChange={(e) => {
                                   setDescription(e.target.value);
                                 }}
+                                maxlength={500}
                                 className="form-control"
                               ></textarea>
                               <small>
-                                Characters left: {255 - Description?.length}
+                                Characters left: {500 - Description?.length}
                               </small>
                             </div>
                           </div>
@@ -558,13 +559,36 @@ export default function Companyprofile() {
                               callUpdateCompany();
                             }}
                             type="submit"
-                            className="site-button m-b30"
+                            className="site-button m-b30 mr-3"
                           >
                             Save
                           </button>
                         ) : (
-                          <button type="submit" className="site-button m-b30">
+                          <button
+                            type="submit"
+                            className="site-button m-b30 mr-3"
+                          >
                             Loading....
+                          </button>
+                        )}
+                        {!loading ? (
+                          <Link
+                            to={{
+                              pathname: "/company-detail",
+                              state: {
+                                company_id: state.userDetails?.id,
+                              },
+                            }}
+                            className="site-button  m-b30"
+                          >
+                            Preview
+                          </Link>
+                        ) : (
+                          <button
+                            type="button"
+                            className="site-button mr-4 m-b30"
+                          >
+                            Loading...
                           </button>
                         )}
                       </form>

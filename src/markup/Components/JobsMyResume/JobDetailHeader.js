@@ -105,7 +105,7 @@ export default function JobDetailHeader({ isView }) {
 
   return (
     <>
-      <div className="col-lg-7 col-md-7 col-sm-12 candidate-info">
+      <div className="col-lg-12 col-md-12 col-sm-12 candidate-info">
         <div className="candidate-detail  ">
           <div
             style={{
@@ -157,9 +157,6 @@ export default function JobDetailHeader({ isView }) {
             </ul>
           </div>
         </div>
-      </div>
-      <div className="col-lg-5 col-md-5 col-sm-12">
-        <div className=" text-white "></div>
       </div>
     </>
   );

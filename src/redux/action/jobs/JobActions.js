@@ -24,7 +24,8 @@ export const AddJobPost =
     preferred_shift,
     seniority_level,
     salary_range,
-    files
+    files,
+    router
   ) =>
   async (dispatch, state) => {
     var data = JSON.stringify({
@@ -76,6 +77,7 @@ export const AddJobPost =
             type: "SavePreviewPost",
             data: response.data.data,
           });
+          router.push("/company-manage-job");
         } else {
           toast.success(response.data.message, {
             position: "top-right",
@@ -189,7 +191,7 @@ export const UpdateJobPost =
       .then(function (response) {
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
-          toast.success("Job added Successfully!", {
+          toast.success("Job updated Successfully!", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
