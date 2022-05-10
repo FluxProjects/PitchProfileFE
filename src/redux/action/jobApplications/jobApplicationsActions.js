@@ -4,7 +4,8 @@ import { cloudURL, URL } from "../../../utils/APIUtils";
 import { toast } from "react-toastify";
 
 export const ApplyJobPost =
-  (job_id, company_id, status, description) => async (dispatch, state) => {
+  (job_id, company_id, status, description, router) =>
+  async (dispatch, state) => {
     var data = JSON.stringify({
       data: {
         candidate_id: state().userDetails.id,
@@ -12,6 +13,7 @@ export const ApplyJobPost =
         company_id,
         status,
         description,
+        cover_letter_url: state()?.CoverLetterForApplying,
       },
     });
 
@@ -37,6 +39,8 @@ export const ApplyJobPost =
             draggable: true,
             progress: undefined,
           });
+          router.push("/jobs-applied-job");
+
           // dispatch({
           //   type: "SavePreviewPost",
           //   data: response.data.data,
@@ -79,4 +83,24 @@ export const GetJobApplications = (id) => async (dispatch, state) => {
     .catch(function (error) {
       console.log(error);
     });
+};
+
+export const UploadCoverLetterJob = (files) => async (dispatch, state) => {
+  const formData = new FormData();
+  formData.append("file", files[0]);
+  formData.append("upload_preset", "pitchprofile");
+
+  await axios.post(`${cloudURL}/image/upload`, formData).then(async (res) => {
+    dispatch({
+      type: "CoverLetterForApplying",
+      data: res.data.secure_url,
+    });
+  });
+};
+
+export const ResetCoverLetterJob = () => async (dispatch) => {
+  dispatch({
+    type: "CoverLetterForApplying",
+    data: "",
+  });
 };

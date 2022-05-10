@@ -4,7 +4,11 @@ import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
 import Tab2 from "./../Element/Tab2";
 import { useDispatch, useSelector } from "react-redux";
-import { filterCompanyAlphabetical, GetAllCompanies } from "../../redux/action";
+import {
+  filterCompanyAlphabetical,
+  GetAllCompanies,
+  ResetAllCompanies,
+} from "../../redux/action";
 import classnames from "classnames";
 import {
   jobTypeDrop,
@@ -64,6 +68,18 @@ export default function Companies(props) {
             <div tabs="true">
               <div className="site-filters clearfix center  m-b40">
                 <ul className="filters " data-toggle="buttons">
+                  <li
+                    className={classnames({ active: activeTab === "All" })}
+                    onClick={() => {
+                      toggle("All");
+                      dispatch(ResetAllCompanies());
+                    }}
+                  >
+                    <input type="radio" />
+                    <Link to={"#"} className="site-button-secondry radius-sm">
+                      <span>All</span>
+                    </Link>
+                  </li>
                   <li
                     className={classnames({ active: activeTab === "a" })}
                     onClick={() => {

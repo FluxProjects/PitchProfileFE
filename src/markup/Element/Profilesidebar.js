@@ -31,7 +31,7 @@ export default function Profilesidebar(props) {
     {
       name: "Saved Jobs",
       link: "/my-wishlists-candidate",
-      icon: "fa fa-key",
+      icon: "fa fa-save",
     },
     { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
   ];

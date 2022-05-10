@@ -662,6 +662,13 @@ export const GetAllCompanies = () => async (dispatch, state) => {
     });
 };
 
+export const ResetAllCompanies = () => async (dispatch, state) => {
+  dispatch({
+    type: "AllCompanies",
+    data: state().BackupAllCompanies,
+  });
+};
+
 export const GetSingleCompany = (id) => async (dispatch, state) => {
   var config = {
     method: "get",

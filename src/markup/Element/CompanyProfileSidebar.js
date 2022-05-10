@@ -46,7 +46,7 @@ export default function Profilesidebar(props) {
     {
       name: "Candidate Wishlist",
       link: "/my-wishlists-company",
-      icon: "fa fa-key",
+      icon: "fa fa-heart",
     },
     { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
   ];

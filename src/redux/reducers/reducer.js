@@ -49,6 +49,8 @@ const initialState = {
   PreviewSingleCompany: {},
 
   wishlist: [],
+
+  CoverLetterForApplying: "",
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -270,6 +272,12 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         wishlist: rest.data,
+      };
+
+    case "CoverLetterForApplying":
+      return {
+        ...state,
+        CoverLetterForApplying: rest.data,
       };
 
     default:
