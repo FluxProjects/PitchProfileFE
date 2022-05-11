@@ -350,10 +350,13 @@ export const GetAllJobPosts = () => async (dispatch, state) => {
     .then(function (response) {
       console.log("res.dattatata", response.data.data);
       var companyNames = [];
+      var jobNames = [];
       response.data.data.map((item, index) => {
         companyNames.push(item?.company?.company_name);
+        jobNames.push(item?.job_title);
         // DesignationDrop.push(item?.company?.role);
       });
+      let uniquejobNames = [...new Set(jobNames)];
       let unique = [...new Set(companyNames)];
       console.log(unique);
 
@@ -361,6 +364,11 @@ export const GetAllJobPosts = () => async (dispatch, state) => {
         type: "AllCompanyNames",
         data: unique,
       });
+      dispatch({
+        type: "AllJobNames",
+        data: uniquejobNames,
+      });
+
       dispatch({
         type: "Alljobs",
         data: response.data.data,

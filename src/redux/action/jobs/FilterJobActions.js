@@ -33,6 +33,29 @@ export const filterCompanyName = (companyName) => async (dispatch, state) => {
   });
 };
 
+export const filterJobName = (jobName) => async (dispatch, state) => {
+  console.log("jobNamejobName", jobName);
+  var resultJobName = [];
+  // ? company filter
+  resultJobName = state().BackupAlljobs.filter(function (item) {
+    if (item?.job_title == jobName) return item;
+  });
+
+  toast.success("Updated Successfully!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+  dispatch({
+    type: "FilterAllJobs",
+    data: resultJobName,
+  });
+};
+
 export const filterIndustryName =
   (IndustryFilter) => async (dispatch, state) => {
     console.log("companyNamecompanyName", IndustryFilter);
@@ -256,7 +279,8 @@ export const filterJobAll =
     LocationFilter,
     EmploymentType,
     SeniorityLevel,
-    SalaryRange
+    SalaryRange,
+    jobName
   ) =>
   async (dispatch, state) => {
     // return;
@@ -270,6 +294,7 @@ export const filterJobAll =
     var resultEmploymentType = [];
     var resultSeniorityLevel = [];
     var resultSalaryRange = [];
+    var resultJobName = [];
 
     state().BackupAlljobs.filter(function (item) {
       if (companyName?.length == 0 || companyName == null) {
@@ -356,10 +381,18 @@ export const filterJobAll =
       }
     });
 
+    resultSalaryRange.filter(function (item) {
+      if (jobName?.length == 0 || jobName == null) {
+        resultJobName.push(item);
+      } else if (item?.job_title == jobName) {
+        resultJobName.push(item);
+      }
+    });
+
     const uniqueResults = Array.from(
-      new Set(resultSalaryRange.map((a) => a.id))
+      new Set(resultJobName.map((a) => a.id))
     ).map((id) => {
-      return resultSalaryRange.find((a) => a.id === id);
+      return resultJobName.find((a) => a.id === id);
     });
 
     toast.success("Updated Successfully!", {

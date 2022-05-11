@@ -526,6 +526,7 @@ export default function Componypostjobs() {
                                 // 150 - perks.length >= 0 &&
                                 setPerks(e.target.value);
                               }}
+                              maxLength={"500"}
                               value={perks}
                             />
                             <small>Characters left: {500 - perks.length}</small>

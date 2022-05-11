@@ -120,6 +120,7 @@ export default function Companymanage() {
                                   state: {
                                     company_id: item?.company_id,
                                     post_id: item?.id,
+                                    isNavigateFromManageJob: true,
                                   },
                                 }}
                               >

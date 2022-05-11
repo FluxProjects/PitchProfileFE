@@ -23,7 +23,7 @@ import Header2 from "../Layout/Header2";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
-export default function BrowsejobgridCard({ item, index }) {
+export default function AppliedJobGrid({ item, index }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -58,7 +58,7 @@ export default function BrowsejobgridCard({ item, index }) {
   };
 
   return (
-    <li className="col-lg-3 col-md-6" key={index}>
+    <li className="col-lg-4 col-md-6" key={index}>
       <div className="post-bx">
         <div className="mb-4">
           {item.video ? (
@@ -96,14 +96,14 @@ export default function BrowsejobgridCard({ item, index }) {
                 to={{
                   pathname: "/job-detail",
                   state: {
-                    company_id: item?.company_id,
-                    post_id: item?.id,
+                    company_id: item?.job?.company_id,
+                    post_id: item?.job?.id,
                   },
                 }}
               >
-                {item?.job_title?.substring(0, 5)}
+                {item?.job?.job_title?.substring(0, 5)}
                 {"... "}
-                {item.seniority_level != null && "- "}
+                {item?.job?.seniority_level != null && "- "}
                 <span
                   className="text-uppercase"
                   style={{
@@ -112,12 +112,12 @@ export default function BrowsejobgridCard({ item, index }) {
                   }}
                 >
                   {SeniorityLevel.findIndex(
-                    (x) => x?.id == item.seniority_level
+                    (x) => x?.id == item?.job?.seniority_level
                   ) == -1
                     ? ""
                     : SeniorityLevel[
                         SeniorityLevel.findIndex(
-                          (x) => x?.id == item.seniority_level
+                          (x) => x?.id == item?.job?.seniority_level
                         )
                       ].name}
                   {/* {item.department?.name} */}
@@ -129,7 +129,7 @@ export default function BrowsejobgridCard({ item, index }) {
                 to={{
                   pathname: "/company-detail",
                   state: {
-                    company_id: item?.company_id,
+                    company_id: item?.job?.company_id,
                   },
                 }}
               >
@@ -155,10 +155,10 @@ export default function BrowsejobgridCard({ item, index }) {
             >
               <li className="mb-0 cardGridFont">
                 <i className="fa fa-map-marker"></i>
-                {item.city?.name}
-                {item.city && ", "} {item.state?.name}
-                {item.state && ", "}
-                {item.country?.sortname}
+                {item?.job?.city?.name}
+                {item.job?.city && ", "} {item.job?.state?.name}
+                {item.job?.state && ", "}
+                {item.job?.country?.sortname}
               </li>
             </ul>
           </div>
@@ -179,10 +179,10 @@ export default function BrowsejobgridCard({ item, index }) {
         </div> */}
           <div className="mb-0 cardGridFont text-primary">
             <i className="fa fa-clock-o"></i>{" "}
-            {jobTypeDrop.findIndex((x) => x?.id == item.job_type) == -1
+            {jobTypeDrop.findIndex((x) => x?.id == item.job?.job_type) == -1
               ? ""
               : jobTypeDrop[
-                  jobTypeDrop.findIndex((x) => x?.id == item.job_type)
+                  jobTypeDrop.findIndex((x) => x?.id == item.job?.job_type)
                 ].name}
           </div>
         </div>
@@ -190,15 +190,20 @@ export default function BrowsejobgridCard({ item, index }) {
         <div className="d-flex">
           <div className="mb-0  cardGridFont job-time mr-auto">
             <Link to={""}>
-              <span>{daysSinceGivenDate(new Date(item.created_at))} ago</span>
+              <span>
+                {daysSinceGivenDate(new Date(item.job?.created_at))} ago
+              </span>
             </Link>
           </div>
           <div className="mb-0 cardGridFont salary-bx">
             <span>
-              {SalaryRange.findIndex((x) => x?.id == item?.salary_range) == -1
+              {SalaryRange.findIndex((x) => x?.id == item?.job?.salary_range) ==
+              -1
                 ? ""
                 : SalaryRange[
-                    SalaryRange.findIndex((x) => x?.id == item?.salary_range)
+                    SalaryRange.findIndex(
+                      (x) => x?.id == item?.job?.salary_range
+                    )
                   ].name}
             </span>
           </div>

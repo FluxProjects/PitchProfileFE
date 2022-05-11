@@ -19,6 +19,7 @@ import {
   ResetfilterJobs,
   GetCities,
   filterLocationFilter,
+  filterJobName,
 } from "../../redux/action";
 import {
   filterCandidateAll,
@@ -54,6 +55,7 @@ export default function Jobfindbox({ isView }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
+  const [JobNameFilter, setJobNameFilter] = useState(null);
   const [CompanyNameFilter, setCompanyNameFilter] = useState(null);
   const [SalaryRangeVal, setSalaryRange] = useState(null);
   const [EmploymentTypeFilter, setEmploymentTypeFilter] = useState(null);
@@ -117,6 +119,10 @@ export default function Jobfindbox({ isView }) {
 
   const callFilter = () => {
     var count = 0;
+
+    if (JobNameFilter != null && JobNameFilter != "") {
+      count++;
+    }
     if (CompanyNameFilter != null && CompanyNameFilter != "") {
       count++;
     }
@@ -191,9 +197,16 @@ export default function Jobfindbox({ isView }) {
             ? ""
             : SalaryRange[
                 SalaryRange.findIndex((x) => x?.name == SalaryRangeVal)
-              ].id
+              ].id,
+
+          JobNameFilter
         )
       );
+      return;
+    }
+
+    if (JobNameFilter != null && JobNameFilter != "") {
+      dispatch(filterJobName(JobNameFilter));
       return;
     }
     if (CompanyNameFilter != null && CompanyNameFilter != "") {
@@ -292,6 +305,31 @@ export default function Jobfindbox({ isView }) {
         <div className="find-job-bx">
           <form className="dezPlaceAni">
             <div className="row">
+              <div className="col-lg-2 col-md-6">
+                <div className="form-group">
+                  <label className="">Jobs</label>
+                  <div className="input-group  ">
+                    <input
+                      onChange={(e) => {
+                        console.log("eee", e.target.value);
+                        setJobNameFilter(e.target.value);
+                      }}
+                      value={JobNameFilter}
+                      placeholder=""
+                      className="form-control w-85"
+                      type="text"
+                      list="JobNameFilter"
+                    />
+
+                    <datalist id="JobNameFilter">
+                      {state.AllJobNames.map((item, key) => (
+                        <option key={key} value={item} />
+                      ))}
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+
               <div className="col-lg-2 col-md-6">
                 <div className="form-group">
                   <label className="">Company Name</label>
@@ -514,7 +552,6 @@ export default function Jobfindbox({ isView }) {
 
               {/* <div ></div> */}
               <div className="col-lg-2 col-md-2"></div>
-              <div className="col-lg-2 col-md-2"></div>
               <div className="col-lg-2 col-md-2">
                 <button
                   onClick={(e) => {
@@ -531,6 +568,7 @@ export default function Jobfindbox({ isView }) {
                 <button
                   onClick={(e) => {
                     e.preventDefault();
+                    setJobNameFilter("");
                     setCompanyNameFilter("");
                     setSeniorityLevelFilter("");
                     setLocationFilter("");

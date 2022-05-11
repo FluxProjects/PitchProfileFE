@@ -64,7 +64,11 @@ export default function MyWishlists() {
                     <div className="job-bx clearfix">
                       <div className="job-bx-title clearfix">
                         <h5 className="font-weight-700 pull-left text-uppercase">
-                          {state.wishlist.length} Candidates Wishlist
+                          {state.wishlist.length}{" "}
+                          {state.userDetails?.company_name
+                            ? "Candidates"
+                            : "Jobs"}{" "}
+                          Wishlisted
                         </h5>
                         <Link
                           to={"/company-manage-job"}

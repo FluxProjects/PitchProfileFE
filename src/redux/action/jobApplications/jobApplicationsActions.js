@@ -13,7 +13,7 @@ export const ApplyJobPost =
         company_id,
         status,
         description,
-        cover_letter_url: state()?.CoverLetterForApplying,
+        attachment_url: state()?.CoverLetterForApplying,
       },
     });
 
@@ -66,6 +66,31 @@ export const GetJobApplications = (id) => async (dispatch, state) => {
   var config = {
     method: "get",
     url: `${URL}/apply_jobs/get_all_applications/${state().userDetails.id}`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log("GetJobApplications", response.data);
+
+      if (response.data.successful) {
+        dispatch({
+          type: "GetJobApplications",
+          data: response.data.data,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const GetJobCandidateApplications = (id) => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/apply_jobs/get_all_candidate_applications/${
+      state().userDetails.id
+    }`,
     headers: {},
   };
 

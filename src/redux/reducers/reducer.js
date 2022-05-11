@@ -19,6 +19,7 @@ const initialState = {
 
   organizationDrop: [],
   AllCompanyNames: [],
+  AllJobNames: [],
   DesignationDrop: [],
 
   // Candidate my resume
@@ -121,6 +122,11 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         AllCompanyNames: rest.data,
+      };
+    case "AllJobNames":
+      return {
+        ...state,
+        AllJobNames: rest.data,
       };
     case "setLangs":
       return { ...state, languages: rest.data };
