@@ -25,6 +25,11 @@ export const AddJobPost =
     seniority_level,
     salary_range,
     files,
+    skill_id1,
+    skill_id2,
+    skill_id3,
+    skill_id4,
+    skill_id5,
     router
   ) =>
   async (dispatch, state) => {
@@ -50,6 +55,11 @@ export const AddJobPost =
         seniority_level,
         salary_range,
         video: files,
+        skill_id1,
+        skill_id2,
+        skill_id3,
+        skill_id4,
+        skill_id5,
       },
     });
     var config = {
@@ -368,7 +378,6 @@ export const GetAllJobPosts = () => async (dispatch, state) => {
         type: "AllJobNames",
         data: uniquejobNames,
       });
-
       dispatch({
         type: "Alljobs",
         data: response.data.data,

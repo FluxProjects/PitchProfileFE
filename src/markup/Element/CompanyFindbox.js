@@ -20,6 +20,7 @@ import {
   GetCities,
   filterLocationFilter,
   filterJobName,
+  filterSkillType,
 } from "../../redux/action";
 import {
   filterCandidateAll,
@@ -67,6 +68,7 @@ export default function Jobfindbox({ isView }) {
   const [availaibityBool, setAvailaibityBool] = useState(null);
   const [DepartmentNameFilter, setDepartmentNameFilter] = useState(null);
   const [SeniorityLevelFilter, setSeniorityLevelFilter] = useState(null);
+  const [SkillFilter, setSkillFilter] = useState(null);
 
   useEffect(() => {
     callGetDrop();
@@ -121,6 +123,9 @@ export default function Jobfindbox({ isView }) {
     var count = 0;
 
     if (JobNameFilter != null && JobNameFilter != "") {
+      count++;
+    }
+    if (SkillFilter != null && SkillFilter != "") {
       count++;
     }
     if (CompanyNameFilter != null && CompanyNameFilter != "") {
@@ -199,7 +204,13 @@ export default function Jobfindbox({ isView }) {
                 SalaryRange.findIndex((x) => x?.name == SalaryRangeVal)
               ].id,
 
-          JobNameFilter
+          JobNameFilter,
+
+          state.skills.findIndex((x) => x?.name == SkillFilter) == -1
+            ? ""
+            : state.skills[
+                state.skills.findIndex((x) => x?.name == SkillFilter)
+              ].id
         )
       );
       return;
@@ -207,6 +218,19 @@ export default function Jobfindbox({ isView }) {
 
     if (JobNameFilter != null && JobNameFilter != "") {
       dispatch(filterJobName(JobNameFilter));
+      return;
+    }
+    if (SkillFilter != null && SkillFilter != "") {
+      dispatch(
+        filterSkillType(
+          state.skills.findIndex((x) => x?.name == SkillFilter) == -1
+            ? ""
+            : state.skills[
+                state.skills.findIndex((x) => x?.name == SkillFilter)
+              ].id
+        )
+      );
+
       return;
     }
     if (CompanyNameFilter != null && CompanyNameFilter != "") {
@@ -324,6 +348,31 @@ export default function Jobfindbox({ isView }) {
                     <datalist id="JobNameFilter">
                       {state.AllJobNames.map((item, key) => (
                         <option key={key} value={item} />
+                      ))}
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-lg-2 col-md-6">
+                <div className="form-group">
+                  <label className="">Skill</label>
+                  <div className="input-group  ">
+                    <input
+                      onChange={(e) => {
+                        console.log("eee", e.target.value);
+                        setSkillFilter(e.target.value);
+                      }}
+                      value={SkillFilter}
+                      placeholder=""
+                      className="form-control w-85"
+                      type="text"
+                      list="SkillFilter"
+                    />
+
+                    <datalist id="SkillFilter">
+                      {state.skills.map((item, key) => (
+                        <option key={key} value={item.name} />
                       ))}
                     </datalist>
                   </div>
@@ -551,7 +600,6 @@ export default function Jobfindbox({ isView }) {
               )}
 
               {/* <div ></div> */}
-              <div className="col-lg-2 col-md-2"></div>
               <div className="col-lg-2 col-md-2">
                 <button
                   onClick={(e) => {
@@ -571,6 +619,7 @@ export default function Jobfindbox({ isView }) {
                     setJobNameFilter("");
                     setCompanyNameFilter("");
                     setSeniorityLevelFilter("");
+                    setSkillFilter("");
                     setLocationFilter("");
                     setIndustryFilter("");
                     setCompanySizeFilter("");

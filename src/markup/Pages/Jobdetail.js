@@ -24,6 +24,8 @@ import {
 } from "../../redux/action/jobApplications/jobApplicationsActions";
 import { useHistory } from "react-router-dom";
 
+import ReactHtmlParser from "react-html-parser";
+
 var bnr = require("./../../images/banner/bnr1.jpg");
 
 const blogGrid = [
@@ -290,20 +292,24 @@ export default function Jobdetail(props) {
                       </ul>
                       <h5 className="mt-5 font-weight-600">Job Description:</h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{state.PreviewPost?.role}</p>
+                      <p>{ReactHtmlParser(state.PreviewPost?.role)}</p>
                       <h5 className="font-weight-600 mt-4">
                         Key Responsibilities:
                       </h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{state.PreviewPost?.key_responsibilities}</p>
+                      <p>
+                        {ReactHtmlParser(
+                          state.PreviewPost?.key_responsibilities
+                        )}
+                      </p>
                       <h5 className="font-weight-600">
                         What are we looking for?:
                       </h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{state.PreviewPost?.looking_for}</p>
+                      <p>{ReactHtmlParser(state.PreviewPost?.looking_for)}</p>
                       <h5 className="font-weight-600">Perks:</h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{state.PreviewPost?.the_perks}</p>
+                      <p>{ReactHtmlParser(state.PreviewPost?.the_perks)}</p>
 
                       {!state.userDetails.company_name && (
                         <Link

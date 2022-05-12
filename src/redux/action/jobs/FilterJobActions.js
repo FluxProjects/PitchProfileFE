@@ -268,6 +268,33 @@ export const filterJobType = (JobType) => async (dispatch, state) => {
   });
 };
 
+export const filterSkillType = (SkillType) => async (dispatch, state) => {
+  console.log("skilltype", SkillType);
+  var resultSkillType = [];
+
+  resultSkillType = state().BackupAlljobs.filter(function (item) {
+    if (item?.skill_id1 == SkillType) return item;
+    if (item?.skill_id2 == SkillType) return item;
+    if (item?.skill_id3 == SkillType) return item;
+    if (item?.skill_id4 == SkillType) return item;
+    if (item?.skill_id5 == SkillType) return item;
+  });
+
+  toast.success("Updated Successfully!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+  dispatch({
+    type: "FilterAllJobs",
+    data: resultSkillType,
+  });
+};
+
 export const filterJobAll =
   (
     companyName,
@@ -280,7 +307,8 @@ export const filterJobAll =
     EmploymentType,
     SeniorityLevel,
     SalaryRange,
-    jobName
+    jobName,
+    SkillType
   ) =>
   async (dispatch, state) => {
     // return;
@@ -295,6 +323,7 @@ export const filterJobAll =
     var resultSeniorityLevel = [];
     var resultSalaryRange = [];
     var resultJobName = [];
+    var resultSkillType = [];
 
     state().BackupAlljobs.filter(function (item) {
       if (companyName?.length == 0 || companyName == null) {
@@ -389,10 +418,18 @@ export const filterJobAll =
       }
     });
 
+    resultSkillType = resultJobName.filter(function (item) {
+      if (item?.skill_id1 == SkillType) return item;
+      if (item?.skill_id2 == SkillType) return item;
+      if (item?.skill_id3 == SkillType) return item;
+      if (item?.skill_id4 == SkillType) return item;
+      if (item?.skill_id5 == SkillType) return item;
+    });
+
     const uniqueResults = Array.from(
-      new Set(resultJobName.map((a) => a.id))
+      new Set(resultSkillType.map((a) => a.id))
     ).map((id) => {
-      return resultJobName.find((a) => a.id === id);
+      return resultSkillType.find((a) => a.id === id);
     });
 
     toast.success("Updated Successfully!", {
