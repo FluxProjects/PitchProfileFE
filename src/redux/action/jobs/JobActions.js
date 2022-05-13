@@ -343,10 +343,45 @@ export const GetMyJobPosts = () => async (dispatch, state) => {
         type: "MyPostedJobs",
         data: response.data.data,
       });
+      dispatch({
+        type: "MyPostedJobsBackup",
+        data: response.data.data,
+      });
     })
     .catch(function (error) {
       console.log(error);
     });
+};
+
+export const filterClosingDate = () => async (dispatch, state) => {
+  var resultClosingDate = [];
+
+  resultClosingDate = state().BackupAlljobs.sort(function (a, b) {
+    // Turn your strings into dates, and then subtract them
+    // to get a value that is either negative, positive, or zero.
+    return new Date(b.closing_date) - new Date(a.closing_date);
+  });
+
+  toast.success("Updated Successfully!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+  dispatch({
+    type: "MyPostedJobsBackup",
+    data: resultClosingDate,
+  });
+};
+
+export const resetFilterClosingDate = () => async (dispatch, state) => {
+  dispatch({
+    type: "MyPostedJobsBackup",
+    data: state().MyPostedJobsBackup,
+  });
 };
 
 export const GetAllJobPosts = () => async (dispatch, state) => {

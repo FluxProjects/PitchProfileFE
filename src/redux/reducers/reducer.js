@@ -42,6 +42,7 @@ const initialState = {
   // Job Candidates
   PreviewPost: {},
   MyPostedJobs: [],
+  MyPostedJobsBackup: [],
   Alljobs: [],
   BackupAlljobs: [],
   SavePreviewPost: {},
@@ -227,6 +228,11 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         MyPostedJobs: rest.data,
+      };
+    case "MyPostedJobsBackup":
+      return {
+        ...state,
+        MyPostedJobsBackup: rest.data,
       };
 
     case "Alljobs":

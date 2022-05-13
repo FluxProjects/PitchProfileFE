@@ -8,6 +8,8 @@ import {
   GetMyJobPosts,
   DeleteSingle,
   UpdateJobVideo,
+  filterClosingDate,
+  resetFilterClosingDate,
 } from "../../redux/action";
 import { useSelector, useDispatch } from "react-redux";
 import { employmentTypeDrop, jobTypeDrop } from "../../utils/DropDownUtils";
@@ -63,14 +65,25 @@ export default function Companymanage() {
                       </h5>
                       <div className="float-right">
                         <span className="select-title">Sort by freshness</span>
-                        <select className="custom-btn">
-                          <option>All</option>
-                          <option>None</option>
-                          <option>Read</option>
-                          <option>Unread</option>
-                          <option>Starred</option>
-                          <option>Unstarred</option>
-                        </select>
+                        <Link
+                          className="btn btn-primary mr-1"
+                          onClick={() => {
+                            console.log("test");
+                            dispatch(filterClosingDate());
+                          }}
+                        >
+                          Filter Closing Date
+                        </Link>
+
+                        <Link
+                          className="btn btn-primary"
+                          onClick={() => {
+                            console.log("test");
+                            dispatch(resetFilterClosingDate());
+                          }}
+                        >
+                          Reset
+                        </Link>
                       </div>
                     </div>
                     <table className="table-job-bx cv-manager company-manage-job">
@@ -97,7 +110,7 @@ export default function Companymanage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {state.MyPostedJobs?.map((item, index) => (
+                        {state.MyPostedJobsBackup?.map((item, index) => (
                           <tr>
                             <td className="feature">
                               <div className="custom-control custom-checkbox">
@@ -175,7 +188,7 @@ export default function Companymanage() {
                               </ul>
                             </td>
                             <td className="application text-primary">
-                              (0) Applications
+                              {item?.job_applications?.length} Applications
                             </td>
                             <td className="expired pending">
                               {item?.closing_date
