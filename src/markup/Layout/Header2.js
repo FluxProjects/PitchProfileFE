@@ -41,19 +41,6 @@ export default function Header2() {
   }, []);
 
   const links = [
-    // {
-    //   name: "Post A Job",
-    //   link: "/company-post-jobs",
-    //   index: "1",
-    //   onClick: () => {
-    //     dispatch(UpdateJobVideo(""));
-    //   },
-    // },
-    // {
-    //   name: "Manage Jobs",
-    //   link: "/company-manage-job",
-    //   index: "2",
-    // },
     {
       name: "All Companies",
       link: "/companies",
@@ -79,6 +66,46 @@ export default function Header2() {
       link: "/contact",
       index: "6",
     },
+  ];
+
+  const dropDownVals = [
+    { name: "Company Profile", link: "/company-profile", icon: "fa fa-user-o" },
+    {
+      name: "Post A Job",
+      link: "/company-post-jobs",
+      icon: "fa fa-file-text-o",
+      onClick: () => {
+        dispatch(UpdateJobVideo(""));
+      },
+    },
+    // {
+    //   name: "View My Resume",
+    //   link: "/jobs-my-resume-view",
+    //   icon: "fa fa-file-text-o",
+    // },
+    // {
+    //   name: "Transactions",
+    //   link: "/company-transactions",
+    //   icon: "fa fa-heart-o",
+    // },
+    {
+      name: "Manage jobs",
+      link: "/company-manage-job",
+      icon: "fa fa-briefcase",
+    },
+    { name: "Applications", link: "/company-resume", icon: "fa fa-bell-o" },
+    // { name: "CV Manager", link: "/jobs-cv-manager", icon: "fa fa-id-card-o" },
+    {
+      name: "Change Password",
+      link: "/company-change-password",
+      icon: "fa fa-key",
+    },
+    {
+      name: "Candidate Wishlist",
+      link: "/my-wishlists-company",
+      icon: "fa fa-heart",
+    },
+    { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
   ];
 
   const callLogoutUser = async () => {
@@ -151,26 +178,54 @@ export default function Header2() {
                         </Link>
                       </li>
 
-                      <Link to={"/company-profile"}>
-                        <div className="testimonial-picHead radius mt-2">
-                          <img
-                            src={
-                              state.userDetails?.pic != null
-                                ? state.userDetails.pic
-                                : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
-                            }
-                            style={{
-                              minHeight: "55px",
-                              maxHeight: "55px",
-                              maxWidth: "60px",
-                              minWidth: "60px",
-                            }}
-                            alt=""
-                            width="20"
-                            height="20"
-                          />
-                        </div>
-                      </Link>
+                      <li className="float-right " style={{ padding: 0 }}>
+                        <Link className="noHover" to={"/company-profile"}>
+                          <div className="testimonial-picHead radius ">
+                            <img
+                              src={
+                                state.userDetails?.pic != null
+                                  ? state.userDetails.pic
+                                  : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+                              }
+                              style={{
+                                minHeight: "55px",
+                                maxHeight: "55px",
+                                maxWidth: "60px",
+                                minWidth: "60px",
+                              }}
+                              alt=""
+                              width="20"
+                              height="20"
+                            />
+                          </div>
+                        </Link>
+                        {/* <Link className="dez-page">All links</Link> */}
+                        <ul className="sub-menu">
+                          {dropDownVals.map((item) => (
+                            <li>
+                              <Link to={item.link} className="dez-page">
+                                {item.name}
+                                {/* <span className="new-page">New</span> */}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                      <li
+                        className="float-right noselect"
+                        style={{ padding: 0 }}
+                      >
+                        <ul className="sub-menu">
+                          {dropDownVals.map((item) => (
+                            <li>
+                              <Link to={item.link} className="dez-page">
+                                {item.name}
+                                {/* <span className="new-page">New</span> */}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
                     </>
                   ) : (
                     <li className="active float-right">
@@ -179,33 +234,6 @@ export default function Header2() {
                       </Link>
                     </li>
                   )}
-
-                  {/* <li className="float-right noselect" style={{ padding: 0 }}>
-                    <Link className="dez-page">All links</Link>
-                    <ul className="sub-menu">
-                      {links.map((item) => (
-                        <li>
-                          <Link to={item.link} className="dez-page">
-                            {item.name}
-                            <span className="new-page">New</span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li> */}
-                  {/* <li className="float-right noselect" style={{ padding: 0 }}> */}
-
-                  {/*  <ul className="sub-menu">
-                      {linksTest.map((item) => (
-                        <li>
-                          <Link to={item.link} className="dez-page">
-                            {item.name}
-                            <span className="new-page">New</span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li> */}
                 </ul>
               </div>
             </div>

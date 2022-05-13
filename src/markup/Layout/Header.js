@@ -86,92 +86,34 @@ export default function Header() {
     // },
   ];
 
-  // const linksTest = [
-  //   {
-  //     name: "Browse Job",
-  //     link: "/browse-candidate-grid",
-  //     index: "0",
-  //   },
-
-  //   {
-  //     name: "Candidate profile",
-  //     link: "/jobs-profile",
-  //     index: "7",
-  //   },
-  //   {
-  //     name: "Companies",
-  //     link: "/company-post-jobs",
-  //     index: "1",
-  //   },
-  //   {
-  //     name: "Browse Candidates",
-  //     link: "/browse-candidates",
-  //     index: "2",
-  //   },
-  //   {
-  //     name: "Post a job",
-  //     link: "/company-post-jobs",
-  //     index: "3",
-  //   },
-  //   {
-  //     name: "About",
-  //     link: "/about-us",
-  //     index: "4",
-  //   },
-  //   {
-  //     name: "Contact",
-  //     link: "/contact",
-  //     index: "5",
-  //   },
-  //   {
-  //     name: "job-detail",
-  //     link: "/job-detail",
-  //     index: "6",
-  //   },
-  //   {
-  //     name: "jobs-my-resume",
-  //     link: "/jobs-my-resume",
-  //     index: "7",
-  //   },
-  //   {
-  //     name: "Login",
-  //     link: "/login",
-  //     index: "8",
-  //   },
-  // ];
-
-  // const loginLinks = [
-  //   {
-  //     name: "Browse Job",
-  //     link: "/",
-  //     index: "0",
-  //   },
-  //   {
-  //     name: "Companies",
-  //     link: "/",
-  //     index: "1",
-  //   },
-  //   {
-  //     name: "My Applied Jobs",
-  //     link: "/jobs-applied-job",
-  //     index: "2",
-  //   },
-  //   {
-  //     name: "My Resume",
-  //     link: "/jobs-my-resume",
-  //     index: "3",
-  //   },
-  //   {
-  //     name: "About",
-  //     link: "/about-us",
-  //     index: "4",
-  //   },
-  //   {
-  //     name: "Contact",
-  //     link: "/contact",
-  //     index: "5",
-  //   },
-  // ];
+  const dropDownVals = [
+    { name: "Profile", link: "/jobs-profile", icon: "fa fa-user-o" },
+    { name: "My Resume", link: "/jobs-my-resume", icon: "fa fa-file-text-o" },
+    // {
+    //   name: "View My Resume",
+    //   link: "/jobs-my-resume-view",
+    //   icon: "fa fa-file-text-o",
+    // },
+    // { name: "Saved Jobs", link: "/jobs-saved-jobs", icon: "fa fa-heart-o" },
+    {
+      name: "Applied Jobs",
+      link: "/jobs-applied-job",
+      icon: "fa fa-briefcase",
+    },
+    // { name: "Job Alerts", link: "/jobs-alerts", icon: "fa fa-bell-o" },
+    // { name: "CV Manager", link: "/jobs-cv-manager", icon: "fa fa-id-card-o" },
+    {
+      name: "Change Password",
+      link: "/jobs-change-password",
+      icon: "fa fa-key",
+    },
+    {
+      name: "Saved Jobs",
+      link: "/my-wishlists-candidate",
+      icon: "fa fa-save",
+    },
+    { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
+  ];
 
   return (
     <>
@@ -223,7 +165,7 @@ export default function Header() {
                     </li>
                   ))}
                   <li></li>
-                  <li style={{ marginLeft: 100 }}></li>
+                  {/* <li style={{ marginLeft: 100 }}></li> */}
 
                   {state.authToken ? (
                     <>
@@ -239,26 +181,55 @@ export default function Header() {
                         </Link>
                       </li>
 
-                      <Link to={"/jobs-profile"}>
-                        <div className="testimonial-picHead radius mt-2">
-                          <img
-                            src={
-                              state.userDetails?.pic != null
-                                ? state.userDetails.pic
-                                : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
-                            }
-                            style={{
-                              minHeight: "55px",
-                              maxHeight: "55px",
-                              maxWidth: "60px",
-                              minWidth: "60px",
-                            }}
-                            alt=""
-                            width="20"
-                            height="20"
-                          />
-                        </div>
-                      </Link>
+                      <li className="float-right " style={{ padding: 0 }}>
+                        <Link className="noHover" to={"/jobs-profile"}>
+                          <div className="testimonial-picHead radius mt-2">
+                            <img
+                              src={
+                                state.userDetails?.pic != null
+                                  ? state.userDetails.pic
+                                  : "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+                              }
+                              style={{
+                                minHeight: "55px",
+                                maxHeight: "55px",
+                                maxWidth: "60px",
+                                minWidth: "60px",
+                              }}
+                              alt=""
+                              width="20"
+                              height="20"
+                            />
+                          </div>
+                        </Link>
+
+                        {/* <Link className="dez-page">All links</Link> */}
+                        <ul className="sub-menu">
+                          {dropDownVals.map((item) => (
+                            <li>
+                              <Link to={item.link} className="dez-page">
+                                {item.name}
+                                {/* <span className="new-page">New</span> */}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                      <li
+                        className="float-right noselect"
+                        style={{ padding: 0 }}
+                      >
+                        <ul className="sub-menu">
+                          {dropDownVals.map((item) => (
+                            <li>
+                              <Link to={item.link} className="dez-page">
+                                {item.name}
+                                {/* <span className="new-page">New</span> */}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
                     </>
                   ) : (
                     <li className="active float-right">
@@ -267,33 +238,6 @@ export default function Header() {
                       </Link>
                     </li>
                   )}
-
-                  {/* <li className="float-right noselect" style={{ padding: 0 }}>
-                    <Link className="dez-page">All links</Link>
-                    <ul className="sub-menu">
-                      {links.map((item) => (
-                        <li>
-                          <Link to={item.link} className="dez-page">
-                            {item.name}
-                            <span className="new-page">New</span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li> */}
-                  {/* <li className="float-right noselect" style={{ padding: 0 }}> */}
-
-                  {/*  <ul className="sub-menu">
-                      {linksTest.map((item) => (
-                        <li>
-                          <Link to={item.link} className="dez-page">
-                            {item.name}
-                            <span className="new-page">New</span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li> */}
                 </ul>
               </div>
             </div>

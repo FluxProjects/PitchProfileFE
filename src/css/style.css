@@ -195,6 +195,10 @@ a {
   outline: 0 none;
   text-decoration: none;
 }
+
+.noHover:hover {
+  background: none !important;
+}
 a:hover,
 a:focus {
   text-decoration: none;
