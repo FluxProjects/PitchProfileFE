@@ -78,8 +78,15 @@ export default function ViewCandidateProfile(props) {
               <div className="container">
                 <div className="row">
                   <div className="col-xl-3 col-lg-4 col-md-4 col-sm-12 m-b30">
+                    {console.log(
+                      "state.userDetails?.id == state.singleUserData?.id state.userDetails?.id == state.singleUserData?.id state.userDetails?.id == state.singleUserData?.id ",
+                      state.userDetails?.id == state.singleUserData?.id
+                    )}
                     <Listingsidebar
                       isCompany={state.userDetails?.company_name ? true : false}
+                      isMyProfile={
+                        state.userDetails?.id == state.singleUserData?.id
+                      }
                       isView={true}
                     />
                   </div>

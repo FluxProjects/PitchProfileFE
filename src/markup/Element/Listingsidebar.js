@@ -2,23 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-scroll";
 import ListingSidebarRouterLink from "./ListingSidebarRouterLink";
 
-export default function Listingsidebar({ isView, isCompany }) {
+export default function Listingsidebar({ isView, isCompany, isMyProfile }) {
   return (
     <div className="sticky-top bg-white">
       <div className="candidate-info onepage">
         <ul>
-          {/* <li>
-              <Link
-                activeClass="active"
-                className="scroll-bar nav-link"
-                to="resume_headline_bx"
-                smooth={true}
-                offset={-70}
-                duration={500}
-              >
-                <span>Resume Headline</span>
-              </Link>
-            </li> */}
           <li>
             <Link
               activeClass="active"
@@ -55,18 +43,6 @@ export default function Listingsidebar({ isView, isCompany }) {
               <span>Education</span>
             </Link>
           </li>
-          {/* <li>
-              <Link
-                activeClass="active"
-                className="scroll-bar nav-link"
-                to="key_skills_bx"
-                smooth={true}
-                offset={-70}
-                duration={500}
-              >
-                <span>Key Skills</span>
-              </Link>
-            </li> */}
 
           <li>
             <Link
@@ -166,7 +142,10 @@ export default function Listingsidebar({ isView, isCompany }) {
               <span>Attach Cover Letter</span>
             </Link>
           </li>
-          {!isCompany && <ListingSidebarRouterLink isView={isView} />}
+          {console.log("isMyProfileisMyProfileisMyProfile", isMyProfile)}
+          {!isCompany && isMyProfile && (
+            <ListingSidebarRouterLink isView={isView} />
+          )}
         </ul>
       </div>
     </div>

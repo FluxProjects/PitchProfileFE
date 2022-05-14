@@ -6,7 +6,7 @@ export default function UploadDataComponent({ onChange }) {
       <div className="custom-file">
         <p className="m-auto align-self-center">
           <i className="fa fa-upload"></i>
-          Upload Resume File size is 3 MB
+          Upload Additional Supporting Documents
         </p>
         <input
           type="file"

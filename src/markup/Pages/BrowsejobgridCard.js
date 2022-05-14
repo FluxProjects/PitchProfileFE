@@ -78,7 +78,7 @@ export default function BrowsejobgridCard({ item, index }) {
                     ? item?.company?.pic
                     : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
                 }
-                style={{ width: "100%", height: "auto" }}
+                style={{ width: "100%", height: "auto", maxHeight: "165px" }}
                 alt="Card image cap"
               />
             </div>
@@ -194,12 +194,14 @@ export default function BrowsejobgridCard({ item, index }) {
             </Link>
           </div>
           <div className="mb-0 cardGridFont salary-bx">
-            <span>
+            <span style={{ fontSize: 18 }}>
               {SalaryRange.findIndex((x) => x?.id == item?.salary_range) == -1
                 ? ""
-                : SalaryRange[
-                    SalaryRange.findIndex((x) => x?.id == item?.salary_range)
-                  ].name}
+                : ` ${item?.country?.currency_symbol} ${
+                    SalaryRange[
+                      SalaryRange.findIndex((x) => x?.id == item?.salary_range)
+                    ].name
+                  }`}
             </span>
           </div>
         </div>

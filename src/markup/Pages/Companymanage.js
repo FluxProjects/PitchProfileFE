@@ -64,7 +64,6 @@ export default function Companymanage() {
                         Manage jobs
                       </h5>
                       <div className="float-right">
-                        <span className="select-title">Sort by freshness</span>
                         <Link
                           className="btn btn-primary mr-1"
                           onClick={() => {
@@ -72,7 +71,7 @@ export default function Companymanage() {
                             dispatch(filterClosingDate());
                           }}
                         >
-                          Filter Closing Date
+                          Filter By Closing Date
                         </Link>
 
                         <Link

@@ -68,7 +68,7 @@ export default function MyWishlists() {
                           {state.userDetails?.company_name
                             ? "Candidates"
                             : "Jobs"}{" "}
-                          Wishlisted
+                          Saved
                         </h5>
                         <Link
                           to={"/company-manage-job"}
@@ -81,22 +81,43 @@ export default function MyWishlists() {
                         {state.wishlist?.map((item, index) => (
                           <li className="col-lg-6 col-md-6" key={index}>
                             <Link
-                              to={{
-                                pathname: "/company-detail",
-                                state: {
-                                  company_id: item?.company_id,
-                                },
-                              }}
+                              to={
+                                state.userDetails?.company_name
+                                  ? {
+                                      pathname: "/view-candidate-profile",
+                                      state: {
+                                        company_id: item?.id,
+                                      },
+                                    }
+                                  : {
+                                      pathname: "/job-detail",
+                                      state: {
+                                        company_id: item?.job.id,
+                                      },
+                                    }
+                              }
                             >
                               <div className="post-bx">
                                 <div className="d-flex m-b20">
                                   <div className="job-post-info">
                                     <h5 className="m-b0">
                                       <Link
-                                        to={{
-                                          pathname: "view-candidate-profile",
-                                          state: { id: item.candidate_id },
-                                        }}
+                                        to={
+                                          state.userDetails?.company_name
+                                            ? {
+                                                pathname:
+                                                  "/view-candidate-profile",
+                                                state: {
+                                                  company_id: item?.id,
+                                                },
+                                              }
+                                            : {
+                                                pathname: "/job-detail",
+                                                state: {
+                                                  company_id: item?.job.id,
+                                                },
+                                              }
+                                        }
                                       >
                                         {item?.job?.job_title}
                                       </Link>

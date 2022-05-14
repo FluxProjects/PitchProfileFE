@@ -25,6 +25,7 @@ import {
 import { useHistory } from "react-router-dom";
 
 import ReactHtmlParser from "react-html-parser";
+import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -492,7 +493,7 @@ export default function Jobdetail(props) {
                           </div>
                           <div className="mb-0 cardGridFont salary-bx">
                             <span>
-                              <p className="row">
+                              <p className="ml-1 row">
                                 <p>
                                   {state.PreviewPost?.country?.currency_symbol}{" "}
                                 </p>
@@ -556,8 +557,9 @@ export default function Jobdetail(props) {
                   <div className="row">
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Cover Letter</label>
-                        <TextInputModal
+                        <label>Additional Information</label>
+
+                        <TextAreaModalComponent
                           placeholder="Enter Cover Letter"
                           type="text"
                           value={description}
@@ -571,7 +573,7 @@ export default function Jobdetail(props) {
 
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Upload Resume</label>
+                        <label>Upload Additional Supporting Documents</label>
 
                         {state.CoverLetterForApplying ? (
                           <p>Doc uploaded</p>

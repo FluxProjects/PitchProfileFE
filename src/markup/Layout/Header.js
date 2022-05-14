@@ -52,7 +52,7 @@ export default function Header() {
       index: "2",
     },
     {
-      name: "Browse Job",
+      name: "All Jobs",
       link: "/browse-job-grid",
       index: "0",
     },

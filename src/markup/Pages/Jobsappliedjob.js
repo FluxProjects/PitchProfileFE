@@ -51,15 +51,15 @@ export default function Jobsappliedjob() {
                       <h5 className="font-weight-700 pull-left text-uppercase">
                         {state?.JobApplications?.length} Jobs Applied
                       </h5>
-                      <div className="float-right">
-                        <span className="select-title">Sort by freshness</span>
+                      {/* <div className="float-right">
+                        <span className="select-title">ess</span>
                         <select className="custom-btn">
                           <option>Last 2 Months</option>
                           <option>Last Months</option>
                           <option>Last Weeks</option>
                           <option>Last 3 Days</option>
                         </select>
-                      </div>
+                      </div> */}
                     </div>
                     <ul className="post-job-bx browse-job-grid row">
                       {state?.JobApplications?.map((item, index) => (
