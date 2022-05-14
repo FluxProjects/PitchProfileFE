@@ -92,7 +92,8 @@ export default function MyWishlists() {
                                   : {
                                       pathname: "/job-detail",
                                       state: {
-                                        company_id: item?.job.id,
+                                        company_id: item?.job?.company_id,
+                                        post_id: item?.job?.id,
                                       },
                                     }
                               }
@@ -114,7 +115,9 @@ export default function MyWishlists() {
                                             : {
                                                 pathname: "/job-detail",
                                                 state: {
-                                                  company_id: item?.job.id,
+                                                  company_id:
+                                                    item?.job?.company_id,
+                                                  post_id: item?.job?.id,
                                                 },
                                               }
                                         }
