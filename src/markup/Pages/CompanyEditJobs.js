@@ -271,7 +271,10 @@ export default function Componypostjobs(props) {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Salary Range (Per Annum)</label>
+                            <label>
+                              Salary Range (Per Annum){" "}
+                              {state.userDetails?.country?.currency_symbol}
+                            </label>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);

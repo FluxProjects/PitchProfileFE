@@ -519,7 +519,9 @@ export default function Jobfindbox({ isView }) {
 
               <div className="col-lg-2 col-md-6">
                 <div className="form-group">
-                  <label className="">Salary Range</label>
+                  <label className="">
+                    Salary Range {state.userDetails?.country?.currency_symbol}
+                  </label>
                   <div className="input-group  ">
                     <input
                       onChange={(e) => {

@@ -318,6 +318,7 @@ export default function Componypostjobs() {
                           <div className="form-group">
                             <label>
                               Salary Range (Per Annum):{" "}
+                              {state.userDetails?.country?.currency_symbol}
                               <span className="text-danger"> *</span>
                             </label>
                             <DropDownModalComponent

@@ -227,22 +227,30 @@ export default function Jobdetail(props) {
                                 </li>
                               )}
                               <li>
-                                <i className="ti-money"></i>
+                                <i className="fa fa-money"></i>
                                 <strong className="font-weight-700 text-black">
                                   Salary
                                 </strong>{" "}
-                                {SalaryRange.findIndex(
-                                  (x) =>
-                                    x?.id == state.PreviewPost?.salary_range
-                                ) == -1
-                                  ? ""
-                                  : SalaryRange[
-                                      SalaryRange.findIndex(
-                                        (x) =>
-                                          x?.id ==
-                                          state.PreviewPost?.salary_range
-                                      )
-                                    ].name}
+                                <p className="row">
+                                  <p>
+                                    {
+                                      state.PreviewPost?.country
+                                        ?.currency_symbol
+                                    }{" "}
+                                  </p>
+                                  {SalaryRange.findIndex(
+                                    (x) =>
+                                      x?.id == state.PreviewPost?.salary_range
+                                  ) == -1
+                                    ? ""
+                                    : SalaryRange[
+                                        SalaryRange.findIndex(
+                                          (x) =>
+                                            x?.id ==
+                                            state.PreviewPost?.salary_range
+                                        )
+                                      ].name}
+                                </p>
                               </li>
                             </ul>
                           </div>
@@ -484,15 +492,23 @@ export default function Jobdetail(props) {
                           </div>
                           <div className="mb-0 cardGridFont salary-bx">
                             <span>
-                              {SalaryRange.findIndex(
-                                (x) => x?.id == item?.salary_range
-                              ) == -1
-                                ? ""
-                                : SalaryRange[
-                                    SalaryRange.findIndex(
-                                      (x) => x?.id == item?.salary_range
-                                    )
-                                  ].name}
+                              <p className="row">
+                                <p>
+                                  {state.PreviewPost?.country?.currency_symbol}{" "}
+                                </p>
+                                {SalaryRange.findIndex(
+                                  (x) =>
+                                    x?.id == state.PreviewPost?.salary_range
+                                ) == -1
+                                  ? ""
+                                  : SalaryRange[
+                                      SalaryRange.findIndex(
+                                        (x) =>
+                                          x?.id ==
+                                          state.PreviewPost?.salary_range
+                                      )
+                                    ].name}
+                              </p>
                             </span>
                           </div>
                         </div>
