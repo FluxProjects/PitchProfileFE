@@ -40,12 +40,12 @@ export const AddWishlistCandidate = (job_id) => async (dispatch, state) => {
     });
 };
 
-export const AddWishlistCompany = (job_id) => async (dispatch, state) => {
+export const AddWishlistCompany = (candidate_id) => async (dispatch, state) => {
   var data = JSON.stringify({
     data: {
-      candidate_id: -1,
+      candidate_id,
       company_id: state().userDetails.id,
-      job_id,
+      job_id: -1,
     },
   });
 

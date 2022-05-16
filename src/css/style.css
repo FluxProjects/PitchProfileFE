@@ -137,6 +137,11 @@ img.card-img-top {
   bottom: 0;
   left: 10px;
 }
+.containerImageGrid .heartBtn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
 .containerImageGrid .isAvail {
   position: absolute;
   bottom: 0;
@@ -195,7 +200,9 @@ a {
   outline: 0 none;
   text-decoration: none;
 }
-
+.zIndexHeart {
+  z-index: 10;
+}
 .noHover:hover {
   background: none !important;
 }
