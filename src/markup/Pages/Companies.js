@@ -67,7 +67,7 @@ export default function Companies(props) {
           <div className="section-full bg-white content-inner">
             <div tabs="true">
               <div className="site-filters clearfix center  m-b40">
-                <ul className="filters " data-toggle="buttons">
+                <ul className="filters mr-3 ml-3" data-toggle="buttons">
                   <li
                     className={classnames({ active: activeTab === "All" })}
                     onClick={() => {
@@ -395,8 +395,11 @@ export default function Companies(props) {
                           },
                         }}
                       >
-                        <div className="post-bx">
-                          <div className="mb-4">
+                        <div
+                          className="post-bx"
+                          style={{ marginTop: "-5px", marginBottom: "-5px" }}
+                        >
+                          <div className="">
                             <div style={{ width: "auto", height: "165px" }}>
                               <img
                                 className="card-img-top"
@@ -409,6 +412,7 @@ export default function Companies(props) {
                                   width: "100%",
                                   height: "auto",
                                   maxHeight: "165px",
+                                  minHeight: "165px",
                                 }}
                                 alt="Card image cap"
                               />
@@ -420,6 +424,7 @@ export default function Companies(props) {
                                 className="text-uppercase text-decoration-none"
                                 style={{
                                   textDecoration: "none !important",
+                                  fontSize: 15,
                                 }}
                               >
                                 <Link
@@ -430,8 +435,8 @@ export default function Companies(props) {
                                     },
                                   }}
                                 >
-                                  {item?.company_name.substring(0, 5)}
-                                  {"... "}
+                                  {item?.company_name?.substring(0, 8)}
+                                  {item?.company_name?.length > 8 && "... "}
                                 </Link>
 
                                 <br />
@@ -454,13 +459,15 @@ export default function Companies(props) {
                                   >
                                     {state?.industries.findIndex(
                                       (x) => x?.id == item?.industry
-                                    ) == -1
-                                      ? ""
-                                      : state?.industries[
-                                          state?.industries.findIndex(
-                                            (x) => x?.id == item?.industry
-                                          )
-                                        ].name}
+                                    ) == -1 ? (
+                                      <div> ‎ </div>
+                                    ) : (
+                                      state?.industries[
+                                        state?.industries.findIndex(
+                                          (x) => x?.id == item?.industry
+                                        )
+                                      ].name
+                                    )}
                                   </span>
                                 </Link>
                               </h5>
@@ -473,10 +480,13 @@ export default function Companies(props) {
                               >
                                 <li className="mb-0 cardGridFont">
                                   <i className="fa fa-map-marker"></i>
-                                  {item?.city?.name}
-                                  {item?.city && ", "} {item.state?.name}
-                                  {item?.state && ", "}
-                                  {item?.country?.sortname}
+                                  {item.city?.name?.substring(0, 6)}
+                                  {item?.city?.name?.length > 6 && "... "}
+                                  {item.city && ", "}{" "}
+                                  {item.state?.name?.substring(0, 6)}
+                                  {item?.state?.name?.length > 6 && "... "}
+                                  {item.state && ", "}
+                                  {item.country?.sortname}
                                 </li>
                               </ul>
                             </div>

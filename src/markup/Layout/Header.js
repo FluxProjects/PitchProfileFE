@@ -112,7 +112,7 @@ export default function Header() {
       link: "/my-wishlists-candidate",
       icon: "fa fa-save",
     },
-    { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
+    // { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
   ];
 
   return (

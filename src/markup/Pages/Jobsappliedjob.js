@@ -5,7 +5,10 @@ import Footer from "./../Layout/Footer";
 import AppliedJobListCard from "../Components/Candidate/AppliedJobListCard";
 import Profilesidebar from "../Element/Profilesidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { GetJobCandidateApplications } from "../../redux/action/jobApplications/jobApplicationsActions";
+import {
+  GetJobApplications,
+  GetJobCandidateApplications,
+} from "../../redux/action/jobApplications/jobApplicationsActions";
 import BrowsejobgridCard from "./BrowsejobgridCard";
 import AppliedJobGrid from "./AppliedJobGrid";
 
@@ -29,6 +32,15 @@ export default function Jobsappliedjob() {
     setLoading(false);
   };
 
+  useEffect(() => {
+    callGetJobApplications();
+  }, []);
+
+  const callGetJobApplications = async () => {
+    await dispatch(GetJobApplications());
+    setLoading(false);
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   } else {
@@ -46,11 +58,34 @@ export default function Jobsappliedjob() {
                       isActive="Applied Jobs"
                     />
                   </div>
+
                   <div className="col-xl-9 col-lg-8 m-b30 browse-job">
                     <div className="job-bx-title  clearfix">
                       <h5 className="font-weight-700 pull-left text-uppercase">
-                        {state?.JobApplications?.length} Jobs Applied
+                        {state?.JobApplicationsBackup?.length} Jobs Applied
                       </h5>
+
+                      <div className="float-right">
+                        <Link
+                          className="btn btn-primary mr-1"
+                          onClick={() => {
+                            console.log("test");
+                            // dispatch(filterClosingDate());
+                          }}
+                        >
+                          Sort by newest
+                        </Link>
+
+                        <Link
+                          className="btn btn-primary"
+                          onClick={() => {
+                            console.log("test");
+                            // dispatch(resetFilterClosingDate());
+                          }}
+                        >
+                          Reset
+                        </Link>
+                      </div>
                       {/* <div className="float-right">
                         <span className="select-title">ess</span>
                         <select className="custom-btn">
@@ -62,7 +97,7 @@ export default function Jobsappliedjob() {
                       </div> */}
                     </div>
                     <ul className="post-job-bx browse-job-grid row">
-                      {state?.JobApplications?.map((item, index) => (
+                      {state?.JobApplicationsBackup?.map((item, index) => (
                         <AppliedJobGrid item={item} index={index} />
                       ))}
                     </ul>

@@ -760,7 +760,11 @@ export default function Componypostjobs() {
                               Job Description:
                               <span className="text-danger"> *</span>
                             </label>
-                            <ReactQuill value={role} onChange={setRole} />
+                            <ReactQuill
+                              className="quillEditor"
+                              value={role}
+                              onChange={setRole}
+                            />
                             {/* <TextAreaModalComponent
                               placeholder="Enter Role Description"
                               onChange={(e) => setRole(e.target.value)}
@@ -776,7 +780,11 @@ export default function Componypostjobs() {
                               <span className="text-danger"> *</span>
                             </label>
 
-                            <ReactQuill value={keyRes} onChange={setKeyRes} />
+                            <ReactQuill
+                              className="quillEditor"
+                              value={keyRes}
+                              onChange={setKeyRes}
+                            />
 
                             {/* <TextAreaModalComponent
                               placeholder="Enter Key Responsibilities"
@@ -797,6 +805,7 @@ export default function Componypostjobs() {
                             </label>
 
                             <ReactQuill
+                              className="quillEditor"
                               value={lookingFor}
                               onChange={setLookingFor}
                             />
@@ -818,7 +827,11 @@ export default function Componypostjobs() {
                               <span className="text-danger"> *</span>
                             </label>
 
-                            <ReactQuill value={perks} onChange={setPerks} />
+                            <ReactQuill
+                              className="quillEditor"
+                              value={perks}
+                              onChange={setPerks}
+                            />
 
                             {/* <TextAreaModalComponent
                               placeholder="Enter Perks"

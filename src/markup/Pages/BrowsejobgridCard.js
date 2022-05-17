@@ -20,6 +20,7 @@ import {
 } from "../../utils/DropDownUtils";
 import { daysSinceGivenDate } from "../../utils/functions";
 import Header2 from "../Layout/Header2";
+import ReactPlayer from "react-player";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -78,7 +79,12 @@ export default function BrowsejobgridCard({ item, index }) {
                     ? item?.company?.pic
                     : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
                 }
-                style={{ width: "100%", height: "auto", maxHeight: "165px" }}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  maxHeight: "165px",
+                  minHeight: "165px",
+                }}
                 alt="Card image cap"
               />
             </div>
@@ -90,6 +96,7 @@ export default function BrowsejobgridCard({ item, index }) {
               className="text-uppercase text-decoration-none"
               style={{
                 textDecoration: "none !important",
+                fontSize: 15,
               }}
             >
               <Link
@@ -101,8 +108,9 @@ export default function BrowsejobgridCard({ item, index }) {
                   },
                 }}
               >
-                {item?.job_title?.substring(0, 5)}
-                {"... "}
+                {item?.job_title?.substring(0, 8)}
+
+                {item?.job_title?.length > 8 && "... "}
                 {item.seniority_level != null && "- "}
                 <span
                   className="text-uppercase"
@@ -155,8 +163,10 @@ export default function BrowsejobgridCard({ item, index }) {
             >
               <li className="mb-0 cardGridFont">
                 <i className="fa fa-map-marker"></i>
-                {item.city?.name}
-                {item.city && ", "} {item.state?.name}
+                {item.city?.name?.substring(0, 6)}
+                {item?.city?.name?.length > 6 && "... "}
+                {item.city && ", "} {item.state?.name?.substring(0, 6)}
+                {item?.state?.name?.length > 6 && "... "}
                 {item.state && ", "}
                 {item.country?.sortname}
               </li>
@@ -194,10 +204,10 @@ export default function BrowsejobgridCard({ item, index }) {
             </Link>
           </div>
           <div className="mb-0 cardGridFont salary-bx">
-            <span style={{ fontSize: 18 }}>
+            <span style={{ fontSize: 15 }}>
               {SalaryRange.findIndex((x) => x?.id == item?.salary_range) == -1
                 ? ""
-                : ` ${item?.country?.currency_symbol} ${
+                : ` ${item?.country ? item?.country?.currency_symbol : ""} ${
                     SalaryRange[
                       SalaryRange.findIndex((x) => x?.id == item?.salary_range)
                     ].name

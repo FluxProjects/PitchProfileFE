@@ -50,7 +50,7 @@ export default function BrowseCandidateGridCard({ item, index }) {
         paddingRight: 3,
         paddingLeft: 3,
       }}
-      className=" col-md-4 col-lg-3 col-xs-12 col-sm-6  mb-2 marginMobileBrowseCard "
+      className=" col-md-4 col-lg-3 col-xs-12 col-sm-12  mb-2 marginMobileBrowseCard "
     >
       <div
         className="card p-3"
@@ -147,6 +147,10 @@ export default function BrowseCandidateGridCard({ item, index }) {
             }}
             className="mb-0 cardGridFont"
           >
+            {console.log(
+              "item?.employmentsitem?.employments",
+              item?.employments
+            )}
             {item?.employments[0]?.role != null &&
             item?.employments[0]?.role != "" ? (
               <>{item?.employments[0]?.role},</>

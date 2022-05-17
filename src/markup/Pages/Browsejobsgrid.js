@@ -80,6 +80,8 @@ export default function Browsejobgrid() {
                 <div className="float-right"></div>
               </div>
 
+              {console.log("state.Alljobsstate.Alljobs", state.Alljobs[5])}
+
               {loading ? (
                 "Loading..."
               ) : (

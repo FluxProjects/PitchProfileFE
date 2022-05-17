@@ -115,6 +115,11 @@
 1. GENERAL
 ---------------------------------------------------------------*/
 
+.quillEditor {
+  height: 300px;
+  margin-bottom: 50px;
+}
+
 /* Grid view  */
 .cardGridFont {
   font-size: 11px;
@@ -493,6 +498,9 @@ strong {
   line-height: 110px;
 }
 @media only screen and (max-width: 767px) {
+  .mlPhoneHeader{
+    margin-left: 0px;
+  }
   h1 {
     font-size: 35px;
     line-height: 42px;

@@ -157,7 +157,8 @@ export const UpdateJobPost =
     preferred_shift,
     seniority_level,
     salary_range,
-    video
+    video,
+    router
   ) =>
   async (dispatch, state) => {
     // const formData = new FormData();
@@ -214,6 +215,7 @@ export const UpdateJobPost =
             type: "SavePreviewPost",
             data: response.data.data,
           });
+          router.push("/company-manage-job");
         } else {
           toast.success(response.data.message, {
             position: "top-right",
@@ -224,6 +226,7 @@ export const UpdateJobPost =
             draggable: true,
             progress: undefined,
           });
+          router.push("/company-manage-job");
         }
       })
       .catch(function (error) {

@@ -23,7 +23,7 @@ import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 import TextInputModal from "./TextInputModal";
 
-export default function HeaderCandidateResume({ isView }) {
+export default function HeaderCandidateResume({ isView, candiateSkilssData }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -202,7 +202,7 @@ export default function HeaderCandidateResume({ isView }) {
               <div className="customFlexRow mb-2">
                 <p className="textColorGold mr-2">Top Skills</p>
                 <div className=" ">
-                  {state.candidateSkills.map((item) => (
+                  {state?.singleUserData?.candidate_skills?.map((item) => (
                     <>
                       {item.is_top == true && (
                         <div className="mr-2">
@@ -227,8 +227,8 @@ export default function HeaderCandidateResume({ isView }) {
 
               <div className="customFlexRow mt-0">
                 <p className="textColorGold mr-2">Status</p>
-                <div className="mt-0 ml-4 customFlexRow">
-                  <p className="ml-2 text-white font-weight-bold m-b15">
+                <div className="mt-0 ml-4 mlPhoneHeader customFlexRow">
+                  <p className="ml-2 text-white mlPhoneHeader font-weight-bold m-b15">
                     {ToggleIsActive ? "Available" : "Unavailable"}
                   </p>
                 </div>

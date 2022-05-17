@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import {
+  GetCandidateSkills,
   GetCities,
   GetStates,
   UpdateCandidateSummary,

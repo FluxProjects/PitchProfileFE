@@ -75,6 +75,8 @@ const changeState = (state = initialState, { type, ...rest }) => {
         authToken: "",
         pedningActions: [],
 
+        wishlist: [],
+
         // Dropdown data actions
         languages: [],
         countries: [],
@@ -107,6 +109,7 @@ const changeState = (state = initialState, { type, ...rest }) => {
         AllCompanies: [],
         BackupAllCompanies: [],
         JobApplications: [],
+        JobApplicationsBackup: [],
         FeaturedJobs: [],
       };
     case "SetAuthToken":
@@ -274,6 +277,12 @@ const changeState = (state = initialState, { type, ...rest }) => {
         ...state,
         JobApplications: rest.data,
       };
+    case "GetBackupJobApplications":
+      return {
+        ...state,
+        JobApplicationsBackup: rest.data,
+      };
+
     case "GetFeaturedJobs":
       return {
         ...state,

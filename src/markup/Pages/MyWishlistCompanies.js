@@ -81,12 +81,10 @@ export default function MyWishlistCompanies() {
                       <ul className="post-job-bx browse-candidate-grid post-resume row">
                         {state.wishlist?.map((item, index) => (
                           <>
-                            {item.candidate?.id != null && (
-                              <BrowseCandidateGridCard
-                                item={item.candidate}
-                                index={index}
-                              />
-                            )}
+                            <BrowseCandidateGridCard
+                              item={item.candidate}
+                              index={index}
+                            />
                           </>
 
                           // <li className="col-lg-6 col-md-6" key={index}>

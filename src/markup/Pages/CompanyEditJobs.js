@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Header2 from "./../Layout/Header2";
 import Footer from "./../Layout/Footer";
 import { Form } from "react-bootstrap";
@@ -27,6 +27,8 @@ import AttachVideoCompanyJob from "../Components/JobsMyResume/AttachVideoCompany
 import Profilesidebar from "../Element/CompanyProfileSidebar";
 
 export default function Componypostjobs(props) {
+  const router = useHistory();
+
   const { item } = props.location.state;
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -194,7 +196,8 @@ export default function Componypostjobs(props) {
         shiftVal,
         seniorityLevelVal,
         salaryRangeVal,
-        state.SaveJobVideo
+        state.SaveJobVideo,
+        router
       )
     );
     // }

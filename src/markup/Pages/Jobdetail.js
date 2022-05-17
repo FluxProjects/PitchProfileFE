@@ -366,7 +366,11 @@ export default function Jobdetail(props) {
                                     ? item?.company?.pic
                                     : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
                                 }
-                                style={{ width: "100%", height: "auto" }}
+                                style={{
+                                  width: "100%",
+                                  height: "auto",
+                                  maxHeight: "165px",
+                                }}
                                 alt="Card image cap"
                               />
                             </div>

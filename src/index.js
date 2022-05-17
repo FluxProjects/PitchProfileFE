@@ -22,6 +22,7 @@ const persistConfig = {
     "setSingleUserData",
     "PreviewPost",
     "SavePreviewPost",
+    "GetWishlist",
   ],
   storage,
 };
