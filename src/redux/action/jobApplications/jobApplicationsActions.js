@@ -28,8 +28,8 @@ export const ApplyJobPost =
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        if (response.data.successful) {
+        console.log("better stun", response.data);
+        if (response.data.status) {
           toast.success("Job added Successfully!", {
             position: "top-right",
             autoClose: 5000,
@@ -71,8 +71,6 @@ export const GetJobApplications = (id) => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log("GetJobApplications", response.data);
-
       if (response.data.successful) {
         dispatch({
           type: "GetJobApplications",
@@ -89,36 +87,36 @@ export const GetJobApplications = (id) => async (dispatch, state) => {
     });
 };
 
-export const filterClosingDate = () => async (dispatch, state) => {
+export const SortByFreshnessApplicationJobs = () => async (dispatch, state) => {
   var resultClosingDate = [];
 
   resultClosingDate = state().JobApplicationsBackup.sort(function (a, b) {
-    // Turn your strings into dates, and then subtract them
-    // to get a value that is either negative, positive, or zero.
     return new Date(b.closing_date) - new Date(a.closing_date);
   });
 
-  toast.success("Updated Successfully!", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "top-right",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
+
   dispatch({
-    type: "GetBackupJobApplications",
+    type: "GetJobApplications",
     data: resultClosingDate,
   });
 };
 
-export const resetFilterClosingDate = () => async (dispatch, state) => {
-  dispatch({
-    type: "GetBackupJobApplications",
-    data: state().JobApplicationsBackup,
-  });
-};
+export const resetSortByFreshnessApplicationJobs =
+  () => async (dispatch, state) => {
+    dispatch({
+      type: "GetJobApplications",
+      data: state().JobApplicationsBackup,
+    });
+  };
 
 export const GetJobCandidateApplications = (id) => async (dispatch, state) => {
   var config = {
@@ -131,11 +129,13 @@ export const GetJobCandidateApplications = (id) => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log("GetJobApplications", response.data);
-
       if (response.data.successful) {
         dispatch({
           type: "GetJobApplications",
+          data: response.data.data,
+        });
+        dispatch({
+          type: "GetBackupJobApplications",
           data: response.data.data,
         });
       }

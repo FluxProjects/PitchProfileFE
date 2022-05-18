@@ -25,6 +25,7 @@ import {
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
 import AttachVideoCompanyJob from "../Components/JobsMyResume/AttachVideoCompanyJob";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
+import ReactQuill from "react-quill";
 
 export default function Componypostjobs(props) {
   const router = useHistory();
@@ -441,10 +442,11 @@ export default function Componypostjobs(props) {
                               Job Description
                               <span className="text-danger"> *</span>
                             </label>
-                            <TextAreaModalComponent
-                              placeholder="Enter Role Description"
-                              onChange={(e) => setRole(e.target.value)}
+
+                            <ReactQuill
+                              className="quillEditor"
                               value={role}
+                              onChange={setRole}
                             />
                           </div>
                         </div>
@@ -454,10 +456,11 @@ export default function Componypostjobs(props) {
                               Key Responibilities
                               <span className="text-danger"> *</span>
                             </label>
-                            <TextAreaModalComponent
-                              placeholder="Enter Key Responsibilities"
-                              onChange={(e) => setKeyRes(e.target.value)}
+
+                            <ReactQuill
+                              className="quillEditor"
                               value={keyRes}
+                              onChange={setKeyRes}
                             />
                           </div>
                         </div>
@@ -467,10 +470,11 @@ export default function Componypostjobs(props) {
                               What are we looking for?
                               <span className="text-danger"> *</span>
                             </label>
-                            <TextAreaModalComponent
-                              placeholder="Enter What you're looking for?"
-                              onChange={(e) => setLookingFor(e.target.value)}
+
+                            <ReactQuill
+                              className="quillEditor"
                               value={lookingFor}
+                              onChange={setLookingFor}
                             />
                           </div>
                         </div>
@@ -480,10 +484,10 @@ export default function Componypostjobs(props) {
                               The Perks
                               <span className="text-danger"> *</span>
                             </label>
-                            <TextAreaModalComponent
-                              placeholder="Enter Perks"
-                              onChange={(e) => setPerks(e.target.value)}
+                            <ReactQuill
+                              className="quillEditor"
                               value={perks}
+                              onChange={setPerks}
                             />
                           </div>
                         </div>

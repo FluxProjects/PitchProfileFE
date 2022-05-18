@@ -8,14 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   GetJobApplications,
   GetJobCandidateApplications,
+  resetSortByFreshnessApplicationJobs,
+  SortByFreshnessApplicationJobs,
 } from "../../redux/action/jobApplications/jobApplicationsActions";
 import BrowsejobgridCard from "./BrowsejobgridCard";
 import AppliedJobGrid from "./AppliedJobGrid";
-
-const postBlog = [
-  { title: "PHP Web Developer", application: "Short listed" },
-  { title: "Software Developer", application: "Applied" },
-];
+import { formatDate } from "../../utils/functions";
+import { JobStatus } from "../../utils/DropDownUtils";
+import Header from "../Layout/Header";
 
 export default function Jobsappliedjob() {
   const state = useSelector((state) => state);
@@ -25,16 +25,13 @@ export default function Jobsappliedjob() {
 
   useEffect(() => {
     CallGetJobCandidateApplications();
+    // callGetJobApplications();
   }, []);
 
   const CallGetJobCandidateApplications = async () => {
     await dispatch(GetJobCandidateApplications());
     setLoading(false);
   };
-
-  useEffect(() => {
-    callGetJobApplications();
-  }, []);
 
   const callGetJobApplications = async () => {
     await dispatch(GetJobApplications());
@@ -46,7 +43,7 @@ export default function Jobsappliedjob() {
   } else {
     return (
       <>
-        <Header2 />
+        {state.userDetails?.company_name ? <Header2 /> : <Header />}
         <div className="page-content bg-white">
           <div className="content-block">
             <div className="section-full bg-white p-t50 p-b20">
@@ -62,15 +59,16 @@ export default function Jobsappliedjob() {
                   <div className="col-xl-9 col-lg-8 m-b30 browse-job">
                     <div className="job-bx-title  clearfix">
                       <h5 className="font-weight-700 pull-left text-uppercase">
-                        {state?.JobApplicationsBackup?.length} Jobs Applied
+                        {state?.JobApplications?.length} Jobs Applied
                       </h5>
 
                       <div className="float-right">
                         <Link
                           className="btn btn-primary mr-1"
-                          onClick={() => {
+                          onClick={async () => {
                             console.log("test");
-                            // dispatch(filterClosingDate());
+
+                            await dispatch(SortByFreshnessApplicationJobs());
                           }}
                         >
                           Sort by newest
@@ -78,9 +76,12 @@ export default function Jobsappliedjob() {
 
                         <Link
                           className="btn btn-primary"
-                          onClick={() => {
+                          onClick={async () => {
                             console.log("test");
-                            // dispatch(resetFilterClosingDate());
+
+                            await dispatch(
+                              resetSortByFreshnessApplicationJobs()
+                            );
                           }}
                         >
                           Reset
@@ -96,11 +97,130 @@ export default function Jobsappliedjob() {
                         </select>
                       </div> */}
                     </div>
-                    <ul className="post-job-bx browse-job-grid row">
-                      {state?.JobApplicationsBackup?.map((item, index) => (
+                    <table className="table-job-bx cv-manager company-manage-job">
+                      <thead>
+                        <tr>
+                          <th className="feature">
+                            <div className="custom-control custom-checkbox">
+                              <input
+                                type="checkbox"
+                                id="check12"
+                                className="custom-control-input selectAllCheckBox"
+                                name="example1"
+                              />
+                              <label
+                                className="custom-control-label"
+                                htmlFor="check12"
+                              ></label>
+                            </div>
+                          </th>
+                          <th>Job Title</th>
+                          <th>Closing Date</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {state.JobApplications?.map((item, index) => (
+                          <tr>
+                            <td className="feature">
+                              <div className="custom-control custom-checkbox">
+                                <input
+                                  type="checkbox"
+                                  className="custom-control-input"
+                                  id="check1"
+                                  name="example1"
+                                />
+                                <label
+                                  className="custom-control-label"
+                                  htmlFor="check1"
+                                ></label>
+                              </div>
+                            </td>
+                            <td className="job-name">
+                              <Link
+                                to={{
+                                  pathname: "/job-detail",
+                                  state: {
+                                    company_id: item?.job?.company_id,
+                                    post_id: item?.job?.id,
+                                  },
+                                }}
+                              >
+                                <span className=" text-capitalize">
+                                  {item?.job?.job_title}
+                                </span>{" "}
+                                {item.department?.name && (
+                                  <span
+                                    className="text-uppercase"
+                                    style={{
+                                      fontSize: "12px",
+                                      fontWeight: "normal",
+                                    }}
+                                  >
+                                    {console.log(
+                                      "item?.job?.department?.name",
+                                      item?.job?.department?.name
+                                    )}
+                                    - {item?.job?.department?.name}
+                                  </span>
+                                )}
+                              </Link>
+                              <ul className="job-post-info">
+                                <li>
+                                  <i className="fa fa-map-marker"></i>{" "}
+                                  {item?.job?.city?.name}{" "}
+                                  {item.job?.state?.name},{" "}
+                                  {item.job?.country?.name}
+                                </li>
+                              </ul>
+                            </td>
+
+                            <td className="expired pending">
+                              {item?.job?.closing_date
+                                ? formatDate(item?.job?.closing_date)
+                                : ""}{" "}
+                            </td>
+                            <td className="expired pending">
+                              {JobStatus.findIndex(
+                                (x) => x?.id == item?.status
+                              ) == -1
+                                ? ""
+                                : JobStatus[
+                                    JobStatus.findIndex(
+                                      (x) => x?.id == item?.status
+                                    )
+                                  ].name}
+                            </td>
+                            {/* <td className="job-links">
+                               <Link
+                                to={{
+                                  pathname: "company-edit-job",
+                                  state: { item: item },
+                                }}
+                                onClick={() => {
+                                  dispatch(UpdateJobVideo(item.video));
+                                }}
+                              >
+                                <i className="fa fa-edit"></i>
+                              </Link>
+                              <span
+                                className="cursorPointer"
+                                onClick={() => {
+                                  CallDeleteSingle(item.id, index);
+                                }}
+                              >
+                                <i className="ti-trash cursorPointer"></i>
+                              </span> 
+                            </td> */}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    {/* <ul className="post-job-bx browse-job-grid row">
+                      {state?.JobApplications?.map((item, index) => (
                         <AppliedJobGrid item={item} index={index} />
                       ))}
-                    </ul>
+                    </ul> */}
                   </div>
                 </div>
               </div>

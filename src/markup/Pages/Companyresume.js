@@ -5,8 +5,9 @@ import Footer from "./../Layout/Footer";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { GetJobApplications } from "../../redux/action/jobApplications/jobApplicationsActions";
-import { SalaryRange } from "../../utils/DropDownUtils";
+import { JobStatus, SalaryRange } from "../../utils/DropDownUtils";
 import { URL } from "../../utils/APIUtils";
+import { formatDate } from "../../utils/functions";
 
 const postResume = [
   { title: "Tammy Dixon" },
@@ -94,106 +95,125 @@ export default function Companyresume() {
                           Back
                         </Link>
                       </div>
-                      <ul className="post-job-bx browse-candidate-grid post-resume row">
-                        {state.JobApplications?.map((item, index) => (
-                          <li className="col-lg-6 col-md-6" key={index}>
-                            <Link
-                              to={{
-                                pathname: "view-candidate-profile",
-                                state: { id: item.candidate_id },
-                              }}
-                            >
-                              <div className="post-bx">
-                                <div className="d-flex m-b20">
-                                  <div className="job-post-info">
-                                    <h5 className="m-b0">
-                                      <Link
-                                        to={{
-                                          pathname: "view-candidate-profile",
-                                          state: { id: item.candidate_id },
-                                        }}
-                                      >
-                                        {item?.candidate?.f_name}{" "}
-                                        {item?.candidate?.l_name}
-                                      </Link>
-                                    </h5>
-                                    <p className="m-b5 font-13">
-                                      {item?.candidate?.headline}
-                                      <Link to={""} className="text-primary">
-                                        {" "}
-                                      </Link>
-                                      {/* at Atract Solutions */}
-                                    </p>
-                                    <ul>
-                                      <li>
-                                        <i className="fa fa-map-marker"></i>
-                                        {item?.candidate?.city?.name}
-                                        {item?.candidate?.city && ", "}{" "}
-                                        {item?.candidate?.state?.name}
-                                        {item?.candidate?.state && ", "}
-                                        {item?.candidate?.country?.sortname}
-                                      </li>
-                                      <li>
-                                        <i className="fa fa-money"></i> ${" "}
-                                        {SalaryRange.findIndex(
-                                          (x) =>
-                                            x?.id == item?.job?.salary_range
-                                        ) == -1
-                                          ? ""
-                                          : SalaryRange[
-                                              SalaryRange.findIndex(
-                                                (x) =>
-                                                  x?.id ==
-                                                  item?.job?.salary_range
-                                              )
-                                            ].name}
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
-
-                                <div className="job-time m-t15 m-b10">
-                                  {item?.candidate?.candidate_skills.map(
-                                    (skill) => (
-                                      <Link to={""} className="mr-1">
-                                        <span>
-                                          {" "}
-                                          {
-                                            state.skills[
-                                              state.skills.findIndex(
-                                                (x) => x.id == skill.skill_id
-                                              )
-                                            ].name
-                                          }
-                                        </span>
-                                      </Link>
-                                    )
-                                  )}
-                                </div>
-                                {item?.candidate?.cover_letter_url && (
-                                  <Link
-                                    onClick={() => {
-                                      downloadFile(
-                                        item?.candidate?.cover_letter_url
-                                      );
-                                    }}
-                                    className="job-links"
-                                  >
-                                    <i className="fa fa-download "></i>
-                                  </Link>
-                                )}
-                                {/* <Link
-                              to={"/files/pdf-sample.pdf"}
-                              target="blank"
-                              className="job-links"
-                            >
-                              <i className="fa fa-play "></i>
-                            </Link> */}
+                      <table className="table-job-bx cv-manager company-manage-job">
+                        <thead>
+                          <tr>
+                            <th className="feature">
+                              <div className="custom-control custom-checkbox">
+                                <input
+                                  type="checkbox"
+                                  id="check12"
+                                  className="custom-control-input selectAllCheckBox"
+                                  name="example1"
+                                />
+                                <label
+                                  className="custom-control-label"
+                                  htmlFor="check12"
+                                ></label>
                               </div>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                            </th>
+                            <th>Job Title</th>
+                            <th>Closing Date</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {state.JobApplications?.map((item, index) => (
+                            <tr>
+                              <td className="feature">
+                                <div className="custom-control custom-checkbox">
+                                  <input
+                                    type="checkbox"
+                                    className="custom-control-input"
+                                    id="check1"
+                                    name="example1"
+                                  />
+                                  <label
+                                    className="custom-control-label"
+                                    htmlFor="check1"
+                                  ></label>
+                                </div>
+                              </td>
+                              <td className="job-name">
+                                <Link
+                                  to={{
+                                    pathname: "/job-detail",
+                                    state: {
+                                      company_id: item?.job?.company_id,
+                                      post_id: item?.job?.id,
+                                    },
+                                  }}
+                                >
+                                  <span className=" text-capitalize">
+                                    {item?.job?.job_title}
+                                  </span>{" "}
+                                  {item.department?.name && (
+                                    <span
+                                      className="text-uppercase"
+                                      style={{
+                                        fontSize: "12px",
+                                        fontWeight: "normal",
+                                      }}
+                                    >
+                                      {console.log(
+                                        "item?.job?.department?.name",
+                                        item?.job?.department?.name
+                                      )}
+                                      - {item?.job?.department?.name}
+                                    </span>
+                                  )}
+                                </Link>
+                                <ul className="job-post-info">
+                                  <li>
+                                    <i className="fa fa-map-marker"></i>{" "}
+                                    {item?.job?.city?.name}{" "}
+                                    {item.job?.state?.name},{" "}
+                                    {item.job?.country?.name}
+                                  </li>
+                                </ul>
+                              </td>
+
+                              <td className="expired pending">
+                                {item?.job?.closing_date
+                                  ? formatDate(item?.job?.closing_date)
+                                  : ""}{" "}
+                              </td>
+                              <td className="expired pending">
+                                {JobStatus.findIndex(
+                                  (x) => x?.id == item?.status
+                                ) == -1
+                                  ? ""
+                                  : JobStatus[
+                                      JobStatus.findIndex(
+                                        (x) => x?.id == item?.status
+                                      )
+                                    ].name}
+                              </td>
+                              {/* <td className="job-links">
+                               <Link
+                                to={{
+                                  pathname: "company-edit-job",
+                                  state: { item: item },
+                                }}
+                                onClick={() => {
+                                  dispatch(UpdateJobVideo(item.video));
+                                }}
+                              >
+                                <i className="fa fa-edit"></i>
+                              </Link>
+                              <span
+                                className="cursorPointer"
+                                onClick={() => {
+                                  CallDeleteSingle(item.id, index);
+                                }}
+                              >
+                                <i className="ti-trash cursorPointer"></i>
+                              </span> 
+                            </td> */}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                       {/* <div className="pagination-bx float-right">
                         <ul className="pagination">
                           <li className="previous">

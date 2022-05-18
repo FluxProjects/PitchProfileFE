@@ -84,6 +84,7 @@ export default function MyWishlistCompanies() {
                             <BrowseCandidateGridCard
                               item={item.candidate}
                               index={index}
+                              isWishlistPage={true}
                             />
                           </>
 

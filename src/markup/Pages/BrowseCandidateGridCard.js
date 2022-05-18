@@ -10,7 +10,11 @@ import { AddWishlistCandidate, AddWishlistCompany } from "../../redux/action";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
-export default function BrowseCandidateGridCard({ item, index }) {
+export default function BrowseCandidateGridCard({
+  item,
+  index,
+  isWishlistPage,
+}) {
   console.log("BrowseCandidateGridCardBrowseCandidateGridCard", item?.f_name);
   const [loading, setLoading] = useState(true);
   const [isLiked, setIsLiked] = useState();

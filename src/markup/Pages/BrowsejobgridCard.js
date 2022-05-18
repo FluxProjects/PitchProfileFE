@@ -24,7 +24,7 @@ import ReactPlayer from "react-player";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
-export default function BrowsejobgridCard({ item, index }) {
+export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -48,18 +48,16 @@ export default function BrowsejobgridCard({ item, index }) {
   };
 
   const onClickLike = async () => {
-    if (state?.userDetails?.company_name) {
-      console.log("called companu");
-      await dispatch(AddWishlistCompany(item.id));
-    } else {
-      console.log("called acndid");
+    console.log("called acndid");
 
-      await dispatch(AddWishlistCandidate(item.id));
-    }
+    await dispatch(AddWishlistCandidate(item.id));
   };
 
   return (
-    <li className="col-lg-3 col-md-6" key={index}>
+    <li
+      className={isWishlistPage ? "col-lg-4 col-md-6" : "col-lg-3 col-md-6"}
+      key={index}
+    >
       <div className="post-bx">
         <div className="mb-4">
           {item.video ? (

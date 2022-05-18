@@ -10,6 +10,7 @@ import { URL } from "../../utils/APIUtils";
 import { GetWishlistCandidate, GetWishlistCompany } from "../../redux/action";
 import Profilesidebar from "../Element/Profilesidebar";
 import Header from "../Layout/Header";
+import BrowsejobgridCard from "./BrowsejobgridCard";
 
 export default function MyWishlists() {
   const state = useSelector((state) => state);
@@ -79,108 +80,113 @@ export default function MyWishlists() {
                       </div>
                       <ul className="post-job-bx browse-candidate-grid post-resume row">
                         {state.wishlist?.map((item, index) => (
-                          <li className="col-lg-6 col-md-6" key={index}>
-                            <Link
-                              to={
-                                state.userDetails?.company_name
-                                  ? {
-                                      pathname: "/view-candidate-profile",
-                                      state: {
-                                        company_id: item?.id,
-                                      },
-                                    }
-                                  : {
-                                      pathname: "/job-detail",
-                                      state: {
-                                        company_id: item?.job?.company_id,
-                                        post_id: item?.job?.id,
-                                      },
-                                    }
-                              }
-                            >
-                              <div className="post-bx">
-                                <div className="d-flex m-b20">
-                                  <div className="job-post-info">
-                                    <h5 className="m-b0">
-                                      <Link
-                                        to={
-                                          state.userDetails?.company_name
-                                            ? {
-                                                pathname:
-                                                  "/view-candidate-profile",
-                                                state: {
-                                                  company_id: item?.id,
-                                                },
-                                              }
-                                            : {
-                                                pathname: "/job-detail",
-                                                state: {
-                                                  company_id:
-                                                    item?.job?.company_id,
-                                                  post_id: item?.job?.id,
-                                                },
-                                              }
-                                        }
-                                      >
-                                        {item?.job?.job_title}
-                                      </Link>
-                                    </h5>
-                                    <p className="m-b5 font-13">
-                                      {item?.job?.company?.company_name}
-                                      <Link to={""} className="text-primary">
-                                        {" "}
-                                      </Link>
-                                      {/* at Atract Solutions */}
-                                    </p>
-                                    <ul>
-                                      <li>
-                                        <i className="fa fa-map-marker"></i>
-                                        {item?.job?.city?.name}
-                                        {item?.job?.city && ", "}{" "}
-                                        {item?.job?.state?.name}
-                                        {item?.job?.state && ", "}
-                                        {item?.job?.country?.sortname}
-                                      </li>
-                                      <li>
-                                        <i className="fa fa-money"></i> ${" "}
-                                        {SalaryRange.findIndex(
-                                          (x) =>
-                                            x?.id == item?.job?.salary_range
-                                        ) == -1
-                                          ? ""
-                                          : SalaryRange[
-                                              SalaryRange.findIndex(
-                                                (x) =>
-                                                  x?.id ==
-                                                  item?.job?.salary_range
-                                              )
-                                            ].name}
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
+                          <BrowsejobgridCard
+                            item={item.job}
+                            index={index}
+                            isWishlistPage={true}
+                          />
+                          // <li className="col-lg-6 col-md-6" key={index}>
+                          //   <Link
+                          //     to={
+                          //       state.userDetails?.company_name
+                          //         ? {
+                          //             pathname: "/view-candidate-profile",
+                          //             state: {
+                          //               company_id: item?.id,
+                          //             },
+                          //           }
+                          //         : {
+                          //             pathname: "/job-detail",
+                          //             state: {
+                          //               company_id: item?.job?.company_id,
+                          //               post_id: item?.job?.id,
+                          //             },
+                          //           }
+                          //     }
+                          //   >
+                          //     <div className="post-bx">
+                          //       <div className="d-flex m-b20">
+                          //         <div className="job-post-info">
+                          //           <h5 className="m-b0">
+                          //             <Link
+                          //               to={
+                          //                 state.userDetails?.company_name
+                          //                   ? {
+                          //                       pathname:
+                          //                         "/view-candidate-profile",
+                          //                       state: {
+                          //                         company_id: item?.id,
+                          //                       },
+                          //                     }
+                          //                   : {
+                          //                       pathname: "/job-detail",
+                          //                       state: {
+                          //                         company_id:
+                          //                           item?.job?.company_id,
+                          //                         post_id: item?.job?.id,
+                          //                       },
+                          //                     }
+                          //               }
+                          //             >
+                          //               {item?.job?.job_title}
+                          //             </Link>
+                          //           </h5>
+                          //           <p className="m-b5 font-13">
+                          //             {item?.job?.company?.company_name}
+                          //             <Link to={""} className="text-primary">
+                          //               {" "}
+                          //             </Link>
+                          //             {/* at Atract Solutions */}
+                          //           </p>
+                          //           <ul>
+                          //             <li>
+                          //               <i className="fa fa-map-marker"></i>
+                          //               {item?.job?.city?.name}
+                          //               {item?.job?.city && ", "}{" "}
+                          //               {item?.job?.state?.name}
+                          //               {item?.job?.state && ", "}
+                          //               {item?.job?.country?.sortname}
+                          //             </li>
+                          //             <li>
+                          //               <i className="fa fa-money"></i> ${" "}
+                          //               {SalaryRange.findIndex(
+                          //                 (x) =>
+                          //                   x?.id == item?.job?.salary_range
+                          //               ) == -1
+                          //                 ? ""
+                          //                 : SalaryRange[
+                          //                     SalaryRange.findIndex(
+                          //                       (x) =>
+                          //                         x?.id ==
+                          //                         item?.job?.salary_range
+                          //                     )
+                          //                   ].name}
+                          //             </li>
+                          //           </ul>
+                          //         </div>
+                          //       </div>
 
-                                <div className="job-time m-t15 m-b10">
-                                  {item?.candidate?.candidate_skills.map(
-                                    (skill) => (
-                                      <Link to={""} className="mr-1">
-                                        <span>
-                                          {" "}
-                                          {
-                                            state.skills[
-                                              state.skills.findIndex(
-                                                (x) => x.id == skill.skill_id
-                                              )
-                                            ].name
-                                          }
-                                        </span>
-                                      </Link>
-                                    )
-                                  )}
-                                </div>
-                              </div>
-                            </Link>
-                          </li>
+                          //       <div className="job-time m-t15 m-b10">
+                          //         {item?.candidate?.candidate_skills.map(
+                          //           (skill) => (
+                          //             <Link to={""} className="mr-1">
+                          //               <span>
+                          //                 {" "}
+                          //                 {
+                          //                   state.skills[
+                          //                     state.skills.findIndex(
+                          //                       (x) => x.id == skill.skill_id
+                          //                     )
+                          //                   ].name
+                          //                 }
+                          //               </span>
+                          //             </Link>
+                          //           )
+                          //         )}
+                          //       </div>
+                          //     </div>
+                          //   </Link>
+                          // </li>
                         ))}
                       </ul>
                       {/* <div className="pagination-bx float-right">
