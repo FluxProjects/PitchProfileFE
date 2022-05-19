@@ -380,7 +380,7 @@ export default function Componypostjobs() {
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>
-                              Expirience (Years):{" "}
+                              Experience (Years):{" "}
                               <span className="text-danger"> *</span>
                             </label>
                             <TextInputModal
@@ -495,47 +495,50 @@ export default function Componypostjobs() {
 
                         <div className="col-lg-6 col-md-6"></div>
 
-                        {handleDisplay >= 0 && (
-                          <>
-                            <div className="col-lg-6 col-md-12">
-                              <div className="form-group">
-                                <label>
-                                  Top Skill 1:
-                                  {/* <span className="text-danger"> *</span> */}
-                                </label>
-                                <select
-                                  value={TopSkill1}
-                                  onChange={(e) => {
-                                    console.log("ret", e.target.value);
-                                    setTopSkill1(e.target.value);
+                        {/* {handleDisplay >= 0 && ( */}
+                        <>
+                          <div className="col-lg-6 col-md-12">
+                            <div className="form-group">
+                              <label>
+                                Top Skill 1:
+                                {/* <span className="text-danger"> *</span> */}
+                              </label>
+                              <select
+                                value={TopSkill1}
+                                onChange={(e) => {
+                                  console.log("ret", e.target.value);
+                                  setTopSkill1(e.target.value);
 
-                                    var c =
-                                      state?.skills.findIndex(
-                                        (x) => x?.id == e.target.value
-                                      ) == -1
-                                        ? ""
-                                        : setTopSkillName1(
-                                            state?.skills[
-                                              state?.skills.findIndex(
-                                                (x) => x?.id == e.target.value
-                                              )
-                                            ].name
-                                          );
-                                  }}
-                                  className="form-control"
-                                >
-                                  {state.skills.map((item) => (
-                                    <option key={item.id} value={item.id}>
-                                      {item.name}
-                                    </option>
-                                  ))}
-                                  <option key={"other"} value={"other"}>
-                                    Other
+                                  var c =
+                                    state?.skills.findIndex(
+                                      (x) => x?.id == e.target.value
+                                    ) == -1
+                                      ? ""
+                                      : setTopSkillName1(
+                                          state?.skills[
+                                            state?.skills.findIndex(
+                                              (x) => x?.id == e.target.value
+                                            )
+                                          ].name
+                                        );
+                                }}
+                                className="form-control"
+                              >
+                                <option key={-1} value={-1}>
+                                  Select option
+                                </option>
+                                {state.skills.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
                                   </option>
-                                </select>
-                              </div>
+                                ))}
+                                <option key={"other"} value={"other"}>
+                                  Other
+                                </option>
+                              </select>
                             </div>
-                            <div className="col-lg-6 col-md-12">
+                          </div>
+                          {/* <div className="col-lg-6 col-md-12">
                               <div
                                 onClick={() => {
                                   setTopSkill2(1);
@@ -545,51 +548,54 @@ export default function Componypostjobs() {
                               >
                                 <i className="fa fa-plus m-r5"></i> Add
                               </div>
-                            </div>
-                          </>
-                        )}
+                            </div> */}
+                        </>
+                        {/* )} */}
 
-                        {handleDisplay >= 2 && (
-                          <>
-                            <div className="col-lg-6 col-md-6">
-                              <div className="form-group">
-                                <label>
-                                  Top Skill 2:
-                                  {/* <span className="text-danger"> *</span> */}
-                                </label>
-                                <select
-                                  value={TopSkill2}
-                                  onChange={(e) => {
-                                    console.log("ret", e.target.value);
-                                    setTopSkill2(e.target.value);
+                        {/* {handleDisplay >= 2 && ( */}
+                        <>
+                          <div className="col-lg-6 col-md-6">
+                            <div className="form-group">
+                              <label>
+                                Top Skill 2:
+                                {/* <span className="text-danger"> *</span> */}
+                              </label>
+                              <select
+                                value={TopSkill2}
+                                onChange={(e) => {
+                                  console.log("ret", e.target.value);
+                                  setTopSkill2(e.target.value);
 
-                                    var c =
-                                      state?.skills.findIndex(
-                                        (x) => x?.id == e.target.value
-                                      ) == -1
-                                        ? ""
-                                        : setTopSkillName2(
-                                            state?.skills[
-                                              state?.skills.findIndex(
-                                                (x) => x?.id == e.target.value
-                                              )
-                                            ].name
-                                          );
-                                  }}
-                                  className="form-control"
-                                >
-                                  {state.skills.map((item) => (
-                                    <option key={item.id} value={item.id}>
-                                      {item.name}
-                                    </option>
-                                  ))}
-                                  <option key={"other"} value={"other"}>
-                                    Other
+                                  var c =
+                                    state?.skills.findIndex(
+                                      (x) => x?.id == e.target.value
+                                    ) == -1
+                                      ? ""
+                                      : setTopSkillName2(
+                                          state?.skills[
+                                            state?.skills.findIndex(
+                                              (x) => x?.id == e.target.value
+                                            )
+                                          ].name
+                                        );
+                                }}
+                                className="form-control"
+                              >
+                                <option key={-1} value={-1}>
+                                  Select option
+                                </option>
+                                {state.skills.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
                                   </option>
-                                </select>
-                              </div>
+                                ))}
+                                <option key={"other"} value={"other"}>
+                                  Other
+                                </option>
+                              </select>
                             </div>
-                            <div className="col-lg-6 col-md-12">
+                          </div>
+                          {/* <div className="col-lg-6 col-md-12">
                               <div
                                 onClick={() => {
                                   setTopSkill3(1);
@@ -599,51 +605,54 @@ export default function Componypostjobs() {
                               >
                                 <i className="fa fa-plus m-r5"></i> Add
                               </div>
-                            </div>
-                          </>
-                        )}
+                            </div> */}
+                        </>
+                        {/* )} */}
 
-                        {handleDisplay >= 3 && (
-                          <>
-                            <div className="col-lg-6 col-md-6">
-                              <div className="form-group">
-                                <label>
-                                  Top Skill 3:
-                                  {/* <span className="text-danger"> *</span> */}
-                                </label>
-                                <select
-                                  value={TopSkill3}
-                                  onChange={(e) => {
-                                    console.log("ret", e.target.value);
-                                    setTopSkill3(e.target.value);
+                        {/* {handleDisplay >= 3 && ( */}
+                        <>
+                          <div className="col-lg-6 col-md-6">
+                            <div className="form-group">
+                              <label>
+                                Top Skill 3:
+                                {/* <span className="text-danger"> *</span> */}
+                              </label>
+                              <select
+                                value={TopSkill3}
+                                onChange={(e) => {
+                                  console.log("ret", e.target.value);
+                                  setTopSkill3(e.target.value);
 
-                                    var c =
-                                      state?.skills.findIndex(
-                                        (x) => x?.id == e.target.value
-                                      ) == -1
-                                        ? ""
-                                        : setTopSkillName3(
-                                            state?.skills[
-                                              state?.skills.findIndex(
-                                                (x) => x?.id == e.target.value
-                                              )
-                                            ].name
-                                          );
-                                  }}
-                                  className="form-control"
-                                >
-                                  {state.skills.map((item) => (
-                                    <option key={item.id} value={item.id}>
-                                      {item.name}
-                                    </option>
-                                  ))}
-                                  <option key={"other"} value={"other"}>
-                                    Other
+                                  var c =
+                                    state?.skills.findIndex(
+                                      (x) => x?.id == e.target.value
+                                    ) == -1
+                                      ? ""
+                                      : setTopSkillName3(
+                                          state?.skills[
+                                            state?.skills.findIndex(
+                                              (x) => x?.id == e.target.value
+                                            )
+                                          ].name
+                                        );
+                                }}
+                                className="form-control"
+                              >
+                                <option key={-1} value={-1}>
+                                  Select option
+                                </option>
+                                {state.skills.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
                                   </option>
-                                </select>
-                              </div>
+                                ))}
+                                <option key={"other"} value={"other"}>
+                                  Other
+                                </option>
+                              </select>
                             </div>
-                            <div className="col-lg-6 col-md-12">
+                          </div>
+                          {/* <div className="col-lg-6 col-md-12">
                               <div
                                 onClick={() => {
                                   setTopSkill4(1);
@@ -653,51 +662,54 @@ export default function Componypostjobs() {
                               >
                                 <i className="fa fa-plus m-r5"></i> Add
                               </div>
-                            </div>
-                          </>
-                        )}
+                            </div> */}
+                        </>
+                        {/* )} */}
 
-                        {handleDisplay >= 4 && (
-                          <>
-                            <div className="col-lg-6 col-md-6">
-                              <div className="form-group">
-                                <label>
-                                  Top Skill 4:
-                                  {/* <span className="text-danger"> *</span> */}
-                                </label>
-                                <select
-                                  value={TopSkill4}
-                                  onChange={(e) => {
-                                    console.log("ret", e.target.value);
-                                    setTopSkill4(e.target.value);
+                        {/* {handleDisplay >= 4 && ( */}
+                        <>
+                          <div className="col-lg-6 col-md-6">
+                            <div className="form-group">
+                              <label>
+                                Top Skill 4:
+                                {/* <span className="text-danger"> *</span> */}
+                              </label>
+                              <select
+                                value={TopSkill4}
+                                onChange={(e) => {
+                                  console.log("ret", e.target.value);
+                                  setTopSkill4(e.target.value);
 
-                                    var c =
-                                      state?.skills.findIndex(
-                                        (x) => x?.id == e.target.value
-                                      ) == -1
-                                        ? ""
-                                        : setTopSkillName4(
-                                            state?.skills[
-                                              state?.skills.findIndex(
-                                                (x) => x?.id == e.target.value
-                                              )
-                                            ].name
-                                          );
-                                  }}
-                                  className="form-control"
-                                >
-                                  {state.skills.map((item) => (
-                                    <option key={item.id} value={item.id}>
-                                      {item.name}
-                                    </option>
-                                  ))}
-                                  <option key={"other"} value={"other"}>
-                                    Other
+                                  var c =
+                                    state?.skills.findIndex(
+                                      (x) => x?.id == e.target.value
+                                    ) == -1
+                                      ? ""
+                                      : setTopSkillName4(
+                                          state?.skills[
+                                            state?.skills.findIndex(
+                                              (x) => x?.id == e.target.value
+                                            )
+                                          ].name
+                                        );
+                                }}
+                                className="form-control"
+                              >
+                                <option key={-1} value={-1}>
+                                  Select option
+                                </option>
+                                {state.skills.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
                                   </option>
-                                </select>
-                              </div>
+                                ))}
+                                <option key={"other"} value={"other"}>
+                                  Other
+                                </option>
+                              </select>
                             </div>
-                            <div className="col-lg-6 col-md-12">
+                          </div>
+                          {/* <div className="col-lg-6 col-md-12">
                               <div
                                 onClick={() => {
                                   setTopSkill5(1);
@@ -707,52 +719,55 @@ export default function Componypostjobs() {
                               >
                                 <i className="fa fa-plus m-r5"></i> Add
                               </div>
-                            </div>
-                          </>
-                        )}
+                            </div> */}
+                        </>
+                        {/* )} */}
 
-                        {handleDisplay >= 5 && (
-                          <>
-                            <div className="col-lg-6 col-md-6">
-                              <div className="form-group">
-                                <label>
-                                  Top Skill 5:
-                                  {/* <span className="text-danger"> *</span> */}
-                                </label>
-                                <select
-                                  value={TopSkill5}
-                                  onChange={(e) => {
-                                    console.log("ret", e.target.value);
-                                    setTopSkill5(e.target.value);
+                        {/* {handleDisplay >= 5 && ( */}
+                        <>
+                          <div className="col-lg-6 col-md-6">
+                            <div className="form-group">
+                              <label>
+                                Top Skill 5:
+                                {/* <span className="text-danger"> *</span> */}
+                              </label>
+                              <select
+                                value={TopSkill5}
+                                onChange={(e) => {
+                                  console.log("ret", e.target.value);
+                                  setTopSkill5(e.target.value);
 
-                                    var c =
-                                      state?.skills.findIndex(
-                                        (x) => x?.id == e.target.value
-                                      ) == -1
-                                        ? ""
-                                        : setTopSkillName5(
-                                            state?.skills[
-                                              state?.skills.findIndex(
-                                                (x) => x?.id == e.target.value
-                                              )
-                                            ].name
-                                          );
-                                  }}
-                                  className="form-control"
-                                >
-                                  {state.skills.map((item) => (
-                                    <option key={item.id} value={item.id}>
-                                      {item.name}
-                                    </option>
-                                  ))}
-                                  <option key={"other"} value={"other"}>
-                                    Other
+                                  var c =
+                                    state?.skills.findIndex(
+                                      (x) => x?.id == e.target.value
+                                    ) == -1
+                                      ? ""
+                                      : setTopSkillName5(
+                                          state?.skills[
+                                            state?.skills.findIndex(
+                                              (x) => x?.id == e.target.value
+                                            )
+                                          ].name
+                                        );
+                                }}
+                                className="form-control"
+                              >
+                                <option key={-1} value={-1}>
+                                  Select option
+                                </option>
+                                {state.skills.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
                                   </option>
-                                </select>
-                              </div>
+                                ))}
+                                <option key={"other"} value={"other"}>
+                                  Other
+                                </option>
+                              </select>
                             </div>
-                          </>
-                        )}
+                          </div>
+                        </>
+                        {/* )} */}
 
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
@@ -776,7 +791,7 @@ export default function Componypostjobs() {
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
-                              Key Responibilities:
+                              Key Responsibilities:
                               <span className="text-danger"> *</span>
                             </label>
 

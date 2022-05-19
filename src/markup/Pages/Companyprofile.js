@@ -561,7 +561,7 @@ export default function Companyprofile() {
                             type="submit"
                             className="site-button m-b30 mr-3"
                           >
-                            Save
+                            {tagline ? "Update" : "Save"}
                           </button>
                         ) : (
                           <button
@@ -577,6 +577,7 @@ export default function Companyprofile() {
                               pathname: "/company-detail",
                               state: {
                                 company_id: state.userDetails?.id,
+                                showBack: true,
                               },
                             }}
                             className="site-button  m-b30"

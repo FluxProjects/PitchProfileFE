@@ -177,10 +177,18 @@ img.card-img-top {
   flex-direction: row;
 }
 
+.responsiveHeader {
+  padding-top: 21px !important ;
+  height: 15em !important;
+}
 /* Responsive layout - makes a one column layout instead of a two-column layout */
 @media (max-width: 800px) {
   .customFlexRow {
     flex-direction: column;
+  }
+  .responsiveHeader {
+    padding-top: 21px !important;
+    height: 23em !important;
   }
 }
 
@@ -498,7 +506,7 @@ strong {
   line-height: 110px;
 }
 @media only screen and (max-width: 767px) {
-  .mlPhoneHeader{
+  .mlPhoneHeader {
     margin-left: 0px;
   }
   h1 {

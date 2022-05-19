@@ -331,7 +331,7 @@ export default function Componypostjobs(props) {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Expirience (Years)</label>
+                            <label>Experience (Years)</label>
                             <TextInputModal
                               type={"number"}
                               onChange={(e) => {
@@ -453,7 +453,7 @@ export default function Componypostjobs(props) {
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
-                              Key Responibilities
+                              Key Responsibilities
                               <span className="text-danger"> *</span>
                             </label>
 

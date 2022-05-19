@@ -115,7 +115,7 @@ export default function CompanyPostJobView() {
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
-                              Key Responibilities
+                              Key Responsibilities
                               <span className="text-danger"> *</span>
                             </label>
                             <p className="m-b0">{}</p>

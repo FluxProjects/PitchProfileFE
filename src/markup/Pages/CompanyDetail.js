@@ -8,6 +8,7 @@ import UploadDataComponent from "../Components/UIComponents/UploadDataComponent"
 import { useDispatch, useSelector } from "react-redux";
 import Header2 from "../Layout/Header2";
 import { daysSinceGivenDate, formatDate } from "../../utils/functions";
+import { useHistory } from "react-router-dom";
 import {
   CompanySizeLevel,
   employmentTypeDrop,
@@ -25,25 +26,10 @@ import ReactPlayer from "react-player";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
-const blogGrid = [
-  {
-    image: require("./../../images/blog/grid/pic1.jpg"),
-  },
-  {
-    image: require("./../../images/blog/grid/pic2.jpg"),
-  },
-  {
-    image: require("./../../images/blog/grid/pic3.jpg"),
-  },
-  {
-    image: require("./../../images/blog/grid/pic4.jpg"),
-  },
-];
-
 export default function Jobdetail(props) {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
-
+  const router = useHistory();
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -73,8 +59,11 @@ export default function Jobdetail(props) {
 
         <div className="page-content bg-white">
           <div
-            className="overlay-black-dark profile-edit p-t50 "
-            style={{ backgroundImage: "url(" + bnr + ")" }}
+            className="overlay-black-dark profile-edit  responsiveHeader "
+            style={{
+              backgroundImage: "url(" + bnr + ")",
+              paddingTop: "21px",
+            }}
           >
             <div className="container">
               <div className="row">
@@ -108,6 +97,23 @@ export default function Jobdetail(props) {
                             )}
                         </div>
                         <div className="col-lg-12 col-md-6">
+                          {props?.location?.state?.showBack && (
+                            <span className="mt-2">
+                              <Link
+                                onClick={() => {
+                                  router.goBack();
+                                }}
+                                style={{
+                                  marginTop: 10,
+                                  marginRight: 19,
+                                }}
+                                // to={"/company-manage-job"}
+                                className="site-button right-arrow button-sm float-right"
+                              >
+                                Back
+                              </Link>
+                            </span>
+                          )}
                           <div className="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                             <strong className="font-weight-700 text-black m-b15">
                               Contact Details
@@ -150,7 +156,7 @@ export default function Jobdetail(props) {
                           to={""}
                           className="text-secondry text-capitalize m-r30"
                         >
-                          About Comapny
+                          About Company
                           <span
                             className="text-uppercase"
                             style={{
@@ -220,7 +226,12 @@ export default function Jobdetail(props) {
                                     ? item?.company?.pic
                                     : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
                                 }
-                                style={{ width: "100%", height: "auto" }}
+                                style={{
+                                  width: "100%",
+                                  height: "auto",
+                                  maxHeight: "165px",
+                                  minHeight: "165px",
+                                }}
                                 alt="Card image cap"
                               />
                             </div>

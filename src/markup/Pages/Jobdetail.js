@@ -321,15 +321,37 @@ export default function Jobdetail(props) {
                       <p>{ReactHtmlParser(state.PreviewPost?.the_perks)}</p>
 
                       {!state.userDetails.company_name && (
-                        <Link
-                          onClick={() => {
-                            dispatch(ResetCoverLetterJob());
-                            handleShow();
-                          }}
-                          className="site-button"
-                        >
-                          Apply To This Job
-                        </Link>
+                        <>
+                          {console.log(
+                            "testhjkferedgf",
+                            state?.userDetails?.job_applications.findIndex(
+                              (x) => x?.job_id == state.PreviewPost.id
+                            )
+                          )}
+                          {state?.userDetails?.job_applications.findIndex(
+                            (x) => x?.job_id == state.PreviewPost.id
+                          ) != -1 ? (
+                            <Link
+                              onClick={() => {
+                                // dispatch(ResetCoverLetterJob());
+                                // handleShow();
+                              }}
+                              className="site-button"
+                            >
+                              Applied
+                            </Link>
+                          ) : (
+                            <Link
+                              onClick={() => {
+                                dispatch(ResetCoverLetterJob());
+                                handleShow();
+                              }}
+                              className="site-button"
+                            >
+                              Apply To This Job
+                            </Link>
+                          )}
+                        </>
                       )}
                     </div>
                   </div>
@@ -561,7 +583,7 @@ export default function Jobdetail(props) {
                   <div className="row">
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Additional Information</label>
+                        <label>Cover Letter</label>
 
                         <TextAreaModalComponent
                           placeholder="Enter Cover Letter"
