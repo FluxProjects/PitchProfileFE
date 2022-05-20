@@ -6,6 +6,10 @@ import { toast } from "react-toastify";
 export const ApplyJobPost =
   (job_id, company_id, status, description, router) =>
   async (dispatch, state) => {
+    console.log(
+      " state()?.CoverLetterForApplying.name state()?.CoverLetterForApplying.name",
+      state()?.CoverLetterForApplying.name
+    );
     var data = JSON.stringify({
       data: {
         candidate_id: state().userDetails.id,
@@ -13,7 +17,8 @@ export const ApplyJobPost =
         company_id,
         status,
         description,
-        attachment_url: state()?.CoverLetterForApplying,
+        attachment_url: state()?.CoverLetterForApplying.secure_url,
+        attachment_name: state()?.CoverLetterForApplying.name,
       },
     });
 
@@ -151,9 +156,12 @@ export const UploadCoverLetterJob = (files) => async (dispatch, state) => {
   formData.append("upload_preset", "pitchprofile");
 
   await axios.post(`${cloudURL}/image/upload`, formData).then(async (res) => {
+    const val = res.data;
+    val.name = files[0].name;
+
     dispatch({
       type: "CoverLetterForApplying",
-      data: res.data.secure_url,
+      data: val,
     });
   });
 };

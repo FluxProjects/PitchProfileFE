@@ -31,6 +31,7 @@ export default function Componypostjobs(props) {
   const router = useHistory();
 
   const { item } = props.location.state;
+  console.log("irtemskjnes", item);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [city, setCity] = useState(item.city_id);
@@ -114,36 +115,50 @@ export default function Componypostjobs(props) {
       return;
     }
     if (jobTitle == "") {
+      console.log("jobTitle");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (jobType == null) {
+      console.log("jobType");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (employmentType == "") {
+      console.log("employmentType");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (role == "") {
+      console.log("role");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (keyRes == "") {
+      console.log("keyRes");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (closingDate == "") {
+      console.log("closingDate");
+
       setLoading(false);
       setFieldAlert(true);
       return;
     }
     if (department == null) {
+      console.log("department");
+
       setLoading(false);
       setFieldAlert(true);
       return;
@@ -516,7 +531,7 @@ export default function Componypostjobs(props) {
                           type="button"
                           className="site-button mr-4 m-b30"
                         >
-                          Save
+                          Update
                         </button>
                       ) : (
                         <button

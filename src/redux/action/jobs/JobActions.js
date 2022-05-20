@@ -342,13 +342,22 @@ export const GetMyJobPosts = () => async (dispatch, state) => {
   axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
+
+      var resultClosingDate = [];
+
+      resultClosingDate = response.data.data.sort(function (a, b) {
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(a.closing_date) - new Date(b.closing_date);
+      });
+
       dispatch({
         type: "MyPostedJobs",
-        data: response.data.data,
+        data: resultClosingDate,
       });
       dispatch({
         type: "MyPostedJobsBackup",
-        data: response.data.data,
+        data: resultClosingDate,
       });
     })
     .catch(function (error) {

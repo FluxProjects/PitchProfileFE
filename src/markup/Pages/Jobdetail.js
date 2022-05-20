@@ -113,7 +113,7 @@ export default function Jobdetail(props) {
             </div>
           </div> */}
           <div
-            className="overlay-black-dark profile-edit p-t50 "
+            className="overlay-black-dark profile-edit p-t50 responsiveHeader"
             style={{ backgroundImage: "url(" + bnr + ")" }}
           >
             <div className="container">
@@ -227,18 +227,14 @@ export default function Jobdetail(props) {
                                     : "Year"}
                                 </li>
                               )}
+
                               <li>
                                 <i className="fa fa-money"></i>
                                 <strong className="font-weight-700 text-black">
                                   Salary
                                 </strong>{" "}
-                                <p className="row">
-                                  <p>
-                                    {
-                                      state.PreviewPost?.country
-                                        ?.currency_symbol
-                                    }{" "}
-                                  </p>
+                                <p>
+                                  {state.PreviewPost?.country?.currency_symbol}{" "}
                                   {SalaryRange.findIndex(
                                     (x) =>
                                       x?.id == state.PreviewPost?.salary_range
@@ -363,126 +359,129 @@ export default function Jobdetail(props) {
               <ul className="row">
                 {state?.FeaturedJobs != null &&
                   state?.FeaturedJobs?.map((item, index) => (
-                    <li className="col-lg-3 col-md-6" key={index}>
-                      <div className="post-bx">
-                        <div className="mb-4">
-                          {item.video ? (
-                            <video
-                              className="card-img-top"
-                              width="auto"
-                              height="165"
-                              controls
-                            >
-                              <source src={item.video} type="video/mp4" />
-                              <source src={item.video} type="video/wmv" />
-                              <source src={item.video} type="video/mkv" />
-                              <source src={item.video} type="video/mov" />
-                              Your browser does not support the video tag.
-                            </video>
-                          ) : (
-                            <div style={{ width: "auto", height: "165px" }}>
-                              <img
-                                className="card-img-top"
-                                src={
-                                  item?.company?.pic != null
-                                    ? item?.company?.pic
-                                    : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
-                                }
-                                style={{
-                                  width: "100%",
-                                  height: "auto",
-                                  maxHeight: "165px",
-                                }}
-                                alt="Card image cap"
-                              />
+                    <>
+                      {item.id != state.PreviewPost.id && (
+                        <li className="col-lg-3 col-md-6" key={index}>
+                          <div className="post-bx">
+                            <div className="mb-4">
+                              {item.video ? (
+                                <video
+                                  className="card-img-top"
+                                  width="auto"
+                                  height="165"
+                                  controls
+                                >
+                                  <source src={item.video} type="video/mp4" />
+                                  <source src={item.video} type="video/wmv" />
+                                  <source src={item.video} type="video/mkv" />
+                                  <source src={item.video} type="video/mov" />
+                                  Your browser does not support the video tag.
+                                </video>
+                              ) : (
+                                <div style={{ width: "auto", height: "165px" }}>
+                                  <img
+                                    className="card-img-top"
+                                    src={
+                                      item?.company?.pic != null
+                                        ? item?.company?.pic
+                                        : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
+                                    }
+                                    style={{
+                                      width: "100%",
+                                      height: "auto",
+                                      maxHeight: "165px",
+                                    }}
+                                    alt="Card image cap"
+                                  />
+                                </div>
+                              )}
                             </div>
-                          )}
-                        </div>
-                        <div className="d-flex m-b30">
-                          <div className="job-post-info ">
-                            <h5
-                              className="text-uppercase text-decoration-none"
-                              style={{
-                                textDecoration: "none !important",
-                              }}
-                            >
-                              <Link
-                                to={{
-                                  pathname: "/job-detail",
-                                  state: {
-                                    company_id: item?.company_id,
-                                    post_id: item?.id,
-                                  },
-                                }}
-                              >
-                                {item?.job_title?.substring(0, 5)}
-                                {"... "}
-                                {item.seniority_level != null && "- "}
-                                <span
-                                  className="text-uppercase"
+                            <div className="d-flex m-b30">
+                              <div className="job-post-info ">
+                                <h5
+                                  className="text-uppercase text-decoration-none"
                                   style={{
-                                    fontSize: "12px",
-                                    fontWeight: "normal",
+                                    textDecoration: "none !important",
                                   }}
                                 >
-                                  {SeniorityLevel.findIndex(
-                                    (x) => x?.id == item.seniority_level
-                                  ) == -1
-                                    ? ""
-                                    : SeniorityLevel[
-                                        SeniorityLevel.findIndex(
-                                          (x) => x?.id == item.seniority_level
-                                        )
-                                      ].name}
-                                  {/* {item.department?.name} */}
-                                </span>
-                              </Link>
+                                  <Link
+                                    to={{
+                                      pathname: "/job-detail",
+                                      state: {
+                                        company_id: item?.company_id,
+                                        post_id: item?.id,
+                                      },
+                                    }}
+                                  >
+                                    {item?.job_title?.substring(0, 5)}
+                                    {"... "}
+                                    {item.seniority_level != null && "- "}
+                                    <span
+                                      className="text-uppercase"
+                                      style={{
+                                        fontSize: "12px",
+                                        fontWeight: "normal",
+                                      }}
+                                    >
+                                      {SeniorityLevel.findIndex(
+                                        (x) => x?.id == item.seniority_level
+                                      ) == -1
+                                        ? ""
+                                        : SeniorityLevel[
+                                            SeniorityLevel.findIndex(
+                                              (x) =>
+                                                x?.id == item.seniority_level
+                                            )
+                                          ].name}
+                                      {/* {item.department?.name} */}
+                                    </span>
+                                  </Link>
 
-                              <br />
-                              <Link
-                                to={{
-                                  pathname: "/company-detail",
-                                  state: {
-                                    company_id: item?.company_id,
-                                  },
-                                }}
-                              >
-                                <span
-                                  className="text-uppercase mb-0 cardGridFont"
+                                  <br />
+                                  <Link
+                                    to={{
+                                      pathname: "/company-detail",
+                                      state: {
+                                        company_id: item?.company_id,
+                                      },
+                                    }}
+                                  >
+                                    <span
+                                      className="text-uppercase mb-0 cardGridFont"
+                                      style={{
+                                        fontSize: "14px",
+                                        fontWeight: "normal",
+                                        color: "#2e55fa",
+                                        textDecoration: "none",
+                                      }}
+                                    >
+                                      {item.company.company_name}
+                                      {/* {item.department?.name} */}
+                                    </span>
+                                  </Link>
+                                </h5>
+                                <ul
                                   style={{
-                                    fontSize: "14px",
-                                    fontWeight: "normal",
-                                    color: "#2e55fa",
+                                    marginTop: "-12px",
                                     textDecoration: "none",
                                   }}
                                 >
-                                  {item.company.company_name}
-                                  {/* {item.department?.name} */}
-                                </span>
-                              </Link>
-                            </h5>
-                            <ul
-                              style={{
-                                marginTop: "-12px",
-                                textDecoration: "none",
-                              }}
-                            >
-                              <li className="mb-0 cardGridFont">
-                                <i className="fa fa-map-marker"></i>
-                                {item.city?.name}
-                                {item.city && ", "} {item.state?.name}
-                                {item.state && ", "}
-                                {item.country?.sortname}
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
+                                  <li className="mb-0 cardGridFont">
+                                    <i className="fa fa-map-marker"></i>
+                                    {item.city?.name}
+                                    {item.city && ", "} {item.state?.name}
+                                    {item.state && ", "}
+                                    {item.country?.sortname}
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
 
-                        <div
-                          className="mb-2 d-flex "
-                          style={{ marginTop: "-30px" }}
-                        >
-                          {/* <div className="text-primary">
+                            <div
+                              className="mb-2 d-flex "
+                              style={{ marginTop: "-30px" }}
+                            >
+                              {/* <div className="text-primary">
           <i className="fa fa-bookmark-o"></i>{" "}
           {employmentTypeDrop.findIndex(
             (x) => x?.id == item.employment_type
@@ -494,63 +493,70 @@ export default function Jobdetail(props) {
                 )
               ].name}
         </div> */}
-                          <div className="mb-0 cardGridFont text-primary">
-                            <i className="fa fa-clock-o"></i>{" "}
-                            {jobTypeDrop.findIndex(
-                              (x) => x?.id == item.job_type
-                            ) == -1
-                              ? ""
-                              : jobTypeDrop[
-                                  jobTypeDrop.findIndex(
-                                    (x) => x?.id == item.job_type
-                                  )
-                                ].name}
-                          </div>
-                        </div>
-
-                        <div className="d-flex">
-                          <div className="mb-0  cardGridFont job-time mr-auto">
-                            <Link to={""}>
-                              <span>
-                                {daysSinceGivenDate(new Date(item.created_at))}{" "}
-                                ago
-                              </span>
-                            </Link>
-                          </div>
-                          <div className="mb-0 cardGridFont salary-bx">
-                            <span>
-                              <p className="ml-1 row">
-                                <p>
-                                  {state.PreviewPost?.country?.currency_symbol}{" "}
-                                </p>
-                                {SalaryRange.findIndex(
-                                  (x) =>
-                                    x?.id == state.PreviewPost?.salary_range
+                              <div className="mb-0 cardGridFont text-primary">
+                                <i className="fa fa-clock-o"></i>{" "}
+                                {jobTypeDrop.findIndex(
+                                  (x) => x?.id == item.job_type
                                 ) == -1
                                   ? ""
-                                  : SalaryRange[
-                                      SalaryRange.findIndex(
-                                        (x) =>
-                                          x?.id ==
-                                          state.PreviewPost?.salary_range
+                                  : jobTypeDrop[
+                                      jobTypeDrop.findIndex(
+                                        (x) => x?.id == item.job_type
                                       )
                                     ].name}
-                              </p>
-                            </span>
+                              </div>
+                            </div>
+
+                            <div className="d-flex">
+                              <div className="mb-0  cardGridFont job-time mr-auto">
+                                <Link to={""}>
+                                  <span>
+                                    {daysSinceGivenDate(
+                                      new Date(item.created_at)
+                                    )}{" "}
+                                    ago
+                                  </span>
+                                </Link>
+                              </div>
+                              <div className="mb-0 cardGridFont salary-bx">
+                                <span>
+                                  <p className="ml-1 row">
+                                    <p>
+                                      {
+                                        state.PreviewPost?.country
+                                          ?.currency_symbol
+                                      }{" "}
+                                    </p>
+                                    {SalaryRange.findIndex(
+                                      (x) =>
+                                        x?.id == state.PreviewPost?.salary_range
+                                    ) == -1
+                                      ? ""
+                                      : SalaryRange[
+                                          SalaryRange.findIndex(
+                                            (x) =>
+                                              x?.id ==
+                                              state.PreviewPost?.salary_range
+                                          )
+                                        ].name}
+                                  </p>
+                                </span>
+                              </div>
+                            </div>
+                            <label className="like-btn">
+                              <input
+                                type="checkbox"
+                                onClick={() => {
+                                  // onClickLike();
+                                }}
+                                // defaultChecked={isLiked}
+                              />
+                              <span className="checkmark"></span>
+                            </label>
                           </div>
-                        </div>
-                        <label className="like-btn">
-                          <input
-                            type="checkbox"
-                            onClick={() => {
-                              // onClickLike();
-                            }}
-                            // defaultChecked={isLiked}
-                          />
-                          <span className="checkmark"></span>
-                        </label>
-                      </div>
-                    </li>
+                        </li>
+                      )}
+                    </>
                   ))}
               </ul>
             </div>
@@ -602,7 +608,7 @@ export default function Jobdetail(props) {
                         <label>Upload Additional Supporting Documents</label>
 
                         {state.CoverLetterForApplying ? (
-                          <p>Doc uploaded</p>
+                          <p>{state.CoverLetterForApplying.name}</p>
                         ) : (
                           <UploadDataComponent
                             onChange={(e) => {

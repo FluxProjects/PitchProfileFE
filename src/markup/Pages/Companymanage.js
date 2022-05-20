@@ -63,7 +63,7 @@ export default function Companymanage() {
                       <h5 className="font-weight-700 pull-left text-uppercase">
                         Manage jobs
                       </h5>
-                      <div className="float-right">
+                      {/* <div className="float-right">
                         <Link
                           className="btn btn-primary mr-1"
                           onClick={() => {
@@ -83,7 +83,7 @@ export default function Companymanage() {
                         >
                           Reset
                         </Link>
-                      </div>
+                      </div> */}
                     </div>
                     <table className="table-job-bx cv-manager company-manage-job">
                       <thead>

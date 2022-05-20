@@ -76,6 +76,7 @@ export const socialPlatformDrop = [
 ];
 
 export const employmentTypeDrop = [
+  { id: 0, name: "Select option" },
   { id: 1, name: "Full Time" },
   { id: 2, name: "Part Time" },
 ];

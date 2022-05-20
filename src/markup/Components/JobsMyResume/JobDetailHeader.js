@@ -133,7 +133,12 @@ export default function JobDetailHeader({ isView }) {
               />
             </Link>
           </div>
-          <div className="text-white   align-self-center  browse-job text-left">
+          <div
+            style={{
+              width: "200px",
+            }}
+            className="text-white   align-self-center  browse-job text-left"
+          >
             <h4 className="m-b0">{state.PreviewPost?.company?.company_name}</h4>
             <p className="m-b15 text-justify">
               {state.PreviewPost?.company?.description}
