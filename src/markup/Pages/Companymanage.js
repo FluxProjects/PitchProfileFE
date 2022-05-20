@@ -158,28 +158,41 @@ export default function Companymanage() {
                                   {item.country?.name}
                                 </li>
                                 <li>
-                                  <i className="fa fa-clock-o"></i>{" "}
                                   {employmentTypeDrop.findIndex(
                                     (x) => x?.id == item.employment_type
-                                  ) == -1
-                                    ? ""
-                                    : employmentTypeDrop[
-                                        employmentTypeDrop.findIndex(
-                                          (x) => x?.id == item.employment_type
-                                        )
-                                      ].name}
+                                  ) == -1 ? (
+                                    ""
+                                  ) : (
+                                    <>
+                                      <i className="fa fa-clock-o"></i>
+
+                                      {
+                                        employmentTypeDrop[
+                                          employmentTypeDrop.findIndex(
+                                            (x) => x?.id == item.employment_type
+                                          )
+                                        ].name
+                                      }
+                                    </>
+                                  )}
                                 </li>
                                 <li>
-                                  <i className="fa fa-clock-o"></i>{" "}
                                   {jobTypeDrop.findIndex(
                                     (x) => x?.id == item.preferred_shift
-                                  ) == -1
-                                    ? ""
-                                    : jobTypeDrop[
-                                        jobTypeDrop.findIndex(
-                                          (x) => x?.id == item.preferred_shift
-                                        )
-                                      ].name}
+                                  ) == -1 ? (
+                                    ""
+                                  ) : (
+                                    <>
+                                      <i className="fa fa-clock-o"></i>
+                                      {
+                                        jobTypeDrop[
+                                          jobTypeDrop.findIndex(
+                                            (x) => x?.id == item.preferred_shift
+                                          )
+                                        ].name
+                                      }
+                                    </>
+                                  )}
                                 </li>
                                 {/* <li>
                                   <i className="fa fa-filter"></i> Web Designer
