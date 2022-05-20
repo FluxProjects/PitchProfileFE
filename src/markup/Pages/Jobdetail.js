@@ -113,7 +113,7 @@ export default function Jobdetail(props) {
             </div>
           </div> */}
           <div
-            className="overlay-black-dark profile-edit p-t50 responsiveHeader"
+            className="overlay-black-dark profile-edit p-t50 "
             style={{ backgroundImage: "url(" + bnr + ")" }}
           >
             <div className="container">
