@@ -465,7 +465,7 @@ export default function Componypostjobs(props) {
                             />
                           </div>
                         </div>
-                        <div className="col-lg-12 col-md-12">
+                        <div className="mt-4 col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
                               Key Responsibilities
@@ -479,7 +479,7 @@ export default function Componypostjobs(props) {
                             />
                           </div>
                         </div>
-                        <div className="col-lg-12 col-md-12">
+                        <div className="mt-4 col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
                               What are we looking for?
@@ -493,7 +493,7 @@ export default function Componypostjobs(props) {
                             />
                           </div>
                         </div>
-                        <div className="col-lg-12 col-md-12">
+                        <div className="mt-4 col-lg-12 col-md-12">
                           <div className="form-group">
                             <label>
                               The Perks
@@ -507,7 +507,7 @@ export default function Componypostjobs(props) {
                           </div>
                         </div>
 
-                        <div className="col-lg-12 col-md-12">
+                        <div className=" col-lg-12 col-md-12">
                           <AttachVideoCompanyJob
                             setVideoFile={(e) => {
                               console.log("files", e[0]);
