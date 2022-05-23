@@ -85,7 +85,7 @@ export default function Markup() {
           {/* Company Posted Jobs List */}
           <Route path="/company-manage-job" component={Companymanage} />
           {/* Company Resume Received List */}
-          <Route path="/company-resume" component={Companyresume} />
+        <Route path="/company-resume" component={Companyresume} />
           <Route path="/my-wishlists-company" component={MyWishlistCompanies} />
           <Route path="/my-wishlists-candidate" component={MyWishlists} />
 

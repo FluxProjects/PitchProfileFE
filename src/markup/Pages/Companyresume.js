@@ -20,18 +20,21 @@ const postResume = [
   { title: "Ali Tufan" },
 ];
 
-export default function Companyresume() {
+export default function Companyresume(props) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("props.location.state.id", props.location?.state?.fromFilter);
     callGetJobApplications();
   }, []);
 
   const callGetJobApplications = async () => {
-    await dispatch(GetJobApplications());
+    if (!props.location?.state?.fromFilter) {
+      await dispatch(GetJobApplications());
+    }
     setLoading(false);
   };
 

@@ -4,12 +4,14 @@ import Header2 from "./../Layout/Header2";
 import Footer from "./../Layout/Footer";
 import { Modal } from "react-bootstrap";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
+import { useHistory } from "react-router-dom";
 import {
   GetMyJobPosts,
   DeleteSingle,
   UpdateJobVideo,
   filterClosingDate,
   resetFilterClosingDate,
+  filterJobsbyId,
 } from "../../redux/action";
 import { useSelector, useDispatch } from "react-redux";
 import { employmentTypeDrop, jobTypeDrop } from "../../utils/DropDownUtils";
@@ -19,6 +21,8 @@ import { textSpanContainsTextSpan } from "typescript";
 export default function Companymanage() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  const router = useHistory();
 
   const CallGetMyJobPosts = async () => {
     await dispatch(GetMyJobPosts());
@@ -200,7 +204,18 @@ export default function Companymanage() {
                               </ul>
                             </td>
                             <td className="application text-primary">
-                              {item?.job_applications?.length} Applications
+                              <Link
+                                className="cursorPointer"
+                                to={{
+                                  pathname: "company-resume",
+                                  state: { fromFilter: true },
+                                }}
+                                onClick={() => {
+                                  dispatch(filterJobsbyId(item?.id, router));
+                                }}
+                              >
+                                {item?.job_applications?.length} Applications
+                              </Link>
                             </td>
                             <td className="expired pending">
                               {item?.closing_date
