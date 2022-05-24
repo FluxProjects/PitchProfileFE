@@ -397,7 +397,7 @@ export default function Companies(props) {
                       >
                         <div
                           className="post-bx"
-                          style={{ marginTop: "-5px", marginBottom: "-5px" }}
+                          style={{ margin: "0px 3px 8px" }}
                         >
                           <div className="">
                             <div style={{ width: "auto", height: "165px" }}>

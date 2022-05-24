@@ -20,6 +20,8 @@ import {
 } from "./redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import WeavyApp from "./weavy/WeavyApp";
+import Weavy from "./weavy/Weavy";
 
 function App() {
   const state = useSelector((state) => state);
@@ -44,8 +46,20 @@ function App() {
     }
   };
 
+  const getJwt = async () => {
+    return state.authToken;
+  };
+
   return (
+    // <Weavy jwt={getJwt}>
     <div className="App">
+      {/* <WeavyApp
+          spaceKey="react-space"
+          spaceName="React Space"
+          appKey="react-files"
+          appName="React Files"
+          appType="files"
+        /> */}
       <Markup />
 
       <ToastContainer
@@ -57,6 +71,7 @@ function App() {
         rtl={false}
       />
     </div>
+    // </Weavy>
   );
 }
 

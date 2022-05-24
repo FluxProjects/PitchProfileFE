@@ -140,7 +140,11 @@ export default function Jobdetail(props) {
                                 <i className="fa fa-envelope"></i>
                                 <p className="mt-1 text-black">
                                   {/* Phone */}
-                                  {state.PreviewSingleCompany?.email}
+                                  <a
+                                    href={`mailto:${state.PreviewSingleCompany?.email}`}
+                                  >
+                                    {state.PreviewSingleCompany?.email}
+                                  </a>
                                 </p>{" "}
                               </li>
                             </ul>
@@ -164,6 +168,12 @@ export default function Jobdetail(props) {
                               fontWeight: "normal",
                             }}
                           ></span>
+                          <Link
+                            to={"/companies"}
+                            className="site-button right-arrow button-sm float-right"
+                          >
+                            Back
+                          </Link>
                         </Link>
                       </h4>
 

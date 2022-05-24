@@ -54,7 +54,9 @@ export default function BrowseCandidateGridCard({
         paddingRight: 3,
         paddingLeft: 3,
       }}
-      className=" col-md-4 col-lg-3 col-xs-12 col-sm-12  mb-2 marginMobileBrowseCard "
+      className={` ${
+        isWishlistPage ? "col-md-4 col-lg-4" : "col-md-4 col-lg-3"
+      }   col-xs-12 col-sm-12  mb-2 marginMobileBrowseCard `}
     >
       <div
         className="card p-3"

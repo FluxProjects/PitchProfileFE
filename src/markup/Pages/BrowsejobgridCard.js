@@ -55,11 +55,13 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
 
   return (
     <li
-      className={isWishlistPage ? "col-lg-4 col-md-6" : "col-lg-3 col-md-6"}
+      className={`   ${
+        isWishlistPage ? "col-lg-4 col-md-6" : "col-lg-3 col-md-6"
+      } `}
       key={index}
     >
-      <div className="post-bx">
-        <div className="mb-4">
+      <div style={{ margin: 3 }} className="post-bx ">
+        <div className="">
           {item.video ? (
             <video className="card-img-top" width="auto" height="165" controls>
               <source src={item.video} type="video/mp4" />
@@ -159,7 +161,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                 textDecoration: "none",
               }}
             >
-              <li className="mb-0 cardGridFont">
+              <li style={{ marginBottom: 0 }} className="mb-0 cardGridFont">
                 <i className="fa fa-map-marker"></i>
                 {item.city?.name?.substring(0, 6)}
                 {item?.city?.name?.length > 6 && "... "}

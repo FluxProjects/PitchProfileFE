@@ -8,6 +8,7 @@ import { GetJobApplications } from "../../redux/action/jobApplications/jobApplic
 import { JobStatus, SalaryRange } from "../../utils/DropDownUtils";
 import { URL } from "../../utils/APIUtils";
 import { formatDate } from "../../utils/functions";
+import moment from "moment";
 
 const postResume = [
   { title: "Tammy Dixon" },
@@ -115,8 +116,10 @@ export default function Companyresume(props) {
                                 ></label>
                               </div>
                             </th>
+                            <th>Camdidate Name</th>
                             <th>Job Title</th>
-                            <th>Closing Date</th>
+                            <th>Applied Date</th>
+                            <th>Attachments</th>
                             <th>Status</th>
                           </tr>
                         </thead>
@@ -137,6 +140,21 @@ export default function Companyresume(props) {
                                   ></label>
                                 </div>
                               </td>
+
+                              <td className="job-name">
+                                <Link
+                                  to={{
+                                    pathname: "view-candidate-profile",
+                                    state: { id: item?.candidate?.id },
+                                  }}
+                                >
+                                  <span className=" text-capitalize">
+                                    {item?.candidate?.f_name}{" "}
+                                    {item?.candidate?.l_name}
+                                  </span>{" "}
+                                </Link>
+                              </td>
+
                               <td className="job-name">
                                 <Link
                                   to={{
@@ -147,40 +165,37 @@ export default function Companyresume(props) {
                                     },
                                   }}
                                 >
-                                  <span className=" text-capitalize">
+                                  <span
+                                    style={{ fontWeight: "normal" }}
+                                    className=" text-capitalize"
+                                  >
                                     {item?.job?.job_title}
                                   </span>{" "}
-                                  {item.department?.name && (
-                                    <span
-                                      className="text-uppercase"
-                                      style={{
-                                        fontSize: "12px",
-                                        fontWeight: "normal",
-                                      }}
-                                    >
-                                      {console.log(
-                                        "item?.job?.department?.name",
-                                        item?.job?.department?.name
-                                      )}
-                                      - {item?.job?.department?.name}
-                                    </span>
-                                  )}
                                 </Link>
-                                <ul className="job-post-info">
-                                  <li>
-                                    <i className="fa fa-map-marker"></i>{" "}
-                                    {item?.job?.city?.name}{" "}
-                                    {item.job?.state?.name},{" "}
-                                    {item.job?.country?.name}
-                                  </li>
-                                </ul>
                               </td>
 
-                              <td className="expired pending">
-                                {item?.job?.closing_date
-                                  ? formatDate(item?.job?.closing_date)
+                              <td className=" pending">
+                                {item?.job?.created_at
+                                  ? moment(item?.job?.created_at).format(
+                                      "DD-MM-YYYY"
+                                    )
                                   : ""}{" "}
                               </td>
+
+                              <td className="text-center job-links">
+                                <a
+                                  className="text-center"
+                                  href={item?.attachment_url}
+                                >
+                                  <i
+                                    class="fa fa-download"
+                                    aria-hidden="true"
+                                  ></i>
+                                </a>
+
+                                {/* {item?.attachment_url} */}
+                              </td>
+
                               <td className="expired pending">
                                 {JobStatus.findIndex(
                                   (x) => x?.id == item?.status

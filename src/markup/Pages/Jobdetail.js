@@ -274,6 +274,12 @@ export default function Jobdetail(props) {
 
                             {state.PreviewPost.department?.name}
                           </span>
+                          <Link
+                            to={"/browse-job-grid"}
+                            className="site-button right-arrow button-sm float-right"
+                          >
+                            Back
+                          </Link>
                         </Link>
                       </h3>
                       <ul className="job-info">
@@ -320,11 +326,11 @@ export default function Jobdetail(props) {
                         <>
                           {console.log(
                             "testhjkferedgf",
-                            state?.userDetails?.job_applications.findIndex(
+                            state?.userDetails?.job_applications?.findIndex(
                               (x) => x?.job_id == state.PreviewPost.id
                             )
                           )}
-                          {state?.userDetails?.job_applications.findIndex(
+                          {state?.userDetails?.job_applications?.findIndex(
                             (x) => x?.job_id == state.PreviewPost.id
                           ) != -1 ? (
                             <Link
