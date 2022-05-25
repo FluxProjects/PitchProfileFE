@@ -390,6 +390,7 @@ export default function Companies(props) {
                       <Link
                         to={{
                           pathname: "/company-detail",
+                          search: `?company_id=${item?.id}`,
                           state: {
                             company_id: item?.id,
                           },
@@ -430,6 +431,7 @@ export default function Companies(props) {
                                 <Link
                                   to={{
                                     pathname: "/company-detail",
+                                    search: `?company_id=${item?.id}`,
                                     state: {
                                       company_id: item?.id,
                                     },
@@ -443,6 +445,7 @@ export default function Companies(props) {
                                 <Link
                                   to={{
                                     pathname: "/company-detail",
+                                    search: `?company_id=${item?.id}`,
                                     state: {
                                       company_id: item?.id,
                                     },

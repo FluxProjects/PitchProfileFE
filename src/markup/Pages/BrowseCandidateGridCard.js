@@ -128,6 +128,7 @@ export default function BrowseCandidateGridCard({
         <Link
           to={{
             pathname: "view-candidate-profile",
+            search: `?id=${item?.id}`,
             state: { id: item?.id },
           }}
           style={{

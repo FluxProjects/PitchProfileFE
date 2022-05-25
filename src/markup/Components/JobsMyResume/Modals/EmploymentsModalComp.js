@@ -136,11 +136,28 @@ export default function EmploymentsModalComp({
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
                     <label>Organisation</label>
-                    <TextInputModal
+                    <input
+                      onChange={(e) => {
+                        console.log("eee", e.target.value);
+                        setOrganization(e.target.value);
+                      }}
+                      value={organization}
+                      placeholder=""
+                      className="form-control w-85"
+                      type="text"
+                      list="CompanyNameFilter"
+                    />
+
+                    <datalist id="CompanyNameFilter">
+                      {state.AllCompanyNames.map((item, key) => (
+                        <option key={key} value={item} />
+                      ))}
+                    </datalist>
+                    {/* <TextInputModal
                       placeholder="Enter Organisation"
                       onChange={(e) => setOrganization(e.target.value)}
                       value={organization}
-                    />
+                    /> */}
                   </div>
                 </div>
 

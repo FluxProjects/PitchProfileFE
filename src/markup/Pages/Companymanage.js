@@ -132,7 +132,8 @@ export default function Companymanage() {
                             <td className="job-name">
                               <Link
                                 to={{
-                                  pathname: "/job-detail",
+                                  pathname: `/job-detail`,
+                                  search: `?id=${item?.id}&company=${item?.company_id}`,
                                   state: {
                                     company_id: item?.company_id,
                                     post_id: item?.id,
@@ -182,7 +183,7 @@ export default function Companymanage() {
                                 </li>
                                 <li>
                                   {jobTypeDrop.findIndex(
-                                    (x) => x?.id == item.preferred_shift
+                                    (x) => x?.id == item.job_type
                                   ) == -1 ? (
                                     ""
                                   ) : (
@@ -191,7 +192,7 @@ export default function Companymanage() {
                                       {
                                         jobTypeDrop[
                                           jobTypeDrop.findIndex(
-                                            (x) => x?.id == item.preferred_shift
+                                            (x) => x?.id == item.job_type
                                           )
                                         ].name
                                       }
@@ -207,7 +208,7 @@ export default function Companymanage() {
                               <Link
                                 className="cursorPointer"
                                 to={{
-                                  pathname: "company-resume",
+                                  pathname: `company-resume/${item?.id}`,
                                   state: { fromFilter: true },
                                 }}
                                 onClick={() => {
@@ -225,7 +226,7 @@ export default function Companymanage() {
                             <td className="job-links">
                               <Link
                                 to={{
-                                  pathname: "company-edit-job",
+                                  pathname: `company-edit-job/`,
                                   state: { item: item },
                                 }}
                                 onClick={() => {

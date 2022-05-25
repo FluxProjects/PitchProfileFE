@@ -145,6 +145,7 @@ export default function Companyresume(props) {
                                 <Link
                                   to={{
                                     pathname: "view-candidate-profile",
+                                    search: `?id=${item?.candidate?.id}`,
                                     state: { id: item?.candidate?.id },
                                   }}
                                 >
@@ -158,7 +159,8 @@ export default function Companyresume(props) {
                               <td className="job-name">
                                 <Link
                                   to={{
-                                    pathname: "/job-detail",
+                                    pathname: `/job-detail`,
+                                    search: `?id=${item?.job?.id}&company=${item?.job?.company_id}`,
                                     state: {
                                       company_id: item?.job?.company_id,
                                       post_id: item?.job?.id,

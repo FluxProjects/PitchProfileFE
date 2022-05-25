@@ -51,6 +51,8 @@ export default function Componypostjobs(props) {
     item?.preferred_shift ? item?.preferred_shift : 1
   );
 
+  console.log("item?.employment_typeitem?.employment_type", item?.job_type);
+
   const [jobTitle, setJobTitle] = useState(item?.job_title);
   const [jobType, setJobType] = useState(item?.job_type);
   const [Expirience, setExpirience] = useState(item?.expirience);

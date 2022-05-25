@@ -101,7 +101,8 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
             >
               <Link
                 to={{
-                  pathname: "/job-detail",
+                  pathname: `/job-detail`,
+                  search: `?id=${item?.id}&company=${item?.company_id}`,
                   state: {
                     company_id: item?.company_id,
                     post_id: item?.id,
@@ -136,6 +137,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
               <Link
                 to={{
                   pathname: "/company-detail",
+                  search: `?company_id=${item?.company_id}`,
                   state: {
                     company_id: item?.company_id,
                   },

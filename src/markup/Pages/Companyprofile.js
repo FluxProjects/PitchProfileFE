@@ -575,6 +575,7 @@ export default function Companyprofile() {
                           <Link
                             to={{
                               pathname: "/company-detail",
+                              search: `?company_id=${state.userDetails?.id}`,
                               state: {
                                 company_id: state.userDetails?.id,
                                 showBack: true,

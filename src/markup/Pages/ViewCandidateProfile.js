@@ -48,7 +48,13 @@ export default function ViewCandidateProfile(props) {
   }, []);
 
   const callGetSingleUserData = async () => {
-    await dispatch(getSingleUserData(props.location.state.id));
+    var url_string = window.location.href; //
+    var url = new URL(url_string);
+    var id = url.searchParams.get("id");
+
+    console.log("window.location.href", id);
+
+    await dispatch(getSingleUserData(id));
     console.log("singleUserData", state.singleUserData);
     setLoading(false);
   };

@@ -94,7 +94,8 @@ export default function AppliedJobGrid({ item, index }) {
             >
               <Link
                 to={{
-                  pathname: "/job-detail",
+                  pathname: `/job-detail`,
+                  search: `?id=${item?.job?.id}&company=${item?.job?.company_id}`,
                   state: {
                     company_id: item?.job?.company_id,
                     post_id: item?.job?.id,
@@ -128,6 +129,7 @@ export default function AppliedJobGrid({ item, index }) {
               <Link
                 to={{
                   pathname: "/company-detail",
+                  search: `?company_id=${item?.job?.company_id}`,
                   state: {
                     company_id: item?.job?.company_id,
                   },

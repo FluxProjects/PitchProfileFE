@@ -67,17 +67,20 @@ export default function Jobdetail(props) {
   };
 
   useEffect(() => {
-    callGetSingleJob();
+    var url_string = window.location.href; //
+    var url = new URL(url_string);
+    var id = url.searchParams.get("id");
+    var company = url.searchParams.get("company");
+
+    console.log("window.location.href", id);
+    console.log("window.location.href", company);
+
+    callGetSingleJob(id, company);
   }, []);
 
-  const callGetSingleJob = async () => {
-    await dispatch(
-      GetSingleJob(
-        props.location.state.company_id,
-        props.location.state.post_id
-      )
-    );
-    await dispatch(GetFeaturedJobs(props.location.state.company_id));
+  const callGetSingleJob = async (id, company) => {
+    await dispatch(GetSingleJob(company, id));
+    await dispatch(GetFeaturedJobs(company));
     setLoading(false);
   };
 
@@ -412,7 +415,8 @@ export default function Jobdetail(props) {
                                 >
                                   <Link
                                     to={{
-                                      pathname: "/job-detail",
+                                      pathname: `/job-detail`,
+                                      search: `?id=${item?.id}&company=${item?.company_id}`,
                                       state: {
                                         company_id: item?.company_id,
                                         post_id: item?.id,
@@ -447,6 +451,7 @@ export default function Jobdetail(props) {
                                   <Link
                                     to={{
                                       pathname: "/company-detail",
+                                      search: `?company_id=${item?.company_id}`,
                                       state: {
                                         company_id: item?.company_id,
                                       },
