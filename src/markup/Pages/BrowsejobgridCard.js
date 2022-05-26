@@ -36,9 +36,9 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
 
   const checkLiked = () => {
     const val = state.wishlist.find((element) => {
-      console.log("istrue yahoo", element.job_id, item.id);
+      console.log("istrue yahoo", element.job_id, item?.id);
 
-      if (element.job_id == item.id) {
+      if (element.job_id == item?.id) {
         console.log("istrue isliked yahoo");
         return true;
       }
@@ -50,7 +50,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
   const onClickLike = async () => {
     console.log("called acndid");
 
-    await dispatch(AddWishlistCandidate(item.id));
+    await dispatch(AddWishlistCandidate(item?.id));
   };
 
   return (
@@ -60,14 +60,17 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
       } `}
       key={index}
     >
-      <div style={{ margin: 3 }} className="post-bx ">
+      <div
+        style={isWishlistPage ? { padding: "1rem", margin: 3 } : { margin: 3 }}
+        className="post-bx "
+      >
         <div className="">
-          {item.video ? (
+          {item?.video ? (
             <video className="card-img-top" width="auto" height="165" controls>
-              <source src={item.video} type="video/mp4" />
-              <source src={item.video} type="video/wmv" />
-              <source src={item.video} type="video/mkv" />
-              <source src={item.video} type="video/mov" />
+              <source src={item?.video} type="video/mp4" />
+              <source src={item?.video} type="video/wmv" />
+              <source src={item?.video} type="video/mkv" />
+              <source src={item?.video} type="video/mov" />
               Your browser does not support the video tag.
             </video>
           ) : (
@@ -112,7 +115,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                 {item?.job_title?.substring(0, 8)}
 
                 {item?.job_title?.length > 8 && "... "}
-                {item.seniority_level != null && "- "}
+                {item?.seniority_level != null && "- "}
                 <span
                   className="text-uppercase"
                   style={{
@@ -121,12 +124,12 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                   }}
                 >
                   {SeniorityLevel.findIndex(
-                    (x) => x?.id == item.seniority_level
+                    (x) => x?.id == item?.seniority_level
                   ) == -1
                     ? ""
                     : SeniorityLevel[
                         SeniorityLevel.findIndex(
-                          (x) => x?.id == item.seniority_level
+                          (x) => x?.id == item?.seniority_level
                         )
                       ].name}
                   {/* {item.department?.name} */}
@@ -165,12 +168,12 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
             >
               <li style={{ marginBottom: 0 }} className="mb-0 cardGridFont">
                 <i className="fa fa-map-marker"></i>
-                {item.city?.name?.substring(0, 6)}
+                {item?.city?.name?.substring(0, 6)}
                 {item?.city?.name?.length > 6 && "... "}
-                {item.city && ", "} {item.state?.name?.substring(0, 6)}
+                {item?.city && ", "} {item?.state?.name?.substring(0, 6)}
                 {item?.state?.name?.length > 6 && "... "}
-                {item.state && ", "}
-                {item.country?.sortname}
+                {item?.state && ", "}
+                {item?.country?.sortname}
               </li>
             </ul>
           </div>
@@ -191,10 +194,10 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
         </div> */}
           <div className="mb-0 cardGridFont text-primary">
             <i className="fa fa-clock-o"></i>{" "}
-            {jobTypeDrop.findIndex((x) => x?.id == item.job_type) == -1
+            {jobTypeDrop.findIndex((x) => x?.id == item?.job_type) == -1
               ? ""
               : jobTypeDrop[
-                  jobTypeDrop.findIndex((x) => x?.id == item.job_type)
+                  jobTypeDrop.findIndex((x) => x?.id == item?.job_type)
                 ].name}
           </div>
         </div>
@@ -202,7 +205,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
         <div className="d-flex">
           <div className="mb-0  cardGridFont job-time mr-auto">
             <Link to={""}>
-              <span>{daysSinceGivenDate(new Date(item.created_at))} ago</span>
+              <span>{daysSinceGivenDate(new Date(item?.created_at))} ago</span>
             </Link>
           </div>
           <div className="mb-0 cardGridFont salary-bx">

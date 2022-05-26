@@ -6,6 +6,7 @@ import { Form } from "react-bootstrap";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  AddCandidateSkill,
   AddJobPost,
   GetCities,
   GetCountries,
@@ -54,6 +55,11 @@ export default function Componypostjobs() {
   const [TopSkill3, setTopSkill3] = useState(null);
   const [TopSkill4, setTopSkill4] = useState(null);
   const [TopSkill5, setTopSkill5] = useState(null);
+
+  const [AddTopSkill1, setAddTopSkill2] = useState(null);
+  const [AddTopSkill3, setAddTopSkill3] = useState(null);
+  const [AddTopSkill4, setAddTopSkill4] = useState(null);
+  const [AddTopSkill5, setAddTopSkill5] = useState(null);
 
   const [department, setDepartment] = useState(
     state.userDetails?.department_id != null
@@ -119,6 +125,18 @@ export default function Componypostjobs() {
   };
 
   const callAddJobPost = async () => {
+    // if (AddTopSkill1 != null) {
+    //   await dispatch(
+    //     AddCandidateSkill()
+    //     // ItSkills,
+    //     // skillType,
+    //     // skillsName,
+    //     // ProLev,
+    //     // IsTopSkill,
+    //     // handleClose()
+    //   );
+    // }
+
     setLoading(true);
 
     if (jobTitle == "") {
@@ -538,6 +556,28 @@ export default function Componypostjobs() {
                               </select>
                             </div>
                           </div>
+
+                          {TopSkill1 == "other" && (
+                            <div className="col-lg-6 col-md-12">
+                              <div className="form-group">
+                                <div>
+                                  <label>Add New Skill</label>
+                                </div>
+
+                                <TextInputModal
+                                  placeholder=""
+                                  onChange={(e) => {
+                                    // setProLev(e.target.value)
+                                  }}
+                                  // value={ProLev}
+                                />
+                                <div style={{ marginBottom: 10 }}>
+                                  <small></small>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
                           {/* <div className="col-lg-6 col-md-12">
                               <div
                                 onClick={() => {

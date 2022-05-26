@@ -290,6 +290,11 @@ export default function Jobmyresume() {
                         {uniqueResults.map((item) => (
                           <li>{item.message}</li>
                         ))}
+                        {!state.userDetails.video && <li>No Video uploaded</li>}
+                        {state.userDetails.video &&
+                          !state.userDetails.is_reviewed && (
+                            <li>Your profile is under review</li>
+                          )}
 
                         {state.candidateDesiredCareer.role == "" && <li></li>}
                       </ul>
