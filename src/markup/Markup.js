@@ -42,6 +42,7 @@ import Browsejobgrid from "./Pages/Browsejobsgrid";
 import Browsejoblist from "./Pages/Browsejoblist";
 import MyWishlists from "./Pages/MyWishlists";
 import MyWishlistCompanies from "./Pages/MyWishlistCompanies";
+import MyChat from "./Pages/MyChat/Chat/Chat";
 
 export default function Markup() {
   return (
@@ -51,6 +52,7 @@ export default function Markup() {
           {/* Routes to use */}
           {/* Candidate Resume Page */}
           <Route path="/jobs-my-resume" component={Jobmyresume} />
+          <Route path="/my-chat" component={MyChat} />
           <Route path="/jobs-my-resume-view" component={MyResumeView} />
           <Route
             path="/view-candidate-profile"
@@ -85,7 +87,7 @@ export default function Markup() {
           {/* Company Posted Jobs List */}
           <Route path="/company-manage-job" component={Companymanage} />
           {/* Company Resume Received List */}
-        <Route path="/company-resume" component={Companyresume} />
+          <Route path="/company-resume" component={Companyresume} />
           <Route path="/my-wishlists-company" component={MyWishlistCompanies} />
           <Route path="/my-wishlists-candidate" component={MyWishlists} />
 

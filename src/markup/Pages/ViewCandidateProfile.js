@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
-import { Form, ToggleButton } from "react-bootstrap";
+import { Form, Modal, ToggleButton } from "react-bootstrap";
 import Listingsidebar from "./../Element/Listingsidebar";
 import ResumeHeadlineComponent from "../Components/JobsMyResume/ResumeHeadlineComponent";
 import SkillCandidate from "../Components/JobsMyResume/SkillCandidate";
@@ -30,6 +30,7 @@ import SocialProfileCandidate from "../Components/JobsMyResume/SocialProfileCand
 import ReferencesCandidate from "../Components/JobsMyResume/ReferencesCandidate";
 import DesiredCandidateCareerProfile from "../Components/JobsMyResume/DesiredCandidateCareerProfile";
 import Header2 from "../Layout/Header2";
+import Chat from "./MyChat/Chat/Chat";
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
@@ -38,6 +39,8 @@ export default function ViewCandidateProfile(props) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
+  const [ChatModal, setChatModal] = useState(false);
+  const [otherId, setOtherId] = useState("");
 
   const handleClose = () => {
     setShow(false);
@@ -51,7 +54,7 @@ export default function ViewCandidateProfile(props) {
     var url_string = window.location.href; //
     var url = new URL(url_string);
     var id = url.searchParams.get("id");
-
+    setOtherId(id);
     console.log("window.location.href", id);
 
     await dispatch(getSingleUserData(id));
@@ -63,11 +66,36 @@ export default function ViewCandidateProfile(props) {
     GetStateName();
   };
 
+  const toggleModal = () => {
+    setChatModal(!ChatModal);
+  };
+
   return (
     <>
       {state.userDetails?.company_name ? <Header2 /> : <Header />}
       {!loading ? (
         <div className="page-content">
+          {state.userDetails.company_name && (
+            <button
+              onClick={() => {
+                console.log("clis");
+                toggleModal();
+              }}
+              className="site-button radius-xl"
+              style={{ position: "fixed", bottom: 20, right: 30 }}
+            >
+              <i className="fa fa-comment"></i>
+            </button>
+          )}
+
+          <Modal
+            show={ChatModal}
+            onHide={() => toggleModal()}
+            className="modal fade modal-bx-info editor"
+          >
+            <Chat otherId={otherId} />
+          </Modal>
+
           <div
             className="overlay-black-dark profile-edit p-t50 p-b20"
             style={{ backgroundImage: "url(" + bnr + ")" }}

@@ -4,6 +4,9 @@ const initialState = {
   authToken: "",
   pedningActions: [],
 
+  // messages
+  messagesChat: [],
+
   // Dropdown data actions
   languages: [],
   countries: [],
@@ -146,6 +149,8 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, industries: rest.data };
     case "GetSkills":
       return { ...state, skills: rest.data };
+    case "messagesChat":
+      return { ...state, messagesChat: rest.data };
     case "GetEducationLevels":
       return { ...state, educationLevels: rest.data };
     case "GetUserState":

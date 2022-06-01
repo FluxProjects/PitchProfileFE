@@ -1,0 +1,67 @@
+.messageBoxChat {
+  background: #f3f3f3;
+  border-radius: 20px;
+  padding: 5px 20px;
+  color: white;
+  display: inline-block;
+  max-width: 80%;
+}
+
+.messageTextChat {
+  width: 100%;
+  letter-spacing: 0;
+  float: left;
+  font-size: 1.1em;
+  word-wrap: break-word;
+}
+
+.messageTextChat img {
+  vertical-align: middle;
+}
+
+.messageContainerChat {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 5%;
+  margin-top: 3px;
+}
+
+.sentTextChat {
+  display: flex;
+  align-items: center;
+  font-family: Helvetica;
+  color: #828282;
+  letter-spacing: 0.3px;
+}
+
+.pl-10Chat {
+  padding-left: 10px;
+}
+
+.pr-10Chat {
+  padding-right: 10px;
+}
+
+.justifyStartChat {
+  justify-content: flex-start;
+}
+
+.justifyEndChat {
+  justify-content: flex-end;
+}
+
+.colorWhiteChat {
+  color: white;
+}
+
+.colorDarkChat {
+  color: #353535;
+}
+
+.backgroundBlueChat {
+  background: #2979ff;
+}
+
+.backgroundLightChat {
+  background: #f3f3f3;
+}

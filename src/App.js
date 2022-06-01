@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import WeavyApp from "./weavy/WeavyApp";
 import Weavy from "./weavy/Weavy";
+import { SocketContext, socket } from "./utils/socket";
 
 function App() {
   const state = useSelector((state) => state);
@@ -46,32 +47,22 @@ function App() {
     }
   };
 
-  const getJwt = async () => {
-    return state.authToken;
-  };
+
 
   return (
-    // <Weavy jwt={getJwt}>
-    <div className="App">
-      {/* <WeavyApp
-          spaceKey="react-space"
-          spaceName="React Space"
-          appKey="react-files"
-          appName="React Files"
-          appType="files"
-        /> */}
-      <Markup />
-
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-      />
-    </div>
-    // </Weavy>
+    <SocketContext.Provider value={socket}>
+      <div className="App">
+        <Markup />
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+        />
+      </div>
+    </SocketContext.Provider>
   );
 }
 

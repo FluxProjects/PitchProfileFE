@@ -6,10 +6,12 @@ export default class WeavyApp extends Component {
   static contextType = WeavyContext;
 
   async createWeavyApp() {
-    this.weavySpace = this.weavy.space({
+    this.weavy.space = {
       key: this.props.spaceKey,
       name: this.props.spaceName,
-    });
+    };
+    this.weavySpace = this.weavy;
+    console.log("this.context.weavy", this.weavy.space);
 
     this.weavyApp = this.weavySpace.app({
       key: this.props.appKey,
@@ -20,6 +22,7 @@ export default class WeavyApp extends Component {
   }
 
   componentDidMount() {
+    console.log("this.props.spaceKey", this.props.spaceKey);
     this.weavy = this.context.weavy;
     this.createWeavyApp();
   }

@@ -293,7 +293,10 @@ export default function Jobmyresume() {
                         {!state.userDetails.video && <li>No Video uploaded</li>}
                         {state.userDetails.video &&
                           !state.userDetails.is_reviewed && (
-                            <li>Your profile is under review</li>
+                            <li>
+                              Your profile is under review by admin. It will be
+                              public once it has been reviewed
+                            </li>
                           )}
 
                         {state.candidateDesiredCareer.role == "" && <li></li>}

@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   AddCandidateSkill,
   AddJobPost,
+  AddNewSkill,
   GetCities,
   GetCountries,
   GetDepartments,
@@ -56,10 +57,7 @@ export default function Componypostjobs() {
   const [TopSkill4, setTopSkill4] = useState(null);
   const [TopSkill5, setTopSkill5] = useState(null);
 
-  const [AddTopSkill1, setAddTopSkill2] = useState(null);
-  const [AddTopSkill3, setAddTopSkill3] = useState(null);
-  const [AddTopSkill4, setAddTopSkill4] = useState(null);
-  const [AddTopSkill5, setAddTopSkill5] = useState(null);
+  const [OtherSkills, setOtherSkills] = useState(null);
 
   const [department, setDepartment] = useState(
     state.userDetails?.department_id != null
@@ -251,6 +249,10 @@ export default function Componypostjobs() {
       )
     );
     setLoading(false);
+  };
+
+  const callAddNewSkill = async (OtherSkill, setItSkills) => {
+    await dispatch(AddNewSkill(OtherSkill, setItSkills));
   };
 
   return (
@@ -557,42 +559,55 @@ export default function Componypostjobs() {
                             </div>
                           </div>
 
-                          {TopSkill1 == "other" && (
-                            <div className="col-lg-6 col-md-12">
-                              <div className="form-group">
-                                <div>
-                                  <label>Add New Skill</label>
-                                </div>
+                          {TopSkill1 == "other" ? (
+                            <>
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label>New Skill Title</label>
+                                  </div>
 
-                                <TextInputModal
-                                  placeholder=""
-                                  onChange={(e) => {
-                                    // setProLev(e.target.value)
-                                  }}
-                                  // value={ProLev}
-                                />
-                                <div style={{ marginBottom: 10 }}>
-                                  <small></small>
+                                  <TextInputModal
+                                    placeholder=""
+                                    onChange={(e) => {
+                                      setOtherSkills(e.target.value);
+                                    }}
+                                    value={OtherSkills}
+                                  />
+                                  <div style={{ marginBottom: 10 }}>
+                                    <small></small>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
+
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label></label>
+                                  </div>
+
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      callAddNewSkill(
+                                        OtherSkills,
+                                        setTopSkill1
+                                      );
+                                      setOtherSkills("");
+                                    }}
+                                    type="button"
+                                    className="site-button mr-4 m-b30"
+                                  >
+                                    Save New Skill
+                                  </button>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="col-md-6 col-lg-6" />
                           )}
-
-                          {/* <div className="col-lg-6 col-md-12">
-                              <div
-                                onClick={() => {
-                                  setTopSkill2(1);
-                                  sethandleDisplay(2);
-                                }}
-                                className="site-button add-btn button-sm"
-                              >
-                                <i className="fa fa-plus m-r5"></i> Add
-                              </div>
-                            </div> */}
                         </>
-                        {/* )} */}
 
-                        {/* {handleDisplay >= 2 && ( */}
                         <>
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
@@ -635,6 +650,55 @@ export default function Componypostjobs() {
                               </select>
                             </div>
                           </div>
+
+                          {TopSkill2 == "other" ? (
+                            <>
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label>New Skill Title</label>
+                                  </div>
+
+                                  <TextInputModal
+                                    placeholder=""
+                                    onChange={(e) => {
+                                      setOtherSkills(e.target.value);
+                                    }}
+                                    value={OtherSkills}
+                                  />
+                                  <div style={{ marginBottom: 10 }}>
+                                    <small></small>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label></label>
+                                  </div>
+
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      callAddNewSkill(
+                                        OtherSkills,
+                                        setTopSkill2
+                                      );
+                                      setOtherSkills("");
+                                    }}
+                                    type="button"
+                                    className="site-button mr-4 m-b30"
+                                  >
+                                    Save New Skill
+                                  </button>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="col-md-6 col-lg-6" />
+                          )}
+
                           {/* <div className="col-lg-6 col-md-12">
                               <div
                                 onClick={() => {
@@ -692,6 +756,54 @@ export default function Componypostjobs() {
                               </select>
                             </div>
                           </div>
+
+                          {TopSkill3 == "other" ? (
+                            <>
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label>New Skill Title</label>
+                                  </div>
+
+                                  <TextInputModal
+                                    placeholder=""
+                                    onChange={(e) => {
+                                      setOtherSkills(e.target.value);
+                                    }}
+                                    value={OtherSkills}
+                                  />
+                                  <div style={{ marginBottom: 10 }}>
+                                    <small></small>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label></label>
+                                  </div>
+
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      callAddNewSkill(
+                                        OtherSkills,
+                                        setTopSkill3
+                                      );
+                                      setOtherSkills("");
+                                    }}
+                                    type="button"
+                                    className="site-button mr-4 m-b30"
+                                  >
+                                    Save New Skill
+                                  </button>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="col-md-6 col-lg-6" />
+                          )}
                           {/* <div className="col-lg-6 col-md-12">
                               <div
                                 onClick={() => {
@@ -749,6 +861,54 @@ export default function Componypostjobs() {
                               </select>
                             </div>
                           </div>
+
+                          {TopSkill4 == "other" ? (
+                            <>
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label>New Skill Title</label>
+                                  </div>
+
+                                  <TextInputModal
+                                    placeholder=""
+                                    onChange={(e) => {
+                                      setOtherSkills(e.target.value);
+                                    }}
+                                    value={OtherSkills}
+                                  />
+                                  <div style={{ marginBottom: 10 }}>
+                                    <small></small>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label></label>
+                                  </div>
+
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      callAddNewSkill(
+                                        OtherSkills,
+                                        setTopSkill4
+                                      );
+                                      setOtherSkills("");
+                                    }}
+                                    type="button"
+                                    className="site-button mr-4 m-b30"
+                                  >
+                                    Save New Skill
+                                  </button>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="col-md-6 col-lg-6" />
+                          )}
                           {/* <div className="col-lg-6 col-md-12">
                               <div
                                 onClick={() => {
@@ -806,6 +966,54 @@ export default function Componypostjobs() {
                               </select>
                             </div>
                           </div>
+
+                          {TopSkill5 == "other" ? (
+                            <>
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label>New Skill Title</label>
+                                  </div>
+
+                                  <TextInputModal
+                                    placeholder=""
+                                    onChange={(e) => {
+                                      setOtherSkills(e.target.value);
+                                    }}
+                                    value={OtherSkills}
+                                  />
+                                  <div style={{ marginBottom: 10 }}>
+                                    <small></small>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label></label>
+                                  </div>
+
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      callAddNewSkill(
+                                        OtherSkills,
+                                        setTopSkill5
+                                      );
+                                      setOtherSkills("");
+                                    }}
+                                    type="button"
+                                    className="site-button mr-4 m-b30"
+                                  >
+                                    Save New Skill
+                                  </button>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="col-md-6 col-lg-6" />
+                          )}
                         </>
                         {/* )} */}
 

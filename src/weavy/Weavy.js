@@ -6,7 +6,13 @@ import WeavyContext from "./WeavyContext";
 export default class Weavy extends Component {
   constructor(props) {
     super(props);
-    this.state = { weavy: new window.Weavy({ jwt: props.jwt, init: false }) };
+    this.state = {
+      weavy: new window.Weavy({
+        jwt: props.jwt,
+        url: "https://pitchprofile.weavy.io",
+        init: false,
+      }),
+    };
   }
 
   componentDidMount() {

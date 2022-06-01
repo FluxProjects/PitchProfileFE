@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddCandidateSkill,
+  AddNewSkill,
   UpdateCandidateSkill,
 } from "../../../../redux/action";
 import { skillTypeDrop } from "../../../../utils/DropDownUtils";
@@ -35,6 +36,7 @@ export default function SkillsModalComponent({
       ? ""
       : state?.skills[state?.skills.findIndex((x) => x?.id == 1)].name
   );
+  const [OtherSkill, setOtherSkill] = useState("");
 
   const [skillType, setSkillType] = useState(SkillTypeProp ? SkillTypeProp : 1);
   const [ProLev, setProLev] = useState(ProLevProp ? ProLevProp : 1);
@@ -69,8 +71,9 @@ export default function SkillsModalComponent({
       setFieldAlert(true);
       return;
     }
-
-    if (isUpdate) {
+    if (ItSkills == "other") {
+      await dispatch(AddNewSkill(OtherSkill, setItSkills));
+    } else if (isUpdate) {
       await dispatch(
         UpdateCandidateSkill(
           id,
@@ -85,6 +88,7 @@ export default function SkillsModalComponent({
       );
     } else {
       console.log("add called");
+
       await dispatch(
         AddCandidateSkill(
           ItSkills,
@@ -160,15 +164,15 @@ export default function SkillsModalComponent({
                   <div className="col-lg-6 col-md-12">
                     <div className="form-group">
                       <div>
-                        <label>Add New Skill</label>
+                        <label>New Skill Title</label>
                       </div>
 
                       <TextInputModal
                         placeholder=""
                         onChange={(e) => {
-                          // setProLev(e.target.value)
+                          setOtherSkill(e.target.value);
                         }}
-                        // value={ProLev}
+                        value={OtherSkill}
                       />
                       <div style={{ marginBottom: 10 }}>
                         <small></small>
@@ -280,7 +284,7 @@ export default function SkillsModalComponent({
               type="button"
               className="site-button"
             >
-              Save
+              {ItSkills == "other" ? "Save New Skill" : "Save"}
             </button>
           </div>
         </div>

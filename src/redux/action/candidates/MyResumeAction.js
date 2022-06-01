@@ -428,6 +428,40 @@ export const GetCandidateSkills = () => async (dispatch, state) => {
     });
 };
 
+export const AddNewSkill = (name, AddNewSkill) => async (dispatch, state) => {
+  var data = JSON.stringify({
+    is_it: "true",
+    is_active: "true",
+    name,
+  });
+
+  var config = {
+    method: "post",
+    url: `${URL}/profile/add_skills`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log("testing the tets", response.data);
+
+      var resData = state().skills;
+
+      resData.push(response.data.data[0]);
+      dispatch({
+        type: "GetSkills",
+        data: resData,
+      });
+      AddNewSkill(response.data.data[0].id);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
 export const DeleteCandidateSkill = (id, index) => async (dispatch, state) => {
   var config = {
     method: "get",
