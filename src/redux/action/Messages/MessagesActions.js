@@ -10,7 +10,7 @@ export const AddMessage =
       candidate_id,
       company_id,
       text,
-      // room_id,
+      room_id,
       sent_by: state().userDetails.id,
     };
 

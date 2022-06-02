@@ -23,7 +23,11 @@ import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 import TextInputModal from "./TextInputModal";
 
-export default function HeaderCandidateResume({ isView, candiateSkilssData }) {
+export default function HeaderCandidateResume({
+  isView,
+  candiateSkilssData,
+  callAddRoom,
+}) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -233,6 +237,22 @@ export default function HeaderCandidateResume({ isView, candiateSkilssData }) {
                   </p>
                 </div>
               </div>
+
+              {/* {state.myRooms} */}
+              {state.userDetails?.company_name && (
+                <div className="customFlexRow mt-0">
+                  <button
+                    onClick={() => {
+                      console.log("clis");
+                      callAddRoom();
+                    }}
+                    className="site-button radius-xl"
+                    // style={{ position: "fixed", bottom: 20, right: 30 }}
+                  >
+                    <i className="fa fa-comment"></i> Message
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

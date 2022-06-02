@@ -15,7 +15,7 @@ import {
 } from "../../../../redux/action/Messages/MessagesActions";
 import { SocketContext } from "../../../../utils/socket";
 
-const Chat = ({ location, otherId }) => {
+const Chat = ({ location, otherId, RoomId }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -66,7 +66,8 @@ const Chat = ({ location, otherId }) => {
       AddMessage(
         state.userDetails.company_name ? otherId : state.userDetails.id,
         state.userDetails.company_name ? state.userDetails.id : otherId,
-        message
+        message,
+        RoomId
       )
     );
 
@@ -86,10 +87,7 @@ const Chat = ({ location, otherId }) => {
   };
 
   return (
-    <div
-      className="
-    "
-    >
+    <div className="">
       <div className="containerChat">
         <InfoBar room={"Chat"} />
         <Messages messages={state.messagesChat} />

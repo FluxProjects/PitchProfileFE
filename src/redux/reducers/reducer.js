@@ -6,6 +6,7 @@ const initialState = {
 
   // messages
   messagesChat: [],
+  myRooms: [],
 
   // Dropdown data actions
   languages: [],
@@ -151,6 +152,8 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, skills: rest.data };
     case "messagesChat":
       return { ...state, messagesChat: rest.data };
+    case "myRooms":
+      return { ...state, myRooms: rest.data };
     case "GetEducationLevels":
       return { ...state, educationLevels: rest.data };
     case "GetUserState":

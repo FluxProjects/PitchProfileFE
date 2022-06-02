@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
-import { Form, Modal, ToggleButton } from "react-bootstrap";
 import Listingsidebar from "./../Element/Listingsidebar";
 import ResumeHeadlineComponent from "../Components/JobsMyResume/ResumeHeadlineComponent";
 import SkillCandidate from "../Components/JobsMyResume/SkillCandidate";
@@ -17,7 +16,7 @@ import ProfileDetailsComponent from "../Components/JobsMyResume/ProfileDetailsCo
 import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeComponent";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleUserData } from "../../redux/action";
+import { AddRoom, getSingleUserData } from "../../redux/action";
 import { GetStateName, SortSameVals } from "../../utils/functions";
 import HeaderCandidateResume from "../Components/JobsMyResume/HeaderCandidateResume";
 import ProfileCandidateSummary from "../Components/JobsMyResume/ProfileCandidateSummary";
@@ -39,7 +38,6 @@ export default function ViewCandidateProfile(props) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
-  const [ChatModal, setChatModal] = useState(false);
   const [otherId, setOtherId] = useState("");
 
   const handleClose = () => {
@@ -66,8 +64,14 @@ export default function ViewCandidateProfile(props) {
     GetStateName();
   };
 
-  const toggleModal = () => {
-    setChatModal(!ChatModal);
+  const callAddRoom = () => {
+    dispatch(
+      AddRoom(
+        state.userDetails?.company_name ? otherId : state.userDetails?.id,
+        state.userDetails?.company_name ? state.userDetails?.id : otherId,
+        otherId + state.userDetails?.id
+      )
+    );
   };
 
   return (
@@ -75,34 +79,16 @@ export default function ViewCandidateProfile(props) {
       {state.userDetails?.company_name ? <Header2 /> : <Header />}
       {!loading ? (
         <div className="page-content">
-          {state.userDetails.company_name && (
-            <button
-              onClick={() => {
-                console.log("clis");
-                toggleModal();
-              }}
-              className="site-button radius-xl"
-              style={{ position: "fixed", bottom: 20, right: 30 }}
-            >
-              <i className="fa fa-comment"></i>
-            </button>
-          )}
-
-          <Modal
-            show={ChatModal}
-            onHide={() => toggleModal()}
-            className="modal fade modal-bx-info editor"
-          >
-            <Chat otherId={otherId} />
-          </Modal>
-
           <div
             className="overlay-black-dark profile-edit p-t50 p-b20"
             style={{ backgroundImage: "url(" + bnr + ")" }}
           >
             <div className="container">
               <div className="row">
-                <HeaderCandidateResume isView={true} />
+                <HeaderCandidateResume
+                  isView={true}
+                  callAddRoom={callAddRoom}
+                />
               </div>
             </div>
           </div>
@@ -112,10 +98,6 @@ export default function ViewCandidateProfile(props) {
               <div className="container">
                 <div className="row">
                   <div className="col-xl-3 col-lg-4 col-md-4 col-sm-12 m-b30">
-                    {console.log(
-                      "state.userDetails?.id == state.singleUserData?.id state.userDetails?.id == state.singleUserData?.id state.userDetails?.id == state.singleUserData?.id ",
-                      state.userDetails?.id == state.singleUserData?.id
-                    )}
                     <Listingsidebar
                       isCompany={state.userDetails?.company_name ? true : false}
                       isMyProfile={

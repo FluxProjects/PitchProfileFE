@@ -24,7 +24,7 @@ import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
 import TextInputModal from "./TextInputModal";
 
-export default function CompanyDetailHeader({ isView }) {
+export default function CompanyDetailHeader({ isView, callAddRoom }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -80,6 +80,21 @@ export default function CompanyDetailHeader({ isView }) {
                 </a>
               )}
             </ul>
+
+            {!state.userDetails?.company_name && (
+              <div className="customFlexRow mt-3">
+                <button
+                  onClick={() => {
+                    console.log("clis");
+                    callAddRoom();
+                  }}
+                  className="site-button radius-xl"
+                  // style={{ position: "fixed", bottom: 20, right: 30 }}
+                >
+                  <i className="fa fa-comment"></i> Message
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

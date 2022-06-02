@@ -17,6 +17,7 @@ import {
   SeniorityLevel,
 } from "../../utils/DropDownUtils";
 import {
+  AddRoom,
   GetFeaturedJobs,
   GetSingleCompany,
   GetSingleJob,
@@ -29,6 +30,8 @@ var bnr = require("./../../images/banner/bnr1.jpg");
 export default function Jobdetail(props) {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [otherId, setOtherId] = useState("");
+
   const router = useHistory();
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -49,10 +52,22 @@ export default function Jobdetail(props) {
     var url = new URL(url_string);
     var id = url.searchParams.get("company_id");
 
+    setOtherId(id);
+
     console.log("window.location.href", id);
     await dispatch(GetSingleCompany(id));
     await dispatch(GetFeaturedJobs(id));
     setLoading(false);
+  };
+
+  const callAddRoom = () => {
+    dispatch(
+      AddRoom(
+        state.userDetails?.company_name ? otherId : state.userDetails?.id,
+        state.userDetails?.company_name ? state.userDetails?.id : otherId,
+        otherId + state.userDetails?.id
+      )
+    );
   };
 
   if (loading) {
@@ -72,7 +87,7 @@ export default function Jobdetail(props) {
           >
             <div className="container">
               <div className="row">
-                <CompanyDetailHeader />
+                <CompanyDetailHeader callAddRoom={callAddRoom} />
               </div>
             </div>
           </div>
