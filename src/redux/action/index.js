@@ -6,5 +6,5 @@ export * from "./jobs/JobActions";
 export * from "./jobs/FilterJobActions";
 export * from "./filterCompanies/filterCompanies";
 export * from "./wishlists/WishlistActions";
-export * from "./Room/RoomActions";
 export * from "./Messages/MessagesActions";
+export * from "./Room/RoomActions";
