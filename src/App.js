@@ -59,6 +59,7 @@ function App() {
 
   useEffect(() => {
     //  to get languages
+
     callGetSingleUserData();
   }, []);
 

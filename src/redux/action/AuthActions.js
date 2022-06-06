@@ -5,13 +5,21 @@ import { toast } from "react-toastify";
 import { lazySlidesOnLeft } from "react-slick/lib/utils/innerSliderUtils";
 
 export const registerUser =
-  (f_name, l_name, email, password, router) => async (dispatch) => {
+  (f_name, l_name, email, password, router, setModal) => async (dispatch) => {
+    var val = Math.floor(1000 + Math.random() * 9000);
+    console.log(val);
+    dispatch({
+      type: "SetOTP",
+      data: val,
+    });
+
     var data = {
       r_data: {
         f_name,
         l_name,
         email,
         password,
+        otp: val,
       },
     };
 
@@ -26,7 +34,8 @@ export const registerUser =
       .then(function (response) {
         console.log("datsss", response.data.successful);
         if (response.data.successful) {
-          toast.success("Registered Successfully!", {
+          setModal(true);
+          toast.success("OTP has been sent to your email!", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -37,13 +46,13 @@ export const registerUser =
           });
           dispatch({
             type: "RegisterUser",
-            data: response.data.data[0],
+            data: response.data.data,
           });
-          dispatch({
-            type: "SetAuthToken",
-            data: response.data.accessToken,
-          });
-          router.push("/");
+          // dispatch({
+          //   type: "SetAuthToken",
+          //   data: response.data.accessToken,
+          // });
+          // router.push("/");
         } else {
           toast.error("Something went wrong!", {
             position: "top-right",
@@ -68,6 +77,67 @@ export const registerUser =
           draggable: true,
           progress: undefined,
         });
+      });
+  };
+
+// verify_email
+export const verifyCandidate =
+  (setModal, router) => async (dispatch, state) => {
+    console.log("is avcllefsr", state().userDetails);
+    var data = JSON.stringify({
+      data: {
+        id: state().userDetails,
+      },
+    });
+
+    var config = {
+      method: "post",
+      url: `${URL}/profile/verify_email`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    await axios(config)
+      .then(function (response) {
+        console.log("testsjhde", response.data);
+
+        if (response.data.successful == true) {
+          console.log(JSON.stringify(response.data));
+          setModal(false);
+          toast.success("Verified successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          dispatch({
+            type: "RegisterUser",
+            data: response.data.data,
+          });
+          dispatch({
+            type: "SetAuthToken",
+            data: response.data.accessToken,
+          });
+          router.push("/jobs-profile");
+        } else {
+          toast.error(response.data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   };
 

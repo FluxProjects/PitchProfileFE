@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { registerUser } from "../../redux/action";
+import { registerUser, verifyCandidate } from "../../redux/action";
 import RegisterTextInput from "../Components/RegisterTextInput";
 import { useHistory } from "react-router-dom";
+import { Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 export default function Loginpage3() {
   const state = useSelector((state) => state);
@@ -15,14 +17,37 @@ export default function Loginpage3() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [CnfrmPassword, setCnfrmPassword] = useState("");
+  const [modal, setModal] = useState("");
+  const [otp, setOTP] = useState("");
 
   const callRegisterUser = async () => {
     if (password == CnfrmPassword) {
       await dispatch(
-        registerUser(fname, lname, email.toLowerCase(), password, history)
+        registerUser(
+          fname,
+          lname,
+          email.toLowerCase(),
+          password,
+          history,
+          setModal
+        )
       );
     }
     // router.push("/registration/");
+  };
+
+  const callVerifyOTP = async () => {
+    if (otp == state.otp) await dispatch(verifyCandidate(setModal, history));
+    else
+      toast.error("OTP not matched!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
   };
 
   const textInputFields = [
@@ -90,6 +115,41 @@ export default function Loginpage3() {
 
   return (
     <div className="page-content bg-gray login-form-bx browse-job login-style2">
+      <Modal
+        // backdrop={false}
+        scrollable={true}
+        show={modal}
+        onHide={() => setModal(false)}
+        className="modal fade modal-bx-info editor"
+      >
+        <div style={{ padding: 10 }}>
+          <RegisterTextInput
+            name={"OTP"}
+            required={true}
+            placeholder={"Enter OTP"}
+            type={"number"}
+            label={"OTP"}
+            // key={index}
+            onChange={(e) => {
+              setOTP(e.target.value);
+            }}
+          />
+
+          <div className="text-left">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                // callRegisterUser(e);
+                callVerifyOTP(e);
+              }}
+              className="site-button"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </Modal>
+
       <div className="section-full">
         <div className="container-fluid">
           <div className="row">
@@ -131,6 +191,16 @@ export default function Loginpage3() {
                         className="site-button"
                       >
                         Sign up
+                      </button>
+
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setModal(true);
+                        }}
+                        className="site-button mr-2 ml-2"
+                      >
+                        Open Modal
                       </button>
                     </div>
                   </form>

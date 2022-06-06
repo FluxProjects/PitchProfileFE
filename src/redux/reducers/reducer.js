@@ -3,6 +3,7 @@ const initialState = {
   userDetails: {},
   authToken: "",
   pedningActions: [],
+  otp: "",
 
   // messages
   messagesChat: [],
@@ -68,6 +69,8 @@ const changeState = (state = initialState, { type, ...rest }) => {
     //  Auth actions
     case "RegisterUser":
       return { ...state, userDetails: rest.data };
+    case "SetOTP":
+      return { ...state, otp: rest.data };
     case "setSingleUserData": {
       return { ...state, singleUserData: rest.data };
     }

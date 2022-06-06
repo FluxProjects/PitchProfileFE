@@ -4,12 +4,20 @@ import { cloudURL, URL } from "../../../utils/APIUtils";
 import { toast } from "react-toastify";
 
 export const registerCompany =
-  (company_name, email, password, router) => async (dispatch) => {
+  (company_name, email, password, setModal) => async (dispatch) => {
+    var val = Math.floor(1000 + Math.random() * 9000);
+    console.log(val);
+    dispatch({
+      type: "SetOTP",
+      data: val,
+    });
+
     var data = {
       r_data: {
         company_name,
         email,
         password,
+        otp: val,
       },
     };
 
@@ -25,7 +33,10 @@ export const registerCompany =
         console.log("datsss", response.data.successful);
         if (response.data.successful) {
           console.log("response.data.data register", response.data);
-          toast.success("Registered Successfully!", {
+
+          setModal(true);
+
+          toast.success("OTP has been sent to your email!", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -38,11 +49,11 @@ export const registerCompany =
             type: "RegisterUser",
             data: response.data.data,
           });
-          dispatch({
-            type: "SetAuthToken",
-            data: response.data.accessToken,
-          });
-          router.push("/company-profile");
+          // dispatch({
+          //   type: "SetAuthToken",
+          //   data: response.data.accessToken,
+          // });
+          // router.push("/company-profile");
         } else {
           toast.error(`${response.data.message}`, {
             position: "top-right",
@@ -69,6 +80,66 @@ export const registerCompany =
         });
       });
   };
+
+// verify_email
+export const verifyCompany = (setModal, router) => async (dispatch, state) => {
+  console.log("is avcllefsr", state().userDetails);
+  var data = JSON.stringify({
+    data: {
+      id: state().userDetails,
+    },
+  });
+
+  var config = {
+    method: "post",
+    url: "http://localhost:8080/company_profile/verify_email",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  await axios(config)
+    .then(function (response) {
+      console.log("testsjhde", response.data);
+
+      if (response.data.successful == true) {
+        console.log(JSON.stringify(response.data));
+        setModal(false);
+        toast.success("Verified successfully!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        dispatch({
+          type: "RegisterUser",
+          data: response.data.data,
+        });
+        dispatch({
+          type: "SetAuthToken",
+          data: response.data.accessToken,
+        });
+        router.push("/company-profile");
+      } else {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
 
 export const getSingleUserData = (id) => async (dispatch) => {
   var config = {
