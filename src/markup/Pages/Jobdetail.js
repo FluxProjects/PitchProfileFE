@@ -92,6 +92,8 @@ export default function Jobdetail(props) {
         state.PreviewPost.company_id,
         0,
         description,
+        state.PreviewPost.job_title,
+        state.PreviewPost?.company?.company_name,
         router
       )
     );
@@ -327,12 +329,6 @@ export default function Jobdetail(props) {
 
                       {!state.userDetails.company_name && (
                         <>
-                          {console.log(
-                            "testhjkferedgf",
-                            state?.userDetails?.job_applications?.findIndex(
-                              (x) => x?.job_id == state.PreviewPost.id
-                            )
-                          )}
                           {state?.userDetails?.job_applications?.findIndex(
                             (x) => x?.job_id == state.PreviewPost.id
                           ) != -1 ? (

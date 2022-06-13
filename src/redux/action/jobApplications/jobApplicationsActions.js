@@ -4,7 +4,7 @@ import { cloudURL, URL } from "../../../utils/APIUtils";
 import { toast } from "react-toastify";
 
 export const ApplyJobPost =
-  (job_id, company_id, status, description, router) =>
+  (job_id, company_id, status, description, jobTitle, company_name, router) =>
   async (dispatch, state) => {
     console.log(
       " state()?.CoverLetterForApplying.name state()?.CoverLetterForApplying.name",
@@ -13,6 +13,10 @@ export const ApplyJobPost =
     var data = JSON.stringify({
       data: {
         candidate_id: state().userDetails.id,
+        email: state().userDetails.email,
+        firstname: state().userDetails.f_name,
+        jobTitle,
+        company_name,
         job_id,
         company_id,
         status,
