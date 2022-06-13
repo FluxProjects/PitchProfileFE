@@ -5,7 +5,7 @@ export const URL = "https://pitchprofile.herokuapp.com";
 export const cloudURL = "https://api.cloudinary.com/v1_1/flux-official";
 
 // email
-//  d-50b56a8a869445009ed9912d8655e23e
+//  d-50b56a8a869445009ed9912d8655e23e {{name}}
 
 // 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
 
