@@ -640,6 +640,7 @@ export const UpdateUserPassword =
       pr_data: {
         password,
         id,
+        name: state().userDetails.f_name,
       },
     });
 

@@ -665,6 +665,8 @@ export const UpdateCompanyPassword =
       pr_data: {
         password,
         id,
+        name: state().userDetails.company_name,
+        email: state().userDetails.email,
       },
     });
 
