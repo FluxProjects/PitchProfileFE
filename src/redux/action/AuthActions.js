@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import { lazySlidesOnLeft } from "react-slick/lib/utils/innerSliderUtils";
 
 export const registerUser =
-  (f_name, l_name, email, password, router, setModal) => async (dispatch) => {
+  (f_name, l_name, email, password, router, setModal, setIsDisabled) =>
+  async (dispatch) => {
     var val = Math.floor(1000 + Math.random() * 9000);
     console.log(val);
     dispatch({
@@ -32,9 +33,10 @@ export const registerUser =
 
     axios(config)
       .then(function (response) {
-        console.log("datsss", response.data.successful);
+        console.log("datsss", response.data);
         if (response.data.successful) {
           setModal(true);
+          setIsDisabled(false);
           toast.success("OTP has been sent to your email!", {
             position: "top-right",
             autoClose: 5000,
@@ -54,7 +56,8 @@ export const registerUser =
           // });
           // router.push("/");
         } else {
-          toast.error("Something went wrong!", {
+          setIsDisabled(false);
+          toast.error(`Something went wrong! ${response.data.message}`, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,

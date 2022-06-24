@@ -405,6 +405,7 @@ export default function Componypostjobs() {
                             </label>
                             <TextInputModal
                               type={"number"}
+                              min={0}
                               onChange={(e) => {
                                 console.log(e.target.value);
                                 setExpirience(e.target.value);

@@ -405,7 +405,7 @@ export const GetAllJobPosts = () => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log("res.dattatata", response.data.data);
+      console.log("res.dattatata", response.data);
       var companyNames = [];
       var jobNames = [];
       response.data.data.map((item, index) => {

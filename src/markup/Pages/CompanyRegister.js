@@ -22,11 +22,19 @@ export default function CompanyRegister() {
   const [CnfrmPassword, setCnfrmPassword] = useState("");
   const [modal, setModal] = useState("");
   const [otp, setOTP] = useState("");
+  const [isDisabled, setIsDisabled] = useState("");
 
   const callRegisterUser = async () => {
     if (password == CnfrmPassword) {
+      setIsDisabled(true);
       await dispatch(
-        registerCompany(companyName, email.toLowerCase(), password, setModal)
+        registerCompany(
+          companyName,
+          email.toLowerCase(),
+          password,
+          setModal,
+          setIsDisabled
+        )
       );
     }
     // router.push("/registration/");
@@ -124,7 +132,9 @@ export default function CompanyRegister() {
             required={true}
             placeholder={"Enter OTP"}
             type={"number"}
-            label={"OTP"}
+            label={
+              "A verification code has been sent to your email address. Please enter the code below to complete sign up"
+            }
             // key={index}
             onChange={(e) => {
               setOTP(e.target.value);
@@ -174,16 +184,18 @@ export default function CompanyRegister() {
 
                     <div className="text-left">
                       <button
+                        disabled={isDisabled}
                         onClick={(e) => {
                           e.preventDefault();
                           callRegisterUser(e);
                         }}
+                        style={isDisabled ? { background: "gray" } : {}}
                         className="site-button"
                       >
                         Sign up
                       </button>
 
-                      <button
+                      {/* <button
                         onClick={(e) => {
                           e.preventDefault();
                           setModal(true);
@@ -191,7 +203,7 @@ export default function CompanyRegister() {
                         className="site-button mr-2 ml-2"
                       >
                         Open Modal
-                      </button>
+                      </button> */}
                     </div>
                   </form>
                 </div>

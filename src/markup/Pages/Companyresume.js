@@ -116,7 +116,7 @@ export default function Companyresume(props) {
                                 ></label>
                               </div>
                             </th>
-                            <th>Camdidate Name</th>
+                            <th>Candidate Name</th>
                             <th>Job Title</th>
                             <th>Applied Date</th>
                             <th>Attachments</th>

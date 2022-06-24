@@ -19,8 +19,10 @@ export default function Loginpage3() {
   const [CnfrmPassword, setCnfrmPassword] = useState("");
   const [modal, setModal] = useState("");
   const [otp, setOTP] = useState("");
+  const [isDisabled, setIsDisabled] = useState("");
 
   const callRegisterUser = async () => {
+    setIsDisabled(true);
     if (password == CnfrmPassword) {
       await dispatch(
         registerUser(
@@ -29,7 +31,8 @@ export default function Loginpage3() {
           email.toLowerCase(),
           password,
           history,
-          setModal
+          setModal,
+          setIsDisabled
         )
       );
     }
@@ -124,7 +127,9 @@ export default function Loginpage3() {
       >
         <div style={{ padding: 10 }}>
           <RegisterTextInput
-            name={"OTP"}
+            name={
+              "A verification code has been sent to your email address. Please enter the code below to complete sign up"
+            }
             required={true}
             placeholder={"Enter OTP"}
             type={"number"}
@@ -188,12 +193,14 @@ export default function Loginpage3() {
                           e.preventDefault();
                           callRegisterUser(e);
                         }}
+                        disabled={isDisabled}
+                        style={isDisabled ? { background: "gray" } : {}}
                         className="site-button"
                       >
                         Sign up
                       </button>
 
-                      <button
+                      {/* <button
                         onClick={(e) => {
                           e.preventDefault();
                           setModal(true);
@@ -201,7 +208,7 @@ export default function Loginpage3() {
                         className="site-button mr-2 ml-2"
                       >
                         Open Modal
-                      </button>
+                      </button> */}
                     </div>
                   </form>
                 </div>

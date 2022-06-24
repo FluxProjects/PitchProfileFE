@@ -4,7 +4,7 @@ import { cloudURL, URL } from "../../../utils/APIUtils";
 import { toast } from "react-toastify";
 
 export const registerCompany =
-  (company_name, email, password, setModal) => async (dispatch) => {
+  (company_name, email, password, setModal, setIsDisabled) => async (dispatch) => {
     var val = Math.floor(1000 + Math.random() * 9000);
     console.log(val);
     dispatch({
@@ -35,7 +35,7 @@ export const registerCompany =
           console.log("response.data.data register", response.data);
 
           setModal(true);
-
+          setIsDisabled(false)
           toast.success("OTP has been sent to your email!", {
             position: "top-right",
             autoClose: 5000,
@@ -55,6 +55,8 @@ export const registerCompany =
           // });
           // router.push("/company-profile");
         } else {
+          setIsDisabled(false)
+
           toast.error(`${response.data.message}`, {
             position: "top-right",
             autoClose: 5000,
