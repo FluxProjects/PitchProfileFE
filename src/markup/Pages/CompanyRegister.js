@@ -184,11 +184,11 @@ export default function CompanyRegister() {
 
                     <div className="text-left">
                       <button
-                        disabled={isDisabled}
                         onClick={(e) => {
                           e.preventDefault();
                           callRegisterUser(e);
                         }}
+                        disabled={isDisabled}
                         style={isDisabled ? { background: "gray" } : {}}
                         className="site-button"
                       >
