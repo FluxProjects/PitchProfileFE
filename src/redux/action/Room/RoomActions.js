@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import { formatDate } from "../../../utils/functions";
 
 export const AddRoom =
-  (candidate_id, company_id, room_name) => async (dispatch, state) => {
+  (candidate_id, company_id, room_name, setModal) =>
+  async (dispatch, state) => {
     var data = {
       candidate_id,
       company_id,
@@ -27,6 +28,7 @@ export const AddRoom =
             type: "myRooms",
             data: response.data.data,
           });
+          setModal(true);
           // router.push("/company-manage-job");
         } else {
           toast.success(response.data.message, {

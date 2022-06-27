@@ -64,12 +64,13 @@ export default function ViewCandidateProfile(props) {
     GetStateName();
   };
 
-  const callAddRoom = () => {
+  const callAddRoom = (setModal) => {
     dispatch(
       AddRoom(
         state.userDetails?.company_name ? otherId : state.userDetails?.id,
         state.userDetails?.company_name ? state.userDetails?.id : otherId,
-        otherId + state.userDetails?.id
+        otherId + state.userDetails?.id,
+        setModal
       )
     );
   };

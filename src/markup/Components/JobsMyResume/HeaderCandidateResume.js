@@ -18,6 +18,8 @@ import {
   GetCountryName,
   GetStateName,
 } from "../../../utils/functions";
+import Chat from "../../Pages/MyChat/Chat/Chat";
+import ChatContacts from "../../Pages/MyChat/ChatContacts/ChatContacts";
 import AttachVideo from "./AttachVideo";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
@@ -37,6 +39,7 @@ export default function HeaderCandidateResume({
   const [ResumeHeadline, setResumeHeadline] = useState(
     state.singleUserData.headline
   );
+  const [ChatModal, setChatModal] = useState(false);
 
   const [fname, setFname] = useState(state.singleUserData.f_name);
   const [lname, setLname] = useState(state.singleUserData.l_name);
@@ -65,6 +68,10 @@ export default function HeaderCandidateResume({
       userDetail.country_id
     );
   }, []);
+
+  const toggleModal = () => {
+    setChatModal(!ChatModal);
+  };
 
   const callGetCityState = async (state_id, city_id, country_id) => {
     console.log("test workddddd", state_id, city_id, country_id);
@@ -238,13 +245,25 @@ export default function HeaderCandidateResume({
                 </div>
               </div>
 
+              {/* Chatmodal */}
+              <Modal
+                // backdrop={false}
+                scrollable={true}
+                show={ChatModal}
+                onHide={() => toggleModal()}
+                className="modal fade modal-bx-info editor"
+              >
+                {/* <Chat otherId={otherId} /> */}
+                <ChatContacts />
+              </Modal>
+
               {/* {state.myRooms} */}
               {state.userDetails?.company_name && (
                 <div className="customFlexRow mt-0">
                   <button
                     onClick={() => {
                       console.log("clis");
-                      callAddRoom();
+                      callAddRoom(toggleModal());
                     }}
                     className="site-button radius-xl"
                     // style={{ position: "fixed", bottom: 20, right: 30 }}
