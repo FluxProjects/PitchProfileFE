@@ -485,15 +485,18 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success("Update Success!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          toast.success(
+            "Your uploaded video is being reviewed. You will receive an email shortly once it is approved. Please note your profile will be LIVE once video is reviewed and approved!",
+            {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            }
+          );
 
           dispatch({
             type: "RegisterUser",

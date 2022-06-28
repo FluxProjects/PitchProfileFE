@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-scroll";
 import ListingSidebarRouterLink from "./ListingSidebarRouterLink";
-
+import { useHistory } from "react-router-dom";
 export default function Listingsidebar({ isView, isCompany, isMyProfile }) {
+  const router = useHistory();
   return (
     <div className="sticky-top bg-white">
       <div className="candidate-info onepage">
@@ -146,6 +147,20 @@ export default function Listingsidebar({ isView, isCompany, isMyProfile }) {
           {!isCompany && isMyProfile && (
             <ListingSidebarRouterLink isView={isView} />
           )}
+          <li>
+            <Link
+              activeClass="active"
+              className="scroll-bar nav-link"
+              onClick={() => {
+                router.goBack();
+              }}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              <span>Go back</span>
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

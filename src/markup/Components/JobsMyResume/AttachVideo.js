@@ -51,12 +51,12 @@ export default function AttachVideo({ isView }) {
           className="attach-resume-Video "
           style={{
             backgroundColor: "transparent",
-            border: !isView ? "1px solid white" : 0,
+            // border: !isView ? "1px solid white" : 0,
             borderRadius: 10,
           }}
         >
           <div className="row">
-            {state.userDetails.video != null ? (
+            {state.userDetails.video == null ? (
               <div className="col-lg-12 col-md-12">
                 <div class="embed-responsive embed-responsive-16by9">
                   <video width="320" height="240" controls>

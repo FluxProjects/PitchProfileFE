@@ -13,6 +13,7 @@ import {
   GetIndustries,
   GetStates,
   UpdateJobWithVideoPost,
+  AddNewSkill,
 } from "../../redux/action";
 import DropDownModalComponent from "../Components/JobsMyResume/DropDownModalComponent";
 import {
@@ -51,7 +52,7 @@ export default function Componypostjobs(props) {
     item?.preferred_shift ? item?.preferred_shift : 1
   );
 
-  console.log("item?.employment_typeitem?.employment_type", item?.job_type);
+  console.log("item?.employment_typeitem?.employment_type", item);
 
   const [jobTitle, setJobTitle] = useState(item?.job_title);
   const [jobType, setJobType] = useState(item?.job_type);
@@ -67,6 +68,23 @@ export default function Componypostjobs(props) {
   const [video, setVideo] = useState(item?.video);
   const [UpdatedVideo, setUpdatedVideo] = useState(false);
 
+  const [TopSkill1, setTopSkill1] = useState(1);
+
+  const [TopSkillName1, setTopSkillName1] = useState("");
+  const [TopSkillName2, setTopSkillName2] = useState("");
+  const [TopSkillName3, setTopSkillName3] = useState("");
+  const [TopSkillName4, setTopSkillName4] = useState("");
+  const [TopSkillName5, setTopSkillName5] = useState("");
+
+  const [handleDisplay, sethandleDisplay] = useState(1);
+
+  const [TopSkill2, setTopSkill2] = useState(null);
+  const [TopSkill3, setTopSkill3] = useState(null);
+  const [TopSkill4, setTopSkill4] = useState(null);
+  const [TopSkill5, setTopSkill5] = useState(null);
+
+  const [OtherSkills, setOtherSkills] = useState(null);
+
   const [fieldAlert, setFieldAlert] = useState(false);
   // const [perks, setPerks] = useState("");
 
@@ -75,6 +93,10 @@ export default function Componypostjobs(props) {
     //  to get languages
     CallGetDropDown();
   }, []);
+
+  const callAddNewSkill = async (OtherSkill, setItSkills) => {
+    await dispatch(AddNewSkill(OtherSkill, setItSkills));
+  };
 
   const CallGetDropDown = async () => {
     await dispatch(GetCountries());
@@ -452,6 +474,510 @@ export default function Componypostjobs(props) {
                             />
                           </div>
                         </div>
+
+                        <div className="col-lg-6 col-md-6"></div>
+
+                        {/* {handleDisplay >= 0 && ( */}
+                        <>
+                          <div className="col-lg-6 col-md-12">
+                            <div className="form-group">
+                              <label>
+                                Top Skill 1:
+                                {/* <span className="text-danger"> *</span> */}
+                              </label>
+                              <select
+                                value={TopSkill1}
+                                onChange={(e) => {
+                                  console.log("ret", e.target.value);
+                                  setTopSkill1(e.target.value);
+
+                                  var c =
+                                    state?.skills.findIndex(
+                                      (x) => x?.id == e.target.value
+                                    ) == -1
+                                      ? ""
+                                      : setTopSkillName1(
+                                          state?.skills[
+                                            state?.skills.findIndex(
+                                              (x) => x?.id == e.target.value
+                                            )
+                                          ].name
+                                        );
+                                }}
+                                className="form-control"
+                              >
+                                <option key={-1} value={-1}>
+                                  Select option
+                                </option>
+                                {state.skills.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
+                                  </option>
+                                ))}
+                                <option key={"other"} value={"other"}>
+                                  Other
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+
+                          {TopSkill1 == "other" ? (
+                            <>
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label>New Skill Title</label>
+                                  </div>
+
+                                  <TextInputModal
+                                    placeholder=""
+                                    onChange={(e) => {
+                                      setOtherSkills(e.target.value);
+                                    }}
+                                    value={OtherSkills}
+                                  />
+                                  <div style={{ marginBottom: 10 }}>
+                                    <small></small>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label></label>
+                                  </div>
+
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      callAddNewSkill(
+                                        OtherSkills,
+                                        setTopSkill1
+                                      );
+                                      setOtherSkills("");
+                                    }}
+                                    type="button"
+                                    className="site-button mr-4 m-b30"
+                                  >
+                                    Save New Skill
+                                  </button>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="col-md-6 col-lg-6" />
+                          )}
+                        </>
+
+                        <>
+                          <div className="col-lg-6 col-md-6">
+                            <div className="form-group">
+                              <label>
+                                Top Skill 2:
+                                {/* <span className="text-danger"> *</span> */}
+                              </label>
+                              <select
+                                value={TopSkill2}
+                                onChange={(e) => {
+                                  console.log("ret", e.target.value);
+                                  setTopSkill2(e.target.value);
+
+                                  var c =
+                                    state?.skills.findIndex(
+                                      (x) => x?.id == e.target.value
+                                    ) == -1
+                                      ? ""
+                                      : setTopSkillName2(
+                                          state?.skills[
+                                            state?.skills.findIndex(
+                                              (x) => x?.id == e.target.value
+                                            )
+                                          ].name
+                                        );
+                                }}
+                                className="form-control"
+                              >
+                                <option key={-1} value={-1}>
+                                  Select option
+                                </option>
+                                {state.skills.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
+                                  </option>
+                                ))}
+                                <option key={"other"} value={"other"}>
+                                  Other
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+
+                          {TopSkill2 == "other" ? (
+                            <>
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label>New Skill Title</label>
+                                  </div>
+
+                                  <TextInputModal
+                                    placeholder=""
+                                    onChange={(e) => {
+                                      setOtherSkills(e.target.value);
+                                    }}
+                                    value={OtherSkills}
+                                  />
+                                  <div style={{ marginBottom: 10 }}>
+                                    <small></small>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label></label>
+                                  </div>
+
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      callAddNewSkill(
+                                        OtherSkills,
+                                        setTopSkill2
+                                      );
+                                      setOtherSkills("");
+                                    }}
+                                    type="button"
+                                    className="site-button mr-4 m-b30"
+                                  >
+                                    Save New Skill
+                                  </button>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="col-md-6 col-lg-6" />
+                          )}
+
+                          {/* <div className="col-lg-6 col-md-12">
+                              <div
+                                onClick={() => {
+                                  setTopSkill3(1);
+                                  sethandleDisplay(3);
+                                }}
+                                className="site-button add-btn button-sm"
+                              >
+                                <i className="fa fa-plus m-r5"></i> Add
+                              </div>
+                            </div> */}
+                        </>
+                        {/* )} */}
+
+                        {/* {handleDisplay >= 3 && ( */}
+                        <>
+                          <div className="col-lg-6 col-md-6">
+                            <div className="form-group">
+                              <label>
+                                Top Skill 3:
+                                {/* <span className="text-danger"> *</span> */}
+                              </label>
+                              <select
+                                value={TopSkill3}
+                                onChange={(e) => {
+                                  console.log("ret", e.target.value);
+                                  setTopSkill3(e.target.value);
+
+                                  var c =
+                                    state?.skills.findIndex(
+                                      (x) => x?.id == e.target.value
+                                    ) == -1
+                                      ? ""
+                                      : setTopSkillName3(
+                                          state?.skills[
+                                            state?.skills.findIndex(
+                                              (x) => x?.id == e.target.value
+                                            )
+                                          ].name
+                                        );
+                                }}
+                                className="form-control"
+                              >
+                                <option key={-1} value={-1}>
+                                  Select option
+                                </option>
+                                {state.skills.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
+                                  </option>
+                                ))}
+                                <option key={"other"} value={"other"}>
+                                  Other
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+
+                          {TopSkill3 == "other" ? (
+                            <>
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label>New Skill Title</label>
+                                  </div>
+
+                                  <TextInputModal
+                                    placeholder=""
+                                    onChange={(e) => {
+                                      setOtherSkills(e.target.value);
+                                    }}
+                                    value={OtherSkills}
+                                  />
+                                  <div style={{ marginBottom: 10 }}>
+                                    <small></small>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label></label>
+                                  </div>
+
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      callAddNewSkill(
+                                        OtherSkills,
+                                        setTopSkill3
+                                      );
+                                      setOtherSkills("");
+                                    }}
+                                    type="button"
+                                    className="site-button mr-4 m-b30"
+                                  >
+                                    Save New Skill
+                                  </button>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="col-md-6 col-lg-6" />
+                          )}
+                          {/* <div className="col-lg-6 col-md-12">
+                              <div
+                                onClick={() => {
+                                  setTopSkill4(1);
+                                  sethandleDisplay(4);
+                                }}
+                                className="site-button add-btn button-sm"
+                              >
+                                <i className="fa fa-plus m-r5"></i> Add
+                              </div>
+                            </div> */}
+                        </>
+                        {/* )} */}
+
+                        {/* {handleDisplay >= 4 && ( */}
+                        <>
+                          <div className="col-lg-6 col-md-6">
+                            <div className="form-group">
+                              <label>
+                                Top Skill 4:
+                                {/* <span className="text-danger"> *</span> */}
+                              </label>
+                              <select
+                                value={TopSkill4}
+                                onChange={(e) => {
+                                  console.log("ret", e.target.value);
+                                  setTopSkill4(e.target.value);
+
+                                  var c =
+                                    state?.skills.findIndex(
+                                      (x) => x?.id == e.target.value
+                                    ) == -1
+                                      ? ""
+                                      : setTopSkillName4(
+                                          state?.skills[
+                                            state?.skills.findIndex(
+                                              (x) => x?.id == e.target.value
+                                            )
+                                          ].name
+                                        );
+                                }}
+                                className="form-control"
+                              >
+                                <option key={-1} value={-1}>
+                                  Select option
+                                </option>
+                                {state.skills.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
+                                  </option>
+                                ))}
+                                <option key={"other"} value={"other"}>
+                                  Other
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+
+                          {TopSkill4 == "other" ? (
+                            <>
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label>New Skill Title</label>
+                                  </div>
+
+                                  <TextInputModal
+                                    placeholder=""
+                                    onChange={(e) => {
+                                      setOtherSkills(e.target.value);
+                                    }}
+                                    value={OtherSkills}
+                                  />
+                                  <div style={{ marginBottom: 10 }}>
+                                    <small></small>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label></label>
+                                  </div>
+
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      callAddNewSkill(
+                                        OtherSkills,
+                                        setTopSkill4
+                                      );
+                                      setOtherSkills("");
+                                    }}
+                                    type="button"
+                                    className="site-button mr-4 m-b30"
+                                  >
+                                    Save New Skill
+                                  </button>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="col-md-6 col-lg-6" />
+                          )}
+                          {/* <div className="col-lg-6 col-md-12">
+                              <div
+                                onClick={() => {
+                                  setTopSkill5(1);
+                                  sethandleDisplay(5);
+                                }}
+                                className="site-button add-btn button-sm"
+                              >
+                                <i className="fa fa-plus m-r5"></i> Add
+                              </div>
+                            </div> */}
+                        </>
+                        {/* )} */}
+
+                        {/* {handleDisplay >= 5 && ( */}
+                        <>
+                          <div className="col-lg-6 col-md-6">
+                            <div className="form-group">
+                              <label>
+                                Top Skill 5:
+                                {/* <span className="text-danger"> *</span> */}
+                              </label>
+                              <select
+                                value={TopSkill5}
+                                onChange={(e) => {
+                                  console.log("ret", e.target.value);
+                                  setTopSkill5(e.target.value);
+
+                                  var c =
+                                    state?.skills.findIndex(
+                                      (x) => x?.id == e.target.value
+                                    ) == -1
+                                      ? ""
+                                      : setTopSkillName5(
+                                          state?.skills[
+                                            state?.skills.findIndex(
+                                              (x) => x?.id == e.target.value
+                                            )
+                                          ].name
+                                        );
+                                }}
+                                className="form-control"
+                              >
+                                <option key={-1} value={-1}>
+                                  Select option
+                                </option>
+                                {state.skills.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.name}
+                                  </option>
+                                ))}
+                                <option key={"other"} value={"other"}>
+                                  Other
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+
+                          {TopSkill5 == "other" ? (
+                            <>
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label>New Skill Title</label>
+                                  </div>
+
+                                  <TextInputModal
+                                    placeholder=""
+                                    onChange={(e) => {
+                                      setOtherSkills(e.target.value);
+                                    }}
+                                    value={OtherSkills}
+                                  />
+                                  <div style={{ marginBottom: 10 }}>
+                                    <small></small>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="col-lg-3 col-md-12">
+                                <div className="form-group">
+                                  <div>
+                                    <label></label>
+                                  </div>
+
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      callAddNewSkill(
+                                        OtherSkills,
+                                        setTopSkill5
+                                      );
+                                      setOtherSkills("");
+                                    }}
+                                    type="button"
+                                    className="site-button mr-4 m-b30"
+                                  >
+                                    Save New Skill
+                                  </button>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="col-md-6 col-lg-6" />
+                          )}
+                        </>
+                        {/* )} */}
 
                         <div className="col-lg-12 col-md-12">
                           <div className="form-group">
