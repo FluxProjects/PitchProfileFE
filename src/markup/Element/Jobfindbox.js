@@ -11,6 +11,7 @@ import {
   filterCandidateAll,
   filterCandidateAvailability,
   filterCandidateCompany,
+  filterCandidateName,
   filterCandidateRole,
   filterCandidateSkill,
   ResetfilterCandidate,
@@ -35,6 +36,7 @@ export default function Jobfindbox({ isView }) {
 
   const [availabliltyFilter, setAvailabliltyFilter] = useState("");
   const [skillFilter, setSkillFilter] = useState(null);
+  const [candidateNameFilter, setCandidateNameFilter] = useState(null);
   const [skillFilterLabel, setSkillFilterLabel] = useState(null);
   const [companyFilter, setCompanyFilter] = useState(null);
   const [designationFilter, setDesignationFilter] = useState(null);
@@ -85,6 +87,9 @@ export default function Jobfindbox({ isView }) {
 
   const callFilter = () => {
     var count = 0;
+    if (candidateNameFilter != null && candidateNameFilter != "") {
+      count++;
+    }
     if (availabliltyFilter != null && availabliltyFilter != "") {
       count++;
     }
@@ -104,9 +109,16 @@ export default function Jobfindbox({ isView }) {
           availaibityBool,
           skillFilter,
           companyFilter,
-          designationFilter
+          designationFilter,
+          candidateNameFilter
         )
       );
+      return;
+    }
+
+    if (candidateNameFilter != null && candidateNameFilter != "") {
+      console.log("candidateNameFilter");
+      dispatch(filterCandidateName(candidateNameFilter));
       return;
     }
     if (availabliltyFilter != null && availabliltyFilter != "") {
@@ -144,6 +156,30 @@ export default function Jobfindbox({ isView }) {
         <div className="find-job-bx">
           <form className="dezPlaceAni">
             <div className="row">
+              <div className="col-lg-2 col-md-6">
+                <div className="form-group">
+                  <label className="">Candidate name</label>
+                  <div className="input-group  ">
+                    <input
+                      onChange={(e) => {
+                        console.log("eee", e.target.value);
+                        setCandidateNameFilter(e.target.value);
+                      }}
+                      value={candidateNameFilter}
+                      placeholder=""
+                      className="form-control w-85"
+                      type="text"
+                      list="candidateNameFilter"
+                    />
+
+                    <datalist id="candidateNameFilter">
+                      {state.GetAllCandidatesNames.map((item, key) => (
+                        <option key={key} label={item} value={item} />
+                      ))}
+                    </datalist>
+                  </div>
+                </div>
+              </div>
               <div className="col-lg-2 col-md-6">
                 <div className="form-group">
                   <label className="">Status</label>

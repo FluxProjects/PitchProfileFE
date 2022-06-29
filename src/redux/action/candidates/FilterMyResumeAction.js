@@ -36,6 +36,28 @@ export const filterCandidateAvailability =
     });
   };
 
+export const filterCandidateName = (nameFilter) => async (dispatch, state) => {
+  var resultNameFilter = [];
+  // ? company filter
+  resultNameFilter = state().backupCandidates.filter(function (item) {
+    if (item?.f_name + " " + item?.l_name == nameFilter) return item;
+  });
+
+  toast.success("Updated Successfully!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+  dispatch({
+    type: "GetAllCandidates",
+    data: resultNameFilter,
+  });
+};
+
 export const filterCandidateSkill = (skill_id) => async (dispatch, state) => {
   var resultSkill = [];
 
@@ -110,7 +132,7 @@ export const filterCandidateRole =
   };
 
 export const filterCandidateAll =
-  (is_active, skill_id, companyFilter, designationFilter) =>
+  (is_active, skill_id, companyFilter, designationFilter, nameFilter) =>
   async (dispatch, state) => {
     console.log("filterCandidateAllfilterCandidateAll", is_active);
     // return;
@@ -118,6 +140,7 @@ export const filterCandidateAll =
     var resultSkill = [];
     var resultCompany = [];
     var resultDesignation = [];
+    var resultNameFilter = [];
     //    ? is available filter
     state().backupCandidates.filter((item) => {
       if (is_active?.length == 0 || is_active == null) {
@@ -173,12 +196,16 @@ export const filterCandidateAll =
       } else if (item?.employments[0]?.role == designationFilter) return item;
     });
 
-    console.log("resultDesignation unavailable", resultDesignation);
+    resultNameFilter = resultDesignation.filter(function (item) {
+      if (item?.f_name + " " + item?.l_name == nameFilter) return item;
+    });
+
+    console.log("resultDesignation unavailable", resultNameFilter);
 
     const uniqueResults = Array.from(
-      new Set(resultDesignation.map((a) => a.id))
+      new Set(resultNameFilter.map((a) => a.id))
     ).map((id) => {
-      return resultDesignation.find((a) => a.id === id);
+      return resultNameFilter.find((a) => a.id === id);
     });
 
     toast.success("Updated Successfully!", {
@@ -195,113 +222,6 @@ export const filterCandidateAll =
       data: uniqueResults,
     });
   };
-
-// export const filterCandidateAll =
-// (is_active, skill_id, companyFilter, designationFilter) =>
-// async (dispatch, state) => {
-//   var result = [];
-//   var wasResultFiltered = false;
-//   var resultSkill = [];
-//   var wasResultSkillFiltered = false;
-//   var resultCompany = [];
-//   var wasResultCompanyFiltered = false;
-//   var resultDesignation = [];
-//   //    ? is available filter
-//   if (is_active != null) {
-//     state().backupCandidates.filter((item) => {
-//       if (item.is_active.toString() === is_active.toString()) {
-//         console.log("item.isactive", item.is_active, is_active);
-//         result.push(item);
-//       }
-//     });
-//     wasResultFiltered = true;
-//   } else {
-//     result = state().backupCandidates;
-//     wasResultFiltered = false;
-//   }
-
-//   //  ? skill filter
-//   if (wasResultFiltered == true) {
-//     if (skill_id != null) {
-//       wasResultSkillFiltered = true;
-//       result.map((itemM) => {
-//         itemM.candidate_skills.filter((item) => {
-//           if (item.skill_name == skill_id) {
-//             resultSkill.push(itemM);
-//           }
-//         });
-//       });
-//     } else {
-//       resultSkill = result;
-//       wasResultSkillFiltered = false;
-//     }
-//   } else {
-//     if (skill_id != null) {
-//       wasResultSkillFiltered = true;
-//       state().backupCandidates.map((itemM) => {
-//         itemM.candidate_skills.filter((item) => {
-//           if (item.skill_name == skill_id) {
-//             resultSkill.push(itemM);
-//           }
-//         });
-//       });
-//     } else {
-//       resultSkill = state().backupCandidates;
-//       wasResultSkillFiltered = false;
-//     }
-//   }
-
-//   // ? company filter
-//   if (wasResultSkillFiltered == true) {
-//     if (companyFilter != null) {
-//       wasResultCompanyFiltered = true;
-//       resultCompany = resultSkill.filter(function (item) {
-//         if (item?.employments[0]?.organization == companyFilter) return item;
-//       });
-//     } else {
-//       wasResultCompanyFiltered = false;
-
-//       resultCompany = resultSkill;
-//     }
-//   } else {
-//     if (companyFilter != null) {
-//       wasResultCompanyFiltered = true;
-//       resultCompany = state().backupCandidates.filter(function (item) {
-//         if (item?.employments[0]?.organization == companyFilter) return item;
-//       });
-//     } else {
-//       wasResultCompanyFiltered = false;
-
-//       resultCompany = state().backupCandidates;
-//     }
-//   }
-
-//   if (wasResultCompanyFiltered == true) {
-//     resultDesignation = resultCompany.filter(function (item) {
-//       if (item?.employments[0]?.role == designationFilter) return item;
-//     });
-//   } else {
-//     resultDesignation = state().backupCandidates;
-//   }
-
-//   console.log("My sample orgafnization Accountant", resultDesignation);
-
-//   // return;
-
-//   toast.success("Updated Successfully!", {
-//     position: "top-right",
-//     autoClose: 5000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//     progress: undefined,
-//   });
-//   dispatch({
-//     type: "GetAllCandidates",
-//     data: resultDesignation,
-//   });
-// };
 
 export const ResetfilterCandidate = () => async (dispatch, state) => {
   dispatch({

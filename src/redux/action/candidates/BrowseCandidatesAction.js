@@ -20,15 +20,17 @@ export const GetAllCandidates = () => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log("test", response.data);
       if (response.data.successful) {
         var organizationDrop = [];
         var DesignationDrop = [];
         console.log("employments", response.data.data[0].employments);
 
+        var CandidatesNames = [];
+
         response.data.data.map((item, index) => {
           organizationDrop.push(item?.employments[0]?.organization);
           DesignationDrop.push(item?.employments[0]?.role);
+          CandidatesNames.push(item?.f_name + " " + item?.l_name);
         });
 
         console.log("testing", DesignationDrop);
@@ -39,6 +41,11 @@ export const GetAllCandidates = () => async (dispatch, state) => {
           type: "SetOrganizationDrop",
           data: organizationDrop,
           DesignationDrop: DesignationDrop,
+        });
+
+        dispatch({
+          type: "GetAllCandidatesNames",
+          data: CandidatesNames,
         });
         dispatch({
           type: "GetAllCandidates",

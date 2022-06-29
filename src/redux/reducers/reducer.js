@@ -5,6 +5,7 @@ const initialState = {
   pedningActions: [],
   otp: "",
 
+  GetAllCandidatesNames: [],
   // messages
   messagesChat: [],
   myRooms: [],
@@ -122,6 +123,11 @@ const changeState = (state = initialState, { type, ...rest }) => {
     case "SetAuthToken":
       return { ...state, authToken: rest.data };
 
+    case "GetAllCandidatesNames":
+      return {
+        ...state,
+        GetAllCandidatesNames: rest.data,
+      };
     // Dropdown data actions
     case "SetOrganizationDrop":
       return {
