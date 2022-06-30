@@ -278,12 +278,12 @@ export default function DesiredCareerProfileComponent({ isView }) {
                           <div className="row">
                             {shiftDrop.map((item) => (
                               <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                                <div className="custom-control custom-checkbox">
+                                <div className="custom-control custom-radio">
                                   <input
-                                    type="checkbox"
+                                    type="radio"
                                     className="custom-control-input"
                                     id={item.name}
-                                    name="example1"
+                                    name="jobType"
                                     checked={jobType == item.id ? true : false}
                                     value={item.id}
                                     onChange={() => setJobType(item.id)}
@@ -325,12 +325,12 @@ export default function DesiredCareerProfileComponent({ isView }) {
                           <label>Employment Type</label>
                           <div className="row">
                             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                              <div className="custom-control custom-checkbox">
+                              <div className="custom-control custom-radio">
                                 <input
-                                  type="checkbox"
+                                  type="radio"
                                   className="custom-control-input"
                                   id="fulltime"
-                                  name="example1"
+                                  name="employmentType"
                                   checked={employmentType == 1 ? true : false}
                                   value={1}
                                   onChange={() => setEmploymentType(1)}
@@ -344,12 +344,12 @@ export default function DesiredCareerProfileComponent({ isView }) {
                               </div>
                             </div>
                             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                              <div className="custom-control custom-checkbox">
+                              <div className="custom-control custom-radio">
                                 <input
-                                  type="checkbox"
+                                  type="radio"
                                   className="custom-control-input"
                                   id="parttime"
-                                  name="example1"
+                                  name="employmentType"
                                   checked={employmentType == 2 ? true : false}
                                   value={2}
                                   onChange={() => setEmploymentType(2)}
@@ -375,7 +375,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                                   type="radio"
                                   className="custom-control-input"
                                   id="day"
-                                  name="example1"
+                                  name="shift"
                                   checked={shift == 1 ? true : false}
                                   value={1}
                                   onChange={() => setShift(1)}
@@ -394,7 +394,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                                   type="radio"
                                   className="custom-control-input"
                                   id="night"
-                                  name="example1"
+                                  name="shift"
                                   checked={shift == 2 ? true : false}
                                   value={2}
                                   onChange={() => setShift(2)}

@@ -50,14 +50,20 @@ export default function Jobprofile() {
   const [fname, setFname] = useState(state.userDetails.f_name);
   const [lname, setLname] = useState(state.userDetails.l_name);
   const [dob, setDob] = useState(state.userDetails.dob);
-  const [gender, setGender] = useState(state.userDetails.gender);
+  const [gender, setGender] = useState(
+    state.userDetails.gender ? state.userDetails.gender : 1
+  );
   const [passport, setPassport] = useState(state.userDetails.passport_number);
-  const [isMarried, setIsMarried] = useState(state.userDetails.marital_status);
+  const [isMarried, setIsMarried] = useState(
+    state.userDetails.marital_status ? state.userDetails.marital_status : 1
+  );
   const [Disability, setHasDisability] = useState(state.userDetails.disability);
   const [disabilityDescription, setDisabilityDescription] = useState(
     state.userDetails.disability_description
   );
-  const [city, setCity] = useState(state.userDetails.city_id);
+  const [city, setCity] = useState(
+    state.userDetails.city_id ? state.userDetails.city_id : 1
+  );
   const [stateName, setStateName] = useState(state.userDetails.state_id);
   const [country, setCountry] = useState(state.userDetails.country_id);
   const [hometownCountry, setHometownCountry] = useState(
@@ -127,18 +133,18 @@ export default function Jobprofile() {
       setFieldAlert(true);
       return;
     }
-    if (country == null || country == "") {
-      setFieldAlert(true);
-      return;
-    }
-    if (city == null || city == "") {
-      setFieldAlert(true);
-      return;
-    }
-    if (stateName == null || stateName == "") {
-      setFieldAlert(true);
-      return;
-    }
+    // if (country == null || country == "") {
+    //   setFieldAlert(true);
+    //   return;
+    // }
+    // if (city == null || city == "") {
+    //   setFieldAlert(true);
+    //   return;
+    // }
+    // if (stateName == null || stateName == "") {
+    //   setFieldAlert(true);
+    //   return;
+    // }
     if (email == null || email == "") {
       setFieldAlert(true);
       return;
@@ -267,7 +273,9 @@ export default function Jobprofile() {
                           </div>
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
-                              <label>Gender</label>
+                              <label>
+                                Gender <span className="text-danger"> *</span>
+                              </label>
                               <div className="row">
                                 <div className="col-lg-3 col-md-6 col-sm-6 col-6">
                                   <div className="custom-control custom-radio">
@@ -541,7 +549,9 @@ export default function Jobprofile() {
                         <div className="row">
                           <div className="col-lg-12 col-md-12">
                             <div className="form-group">
-                              <label>Address:</label>
+                              <label>
+                                Address: <span className="text-danger"> *</span>
+                              </label>
                               <TextAreaModalComponent
                                 onChange={(e) => {
                                   setAddress(e.target.value);
@@ -553,7 +563,9 @@ export default function Jobprofile() {
                           </div>
                           <div className="col-lg-6 col-md-6 col-sm-12">
                             <div className="form-group">
-                              <label>Country:</label>
+                              <label>
+                                Country: <span className="text-danger"> *</span>
+                              </label>
 
                               {/* <DropdownSearch items={state.countries} /> */}
                               <DropDownModalComponent
@@ -570,7 +582,9 @@ export default function Jobprofile() {
 
                           <div className="col-lg-6 col-md-6 col-sm-12">
                             <div className="form-group">
-                              <label>State:</label>
+                              <label>
+                                State: <span className="text-danger"> *</span>
+                              </label>
                               <DropDownModalComponent
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
@@ -586,7 +600,9 @@ export default function Jobprofile() {
                           </div>
                           <div className="col-lg-6 col-md-6 col-sm-12">
                             <div className="form-group">
-                              <label>City:</label>
+                              <label>
+                                City: <span className="text-danger"> *</span>
+                              </label>
                               <DropDownModalComponent
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
@@ -615,7 +631,10 @@ export default function Jobprofile() {
 
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
-                              <label>Email Address:</label>
+                              <label>
+                                Email Address:{" "}
+                                <span className="text-danger"> *</span>
+                              </label>
                               <br />
                               {/* <label>{email}</label> */}
                               <TextInputModal
@@ -630,7 +649,9 @@ export default function Jobprofile() {
                           </div>
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
-                              <label>Phone:</label>
+                              <label>
+                                Phone: <span className="text-danger"> *</span>
+                              </label>
                               <TextInputModal
                                 placeholder={"Phone number"}
                                 value={phone}

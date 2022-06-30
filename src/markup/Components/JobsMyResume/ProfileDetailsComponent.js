@@ -6,6 +6,7 @@ import {
   DeleteCandidateLanguages,
   GetLanguages,
   updateUser,
+  updateUserProfileModal,
 } from "../../../redux/action";
 import { proficiencyLevelDrop } from "../../../utils/DropDownUtils";
 import { formatDate } from "../../../utils/functions";
@@ -28,8 +29,12 @@ export default function ProfileDetailsComponent({ isView }) {
   const dispatch = useDispatch();
 
   const [dob, setDob] = useState(userDetails.dob);
-  const [gender, setGender] = useState(state.userDetails.gender);
-  const [isMarried, setIsMarried] = useState(state.userDetails.marital_status);
+  const [gender, setGender] = useState(
+    state.userDetails.gender ? state.userDetails.gender : 1
+  );
+  const [isMarried, setIsMarried] = useState(
+    state.userDetails.marital_status ? state.userDetails.marital_status : 1
+  );
   const [Disability, setHasDisability] = useState(state.userDetails.disability);
   const [disabilityDescription, setDisabilityDescription] = useState(
     state.userDetails.disability_description
@@ -37,24 +42,13 @@ export default function ProfileDetailsComponent({ isView }) {
 
   const callUpdateUser = async () => {
     await dispatch(
-      updateUser(
+      updateUserProfileModal(
         userDetails.id,
         userDetails.fname,
         userDetails.lname,
         dob,
         gender,
         isMarried,
-        userDetails.passport,
-        Disability,
-        disabilityDescription,
-        userDetails.address,
-        userDetails.city,
-        userDetails.stateName,
-        userDetails.country,
-        userDetails.hometownCountry,
-        userDetails.phone,
-        userDetails.email.toLowerCase(),
-        state.userDetails.authToken,
         // router
         setShow()
       )
@@ -386,6 +380,10 @@ export default function ProfileDetailsComponent({ isView }) {
               <div className="clearfix m-b20 col-md-6 col-sm-12 col-lg-4">
                 <label className="m-b0">Marital Status</label>
                 <span className="clearfix font-13">
+                  {console.log(
+                    "userDetails.marital_statususerDetails.marital_statususerDetails.marital_status",
+                    userDetails.marital_status
+                  )}
                   {userDetails.marital_status == 1
                     ? "Married"
                     : userDetails.marital_status == 2

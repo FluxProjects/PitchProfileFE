@@ -203,8 +203,8 @@ export const updateUser =
         f_name,
         l_name,
         dob,
-        gender,
-        marital_status,
+        gender: parseInt(gender),
+        marital_status: parseInt(marital_status),
         passport_number,
         disability,
         disability_description,
@@ -222,6 +222,81 @@ export const updateUser =
       url: `${URL}/profile/update_profile`,
       headers: {
         Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+    axios(config)
+      .then(function (response) {
+        console.log(response.data);
+        if (response.data.successful) {
+          console.log("data", response.data.data);
+          toast.success("Update Success!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+          dispatch({
+            type: "RegisterUser",
+            data: response.data.data,
+          });
+          dispatch({
+            type: "SetAuthToken",
+            data: response.data.accessToken,
+          });
+          if (setModal) {
+            setModal(false);
+          }
+        } else {
+          toast.error(response.data.Message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+export const updateUserProfileModal =
+  (id, f_name, l_name, dob, gender, marital_status, setModal) =>
+  async (dispatch, state) => {
+    console.log(
+      "update_profile_modalupdate_profile_modalupdate_profile_modalupdate_profile_modal",
+      id,
+      f_name,
+      l_name,
+      dob,
+      gender,
+      marital_status
+    );
+
+    var data = JSON.stringify({
+      data: {
+        id,
+        f_name,
+        l_name,
+        dob,
+        gender: parseInt(gender),
+        marital_status: parseInt(marital_status),
+      },
+    });
+    var config = {
+      method: "post",
+      url: `${URL}/profile/update_profile_modal`,
+      headers: {
+        Authorization: `Bearer ${state().authToken}`,
         "Content-Type": "application/json",
       },
       data: data,
