@@ -327,7 +327,7 @@ export default function Jobdetail(props) {
                                     textDecoration: "none",
                                   }}
                                 >
-                                  {item.company.company_name}
+                                  {item?.company?.company_name}
                                   {/* {item.department?.name} */}
                                 </span>
                               </Link>
