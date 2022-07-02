@@ -59,31 +59,15 @@ export default function Componypostjobs() {
 
   const [OtherSkills, setOtherSkills] = useState(null);
 
-  const [department, setDepartment] = useState(
-    state.userDetails?.department_id != null
-      ? state.userDetails?.department_id
-      : 1
-  );
-  const [seniorityLevelVal, setSeniorityLevelVal] = useState(
-    state.userDetails?.seniority_level != null
-      ? state.userDetails?.seniority_level
-      : 0
-  );
-  const [salaryRangeVal, setSalaryRangeVal] = useState(
-    state.userDetails?.salary_range != null
-      ? state.userDetails?.salary_range
-      : 0
-  );
-  const [shiftVal, setShiftVal] = useState(
-    state.userDetails?.preferred_shift != null
-      ? state.userDetails?.preferred_shift
-      : 1
-  );
+  const [department, setDepartment] = useState(1);
+  const [seniorityLevelVal, setSeniorityLevelVal] = useState(0);
+  const [salaryRangeVal, setSalaryRangeVal] = useState(0);
+  const [shiftVal, setShiftVal] = useState(1);
 
   const [jobTitle, setJobTitle] = useState("");
   const [jobType, setJobType] = useState(0);
   const [Expirience, setExpirience] = useState(0);
-  const [employmentType, setEmploymentType] = useState(1);
+  const [employmentType, setEmploymentType] = useState(0);
   const [minSalary, setMinSalary] = useState(0);
   const [maxSalary, setMaxSalary] = useState(0);
   const [closingDate, setClosingDate] = useState("");
@@ -97,6 +81,13 @@ export default function Componypostjobs() {
   // const [perks, setPerks] = useState("");
 
   useEffect(() => {
+    setDepartment(1);
+    setSeniorityLevelVal(0);
+    setSalaryRangeVal(0);
+    setShiftVal(1);
+    setJobType(0);
+    setExpirience(0);
+    setEmploymentType(1);
     //  to get languages
     CallGetDropDown();
   }, []);

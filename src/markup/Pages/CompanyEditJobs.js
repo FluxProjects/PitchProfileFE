@@ -275,7 +275,10 @@ export default function Componypostjobs(props) {
                       <div className="row">
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Job Title</label>
+                            <label>
+                              Job Title
+                              <span className="text-danger"> *</span>
+                            </label>
                             <TextInputModal
                               onChange={(e) => {
                                 console.log(e.target.value);
