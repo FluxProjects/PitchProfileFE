@@ -329,9 +329,14 @@ export default function Jobdetail(props) {
 
                       {!state.userDetails.company_name && (
                         <>
+                          {console.log(
+                            "state?.userDetails?.job_applicationsstate?.userDetails?.job_applications",
+                            state?.userDetails?.job_applications
+                          )}
                           {state?.userDetails?.job_applications?.findIndex(
                             (x) => x?.job_id == state.PreviewPost.id
-                          ) != -1 ? (
+                          ) != -1 &&
+                          state?.userDetails?.job_applications != null ? (
                             <Link
                               onClick={() => {
                                 // dispatch(ResetCoverLetterJob());

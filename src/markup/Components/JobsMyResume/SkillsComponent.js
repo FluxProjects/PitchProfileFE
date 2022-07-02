@@ -74,7 +74,7 @@ export default function SkillsComponent({ isView }) {
             </tr>
           </thead>
           <tbody>
-            {state.candidateSkills?.length > 1 &&
+            {state.candidateSkills?.length > 0 &&
               state.candidateSkills.map((item, index) => (
                 <tr key={index}>
                   <td>

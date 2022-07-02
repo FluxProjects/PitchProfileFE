@@ -27,6 +27,10 @@ export default function AttachVideo({ isView }) {
         {/* {state.userDetails.video == null && !isView && (
           <h5 className="m-b10 text-white">Attach Video</h5>
         )} */}
+        {console.log(
+          "state.userDetails.videostate.userDetails.video",
+          state.userDetails.video
+        )}
         {state.userDetails.video != null && (
           <div className="d-flex m-b15">
             {/* <h5 className="m-b15">My Video</h5> */}
@@ -56,7 +60,7 @@ export default function AttachVideo({ isView }) {
           }}
         >
           <div className="row">
-            {state.userDetails.video == null ? (
+            {state.userDetails.video != null ? (
               <div className="col-lg-12 col-md-12">
                 <div class="embed-responsive embed-responsive-16by9">
                   <video width="320" height="240" controls>

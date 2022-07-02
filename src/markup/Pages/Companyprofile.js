@@ -23,6 +23,7 @@ import {
 } from "../../redux/action";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
+import { validateURL } from "../../utils/functions";
 
 export default function Companyprofile() {
   const state = useSelector((state) => state);
@@ -65,6 +66,7 @@ export default function Companyprofile() {
   const [linkedin, setLinkedin] = useState(state?.userDetails?.linkedin);
   const [fieldAlert, setFieldAlert] = useState(false);
   const [agreement, setAgreement] = useState(state?.userDetails?.agreement);
+  const [FieldText, setFieldText] = useState("");
 
   let inputRef;
 
@@ -72,18 +74,22 @@ export default function Companyprofile() {
     if (companyName == "") {
       console.log("companyName", companyName);
       setBtnLoading(false);
+      setFieldText("Enter Company Name");
+
       setFieldAlert(true);
       return;
     }
     if (email == "") {
       console.log("email", email);
       setBtnLoading(false);
+      setFieldText("Enter email");
       setFieldAlert(true);
       return;
     }
     if (CompanyTypeVal == "") {
       console.log("CompanyTypeVal", CompanyTypeVal);
       setBtnLoading(false);
+      setFieldText("Enter CompanyTypeVal");
 
       setFieldAlert(true);
       return;
@@ -91,6 +97,7 @@ export default function Companyprofile() {
     if (industry == null) {
       console.log("industry", industry);
       setBtnLoading(false);
+      setFieldText("Enter industry");
 
       setFieldAlert(true);
       return;
@@ -98,6 +105,7 @@ export default function Companyprofile() {
     if (address == "") {
       console.log("address", address);
       setBtnLoading(false);
+      setFieldText("Enter address");
 
       setFieldAlert(true);
       return;
@@ -105,6 +113,7 @@ export default function Companyprofile() {
     if (agreement == false) {
       console.log("agreement", agreement);
       setBtnLoading(false);
+      setFieldText("Enter agreement");
 
       setFieldAlert(true);
       return;
@@ -112,9 +121,47 @@ export default function Companyprofile() {
     if (Description == "") {
       console.log("Description", Description);
       setBtnLoading(false);
+      setFieldText("Enter Description");
 
       setFieldAlert(true);
       return;
+    }
+    if (website != "") {
+      if (!validateURL(website)) {
+        setFieldAlert(true);
+        setFieldText("Enter valid URL");
+        setBtnLoading(false);
+
+        return;
+      }
+    }
+
+    if (facebook != "") {
+      if (!validateURL(facebook)) {
+        setFieldAlert(true);
+        setFieldText("Enter valid Facebook URL");
+        setBtnLoading(false);
+
+        return;
+      }
+    }
+    if (twitter != "") {
+      if (!validateURL(twitter)) {
+        setFieldAlert(true);
+        setFieldText("Enter valid Twitter URL");
+        setBtnLoading(false);
+
+        return;
+      }
+    }
+    if (linkedin != "") {
+      if (!validateURL(linkedin)) {
+        setFieldAlert(true);
+        setFieldText("Enter valid Linkedin URL");
+        setBtnLoading(false);
+
+        return;
+      }
     }
 
     setFieldAlert(false);
@@ -168,12 +215,15 @@ export default function Companyprofile() {
     await dispatch(GetCountries());
     await dispatch(
       GetStates(
-        state?.userDetails?.country_id ? state?.userDetails?.country_id : 230
+        state?.userDetails?.country_id ? state?.userDetails?.country_id : 230,
+        setStateName,
+        CallGetCities
       )
     );
     await dispatch(
       GetCities(
-        state?.userDetails?.state_id ? state?.userDetails?.state_id : 3805
+        state?.userDetails?.state_id ? state?.userDetails?.state_id : 3805,
+        setCity
       )
     );
     if (state.industries.length < 1) {
@@ -182,11 +232,11 @@ export default function Companyprofile() {
     setLoading(false);
   };
   const CallGetCities = async (stateId) => {
-    await dispatch(GetCities(stateId));
+    await dispatch(GetCities(stateId, setCity));
   };
 
   const CallGetStates = async (stateId) => {
-    await dispatch(GetStates(stateId));
+    await dispatch(GetStates(stateId, setStateName, CallGetCities));
   };
 
   if (loading) {
@@ -546,9 +596,7 @@ export default function Companyprofile() {
                           </div>
                         </div>
                         {fieldAlert && (
-                          <p className="text-danger">
-                            Please fill all the required fields.
-                          </p>
+                          <p className="text-danger">{FieldText}</p>
                         )}
                         {!BtnLoading ? (
                           <button

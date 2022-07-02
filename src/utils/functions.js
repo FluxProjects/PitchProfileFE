@@ -12,7 +12,7 @@ export const allLetter = (inputtxt) => {
   }
 };
 
-export const GetStateName = async (id, setVal) => {
+export const GetStateName = async (id, setStateName) => {
   var config = {
     method: "get",
     url: `${URL}/locations/get_state/${id}`,
@@ -21,11 +21,11 @@ export const GetStateName = async (id, setVal) => {
 
   await axios(config)
     .then(function (response) {
-      console.log("NWO", response.data.data[0].name);
+      console.log("NWO test sttae", response.data.data[0].name);
       if (response.data.successful) {
-        if (setVal) {
-          setVal(response.data.data[0].name);
-        }
+        // if (setVal) {
+        setStateName(response.data.data[0].name);
+        // }
         return response.data.data[0].name;
       } else {
         toast.error(response.data.message, {
@@ -44,7 +44,7 @@ export const GetStateName = async (id, setVal) => {
     });
 };
 
-export const GetCityName = async (id, setVal) => {
+export const GetCityName = async (id, setCityName) => {
   var config = {
     method: "get",
     url: `${URL}/locations/get_city/${id}`,
@@ -53,11 +53,11 @@ export const GetCityName = async (id, setVal) => {
 
   await axios(config)
     .then(function (response) {
-      console.log("NWO", response.data.data[0].name);
+      console.log("NWO test city", response.data.data[0].name);
       if (response.data.successful) {
-        if (setVal) {
-          setVal(response.data.data[0].name);
-        }
+        // if (setVal) {
+        setCityName(response.data.data[0].name);
+        // }
         return response.data.data[0].name;
       } else {
         toast.error(response.data.message, {
@@ -85,11 +85,11 @@ export const GetCountryName = async (id, setVal) => {
 
   await axios(config)
     .then(function (response) {
-      console.log("NWO", response.data.data[0].name);
+      console.log("NWO ", response.data.data[0].name);
       if (response.data.successful) {
-        if (setVal) {
-          setVal(response.data.data[0].name);
-        }
+        // if (setVal) {
+        setVal(response.data.data[0].name);
+        // }
         return response.data.data[0].name;
       } else {
         toast.error(response.data.message, {
@@ -153,4 +153,26 @@ export const daysSinceGivenDate = (date) => {
     return Math.floor(interval) + " minutes";
   }
   return Math.floor(seconds) + " seconds";
+};
+
+export const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+export const validateURL = (str) => {
+  var regex = new RegExp(
+    "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?"
+  );
+  var without_regex = new RegExp(
+    "^([0-9A-Za-z-\\.@:%_+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?"
+  );
+  if (regex.test(str) || without_regex.test(str)) {
+    return true;
+  } else {
+    return false;
+  }
 };

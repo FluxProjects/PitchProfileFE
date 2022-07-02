@@ -62,10 +62,6 @@ export default function EducationsModalComp({
       setFieldAlert(true);
       return;
     }
-    if (endDate == null || endDate == "") {
-      setFieldAlert(true);
-      return;
-    }
 
     setFieldAlert(false);
 

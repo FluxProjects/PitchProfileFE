@@ -84,24 +84,40 @@ export const GetCountries = () => async (dispatch) => {
     });
 };
 
-export const GetStates = (country) => async (dispatch) => {
-  var config = {
-    method: "get",
-    url: `${URL}/locations/states/${country}`,
-    headers: {},
-  };
+export const GetStates =
+  (country, setStateName, CallGetCities) => async (dispatch) => {
+    var config = {
+      method: "get",
+      url: `${URL}/locations/states/${country}`,
+      headers: {},
+    };
 
-  axios(config)
-    .then(function (response) {
-      // console.log("testing the ", response.data);
+    axios(config)
+      .then(function (response) {
+        // console.log("testing the ", response.data.states[0]?.id);
 
-      if (response.data.successful) {
-        dispatch({
-          type: "setStates",
-          data: response.data.states,
-        });
-      } else {
-        toast.error(response.data.message, {
+        if (response.data.successful) {
+          setStateName(response.data.states[0]?.id);
+          CallGetCities(response.data.states[0]?.id);
+          dispatch({
+            type: "setStates",
+            data: response.data.states,
+          });
+        } else {
+          toast.error(response.data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+        toast.error(error, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -110,23 +126,10 @@ export const GetStates = (country) => async (dispatch) => {
           draggable: true,
           progress: undefined,
         });
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-      toast.error(error, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
       });
-    });
-};
+  };
 
-export const GetCities = (id) => async (dispatch) => {
+export const GetCities = (id, setCity) => async (dispatch) => {
   // console.log("teteteecvr", id);
 
   var config = {
@@ -139,6 +142,7 @@ export const GetCities = (id) => async (dispatch) => {
     .then(function (response) {
       // console.log("testing the ", response.data);
       if (response.data.successful) {
+        setCity(response.data.cities_data[0]?.id);
         dispatch({
           type: "setCities",
           data: response.data.cities_data,

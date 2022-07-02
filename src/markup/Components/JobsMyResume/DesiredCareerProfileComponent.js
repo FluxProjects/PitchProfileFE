@@ -96,7 +96,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
   const [role, setRole] = useState(item?.role ? item?.role : "");
   const [jobType, setJobType] = useState(item?.job_type ? item?.job_type : 1);
   const [employmentType, setEmploymentType] = useState(
-    item?.employment_type ? item?.employment_type : ""
+    item?.employment_type ? item?.employment_type : 1
   );
   const [shift, setShift] = useState(
     item?.preferred_shift ? item?.preferred_shift : 1
@@ -123,7 +123,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
   };
 
   const CallGetStates = async (stateId) => {
-    await dispatch(GetStates(stateId));
+    await dispatch(GetStates(stateId, setStateName, CallGetCities));
   };
 
   const [loading, setLoading] = useState(true);
@@ -160,7 +160,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
     setLoading(false);
   };
   const CallGetCities = async (stateId) => {
-    await dispatch(GetCities(stateId));
+    await dispatch(GetCities(stateId, setCityName));
   };
 
   const callUpdateDesiredCareer = async () => {

@@ -8,6 +8,7 @@ import TextAreaModalComponent from "../TextAreaModalComponent";
 import DropDownModalComponent from "../DropDownModalComponent";
 import TextInputModal from "../TextInputModal";
 import { socialPlatformDrop } from "../../../../utils/DropDownUtils";
+import { validateURL } from "../../../../utils/functions";
 
 export default function EmploymentsModalComp({
   data,
@@ -30,16 +31,27 @@ export default function EmploymentsModalComp({
     isUpdate == true ? data?.description : ""
   );
   const [fieldAlert, setFieldAlert] = useState(false);
+  const [FieldText, setFieldText] = useState("");
 
   const callAction = async () => {
     if (socialProfile == null || socialProfile == "") {
       setFieldAlert(true);
+      setFieldText("select all values");
+
       return;
     }
     if (url == null || url == "") {
       setFieldAlert(true);
+      setFieldText("Please enter URL");
+
       return;
     }
+    if (!validateURL(url)) {
+      setFieldAlert(true);
+      setFieldText("Enter valid URL");
+      return;
+    }
+
     if (isUpdate) {
       console.log("update called");
       await dispatch(
@@ -124,11 +136,7 @@ export default function EmploymentsModalComp({
                 </div> */}
               </div>
             </form>
-            {fieldAlert && (
-              <p className="text-danger">
-                Please fill all the required fields.
-              </p>
-            )}
+            {fieldAlert && <p className="text-danger">{FieldText}</p>}
           </div>
           <div className="modal-footer">
             <button

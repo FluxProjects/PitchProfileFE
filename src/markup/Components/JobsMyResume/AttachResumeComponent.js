@@ -21,7 +21,11 @@ export default function AttachResumeComponent({ isView }) {
         <form className="attach-resume">
           <div className="row">
             <div className="col-lg-12 col-md-12">
-              {state.singleUserData.cover_letter ? (
+              {console.log(
+                "state.singleUserData.cover_letter state.singleUserData.cover_letter ",
+                state.singleUserData.cover_letter
+              )}
+              {state.singleUserData.cover_letter != null ? (
                 <>
                   <span
                     onClick={() => inputRef.click()}

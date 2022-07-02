@@ -470,7 +470,7 @@ export const DeleteCandidateSkill = (id, index) => async (dispatch, state) => {
   };
 
   axios(config)
-    .then(function (response) {
+    .then(async function (response) {
       console.log("d", response.data);
       if (response.data.successful) {
         toast.success("Deleted Successfully!", {
@@ -482,22 +482,14 @@ export const DeleteCandidateSkill = (id, index) => async (dispatch, state) => {
           draggable: true,
           progress: undefined,
         });
+
         var resData = state().candidateSkills;
         resData.splice(index, 1);
         console.log("index", resData);
+
         dispatch({
           type: "SetCandidateSkill",
           data: resData,
-        });
-      } else {
-        toast.error(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
         });
       }
     })

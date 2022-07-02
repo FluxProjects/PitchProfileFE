@@ -511,6 +511,11 @@ export const UploadCoverLetter = (files) => async (dispatch, state) => {
             data: response.data.data,
           });
           dispatch({
+            type: "setSingleUserData",
+            data: response.data.data,
+          });
+
+          dispatch({
             type: "SetAuthToken",
             data: response.data.accessToken,
           });

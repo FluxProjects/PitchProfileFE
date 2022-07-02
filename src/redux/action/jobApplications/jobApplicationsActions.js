@@ -138,6 +138,7 @@ export const GetJobCandidateApplications = (id) => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
+      console.log("responsdesugdhv", response.data);
       if (response.data.successful) {
         dispatch({
           type: "GetJobApplications",
