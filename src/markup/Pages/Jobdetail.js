@@ -156,16 +156,18 @@ export default function Jobdetail(props) {
                           <div className="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                             <h4 className="text-black font-weight-700 p-t10 m-b15">
                               Job Details
-                              {hasGoBack && (
+                              {/* {hasGoBack && (
                                 <span>
                                   <Link
-                                    to={"/company-manage-job"}
+                                    onClick={() => {
+                                      router.goBack();
+                                    }}
                                     className="site-button right-arrow button-sm float-right"
                                   >
                                     Back
                                   </Link>
                                 </span>
-                              )}
+                              )} */}
                             </h4>
                             <ul>
                               <li>
@@ -280,7 +282,9 @@ export default function Jobdetail(props) {
                             {state.PreviewPost.department?.name}
                           </span>
                           <Link
-                            to={"/browse-job-grid"}
+                            onClick={() => {
+                              router.goBack();
+                            }}
                             className="site-button right-arrow button-sm float-right"
                           >
                             Back

@@ -185,15 +185,19 @@ export default function Companyresume(props) {
                               </td>
 
                               <td className="text-center job-links">
-                                <a
-                                  className="text-center"
-                                  href={item?.attachment_url}
-                                >
-                                  <i
-                                    class="fa fa-download"
-                                    aria-hidden="true"
-                                  ></i>
-                                </a>
+                                {item?.attachment_url != null ? (
+                                  <a
+                                    className="text-center"
+                                    href={item?.attachment_url}
+                                  >
+                                    <i
+                                      class="fa fa-download"
+                                      aria-hidden="true"
+                                    ></i>
+                                  </a>
+                                ) : (
+                                  "None uploaded"
+                                )}
 
                                 {/* {item?.attachment_url} */}
                               </td>

@@ -115,10 +115,10 @@ export default function Componypostjobs(props) {
     setLoading(false);
   };
   const CallGetCities = async (stateId) => {
-    await dispatch(GetCities(stateId));
+    await dispatch(GetCities(stateId, setCity));
   };
   const CallGetStates = async (stateId) => {
-    await dispatch(GetStates(stateId));
+    await dispatch(GetStates(stateId, setStateName, CallGetCities));
   };
 
   const callUpdateJobPost = async () => {

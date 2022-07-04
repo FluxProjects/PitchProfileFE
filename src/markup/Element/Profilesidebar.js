@@ -33,7 +33,8 @@ export default function Profilesidebar(props) {
       link: "/my-wishlists-candidate",
       icon: "fa fa-save",
     },
-    { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
+    // { name: "Log Out",onPress: ()=>{
+    // }, link: "/", icon: "fa fa-sign-out" },
   ];
 
   return (

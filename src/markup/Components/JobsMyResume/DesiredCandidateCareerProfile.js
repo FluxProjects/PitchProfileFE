@@ -123,7 +123,7 @@ export default function DesiredCandidateCareerProfile({ isView }) {
   };
 
   const CallGetStates = async (stateId) => {
-    await dispatch(GetStates(stateId));
+    await dispatch(GetStates(stateId, setStateName, CallGetCities));
   };
 
   const [loading, setLoading] = useState(true);
@@ -160,7 +160,7 @@ export default function DesiredCandidateCareerProfile({ isView }) {
     setLoading(false);
   };
   const CallGetCities = async (stateId) => {
-    await dispatch(GetCities(stateId));
+    await dispatch(GetCities(stateId, setCity));
   };
 
   const callUpdateDesiredCareer = async () => {
