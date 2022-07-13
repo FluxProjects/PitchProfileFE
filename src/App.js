@@ -8,7 +8,7 @@ import "./css/skin/skin-1.css";
 import "./plugins/slick/slick.min.css";
 import "./plugins/slick/slick-theme.min.css";
 
-// git@github.com:FluxProjects/pitchprofile.git
+// git@github.com-personal:FluxProjects/pitchprofile.git
 
 import { ToastContainer } from "react-toastify";
 import { Form, Modal, ToggleButton } from "react-bootstrap";
