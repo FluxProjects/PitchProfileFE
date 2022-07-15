@@ -43,6 +43,7 @@ import Browsejoblist from "./Pages/Browsejoblist";
 import MyWishlists from "./Pages/MyWishlists";
 import MyWishlistCompanies from "./Pages/MyWishlistCompanies";
 import MyChat from "./Pages/MyChat/Chat/Chat";
+import AdminPage from "./Pages/AdminPage";
 
 export default function Markup() {
   return (
@@ -97,6 +98,8 @@ export default function Markup() {
           <Route path="/category-all-jobs" component={Categoryalljob} />
           <Route path="/" exact component={Homepage} />
           <Route path="/job-detail" component={Jobdetail} />
+          <Route path="/admin" component={AdminPage} />
+          
           <Route
             path="/browse-candidate-grid"
             component={Browsecandidategrid}

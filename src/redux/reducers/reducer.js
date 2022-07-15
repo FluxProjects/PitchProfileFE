@@ -5,6 +5,9 @@ const initialState = {
   pedningActions: [],
   otp: "",
 
+  // Admin
+  AllUserData: [],
+
   GetAllCandidatesNames: [],
   // messages
   messagesChat: [],
@@ -75,6 +78,10 @@ const changeState = (state = initialState, { type, ...rest }) => {
     case "setSingleUserData": {
       return { ...state, singleUserData: rest.data };
     }
+    case "setAllUserData": {
+      return { ...state, AllUserData: rest.data };
+    }
+
     case "LogoutUser":
       return {
         ...state,

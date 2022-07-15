@@ -2698,6 +2698,76 @@ export const UploadProfileStatus = (status) => async (dispatch, state) => {
     });
 };
 
+export const UploadProfileisReviewd =
+  (is_reviewed, index) => async (dispatch, state) => {
+    console.log("this is awe", is_reviewed);
+
+    var data = JSON.stringify({
+      data: {
+        id: state().userDetails.id,
+        is_reviewed: is_reviewed,
+      },
+    });
+
+    var config = {
+      method: "post",
+      url: `${URL}/profile/update_candidate_is_reviewed`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log("this is awe", response.data);
+        if (response.data.successful) {
+          console.log("data", response.data);
+
+          toast.success("Update Success!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          console.log("state().AllUserData", state().AllUserData);
+          var resData = state().AllUserData;
+          resData[index].is_reviewed = response.data.data.is_reviewed;
+          console.log("resData[index].is_reviewed", resData);
+
+          dispatch({
+            type: "setAllUserData",
+            data: resData,
+          });
+        } else {
+          toast.error(response.data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+        toast.error(error, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  };
+
 export const UpdateDesiredCareer =
   (
     industry_id,
