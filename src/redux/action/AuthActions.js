@@ -646,7 +646,7 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
       type: "SetAuthToken",
       data: "admin",
     });
-    router.push("/jobs-my-resume");
+    router.push("/admin");
     return;
   } else {
     var data = JSON.stringify({
