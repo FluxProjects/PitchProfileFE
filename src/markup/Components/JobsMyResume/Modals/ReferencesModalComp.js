@@ -6,6 +6,7 @@ import {
   GetStates,
   UpdateCandidateReference,
 } from "../../../../redux/action";
+import { validatePhoneNumber } from "../../../../utils/functions";
 // import { GetCities, GetCountries, GetStates } from "../../../redux/action";
 import DropDownModalComponent from "../DropDownModalComponent";
 import TextInputModal from "../TextInputModal";
@@ -61,6 +62,15 @@ export default function ReferencesModalComp({
     if (jobTitle == null || jobTitle == "") {
       setFieldAlert(true);
       return;
+    }
+    if (phone == null || phone != "") {
+      if (!validatePhoneNumber(phone)) {
+        setFieldAlert(true);
+        //   setFieldText("Phone not valid");
+        //   setBtnLoading(false);
+        return;
+        console.log("this is not vlais");
+      }
     }
     if (isUpdate) {
       console.log("update called");

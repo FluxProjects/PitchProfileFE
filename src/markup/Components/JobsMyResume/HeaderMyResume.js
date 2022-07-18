@@ -18,6 +18,7 @@ import {
   GetCityName,
   GetCountryName,
   GetStateName,
+  validatePhoneNumber,
 } from "../../../utils/functions";
 import AttachVideo from "./AttachVideo";
 import DropDownModalComponent from "./DropDownModalComponent";
@@ -96,6 +97,15 @@ export default function HeaderMyResume({ isView }) {
     if (ResumeHeadline == null || ResumeHeadline == "") {
       setFieldAlert(true);
       return;
+    }
+    if (phone == null || phone != "") {
+      if (!validatePhoneNumber(phone)) {
+        setFieldAlert(true);
+        //   setFieldText("Phone not valid");
+        //   setBtnLoading(false);
+        return;
+        console.log("this is not vlais");
+      }
     }
     dispatch(
       UpdateResumeHeader(

@@ -277,16 +277,29 @@ export default function Jobmyresume() {
                         {uniqueResults.map((item) => (
                           <li>{item.message}</li>
                         ))}
+
                         {!state.userDetails.video && <li>No Video uploaded</li>}
-                        {state.userDetails.video &&
-                          !state.userDetails.is_reviewed && (
-                            <li>
-                              Your profile is under review by admin. It will be
-                              public once it has been reviewed
-                            </li>
-                          )}
 
                         {state.candidateDesiredCareer.role == "" && <li></li>}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+                {/* 
+                This section is mandatory please add at leaset top 3 skills.
+                This section is mandatory please add at leaset 1 previous employment. 
+                */}
+                {!state.userDetails.is_reviewed && state.userDetails.video && (
+                  <div className="col-12 m-b30 ">
+                    <div
+                      style={{ backgroundColor: "yellow" }}
+                      className="pending-info text-white p-a25"
+                    >
+                      <ul className="list-check secondry">
+                        <li style={{ color: "black" }}>
+                          Your profile is under review by admin. It will be
+                          public once it has been reviewed
+                        </li>
                       </ul>
                     </div>
                   </div>

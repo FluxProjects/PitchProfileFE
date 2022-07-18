@@ -589,7 +589,7 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success(
-            "Your uploaded video is being reviewed. You will receive an email shortly once it is approved. Please note your profile will be LIVE once video is reviewed and approved!",
+            "Uploaded susscessfully. Your uploaded video is being reviewed.",
             {
               position: "top-right",
               autoClose: 5000,
@@ -600,7 +600,15 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
               progress: undefined,
             }
           );
-
+          // var myVal = state().pedningActions;
+          // var arr = myVal.push(
+          //   "You will receive an email shortly once it is approved. Please note your profile will be LIVE once video is reviewed and approved"
+          // );
+          // dispatch({
+          //   type: "setPendingAction",
+          //   data: arr,
+          // });
+          // come here
           dispatch({
             type: "RegisterUser",
             data: response.data.data,

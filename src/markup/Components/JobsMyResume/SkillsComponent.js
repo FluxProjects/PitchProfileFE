@@ -42,7 +42,14 @@ export default function SkillsComponent({ isView }) {
       {/* skills */}
       <div id="it_skills_bx" className="job-bx table-job-bx bg-white m-b30">
         <div className="d-flex">
-          <h5 className="m-b15">Skills</h5>
+          <h5 className="m-b15">
+            Skills{" "}
+            <span style={{ color: "red", fontSize: 11 }}>
+              {
+                "(This section is mandatory please add at leaset top 3 skills. )"
+              }
+            </span>
+          </h5>
           {!isView && (
             <Link
               to={"#"}

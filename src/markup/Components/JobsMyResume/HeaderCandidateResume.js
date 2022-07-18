@@ -17,6 +17,7 @@ import {
   GetCityName,
   GetCountryName,
   GetStateName,
+  validatePhoneNumber,
 } from "../../../utils/functions";
 import Chat from "../../Pages/MyChat/Chat/Chat";
 import ChatContacts from "../../Pages/MyChat/ChatContacts/ChatContacts";
@@ -106,6 +107,15 @@ export default function HeaderCandidateResume({
     if (ResumeHeadline == null || ResumeHeadline == "") {
       setFieldAlert(true);
       return;
+    }
+    if (phone == null || phone != "") {
+      if (!validatePhoneNumber(phone)) {
+        setFieldAlert(true);
+        //   setFieldText("Phone not valid");
+        //   setBtnLoading(false);
+        return;
+        console.log("this is not vlais");
+      }
     }
     dispatch(
       UpdateResumeHeader(
