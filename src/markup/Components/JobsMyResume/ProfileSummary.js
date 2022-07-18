@@ -86,9 +86,13 @@ export default function ProfileSummary({ isView }) {
                         onChange={(e) => {
                           setDescription(e.target.value);
                         }}
+                        maxLength={500}
                         value={description}
                         placeholder="Type Description"
                       />
+                      <small>
+                        Characters left: {500 - description?.length}
+                      </small>
                     </div>
                   </div>
                 </div>

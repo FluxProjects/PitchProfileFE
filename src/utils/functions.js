@@ -163,6 +163,9 @@ export const validateEmail = (email) => {
     );
 };
 
+export const validatePhoneNumber = (input_str) => {
+  return /^[0-9]+$/.test(input_str);
+};
 export const validateURL = (str) => {
   var regex = new RegExp(
     "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?"

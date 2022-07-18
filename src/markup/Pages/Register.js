@@ -133,7 +133,9 @@ export default function Loginpage3() {
             required={true}
             placeholder={"Enter OTP"}
             type={"number"}
-            label={"OTP"}
+            label={
+              "A verification code has been sent to your email address. Please enter the code below to complete sign up"
+            }
             // key={index}
             onChange={(e) => {
               setOTP(e.target.value);

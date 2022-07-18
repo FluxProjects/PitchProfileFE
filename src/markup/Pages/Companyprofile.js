@@ -23,7 +23,7 @@ import {
 } from "../../redux/action";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
-import { validateURL } from "../../utils/functions";
+import { validateURL, validatePhoneNumber } from "../../utils/functions";
 
 export default function Companyprofile() {
   const state = useSelector((state) => state);
@@ -161,6 +161,15 @@ export default function Companyprofile() {
         setBtnLoading(false);
 
         return;
+      }
+    }
+    if (phone != "") {
+      if (!validatePhoneNumber(phone)) {
+        setFieldAlert(true);
+        setFieldText("Phone not valid");
+        setBtnLoading(false);
+        return;
+        console.log("this is not vlais");
       }
     }
 
