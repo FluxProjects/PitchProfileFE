@@ -274,9 +274,22 @@ export default function Jobmyresume() {
                       <h5>Pending Action</h5>
 
                       <ul className="list-check secondry">
-                        {uniqueResults.map((item) => (
+                        {/* {uniqueResults.map((item) => (
                           <li>{item.message}</li>
-                        ))}
+                        ))} */}
+
+                        {state.candidateEmployments?.length < 1 && (
+                          <li>No employments added</li>
+                        )}
+                        {state.candidateSocialProfiles?.length < 1 && (
+                          <li>No social profiles added</li>
+                        )}
+                        {state.candidateEducations?.length < 1 && (
+                          <li>No educations added</li>
+                        )}
+                        {state.candidateSkills?.length < 1 && (
+                          <li>No skills added</li>
+                        )}
 
                         {!state.userDetails.video && <li>No Video uploaded</li>}
 
