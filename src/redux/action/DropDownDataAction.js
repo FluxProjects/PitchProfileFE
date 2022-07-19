@@ -97,7 +97,7 @@ export const GetStates =
         // console.log("testing the ", response.data.states[0]?.id);
 
         if (response.data.successful) {
-          setStateName(response.data.states[0]?.id);
+          setStateName(-1);
           CallGetCities(response.data.states[0]?.id);
           dispatch({
             type: "setStates",
@@ -142,7 +142,7 @@ export const GetCities = (id, setCity) => async (dispatch) => {
     .then(function (response) {
       // console.log("testing the ", response.data);
       if (response.data.successful) {
-        setCity(response.data.cities_data[0]?.id);
+        setCity(-1);
         dispatch({
           type: "setCities",
           data: response.data.cities_data,

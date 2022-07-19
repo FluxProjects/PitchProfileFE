@@ -422,6 +422,7 @@ export default function Componypostjobs(props) {
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
                                 CallGetStates(e.target.value);
+                                setCity(-1);
                                 setCountry(e.target.value);
                               }}
                               value={country}

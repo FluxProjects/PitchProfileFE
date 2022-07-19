@@ -173,6 +173,7 @@ export default function ReferencesModalComp({
                       onChange={(e) => {
                         console.log("eee", e.target.value);
                         CallGetStates(e.target.value);
+                        setCity(-1);
                         setCountry(e.target.value);
                       }}
                       value={country}
