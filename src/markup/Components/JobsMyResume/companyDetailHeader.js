@@ -113,7 +113,7 @@ export default function CompanyDetailHeader({ isView, callAddRoom }) {
       >
         <Chat
           otherId={state.PreviewSingleCompany.id}
-          RoomId={state.SingleRoomData.id}
+          RoomId={state.SingleRoomName}
         />
       </Modal>
       <div className="col-lg-5 col-md-5 col-sm-12">
