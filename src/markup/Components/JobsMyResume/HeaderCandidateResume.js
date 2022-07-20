@@ -263,8 +263,11 @@ export default function HeaderCandidateResume({
                 onHide={() => toggleModal()}
                 className="modal fade modal-bx-info editor"
               >
-                {/* <Chat otherId={otherId} /> */}
-                <ChatContacts />
+                <Chat
+                  otherId={state?.singleUserData.id}
+                  RoomId={state.SingleRoomName}
+                />
+                {/* <ChatContacts /> */}
               </Modal>
 
               {/* {state.myRooms} */}

@@ -69,7 +69,9 @@ export default function ViewCandidateProfile(props) {
       AddRoom(
         state.userDetails?.company_name ? otherId : state.userDetails?.id,
         state.userDetails?.company_name ? state.userDetails?.id : otherId,
-        otherId + state.userDetails?.id,
+        (state.userDetails?.company_name ? otherId : state.userDetails?.id) +
+          (state.userDetails?.company_name ? state.userDetails?.id : otherId),
+
         setModal
       )
     );

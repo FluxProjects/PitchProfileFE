@@ -19,6 +19,7 @@ import {
   GetCountryName,
   GetStateName,
 } from "../../../utils/functions";
+import Chat from "../../Pages/MyChat/Chat/Chat";
 import AttachVideo from "./AttachVideo";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
@@ -27,6 +28,11 @@ import TextInputModal from "./TextInputModal";
 export default function CompanyDetailHeader({ isView, callAddRoom }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+  const [ChatModal, setChatModal] = useState(false);
+
+  const toggleModal = () => {
+    setChatModal(!ChatModal);
+  };
 
   return (
     <>
@@ -86,7 +92,7 @@ export default function CompanyDetailHeader({ isView, callAddRoom }) {
                 <button
                   onClick={() => {
                     console.log("clis");
-                    callAddRoom();
+                    callAddRoom(toggleModal());
                   }}
                   className="site-button radius-xl"
                   // style={{ position: "fixed", bottom: 20, right: 30 }}
@@ -98,6 +104,18 @@ export default function CompanyDetailHeader({ isView, callAddRoom }) {
           </div>
         </div>
       </div>
+      <Modal
+        // backdrop={false}
+        scrollable={true}
+        show={ChatModal}
+        onHide={() => toggleModal()}
+        className="modal fade modal-bx-info editor"
+      >
+        <Chat
+          otherId={state.PreviewSingleCompany.id}
+          RoomId={state.SingleRoomData.id}
+        />
+      </Modal>
       <div className="col-lg-5 col-md-5 col-sm-12">
         <div className=" text-white "></div>
       </div>

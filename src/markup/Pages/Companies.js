@@ -437,8 +437,8 @@ export default function Companies(props) {
                                     },
                                   }}
                                 >
-                                  {item?.company_name?.substring(0, 8)}
-                                  {item?.company_name?.length > 8 && "... "}
+                                  {item?.company_name?.substring(0, 11)}
+                                  {item?.company_name?.length > 11 && "... "}
                                 </Link>
 
                                 <br />

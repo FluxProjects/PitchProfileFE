@@ -7,6 +7,7 @@ import { formatDate } from "../../../utils/functions";
 export const AddRoom =
   (candidate_id, company_id, room_name, setModal) =>
   async (dispatch, state) => {
+    console.log("room_name", room_name);
     var data = {
       candidate_id,
       company_id,
@@ -23,15 +24,28 @@ export const AddRoom =
     axios(config)
       .then(function (response) {
         console.log("message sdnsa", response.data);
-        if (response.data.status) {
+        if (response.data.message == "Rooms get Successfully") {
+          dispatch({
+            type: "SingleRoomData",
+            data: response.data.data,
+          });
+          dispatch({
+            type: "SingleRoomName",
+            data: response.data.room,
+          });
+        } else if (response.data.message == "Room created Successfully") {
           dispatch({
             type: "myRooms",
             data: response.data.data,
           });
+          dispatch({
+            type: "SingleRoomName",
+            data: response.data.room,
+          });
           setModal(true);
           // router.push("/company-manage-job");
         } else {
-          toast.success(response.data.message, {
+          toast.error(response.data.message, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
