@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import Header from "./../Layout/Header";
@@ -11,13 +11,28 @@ import Owltestimonial from "./../Element/Owlblog1";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuthToken } from "../../redux/action";
 import Header2 from "../Layout/Header2";
+import { GetAllCandidates } from "../../redux/action/candidates/BrowseCandidatesAction";
+import BrowseCandidateGridCard from "./BrowseCandidateGridCard";
 
 var bnr1 = require("./../../images/main-slider/slide2.jpg");
 var bnr2 = require("./../../images/background/bg4.jpg");
 var bnr3 = require("./../../images/lines.png");
 
 export default function Homepage() {
+  const [loading, setLoading] = useState(true);
+  const [isLiked, setIsLiked] = useState();
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const router = useHistory();
+
+  const callGetAllCandidates = async () => {
+    await dispatch(GetAllCandidates());
+    setLoading(false);
+  };
+
   useEffect(() => {
+    callGetAllCandidates();
+
     var i = 0;
 
     // Placeholder Animation Start
@@ -44,10 +59,6 @@ export default function Homepage() {
     // Placeholder Animation End
   }, []);
 
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const router = useHistory();
-
   useEffect(() => {
     // auth
     if (state.authToken) {
@@ -68,83 +79,56 @@ export default function Homepage() {
       <div className="page-content">
         <div
           className="dez-bnr-inr dez-bnr-inr-md"
-          style={{ backgroundImage: "url(" + bnr1 + ")" }}
+          style={{
+            // backgroundImage: "url(" + bnr1 + ")"
+            marginTop: "100px",
+            marginBottom: "100px",
+          }}
         >
           <div className="container">
             <div className="dez-bnr-inr-entry align-m">
               <div className="find-job-bx">
-                <Link to={"/browse-job"} className="site-button button-sm">
-                  Find Jobs, Employment & Career Opportunities
-                </Link>
-                <h2>
-                  Search Between More Then <br />{" "}
-                  <span className="text-primary">50,000</span> Open Jobs.
+                <h2
+                  style={{
+                    fontWeight: 100,
+                    color: "#2e55fa",
+                    textTransform: "uppercase",
+                    marginBottom: 0,
+                  }}
+                >
+                  Pitch your{" "}
+                  <span style={{ fontWeight: "bold", color: "#2e55fa" }}>
+                    talent
+                  </span>
+                  , <br /> get notified and{" "}
+                  <span style={{ fontWeight: "bold", color: "#2e55fa" }}>
+                    get hired.
+                  </span>
                 </h2>
-                <form className="dezPlaceAni">
-                  <div className="row">
-                    <div className="col-lg-4 col-md-6">
-                      <div className="form-group">
-                        <label>Job Title, Keywords, or Phrase</label>
-                        <div className="input-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder=""
-                          />
-                          <div className="input-group-append">
-                            <span className="input-group-text">
-                              <i className="fa fa-search"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-3 col-md-6">
-                      <div className="form-group">
-                        <label>Email address</label>
-                        <div className="input-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder=""
-                          />
-                          <div className="input-group-append">
-                            <span className="input-group-text">
-                              <i className="fa fa-map-marker"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-3 col-md-6">
-                      <div className="form-group">
-                        <Form.Control as="select" custom className="select-btn">
-                          <option>Select Sector</option>
-                          <option>Construction</option>
-                          <option>Corodinator</option>
-                          <option>Employer</option>
-                          <option>Financial Career</option>
-                          <option>Information Technology</option>
-                          <option>Marketing</option>
-                          <option>Quality check</option>
-                          <option>Real Estate</option>
-                          <option>Sales</option>
-                          <option>Supporting</option>
-                          <option>Teaching</option>
-                        </Form.Control>
-                      </div>
-                    </div>
-                    <div className="col-lg-2 col-md-6">
-                      <button
-                        type="submit"
-                        to="/browse-job"
-                        className="site-button btn-block"
-                      >
-                        Find Job
-                      </button>
+                <span style={{ marginBottom: 20, marginTop: 0 }}>
+                  Pitch Profile is a video based sharing network.
+                </span>
+
+                {/* show candidate card */}
+                <div className="section-full mt-2 browse-job p-b50">
+                  <div className="container">
+                    <div className=" row">
+                      {loading ? (
+                        <p>Loading...</p>
+                      ) : (
+                        state.allCandidates
+                          .splice(0, 4)
+                          .map((item, index) => (
+                            <BrowseCandidateGridCard
+                              item={item}
+                              index={index}
+                            />
+                          ))
+                      )}
                     </div>
                   </div>
-                </form>
+                </div>
+                {/* show candidate card */}
               </div>
             </div>
           </div>

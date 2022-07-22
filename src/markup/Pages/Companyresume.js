@@ -83,7 +83,7 @@ export default function Companyresume(props) {
                   <div className="col-xl-3 col-lg-4 m-b30">
                     <Profilesidebar
                       image={`require("./../../images/team/pic1.jpg")`}
-                      isActive="Resume"
+                      isActive="company-resume"
                     />
                   </div>
                   <div className="col-xl-9 col-lg-8 m-b30">

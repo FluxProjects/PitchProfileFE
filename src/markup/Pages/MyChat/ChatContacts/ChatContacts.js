@@ -55,23 +55,35 @@ const ChatContacts = ({ location }) => {
     <div className="">
       <div className="containerChatContact">
         <InfoBar room={"Chat"} />
-        {state?.myRooms?.map((item) => (
-          <button
-            onClick={() => {
-              setOtherId(
-                state.userDetails?.company_name
-                  ? item?.candidate_id
-                  : item?.company_id
-              );
-              setRoomId(item?.id);
-              setChatModal(true);
-            }}
-          >
-            {state.userDetails?.company_name
-              ? item?.candidate?.f_name + " " + item?.candidate?.l_name
-              : item?.company?.company_name}
-          </button>
-        ))}
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            flex: 1,
+            alignItems: "flex-start",
+          }}
+        >
+          {state?.myRooms?.map((item) => (
+            <button
+              className="btnStyle"
+              onClick={() => {
+                setOtherId(
+                  state.userDetails?.company_name
+                    ? item?.candidate_id
+                    : item?.company_id
+                );
+                setRoomId(item?.id);
+                setChatModal(true);
+              }}
+            >
+              {state.userDetails?.company_name
+                ? item?.candidate?.f_name + " " + item?.candidate?.l_name
+                : item?.company?.company_name}
+            </button>
+          ))}
+        </div>
+
         <Modal
           // backdrop={false}
           scrollable={true}

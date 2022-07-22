@@ -104,6 +104,20 @@ export default function CompanyDetailHeader({ isView, callAddRoom }) {
           </div>
         </div>
       </div>
+      {/* message */}
+      <>
+        <button
+          onClick={() => {
+            console.log("clis");
+            toggleModal();
+          }}
+          className="site-button radius-xl"
+          style={{ position: "fixed", bottom: 20, right: 30 }}
+        >
+          <i className="fa fa-comment"></i>
+        </button>
+      </>
+      {/* message */}
       <Modal
         // backdrop={false}
         scrollable={true}

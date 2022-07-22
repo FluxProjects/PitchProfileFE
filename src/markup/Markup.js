@@ -44,6 +44,7 @@ import MyWishlists from "./Pages/MyWishlists";
 import MyWishlistCompanies from "./Pages/MyWishlistCompanies";
 import MyChat from "./Pages/MyChat/Chat/Chat";
 import AdminPage from "./Pages/AdminPage";
+import LoginContainer from "./Pages/LoginContainer";
 
 export default function Markup() {
   return (
@@ -63,7 +64,7 @@ export default function Markup() {
           {/* Candidate Profile Page */}
           <Route path="/jobs-profile" component={Jobprofile} />
           {/* Login/Register */}
-          <Route path="/login" component={Loginpage3} />
+          <Route path="/login" component={LoginContainer} />
           <Route path="/company-login" component={CompanyLogin} />
           <Route path="/register" component={Register} />
           <Route path="/company-register" component={CompanyRegister} />
@@ -99,7 +100,7 @@ export default function Markup() {
           <Route path="/" exact component={Homepage} />
           <Route path="/job-detail" component={Jobdetail} />
           <Route path="/admin" component={AdminPage} />
-          
+
           <Route
             path="/browse-candidate-grid"
             component={Browsecandidategrid}

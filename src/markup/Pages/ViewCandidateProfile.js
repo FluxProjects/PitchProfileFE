@@ -30,6 +30,7 @@ import ReferencesCandidate from "../Components/JobsMyResume/ReferencesCandidate"
 import DesiredCandidateCareerProfile from "../Components/JobsMyResume/DesiredCandidateCareerProfile";
 import Header2 from "../Layout/Header2";
 import Chat from "./MyChat/Chat/Chat";
+import { Modal } from "react-bootstrap";
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
