@@ -13645,3 +13645,33 @@ ol.commentlist li .star-rating {
 .ekwNMM {
   display: none !important;
 }
+
+.flexJustifyAround {
+  display: flex;
+  justify-content: space-around;
+}
+
+.borderTab {
+  border: 3px solid white;
+  border-radius: 50px;
+  margin-right: 1px;
+  padding: 0px 20px;
+}
+
+.borderTabActive {
+  border: 3px solid white;
+  border-radius: 50px;
+  background-color: white;
+  color: blue;
+  margin-right: 1px;
+  padding: 0px 20px;
+}
+
+.borderRadiusText {
+  border-radius: 50px !important;
+  background-color: white;
+}
+
+.bgImageReg {
+  background-image: url("https://img.freepik.com/free-vector/blank-blue-halftone-background_53876-99003.jpg?w=2000");
+}

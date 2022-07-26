@@ -117,7 +117,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
   ];
 
   return (
-    <div className="page-content bg-gray login-form-bx browse-job login-style2">
+    <div>
       <Modal
         // backdrop={false}
         scrollable={true}
@@ -157,25 +157,25 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
         </div>
       </Modal>
       <div
-        className="login-2 p-a30 seth d-flex align-self-center m-auto wow fadeInRight"
-        data-wow-delay="0.8s"
+        style={{}}
+        className="align-items-baseline d-flex justify-content-center"
       >
         <div
-          className="tab-content nav"
-          style={{
-            padding: "35px",
-            borderRadius: "11px",
-            border: "5px solid white",
-            borderRadius: 10,
-          }}
+        // className=" tab-content nav"
+        // style={{
+        //   padding: "35px",
+        //   borderRadius: "11px",
+        //   border: "5px solid white",
+        //   borderRadius: 10,
+        // }}
         >
           <form id="login" className="tab-pane active col-12 p-a0 ">
-            <ul className="nav nav-tabs">
+            <ul className="nav flexJustifyAround nav-tabs">
               <li
                 onClick={() => {
                   setIsCurrentTab("login");
                 }}
-                className="cursorPointer active tabLoginPage"
+                className="cursorPointer  active tabLoginPage"
               >
                 <a>Sign in</a>
               </li>
@@ -183,11 +183,23 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
                 onClick={() => {
                   setIsCurrentTab("register");
                 }}
-                className="cursorPointer"
+                className="cursorPointer borderTabActive borderTab"
               >
                 <a>Sign up</a>
               </li>
             </ul>
+
+            <h2
+              style={{
+                fontWeight: "bolder",
+                color: "blue",
+                textTransform: "uppercase",
+                marginBottom: 0,
+                fontSize: 20,
+              }}
+            >
+              Sign up for free
+            </h2>
             {textInputFields.map((item, index) => (
               <RegisterTextInput
                 name={item.name}
@@ -210,7 +222,11 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
                   callRegisterUser(e);
                 }}
                 disabled={isDisabled}
-                style={isDisabled ? { background: "gray" } : {}}
+                style={
+                  isDisabled
+                    ? { background: "gray" }
+                    : { background: "white", borderRadius: 50, color: "blue" }
+                }
                 className="site-button"
               >
                 Sign up

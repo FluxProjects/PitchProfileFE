@@ -45,6 +45,7 @@ import MyWishlistCompanies from "./Pages/MyWishlistCompanies";
 import MyChat from "./Pages/MyChat/Chat/Chat";
 import AdminPage from "./Pages/AdminPage";
 import LoginContainer from "./Pages/LoginContainer";
+import LoginCompanyContainer from "./Pages/LoginCompanyContainer";
 
 export default function Markup() {
   return (
@@ -65,7 +66,7 @@ export default function Markup() {
           <Route path="/jobs-profile" component={Jobprofile} />
           {/* Login/Register */}
           <Route path="/login" component={LoginContainer} />
-          <Route path="/company-login" component={CompanyLogin} />
+          <Route path="/company-login" component={LoginCompanyContainer} />
           <Route path="/register" component={Register} />
           <Route path="/company-register" component={CompanyRegister} />
           {/* Update Password - Candidate/Company */}

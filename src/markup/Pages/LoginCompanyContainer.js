@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { LoginUser } from "../../redux/action";
 import RegisterTextInput from "../Components/RegisterTextInput";
+import CompanyLogin from "./CompanyLogin";
+import CompanyRegister from "./CompanyRegister";
 import Loginpage3 from "./Loginpage3";
 import Register from "./Register";
 
@@ -60,7 +62,7 @@ export default function LoginContainer() {
         /> */}
         <div className="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
           <p className="font-weight-600 text-center">
-            <Link to={"/company-login"}>Login as a comapny</Link>.
+            <Link to={"/login"}>Login as a candidate</Link>.
           </p>
           <div className="row gx-lg-5 align-items-center mb-5">
             <div className="col-lg-6 mb-5 mb-lg-0" style={{ zIndex: 10 }}>
@@ -91,7 +93,7 @@ export default function LoginContainer() {
               >
                 <div className="card-body px-4 py-5 px-md-5">
                   {isCurrentTab == "login" ? (
-                    <Loginpage3
+                    <CompanyLogin
                       isCurrentTab={isCurrentTab}
                       setIsCurrentTab={(e) => {
                         console.log("test", e);
@@ -99,7 +101,7 @@ export default function LoginContainer() {
                       }}
                     />
                   ) : (
-                    <Register
+                    <CompanyRegister
                       isCurrentTab={isCurrentTab}
                       setIsCurrentTab={(e) => {
                         console.log("test", e);

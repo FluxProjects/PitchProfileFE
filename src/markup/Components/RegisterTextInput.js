@@ -14,7 +14,7 @@ export default function RegisterTextInput({
         <input
           name="dzName"
           required={required}
-          className="form-control"
+          className="form-control borderRadiusText "
           placeholder={placeholder}
           type={type}
           onChange={onChange}

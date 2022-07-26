@@ -46,27 +46,25 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
 
   return (
     <div
-      style={{
-        padding: "90px",
-      }}
+      style={{}}
       className="align-items-baseline d-flex justify-content-center"
     >
       <div
         className=" tab-content nav"
-        style={{
-          padding: "35px",
-          borderRadius: "11px",
-          border: "5px solid white",
-          borderRadius: 10,
-        }}
+        // style={{
+        //   padding: "35px",
+        //   borderRadius: "11px",
+        //   border: "5px solid white",
+        //   borderRadius: 10,
+        // }}
       >
         <form id="login" className="tab-pane active col-12 p-a0 ">
-          <ul className="nav nav-tabs">
+          <ul className="nav flexJustifyAround nav-tabs">
             <li
               onClick={() => {
                 setIsCurrentTab("login");
               }}
-              className="cursorPointer active tabLoginPage"
+              className="cursorPointer borderTabActive active tabLoginPage"
             >
               <a>Sign in</a>
             </li>
@@ -74,11 +72,22 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
               onClick={() => {
                 setIsCurrentTab("register");
               }}
-              className="cursorPointer"
+              className="cursorPointer borderTab"
             >
               <a>Sign up</a>
             </li>
           </ul>
+
+          <h2
+            style={{
+              fontWeight: "bolder",
+              color: "blue",
+              textTransform: "uppercase",
+              marginBottom: 0,
+            }}
+          >
+            Sign in
+          </h2>
 
           {textInputFields.map((item, index) => (
             <RegisterTextInput
@@ -103,6 +112,7 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
                 callLoginUser(e);
               }}
               className="site-button"
+              style={{ background: "white", borderRadius: 50, color: "blue" }}
             >
               login
             </button>
