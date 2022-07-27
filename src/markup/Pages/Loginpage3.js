@@ -112,7 +112,7 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
             <Link
               data-toggle="tab"
               to="#forgot-password"
-              className="site-button-link forget-pass pull-right m-t15"
+              className="site-button-link text-white forget-pass pull-right m-t15"
             >
               <i className="fa fa-unlock-alt"></i> Forgot Password
             </Link>

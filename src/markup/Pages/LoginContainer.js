@@ -67,6 +67,8 @@ export default function LoginContainer() {
           </p>
           <div className="row gx-lg-5 align-items-center mb-5">
             <div className="col-lg-6 mb-5 mb-lg-0" style={{ zIndex: 10 }}>
+              <img src={require("../../images/networkImg.png")} />
+
               <h1
                 className="my-3 text-left display-5 fw-bold ls-tight"
                 style={{ color: "blue" }}

@@ -80,9 +80,9 @@ export default function Homepage() {
         <div
           className="dez-bnr-inr dez-bnr-inr-md"
           style={{
-            // backgroundImage: "url(" + bnr1 + ")"
-            marginTop: "100px",
-            marginBottom: "100px",
+            backgroundImage:
+              "url(https://media.istockphoto.com/vectors/colorful-flowing-lines-abstract-a3-poster-on-white-background-vector-id1340909513?b=1&k=20&m=1340909513&s=170667a&w=0&h=LCyRA6FTItF8JBhK03-QAxlVtAuwI_xp70YzJc7nhKo=)",
+            height: "100vh",
           }}
         >
           <div className="container">
