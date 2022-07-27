@@ -45,11 +45,13 @@ export default function CompanyLogin({ setIsCurrentTab }) {
   ];
 
   return (
-    <div
-      style={{}}
-      className="align-items-baseline d-flex justify-content-center"
-    >
+    <div className="align-items-baseline d-flex justify-content-center">
       <div
+        style={{
+          border: "2px solid white",
+          borderRadius: 50,
+          padding: 50,
+        }}
         className=" tab-content nav"
         // style={{
         //   padding: "35px",

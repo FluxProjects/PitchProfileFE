@@ -164,13 +164,18 @@ export default function CompanyRegister({ setIsCurrentTab }) {
         className="align-items-baseline d-flex justify-content-center"
       >
         <div
-        // className=" tab-content nav"
-        // style={{
-        //   padding: "35px",
-        //   borderRadius: "11px",
-        //   border: "5px solid white",
-        //   borderRadius: 10,
-        // }}
+          style={{
+            border: "2px solid white",
+            borderRadius: 50,
+            padding: 50,
+          }}
+          // className=" tab-content nav"
+          // style={{
+          //   padding: "35px",
+          //   borderRadius: "11px",
+          //   border: "5px solid white",
+          //   borderRadius: 10,
+          // }}
         >
           <form id="login" className="tab-pane active col-12 p-a0 ">
             <ul className="nav flexJustifyAround ">
