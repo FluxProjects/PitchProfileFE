@@ -80,7 +80,7 @@ export default function CompanyLogin({ setIsCurrentTab }) {
             </li>
           </ul>
 
-          <h2 className="textHeadingLoginContainer">Sign in</h2>
+          <h2 className="textHeadingLoginContainer">Sign in.</h2>
           <p className="font-weight-600 text-white text-center">
             Don't have an account with us,{" "}
             <Link className="text-white" to={"/register"}>

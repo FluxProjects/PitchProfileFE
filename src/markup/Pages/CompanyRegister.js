@@ -197,7 +197,7 @@ export default function CompanyRegister({ setIsCurrentTab }) {
               </li>
             </ul>
 
-            <h2 className="textHeadingLoginContainer">Sign up for free</h2>
+            <h2 className="textHeadingLoginContainer">Sign up for free.</h2>
             <p className="font-weight-600 text-white text-left">
               Join Thousands of Companies that <br /> use Pitch Profile everyday
             </p>

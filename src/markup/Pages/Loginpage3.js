@@ -83,7 +83,7 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
             </li>
           </ul>
 
-          <h2 className="textHeadingLoginContainer">Sign in</h2>
+          <h2 className="textHeadingLoginContainer">Sign in.</h2>
 
           {textInputFields.map((item, index) => (
             <RegisterTextInput
