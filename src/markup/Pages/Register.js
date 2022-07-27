@@ -170,12 +170,12 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
         // }}
         >
           <form id="login" className="tab-pane active col-12 p-a0 ">
-            <ul className="nav flexJustifyAround nav-tabs">
+            <ul className="nav flexJustifyAround ">
               <li
                 onClick={() => {
                   setIsCurrentTab("login");
                 }}
-                className="cursorPointer  active tabLoginPage"
+                className="cursorPointer borderTab"
               >
                 <a>Sign in</a>
               </li>
@@ -189,17 +189,10 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
               </li>
             </ul>
 
-            <h2
-              style={{
-                fontWeight: "bolder",
-                color: "blue",
-                textTransform: "uppercase",
-                marginBottom: 0,
-                fontSize: 20,
-              }}
-            >
-              Sign up for free
-            </h2>
+            <h2 className="textHeadingLoginContainer">Sign up for free</h2>
+            <p className="font-weight-600 text-white text-left">
+              Join Thousands of Companies that <br /> use Pitch Profile everyday
+            </p>
             {textInputFields.map((item, index) => (
               <RegisterTextInput
                 name={item.name}
@@ -212,8 +205,12 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
               />
             ))}
 
-            <p className="font-weight-600 text-center">
-              If you have an account with us, <Link to={"/login"}>Log in</Link>.
+            <p className="font-weight-600 text-white text-center">
+              If you have an account with us,{" "}
+              <Link className="text-white" to={"/login"}>
+                Log in
+              </Link>
+              .
             </p>
             <div className="text-left">
               <button
@@ -227,7 +224,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
                     ? { background: "gray" }
                     : { background: "white", borderRadius: 50, color: "blue" }
                 }
-                className="site-button"
+                className="site-button btnLoginReg"
               >
                 Sign up
               </button>

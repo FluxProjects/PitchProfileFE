@@ -59,7 +59,7 @@ export default function CompanyLogin({ setIsCurrentTab }) {
         // }}
       >
         <form id="login" className="tab-pane active col-12 p-a0 ">
-          <ul className="nav flexJustifyAround nav-tabs">
+          <ul className="nav flexJustifyAround ">
             <li
               onClick={() => {
                 setIsCurrentTab("login");
@@ -78,18 +78,12 @@ export default function CompanyLogin({ setIsCurrentTab }) {
             </li>
           </ul>
 
-          <h2
-            style={{
-              fontWeight: "bolder",
-              color: "blue",
-              textTransform: "uppercase",
-              marginBottom: 0,
-            }}
-          >
-            Sign in
-          </h2>
-          <p className="font-weight-600 text-center">
-            Don't have an account with us, <Link to={"/register"}>Sign up</Link>
+          <h2 className="textHeadingLoginContainer">Sign in</h2>
+          <p className="font-weight-600 text-white text-center">
+            Don't have an account with us,{" "}
+            <Link className="text-white" to={"/register"}>
+              Sign up
+            </Link>
             .
           </p>
           {textInputFields.map((item, index) => (
@@ -110,7 +104,7 @@ export default function CompanyLogin({ setIsCurrentTab }) {
                 e.preventDefault();
                 callLoginUser(e);
               }}
-              className="site-button"
+              className="site-button btnLoginReg"
             >
               login
             </button>

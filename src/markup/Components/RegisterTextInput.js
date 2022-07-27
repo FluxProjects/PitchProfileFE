@@ -9,7 +9,7 @@ export default function RegisterTextInput({
 }) {
   return (
     <div className="form-group">
-      <label>{label}*</label>
+      {/* <label className="labelCol">{label}*</label> */}
       <div className="input-group">
         <input
           name="dzName"

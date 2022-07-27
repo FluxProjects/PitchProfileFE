@@ -13648,7 +13648,16 @@ ol.commentlist li .star-rating {
 
 .flexJustifyAround {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.textHeadingLoginContainer {
+  font-weight: bolder;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-align: left;
+  margin-top: 15px;
 }
 
 .borderTab {
@@ -13656,6 +13665,19 @@ ol.commentlist li .star-rating {
   border-radius: 50px;
   margin-right: 1px;
   padding: 0px 20px;
+  color: white;
+}
+
+.btnLoginReg {
+  background: white !important;
+  border-radius: 50px !important;
+  color: blue !important;
+  width: 100%
+}
+
+.labelCol {
+  color: white;
+  text-align: left;
 }
 
 .borderTabActive {
@@ -13673,5 +13695,8 @@ ol.commentlist li .star-rating {
 }
 
 .bgImageReg {
-  background-image: url("https://img.freepik.com/free-vector/blank-blue-halftone-background_53876-99003.jpg?w=2000");
+  background-image: url("https://media.istockphoto.com/vectors/abstract-blurred-background-defocused-blue-gradient-vector-id1213363511?k=20&m=1213363511&s=612x612&w=0&h=X8tdBNGOWDwEboIBl_HAGJhjfPGM56xESHLWuqDqlYI=");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-size: 3000px 3000px;
 }

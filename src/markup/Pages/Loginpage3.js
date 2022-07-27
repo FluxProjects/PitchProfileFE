@@ -59,7 +59,7 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
         // }}
       >
         <form id="login" className="tab-pane active col-12 p-a0 ">
-          <ul className="nav flexJustifyAround nav-tabs">
+          <ul className="nav flexJustifyAround ">
             <li
               onClick={() => {
                 setIsCurrentTab("login");
@@ -78,16 +78,7 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
             </li>
           </ul>
 
-          <h2
-            style={{
-              fontWeight: "bolder",
-              color: "blue",
-              textTransform: "uppercase",
-              marginBottom: 0,
-            }}
-          >
-            Sign in
-          </h2>
+          <h2 className="textHeadingLoginContainer">Sign in</h2>
 
           {textInputFields.map((item, index) => (
             <RegisterTextInput
@@ -101,8 +92,11 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
             />
           ))}
 
-          <p className="font-weight-600 text-center">
-            Don't have an account with us, <Link to={"/register"}>Sign up</Link>
+          <p className="font-weight-600 text-white text-center">
+            Don't have an account with us,{" "}
+            <Link className="text-white" to={"/register"}>
+              Sign up
+            </Link>
             .
           </p>
           <div className="text-left">
@@ -111,10 +105,9 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
                 e.preventDefault();
                 callLoginUser(e);
               }}
-              className="site-button"
-              style={{ background: "white", borderRadius: 50, color: "blue" }}
+              className="site-button btnLoginReg"
             >
-              login
+              Login
             </button>
             <Link
               data-toggle="tab"
@@ -128,7 +121,7 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
         <form id="forgot-password" className="tab-pane fade col-12 p-a0">
           <p>We will send you an email to reset your password. </p>
           <div className="form-group">
-            <label>E-Mail address *</label>
+            <label className="labelCol">E-Mail address *</label>
             <div className="input-group">
               <input
                 name="dzName"

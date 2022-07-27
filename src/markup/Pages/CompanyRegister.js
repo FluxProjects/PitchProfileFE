@@ -173,12 +173,12 @@ export default function CompanyRegister({ setIsCurrentTab }) {
         // }}
         >
           <form id="login" className="tab-pane active col-12 p-a0 ">
-            <ul className="nav flexJustifyAround nav-tabs">
+            <ul className="nav flexJustifyAround ">
               <li
                 onClick={() => {
                   setIsCurrentTab("login");
                 }}
-                className="cursorPointer  active tabLoginPage"
+                className="cursorPointer borderTab"
               >
                 <a>Sign in</a>
               </li>
@@ -192,8 +192,9 @@ export default function CompanyRegister({ setIsCurrentTab }) {
               </li>
             </ul>
 
-            <p className="font-weight-600 text-center">
-              If you have an account with us, <Link to={"/login"}>Log in</Link>.
+            <h2 className="textHeadingLoginContainer">Sign up for free</h2>
+            <p className="font-weight-600 text-white text-left">
+              Join Thousands of Companies that <br /> use Pitch Profile everyday
             </p>
             {textInputFields.map((item, index) => (
               <RegisterTextInput
@@ -215,11 +216,17 @@ export default function CompanyRegister({ setIsCurrentTab }) {
                 }}
                 disabled={isDisabled}
                 style={isDisabled ? { background: "gray" } : {}}
-                className="site-button"
+                className="site-button btnLoginReg"
               >
                 Sign up
               </button>
-
+              <p className="font-weight-600 text-white text-center">
+                If you have an account with us,{" "}
+                <Link className="text-white" to={"/login"}>
+                  Log in
+                </Link>
+                .
+              </p>
               {/* <button
                         onClick={(e) => {
                           e.preventDefault();
