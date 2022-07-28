@@ -81,13 +81,7 @@ export default function CompanyLogin({ setIsCurrentTab }) {
           </ul>
 
           <h2 className="textHeadingLoginContainer">Sign in.</h2>
-          <p className="font-weight-600 text-white text-center">
-            Don't have an account with us,{" "}
-            <Link className="text-white" to={"/register"}>
-              Sign up
-            </Link>
-            .
-          </p>
+
           {textInputFields.map((item, index) => (
             <RegisterTextInput
               name={item.name}
@@ -99,7 +93,13 @@ export default function CompanyLogin({ setIsCurrentTab }) {
               onChange={item.onChange}
             />
           ))}
-
+          <p className="font-weight-600 text-white text-center">
+            Don't have an account with us,{" "}
+            <Link className="text-white" to={"/register"}>
+              Sign up
+            </Link>
+            .
+          </p>
           <div className="text-left">
             <button
               onClick={(e) => {

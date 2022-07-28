@@ -91,10 +91,12 @@ export default function Footer() {
             </div>
             <div className="col-xl-5 col-lg-5 col-md-8 col-sm-8 col-12">
               <div className="widget border-0">
-                <h5 className="m-b30 text-white">Frequently Asked Questions</h5>
+                <h5 className="m-b30 text-black">Frequently Asked Questions</h5>
                 <ul className="list-2 list-line">
                   <li>
-                    <Link to={""}>Privacy & Seurty</Link>
+                    <Link className="text-black" to={""}>
+                      Privacy & Seurty
+                    </Link>
                   </li>
                   <li>
                     <Link to={""}>Terms of Serice</Link>

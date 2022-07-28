@@ -213,6 +213,13 @@ export default function CompanyRegister({ setIsCurrentTab }) {
               />
             ))}
 
+            <p className="font-weight-600 text-white text-center">
+              If you have an account with us,{" "}
+              <Link className="text-white" to={"/login"}>
+                Log in
+              </Link>
+              .
+            </p>
             <div className="text-left">
               <button
                 onClick={(e) => {
@@ -225,13 +232,7 @@ export default function CompanyRegister({ setIsCurrentTab }) {
               >
                 Sign up
               </button>
-              <p className="font-weight-600 text-white text-center">
-                If you have an account with us,{" "}
-                <Link className="text-white" to={"/login"}>
-                  Log in
-                </Link>
-                .
-              </p>
+
               {/* <button
                         onClick={(e) => {
                           e.preventDefault();

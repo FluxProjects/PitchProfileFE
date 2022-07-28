@@ -1916,6 +1916,10 @@
   display: flex;
 }
 
+.list-line a {
+  color: #000 !important;
+}
+
 .list-row .list-line p {
   font-family: "Lato", sans-serif;
 }

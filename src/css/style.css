@@ -216,8 +216,16 @@ a {
 .zIndexHeart {
   z-index: 10;
 }
+.BtnJoinNow {
+  background: white;
+  padding: 10px;
+  border-radius: 25px;
+  color: blue;
+}
+
 .noHover:hover {
   background: none !important;
+  color: #2e55fa !important;
 }
 a:hover,
 a:focus {
@@ -1345,7 +1353,7 @@ dl dd {
   color: #fff;
 }
 .text-black {
-  color: #000;
+  color: #000 !important;
 }
 .text-gray {
   color: #f5f6f6;
@@ -3064,6 +3072,11 @@ blockquote:before {
   width: 100%;
   position: relative;
 }
+.main-barOffline {
+  background: transparent;
+  width: 100%;
+  position: relative;
+}
 .header-curve .logo-header:before,
 .header-curve .logo-header:after {
   background-color: #fff;
@@ -3135,9 +3148,10 @@ blockquote:before {
   text-transform: uppercase;
   position: relative;
 }
+
 .header-nav .nav > li > a {
   border-radius: 0px;
-  color: #000;
+  /* color: #000; */
   font-size: 14px;
   padding: 30px 12px;
   cursor: pointer;
@@ -11329,7 +11343,7 @@ footer p,
 footer strong,
 footer b,
 footer {
-  color: #c6cffa;
+  color: #000000;
 }
 footer h1 a,
 footer h2 a,
@@ -11417,7 +11431,7 @@ footer .widget_services ul li {
 /*widget Getintuch*/
 .footer-top {
   padding: 80px 0 20px;
-  background-color: #222845;
+  background-color: #ffffff;
 }
 .footer-top.overlay-black-dark:after {
   opacity: 0.85;
@@ -13705,8 +13719,15 @@ ol.commentlist li .star-rating {
 }
 
 .bgImageReg {
-  background-image: url("https://images.unsplash.com/photo-1557683311-eac922347aa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=829&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1557683311-eac922347aa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=829&q=80");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+  background: rgb(33, 108, 213);
+  background: linear-gradient(
+    90deg,
+    rgba(33, 108, 213, 1) 0%,
+    rgba(161, 177, 253, 1) 50%,
+    rgba(19, 26, 141, 1) 100%
+  );
   /* background-size: 3000px 3000px; */
 }
