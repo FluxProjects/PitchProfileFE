@@ -82,7 +82,7 @@ export default function LoginContainer() {
                   style={{
                     fontWeight: "bold",
                     fontFamily: "Poppins",
-
+                    textTransform: "capitalize",
                     color: "white",
                   }}
                 >
