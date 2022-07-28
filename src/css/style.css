@@ -219,8 +219,9 @@ a {
 .BtnJoinNow {
   background: white;
   padding: 10px;
+  font-size: 12px;
   border-radius: 25px;
-  color: blue;
+  color: #2e55fa;
 }
 
 .noHover:hover {
@@ -13660,9 +13661,17 @@ ol.commentlist li .star-rating {
   display: none !important;
 }
 
+.conatinerLogin {
+  border: 2px solid white !important;
+  border-radius: 50px !important;
+  padding: 27px !important;
+}
+
 .flexJustifyAround {
   display: flex;
   justify-content: center;
+  /* flex-wrap: wrap; */
+  list-style: none;
 }
 
 .flexJustifyAround > li {

@@ -164,12 +164,7 @@ export default function CompanyRegister({ setIsCurrentTab }) {
         className="align-items-baseline d-flex justify-content-center"
       >
         <div
-          style={{
-            border: "2px solid white",
-            borderRadius: 50,
-            padding: 50,
-          }}
-          // className=" tab-content nav"
+          className=" conatinerLogin tab-content nav"
           // style={{
           //   padding: "35px",
           //   borderRadius: "11px",

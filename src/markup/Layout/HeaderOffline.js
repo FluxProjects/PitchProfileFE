@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 var bnr3 = require("./../../images/background/bg3.jpg");
 
-export default function Header() {
+export default function Header({ textColor }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -138,7 +138,7 @@ export default function Header() {
                       }
                     >
                       <Link
-                        style={{ color: "#ffff" }}
+                        style={{ color: textColor ? textColor : "#ffff" }}
                         to={item.link}
                         className="dez-page"
                       >

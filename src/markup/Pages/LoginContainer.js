@@ -64,10 +64,24 @@ export default function LoginContainer() {
                 className="my-3 text-left display-5 fw-bold ls-tight"
                 style={{ color: "blue" }}
               >
-                <span style={{ fontWeight: 100, fontSize: 80, color: "white" }}>
+                <span
+                  style={{
+                    fontWeight: 100,
+                    fontFamily: "Poppins",
+                    fontSize: 80,
+                    color: "white",
+                  }}
+                >
                   WHO
                 </span>{" "}
-                <span style={{ fontWeight: "bold", color: "white" }}>
+                <span
+                  style={{
+                    fontWeight: "bold",
+                    fontFamily: "Poppins",
+
+                    color: "white",
+                  }}
+                >
                   we are
                 </span>{" "}
                 <br />

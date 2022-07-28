@@ -4,6 +4,7 @@ import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
 import Latestblogowl from "./../Element/Owlblog2";
 import Header2 from "../Layout/Header2";
+import HeaderOffline from "../Layout/HeaderOffline";
 import { useSelector } from "react-redux";
 
 var bnr1 = require("./../../images/banner/bnr1.jpg");
@@ -14,13 +15,19 @@ export default function AboutUs(props) {
 
   return (
     <div className="page-wraper">
-      {state.userDetails?.company_name ? <Header2 /> : <Header />}
+      {state.authToken == "" ? null : state.userDetails?.company_name ? (
+        <Header2 />
+      ) : (
+        <Header />
+      )}
 
       <div className="page-content bg-white">
         <div
           className="dez-bnr-inr overlay-black-middle"
           style={{ backgroundImage: "url(" + bnr1 + ")" }}
         >
+          {state.authToken == "" && <HeaderOffline />}
+
           <div className="container">
             <div className="dez-bnr-inr-entry">
               <h1 className="text-white">About Us</h1>

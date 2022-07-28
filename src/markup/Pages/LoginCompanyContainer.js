@@ -70,23 +70,20 @@ export default function LoginContainer() {
               >
                 <span
                   style={{
+                    fontWeight: 100,
                     fontFamily: "Poppins",
-                    fontWeight: 200,
                     fontSize: 80,
                     color: "white",
-                    textShadow: "1px 1px 10px gray",
                   }}
                 >
                   WHO
                 </span>{" "}
                 <span
                   style={{
-                    textTransform: "uppercase",
-                    fontFamily: "Poppins",
-                    fontWeight: 900,
                     fontWeight: "bold",
+                    fontFamily: "Poppins",
+
                     color: "white",
-                    textShadow: "1px 1px 10px gray",
                   }}
                 >
                   we are
@@ -95,7 +92,7 @@ export default function LoginContainer() {
               </h1>
               <p
                 className="mb-4 text-left opacity-70"
-                style={{ color: "white" }}
+                style={{ color: "white", fontFamily: "Poppins" }}
               >
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Temporibus, expedita iusto veniam atque, magni tempora mollitia
