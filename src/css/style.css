@@ -8599,6 +8599,7 @@ ul[class*="list-"] {
 
 .dez-tabs .tab-pane {
   padding: 20px 0;
+  padding-bottom: 0px;
 }
 .dez-tabs .nav-tabs > li > a {
   background: #f6f7f8;
