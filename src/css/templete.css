@@ -32,7 +32,7 @@
 }
 .fullwidth .is-fixed .header-nav .nav > li:hover > a,
 .fullwidth .is-fixed .header-nav .nav > li.active > a {
-  color: #fff;
+  color: #fff !important;
 }
 .fullwidth .is-fixed .header-nav .nav > li > a {
   color: #222845;
@@ -1917,7 +1917,11 @@
 }
 
 .list-line a {
-  color: #000 !important;
+  color: gray !important;
+}
+
+.list-line a:hover {
+  color: #2e55fa !important;
 }
 
 .list-row .list-line p {

@@ -100,7 +100,7 @@ export default function LoginContainer() {
                 ab ipsum nisi dolorem modi. Quos?
               </p>
             </div>
-            <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
+            <div className="col-lg-6 mb-5 mb-lg-0 p-0 position-relative">
               {/* <Link className="text-white" to={"/login"}>
                 Login as a candidate
               </Link> */}
@@ -112,7 +112,7 @@ export default function LoginContainer() {
                   // borderRadius: 50,
                 }}
               >
-                <div className="card-body ">
+                <div className="card-body p-0">
                   {isCurrentTab == "login" ? (
                     <CompanyLogin
                       isCurrentTab={isCurrentTab}

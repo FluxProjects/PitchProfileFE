@@ -10,12 +10,12 @@ export default function Footer() {
             <div className="col-xl-5 col-lg-4 col-md-12 col-sm-12">
               <div className="widget">
                 <img
-                  src={require("./../../images/logo-white.png")}
+                  src={require("./../../images/logo.png")}
                   width="180"
                   className="m-b15"
                   alt=""
                 />
-                <p className="text-capitalize m-b20">
+                <p style={{ color: "gray" }} className="text-capitalize  m-b20">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry has been the industry's standard dummy
                   text ever since the.
@@ -65,22 +65,22 @@ export default function Footer() {
                       <i className="fa fa-google-plus"></i>
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       to={""}
                       className="site-button white linkedin circle "
                     >
                       <i className="fa fa-linkedin"></i>
                     </Link>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <Link
                       to={""}
                       className="site-button white instagram circle "
                     >
                       <i className="fa fa-instagram"></i>
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to={""} className="site-button white twitter circle ">
                       <i className="fa fa-twitter"></i>
@@ -94,7 +94,7 @@ export default function Footer() {
                 <h5 className="m-b30 text-black">Frequently Asked Questions</h5>
                 <ul className="list-2 list-line">
                   <li>
-                    <Link className="text-black" to={""}>
+                    <Link className="textFooter" to={""}>
                       Privacy & Seurty
                     </Link>
                   </li>

@@ -76,7 +76,9 @@ export default function CompanyLogin({ setIsCurrentTab }) {
           </ul>
 
           <h2 className="textHeadingLoginContainer">Sign in.</h2>
-
+          <p className="font-weight-600 text-white text-left">
+            Join Thousands of Companies that <br /> use Pitch Profile everyday
+          </p>
           {textInputFields.map((item, index) => (
             <RegisterTextInput
               name={item.name}

@@ -8,7 +8,7 @@ export default function RegisterTextInput({
   placeholder,
 }) {
   return (
-    <div className="form-group">
+    <div style={{ marginBottom: "1rem" }} className="form-group">
       {/* <label className="labelCol">{label}*</label> */}
       <div className="input-group">
         <input

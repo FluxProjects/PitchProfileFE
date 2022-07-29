@@ -97,7 +97,7 @@ export default function LoginContainer() {
                 ab ipsum nisi dolorem modi. Quos?
               </p>
             </div>
-            <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
+            <div className="col-lg-6 mb-5 mb-lg-0 p-0 position-relative">
               {/* <p className="font-weight-600 text-white text-center">
                 <Link className="text-white" to={"/company-login"}>
                   Login as a comapny
@@ -112,7 +112,7 @@ export default function LoginContainer() {
                   // borderRadius: 50,
                 }}
               >
-                <div className="card-body px-4  px-md-5">
+                <div className="card-body p-0">
                   {isCurrentTab == "login" ? (
                     <Loginpage3
                       isCurrentTab={isCurrentTab}

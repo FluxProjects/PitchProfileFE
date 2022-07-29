@@ -13425,6 +13425,12 @@ ol.commentlist li .star-rating {
 
 /* Google Recaptcha */
 @media screen and (max-width: 991px) {
+  .conatinerLogin {
+    border: 2px solid white !important;
+    border-radius: 25px !important;
+    padding: 35px !important;
+    width: 80%;
+  }
   .profile-edit .candidate-info .candidate-detail {
     display: block !important;
   }
@@ -13513,6 +13519,15 @@ ol.commentlist li .star-rating {
   }
   .mo-left .navbar-toggler.open span {
     background: #fff;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .conatinerLogin {
+    border: 2px solid white !important;
+    border-radius: 25px !important;
+    padding: 35px !important;
+    width: 70%;
   }
 }
 
@@ -13661,12 +13676,6 @@ ol.commentlist li .star-rating {
   display: none !important;
 }
 
-.conatinerLogin {
-  border: 2px solid white !important;
-  border-radius: 50px !important;
-  padding: 27px !important;
-}
-
 .flexJustifyAround {
   display: flex;
   justify-content: center;
@@ -13682,9 +13691,9 @@ ol.commentlist li .star-rating {
   font-weight: bolder;
   font-family: "Poppins";
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   text-align: left;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .borderTab {
@@ -13728,15 +13737,13 @@ ol.commentlist li .star-rating {
 }
 
 .bgImageReg {
-  /* background-image: url("https://images.unsplash.com/photo-1557683311-eac922347aa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=829&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1557683311-eac922347aa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=829&q=80"); */
   background-repeat: no-repeat;
-  background-size: cover; */
-  background: rgb(33, 108, 213);
+  background-size: cover;
   background: linear-gradient(
     90deg,
     rgba(33, 108, 213, 1) 0%,
     rgba(161, 177, 253, 1) 50%,
     rgba(19, 26, 141, 1) 100%
   );
-  /* background-size: 3000px 3000px; */
 }

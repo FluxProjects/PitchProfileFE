@@ -9,8 +9,10 @@ import Featureblog from "./../Element/Featureblog";
 import Jobsection from "./../Element/Jobsection";
 import Owltestimonial from "./../Element/Owlblog1";
 import { useDispatch, useSelector } from "react-redux";
-import { getAuthToken } from "../../redux/action";
+import { GetAllJobPosts, getAuthToken } from "../../redux/action";
 import Header2 from "../Layout/Header2";
+import HeaderOffline from "../Layout/HeaderOffline";
+
 import { GetAllCandidates } from "../../redux/action/candidates/BrowseCandidatesAction";
 import BrowseCandidateGridCard from "./BrowseCandidateGridCard";
 
@@ -30,7 +32,12 @@ export default function Homepage() {
     setLoading(false);
   };
 
+  const callGetAllJobs = async () => {
+    await dispatch(GetAllJobPosts());
+  };
+
   useEffect(() => {
+    callGetAllJobs();
     callGetAllCandidates();
 
     var i = 0;
@@ -59,14 +66,14 @@ export default function Homepage() {
     // Placeholder Animation End
   }, []);
 
-  useEffect(() => {
-    // auth
-    if (state.authToken) {
-      callGetAuth();
-    } else {
-      router.push("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   // auth
+  //   if (state.authToken) {
+  //     callGetAuth();
+  //   } else {
+  //     router.push("/login");
+  //   }
+  // }, []);
 
   const callGetAuth = async () => {
     await dispatch(getAuthToken(state.authToken, router));
@@ -74,8 +81,14 @@ export default function Homepage() {
 
   return (
     <div className="page-wraper">
-      {state.userDetails?.company_name ? <Header2 /> : <Header />}
-
+      {state.authToken == "" ? null : state.userDetails?.company_name ? (
+        <Header2 />
+      ) : (
+        <Header />
+      )}
+      {state.authToken == "" && (
+        <HeaderOffline textColor={"rgb(46, 85, 250)"} />
+      )}
       <div className="page-content">
         <div
           className="dez-bnr-inr dez-bnr-inr-md"
@@ -133,7 +146,7 @@ export default function Homepage() {
             </div>
           </div>
         </div>
-        <div className="section-full job-categories content-inner-2 bg-white">
+        {/* <div className="section-full job-categories content-inner-2 bg-white">
           <div className="container">
             <div className="section-head d-flex head-counter clearfix">
               <div className="mr-auto">
@@ -161,9 +174,9 @@ export default function Homepage() {
             </div>
             <Jobcategories />
           </div>
-        </div>
+        </div> */}
 
-        <Featureblog />
+        {/* <Featureblog /> */}
 
         <Jobsection />
         <div

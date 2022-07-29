@@ -80,7 +80,9 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
           </ul>
 
           <h2 className="textHeadingLoginContainer">Sign in.</h2>
-
+          <p className="font-weight-600 text-white text-left">
+            Join Thousands of Companies that <br /> use Pitch Profile everyday
+          </p>
           {textInputFields.map((item, index) => (
             <RegisterTextInput
               name={item.name}
@@ -121,17 +123,16 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
         </form>
         <form id="forgot-password" className="tab-pane fade col-12 p-a0">
           <p>We will send you an email to reset your password. </p>
-          <div className="form-group">
-            <label className="labelCol">E-Mail address *</label>
-            <div className="input-group">
-              <input
-                name="dzName"
-                required=""
-                className="form-control"
-                placeholder="Your Email Address"
-                type="email"
-              />
-            </div>
+
+          <label className="labelCol">E-Mail address *</label>
+          <div className="input-group">
+            <input
+              name="dzName"
+              required=""
+              className="form-control"
+              placeholder="Your Email Address"
+              type="email"
+            />
           </div>
           <div className="text-left">
             <Link

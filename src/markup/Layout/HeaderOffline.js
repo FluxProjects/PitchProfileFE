@@ -102,7 +102,11 @@ export default function Header({ textColor }) {
               <div style={{ marginTop: 5 }} className="logo-header mostion">
                 <Link to={"./"}>
                   <img
-                    src={require("./../../images/logo.png")}
+                    src={
+                      textColor
+                        ? require("./../../images/logo.png")
+                        : require("./../../images/LogoutLogo.png")
+                    }
                     className="logo"
                     alt="img"
                   />
@@ -138,7 +142,14 @@ export default function Header({ textColor }) {
                       }
                     >
                       <Link
-                        style={{ color: textColor ? textColor : "#ffff" }}
+                        style={
+                          textColor
+                            ? {
+                                color: textColor,
+                                backgroundColor: "transparent",
+                              }
+                            : { color: "#ffff" }
+                        }
                         to={item.link}
                         className="dez-page"
                       >
@@ -204,7 +215,11 @@ export default function Header({ textColor }) {
                         <ul className="sub-menu">
                           {dropDownVals.map((item) => (
                             <li>
-                              <Link to={item.link} className="dez-page">
+                              <Link
+                                style={{ color: "black" }}
+                                to={item.link}
+                                className="dez-page"
+                              >
                                 {item.name}
                                 {/* <span className="new-page">New</span> */}
                               </Link>
@@ -225,11 +240,13 @@ export default function Header({ textColor }) {
                           display: "flex",
                           flex: 1,
                           flexDirection: "column",
+                          position: "relative",
                         }}
                       >
                         <div
                           style={{
                             color: "#ffff",
+                            fontWeight: "bold",
                           }}
                         >
                           <p className="BtnJoinNow">
@@ -238,15 +255,18 @@ export default function Header({ textColor }) {
                         </div>
 
                         {/* <Link className="dez-page">All links</Link> */}
-                        <ul className="sub-menu">
+                        <ul
+                          style={{ position: "absolute", top: "55px" }}
+                          className="sub-menu"
+                        >
                           <li>
                             <Link to={"/login"} className="dez-page">
-                              As a Professional
+                              Professional
                             </Link>
                           </li>
                           <li>
                             <Link to={"/company-login"} className="dez-page">
-                              As a Comapny
+                              Comapny
                             </Link>
                           </li>
                         </ul>

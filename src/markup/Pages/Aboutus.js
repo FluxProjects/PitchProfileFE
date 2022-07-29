@@ -20,14 +20,14 @@ export default function AboutUs(props) {
       ) : (
         <Header />
       )}
-
+      {state.authToken == "" && (
+        <HeaderOffline textColor={"rgb(46, 85, 250)"} />
+      )}
       <div className="page-content bg-white">
         <div
           className="dez-bnr-inr overlay-black-middle"
           style={{ backgroundImage: "url(" + bnr1 + ")" }}
         >
-          {state.authToken == "" && <HeaderOffline />}
-
           <div className="container">
             <div className="dez-bnr-inr-entry">
               <h1 className="text-white">About Us</h1>
