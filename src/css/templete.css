@@ -24,7 +24,7 @@
 .fullwidth .header-nav .nav > li > a {
   padding: 10px 15px;
   border-radius: 4px;
-  color: white !important;
+  color: white;
 }
 .fullwidth .is-fixed .header-nav .nav > li {
   padding: 13px 0;

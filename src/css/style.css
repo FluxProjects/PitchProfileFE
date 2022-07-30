@@ -13432,6 +13432,20 @@ ol.commentlist li .star-rating {
     padding: 21px !important;
     width: 105%;
   }
+  .header-nav .nav > li .sub-menu {
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    display: block;
+    left: 0;
+    list-style: none;
+    opacity: 0;
+    padding: 10px 0;
+    position: absolute;
+    visibility: hidden;
+    width: 220px;
+    z-index: 10;
+    border-radius: 4px;
+  }
   .profile-edit .candidate-info .candidate-detail {
     display: block !important;
   }

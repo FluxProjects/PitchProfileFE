@@ -122,9 +122,15 @@ export default function Header({ textColor }) {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span></span>
-                <span></span>
-                <span></span>
+                <span
+                  style={{ backgroundColor: textColor ? "black" : "white" }}
+                ></span>
+                <span
+                  style={{ backgroundColor: textColor ? "black" : "white" }}
+                ></span>
+                <span
+                  style={{ backgroundColor: textColor ? "black" : "white" }}
+                ></span>
               </button>
 
               <div
@@ -145,7 +151,7 @@ export default function Header({ textColor }) {
                         style={
                           textColor
                             ? {
-                                color: textColor,
+                                color: `${textColor} `,
                                 backgroundColor: "transparent",
                               }
                             : { color: "#ffff" }
