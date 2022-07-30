@@ -98,10 +98,13 @@ export const GetStates =
 
         if (response.data.successful) {
           setStateName(-1);
-          CallGetCities(response.data.states[0]?.id);
+          const sortedArr = response.data.states.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+          CallGetCities(sortedArr[0]?.id);
           dispatch({
             type: "setStates",
-            data: response.data.states,
+            data: sortedArr,
           });
         } else {
           toast.error(response.data.message, {
@@ -143,9 +146,12 @@ export const GetCities = (id, setCity) => async (dispatch) => {
       // console.log("testing the ", response.data);
       if (response.data.successful) {
         setCity(-1);
+        const sortedArr = response.data.cities_data.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
         dispatch({
           type: "setCities",
-          data: response.data.cities_data,
+          data: sortedArr,
         });
       } else {
         toast.error(response.data.message, {

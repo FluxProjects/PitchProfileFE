@@ -200,7 +200,7 @@ export default function Header({ textColor }) {
                         <ul className="sub-menu">
                           {dropDownVals.map((item) => (
                             <li>
-                              <Link to={item.link} className="dez-page">
+                              <Link to={item.link} className=" dez-page">
                                 {item.name}
                                 {/* <span className="new-page">New</span> */}
                               </Link>

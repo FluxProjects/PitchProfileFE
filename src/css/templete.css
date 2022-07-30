@@ -24,6 +24,7 @@
 .fullwidth .header-nav .nav > li > a {
   padding: 10px 15px;
   border-radius: 4px;
+  color: white !important;
 }
 .fullwidth .is-fixed .header-nav .nav > li {
   padding: 13px 0;
@@ -958,6 +959,7 @@
 @media only screen and (max-width: 1280px) {
   .fullwidth .header-nav .nav > li > a {
     padding: 10px 8px;
+    color: black !important;
   }
   .job-search-form h2 {
     font-size: 40px;
@@ -985,6 +987,7 @@
   }
   .fullwidth .header-nav .nav > li > a {
     border-radius: 0;
+    color: black !important;
   }
   .nav.navbar-nav li:hover a i.fa-chevron-down {
     color: #fff;

@@ -3125,7 +3125,7 @@ blockquote:before {
   padding: 0;
 }
 .navbar-toggler span {
-  background: #666;
+  background: white;
 }
 .is-fixed .navbar-toggler {
   margin: 28px 0 20px 10px;
@@ -13429,8 +13429,8 @@ ol.commentlist li .star-rating {
   .conatinerLogin {
     border: 2px solid white !important;
     border-radius: 25px !important;
-    padding: 35px !important;
-    width: 80%;
+    padding: 21px !important;
+    width: 105%;
   }
   .profile-edit .candidate-info .candidate-detail {
     display: block !important;
