@@ -8,14 +8,14 @@
 
 .btnStyle {
   background: white;
-  border-bottom: 1px solid #2e55fa;
-  border-top: 1px solid #2e55fa;
+  border-bottom: 1px solid #1b6cd5;
+  border-top: 1px solid #1b6cd5;
   border-left: 0;
   border-right: 0;
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
-  color: #2e55fa;
+  color: #1b6cd5;
   font-weight: "bold";
 }
 

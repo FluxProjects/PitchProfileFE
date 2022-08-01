@@ -151,6 +151,7 @@ export default function BrowseCandidateGridCard({
             style={{
               marginTop: "-10px",
               marginLeft: "25px",
+              color: "black",
             }}
             className="mb-0 cardGridFont"
           >
@@ -169,6 +170,7 @@ export default function BrowseCandidateGridCard({
             style={{
               marginTop: "-10px",
               marginLeft: "25px",
+              color: "black",
             }}
             className="mb-0 cardGridFont"
           >

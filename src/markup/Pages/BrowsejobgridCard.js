@@ -151,7 +151,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                   style={{
                     fontSize: "14px",
                     fontWeight: "normal",
-                    color: "#2e55fa",
+                    color: "#1b6cd5",
                     textDecoration: "none",
                   }}
                 >

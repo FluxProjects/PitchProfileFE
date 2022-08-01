@@ -168,13 +168,13 @@ export default function Header({ textColor }) {
 
                   {state.authToken ? (
                     <>
-                      <li className="active float-right">
+                      <li className=" float-right">
                         <Link
                           onClick={(e) => {
                             e.preventDefault();
                             callLogoutUser();
                           }}
-                          className="site-button"
+                          className="logoutBtn"
                         >
                           <i className="fa fa-user"></i> Logout
                         </Link>

@@ -217,16 +217,17 @@ a {
   z-index: 10;
 }
 .BtnJoinNow {
-  background: white;
+  background: #1b6cd5;
   padding: 10px;
   font-size: 12px;
   border-radius: 25px;
-  color: #2e55fa;
+  border: 1px solid white;
+  color: white;
 }
 
 .noHover:hover {
   background: none !important;
-  color: #2e55fa !important;
+  color: #1b6cd5 !important;
 }
 a:hover,
 a:focus {
@@ -3074,7 +3075,7 @@ blockquote:before {
   position: relative;
 }
 .main-barOffline {
-  background: transparent;
+  background: white;
   width: 100%;
   position: relative;
 }
@@ -13422,6 +13423,13 @@ ol.commentlist li .star-rating {
 }
 .g-recaptcha > div {
   width: 250px !important;
+}
+
+.logoutBtn {
+  background: white !important;
+  border: 1px solid #1766cf !important;
+  border-radius: 50px !important;
+  color: #1766cf !important;
 }
 
 /* Google Recaptcha */

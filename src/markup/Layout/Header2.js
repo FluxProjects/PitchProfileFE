@@ -105,7 +105,7 @@ export default function Header2() {
       link: "/my-wishlists-company",
       icon: "fa fa-heart",
     },
-    { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
+    // { name: "Log Out", link: "/", icon: "fa fa-sign-out" },
   ];
 
   const callLogoutUser = async () => {
@@ -156,7 +156,13 @@ export default function Header2() {
                           : ""
                       }
                     >
-                      <Link to={item.link} className="dez-page">
+                      <Link
+                        style={{
+                          color: "#1b6cd5",
+                        }}
+                        to={item.link}
+                        className="dez-page"
+                      >
                         {item.name}
                       </Link>
                     </li>
@@ -166,15 +172,15 @@ export default function Header2() {
 
                   {state.authToken ? (
                     <>
-                      <li className="active float-right">
+                      <li className=" float-right">
                         <Link
                           onClick={(e) => {
                             e.preventDefault();
                             callLogoutUser();
                           }}
-                          className="site-button"
+                          className="logoutBtn"
                         >
-                          <i className="fa fa-user"></i> Logout
+                          Logout
                         </Link>
                       </li>
 

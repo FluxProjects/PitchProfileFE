@@ -140,7 +140,7 @@ export default function AppliedJobGrid({ item, index }) {
                   style={{
                     fontSize: "14px",
                     fontWeight: "normal",
-                    color: "#2e55fa",
+                    color: "#1b6cd5",
                     textDecoration: "none",
                   }}
                 >

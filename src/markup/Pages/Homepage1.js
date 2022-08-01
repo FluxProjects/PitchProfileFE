@@ -104,21 +104,31 @@ export default function Homepage() {
                 <h2
                   style={{
                     fontWeight: 100,
-                    color: "#2e55fa",
+                    color: "#1b6cd5",
                     textTransform: "uppercase",
                     marginBottom: 0,
+                    fontWeight: 200,
+                    fontFamily: "Poppins",
                   }}
                 >
                   Pitch your{" "}
-                  <span style={{ fontWeight: "bold", color: "#2e55fa" }}>
+                  <span style={{ fontWeight: "bold", color: "#1b6cd5" }}>
                     talent
                   </span>
                   , <br /> get notified and{" "}
-                  <span style={{ fontWeight: "bold", color: "#2e55fa" }}>
+                  <span style={{ fontWeight: "bold", color: "#1b6cd5" }}>
                     get hired.
                   </span>
                 </h2>
-                <span style={{ marginBottom: 20, marginTop: 0 }}>
+                <span
+                  style={{
+                    marginBottom: 20,
+                    color: "3e3e3e",
+                    fontFamily: "Poppins",
+                    marginTop: 0,
+                    fontWeight: 400,
+                  }}
+                >
                   Pitch Profile is a video based sharing network.
                 </span>
 

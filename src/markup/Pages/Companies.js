@@ -456,7 +456,7 @@ export default function Companies(props) {
                                     style={{
                                       // fontSize: "14px",
                                       fontWeight: "normal",
-                                      color: "#2e55fa",
+                                      color: "#1b6cd5",
                                       textDecoration: "none",
                                     }}
                                   >

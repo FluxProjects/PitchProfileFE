@@ -159,7 +159,13 @@ export default function Header() {
                           : ""
                       }
                     >
-                      <Link to={item.link} className="dez-page">
+                      <Link
+                        style={{
+                          color: "#1b6cd5",
+                        }}
+                        to={item.link}
+                        className="dez-page"
+                      >
                         {item.name}
                       </Link>
                     </li>
@@ -169,15 +175,15 @@ export default function Header() {
 
                   {state.authToken ? (
                     <>
-                      <li className="active float-right">
+                      <li className=" float-right">
                         <Link
                           onClick={(e) => {
                             e.preventDefault();
                             callLogoutUser();
                           }}
-                          className="site-button"
+                          className="logoutBtn"
                         >
-                          <i className="fa fa-user"></i> Logout
+                          Logout
                         </Link>
                       </li>
 
