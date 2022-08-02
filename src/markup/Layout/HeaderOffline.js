@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 var bnr3 = require("./../../images/background/bg3.jpg");
 
-export default function Header({ textColor }) {
+export default function Header({ textColor, fromLogin }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -97,7 +97,16 @@ export default function Header({ textColor }) {
     <>
       <header className="site-header mo-left header fullwidth">
         <div className="sticky-header main-bar-wraper navbar-expand-lg">
-          <div className="main-barOffline clearfix">
+          <div
+            style={
+              fromLogin
+                ? {
+                    background: "transparent",
+                  }
+                : {}
+            }
+            className="main-barOffline clearfix"
+          >
             <div className="container clearfix">
               <div style={{ marginTop: 5 }} className="logo-header mostion">
                 <Link to={"./"}>
