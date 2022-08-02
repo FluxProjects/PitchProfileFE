@@ -8,14 +8,18 @@ export default function TextInputModal({
   min,
   max,
   value,
+  fieldHighlight,
   disabled,
 }) {
+  console.log("testingt ehes", fieldHighlight);
   return (
     <>
       <input
+        className={
+          fieldHighlight == true ? "form-control borderRed" : "form-control"
+        }
         disabled={disabled}
         type={type}
-        className="form-control"
         placeholder={placeholder}
         onChange={onChange}
         min={min}

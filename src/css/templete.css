@@ -574,7 +574,7 @@
 .submit-resume .form-control,
 .submit-resume .btn.dropdown-toggle.btn-default {
   background-color: #fff !important;
-  border: 0 !important;
+  border: 0;
   box-shadow: 0 0 10px 0 rgba(0, 24, 128, 0.1) !important;
 }
 .custom-control-label:before {

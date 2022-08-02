@@ -229,17 +229,18 @@ export const updateUser =
         gender: parseInt(gender),
         marital_status: parseInt(marital_status),
         passport_number,
-        disability,
-        disability_description,
+        disability: "",
+        disability_description: "",
         address,
         city_id,
         state_id,
         country_id,
-        hometown_country_id,
+        hometown_country_id: "",
         phone,
         email,
       },
     });
+    console.log("testing te", data);
     var config = {
       method: "post",
       url: `${URL}/profile/update_profile`,
@@ -589,7 +590,7 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success(
-            "Uploaded susscessfully. Your uploaded video is being reviewed.",
+            "Uploaded successfully. Your uploaded video is being reviewed.",
             {
               position: "top-right",
               autoClose: 5000,

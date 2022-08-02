@@ -74,6 +74,9 @@ export default function Jobprofile() {
   const [phone, setPhone] = useState(state.userDetails.phone);
   const [email, setEmail] = useState(state.userDetails.email);
   const [fieldAlert, setFieldAlert] = useState(false);
+  const [fieldText, setFieldText] = useState(false);
+
+  const [fieldHighlight, setFieldHighlight] = useState("");
 
   const [LangArr, setLangArr] = useState([
     {
@@ -120,18 +123,30 @@ export default function Jobprofile() {
   const callUpdateUser = async () => {
     if (fname == null || fname == "") {
       setFieldAlert(true);
+      setFieldHighlight("fname");
+      setFieldText("Phone enter first name");
+
       return;
     }
     if (lname == null || lname == "") {
       setFieldAlert(true);
+      setFieldHighlight("lname");
+      setFieldText("Phone enter last name");
+
       return;
     }
     if (gender == null) {
       setFieldAlert(true);
+      setFieldHighlight("gender");
+      setFieldText("Phone select gender");
+
       return;
     }
     if (address == null || address == "") {
       setFieldAlert(true);
+      setFieldHighlight("address");
+      setFieldText("Please enter address");
+
       return;
     }
     // if (country == null || country == "") {
@@ -148,22 +163,27 @@ export default function Jobprofile() {
     // }
     if (email == null || email == "") {
       setFieldAlert(true);
+      setFieldHighlight("email");
+      setFieldText("Email not valid");
+
       return;
     }
 
     if (phone == null || phone != "") {
       if (!validatePhoneNumber(phone)) {
         setFieldAlert(true);
-        //   setFieldText("Phone not valid");
+        setFieldHighlight("phone");
+
+        setFieldText("Phone not valid");
         //   setBtnLoading(false);
         return;
         console.log("this is not vlais");
       }
     }
-    if (passport == null || passport == "") {
-      setFieldAlert(true);
-      return;
-    }
+    // if (passport == null || passport == "") {
+    //   setFieldAlert(true);
+    //   return;
+    // }
     setFieldAlert(false);
     await dispatch(
       updateUser(
@@ -246,6 +266,9 @@ export default function Jobprofile() {
                                 <span className="text-danger"> *</span>
                               </label>
                               <TextInputModal
+                                fieldHighlight={
+                                  fieldHighlight == "fname" ? true : false
+                                }
                                 placeholder={"Enter First Name"}
                                 value={fname}
                                 onChange={(e) => {
@@ -262,6 +285,9 @@ export default function Jobprofile() {
                               </label>
 
                               <TextInputModal
+                                fieldHighlight={
+                                  fieldHighlight == "lname" ? true : false
+                                }
                                 placeholder={"Enter Last Name"}
                                 value={lname}
                                 onChange={(e) => {
@@ -339,7 +365,7 @@ export default function Jobprofile() {
                             <div className="form-group">
                               <label>
                                 Passport Number:{" "}
-                                <span className="text-danger"> *</span>
+                                {/* <span className="text-danger"> *</span> */}
                               </label>
 
                               <TextInputModal
@@ -653,6 +679,9 @@ export default function Jobprofile() {
                               <br />
                               {/* <label>{email}</label> */}
                               <TextInputModal
+                                fieldHighlight={
+                                  fieldHighlight == "email" ? true : false
+                                }
                                 disabled={true}
                                 placeholder={"info@example.com"}
                                 value={email}
@@ -668,6 +697,9 @@ export default function Jobprofile() {
                                 Phone: <span className="text-danger"> *</span>
                               </label>
                               <TextInputModal
+                                fieldHighlight={
+                                  fieldHighlight == "phone" ? true : false
+                                }
                                 placeholder={"Phone number"}
                                 value={phone}
                                 onChange={(e) => {
@@ -679,7 +711,7 @@ export default function Jobprofile() {
                         </div>
                         {fieldAlert && (
                           <p className="text-danger">
-                            Please fill all the required fields.
+                            {fieldAlert ? fieldText : ""}
                           </p>
                         )}
                         <button

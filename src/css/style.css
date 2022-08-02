@@ -216,6 +216,11 @@ a {
 .zIndexHeart {
   z-index: 10;
 }
+
+.borderRed{
+  border: 1px solid red !important;
+}
+
 .BtnJoinNow {
   background: #1b6cd5;
   padding: 10px;
