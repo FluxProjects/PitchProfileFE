@@ -36,6 +36,8 @@ export default function Jobdetail(props) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
+  const onClickLetter = () => {};
+
   const handleClose = () => {
     setShow(false);
   };
@@ -459,6 +461,21 @@ export default function Jobdetail(props) {
                       </div>
                     </div>
 
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        <label>Use uploaded Cover Letter</label>
+                        <br />
+                        <input
+                          onClick={() => {
+                            onClickLetter();
+                          }}
+                          // defaultChecked={}
+                          type="checkbox"
+                        />{" "}
+                        Use uploaded cover letter
+                      </div>
+                    </div>
+
                     {/* <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>Upload Resume</label>
@@ -493,6 +510,7 @@ export default function Jobdetail(props) {
                 </button>
                 <Link
                   // to={"/jobs-applied-job"}
+
                   type="button"
                   className="site-button"
                 >
