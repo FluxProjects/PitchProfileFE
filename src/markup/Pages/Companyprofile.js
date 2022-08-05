@@ -262,6 +262,7 @@ export default function Companyprofile() {
                   <div className="col-xl-3 col-lg-4 m-b30">
                     <div className="sticky-top">
                       <Profilesidebar
+                        loading={loading}
                         image={`require("./../../images/team/pic1.jpg")`}
                         isActive="Company Profile"
                       />
@@ -407,7 +408,7 @@ export default function Companyprofile() {
                                   setPhone(e.target.value);
                                 }}
                                 value={phone}
-                                placeholder="Phone"
+                                placeholder="+12345678"
                               />
                             </div>
                           </div>
@@ -629,7 +630,7 @@ export default function Companyprofile() {
                             Loading....
                           </button>
                         )}
-                        {!loading ? (
+                        {/* {!loading ? (
                           <Link
                             to={{
                               pathname: "/company-detail",
@@ -650,7 +651,7 @@ export default function Companyprofile() {
                           >
                             Loading...
                           </button>
-                        )}
+                        )} */}
                       </form>
                     </div>
                   </div>

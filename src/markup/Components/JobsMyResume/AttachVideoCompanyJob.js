@@ -3,7 +3,11 @@ import ReactPlayer from "react-player";
 import { useDispatch, useSelector } from "react-redux";
 import { SaveJobVideo, UploadProfileVid } from "../../../redux/action";
 
-export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
+export default function AttachVideoCompanyJob({
+  isView,
+  setVideoFile,
+  setLoading,
+}) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [videoSelected, setvideoSelected] = useState(false);
@@ -116,11 +120,13 @@ export default function AttachVideoCompanyJob({ isView, setVideoFile }) {
           id="customFile"
           ref={(refParam) => (inputRef = refParam)}
           onChange={(e) => {
+            // setLoading(true);
             console.log("files", e.target.files);
             setVideoFile(e.target.files);
 
             dispatch(SaveJobVideo(e.target.files));
             setvideoSelected(true);
+            // setLoading(false);
           }}
         />
       </div>
