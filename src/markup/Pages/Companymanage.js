@@ -206,7 +206,7 @@ export default function Companymanage() {
                             </td>
                             <td className="application text-primary">
                               <Link
-                                className="cursorPointer"
+                                className="cursorPointer text-center"
                                 to={{
                                   pathname: `company-resume/${item?.id}`,
                                   state: { fromFilter: true },
@@ -215,7 +215,10 @@ export default function Companymanage() {
                                   dispatch(filterJobsbyId(item?.id, router));
                                 }}
                               >
-                                {item?.job_applications?.length} Applications
+                                {console.log("TESTHDCDS", item)}
+                                {item?.job_applications?.length > 0
+                                  ? item?.job_applications?.length
+                                  : 0}{" "}
                               </Link>
                             </td>
                             <td className="expired pending">

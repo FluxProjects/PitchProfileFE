@@ -217,7 +217,7 @@ a {
   z-index: 10;
 }
 
-.borderRed{
+.borderRed {
   border: 1px solid red !important;
 }
 
@@ -3131,7 +3131,7 @@ blockquote:before {
   padding: 0;
 }
 .navbar-toggler span {
-  background: white;
+  background: black;
 }
 .is-fixed .navbar-toggler {
   margin: 28px 0 20px 10px;

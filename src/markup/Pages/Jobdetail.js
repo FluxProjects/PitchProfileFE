@@ -49,6 +49,8 @@ export default function Jobdetail(props) {
   const [loading, setLoading] = useState(true);
   const [description, setDescription] = useState("");
   const [useUploaded, setUseUploaded] = useState(false);
+  const [uploadNew, setUploadNew] = useState(false);
+  const [additionalDoc, setAdditionalDoc] = useState(false);
   const [hasGoBack, setHasGoBack] = useState(
     props?.location?.state?.isNavigateFromManageJob
       ? props?.location?.state?.isNavigateFromManageJob
@@ -583,7 +585,10 @@ export default function Jobdetail(props) {
         </div>
 
         <Modal
-          show={show}
+          show={
+            // true
+            show
+          }
           onHide={() => handleClose()}
           className="modal fade modal-bx-info editor"
         >
@@ -605,60 +610,85 @@ export default function Jobdetail(props) {
               </div>
               <div className="modal-body">
                 <form>
+                  <label>Cover Letter</label>
+
                   <div className="row">
-                    {!useUploaded ? (
-                      <>
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>Cover Letter</label>
-
-                            <TextAreaModalComponent
-                              placeholder="Enter Cover Letter"
-                              type="text"
-                              value={description}
-                              onChange={(e) => {
-                                console.log(e.target.value);
-                                setDescription(e.target.value);
-                              }}
-                            />
-                          </div>
-                        </div>
-
-                        <div className="col-lg-12 col-md-12">
-                          <div className="form-group">
-                            <label>
-                              Upload Additional Supporting Documents
-                            </label>
-
-                            {state.CoverLetterForApplying ? (
-                              <p>{state.CoverLetterForApplying.name}</p>
-                            ) : (
-                              <UploadDataComponent
-                                onChange={(e) => {
-                                  console.log("e upload", e.target.value);
-                                  dispatch(
-                                    UploadCoverLetterJob(e.target.files)
-                                  );
-                                }}
-                              />
-                            )}
-                          </div>
-                        </div>
-                      </>
-                    ) : null}
-
-                    <div className="col-lg-12 col-md-12">
+                    <div className="col-md-6">
                       <div className="form-group">
-                        <label>Use uploaded Cover Letter</label>
-                        <br />
                         <input
                           onClick={() => {
-                            setUseUploaded(!useUploaded);
+                            setUseUploaded("useOld");
                           }}
                           // defaultChecked={}
-                          type="checkbox"
+                          type="radio"
+                          id="setUseUploadedold"
+                          name="setUseUploaded"
                         />{" "}
-                        Use uploaded cover letter
+                        Use uploaded cover letter from resume
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <input
+                          onClick={() => {
+                            setUseUploaded("additionalDoc");
+                          }}
+                          // defaultChecked={}
+                          id="setUseUploadedAdditionla"
+                          name="setUseUploaded"
+                          type="radio"
+                        />{" "}
+                        Upload new cover letter
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <input
+                          onClick={() => {
+                            setUseUploaded("uploadnew");
+                          }}
+                          id="setUseUploaded"
+                          name="setUseUploaded"
+                          // defaultChecked={}
+                          type="radio"
+                        />{" "}
+                        Write cover letter
+                      </div>
+                    </div>
+
+                    {useUploaded == "uploadnew" ? (
+                      <div className="col-lg-12 col-md-12">
+                        <div className="form-group">
+                          <label>Cover Letter</label>
+
+                          <TextAreaModalComponent
+                            placeholder="Enter Cover Letter"
+                            type="text"
+                            value={description}
+                            onChange={(e) => {
+                              console.log(e.target.value);
+                              setDescription(e.target.value);
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ) : null}
+                    <div className="col-lg-12 col-md-12">
+                      <div className="form-group">
+                        {/* <label>Upload Additional Supporting Documents</label> */}
+
+                        {state.CoverLetterForApplying ? (
+                          <p>{state.CoverLetterForApplying.name}</p>
+                        ) : (
+                          <UploadDataComponent
+                            onChange={(e) => {
+                              console.log("e upload", e.target.value);
+                              dispatch(UploadCoverLetterJob(e.target.files));
+                            }}
+                          />
+                        )}
                       </div>
                     </div>
                   </div>
