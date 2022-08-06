@@ -12,7 +12,8 @@ export const ApplyJobPost =
     jobTitle,
     company_name,
     company_email,
-    router
+    router,
+    useUploaded
   ) =>
   async (dispatch, state) => {
     console.log("testing the ", job_id);
@@ -28,8 +29,12 @@ export const ApplyJobPost =
         status,
         description,
         company_email,
-        attachment_url: state()?.CoverLetterForApplying.secure_url,
-        attachment_name: state()?.CoverLetterForApplying.name,
+        attachment_url: useUploaded
+          ? state().userDetails.cover_letter
+          : state()?.CoverLetterForApplying.secure_url,
+        attachment_name: useUploaded
+          ? state().userDetails.cover_letter_url
+          : state()?.CoverLetterForApplying.name,
       },
     });
 
@@ -47,7 +52,7 @@ export const ApplyJobPost =
         console.log("better stun", response.data);
         if (response.data.status) {
           toast.success("Job added Successfully!", {
-            position: "bottom-center",
+            position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -63,7 +68,7 @@ export const ApplyJobPost =
           // });
         } else {
           toast.success(response.data.message, {
-            position: "bottom-center",
+            position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -111,7 +116,7 @@ export const SortByFreshnessApplicationJobs = () => async (dispatch, state) => {
   });
 
   // toast.success("Updated Successfully!", {
-  //   position: "bottom-center",
+  //   position: "top-right",
   //   autoClose: 5000,
   //   hideProgressBar: false,
   //   closeOnClick: true,

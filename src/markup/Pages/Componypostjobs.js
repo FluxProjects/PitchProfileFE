@@ -1104,6 +1104,10 @@ export default function Componypostjobs() {
 
                         <div className="col-lg-12 col-md-12">
                           <AttachVideoCompanyJob
+                            setLoading={(e) => {
+                              console.log("eeee", e);
+                              // setLoading(e);
+                            }}
                             setVideoFile={(e) => {
                               console.log("files", e[0]);
                               setVideo(e);

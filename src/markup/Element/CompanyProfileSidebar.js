@@ -110,6 +110,23 @@ export default function Profilesidebar(props) {
               </Link>
             </li>
           ))}
+          <li>
+            <Link
+              to={{
+                pathname: "/company-detail",
+                search: `?company_id=${state.userDetails?.id}`,
+                state: {
+                  company_id: state.userDetails?.id,
+                  showBack: true,
+                },
+              }}
+              className="site-button   m-b30"
+            >
+              <span style={{ color: "white" }}>
+                {props.loading ? "Loading..." : "Preview"}
+              </span>
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
