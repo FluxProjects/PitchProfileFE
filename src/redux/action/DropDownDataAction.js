@@ -20,7 +20,7 @@ export const GetLanguages = () => async (dispatch) => {
         });
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -33,7 +33,7 @@ export const GetLanguages = () => async (dispatch) => {
     .catch(function (error) {
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -60,7 +60,7 @@ export const GetCountries = () => async (dispatch) => {
         });
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -73,7 +73,7 @@ export const GetCountries = () => async (dispatch) => {
     .catch(function (error) {
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -85,7 +85,8 @@ export const GetCountries = () => async (dispatch) => {
 };
 
 export const GetStates =
-  (country, setStateName, CallGetCities) => async (dispatch) => {
+  (country, setStateName, CallGetCities, isFirstFecth) => async (dispatch) => {
+    console.log("isFirstFecthisFirstFecth", isFirstFecth);
     var config = {
       method: "get",
       url: `${URL}/locations/states/${country}`,
@@ -97,7 +98,9 @@ export const GetStates =
         // console.log("testing the ", response.data.states[0]?.id);
 
         if (response.data.successful) {
-          setStateName(-1);
+          if (!isFirstFecth) {
+            setStateName(-1);
+          }
           const sortedArr = response.data.states.sort((a, b) =>
             a.name.localeCompare(b.name)
           );
@@ -108,7 +111,7 @@ export const GetStates =
           });
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -121,7 +124,7 @@ export const GetStates =
       .catch(function (error) {
         console.log(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -132,8 +135,8 @@ export const GetStates =
       });
   };
 
-export const GetCities = (id, setCity) => async (dispatch) => {
-  // console.log("teteteecvr", id);
+export const GetCities = (id, setCity, isFirstFecth) => async (dispatch) => {
+  console.log("teteteecvr", isFirstFecth);
 
   var config = {
     method: "get",
@@ -145,7 +148,10 @@ export const GetCities = (id, setCity) => async (dispatch) => {
     .then(function (response) {
       // console.log("testing the ", response.data);
       if (response.data.successful) {
-        setCity(-1);
+        console.log("is firststs", isFirstFecth);
+        if (!isFirstFecth) {
+          setCity(-1);
+        }
         const sortedArr = response.data.cities_data.sort((a, b) =>
           a.name.localeCompare(b.name)
         );
@@ -155,7 +161,7 @@ export const GetCities = (id, setCity) => async (dispatch) => {
         });
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -168,7 +174,7 @@ export const GetCities = (id, setCity) => async (dispatch) => {
     .catch(function (error) {
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -196,7 +202,7 @@ export const GetDepartments = (id) => async (dispatch) => {
         });
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -228,7 +234,7 @@ export const GetIndustries = (id) => async (dispatch) => {
         });
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -260,7 +266,7 @@ export const GetSkills = (id) => async (dispatch) => {
         });
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -292,7 +298,7 @@ export const GetEducationLevels = (id) => async (dispatch) => {
         });
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,

@@ -11,7 +11,6 @@ export default function TextInputModal({
   fieldHighlight,
   disabled,
 }) {
-  console.log("testingt ehes", fieldHighlight);
   return (
     <>
       <input

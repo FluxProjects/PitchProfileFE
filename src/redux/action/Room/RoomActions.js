@@ -46,7 +46,7 @@ export const AddRoom =
           // router.push("/company-manage-job");
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,

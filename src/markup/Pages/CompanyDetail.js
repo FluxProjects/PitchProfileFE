@@ -121,23 +121,23 @@ export default function Jobdetail(props) {
                             )}
                         </div>
                         <div className="col-lg-12 col-md-6">
-                          {props?.location?.state?.showBack && (
-                            <span className="mt-2">
-                              <Link
-                                onClick={() => {
-                                  router.goBack();
-                                }}
-                                style={{
-                                  marginTop: 10,
-                                  marginRight: 19,
-                                }}
-                                // to={"/company-manage-job"}
-                                className="site-button right-arrow button-sm float-right"
-                              >
-                                Back
-                              </Link>
-                            </span>
-                          )}
+                          {/* {props?.location?.state?.showBack && ( */}
+                          <span className="mt-2">
+                            <Link
+                              onClick={() => {
+                                router.goBack();
+                              }}
+                              style={{
+                                marginTop: 10,
+                                marginRight: 19,
+                              }}
+                              // to={"/company-manage-job"}
+                              className="site-button right-arrow button-sm float-right"
+                            >
+                              Back
+                            </Link>
+                          </span>
+                          {/* )} */}
                           <div className="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                             <strong className="font-weight-700 text-black m-b15">
                               Contact Details
@@ -192,12 +192,6 @@ export default function Jobdetail(props) {
                               fontWeight: "normal",
                             }}
                           ></span>
-                          <Link
-                            to={"/companies"}
-                            className="site-button right-arrow button-sm float-right"
-                          >
-                            Back
-                          </Link>
                         </Link>
                       </h4>
 

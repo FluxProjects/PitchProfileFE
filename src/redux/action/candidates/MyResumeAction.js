@@ -48,7 +48,7 @@ export const AddCandidateSkill =
 
           if (response.data.status) {
             toast.success("Updated Successfully!", {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -74,7 +74,7 @@ export const AddCandidateSkill =
             }
           } else {
             toast.error(response.data.message, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -87,7 +87,7 @@ export const AddCandidateSkill =
         .catch(function (error) {
           console.error(error);
           toast.error(error, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -125,7 +125,7 @@ export const AddCandidateSkill =
 
           if (response.data.status) {
             toast.success("Updated Successfully!", {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -151,7 +151,7 @@ export const AddCandidateSkill =
             }
           } else {
             toast.error(response.data.message, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -164,7 +164,7 @@ export const AddCandidateSkill =
         .catch(function (error) {
           console.error(error);
           toast.error(error, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -175,7 +175,7 @@ export const AddCandidateSkill =
         });
     } else {
       toast.error("Cannot Have More Than 3 Top Skills", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -230,7 +230,7 @@ export const UpdateCandidateSkill =
           console.log("res vals", response.data);
           if (response.data.successful) {
             toast.success("Updated Successfully!", {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -258,7 +258,7 @@ export const UpdateCandidateSkill =
             }
           } else {
             toast.error(response.data.message, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -271,7 +271,7 @@ export const UpdateCandidateSkill =
         .catch(function (error) {
           console.error(error);
           toast.error(error, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -308,7 +308,7 @@ export const UpdateCandidateSkill =
           console.log("res vals", response.data);
           if (response.data.successful) {
             toast.success("Updated Successfully!", {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -336,7 +336,7 @@ export const UpdateCandidateSkill =
             }
           } else {
             toast.error(response.data.message, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -349,7 +349,7 @@ export const UpdateCandidateSkill =
         .catch(function (error) {
           console.error(error);
           toast.error(error, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -360,7 +360,7 @@ export const UpdateCandidateSkill =
         });
     } else {
       toast.error("Cannot Have More Than 3 Top Skills", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -400,7 +400,7 @@ export const GetCandidateSkills = () => async (dispatch, state) => {
           data: arr,
         });
         // toast.error(response.data.message, {
-        //   position: "top-right",
+        //   position: "bottom-center",
         //   autoClose: 5000,
         //   hideProgressBar: false,
         //   closeOnClick: true,
@@ -417,7 +417,7 @@ export const GetCandidateSkills = () => async (dispatch, state) => {
     .catch(function (error) {
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -474,7 +474,7 @@ export const DeleteCandidateSkill = (id, index) => async (dispatch, state) => {
       console.log("d", response.data);
       if (response.data.successful) {
         toast.success("Deleted Successfully!", {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -496,7 +496,7 @@ export const DeleteCandidateSkill = (id, index) => async (dispatch, state) => {
     .catch(function (error) {
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -527,7 +527,7 @@ export const AddCandidateEducation =
     });
     if (count > 0 && is_current == true) {
       toast.error("Cannot have more than one current institutes", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -565,7 +565,7 @@ export const AddCandidateEducation =
 
           if (response.data.status) {
             toast.success("Updated Successfully!", {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -592,7 +592,7 @@ export const AddCandidateEducation =
             }
           } else {
             toast.error(response.data.message, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -605,7 +605,7 @@ export const AddCandidateEducation =
         .catch(function (error) {
           console.error(error);
           toast.error(error, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -640,7 +640,7 @@ export const UpdateCandidateEducation =
     console.log("testing the test mk11", count);
     if (count > 0 && is_current == true) {
       toast.error("Cannot have more than one current institutes", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -678,7 +678,7 @@ export const UpdateCandidateEducation =
           console.log("res vals", response.data);
           if (response.data.successful) {
             toast.success("Updated Successfully!", {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -706,7 +706,7 @@ export const UpdateCandidateEducation =
             }
           } else {
             toast.error(response.data.message, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -719,7 +719,7 @@ export const UpdateCandidateEducation =
         .catch(function (error) {
           console.error(error);
           toast.error(error, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -775,7 +775,7 @@ export const GetCandidateEducations = () => async (dispatch, state) => {
       });
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -799,7 +799,7 @@ export const DeleteCandidateEducation =
         console.log("d", response.data);
         if (response.data.successful) {
           toast.success("Deleted Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -816,7 +816,7 @@ export const DeleteCandidateEducation =
           });
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -829,7 +829,7 @@ export const DeleteCandidateEducation =
       .catch(function (error) {
         console.log(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -861,7 +861,7 @@ export const AddCandidateEmployment =
     console.log("countdesgdrg", count);
     if (count > 0 && is_current == true) {
       toast.error("Cannot have more than one current employments", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -902,7 +902,7 @@ export const AddCandidateEmployment =
 
             if (response.data.status) {
               toast.success("Updated Successfully!", {
-                position: "top-right",
+                position: "bottom-center",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -928,7 +928,7 @@ export const AddCandidateEmployment =
               }
             } else {
               toast.error(response.data.message, {
-                position: "top-right",
+                position: "bottom-center",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -941,7 +941,7 @@ export const AddCandidateEmployment =
           .catch(function (error) {
             console.error(error);
             toast.error(error, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -978,7 +978,7 @@ export const UpdateCandidateEmployment =
     console.log("testing the test mk11", count);
     if (count > 0 && is_current == true) {
       toast.error("Cannot have more than one current employments", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -1017,7 +1017,7 @@ export const UpdateCandidateEmployment =
           console.log("res vals", response.data);
           if (response.data.successful) {
             toast.success("Updated Successfully!", {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -1045,7 +1045,7 @@ export const UpdateCandidateEmployment =
             }
           } else {
             toast.error(response.data.message, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -1058,7 +1058,7 @@ export const UpdateCandidateEmployment =
         .catch(function (error) {
           console.error(error);
           toast.error(error, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1088,7 +1088,7 @@ export const GetCandidateEmployments = () => async (dispatch, state) => {
         });
       } else {
         // toast.error(response.data.message, {
-        //   position: "top-right",
+        //   position: "bottom-center",
         //   autoClose: 5000,
         //   hideProgressBar: false,
         //   closeOnClick: true,
@@ -1123,7 +1123,7 @@ export const GetCandidateEmployments = () => async (dispatch, state) => {
       });
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -1147,7 +1147,7 @@ export const DeleteCandidateEmployment =
         console.log("d", response.data);
         if (response.data.successful) {
           toast.success("Deleted Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1164,7 +1164,7 @@ export const DeleteCandidateEmployment =
           });
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1177,7 +1177,7 @@ export const DeleteCandidateEmployment =
       .catch(function (error) {
         console.log(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -1219,7 +1219,7 @@ export const AddCandidateProject =
 
         if (response.data.status) {
           toast.success("Added Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1240,7 +1240,7 @@ export const AddCandidateProject =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1253,7 +1253,7 @@ export const AddCandidateProject =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -1303,7 +1303,7 @@ export const UpdateCandidateProject =
         console.log("res vals", response.data);
         if (response.data.successful) {
           toast.success("Updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1325,7 +1325,7 @@ export const UpdateCandidateProject =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1338,7 +1338,7 @@ export const UpdateCandidateProject =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -1421,7 +1421,7 @@ export const UpdateCandidateLanguages =
             }
           } else {
             toast.error(response.data.message, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -1432,7 +1432,7 @@ export const UpdateCandidateLanguages =
           }
         } else {
           toast.error("Language already exists", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1488,7 +1488,7 @@ export const AddCandidateLanguages =
             }
           } else {
             toast.error(response.data.message, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -1503,7 +1503,7 @@ export const AddCandidateLanguages =
         });
     } else {
       toast.error("Language already exists", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -1540,7 +1540,7 @@ export const DeleteCandidateLanguages =
           });
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1575,7 +1575,7 @@ export const GetCandidateProjects = () => async (dispatch, state) => {
         });
       } else {
         // toast.error(response.data.message, {
-        //   position: "top-right",
+        //   position: "bottom-center",
         //   autoClose: 5000,
         //   hideProgressBar: false,
         //   closeOnClick: true,
@@ -1592,7 +1592,7 @@ export const GetCandidateProjects = () => async (dispatch, state) => {
     .catch(function (error) {
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -1616,7 +1616,7 @@ export const DeleteCandidateProject =
         console.log("d", response.data);
         if (response.data.successful) {
           toast.success("Deleted Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1633,7 +1633,7 @@ export const DeleteCandidateProject =
           });
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1646,7 +1646,7 @@ export const DeleteCandidateProject =
       .catch(function (error) {
         console.log(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -1686,7 +1686,7 @@ export const AddCandidateCertificate =
 
         if (response.data.status) {
           toast.success("Updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1706,7 +1706,7 @@ export const AddCandidateCertificate =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1719,7 +1719,7 @@ export const AddCandidateCertificate =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -1759,7 +1759,7 @@ export const UpdateCandidateCertificate =
         console.log("res vals", response.data);
         if (response.data.successful) {
           toast.success("Updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1781,7 +1781,7 @@ export const UpdateCandidateCertificate =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1794,7 +1794,7 @@ export const UpdateCandidateCertificate =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -1823,7 +1823,7 @@ export const GetCandidateCertificates = () => async (dispatch, state) => {
         });
       } else {
         // toast.error(response.data.message, {
-        //   position: "top-right",
+        //   position: "bottom-center",
         //   autoClose: 5000,
         //   hideProgressBar: false,
         //   closeOnClick: true,
@@ -1840,7 +1840,7 @@ export const GetCandidateCertificates = () => async (dispatch, state) => {
     .catch(function (error) {
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -1864,7 +1864,7 @@ export const DeleteCandidateCertificate =
         console.log("d", response.data);
         if (response.data.successful) {
           toast.success("Deleted Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1881,7 +1881,7 @@ export const DeleteCandidateCertificate =
           });
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1894,7 +1894,7 @@ export const DeleteCandidateCertificate =
       .catch(function (error) {
         console.log(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -1949,7 +1949,7 @@ export const AddCandidateReference =
 
         if (response.data.status) {
           toast.success("Updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1969,7 +1969,7 @@ export const AddCandidateReference =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -1982,7 +1982,7 @@ export const AddCandidateReference =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2038,7 +2038,7 @@ export const UpdateCandidateReference =
         console.log("res vals", response.data);
         if (response.data.successful) {
           toast.success("Updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2060,7 +2060,7 @@ export const UpdateCandidateReference =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2073,7 +2073,7 @@ export const UpdateCandidateReference =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2103,7 +2103,7 @@ export const GetCandidateReferences = () => async (dispatch, state) => {
         });
       } else {
         // toast.error(response.data.message, {
-        //   position: "top-right",
+        //   position: "bottom-center",
         //   autoClose: 5000,
         //   hideProgressBar: false,
         //   closeOnClick: true,
@@ -2120,7 +2120,7 @@ export const GetCandidateReferences = () => async (dispatch, state) => {
     .catch(function (error) {
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -2144,7 +2144,7 @@ export const DeleteCandidateReference =
         console.log("d", response.data);
         if (response.data.successful) {
           toast.success("Deleted Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2161,7 +2161,7 @@ export const DeleteCandidateReference =
           });
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2174,7 +2174,7 @@ export const DeleteCandidateReference =
       .catch(function (error) {
         console.log(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2214,7 +2214,7 @@ export const AddCandidateSocialProfile =
 
         if (response.data.status) {
           toast.success("Updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2240,7 +2240,7 @@ export const AddCandidateSocialProfile =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2253,7 +2253,7 @@ export const AddCandidateSocialProfile =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2292,7 +2292,7 @@ export const UpdateCandidateSocialProfile =
         console.log("res vals", response.data);
         if (response.data.successful) {
           toast.success("Updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2320,7 +2320,7 @@ export const UpdateCandidateSocialProfile =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2333,7 +2333,7 @@ export const UpdateCandidateSocialProfile =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2364,7 +2364,7 @@ export const GetCandidateSocialProfiles = () => async (dispatch, state) => {
         });
       } else {
         // toast.error(response.data.message, {
-        //   position: "top-right",
+        //   position: "bottom-center",
         //   autoClose: 5000,
         //   hideProgressBar: false,
         //   closeOnClick: true,
@@ -2399,7 +2399,7 @@ export const GetCandidateSocialProfiles = () => async (dispatch, state) => {
       });
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -2423,7 +2423,7 @@ export const DeleteCandidateSocialProfile =
         console.log("d", response.data);
         if (response.data.successful) {
           toast.success("Deleted Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2440,7 +2440,7 @@ export const DeleteCandidateSocialProfile =
           });
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2453,7 +2453,7 @@ export const DeleteCandidateSocialProfile =
       .catch(function (error) {
         console.log(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2509,7 +2509,7 @@ export const UpdateCandidateProfile =
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success("Update Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2531,7 +2531,7 @@ export const UpdateCandidateProfile =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2544,7 +2544,7 @@ export const UpdateCandidateProfile =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2580,7 +2580,7 @@ export const UpdateCandidateSummary =
         if (response.data.successful) {
           console.log("data", response.data);
           toast.success("Update Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2605,7 +2605,7 @@ export const UpdateCandidateSummary =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2618,7 +2618,7 @@ export const UpdateCandidateSummary =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2652,7 +2652,7 @@ export const UploadProfileStatus = (status) => async (dispatch, state) => {
       if (response.data.successful) {
         console.log("data", response.data);
         toast.success("Update Success!", {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2674,7 +2674,7 @@ export const UploadProfileStatus = (status) => async (dispatch, state) => {
         });
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2687,7 +2687,7 @@ export const UploadProfileStatus = (status) => async (dispatch, state) => {
     .catch(function (error) {
       console.error(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -2725,7 +2725,7 @@ export const UploadProfileisReviewd =
           console.log("data", response.data);
 
           toast.success("Update Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2744,7 +2744,7 @@ export const UploadProfileisReviewd =
           });
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2757,7 +2757,7 @@ export const UploadProfileisReviewd =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2832,7 +2832,7 @@ export const UpdateDesiredCareer =
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           toast.success("Updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2861,7 +2861,7 @@ export const UpdateDesiredCareer =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -2874,7 +2874,7 @@ export const UpdateDesiredCareer =
       .catch(function (error) {
         console.error(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -2913,7 +2913,7 @@ export const GetDesiredCareer = () => async (dispatch, state) => {
         });
 
         // toast.error(response.data.message, {
-        //   position: "top-right",
+        //   position: "bottom-center",
         //   autoClose: 5000,
         //   hideProgressBar: false,
         //   closeOnClick: true,
@@ -2982,7 +2982,7 @@ export const UpdateResumeHeader =
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success("Update Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -3011,7 +3011,7 @@ export const UpdateResumeHeader =
           }
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,

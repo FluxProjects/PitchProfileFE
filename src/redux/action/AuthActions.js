@@ -38,7 +38,7 @@ export const registerUser =
           setModal(true);
           setIsDisabled(false);
           toast.success("OTP has been sent to your email!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -58,7 +58,7 @@ export const registerUser =
         } else {
           setIsDisabled(false);
           toast.error(`Something went wrong! ${response.data.message}`, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -72,7 +72,7 @@ export const registerUser =
         console.log(error);
 
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -110,7 +110,7 @@ export const verifyCandidate =
           console.log(JSON.stringify(response.data));
           setModal(false);
           toast.success("Verified successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -129,7 +129,7 @@ export const verifyCandidate =
           router.push("/jobs-profile");
         } else {
           toast.error(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -256,7 +256,7 @@ export const updateUser =
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success("Update Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -278,7 +278,7 @@ export const updateUser =
           }
         } else {
           toast.error(response.data.Message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -331,7 +331,7 @@ export const updateUserProfileModal =
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success("Update Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -353,7 +353,7 @@ export const updateUserProfileModal =
           }
         } else {
           toast.error(response.data.Message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -393,7 +393,7 @@ export const UpdateIsActive = (is_active) => async (dispatch, state) => {
       if (response.data.successful) {
         console.log("data", response.data.data);
         toast.success("Update Success!", {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -412,7 +412,7 @@ export const UpdateIsActive = (is_active) => async (dispatch, state) => {
         });
       } else {
         toast.error(response.data.Message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -456,7 +456,7 @@ export const UploadImage = (files) => async (dispatch, state) => {
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success("Update Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -475,7 +475,7 @@ export const UploadImage = (files) => async (dispatch, state) => {
           });
         } else {
           toast.error(response.data.Message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -521,7 +521,7 @@ export const UploadCoverLetter = (files) => async (dispatch, state) => {
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success("Update Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -545,7 +545,7 @@ export const UploadCoverLetter = (files) => async (dispatch, state) => {
           });
         } else {
           toast.error(response.data.Message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -592,7 +592,7 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
           toast.success(
             "Uploaded successfully. Your uploaded video is being reviewed.",
             {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -620,7 +620,7 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
           });
         } else {
           toast.error(response.data.Message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -639,7 +639,7 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
 export const LoginUser = (email, password, router) => async (dispatch) => {
   if (email == "admin@pitchprofile.com" && password == "123456") {
     toast.success("Login Success!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -684,7 +684,7 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success("Login Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -703,7 +703,7 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
           router.push("/jobs-profile");
         } else {
           toast.error(response.data.msg, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -716,7 +716,7 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
       .catch(function (error) {
         console.log(error);
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -749,7 +749,7 @@ export const getAuthToken = (authToken, router) => async (dispatch, state) => {
       } else {
         router.push("/login");
         toast.error("Something went wrong! Please login.", {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -762,7 +762,7 @@ export const getAuthToken = (authToken, router) => async (dispatch, state) => {
     .catch(function (error) {
       router.push("/login");
       toast.error(`Something went wrong! Please login. ${error}`, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -799,7 +799,7 @@ export const UpdateUserPassword =
         console.log(JSON.stringify(response.data));
         if (response.data.status) {
           toast.success("Password Updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -809,7 +809,7 @@ export const UpdateUserPassword =
           });
         } else {
           toast.error("Something went wrong!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,

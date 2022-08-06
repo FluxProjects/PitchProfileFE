@@ -75,7 +75,7 @@ export const AddJobPost =
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           toast.success("Job added Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -90,7 +90,7 @@ export const AddJobPost =
           router.push("/company-manage-job");
         } else {
           toast.success(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -113,7 +113,7 @@ export const SaveJobVideo = (files) => async (dispatch, state) => {
   await axios.post(`${cloudURL}/video/upload`, formData).then(async (res) => {
     if (res.data.secure_url) {
       toast.success("Video uploaded Successfully!", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -203,7 +203,7 @@ export const UpdateJobPost =
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           toast.success("Job updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -218,7 +218,7 @@ export const UpdateJobPost =
           router.push("/company-manage-job");
         } else {
           toast.success(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -302,7 +302,7 @@ export const UpdateJobWithVideoPost =
           console.log(JSON.stringify(response.data));
           if (response.data.successful) {
             toast.success("Job added Successfully!", {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -316,7 +316,7 @@ export const UpdateJobWithVideoPost =
             });
           } else {
             toast.success(response.data.message, {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -375,7 +375,7 @@ export const filterClosingDate = () => async (dispatch, state) => {
   });
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,

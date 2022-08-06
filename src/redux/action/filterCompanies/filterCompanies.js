@@ -14,7 +14,7 @@ export const filterCompanyAlphabetical =
     console.log("item?.company_name.charAt(0)", result);
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

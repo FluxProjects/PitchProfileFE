@@ -19,7 +19,7 @@ export const filterCompanyName = (companyName) => async (dispatch, state) => {
   });
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -42,7 +42,7 @@ export const filterJobName = (jobName) => async (dispatch, state) => {
   });
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -66,7 +66,7 @@ export const filterIndustryName =
     });
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -89,7 +89,7 @@ export const filterCompanySize = (CompanySize) => async (dispatch, state) => {
   });
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -113,7 +113,7 @@ export const filterDepartmentName =
     });
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -137,7 +137,7 @@ export const filterEmploymentType =
     });
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -161,7 +161,7 @@ export const filterLocationFilter =
     });
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -185,7 +185,7 @@ export const filterSeniorityLevel =
     });
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -208,7 +208,7 @@ export const filterSalaryRange = (SalaryRange) => async (dispatch, state) => {
   });
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -231,7 +231,7 @@ export const filterShiftType = (ShiftType) => async (dispatch, state) => {
   });
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -254,7 +254,7 @@ export const filterJobType = (JobType) => async (dispatch, state) => {
   });
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -281,7 +281,7 @@ export const filterSkillType = (SkillType) => async (dispatch, state) => {
   });
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -433,7 +433,7 @@ export const filterJobAll =
     });
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -465,7 +465,7 @@ export const filterJobsbyId = (JobID, router) => async (dispatch, state) => {
   console.log("resultJobIDresultJobID", resultJobID);
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,

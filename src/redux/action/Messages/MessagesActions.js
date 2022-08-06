@@ -26,7 +26,7 @@ export const AddMessage =
         console.log("message sdnsa", response.data);
         if (response.data.status) {
           // toast.success(" added Successfully!", {
-          //   position: "top-right",
+          //   position: "bottom-center",
           //   autoClose: 5000,
           //   hideProgressBar: false,
           //   closeOnClick: true,
@@ -41,7 +41,7 @@ export const AddMessage =
           // router.push("/company-manage-job");
         } else {
           toast.success(response.data.message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,

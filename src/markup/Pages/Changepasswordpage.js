@@ -22,7 +22,7 @@ export default function Changepasswordpage() {
       );
     } else {
       toast.error("Passwords don't match!", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

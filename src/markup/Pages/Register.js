@@ -43,7 +43,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
     if (otp == state.otp) await dispatch(verifyCandidate(setModal, history));
     else
       toast.error("OTP not matched!", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

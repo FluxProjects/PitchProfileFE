@@ -4,7 +4,8 @@ import { cloudURL, URL } from "../../../utils/APIUtils";
 import { toast } from "react-toastify";
 
 export const registerCompany =
-  (company_name, email, password, setModal, setIsDisabled) => async (dispatch) => {
+  (company_name, email, password, setModal, setIsDisabled) =>
+  async (dispatch) => {
     var val = Math.floor(1000 + Math.random() * 9000);
     console.log(val);
     dispatch({
@@ -35,9 +36,9 @@ export const registerCompany =
           console.log("response.data.data register", response.data);
 
           setModal(true);
-          setIsDisabled(false)
+          setIsDisabled(false);
           toast.success("OTP has been sent to your email!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -55,10 +56,10 @@ export const registerCompany =
           // });
           // router.push("/company-profile");
         } else {
-          setIsDisabled(false)
+          setIsDisabled(false);
 
           toast.error(`${response.data.message}`, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -72,7 +73,7 @@ export const registerCompany =
         console.log(error);
 
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -109,7 +110,7 @@ export const verifyCompany = (setModal, router) => async (dispatch, state) => {
         console.log(JSON.stringify(response.data));
         setModal(false);
         toast.success("Verified successfully!", {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -128,7 +129,7 @@ export const verifyCompany = (setModal, router) => async (dispatch, state) => {
         router.push("/company-profile");
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -203,7 +204,7 @@ export const UploadCompanyProfileImage = (files) => async (dispatch, state) => {
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success("Update Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -222,7 +223,7 @@ export const UploadCompanyProfileImage = (files) => async (dispatch, state) => {
           });
         } else {
           toast.error(response.data.Message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -302,7 +303,7 @@ export const updateCompany =
         if (response.data.successful) {
           console.log("data", response.data.data);
           toast.success("Update Success!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -324,7 +325,7 @@ export const updateCompany =
           }
         } else {
           toast.error(response.data.Message, {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -364,7 +365,7 @@ export const updateCompany =
 //       if (response.data.successful) {
 //         console.log("data", response.data.data);
 //         toast.success("Update Success!", {
-//           position: "top-right",
+//           position: "bottom-center",
 //           autoClose: 5000,
 //           hideProgressBar: false,
 //           closeOnClick: true,
@@ -383,7 +384,7 @@ export const updateCompany =
 //         });
 //       } else {
 //         toast.error(response.data.Message, {
-//           position: "top-right",
+//           position: "bottom-center",
 //           autoClose: 5000,
 //           hideProgressBar: false,
 //           closeOnClick: true,
@@ -427,7 +428,7 @@ export const updateCompany =
 //         if (response.data.successful) {
 //           console.log("data", response.data.data);
 //           toast.success("Update Success!", {
-//             position: "top-right",
+//             position: "bottom-center",
 //             autoClose: 5000,
 //             hideProgressBar: false,
 //             closeOnClick: true,
@@ -446,7 +447,7 @@ export const updateCompany =
 //           });
 //         } else {
 //           toast.error(response.data.Message, {
-//             position: "top-right",
+//             position: "bottom-center",
 //             autoClose: 5000,
 //             hideProgressBar: false,
 //             closeOnClick: true,
@@ -492,7 +493,7 @@ export const updateCompany =
 //         if (response.data.successful) {
 //           console.log("data", response.data.data);
 //           toast.success("Update Success!", {
-//             position: "top-right",
+//             position: "bottom-center",
 //             autoClose: 5000,
 //             hideProgressBar: false,
 //             closeOnClick: true,
@@ -511,7 +512,7 @@ export const updateCompany =
 //           });
 //         } else {
 //           toast.error(response.data.Message, {
-//             position: "top-right",
+//             position: "bottom-center",
 //             autoClose: 5000,
 //             hideProgressBar: false,
 //             closeOnClick: true,
@@ -556,7 +557,7 @@ export const updateCompany =
 //         if (response.data.successful) {
 //           console.log("data", response.data.data);
 //           toast.success("Update Success!", {
-//             position: "top-right",
+//             position: "bottom-center",
 //             autoClose: 5000,
 //             hideProgressBar: false,
 //             closeOnClick: true,
@@ -575,7 +576,7 @@ export const updateCompany =
 //           });
 //         } else {
 //           toast.error(response.data.Message, {
-//             position: "top-right",
+//             position: "bottom-center",
 //             autoClose: 5000,
 //             hideProgressBar: false,
 //             closeOnClick: true,
@@ -618,7 +619,7 @@ export const LoginCompany = (email, password, router) => async (dispatch) => {
       if (response.data.successful) {
         console.log("data", response.data.data);
         toast.success("Login Success!", {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -637,7 +638,7 @@ export const LoginCompany = (email, password, router) => async (dispatch) => {
         router.push("/company-profile");
       } else {
         toast.error(response.data.msg, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -650,7 +651,7 @@ export const LoginCompany = (email, password, router) => async (dispatch) => {
     .catch(function (error) {
       console.log(error);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -687,7 +688,7 @@ export const UpdateCompanyPassword =
         console.log(JSON.stringify(response.data));
         if (response.data.status) {
           toast.success("Password Updated Successfully!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -697,7 +698,7 @@ export const UpdateCompanyPassword =
           });
         } else {
           toast.error("Something went wrong!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,

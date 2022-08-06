@@ -67,6 +67,7 @@ export default function Companyprofile() {
   const [fieldAlert, setFieldAlert] = useState(false);
   const [agreement, setAgreement] = useState(state?.userDetails?.agreement);
   const [FieldText, setFieldText] = useState("");
+  const [isFirstFecth, setIsFirstFecth] = useState(true);
 
   let inputRef;
 
@@ -226,22 +227,25 @@ export default function Companyprofile() {
       GetStates(
         state?.userDetails?.country_id ? state?.userDetails?.country_id : 230,
         setStateName,
-        CallGetCities
+        CallGetCities,
+        true
       )
     );
     await dispatch(
       GetCities(
         state?.userDetails?.state_id ? state?.userDetails?.state_id : 3805,
-        setCity
+        setCity,
+        true
       )
     );
+    setIsFirstFecth(false);
     if (state.industries.length < 1) {
       await dispatch(GetIndustries());
     }
     setLoading(false);
   };
   const CallGetCities = async (stateId) => {
-    await dispatch(GetCities(stateId, setCity));
+    await dispatch(GetCities(stateId, setCity, isFirstFecth));
   };
 
   const CallGetStates = async (stateId) => {
@@ -457,7 +461,7 @@ export default function Companyprofile() {
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
                                   CallGetStates(e.target.value);
-                                  setCity(-1);
+
                                   setCountry(e.target.value);
                                 }}
                                 value={country}
@@ -473,8 +477,10 @@ export default function Companyprofile() {
                               </label>
                               <DropDownModalComponent
                                 onChange={(e) => {
-                                  console.log("eee", e.target.value);
-                                  CallGetCities(e.target.value);
+                                  console.log("eee state", e.target.value);
+                                  if (!isFirstFecth) {
+                                    CallGetCities(e.target.value);
+                                  }
 
                                   setStateName(e.target.value);
                                   //   setLastUsed(e.target.value);

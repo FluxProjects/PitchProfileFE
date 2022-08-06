@@ -22,7 +22,7 @@ export const filterCandidateAvailability =
     });
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -44,7 +44,7 @@ export const filterCandidateName = (nameFilter) => async (dispatch, state) => {
   });
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -71,7 +71,7 @@ export const filterCandidateSkill = (skill_id) => async (dispatch, state) => {
   });
 
   toast.success("Updated Successfully!", {
-    position: "top-right",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -94,7 +94,7 @@ export const filterCandidateCompany =
     });
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -117,7 +117,7 @@ export const filterCandidateRole =
     });
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -209,7 +209,7 @@ export const filterCandidateAll =
     });
 
     toast.success("Updated Successfully!", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

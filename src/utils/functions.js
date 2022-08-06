@@ -24,12 +24,13 @@ export const GetStateName = async (id, setStateName) => {
       console.log("NWO test sttae", response.data.data[0].name);
       if (response.data.successful) {
         // if (setVal) {
+        console.log("yesys", response.data.data);
         setStateName(response.data.data[0].name);
         // }
         return response.data.data[0].name;
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -55,13 +56,14 @@ export const GetCityName = async (id, setCityName) => {
     .then(function (response) {
       console.log("NWO test city", response.data.data[0].name);
       if (response.data.successful) {
+        console.log("response.data.data city", response.data.data);
         // if (setVal) {
         setCityName(response.data.data[0].name);
         // }
         return response.data.data[0].name;
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -93,7 +95,7 @@ export const GetCountryName = async (id, setVal) => {
         return response.data.data[0].name;
       } else {
         toast.error(response.data.message, {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,

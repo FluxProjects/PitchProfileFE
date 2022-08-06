@@ -144,6 +144,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
     setCityLoading(true);
     await GetStateName(state_id, setStateName);
     await GetCityName(city_id, setCityName);
+    console.log("setCitnameee", city_id);
     await GetCountryName(country_id, setCountryName);
     setCityLoading(false);
   };

@@ -77,6 +77,7 @@ export default function Jobprofile() {
   const [fieldText, setFieldText] = useState(false);
 
   const [fieldHighlight, setFieldHighlight] = useState("");
+  const [isFirstFecth, setIsFirstFecth] = useState(true);
 
   const [LangArr, setLangArr] = useState([
     {
@@ -103,21 +104,28 @@ export default function Jobprofile() {
     await dispatch(GetCountries());
     await dispatch(
       GetStates(
-        state.userDetails.country_id ? state.userDetails.country_id : 230
+        state.userDetails.country_id ? state.userDetails.country_id : 230,
+        setStateName,
+        CallGetCities,
+        true
       )
     );
     await dispatch(
-      GetCities(state.userDetails.state_id ? state.userDetails.state_id : 3866)
+      GetCities(
+        state.userDetails.state_id ? state.userDetails.state_id : 3866,
+        setCity,
+        true
+      )
     );
-
+    setIsFirstFecth(false);
     setLoading(false);
-  };
-  const CallGetCities = async (stateId) => {
-    await dispatch(GetCities(stateId, setCity));
   };
 
   const CallGetStates = async (stateId) => {
     await dispatch(GetStates(stateId, setStateName, CallGetCities));
+  };
+  const CallGetCities = async (stateId) => {
+    await dispatch(GetCities(stateId, setCity, isFirstFecth));
   };
 
   const callUpdateUser = async () => {
@@ -612,7 +620,6 @@ export default function Jobprofile() {
                                 onChange={(e) => {
                                   console.log("eee", e.target.value);
                                   CallGetStates(e.target.value);
-                                  setCity(-1);
                                   setCountry(e.target.value);
                                 }}
                                 value={country}
