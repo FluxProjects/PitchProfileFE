@@ -107,7 +107,7 @@ export default function Jobprofile() {
       )
     );
     await dispatch(
-      GetCities(state.userDetails.state_id ? state.userDetails.state_id : 3866)
+      GetCities(state.userDetails.state_id ? state.userDetails.state_id : 3866,)
     );
 
     setLoading(false);
