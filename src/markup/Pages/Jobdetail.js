@@ -26,6 +26,7 @@ import { useHistory } from "react-router-dom";
 
 import ReactHtmlParser from "react-html-parser";
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
+import ReactQuill from "react-quill";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -610,71 +611,28 @@ export default function Jobdetail(props) {
               </div>
               <div className="modal-body">
                 <form>
-                  <label>Cover Letter</label>
-
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <input
-                          onClick={() => {
-                            setUseUploaded("useOld");
+                        <label>Cover Letter</label>
+
+                        <ReactQuill
+                          className="quillEditor"
+                          value={description}
+                          onChange={setDescription}
+                        />
+                        {/* <TextAreaModalComponent
+                          placeholder="Enter Cover Letter"
+                          type="text"
+                          value={description}
+                          onChange={(e) => {
+                            console.log(e.target.value);
+                            setDescription(e.target.value);
                           }}
-                          // defaultChecked={}
-                          type="radio"
-                          id="setUseUploadedold"
-                          name="setUseUploaded"
-                        />{" "}
-                        Use uploaded cover letter from resume
+                        /> */}
                       </div>
                     </div>
 
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <input
-                          onClick={() => {
-                            setUseUploaded("additionalDoc");
-                          }}
-                          // defaultChecked={}
-                          id="setUseUploadedAdditionla"
-                          name="setUseUploaded"
-                          type="radio"
-                        />{" "}
-                        Upload new cover letter
-                      </div>
-                    </div>
-
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <input
-                          onClick={() => {
-                            setUseUploaded("uploadnew");
-                          }}
-                          id="setUseUploaded"
-                          name="setUseUploaded"
-                          // defaultChecked={}
-                          type="radio"
-                        />{" "}
-                        Write cover letter
-                      </div>
-                    </div>
-
-                    {useUploaded == "uploadnew" ? (
-                      <div className="col-lg-12 col-md-12">
-                        <div className="form-group">
-                          <label>Cover Letter</label>
-
-                          <TextAreaModalComponent
-                            placeholder="Enter Cover Letter"
-                            type="text"
-                            value={description}
-                            onChange={(e) => {
-                              console.log(e.target.value);
-                              setDescription(e.target.value);
-                            }}
-                          />
-                        </div>
-                      </div>
-                    ) : null}
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         {/* <label>Upload Additional Supporting Documents</label> */}

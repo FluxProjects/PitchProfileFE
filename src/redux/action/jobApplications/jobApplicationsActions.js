@@ -29,12 +29,8 @@ export const ApplyJobPost =
         status,
         description,
         company_email,
-        attachment_url: useUploaded
-          ? state().userDetails.cover_letter
-          : state()?.CoverLetterForApplying.secure_url,
-        attachment_name: useUploaded
-          ? state().userDetails.cover_letter_url
-          : state()?.CoverLetterForApplying.name,
+        attachment_url: state()?.CoverLetterForApplying.secure_url,
+        attachment_name: state()?.CoverLetterForApplying.name,
       },
     });
 

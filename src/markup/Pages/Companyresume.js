@@ -6,9 +6,12 @@ import Profilesidebar from "../Element/CompanyProfileSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { GetJobApplications } from "../../redux/action/jobApplications/jobApplicationsActions";
 import { JobStatus, SalaryRange } from "../../utils/DropDownUtils";
+import ReactHtmlParser from "react-html-parser";
+
 import { URL } from "../../utils/APIUtils";
 import { formatDate } from "../../utils/functions";
 import moment from "moment";
+import { Modal } from "react-bootstrap";
 
 const postResume = [
   { title: "Tammy Dixon" },
@@ -26,6 +29,8 @@ export default function Companyresume(props) {
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
+  const [modalView, setModalView] = useState(false);
+  const [descModal, setDescModal] = useState(false);
 
   useEffect(() => {
     console.log("props.location.state.id", props.location?.state?.fromFilter);
@@ -74,6 +79,22 @@ export default function Companyresume(props) {
   } else {
     return (
       <>
+        <Modal
+          // backdrop={false}
+          scrollable={true}
+          show={modalView}
+          onHide={() => setModalView(false)}
+          className="modal fade modal-bx-info editor"
+        >
+          <div className="card">
+            <div className="card-body">
+              <div className="form-group">
+                <label>Cover Letter</label>
+                <p>{ReactHtmlParser(descModal)}</p>
+              </div>
+            </div>
+          </div>
+        </Modal>
         <Header2 />
         <div className="page-content bg-white">
           <div className="content-block">
@@ -120,6 +141,7 @@ export default function Companyresume(props) {
                             <th>Job Title</th>
                             <th>Applied Date</th>
                             <th>Attachments</th>
+                            <th>Cover Letter</th>
                             <th>Status</th>
                           </tr>
                         </thead>
@@ -191,7 +213,7 @@ export default function Companyresume(props) {
                                     href={item?.attachment_url}
                                   >
                                     <i
-                                      class="fa fa-download"
+                                      className="fa fa-download"
                                       aria-hidden="true"
                                     ></i>
                                   </a>
@@ -202,6 +224,30 @@ export default function Companyresume(props) {
                                 {/* {item?.attachment_url} */}
                               </td>
 
+                              <td className="expired pending">
+                                {item?.description.length > 0 ? (
+                                  <a
+                                    className="text-center"
+                                    onClick={() => {
+                                      setModalView(true);
+                                      setDescModal(item?.description);
+                                    }}
+                                  >
+                                    <i
+                                      style={{
+                                        background: "#1b6cd5",
+                                        color: "white",
+                                        padding: 7,
+                                        borderRadius: 5,
+                                      }}
+                                      className="fa fa-eye"
+                                      aria-hidden="true"
+                                    ></i>
+                                  </a>
+                                ) : (
+                                  "Not available"
+                                )}
+                              </td>
                               <td className="expired pending">
                                 {JobStatus.findIndex(
                                   (x) => x?.id == item?.status

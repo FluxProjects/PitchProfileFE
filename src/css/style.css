@@ -3130,6 +3130,11 @@ blockquote:before {
   margin: 32px 0 30px 10px;
   padding: 0;
 }
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+
 .navbar-toggler span {
   background: black;
 }

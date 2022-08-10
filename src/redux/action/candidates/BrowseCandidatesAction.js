@@ -20,6 +20,8 @@ export const GetAllCandidates = () => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
+      console.log("employments", response.data);
+
       if (response.data.successful) {
         var organizationDrop = [];
         var DesignationDrop = [];
