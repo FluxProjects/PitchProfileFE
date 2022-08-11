@@ -111,7 +111,7 @@ export default function Companyresume(props) {
                     <div className="job-bx clearfix">
                       <div className="job-bx-title clearfix">
                         <h5 className="font-weight-700 pull-left text-uppercase">
-                          {state.JobApplications.length} Applications
+                          {state?.JobApplications?.length} Applications
                         </h5>
                         <Link
                           to={"/company-manage-job"}
@@ -241,6 +241,26 @@ export default function Companyresume(props) {
                                         borderRadius: 5,
                                       }}
                                       className="fa fa-eye"
+                                      aria-hidden="true"
+                                    ></i>
+                                  </a>
+                                ) : item?.cover_letter_url != null ? (
+                                  <a
+                                    href={item?.cover_letter_url}
+                                    className="text-center"
+                                    // onClick={() => {
+                                    //   setModalView(true);
+                                    //   setDescModal(item?.description);
+                                    // }}
+                                  >
+                                    <i
+                                      style={{
+                                        background: "#1b6cd5",
+                                        color: "white",
+                                        padding: 7,
+                                        borderRadius: 5,
+                                      }}
+                                      className="fa fa-download"
                                       aria-hidden="true"
                                     ></i>
                                   </a>

@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function UploadDataComponent({ onChange }) {
+export default function UploadDataComponent({ onChange, text }) {
   return (
     <div className="form-group">
       <div className="custom-file">
         <p className="m-auto align-self-center">
           <i className="fa fa-upload"></i>
-          Upload Additional Supporting Documents
+          {text}
         </p>
         <input
           type="file"

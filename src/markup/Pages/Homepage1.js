@@ -13,6 +13,8 @@ import { GetAllJobPosts, getAuthToken } from "../../redux/action";
 import Header2 from "../Layout/Header2";
 import HeaderOffline from "../Layout/HeaderOffline";
 
+import LandingBg from "../../images/bgLanding.png";
+
 import { GetAllCandidates } from "../../redux/action/candidates/BrowseCandidatesAction";
 import BrowseCandidateGridCard from "./BrowseCandidateGridCard";
 
@@ -93,8 +95,7 @@ export default function Homepage() {
         <div
           className="dez-bnr-inr dez-bnr-inr-md"
           style={{
-            backgroundImage:
-              "url(https://media.istockphoto.com/vectors/colorful-flowing-lines-abstract-a3-poster-on-white-background-vector-id1340909513?b=1&k=20&m=1340909513&s=170667a&w=0&h=LCyRA6FTItF8JBhK03-QAxlVtAuwI_xp70YzJc7nhKo=)",
+            backgroundImage: `url(${LandingBg})`,
             height: "100vh",
           }}
         >

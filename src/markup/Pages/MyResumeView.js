@@ -293,7 +293,7 @@ export default function MyResumeView() {
                   <ProfileDetailsComponent isView={true} />
 
                   {/* AttachResumeComponent */}
-                  <AttachResumeComponent isView={true} />
+                  {/* <AttachResumeComponent isView={true} /> */}
                 </div>
               </div>
             </div>

@@ -355,7 +355,7 @@ export default function Jobmyresume() {
                   <ProfileDetailsComponent />
 
                   {/* AttachResumeComponent */}
-                  <AttachResumeComponent />
+                  {/* <AttachResumeComponent /> */}
                 </div>
               </div>
             </div>

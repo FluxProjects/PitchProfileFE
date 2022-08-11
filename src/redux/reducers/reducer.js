@@ -64,6 +64,7 @@ const initialState = {
   wishlist: [],
 
   CoverLetterForApplying: "",
+  AddDocApply: "",
 };
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -329,6 +330,11 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         CoverLetterForApplying: rest.data,
+      };
+    case "AddDocApply":
+      return {
+        ...state,
+        AddDocApply: rest.data,
       };
 
     default:

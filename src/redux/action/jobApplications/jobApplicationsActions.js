@@ -13,7 +13,8 @@ export const ApplyJobPost =
     company_name,
     company_email,
     router,
-    useUploaded
+    useUploaded,
+    setBtnLoading
   ) =>
   async (dispatch, state) => {
     console.log("testing the ", job_id);
@@ -29,8 +30,11 @@ export const ApplyJobPost =
         status,
         description,
         company_email,
-        attachment_url: state()?.CoverLetterForApplying.secure_url,
-        attachment_name: state()?.CoverLetterForApplying.name,
+
+        cover_letter_url: state()?.CoverLetterForApplying.secure_url,
+        cover_letter: state()?.CoverLetterForApplying.name,
+        attachment_url: state()?.AddDocApply.secure_url,
+        attachment_name: state()?.AddDocApply.name,
       },
     });
 
@@ -56,6 +60,15 @@ export const ApplyJobPost =
             draggable: true,
             progress: undefined,
           });
+          dispatch({
+            type: "AddDocApply",
+            data: "",
+          });
+          dispatch({
+            type: "CoverLetterForApplying",
+            data: "",
+          });
+          setBtnLoading(false);
           router.push("/jobs-applied-job");
 
           // dispatch({
@@ -72,9 +85,12 @@ export const ApplyJobPost =
             draggable: true,
             progress: undefined,
           });
+          setBtnLoading(false);
         }
       })
       .catch(function (error) {
+        setBtnLoading(false);
+
         console.log(error);
       });
   };
@@ -147,6 +163,7 @@ export const GetJobCandidateApplications = (id) => async (dispatch, state) => {
   axios(config)
     .then(function (response) {
       console.log("responsdesugdhv", response.data);
+
       if (response.data.successful) {
         dispatch({
           type: "GetJobApplications",
@@ -163,21 +180,40 @@ export const GetJobCandidateApplications = (id) => async (dispatch, state) => {
     });
 };
 
-export const UploadCoverLetterJob = (files) => async (dispatch, state) => {
-  const formData = new FormData();
-  formData.append("file", files[0]);
-  formData.append("upload_preset", "pitchprofile");
+export const UploadCoverLetterJob =
+  (files, setBtnLoading) => async (dispatch, state) => {
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "pitchprofile");
 
-  await axios.post(`${cloudURL}/image/upload`, formData).then(async (res) => {
-    const val = res.data;
-    val.name = files[0].name;
+    await axios.post(`${cloudURL}/image/upload`, formData).then(async (res) => {
+      const val = res.data;
+      val.name = files[0].name;
 
-    dispatch({
-      type: "CoverLetterForApplying",
-      data: val,
+      dispatch({
+        type: "CoverLetterForApplying",
+        data: val,
+      });
+      setBtnLoading(false);
     });
-  });
-};
+  };
+export const UploadAdditionalDocsJobApply =
+  (files, setBtnLoading) => async (dispatch, state) => {
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "pitchprofile");
+
+    await axios.post(`${cloudURL}/image/upload`, formData).then(async (res) => {
+      const val = res.data;
+      val.name = files[0].name;
+
+      dispatch({
+        type: "AddDocApply",
+        data: val,
+      });
+      setBtnLoading(false);
+    });
+  };
 
 export const ResetCoverLetterJob = () => async (dispatch) => {
   dispatch({

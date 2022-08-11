@@ -21,12 +21,14 @@ import {
   ApplyJobPost,
   ResetCoverLetterJob,
   UploadCoverLetterJob,
+  UploadAdditionalDocsJobApply,
 } from "../../redux/action/jobApplications/jobApplicationsActions";
 import { useHistory } from "react-router-dom";
 
 import ReactHtmlParser from "react-html-parser";
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
 import ReactQuill from "react-quill";
+import BrowsejobgridCard from "./BrowsejobgridCard";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -48,8 +50,9 @@ const blogGrid = [
 export default function Jobdetail(props) {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [btnloading, setBtnLoading] = useState(false);
   const [description, setDescription] = useState("");
-  const [useUploaded, setUseUploaded] = useState(false);
+  const [useUploaded, setUseUploaded] = useState("uploadCoverLetter");
   const [uploadNew, setUploadNew] = useState(false);
   const [additionalDoc, setAdditionalDoc] = useState(false);
   const [hasGoBack, setHasGoBack] = useState(
@@ -89,6 +92,7 @@ export default function Jobdetail(props) {
   };
 
   const callApplyJobPost = () => {
+    setBtnLoading(true);
     dispatch(
       ApplyJobPost(
         state.PreviewPost.id,
@@ -99,7 +103,8 @@ export default function Jobdetail(props) {
         state.PreviewPost?.company?.company_name,
         state.PreviewPost?.company?.email,
         router,
-        useUploaded
+        useUploaded,
+        setBtnLoading
       )
     );
 
@@ -356,15 +361,17 @@ export default function Jobdetail(props) {
                               Applied
                             </Link>
                           ) : (
-                            <Link
-                              onClick={() => {
-                                dispatch(ResetCoverLetterJob());
-                                handleShow();
-                              }}
-                              className="site-button"
-                            >
-                              Apply To This Job
-                            </Link>
+                            <>
+                              <Link
+                                onClick={() => {
+                                  dispatch(ResetCoverLetterJob());
+                                  handleShow();
+                                }}
+                                className="site-button"
+                              >
+                                Apply To This Job
+                              </Link>
+                            </>
                           )}
                         </>
                       )}
@@ -375,208 +382,12 @@ export default function Jobdetail(props) {
             </div>
 
             <div className="container mt-3">
-              <ul className="row">
+              <ul className="post-job-bx browse-job-grid row">
                 {state?.FeaturedJobs != null &&
                   state?.FeaturedJobs?.map((item, index) => (
                     <>
                       {item.id != state.PreviewPost.id && (
-                        <li className="col-lg-3 col-md-6" key={index}>
-                          <div className="post-bx">
-                            <div className="mb-4">
-                              {item.video ? (
-                                <video
-                                  className="card-img-top"
-                                  width="auto"
-                                  height="165"
-                                  controls
-                                >
-                                  <source src={item.video} type="video/mp4" />
-                                  <source src={item.video} type="video/wmv" />
-                                  <source src={item.video} type="video/mkv" />
-                                  <source src={item.video} type="video/mov" />
-                                  Your browser does not support the video tag.
-                                </video>
-                              ) : (
-                                <div style={{ width: "auto", height: "165px" }}>
-                                  <img
-                                    className="card-img-top"
-                                    src={
-                                      item?.company?.pic != null
-                                        ? item?.company?.pic
-                                        : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
-                                    }
-                                    style={{
-                                      width: "100%",
-                                      height: "auto",
-                                      maxHeight: "165px",
-                                    }}
-                                    alt="Card image cap"
-                                  />
-                                </div>
-                              )}
-                            </div>
-                            <div className="d-flex m-b30">
-                              <div className="job-post-info ">
-                                <h5
-                                  className="text-uppercase text-decoration-none"
-                                  style={{
-                                    textDecoration: "none !important",
-                                  }}
-                                >
-                                  <Link
-                                    to={{
-                                      pathname: `/job-detail`,
-                                      search: `?id=${item?.id}&company=${item?.company_id}`,
-                                      state: {
-                                        company_id: item?.company_id,
-                                        post_id: item?.id,
-                                      },
-                                    }}
-                                  >
-                                    {item?.job_title?.substring(0, 5)}
-                                    {"... "}
-                                    {item.seniority_level != null && "- "}
-                                    <span
-                                      className="text-uppercase"
-                                      style={{
-                                        fontSize: "12px",
-                                        fontWeight: "normal",
-                                      }}
-                                    >
-                                      {SeniorityLevel.findIndex(
-                                        (x) => x?.id == item.seniority_level
-                                      ) == -1
-                                        ? ""
-                                        : SeniorityLevel[
-                                            SeniorityLevel.findIndex(
-                                              (x) =>
-                                                x?.id == item.seniority_level
-                                            )
-                                          ].name}
-                                      {/* {item.department?.name} */}
-                                    </span>
-                                  </Link>
-
-                                  <br />
-                                  <Link
-                                    to={{
-                                      pathname: "/company-detail",
-                                      search: `?company_id=${item?.company_id}`,
-                                      state: {
-                                        company_id: item?.company_id,
-                                      },
-                                    }}
-                                  >
-                                    <span
-                                      className="text-uppercase mb-0 cardGridFont"
-                                      style={{
-                                        fontSize: "14px",
-                                        fontWeight: "normal",
-                                        color: "#1b6cd5",
-                                        textDecoration: "none",
-                                      }}
-                                    >
-                                      {item.company.company_name}
-                                      {/* {item.department?.name} */}
-                                    </span>
-                                  </Link>
-                                </h5>
-                                <ul
-                                  style={{
-                                    marginTop: "-12px",
-                                    textDecoration: "none",
-                                  }}
-                                >
-                                  <li className="mb-0 cardGridFont">
-                                    <i className="fa fa-map-marker"></i>
-                                    {item.city?.name}
-                                    {item.city && ", "} {item.state?.name}
-                                    {item.state && ", "}
-                                    {item.country?.sortname}
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-
-                            <div
-                              className="mb-2 d-flex "
-                              style={{ marginTop: "-30px" }}
-                            >
-                              {/* <div className="text-primary">
-          <i className="fa fa-bookmark-o"></i>{" "}
-          {employmentTypeDrop.findIndex(
-            (x) => x?.id == item.employment_type
-          ) == -1
-            ? ""
-            : employmentTypeDrop[
-                employmentTypeDrop.findIndex(
-                  (x) => x?.id == item.employment_type
-                )
-              ].name}
-        </div> */}
-                              <div className="mb-0 cardGridFont text-primary">
-                                <i className="fa fa-clock-o"></i>{" "}
-                                {jobTypeDrop.findIndex(
-                                  (x) => x?.id == item.job_type
-                                ) == -1
-                                  ? ""
-                                  : jobTypeDrop[
-                                      jobTypeDrop.findIndex(
-                                        (x) => x?.id == item.job_type
-                                      )
-                                    ].name}
-                              </div>
-                            </div>
-
-                            <div className="d-flex">
-                              <div className="mb-0  cardGridFont job-time mr-auto">
-                                <Link to={""}>
-                                  <span>
-                                    {daysSinceGivenDate(
-                                      new Date(item.created_at)
-                                    )}{" "}
-                                    ago
-                                  </span>
-                                </Link>
-                              </div>
-                              <div className="mb-0 cardGridFont salary-bx">
-                                <span>
-                                  <p className="ml-1 row">
-                                    <p>
-                                      {
-                                        state.PreviewPost?.country
-                                          ?.currency_symbol
-                                      }{" "}
-                                    </p>
-                                    {SalaryRange.findIndex(
-                                      (x) =>
-                                        x?.id == state.PreviewPost?.salary_range
-                                    ) == -1
-                                      ? ""
-                                      : SalaryRange[
-                                          SalaryRange.findIndex(
-                                            (x) =>
-                                              x?.id ==
-                                              state.PreviewPost?.salary_range
-                                          )
-                                        ].name}
-                                  </p>
-                                </span>
-                              </div>
-                            </div>
-                            <label className="like-btn">
-                              <input
-                                type="checkbox"
-                                onClick={() => {
-                                  setUseUploaded(!useUploaded);
-                                  // onClickLike();
-                                }}
-                                // defaultChecked={isLiked}
-                              />
-                              <span className="checkmark"></span>
-                            </label>
-                          </div>
-                        </li>
+                        <BrowsejobgridCard item={item} index={index} />
                       )}
                     </>
                   ))}
@@ -611,25 +422,85 @@ export default function Jobdetail(props) {
               </div>
               <div className="modal-body">
                 <form>
+                  {/* <label>Cover Letter</label> */}
+
                   <div className="row">
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <input
+                          onClick={() => {
+                            setUseUploaded("uploadCoverLetter");
+                          }}
+                          defaultChecked={true}
+                          id="setUseUploadedAdditionla"
+                          name="setUseUploaded"
+                          type="radio"
+                        />{" "}
+                        Upload Cover Letter
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <input
+                          onClick={() => {
+                            setUseUploaded("uploadnew");
+                          }}
+                          id="setUseUploaded"
+                          name="setUseUploaded"
+                          // defaultChecked={}
+                          type="radio"
+                        />{" "}
+                        Write cover letter
+                      </div>
+                    </div>
+
+                    {useUploaded == "uploadnew" ? (
+                      <div className="col-lg-12 col-md-12">
+                        <div className="form-group">
+                          <label>Cover Letter</label>
+                          {/* 
+                          <TextAreaModalComponent
+                            placeholder="Enter Cover Letter"
+                            type="text"
+                            value={description}
+                            onChange={(e) => {
+                              console.log(e.target.value);
+                              setDescription(e.target.value);
+                            }}
+                          /> */}
+                          <ReactQuill
+                            className="quillEditor"
+                            value={description}
+                            onChange={setDescription}
+                          />
+                        </div>
+                      </div>
+                    ) : null}
+
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Cover Letter</label>
-
-                        <ReactQuill
-                          className="quillEditor"
-                          value={description}
-                          onChange={setDescription}
-                        />
-                        {/* <TextAreaModalComponent
-                          placeholder="Enter Cover Letter"
-                          type="text"
-                          value={description}
-                          onChange={(e) => {
-                            console.log(e.target.value);
-                            setDescription(e.target.value);
-                          }}
-                        /> */}
+                        {useUploaded == "uploadCoverLetter" && (
+                          <>
+                            {state.CoverLetterForApplying ? (
+                              <p>{state.CoverLetterForApplying.name}</p>
+                            ) : (
+                              <UploadDataComponent
+                                text={"Upload New Cover Letter"}
+                                onChange={(e) => {
+                                  console.log("e upload", e.target.value);
+                                  setBtnLoading(true);
+                                  dispatch(
+                                    UploadCoverLetterJob(
+                                      e.target.files,
+                                      setBtnLoading
+                                    )
+                                  );
+                                }}
+                              />
+                            )}
+                          </>
+                        )}
                       </div>
                     </div>
 
@@ -637,13 +508,18 @@ export default function Jobdetail(props) {
                       <div className="form-group">
                         {/* <label>Upload Additional Supporting Documents</label> */}
 
-                        {state.CoverLetterForApplying ? (
-                          <p>{state.CoverLetterForApplying.name}</p>
+                        {state.AddDocApply ? (
+                          <p>{state.AddDocApply.name}</p>
                         ) : (
                           <UploadDataComponent
+                            text={
+                              "Upload Additional Supporting Documents (optional)"
+                            }
                             onChange={(e) => {
                               console.log("e upload", e.target.value);
-                              dispatch(UploadCoverLetterJob(e.target.files));
+                              dispatch(
+                                UploadAdditionalDocsJobApply(e.target.files)
+                              );
                             }}
                           />
                         )}
@@ -663,16 +539,30 @@ export default function Jobdetail(props) {
                 >
                   Cancel
                 </button>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    callApplyJobPost();
-                  }}
-                  type="button"
-                  className="site-button"
-                >
-                  Apply
-                </button>
+                <>
+                  {btnloading ? (
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                      }}
+                      type="button"
+                      className="site-button"
+                    >
+                      Loading...
+                    </button>
+                  ) : (
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        callApplyJobPost();
+                      }}
+                      type="button"
+                      className="site-button"
+                    >
+                      Apply
+                    </button>
+                  )}
+                </>
               </div>
             </div>
           </div>

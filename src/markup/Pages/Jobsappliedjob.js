@@ -16,6 +16,7 @@ import AppliedJobGrid from "./AppliedJobGrid";
 import { formatDate } from "../../utils/functions";
 import { JobStatus } from "../../utils/DropDownUtils";
 import Header from "../Layout/Header";
+import moment from "moment";
 
 export default function Jobsappliedjob() {
   const state = useSelector((state) => state);
@@ -71,7 +72,7 @@ export default function Jobsappliedjob() {
                             await dispatch(SortByFreshnessApplicationJobs());
                           }}
                         >
-                          Sort by newest
+                          Sort by Closing Date
                         </Link>
 
                         <Link
@@ -116,6 +117,7 @@ export default function Jobsappliedjob() {
                           </th>
                           <th>Job Title</th>
                           <th>Closing Date</th>
+                          <th>Applied Date</th>
                           <th>Status</th>
                         </tr>
                       </thead>
@@ -158,10 +160,6 @@ export default function Jobsappliedjob() {
                                       fontWeight: "normal",
                                     }}
                                   >
-                                    {console.log(
-                                      "item?.job?.department?.name",
-                                      item?.job?.department?.name
-                                    )}
                                     - {item?.job?.department?.name}
                                   </span>
                                 )}
@@ -181,7 +179,14 @@ export default function Jobsappliedjob() {
                                 ? formatDate(item?.job?.closing_date)
                                 : ""}{" "}
                             </td>
-                            <td className="expired pending">
+                            <td className=" pending">
+                              {item?.created_at
+                                ? moment
+                                    .utc(item?.created_at)
+                                    .format("DD-MM-YYYY")
+                                : ""}{" "}
+                            </td>
+                            <td className="font-weight-bold pending">
                               {JobStatus.findIndex(
                                 (x) => x?.id == item?.status
                               ) == -1
