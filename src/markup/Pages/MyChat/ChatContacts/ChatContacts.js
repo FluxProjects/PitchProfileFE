@@ -61,7 +61,7 @@ const ChatContacts = ({ location }) => {
             display: "flex",
             flexDirection: "column",
             flex: 1,
-            alignItems: "flex-start",
+            alignItems: "center",
           }}
         >
           {state?.myRooms?.map((item) => (
