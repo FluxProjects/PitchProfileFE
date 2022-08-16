@@ -112,55 +112,59 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                   },
                 }}
               >
-                {isWishlistPage
+                {/* {isWishlistPage
                   ? item?.job_title.substring(0, 7)
-                  : item?.job_title}
+                  : item?.job_title} */}
+                {item?.job_title}
 
-                {isWishlistPage ? item?.job_title?.length > 7 && "... " : ""}
-                {item?.seniority_level != null && "- "}
-                <span
-                  className="text-uppercase"
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: "normal",
-                  }}
-                >
-                  {SeniorityLevel.findIndex(
-                    (x) => x?.id == item?.seniority_level
-                  ) == -1
-                    ? ""
-                    : SeniorityLevel[
-                        SeniorityLevel.findIndex(
-                          (x) => x?.id == item?.seniority_level
-                        )
-                      ].name}
-                  {/* {item.department?.name} */}
-                </span>
+                {/* {isWishlistPage ? item?.job_title?.length > 7 && "... " : ""} */}
+                {/* {item?.seniority_level != null && "- "} */}
               </Link>
 
-              <br />
-              <Link
-                to={{
-                  pathname: "/company-detail",
-                  search: `?company_id=${item?.company_id}`,
-                  state: {
-                    company_id: item?.company_id,
-                  },
+              {/* <br /> */}
+              <div
+                className="text-uppercase mbt00"
+                style={{
+                  fontSize: "12px",
+                  fontWeight: "normal",
                 }}
               >
-                <span
-                  className="text-uppercase mb-0 cardGridFont"
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: "normal",
-                    color: "#1b6cd5",
-                    textDecoration: "none",
+                {SeniorityLevel.findIndex(
+                  (x) => x?.id == item?.seniority_level
+                ) == -1
+                  ? ""
+                  : SeniorityLevel[
+                      SeniorityLevel.findIndex(
+                        (x) => x?.id == item?.seniority_level
+                      )
+                    ].name}
+                {/* {item.department?.name} */}
+              </div>
+              {/* <br /> */}
+              <div>
+                <Link
+                  to={{
+                    pathname: "/company-detail",
+                    search: `?company_id=${item?.company_id}`,
+                    state: {
+                      company_id: item?.company_id,
+                    },
                   }}
                 >
-                  {item?.company?.company_name}
-                  {/* {item.department?.name} */}
-                </span>
-              </Link>
+                  <span
+                    className="text-uppercase mb-0 cardGridFont"
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "normal",
+                      color: "#1b6cd5",
+                      textDecoration: "none",
+                    }}
+                  >
+                    {item?.company?.company_name}
+                    {/* {item.department?.name} */}
+                  </span>
+                </Link>
+              </div>
             </h5>
             <ul
               style={{
@@ -170,12 +174,11 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
             >
               <li style={{ marginBottom: 0 }} className="mb-0 cardGridFont">
                 <i className="fa fa-map-marker"></i>
-                {item?.city?.name?.substring(0, 6)}
-                {item?.city?.name?.length > 6 && "... "}
-                {item?.city && ", "} {item?.state?.name?.substring(0, 6)}
-                {item?.state?.name?.length > 6 && "... "}
-                {item?.state && ", "}
-                {item?.country?.sortname}
+                {item?.city?.name}
+                {/* {item?.city?.name?.length > 6 && "... "} */}
+                {item?.city && ", "}
+                {item?.state?.name}
+                {/* {item?.state?.name?.length > 6 && "... "} */}
               </li>
             </ul>
           </div>
