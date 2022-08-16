@@ -449,12 +449,13 @@ export default function HeaderCandidateResume({
                       <input
                         type="text"
                         className="form-control"
-                        placeholder={"113456789111"}
+                        placeholder={"0044 7123456789"}
                         onChange={(e) => {
                           setPhone(e.target.value);
                         }}
                         value={phone}
                       />
+                      <small>ex: 0044 7123456789</small>
                     </div>
                   </div>
                 </div>

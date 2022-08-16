@@ -302,7 +302,7 @@ export default function Jobmyresume() {
                 This section is mandatory please add at leaset top 3 skills.
                 This section is mandatory please add at leaset 1 previous employment. 
                 */}
-                {!state.userDetails.is_reviewed && state.userDetails.video && (
+                {/* {!state.userDetails.is_reviewed && state.userDetails.video && (
                   <div className="col-12 m-b30 ">
                     <div
                       style={{ backgroundColor: "yellow" }}
@@ -316,7 +316,7 @@ export default function Jobmyresume() {
                       </ul>
                     </div>
                   </div>
-                )}
+                )} */}
                 <div className="col-xl-3 col-lg-4 col-md-4 col-sm-12 m-b30">
                   <Listingsidebar isMyProfile={true} />
                 </div>
@@ -353,6 +353,11 @@ export default function Jobmyresume() {
 
                   {/* ProfileDetailsComponent */}
                   <ProfileDetailsComponent />
+
+                  <p style={{ fontStyle: "italic" }}>
+                    Note: Your profile will be visible for public view once the
+                    video you have uploaded is approved by admin.
+                  </p>
 
                   {/* AttachResumeComponent */}
                   {/* <AttachResumeComponent /> */}

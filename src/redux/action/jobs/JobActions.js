@@ -112,15 +112,18 @@ export const SaveJobVideo = (files, setLoading) => async (dispatch, state) => {
 
   await axios.post(`${cloudURL}/video/upload`, formData).then(async (res) => {
     if (res.data.secure_url) {
-      toast.success("Video uploaded Successfully!", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.success(
+        "Uploaded successfully. Your uploaded video is being reviewed by admin. Please note your profile will be live once approved. You will shortly recieve a confirmation",
+        {
+          position: "bottom-center",
+          autoClose: 10000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
 
       dispatch({
         type: "SaveJobVideo",

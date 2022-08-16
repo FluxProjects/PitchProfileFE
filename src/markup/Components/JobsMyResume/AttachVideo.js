@@ -82,11 +82,13 @@ export default function AttachVideo({ isView }) {
                     className="custom-file row AttachCompanyVid"
                   >
                     <div className="col-md-12 cl-sm-12 col-lg-12">
-                      <h5 className="m-b10 z-10 text-center ">Attach Video</h5>
+                      <h5 className="m-b10 z-10 text-center ">
+                        Attach Video <span className="text-danger"> *</span>
+                      </h5>
                       <p className="m-auto mt-3  align-self-center">
                         {/* <i className="fa  fa-upload"></i> */}
-                        Attract the top talent by providing a Video Job
-                        Description
+                        Pitch your talent, expirience and achievements in a
+                        short video. (Ideal video length should be 1-2 minutes)
                       </p>
                       <br />
                       <button

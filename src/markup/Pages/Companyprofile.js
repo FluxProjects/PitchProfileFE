@@ -412,8 +412,9 @@ export default function Companyprofile() {
                                   setPhone(e.target.value);
                                 }}
                                 value={phone}
-                                placeholder={"113456789111"}
+                                placeholder={"0044 7123456789"}
                               />
+                              <small>ex: 0044 7123456789</small>
                             </div>
                           </div>
                           <div className="col-lg-6 col-md-6">

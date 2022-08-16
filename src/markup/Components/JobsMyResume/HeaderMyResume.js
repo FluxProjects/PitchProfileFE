@@ -199,7 +199,9 @@ export default function HeaderMyResume({ isView }) {
               )}
             </h4>
             <p className="m-b15">
-              {state.userDetails.headline}
+              {state.userDetails.headline
+                ? state.userDetails.headline
+                : "Add Resume Headline"}
               {/* <span
                 onClick={() => handleShow()}
                 className="m-l15 font-16 text-white"
@@ -431,12 +433,13 @@ export default function HeaderMyResume({ isView }) {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder={"113456789111"}
+                        placeholder={"0044 7123456789"}
                         onChange={(e) => {
                           setPhone(e.target.value);
                         }}
                         value={phone}
                       />
+                      <small>ex: 0044 7123456789</small>
                     </div>
                   </div>
                 </div>

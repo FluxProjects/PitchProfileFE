@@ -707,12 +707,13 @@ export default function Jobprofile() {
                                 fieldHighlight={
                                   fieldHighlight == "phone" ? true : false
                                 }
-                                placeholder={"113456789111"}
+                                placeholder={"0044 7123456789"}
                                 value={phone}
                                 onChange={(e) => {
                                   setPhone(e.target.value);
                                 }}
                               />
+                              <small>ex: 0044 7123456789</small>
                             </div>
                           </div>
                         </div>

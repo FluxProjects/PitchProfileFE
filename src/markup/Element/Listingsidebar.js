@@ -131,7 +131,7 @@ export default function Listingsidebar({ isView, isCompany, isMyProfile }) {
               <span>Personal Details</span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               activeClass="active"
               className="scroll-bar nav-link"
@@ -142,7 +142,7 @@ export default function Listingsidebar({ isView, isCompany, isMyProfile }) {
             >
               <span>Attach Cover Letter</span>
             </Link>
-          </li>
+          </li> */}
           {console.log("isMyProfileisMyProfileisMyProfile", isMyProfile)}
           {!isCompany && isMyProfile && (
             <ListingSidebarRouterLink isView={isView} />
