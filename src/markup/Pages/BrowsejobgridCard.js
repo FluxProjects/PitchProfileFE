@@ -112,9 +112,11 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                   },
                 }}
               >
-                {item?.job_title}
+                {isWishlistPage
+                  ? item?.job_title.substring(0, 7)
+                  : item?.job_title}
 
-                {/* {item?.job_title?.length > 8 && "... "} */}
+                {isWishlistPage ? item?.job_title?.length > 7 && "... " : ""}
                 {item?.seniority_level != null && "- "}
                 <span
                   className="text-uppercase"

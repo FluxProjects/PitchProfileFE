@@ -130,6 +130,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
             name={
               "A verification code has been sent to your email address. Please enter the code below to complete sign up"
             }
+            showLabel={true}
             required={true}
             placeholder={"Enter OTP"}
             type={"number"}

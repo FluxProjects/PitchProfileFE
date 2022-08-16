@@ -6,10 +6,15 @@ export default function RegisterTextInput({
   required,
   type,
   placeholder,
+  showLabel,
 }) {
   return (
     <div style={{ marginBottom: "1rem" }} className="form-group">
-      {/* <label className="labelCol">{label}*</label> */}
+      {showLabel && (
+        <label style={{ color: "black" }} className="labelCol">
+          {label}
+        </label>
+      )}
       <div className="input-group">
         <input
           name="dzName"

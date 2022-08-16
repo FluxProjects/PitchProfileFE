@@ -412,7 +412,7 @@ export default function Companyprofile() {
                                   setPhone(e.target.value);
                                 }}
                                 value={phone}
-                                placeholder="+12345678"
+                                placeholder={"113456789111"}
                               />
                             </div>
                           </div>

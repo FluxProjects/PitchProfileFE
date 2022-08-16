@@ -169,13 +169,11 @@ export const validatePhoneNumber = (input_str) => {
   return /^[0-9]+$/.test(input_str);
 };
 export const validateURL = (str) => {
-  var regex = new RegExp(
-    "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?"
-  );
+  var regex = new RegExp("/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-s./0-9]*$/g");
   var without_regex = new RegExp(
     "^([0-9A-Za-z-\\.@:%_+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?"
   );
-  if (regex.test(str) || without_regex.test(str)) {
+  if (regex.test(str)) {
     return true;
   } else {
     return false;

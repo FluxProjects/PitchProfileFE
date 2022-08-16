@@ -126,10 +126,7 @@ export default function CompanyRegister({ setIsCurrentTab }) {
         onHide={() => setModal(false)}
         className="modal fade modal-bx-info editor"
       >
-        <div
-          style={{}}
-          className="align-items-baseline d-flex justify-content-center"
-        >
+        <div style={{ padding: 10 }}>
           <RegisterTextInput
             name={"OTP"}
             required={true}
@@ -138,6 +135,10 @@ export default function CompanyRegister({ setIsCurrentTab }) {
             label={
               "A verification code has been sent to your email address. Please enter the code below to complete sign up"
             }
+            name={
+              "A verification code has been sent to your email address. Please enter the code below to complete sign up"
+            }
+            showLabel={true}
             // key={index}
             onChange={(e) => {
               setOTP(e.target.value);

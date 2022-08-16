@@ -107,7 +107,7 @@ export default function Jobprofile() {
       )
     );
     await dispatch(
-      GetCities(state.userDetails.state_id ? state.userDetails.state_id : 3866,)
+      GetCities(state.userDetails.state_id ? state.userDetails.state_id : 3866)
     );
 
     setLoading(false);
@@ -700,7 +700,7 @@ export default function Jobprofile() {
                                 fieldHighlight={
                                   fieldHighlight == "phone" ? true : false
                                 }
-                                placeholder={"Phone number"}
+                                placeholder={"113456789111"}
                                 value={phone}
                                 onChange={(e) => {
                                   setPhone(e.target.value);

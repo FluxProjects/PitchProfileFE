@@ -67,14 +67,13 @@ export default function EmploymentsModalComp({
       setFieldAlert(true);
       return;
     }
-    // if (endDate == null || endDate == "") {
-    // 	setFieldAlert(true);
-    // 	return;
-    // }
-    // if (isCurrent == null) {
-    //   setFieldAlert(true);
-    //   return;
-    // }
+
+    if (isCurrent == false) {
+      if (endDate == null || endDate == "") {
+        setFieldAlert(true);
+        return;
+      }
+    }
     setFieldAlert(false);
 
     if (isUpdate) {

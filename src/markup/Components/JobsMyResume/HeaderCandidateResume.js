@@ -449,7 +449,7 @@ export default function HeaderCandidateResume({
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Phone number"
+                        placeholder={"113456789111"}
                         onChange={(e) => {
                           setPhone(e.target.value);
                         }}

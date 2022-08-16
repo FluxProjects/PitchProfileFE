@@ -347,6 +347,7 @@ export default function Jobfindbox({ isView }) {
                 <button
                   onClick={(e) => {
                     e.preventDefault();
+                    setCandidateNameFilter("");
                     setAvailabliltyFilter("");
                     setSkillFilter("");
                     setCompanyFilter("");

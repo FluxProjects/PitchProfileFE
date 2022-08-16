@@ -619,6 +619,7 @@ export default function Jobfindbox({ isView }) {
                   onClick={(e) => {
                     e.preventDefault();
                     setJobNameFilter("");
+
                     setCompanyNameFilter("");
                     setSeniorityLevelFilter("");
                     setSkillFilter("");

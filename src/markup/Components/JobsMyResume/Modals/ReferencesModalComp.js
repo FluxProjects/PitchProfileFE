@@ -215,7 +215,7 @@ export default function ReferencesModalComp({
                   <div className="form-group">
                     <label>Phone</label>
                     <TextInputModal
-                      placeholder={"Enter Referee Phone"}
+                      placeholder={"Enter Referee Phone (113456789111)"}
                       onChange={(e) => setPhone(e.target.value)}
                       value={phone}
                     />
