@@ -279,6 +279,7 @@ export default function HeaderCandidateResume({
                 className="modal fade modal-bx-info editor"
               >
                 <ChatContacts
+                  setCloseModal={() => toggleModal()}
                   otherIdProp={state?.singleUserData.id}
                   RoomIdProp={state.SingleRoomName}
                   RoomNameProp={userDetail.f_name + "" + userDetail.l_name}

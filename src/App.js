@@ -119,7 +119,7 @@ function App() {
               className="modal fade modal-bx-info editor"
             >
               {/* <Chat otherId={otherId} /> */}
-              <ChatContacts />
+              <ChatContacts setCloseModal={() => toggleModal()} />
             </Modal>
           </>
         ) : null}

@@ -24,7 +24,13 @@ import Chat from "../Chat/Chat";
 import { Modal } from "react-bootstrap";
 import { getUserAvatar } from "../../../../utils/functions";
 
-const ChatContacts = ({ location, otherIdProp, RoomIdProp, RoomNameProp }) => {
+const ChatContacts = ({
+  location,
+  otherIdProp,
+  RoomIdProp,
+  RoomNameProp,
+  setCloseModal,
+}) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -65,7 +71,10 @@ const ChatContacts = ({ location, otherIdProp, RoomIdProp, RoomNameProp }) => {
   return (
     <div className="">
       <div className="containerChatContact">
-        <InfoBar room={RoomName ? RoomName : "Chat"} />
+        <InfoBar
+          room={RoomName ? RoomName : "Chat"}
+          setCloseModal={setCloseModal}
+        />
         <div
           // style={{
           //   width: "100%",

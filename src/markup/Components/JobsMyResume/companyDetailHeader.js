@@ -127,6 +127,7 @@ export default function CompanyDetailHeader({ isView, callAddRoom }) {
         className="modal fade modal-bx-info editor"
       >
         <ChatContacts
+          setCloseModal={() => toggleModal()}
           otherIdProp={state.PreviewSingleCompany.id}
           RoomIdProp={state.SingleRoomName}
           RoomNameProp={state.PreviewSingleCompany?.company_name}
