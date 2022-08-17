@@ -96,6 +96,8 @@ function App() {
         window.location.pathname == "/company-manage-job" ||
         window.location.pathname == "/company-resume" ||
         window.location.pathname == "/company-change-password" ||
+        // window.location.pathname == "/company-detail" ||
+        // window.location.pathname == "/job-detail" ||
         window.location.pathname == "/my-wishlists-company" ? (
           <>
             <button

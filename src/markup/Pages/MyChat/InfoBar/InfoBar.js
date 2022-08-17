@@ -10,9 +10,6 @@ const InfoBar = ({ room }) => (
         {room}
       </h3>
     </div>
-    <div className="rightInnerContainerChat">
-      {/* <a href="/"><img src={closeIcon} alt="close icon" /></a> */}
-    </div>
   </div>
 );
 

@@ -20,6 +20,7 @@ import {
   GetStateName,
 } from "../../../utils/functions";
 import Chat from "../../Pages/MyChat/Chat/Chat";
+import ChatContacts from "../../Pages/MyChat/ChatContacts/ChatContacts";
 import AttachVideo from "./AttachVideo";
 import DropDownModalComponent from "./DropDownModalComponent";
 import TextAreaModalComponent from "./TextAreaModalComponent";
@@ -125,10 +126,14 @@ export default function CompanyDetailHeader({ isView, callAddRoom }) {
         onHide={() => toggleModal()}
         className="modal fade modal-bx-info editor"
       >
-        <Chat
-          otherId={state.PreviewSingleCompany.id}
-          RoomId={state.SingleRoomName}
+        <ChatContacts
+          otherIdProp={state.PreviewSingleCompany.id}
+          RoomIdProp={state.SingleRoomName}
+          RoomNameProp={state.PreviewSingleCompany?.company_name}
         />
+        {/* <Chat
+
+        /> */}
       </Modal>
       <div className="col-lg-5 col-md-5 col-sm-12">
         <div className=" text-white "></div>

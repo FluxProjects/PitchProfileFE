@@ -2,4 +2,5 @@
   padding: 5% 0;
   overflow: auto;
   flex: auto;
+  border-left: 1px solid lightgray;
 }

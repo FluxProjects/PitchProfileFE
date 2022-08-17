@@ -179,3 +179,11 @@ export const validateURL = (str) => {
     return false;
   }
 };
+
+export const getUserAvatar = (name, fontSize, isSquare) => {
+  return `https://ui-avatars.com/api/?name=${name}&rounded=${
+    isSquare ? false : true
+  }&size=128&background=2979ff&color=fff&font-size=${
+    fontSize ? fontSize : 0.45
+  }`;
+};

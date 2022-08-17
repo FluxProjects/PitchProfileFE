@@ -15,7 +15,14 @@ import {
 } from "../../../../redux/action/Messages/MessagesActions";
 import { SocketContext } from "../../../../utils/socket";
 
-const Chat = ({ location, otherId, RoomId }) => {
+const Chat = ({
+  location,
+  otherId,
+  RoomId,
+  loading,
+  setIsLoading,
+  RoomName,
+}) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -29,7 +36,7 @@ const Chat = ({ location, otherId, RoomId }) => {
   const [socketId, setSocketId] = useState("");
 
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     callGetMessages(otherId);
@@ -46,7 +53,7 @@ const Chat = ({ location, otherId, RoomId }) => {
     //     alert(error);
     //   }
     // });
-  }, [socket]);
+  }, [socket, loading]);
 
   const callGetMessages = async (id) => {
     console.log("message called");
@@ -57,7 +64,7 @@ const Chat = ({ location, otherId, RoomId }) => {
       )
     );
     // console.log("state.", state.messagesChat);
-    setLoading(false);
+    setIsLoading(false);
   };
 
   const sendMessage = async (event) => {
@@ -87,17 +94,23 @@ const Chat = ({ location, otherId, RoomId }) => {
   };
 
   return (
-    <div className="">
-      <div className="containerChat">
-        <InfoBar room={"Chat"} />
-        <Messages messages={state.messagesChat} />
-        <Input
-          message={message}
-          setMessage={setMessage}
-          sendMessage={sendMessage}
-        />
-      </div>
-    </div>
+    <>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="">
+          <div className="containerChat">
+            {/* <InfoBar room={RoomName} /> */}
+            <Messages messages={state.messagesChat} />
+            <Input
+              message={message}
+              setMessage={setMessage}
+              sendMessage={sendMessage}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

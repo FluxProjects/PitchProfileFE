@@ -10,7 +10,7 @@
 }
 
 .leftInnerContainerChat {
-  flex: 0.5;
+  /* flex: 0.5; */
   display: flex;
   align-items: center;
   margin-left: 5%;
