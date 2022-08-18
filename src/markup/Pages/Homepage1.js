@@ -101,57 +101,72 @@ export default function Homepage() {
         >
           <div className="container">
             <div className="dez-bnr-inr-entry align-m">
-              <div className="find-job-bx">
-                <h2
-                  style={{
-                    fontWeight: 100,
-                    color: "#1b6cd5",
-                    textTransform: "uppercase",
-                    marginBottom: 0,
-                    fontWeight: 200,
-                    fontFamily: "Poppins",
-                  }}
-                >
-                  Pitch your{" "}
-                  <span style={{ fontWeight: "bold", color: "#1b6cd5" }}>
-                    talent
+              <div className="row find-job-bx">
+                <div className="col-md-6 col-xs-12 col-sm-12">
+                  <h2
+                    style={{
+                      fontWeight: 100,
+                      color: "#1b6cd5",
+                      textTransform: "uppercase",
+                      marginBottom: 0,
+                      fontWeight: 200,
+                      fontFamily: "Poppins",
+                    }}
+                  >
+                    Pitch your{" "}
+                    <span style={{ fontWeight: "bold", color: "#1b6cd5" }}>
+                      talent
+                    </span>
+                    , <br /> get notified and{" "}
+                    <span style={{ fontWeight: "bold", color: "#1b6cd5" }}>
+                      get hired.
+                    </span>
+                  </h2>
+                  <span
+                    style={{
+                      marginBottom: 20,
+                      color: "3e3e3e",
+                      fontFamily: "Poppins",
+                      marginTop: 0,
+                      fontWeight: 400,
+                      width: "50%",
+                    }}
+                  >
+                    <p>
+                      Pitch Profile is a video based profile sharing network. It
+                      is designed to give every professional an opportunity to
+                      pitch their skills and experience in a video format
+                      recorded at their own time, place and comfort.
+                      {/* <br />
+                      <br />
+                      Signup as */}
+                    </p>
                   </span>
-                  , <br /> get notified and{" "}
-                  <span style={{ fontWeight: "bold", color: "#1b6cd5" }}>
-                    get hired.
-                  </span>
-                </h2>
-                <span
-                  style={{
-                    marginBottom: 20,
-                    color: "3e3e3e",
-                    fontFamily: "Poppins",
-                    marginTop: 0,
-                    fontWeight: 400,
-                  }}
-                >
-                  Pitch Profile is a video based sharing network.
-                </span>
+                </div>
 
-                {/* show candidate card */}
-                <div className="section-full mt-2 browse-job p-b50">
-                  <div className="container">
+                <div className="col-md-6 w-100 col-xs-12 col-sm-12">
+                  {/* show candidate card */}
+                  <div className="section-full mt-2 browse-job p-b50">
+                    {/* <div className="container"> */}
                     <div className=" row">
                       {loading ? (
                         <p>Loading...</p>
                       ) : (
                         state.allCandidates
-                          .splice(0, 4)
+                          .splice(0, 2)
                           .map((item, index) => (
                             <BrowseCandidateGridCard
+                              fromHomeScreen={true}
                               item={item}
                               index={index}
                             />
                           ))
                       )}
+                      {/* </div> */}
                     </div>
                   </div>
                 </div>
+
                 {/* show candidate card */}
               </div>
             </div>

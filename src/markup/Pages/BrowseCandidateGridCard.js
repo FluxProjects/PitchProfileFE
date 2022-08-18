@@ -14,6 +14,7 @@ export default function BrowseCandidateGridCard({
   item,
   index,
   isWishlistPage,
+  fromHomeScreen,
 }) {
   console.log("BrowseCandidateGridCardBrowseCandidateGridCard", item?.f_name);
   const [loading, setLoading] = useState(true);
@@ -55,7 +56,11 @@ export default function BrowseCandidateGridCard({
         paddingLeft: 3,
       }}
       className={` ${
-        isWishlistPage ? "col-md-4 col-lg-4" : "col-md-4 col-lg-3"
+        isWishlistPage
+          ? "col-md-4 col-lg-4"
+          : fromHomeScreen
+          ? "col-md-6 col-lg-6"
+          : "col-md-4 col-lg-3"
       }   col-xs-12 col-sm-12  mb-2 marginMobileBrowseCard `}
     >
       <div
