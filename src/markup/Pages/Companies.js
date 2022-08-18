@@ -437,8 +437,9 @@ export default function Companies(props) {
                                     },
                                   }}
                                 >
-                                  {item?.company_name?.substring(0, 11)}
-                                  {item?.company_name?.length > 11 && "... "}
+                                  {/* {item?.company_name?.substring(0, 11)} */}
+                                  {/* {item?.company_name?.length > 11 && "... "} */}
+                                  {item?.company_name}
                                 </Link>
 
                                 <br />
@@ -483,11 +484,10 @@ export default function Companies(props) {
                               >
                                 <li className="mb-0 cardGridFont">
                                   <i className="fa fa-map-marker"></i>
-                                  {item.city?.name?.substring(0, 6)}
-                                  {item?.city?.name?.length > 6 && "... "}
-                                  {item.city && ", "}{" "}
-                                  {item.state?.name?.substring(0, 6)}
-                                  {item?.state?.name?.length > 6 && "... "}
+                                  {item.city?.name}
+                                  {/* {item?.city?.name?.length > 6 && "... "} */}
+                                  {item.city && ", "} {item.state?.name}
+                                  {/* {item?.state?.name?.length > 6 && "... "} */}
                                   {item.state && ", "}
                                   {item.country?.sortname}
                                 </li>

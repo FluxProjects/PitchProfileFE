@@ -102,9 +102,10 @@ export default function AppliedJobGrid({ item, index }) {
                   },
                 }}
               >
-                {item?.job?.job_title?.substring(0, 5)}
+                {/* {item?.job?.job_title?.substring(0, 5)}
                 {"... "}
-                {item?.job?.seniority_level != null && "- "}
+                {item?.job?.seniority_level != null && "- "} */}
+                {item?.job?.job_title}
                 <span
                   className="text-uppercase"
                   style={{
