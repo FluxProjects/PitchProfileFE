@@ -8,7 +8,11 @@ import TextAreaModalComponent from "../TextAreaModalComponent";
 import DropDownModalComponent from "../DropDownModalComponent";
 import TextInputModal from "../TextInputModal";
 import { socialPlatformDrop } from "../../../../utils/DropDownUtils";
-import { validateURL } from "../../../../utils/functions";
+import {
+  isValidHttpUrl,
+  isValidUrl,
+  validateURL,
+} from "../../../../utils/functions";
 
 export default function EmploymentsModalComp({
   data,
@@ -46,11 +50,15 @@ export default function EmploymentsModalComp({
 
       return;
     }
-    if (!validateURL(url)) {
+
+    console.log("tstegdehjcbgvf", isValidUrl(url));
+    // if (url) {
+    if (isValidUrl(url) == false) {
       setFieldAlert(true);
       setFieldText("Enter valid URL");
       return;
     }
+    // }
 
     if (isUpdate) {
       console.log("update called");
@@ -116,7 +124,7 @@ export default function EmploymentsModalComp({
                   <div className="form-group">
                     <label>URL</label>
                     <TextInputModal
-                      placeholder="Enter URL"
+                      placeholder="https://url.com"
                       onChange={(e) => setUrl(e.target.value)}
                       value={url}
                     />

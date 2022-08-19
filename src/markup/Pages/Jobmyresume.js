@@ -355,6 +355,10 @@ export default function Jobmyresume() {
                   <ProfileDetailsComponent />
 
                   <p style={{ fontStyle: "italic" }}>
+                    <i
+                      class="fa fa-exclamation-circle text-danger"
+                      aria-hidden="true"
+                    ></i>{" "}
                     Note: Your profile will be visible for public view once the
                     video you have uploaded is approved by admin.
                   </p>
