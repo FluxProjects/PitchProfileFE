@@ -132,7 +132,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                 {SeniorityLevel.findIndex(
                   (x) => x?.id == item?.seniority_level
                 ) == -1
-                  ? ""
+                  ? "Not mentioned"
                   : SeniorityLevel[
                       SeniorityLevel.findIndex(
                         (x) => x?.id == item?.seniority_level
