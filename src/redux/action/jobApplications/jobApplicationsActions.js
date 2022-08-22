@@ -124,7 +124,8 @@ export const SortByFreshnessApplicationJobs = () => async (dispatch, state) => {
   var resultClosingDate = [];
 
   resultClosingDate = state().JobApplicationsBackup.sort(function (a, b) {
-    return new Date(b.closing_date) - new Date(a.closing_date);
+    console.log("dhscjvdf", a);
+    return new Date(b?.job?.closing_date) - new Date(a?.job?.closing_date);
   });
 
   // toast.success("Updated Successfully!", {

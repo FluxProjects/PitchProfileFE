@@ -588,7 +588,7 @@ export default function Jobfindbox({ isView }) {
                       />
 
                       <datalist id="LocationFilter">
-                        {state.cities.map((item, key) => (
+                        {state.countries.map((item, key) => (
                           <option
                             key={key}
                             value={item.name}

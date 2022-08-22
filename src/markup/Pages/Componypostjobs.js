@@ -79,6 +79,7 @@ export default function Componypostjobs() {
 
   const [fieldAlert, setFieldAlert] = useState(false);
   // const [perks, setPerks] = useState("");
+  const reactQuillRef = React.useRef();
 
   useEffect(() => {
     setDepartment(1);
@@ -244,6 +245,12 @@ export default function Componypostjobs() {
 
   const callAddNewSkill = async (OtherSkill, setItSkills) => {
     await dispatch(AddNewSkill(OtherSkill, setItSkills));
+  };
+
+  const checkCharacterCount = (event) => {
+    const unprivilegedEditor = reactQuillRef.current.unprivilegedEditor;
+    if (unprivilegedEditor.getLength() > 280 && event.key !== "Backspace")
+      event.preventDefault();
   };
 
   return (
@@ -1017,6 +1024,7 @@ export default function Componypostjobs() {
                               <span className="text-danger"> *</span>
                             </label>
                             <ReactQuill
+                              onKeyDown={checkCharacterCount}
                               className="quillEditor"
                               value={role}
                               onChange={setRole}
@@ -1037,6 +1045,7 @@ export default function Componypostjobs() {
                             </label>
 
                             <ReactQuill
+                              onKeyDown={checkCharacterCount}
                               className="quillEditor"
                               value={keyRes}
                               onChange={setKeyRes}
@@ -1061,6 +1070,7 @@ export default function Componypostjobs() {
                             </label>
 
                             <ReactQuill
+                              onKeyDown={checkCharacterCount}
                               className="quillEditor"
                               value={lookingFor}
                               onChange={setLookingFor}
@@ -1084,6 +1094,8 @@ export default function Componypostjobs() {
                             </label>
 
                             <ReactQuill
+                              ref={reactQuillRef}
+                              onKeyDown={checkCharacterCount}
                               className="quillEditor"
                               value={perks}
                               onChange={setPerks}

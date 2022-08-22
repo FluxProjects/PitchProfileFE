@@ -102,7 +102,7 @@ export default function Homepage() {
           <div className="container">
             <div className="dez-bnr-inr-entry align-m">
               <div className="row find-job-bx">
-                <div className="col-md-6 col-xs-12 col-sm-12">
+                <div className="col-md-12 col-xs-12 col-sm-12">
                   <h2
                     style={{
                       fontWeight: 100,
@@ -132,7 +132,7 @@ export default function Homepage() {
                       width: "50%",
                     }}
                   >
-                    <p>
+                    <p style={{}}>
                       Pitch Profile is a video based profile sharing network. It
                       is designed to give every professional an opportunity to
                       pitch their skills and experience in a video format
@@ -144,7 +144,7 @@ export default function Homepage() {
                   </span>
                 </div>
 
-                <div className="col-md-6 w-100 col-xs-12 col-sm-12">
+                <div className="col-md-12 w-100 col-xs-12 col-sm-12">
                   {/* show candidate card */}
                   <div className="section-full mt-2 browse-job p-b50">
                     {/* <div className="container"> */}
@@ -152,15 +152,13 @@ export default function Homepage() {
                       {loading ? (
                         <p>Loading...</p>
                       ) : (
-                        state.allCandidates
-                          .splice(0, 2)
-                          .map((item, index) => (
-                            <BrowseCandidateGridCard
-                              fromHomeScreen={true}
-                              item={item}
-                              index={index}
-                            />
-                          ))
+                        state.allCandidates.splice(0, 4).map((item, index) => (
+                          <BrowseCandidateGridCard
+                            // fromHomeScreen={true}
+                            item={item}
+                            index={index}
+                          />
+                        ))
                       )}
                       {/* </div> */}
                     </div>

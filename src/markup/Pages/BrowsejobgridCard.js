@@ -209,9 +209,9 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
 
         <div className="d-flex">
           <div className="mb-0  cardGridFont job-time mr-auto">
-            <Link to={""}>
-              <span>{daysSinceGivenDate(new Date(item?.created_at))} ago</span>
-            </Link>
+            {/* <Link to={""}> */}
+            <span>{daysSinceGivenDate(new Date(item?.created_at))} ago</span>
+            {/* </Link> */}
           </div>
           <div className="mb-0 cardGridFont salary-bx">
             <span style={{ fontSize: 15 }}>
