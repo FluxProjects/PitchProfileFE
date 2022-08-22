@@ -1175,7 +1175,7 @@
   list-style: none;
   margin-bottom: 0px;
 }
-.candidate-info ul li a {
+.candidate-info ul > li > a {
   width: 100%;
   padding: 15px 20px;
   display: inline-block;
@@ -1183,15 +1183,15 @@
   color: #232323;
   border-left: 3px solid rgba(0, 0, 0, 0);
 }
-.candidate-info ul li a i {
+.candidate-info ul > li > a i {
   margin-right: 5px;
 }
-.candidate-info ul li a:hover,
-.candidate-info ul li a.active {
+.candidate-info ul > li > a:hover,
+.candidate-info ul > li > a.active {
   background: #e1e7ff;
   border-left-color: #1b6cd5;
 }
-.candidate-info ul li a span {
+.candidate-info ul > li > a > span {
   transition: all 0.5s;
 }
 .candidate-info ul li a:hover span {

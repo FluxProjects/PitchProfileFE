@@ -215,7 +215,17 @@ export default function HeaderCandidateResume({
                 </li>
               )}
               <li className="w-100">
-                <i className="ti-email"></i> {state.singleUserData.email}
+                <div>
+                  <a
+                    className="arem"
+                    href={`mailto:${state.singleUserData.email}`}
+                    style={{
+                      color: "white",
+                    }}
+                  >
+                    <i className="ti-email"></i> {state.singleUserData.email}
+                  </a>
+                </div>
               </li>
             </ul>
 
@@ -250,7 +260,7 @@ export default function HeaderCandidateResume({
                 <p className="textColorGold mr-2">Status</p>
                 <div className="mt-0 ml-4 mlPhoneHeader customFlexRow">
                   <p className="ml-2 text-white mlPhoneHeader font-weight-bold m-b15">
-                    {ToggleIsActive ? "Available" : "Unavailable"}
+                    {ToggleIsActive ? "Actively Looking" : "Happily Employed"}
                   </p>
                 </div>
               </div>
