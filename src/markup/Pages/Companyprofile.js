@@ -23,7 +23,7 @@ import {
 } from "../../redux/action";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
 import Profilesidebar from "../Element/CompanyProfileSidebar";
-import { validateURL, validatePhoneNumber } from "../../utils/functions";
+import { isValidUrl, validatePhoneNumber } from "../../utils/functions";
 
 export default function Companyprofile() {
   const state = useSelector((state) => state);
@@ -72,6 +72,7 @@ export default function Companyprofile() {
   let inputRef;
 
   const callUpdateCompany = async () => {
+    setFieldAlert(false);
     if (companyName == "") {
       console.log("companyName", companyName);
       setBtnLoading(false);
@@ -128,7 +129,7 @@ export default function Companyprofile() {
       return;
     }
     if (website != "") {
-      if (!validateURL(website)) {
+      if (isValidUrl(website) == false) {
         setFieldAlert(true);
         setFieldText("Enter valid URL");
         setBtnLoading(false);
@@ -138,7 +139,7 @@ export default function Companyprofile() {
     }
 
     if (facebook != "") {
-      if (!validateURL(facebook)) {
+      if (isValidUrl(facebook) == false) {
         setFieldAlert(true);
         setFieldText("Enter valid Facebook URL");
         setBtnLoading(false);
@@ -147,7 +148,7 @@ export default function Companyprofile() {
       }
     }
     if (twitter != "") {
-      if (!validateURL(twitter)) {
+      if (isValidUrl(twitter) == false) {
         setFieldAlert(true);
         setFieldText("Enter valid Twitter URL");
         setBtnLoading(false);
@@ -156,7 +157,7 @@ export default function Companyprofile() {
       }
     }
     if (linkedin != "") {
-      if (!validateURL(linkedin)) {
+      if (isValidUrl(linkedin) == false) {
         setFieldAlert(true);
         setFieldText("Enter valid Linkedin URL");
         setBtnLoading(false);
@@ -279,7 +280,7 @@ export default function Companyprofile() {
                           Company Profile
                         </h5>
                         <Link
-                          to={"/company-profile"}
+                          to={"/"}
                           className="site-button right-arrow button-sm float-right"
                         >
                           Back
@@ -414,7 +415,7 @@ export default function Companyprofile() {
                                 value={phone}
                                 placeholder={"0044 7123456789"}
                               />
-                              <small>ex: 0044 7123456789</small>
+                              <small>ex: 00447123456789</small>
                             </div>
                           </div>
                           <div className="col-lg-6 col-md-6">
@@ -540,6 +541,9 @@ export default function Companyprofile() {
                                 value={facebook}
                                 placeholder="https://www.facebook.com/"
                               />
+                              <small>
+                                ex: https://www.facebook.com/profile_name
+                              </small>
                             </div>
                           </div>
                           <div className="col-lg-6 col-md-6">
@@ -553,6 +557,9 @@ export default function Companyprofile() {
                                 value={twitter}
                                 placeholder="https://www.twitter.com/"
                               />
+                              <small>
+                                ex: https://twitter.com/profile_name
+                              </small>
                             </div>
                           </div>
                           {/* <div className="col-lg-6 col-md-6">
@@ -579,6 +586,9 @@ export default function Companyprofile() {
                                 value={linkedin}
                                 placeholder="https://www.linkedin.com/"
                               />
+                              <small>
+                                ex: https://www.linkedin.com/in/profile_name
+                              </small>
                             </div>
                           </div>
                         </div>

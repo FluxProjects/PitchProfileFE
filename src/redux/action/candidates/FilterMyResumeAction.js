@@ -21,15 +21,15 @@ export const filterCandidateAvailability =
       }
     });
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "GetAllCandidates",
       data: result,
@@ -43,15 +43,15 @@ export const filterCandidateName = (nameFilter) => async (dispatch, state) => {
     if (item?.f_name + " " + item?.l_name == nameFilter) return item;
   });
 
-  toast.success("Updated Successfully!", {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "bottom-center",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
   dispatch({
     type: "GetAllCandidates",
     data: resultNameFilter,
@@ -70,15 +70,15 @@ export const filterCandidateSkill = (skill_id) => async (dispatch, state) => {
     });
   });
 
-  toast.success("Updated Successfully!", {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "bottom-center",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
   dispatch({
     type: "GetAllCandidates",
     data: resultSkill,
@@ -93,15 +93,15 @@ export const filterCandidateCompany =
       if (item?.employments[0]?.organization == companyFilter) return item;
     });
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "GetAllCandidates",
       data: resultCompany,
@@ -116,15 +116,15 @@ export const filterCandidateRole =
       if (item?.employments[0]?.role == designationFilter) return item;
     });
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "GetAllCandidates",
       data: resultDesignation,
@@ -208,15 +208,15 @@ export const filterCandidateAll =
       return resultNameFilter.find((a) => a.id === id);
     });
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "GetAllCandidates",
       data: uniqueResults,

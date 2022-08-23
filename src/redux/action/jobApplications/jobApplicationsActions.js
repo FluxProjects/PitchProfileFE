@@ -51,7 +51,7 @@ export const ApplyJobPost =
       .then(function (response) {
         console.log("better stun", response.data);
         if (response.data.status) {
-          toast.success("Job added Successfully!", {
+          toast.success("Job applied Successfully!", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,

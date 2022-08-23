@@ -37,15 +37,15 @@ export const registerUser =
         if (response.data.successful) {
           setModal(true);
           setIsDisabled(false);
-          toast.success("OTP has been sent to your email!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("OTP has been sent to your email!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
@@ -638,15 +638,15 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
 
 export const LoginUser = (email, password, router) => async (dispatch) => {
   if (email == "admin@pitchprofile.com" && password == "123456") {
-    toast.success("Login Success!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Login Success!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "RegisterUser",
       data: { name: "admin" },
@@ -683,15 +683,15 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success("Login Success!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Login Success!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           dispatch({
             type: "RegisterUser",
             data: response.data.data,

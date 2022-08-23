@@ -37,15 +37,15 @@ export const registerCompany =
 
           setModal(true);
           setIsDisabled(false);
-          toast.success("OTP has been sent to your email!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("OTP has been sent to your email!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           dispatch({
             type: "RegisterUser",
             data: response.data.data,

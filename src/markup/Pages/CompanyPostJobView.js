@@ -21,7 +21,7 @@ export default function CompanyPostJobView() {
                         View Job
                       </h5>
                       <Link
-                        to={"/company-profile"}
+                        to={"/"}
                         className="site-button right-arrow button-sm float-right"
                       >
                         Back

@@ -52,7 +52,7 @@ export default function Jobdetail(props) {
   const [loading, setLoading] = useState(true);
   const [btnloading, setBtnLoading] = useState(false);
   const [description, setDescription] = useState("");
-  const [useUploaded, setUseUploaded] = useState("uploadCoverLetter");
+  const [useUploaded, setUseUploaded] = useState("uploadnew");
   const [uploadNew, setUploadNew] = useState(false);
   const [additionalDoc, setAdditionalDoc] = useState(false);
   const [hasGoBack, setHasGoBack] = useState(
@@ -429,21 +429,6 @@ export default function Jobdetail(props) {
                       <div className="form-group">
                         <input
                           onClick={() => {
-                            setUseUploaded("uploadCoverLetter");
-                          }}
-                          defaultChecked={true}
-                          id="setUseUploadedAdditionla"
-                          name="setUseUploaded"
-                          type="radio"
-                        />{" "}
-                        Upload Cover Letter
-                      </div>
-                    </div>
-
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <input
-                          onClick={() => {
                             setUseUploaded("uploadnew");
                           }}
                           id="setUseUploaded"
@@ -452,6 +437,20 @@ export default function Jobdetail(props) {
                           type="radio"
                         />{" "}
                         Write cover letter
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <input
+                          onClick={() => {
+                            setUseUploaded("uploadCoverLetter");
+                          }}
+                          defaultChecked={true}
+                          id="setUseUploadedAdditionla"
+                          name="setUseUploaded"
+                          type="radio"
+                        />{" "}
+                        Upload Cover Letter
                       </div>
                     </div>
 

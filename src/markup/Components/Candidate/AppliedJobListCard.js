@@ -11,7 +11,7 @@ export default function AppliedJobListCard({ index, item }) {
           </h4>
           <ul>
             <li>
-              <Link to={"/company-profile"}>@company-name</Link>
+              <Link to={"/"}>@company-name</Link>
             </li>
             <li>
               <i className="fa fa-map-marker"></i> Sacramento, California

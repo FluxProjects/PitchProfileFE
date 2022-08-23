@@ -219,7 +219,7 @@ export default function ReferencesModalComp({
                       onChange={(e) => setPhone(e.target.value)}
                       value={phone}
                     />
-                    <small>ex: 0044 7123456789</small>
+                    <small>ex: 00447123456789</small>
                   </div>
                 </div>
 

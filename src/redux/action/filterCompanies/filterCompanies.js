@@ -13,15 +13,15 @@ export const filterCompanyAlphabetical =
     });
     console.log("item?.company_name.charAt(0)", result);
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "AllCompanies",
       data: result,

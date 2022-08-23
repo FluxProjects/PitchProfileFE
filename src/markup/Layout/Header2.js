@@ -185,7 +185,7 @@ export default function Header2() {
                       </li>
 
                       <li className="float-right " style={{ padding: 0 }}>
-                        <Link className="noHover" to={"/company-profile"}>
+                        <Link className="noHover" to={"/"}>
                           <div className="testimonial-picHead radius ">
                             <img
                               src={

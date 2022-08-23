@@ -7,19 +7,33 @@ export default function RegisterTextInput({
   type,
   placeholder,
   showLabel,
+  widthStyle,
+  textCenter,
 }) {
   return (
-    <div style={{ marginBottom: "1rem" }} className="form-group">
+    <div style={{ marginBottom: "1rem" }} className=" form-group">
       {showLabel && (
-        <label style={{ color: "black" }} className="labelCol">
+        <label
+          style={{ color: "black" }}
+          className={`${textCenter && "text-center"} labelCol`}
+        >
           {label}
         </label>
       )}
-      <div className="input-group">
+      <div
+        style={{
+          width: widthStyle ? widthStyle : "100%",
+
+          margin: textCenter ? "0 auto" : "0",
+        }}
+        className="input-group"
+      >
         <input
           name="dzName"
           required={required}
-          className="form-control borderRadiusText "
+          className={`form-control borderRadiusText ${
+            textCenter && "inputTextCenter"
+          }`}
           placeholder={placeholder}
           type={type}
           onChange={onChange}

@@ -265,7 +265,7 @@ export default function Componypostjobs(props) {
                         Post A Job
                       </h5>
                       <Link
-                        to={"/company-profile"}
+                        to={"/"}
                         className="site-button right-arrow button-sm float-right"
                       >
                         Back

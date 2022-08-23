@@ -18,15 +18,15 @@ export const filterCompanyName = (companyName) => async (dispatch, state) => {
     if (item?.company?.company_name == companyName) return item;
   });
 
-  toast.success("Updated Successfully!", {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "bottom-center",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
   dispatch({
     type: "FilterAllJobs",
     data: resultCompanySize,
@@ -41,15 +41,15 @@ export const filterJobName = (jobName) => async (dispatch, state) => {
     if (item?.job_title == jobName) return item;
   });
 
-  toast.success("Updated Successfully!", {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "bottom-center",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
   dispatch({
     type: "FilterAllJobs",
     data: resultJobName,
@@ -65,15 +65,15 @@ export const filterIndustryName =
       if (item?.company?.industry_name == IndustryFilter) return item;
     });
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "FilterAllJobs",
       data: resultCompanySize,
@@ -88,15 +88,15 @@ export const filterCompanySize = (CompanySize) => async (dispatch, state) => {
     if (item?.company?.company_size == CompanySize) return item;
   });
 
-  toast.success("Updated Successfully!", {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "bottom-center",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
   dispatch({
     type: "FilterAllJobs",
     data: resultCompanySize,
@@ -112,15 +112,15 @@ export const filterDepartmentName =
       if (item?.department?.name == DepartmentName) return item;
     });
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "FilterAllJobs",
       data: resultDepartmentName,
@@ -136,15 +136,15 @@ export const filterEmploymentType =
       if (item?.employment_type == EmploymentType) return item;
     });
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "FilterAllJobs",
       data: resultEmploymentType,
@@ -160,15 +160,15 @@ export const filterLocationFilter =
       if (item?.city_id == LocationFilter) return item;
     });
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "FilterAllJobs",
       data: resultLocationFilter,
@@ -184,15 +184,15 @@ export const filterSeniorityLevel =
       if (item?.seniority_level == SeniorityLevel) return item;
     });
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "FilterAllJobs",
       data: resultSeniorityLevel,
@@ -207,15 +207,15 @@ export const filterSalaryRange = (SalaryRange) => async (dispatch, state) => {
     if (item?.salary_range == SalaryRange) return item;
   });
 
-  toast.success("Updated Successfully!", {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "bottom-center",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
   dispatch({
     type: "FilterAllJobs",
     data: resultSalaryRange,
@@ -230,15 +230,16 @@ export const filterShiftType = (ShiftType) => async (dispatch, state) => {
     if (item?.preferred_shift == ShiftType) return item;
   });
 
-  toast.success("Updated Successfully!", {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "bottom-center",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
+
   dispatch({
     type: "FilterAllJobs",
     data: resultShiftType,
@@ -253,15 +254,16 @@ export const filterJobType = (JobType) => async (dispatch, state) => {
     if (item?.job_type == JobType) return item;
   });
 
-  toast.success("Updated Successfully!", {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "bottom-center",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
+
   dispatch({
     type: "FilterAllJobs",
     data: resultJobType,
@@ -280,15 +282,15 @@ export const filterSkillType = (SkillType) => async (dispatch, state) => {
     if (item?.skill_id5 == SkillType) return item;
   });
 
-  toast.success("Updated Successfully!", {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "bottom-center",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
   dispatch({
     type: "FilterAllJobs",
     data: resultSkillType,
@@ -432,15 +434,15 @@ export const filterJobAll =
       return resultSkillType.find((a) => a.id === id);
     });
 
-    toast.success("Updated Successfully!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    // toast.success("Updated Successfully!", {
+    //   position: "bottom-center",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
     dispatch({
       type: "FilterAllJobs",
       data: uniqueResults,
@@ -464,15 +466,15 @@ export const filterJobsbyId = (JobID, router) => async (dispatch, state) => {
 
   console.log("resultJobIDresultJobID", resultJobID);
 
-  toast.success("Updated Successfully!", {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  // toast.success("Updated Successfully!", {
+  //   position: "bottom-center",
+  //   autoClose: 5000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  // });
   dispatch({
     type: "GetJobApplications",
     data: resultJobID,

@@ -19,7 +19,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
   const [CnfrmPassword, setCnfrmPassword] = useState("");
   const [modal, setModal] = useState("");
   const [otp, setOTP] = useState("");
-  const [isDisabled, setIsDisabled] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const callRegisterUser = async () => {
     setIsDisabled(true);
@@ -35,6 +35,18 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
           setIsDisabled
         )
       );
+      setIsDisabled(false);
+    } else {
+      toast.error(`Passwords don't match!`, {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setIsDisabled(false);
     }
     // router.push("/registration/");
   };
@@ -121,7 +133,10 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
       <Modal
         // backdrop={false}
         scrollable={true}
-        show={modal}
+        show={
+          modal
+          // true
+        }
         onHide={() => setModal(false)}
         className="modal fade modal-bx-info editor"
       >
@@ -130,10 +145,12 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
             name={
               "A verification code has been sent to your email address. Please enter the code below to complete sign up"
             }
+            widthStyle={"50%"}
+            textCenter={true}
             showLabel={true}
             required={true}
             placeholder={"Enter OTP"}
-            type={"number"}
+            type={"text"}
             label={
               "A verification code has been sent to your email address. Please enter the code below to complete sign up"
             }
@@ -143,7 +160,13 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
             }}
           />
 
-          <div className="text-left">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+            className=""
+          >
             <button
               onClick={(e) => {
                 e.preventDefault();

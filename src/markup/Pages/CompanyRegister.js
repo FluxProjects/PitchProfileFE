@@ -22,7 +22,7 @@ export default function CompanyRegister({ setIsCurrentTab }) {
   const [CnfrmPassword, setCnfrmPassword] = useState("");
   const [modal, setModal] = useState("");
   const [otp, setOTP] = useState("");
-  const [isDisabled, setIsDisabled] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const callRegisterUser = async () => {
     if (password == CnfrmPassword) {
@@ -36,6 +36,17 @@ export default function CompanyRegister({ setIsCurrentTab }) {
           setIsDisabled
         )
       );
+    } else {
+      toast.error(`Passwords don't match!`, {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setIsDisabled(false);
     }
     // router.push("/registration/");
   };
@@ -128,9 +139,10 @@ export default function CompanyRegister({ setIsCurrentTab }) {
       >
         <div style={{ padding: 10 }}>
           <RegisterTextInput
-            name={"OTP"}
             required={true}
             placeholder={"Enter OTP"}
+            widthStyle={"50%"}
+            textCenter={true}
             type={"number"}
             label={
               "A verification code has been sent to your email address. Please enter the code below to complete sign up"
@@ -145,7 +157,13 @@ export default function CompanyRegister({ setIsCurrentTab }) {
             }}
           />
 
-          <div className="text-left">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+            className="text-left"
+          >
             <button
               onClick={(e) => {
                 e.preventDefault();
