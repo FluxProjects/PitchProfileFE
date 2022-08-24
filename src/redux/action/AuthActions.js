@@ -455,15 +455,15 @@ export const UploadImage = (files) => async (dispatch, state) => {
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success("Update Success!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Update Success!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
 
           dispatch({
             type: "RegisterUser",
@@ -798,7 +798,7 @@ export const UpdateUserPassword =
       .then(function (response) {
         console.log(JSON.stringify(response.data));
         if (response.data.status) {
-          toast.success("Password Updated Successfully!", {
+          toast.success("Password updated successfully!", {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,

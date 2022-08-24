@@ -92,84 +92,88 @@ const ChatContacts = ({
             className="col-md-4 col-sm-12"
           >
             <ScrollToBottom>
-              {state?.myRooms?.map((item, index) => (
-                <>
-                  <div
-                    className="cursorPointer"
-                    style={{
-                      borderBottom: "1px solid",
-                      flexDirection: "row",
-                      paddingTop: "10px",
-                      paddingBottom: "10px",
-                      background:
-                        indexSelected == index ? "lightgray" : "transparent",
-                    }}
-                  >
-                    <span
-                      style={{
-                        border: "1px solid",
-                        borderRadius: 500,
-                        width: 28,
-                        marginLeft: 10,
-                        marginRight: 10,
-                      }}
-                    >
-                      <img
+              {state?.myRooms?.length > 0
+                ? state?.myRooms?.map((item, index) => (
+                    <>
+                      <div
+                        className="cursorPointer"
                         style={{
-                          maxWidth: "21px",
-                          borderRadius: 100,
-                          height: "21px",
-                          marginBottom: "4px",
+                          borderBottom: "1px solid",
+                          flexDirection: "row",
+                          paddingTop: "10px",
+                          paddingBottom: "10px",
+                          background:
+                            indexSelected == index
+                              ? "lightgray"
+                              : "transparent",
                         }}
-                        width={30}
-                        src={
-                          state.userDetails?.company_name
-                            ? item?.candidate?.pic
-                              ? item?.candidate?.pic
-                              : getUserAvatar(
-                                  item?.candidate?.f_name +
+                      >
+                        <span
+                          style={{
+                            border: "1px solid",
+                            borderRadius: 500,
+                            width: 28,
+                            marginLeft: 10,
+                            marginRight: 10,
+                          }}
+                        >
+                          <img
+                            style={{
+                              maxWidth: "21px",
+                              borderRadius: 100,
+                              height: "21px",
+                              marginBottom: "4px",
+                            }}
+                            width={30}
+                            src={
+                              state.userDetails?.company_name
+                                ? item?.candidate?.pic
+                                  ? item?.candidate?.pic
+                                  : getUserAvatar(
+                                      item?.candidate?.f_name +
+                                        " " +
+                                        item?.candidate?.l_name
+                                    )
+                                : item?.company?.pic
+                                ? item?.company?.pic
+                                : getUserAvatar(item?.company?.company_name)
+                            }
+                          />
+                        </span>
+                        <a
+                          className="btnStyle"
+                          onClick={() => {
+                            setIsLoading(true);
+                            setOtherId(
+                              state.userDetails?.company_name
+                                ? item?.candidate_id
+                                : item?.company_id
+                            );
+                            setRoomId(item?.id);
+                            setRoomName(
+                              state.userDetails?.company_name
+                                ? item?.candidate?.f_name +
                                     " " +
                                     item?.candidate?.l_name
-                                )
-                            : item?.company?.pic
-                            ? item?.company?.pic
-                            : getUserAvatar(item?.company?.company_name)
-                        }
-                      />
-                    </span>
-                    <a
-                      className="btnStyle"
-                      onClick={() => {
-                        setIsLoading(true);
-                        setOtherId(
-                          state.userDetails?.company_name
-                            ? item?.candidate_id
-                            : item?.company_id
-                        );
-                        setRoomId(item?.id);
-                        setRoomName(
-                          state.userDetails?.company_name
+                                : item?.company?.company_name
+                            );
+                            setIndexSelected(index);
+                            setChatModal(true);
+                          }}
+                          style={{
+                            color: indexSelected == index ? "#2e55fa" : "black",
+                          }}
+                        >
+                          {state.userDetails?.company_name
                             ? item?.candidate?.f_name +
-                                " " +
-                                item?.candidate?.l_name
-                            : item?.company?.company_name
-                        );
-                        setIndexSelected(index);
-                        setChatModal(true);
-                      }}
-                      style={{
-                        color: indexSelected == index ? "#2e55fa" : "black",
-                      }}
-                    >
-                      {state.userDetails?.company_name
-                        ? item?.candidate?.f_name +
-                          " " +
-                          item?.candidate?.l_name
-                        : item?.company?.company_name}
-                    </a>
-                  </div>
-                </>
-              ))}
+                              " " +
+                              item?.candidate?.l_name
+                            : item?.company?.company_name}
+                        </a>
+                      </div>
+                    </>
+                  ))
+                : "No chats added yet"}
             </ScrollToBottom>
           </div>
           <div

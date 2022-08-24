@@ -47,15 +47,15 @@ export const AddCandidateSkill =
           console.log("res tu ran", response.data);
 
           if (response.data.status) {
-            toast.success("Updated Successfully!", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            // toast.success("Updated Successfully!", {
+            //   position: "bottom-center",
+            //   autoClose: 5000,
+            //   hideProgressBar: false,
+            //   closeOnClick: true,
+            //   pauseOnHover: true,
+            //   draggable: true,
+            //   progress: undefined,
+            // });
             var resData = state().candidateSkills;
             resData.push(response.data.data[0]);
             dispatch({
@@ -124,15 +124,15 @@ export const AddCandidateSkill =
           console.log("res tu ran", response.data);
 
           if (response.data.status) {
-            toast.success("Updated Successfully!", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            // toast.success("Updated Successfully!", {
+            //   position: "bottom-center",
+            //   autoClose: 5000,
+            //   hideProgressBar: false,
+            //   closeOnClick: true,
+            //   pauseOnHover: true,
+            //   draggable: true,
+            //   progress: undefined,
+            // });
             var resData = state().candidateSkills;
             resData.push(response.data.data[0]);
             dispatch({
@@ -229,15 +229,15 @@ export const UpdateCandidateSkill =
         .then(function (response) {
           console.log("res vals", response.data);
           if (response.data.successful) {
-            toast.success("Updated Successfully!", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            // toast.success("Updated Successfully!", {
+            //   position: "bottom-center",
+            //   autoClose: 5000,
+            //   hideProgressBar: false,
+            //   closeOnClick: true,
+            //   pauseOnHover: true,
+            //   draggable: true,
+            //   progress: undefined,
+            // });
 
             var resData = state().candidateSkills;
             resData[index] = response.data.data;
@@ -307,15 +307,15 @@ export const UpdateCandidateSkill =
         .then(function (response) {
           console.log("res vals", response.data);
           if (response.data.successful) {
-            toast.success("Updated Successfully!", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            // toast.success("Updated Successfully!", {
+            //   position: "bottom-center",
+            //   autoClose: 5000,
+            //   hideProgressBar: false,
+            //   closeOnClick: true,
+            //   pauseOnHover: true,
+            //   draggable: true,
+            //   progress: undefined,
+            // });
 
             var resData = state().candidateSkills;
             resData[index] = response.data.data;
@@ -473,15 +473,15 @@ export const DeleteCandidateSkill = (id, index) => async (dispatch, state) => {
     .then(async function (response) {
       console.log("d", response.data);
       if (response.data.successful) {
-        toast.success("Deleted Successfully!", {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.success("Deleted Successfully!", {
+        //   position: "bottom-center",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
 
         var resData = state().candidateSkills;
         resData.splice(index, 1);
@@ -564,15 +564,15 @@ export const AddCandidateEducation =
           console.log("res tu ran", response.data);
 
           if (response.data.status) {
-            toast.success("Updated Successfully!", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            // toast.success("Updated Successfully!", {
+            //   position: "bottom-center",
+            //   autoClose: 5000,
+            //   hideProgressBar: false,
+            //   closeOnClick: true,
+            //   pauseOnHover: true,
+            //   draggable: true,
+            //   progress: undefined,
+            // });
             var resData = state().candidateEducations;
 
             resData.push(response.data.data[0]);
@@ -677,15 +677,15 @@ export const UpdateCandidateEducation =
         .then(function (response) {
           console.log("res vals", response.data);
           if (response.data.successful) {
-            toast.success("Updated Successfully!", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            // toast.success("Updated Successfully!", {
+            //   position: "bottom-center",
+            //   autoClose: 5000,
+            //   hideProgressBar: false,
+            //   closeOnClick: true,
+            //   pauseOnHover: true,
+            //   draggable: true,
+            //   progress: undefined,
+            // });
 
             var resData = state().candidateEducations;
             resData[index] = response.data.data;
@@ -798,15 +798,15 @@ export const DeleteCandidateEducation =
       .then(function (response) {
         console.log("d", response.data);
         if (response.data.successful) {
-          toast.success("Deleted Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Deleted Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           var resData = state().candidateEducations;
           resData.splice(index, 1);
           console.log("index", resData);
@@ -901,15 +901,15 @@ export const AddCandidateEmployment =
             console.log("res tu ran", response.data);
 
             if (response.data.status) {
-              toast.success("Updated Successfully!", {
-                position: "bottom-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-              });
+              // toast.success("Updated Successfully!", {
+              //   position: "bottom-center",
+              //   autoClose: 5000,
+              //   hideProgressBar: false,
+              //   closeOnClick: true,
+              //   pauseOnHover: true,
+              //   draggable: true,
+              //   progress: undefined,
+              // });
               var resData = state().candidateEmployments;
               resData.push(response.data.data[0]);
               dispatch({
@@ -1016,15 +1016,15 @@ export const UpdateCandidateEmployment =
         .then(function (response) {
           console.log("res vals", response.data);
           if (response.data.successful) {
-            toast.success("Updated Successfully!", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            // toast.success("Updated Successfully!", {
+            //   position: "bottom-center",
+            //   autoClose: 5000,
+            //   hideProgressBar: false,
+            //   closeOnClick: true,
+            //   pauseOnHover: true,
+            //   draggable: true,
+            //   progress: undefined,
+            // });
 
             var resData = state().candidateEmployments;
             resData[index] = response.data.data;
@@ -1146,15 +1146,15 @@ export const DeleteCandidateEmployment =
       .then(function (response) {
         console.log("d", response.data);
         if (response.data.successful) {
-          toast.success("Deleted Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Deleted Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           var resData = state().candidateEmployments;
           resData.splice(index, 1);
           console.log("index", resData);
@@ -1218,15 +1218,15 @@ export const AddCandidateProject =
         console.log("res tu ran", response.data);
 
         if (response.data.status) {
-          toast.success("Added Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Added Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           var resData = state().candidateProjects;
           resData.push(response.data.data[0]);
 
@@ -1302,15 +1302,15 @@ export const UpdateCandidateProject =
       .then(function (response) {
         console.log("res vals", response.data);
         if (response.data.successful) {
-          toast.success("Updated Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Updated Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
 
           var resData = state().candidateProjects;
           resData[index] = response.data.data;
@@ -1615,15 +1615,15 @@ export const DeleteCandidateProject =
       .then(function (response) {
         console.log("d", response.data);
         if (response.data.successful) {
-          toast.success("Deleted Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Deleted Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           var resData = state().candidateProjects;
           resData.splice(index, 1);
           console.log("index", resData);
@@ -1685,15 +1685,15 @@ export const AddCandidateCertificate =
         console.log("res tu ran", response.data);
 
         if (response.data.status) {
-          toast.success("Updated Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Updated Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           var resData = state().candidateCertificates;
           resData.push(response.data.data[0]);
           dispatch({
@@ -1758,15 +1758,15 @@ export const UpdateCandidateCertificate =
       .then(function (response) {
         console.log("res vals", response.data);
         if (response.data.successful) {
-          toast.success("Updated Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Updated Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
 
           var resData = state().candidateCertificates;
           resData[index] = response.data.data;
@@ -1863,15 +1863,15 @@ export const DeleteCandidateCertificate =
       .then(function (response) {
         console.log("d", response.data);
         if (response.data.successful) {
-          toast.success("Deleted Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Deleted Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           var resData = state().candidateCertificates;
           resData.splice(index, 1);
           console.log("index", resData);
@@ -1948,15 +1948,15 @@ export const AddCandidateReference =
         console.log("res tu ran", response.data);
 
         if (response.data.status) {
-          toast.success("Updated Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Updated Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           var resData = state().candidateReferences;
           resData.push(response.data.data[0]);
           dispatch({
@@ -2037,15 +2037,15 @@ export const UpdateCandidateReference =
       .then(function (response) {
         console.log("res vals", response.data);
         if (response.data.successful) {
-          toast.success("Updated Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Updated Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
 
           var resData = state().candidateReferences;
           resData[index] = response.data.data;
@@ -2143,15 +2143,15 @@ export const DeleteCandidateReference =
       .then(function (response) {
         console.log("d", response.data);
         if (response.data.successful) {
-          toast.success("Deleted Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Deleted Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           var resData = state().candidateReferences;
           resData.splice(index, 1);
           console.log("index", resData);
@@ -2213,15 +2213,15 @@ export const AddCandidateSocialProfile =
         console.log("res tu ran", response.data);
 
         if (response.data.status) {
-          toast.success("Updated Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Updated Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           var resData = state().candidateSocialProfiles;
           resData.push(response.data.data[0]);
           dispatch({
@@ -2291,15 +2291,15 @@ export const UpdateCandidateSocialProfile =
       .then(function (response) {
         console.log("res vals", response.data);
         if (response.data.successful) {
-          toast.success("Updated Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Updated Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
 
           var resData = state().candidateSocialProfiles;
           resData[index] = response.data.data;
@@ -2422,15 +2422,15 @@ export const DeleteCandidateSocialProfile =
       .then(function (response) {
         console.log("d", response.data);
         if (response.data.successful) {
-          toast.success("Deleted Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Deleted Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           var resData = state().candidateSocialProfiles;
           resData.splice(index, 1);
           console.log("index", resData);
@@ -2508,15 +2508,15 @@ export const UpdateCandidateProfile =
         console.log(response.data);
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success("Update Success!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Update Success!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
 
           dispatch({
             type: "RegisterUser",
@@ -2579,15 +2579,15 @@ export const UpdateCandidateSummary =
         console.log(response.data);
         if (response.data.successful) {
           console.log("data", response.data);
-          toast.success("Update Success!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Update Success!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
 
           var resData = state().userDetails;
           resData.summary = response.data.data.summary;
@@ -2651,15 +2651,15 @@ export const UploadProfileStatus = (status) => async (dispatch, state) => {
       console.log(response.data);
       if (response.data.successful) {
         console.log("data", response.data);
-        toast.success("Update Success!", {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.success("Update Success!", {
+        //   position: "bottom-center",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
 
         var resData = state().userDetails;
         resData.is_active = response.data.data.status;
@@ -2724,15 +2724,15 @@ export const UploadProfileisReviewd =
         if (response.data.successful) {
           console.log("data", response.data);
 
-          toast.success("Update Success!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Update Success!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           console.log("state().AllUserData", state().AllUserData);
           var resData = state().AllUserData;
           resData[index].is_reviewed = response.data.data.is_reviewed;
@@ -2831,15 +2831,15 @@ export const UpdateDesiredCareer =
       .then(async function (response) {
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
-          toast.success("Updated Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Updated Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
 
           dispatch({
             type: "SetDesiredCareer",
@@ -2981,15 +2981,15 @@ export const UpdateResumeHeader =
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success("Update Success!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Update Success!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
 
           dispatch({
             type: "RegisterUser",
