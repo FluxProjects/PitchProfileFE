@@ -292,7 +292,7 @@ export default function HeaderCandidateResume({
                   setCloseModal={() => toggleModal()}
                   otherIdProp={state?.singleUserData.id}
                   RoomIdProp={state.SingleRoomName}
-                  RoomNameProp={userDetail.f_name + "" + userDetail.l_name}
+                  RoomNameProp={userDetail.f_name + " " + userDetail.l_name}
                 />
                 {/* <Chat
                   otherId={state?.singleUserData.id}

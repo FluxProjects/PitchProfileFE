@@ -65,8 +65,8 @@ export default function ViewCandidateProfile(props) {
     GetStateName();
   };
 
-  const callAddRoom = (setModal) => {
-    dispatch(
+  const callAddRoom = async (setModal) => {
+    await dispatch(
       AddRoom(
         state.userDetails?.company_name ? otherId : state.userDetails?.id,
         state.userDetails?.company_name ? state.userDetails?.id : otherId,

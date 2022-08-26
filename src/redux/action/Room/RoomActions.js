@@ -22,23 +22,23 @@ export const AddRoom =
     };
 
     axios(config)
-      .then(function (response) {
+      .then(async function (response) {
         console.log("message sdnsa", response.data);
         if (response.data.message == "Rooms get Successfully") {
-          dispatch({
+          await dispatch({
             type: "SingleRoomData",
             data: response.data.data,
           });
-          dispatch({
+          await dispatch({
             type: "SingleRoomName",
             data: response.data.room,
           });
         } else if (response.data.message == "Room created Successfully") {
-          dispatch({
+          await dispatch({
             type: "myRooms",
             data: response.data.data,
           });
-          dispatch({
+          await dispatch({
             type: "SingleRoomName",
             data: response.data.room,
           });
@@ -74,6 +74,7 @@ export const getMyRoomsCandidate = () => async (dispatch, state) => {
       dispatch({
         type: "myRooms",
         data: response.data.data,
+        IsReadLength: response.data?.IsReadLength,
       });
     })
     .catch(function (error) {
@@ -94,6 +95,28 @@ export const getMyRoomsCompany = () => async (dispatch, state) => {
       dispatch({
         type: "myRooms",
         data: response.data.data,
+        IsReadLength: response.data?.IsReadLength,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const updateMyRoomsisRead = (room_id) => async (dispatch, state) => {
+  var config = {
+    method: "get",
+    url: `${URL}/rooms/update_isRead/${room_id}`,
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log("update messsgaes gettig woo", response.data);
+      dispatch({
+        type: "myRoomsUpdated",
+        data: response.data.data,
+        // IsReadLength: response.data?.IsReadLength,
       });
     })
     .catch(function (error) {

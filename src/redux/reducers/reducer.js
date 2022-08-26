@@ -12,8 +12,10 @@ const initialState = {
   // messages
   messagesChat: [],
   myRooms: [],
+  IsReadLength: 0,
   SingleRoomData: {},
   SingleRoomName: "",
+  myroomupdated: {},
 
   // Dropdown data actions
   languages: [],
@@ -83,6 +85,10 @@ const changeState = (state = initialState, { type, ...rest }) => {
     }
     case "setAllUserData": {
       return { ...state, AllUserData: rest.data };
+    }
+
+    case "myRoomsUpdated": {
+      return { ...state, myRoomsUpdated: rest.data };
     }
 
     case "LogoutUser":
@@ -172,7 +178,7 @@ const changeState = (state = initialState, { type, ...rest }) => {
     case "messagesChat":
       return { ...state, messagesChat: rest.data };
     case "myRooms":
-      return { ...state, myRooms: rest.data };
+      return { ...state, myRooms: rest.data, IsReadLength: rest.IsReadLength };
     case "SingleRoomData":
       return { ...state, SingleRoomData: rest.data };
     case "SingleRoomName":

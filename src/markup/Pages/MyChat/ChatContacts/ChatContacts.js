@@ -19,6 +19,7 @@ import { SocketContext } from "../../../../utils/socket";
 import {
   getMyRoomsCandidate,
   getMyRoomsCompany,
+  updateMyRoomsisRead,
 } from "../../../../redux/action";
 import Chat from "../Chat/Chat";
 import { Modal } from "react-bootstrap";
@@ -54,6 +55,12 @@ const ChatContacts = ({
     console.log("update", otherId, RoomId);
     setIsLoading(true);
   }, [otherId, RoomId]);
+
+  const callUpdateMyRoomsisRead = async (room_id) => {
+    await dispatch(updateMyRoomsisRead(room_id)).then(() => {
+      callGetRooms();
+    });
+  };
 
   const callGetRooms = async (id) => {
     if (state.userDetails?.company_name) {
@@ -150,6 +157,8 @@ const ChatContacts = ({
                                 : item?.company_id
                             );
                             setRoomId(item?.id);
+
+                            callUpdateMyRoomsisRead(item?.id);
                             setRoomName(
                               state.userDetails?.company_name
                                 ? item?.candidate?.f_name +
@@ -169,6 +178,17 @@ const ChatContacts = ({
                               " " +
                               item?.candidate?.l_name
                             : item?.company?.company_name}
+                          {item?.isRead == false && (
+                            <span
+                              style={{
+                                position: "absolute",
+                                background: "red",
+                                width: "10px",
+                                height: "10px",
+                                borderRadius: "50%",
+                              }}
+                            ></span>
+                          )}
                         </a>
                       </div>
                     </>

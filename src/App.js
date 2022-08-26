@@ -20,6 +20,8 @@ import {
   GetDepartments,
   GetEducationLevels,
   GetIndustries,
+  getMyRoomsCandidate,
+  getMyRoomsCompany,
   getSingleUserData,
   GetSkills,
 } from "./redux/action";
@@ -63,7 +65,21 @@ function App() {
     //  to get languages
 
     callGetSingleUserData();
+    callGetRooms();
   }, []);
+
+  const callGetRooms = async (id) => {
+    if (state.userDetails?.company_name) {
+      console.log("Company called");
+
+      await dispatch(getMyRoomsCompany());
+    } else {
+      console.log("Candidate called");
+
+      await dispatch(getMyRoomsCandidate());
+    }
+    setLoading(false);
+  };
 
   const callGetSingleUserData = async () => {
     var url_string = window.location.href; //
@@ -100,16 +116,46 @@ function App() {
         // window.location.pathname == "/job-detail" ||
         window.location.pathname == "/my-wishlists-company" ? (
           <>
-            <button
-              onClick={() => {
-                console.log("clis");
-                toggleModal();
+            <p
+              style={{
+                position: "fixed",
+                bottom: 20,
+                right: 30,
+                padding: 8,
+                zIndex: 10,
               }}
-              className="site-button radius-xl"
-              style={{ position: "fixed", bottom: 20, right: 30 }}
             >
-              <i className="fa fa-comment"></i>
-            </button>
+              <button
+                onClick={() => {
+                  console.log("clis");
+                  toggleModal();
+                }}
+                style={{
+                  background: "transparent",
+                  border: "transparent",
+                  color: "#2e55fa",
+                  fontSize: 40,
+                }}
+                className=" radius-xl"
+              >
+                <i className="fa fa-comment"></i>
+                <sup
+                  style={{
+                    position: "relative",
+                    right: "16px",
+                    zIndex: 10,
+                    bottom: "13px",
+                  }}
+                >
+                  <span
+                    style={{ fontSize: 10 }}
+                    class="badge badge-pill badge-danger"
+                  >
+                    {state.IsReadLength}
+                  </span>
+                </sup>
+              </button>
+            </p>
 
             <Modal
               // backdrop={false}
