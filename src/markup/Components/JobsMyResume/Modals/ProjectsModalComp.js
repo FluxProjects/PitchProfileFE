@@ -33,22 +33,30 @@ export default function ProjectsModalComp({
     isUpdate == true ? data?.end_date : ""
   );
   const [fieldAlert, setFieldAlert] = useState(false);
+  const [fieldText, setFieldText] = useState(false);
 
   const callAction = async () => {
     if (ProjectsTitle == null || ProjectsTitle == "") {
       setFieldAlert(true);
+      setFieldText("Please enter projects title");
       return;
     }
     if (description == null || description == "") {
       setFieldAlert(true);
+      setFieldText("Please enter description");
+
       return;
     }
     if (startedWorking == null || startedWorking == "") {
       setFieldAlert(true);
+      setFieldText("Please enter when you started working");
+
       return;
     }
     if (WorkedTill == null || WorkedTill == "") {
       setFieldAlert(true);
+      setFieldText("Please enter till when you worked");
+
       return;
     }
     if (isUpdate) {
@@ -117,7 +125,9 @@ export default function ProjectsModalComp({
 
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Client</label>
+                    <label>
+                      Client <span className="text-danger"> *</span>
+                    </label>
                     <TextInputModal
                       placeholder="Enter Client Name"
                       onChange={(e) => setClient(e.target.value)}
@@ -181,11 +191,7 @@ export default function ProjectsModalComp({
                 </div>
               </div>
             </form>
-            {fieldAlert && (
-              <p className="text-danger">
-                Please fill all the required fields.
-              </p>
-            )}
+            {fieldAlert && <p className="text-danger">{fieldText}</p>}
           </div>
           <div className="modal-footer">
             <button

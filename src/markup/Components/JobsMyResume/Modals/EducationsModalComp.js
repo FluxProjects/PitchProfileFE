@@ -40,32 +40,44 @@ export default function EducationsModalComp({
     isUpdate == true ? data?.is_current : false
   );
   const [fieldAlert, setFieldAlert] = useState(false);
+  const [fieldText, setFieldText] = useState(false);
 
   const callAction = async () => {
     if (institute == null || institute == "") {
       setFieldAlert(true);
+      setFieldText("Please enter institute");
       return;
     }
     if (educationLevel == null || educationLevel == "") {
       setFieldAlert(true);
+      setFieldText("Please enter education level");
+
       return;
     }
     if (department == null || department == "") {
       setFieldAlert(true);
+      setFieldText("Please enter department");
+
       return;
     }
     if (course == null || course == "") {
       setFieldAlert(true);
+      setFieldText("Please enter course");
+
       return;
     }
     if (startDate == null || startDate == "") {
       setFieldAlert(true);
+      setFieldText("Please enter start date");
+
       return;
     }
 
     if (isCurrent == false) {
       if (endDate == null || endDate == "") {
         setFieldAlert(true);
+        setFieldText("Please enter end date");
+
         return;
       }
     }
@@ -128,7 +140,9 @@ export default function EducationsModalComp({
               <div className="row">
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Institute Name</label>
+                    <label>
+                      Institute Name <span className="text-danger"> *</span>
+                    </label>
                     <TextInputModal
                       placeholder="Enter Your Institute Name"
                       onChange={(e) => setInstitute(e.target.value)}
@@ -153,7 +167,9 @@ export default function EducationsModalComp({
 
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Education Level</label>
+                    <label>
+                      Education Level <span className="text-danger"> *</span>
+                    </label>
                     <DropDownModalComponent
                       onChange={(e) => {
                         console.log("testing ", e.target.value);
@@ -167,7 +183,9 @@ export default function EducationsModalComp({
 
                 <div className="col-lg-12 col-md-12 col-sm-12">
                   <div className="form-group">
-                    <label>Major</label>
+                    <label>
+                      Major <span className="text-danger"> *</span>
+                    </label>
                     <TextInputModal
                       placeholder="Enter Major"
                       onChange={(e) => setCourse(e.target.value)}
@@ -177,7 +195,9 @@ export default function EducationsModalComp({
                 </div>
                 <div className="col-lg-6 col-md-6 col-xs-12">
                   <div className="form-group">
-                    <label>Start Date</label>
+                    <label>
+                      Start Date <span className="text-danger"> *</span>
+                    </label>
                     <TextInputModal
                       label=""
                       type="date"
@@ -193,7 +213,9 @@ export default function EducationsModalComp({
                 {isCurrent == false && (
                   <div className="col-lg-6 col-md-6 col-xs-12">
                     <div className="form-group">
-                      <label>End Date</label>
+                      <label>
+                        End Date <span className="text-danger"> *</span>
+                      </label>
                       <TextInputModal
                         label=""
                         type="date"
@@ -209,7 +231,10 @@ export default function EducationsModalComp({
                 {/* {!endDate && ( */}
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Is this your current Institute?</label>
+                    <label>
+                      Is this your current Institute?{" "}
+                      <span className="text-danger"> *</span>
+                    </label>
                     <div className="row">
                       <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                         <div className="custom-control custom-radio">
@@ -256,11 +281,7 @@ export default function EducationsModalComp({
                 {/* )} */}
               </div>
             </form>
-            {fieldAlert && (
-              <p className="text-danger">
-                Please fill all the required fields.
-              </p>
-            )}
+            {fieldAlert && <p className="text-danger">{fieldText}</p>}
           </div>
           <div className="modal-footer">
             <button

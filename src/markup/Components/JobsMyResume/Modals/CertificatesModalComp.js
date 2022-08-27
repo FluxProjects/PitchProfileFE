@@ -22,18 +22,24 @@ export default function CertificatesModalComp({
   );
   const [refNo, setrefNo] = useState(isUpdate == true ? data?.ref_no : "");
   const [fieldAlert, setFieldAlert] = useState(false);
+  const [fieldText, setFieldText] = useState(false);
 
   const callAction = async () => {
     if (name == null || name == "") {
       setFieldAlert(true);
+      setFieldText("Please enter name");
       return;
     }
     if (yearObtained == null || yearObtained == "") {
       setFieldAlert(true);
+      setFieldText("Please enter year obtained");
+
       return;
     }
     if (refNo == null || refNo == "") {
       setFieldAlert(true);
+      setFieldText("Please enter reference number");
+
       return;
     }
     if (isUpdate) {
@@ -136,9 +142,7 @@ export default function CertificatesModalComp({
               </div>
             </div>
           </form>
-          {fieldAlert && (
-            <p className="text-danger">Please fill all the required fields.</p>
-          )}
+          {fieldAlert && <p className="text-danger">{fieldText}</p>}
         </div>
         <div className="modal-footer">
           <button

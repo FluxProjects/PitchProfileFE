@@ -86,6 +86,8 @@ export default function Componypostjobs(props) {
   const [OtherSkills, setOtherSkills] = useState(null);
 
   const [fieldAlert, setFieldAlert] = useState(false);
+  const [FieldText, setFieldText] = useState("");
+
   // const [perks, setPerks] = useState("");
 
   useEffect(() => {
@@ -126,30 +128,38 @@ export default function Componypostjobs(props) {
 
     // console.log("UpdatedVideo", UpdatedVideo);
     // return;
+
+    if (jobTitle == "") {
+      console.log("jobTitle");
+      setLoading(false);
+      setFieldAlert(true);
+      setFieldText("Please enter Job title");
+      return;
+    }
     if (salaryRangeVal == null) {
       console.log("salaryRangeVal", salaryRangeVal);
       setLoading(false);
       setFieldAlert(true);
+      setFieldText("Please enter Salary range");
+
       return;
     }
     if (seniorityLevelVal == null) {
       console.log("seniorityLevelVal");
       setLoading(false);
       setFieldAlert(true);
-      return;
-    }
-    if (jobTitle == "") {
-      console.log("jobTitle");
+      setFieldText("Please enter Seniority level");
 
-      setLoading(false);
-      setFieldAlert(true);
       return;
     }
+
     if (jobType == null) {
       console.log("jobType");
 
       setLoading(false);
       setFieldAlert(true);
+      setFieldText("Please enter Job type");
+
       return;
     }
     if (employmentType == "") {
@@ -157,13 +167,18 @@ export default function Componypostjobs(props) {
 
       setLoading(false);
       setFieldAlert(true);
+      setFieldText("Please enter Employment type");
+
       return;
     }
+
     if (role == "") {
       console.log("role");
 
       setLoading(false);
       setFieldAlert(true);
+      setFieldText("Please enter your role");
+
       return;
     }
     if (keyRes == "") {
@@ -171,6 +186,8 @@ export default function Componypostjobs(props) {
 
       setLoading(false);
       setFieldAlert(true);
+      setFieldText("Please enter key responsiblities");
+
       return;
     }
     if (closingDate == "") {
@@ -178,6 +195,8 @@ export default function Componypostjobs(props) {
 
       setLoading(false);
       setFieldAlert(true);
+      setFieldText("Please enter key closing date");
+
       return;
     }
     if (department == null) {
@@ -185,6 +204,8 @@ export default function Componypostjobs(props) {
 
       setLoading(false);
       setFieldAlert(true);
+      setFieldText("Please enter department");
+
       return;
     }
 
@@ -1049,11 +1070,7 @@ export default function Componypostjobs(props) {
                           />
                         </div>
                       </div>
-                      {fieldAlert && (
-                        <p className="text-danger">
-                          Please fill all the required fields.
-                        </p>
-                      )}
+                      {fieldAlert && <p className="text-danger">{FieldText}</p>}
                       {!loading ? (
                         <button
                           onClick={(e) => {

@@ -15,8 +15,8 @@ export const filterCandidateAvailability =
     var result = [];
     //    ? is available filter
     state().backupCandidates.filter((item) => {
-      if (item.is_active.toString() === is_active.toString()) {
-        console.log("item.isactive", item.is_active, is_active);
+      if (item?.is_active?.toString() === is_active?.toString()) {
+        console.log("item.isactive", item?.is_active, is_active);
         result.push(item);
       }
     });
@@ -147,7 +147,7 @@ export const filterCandidateAll =
         console.log("is_active null");
 
         result.push(item);
-      } else if (item.is_active.toString() == is_active.toString()) {
+      } else if (item?.is_active?.toString() == is_active?.toString()) {
         console.log("is_active else");
 
         result.push(item);

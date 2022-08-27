@@ -41,6 +41,7 @@ export default function ReferencesModalComp({
   const [phone, setPhone] = useState(isUpdate == true ? data?.phone : "");
   const [email, setEmail] = useState(isUpdate == true ? data?.email : "");
   const [fieldAlert, setFieldAlert] = useState(false);
+  const [FieldText, setFieldText] = useState("");
 
   const CallGetCities = async (stateId) => {
     await dispatch(GetCities(stateId, setCity));
@@ -53,19 +54,26 @@ export default function ReferencesModalComp({
   const callAction = async () => {
     if (refererName == null || refererName == "") {
       setFieldAlert(true);
+      setFieldText("Please enter referee name");
       return;
     }
     if (organization == null || organization == "") {
       setFieldAlert(true);
+      setFieldText("Please enter organization name");
+
       return;
     }
     if (jobTitle == null || jobTitle == "") {
       setFieldAlert(true);
+      setFieldText("Please enter job title");
+
       return;
     }
     if (phone == null || phone != "") {
       if (!validatePhoneNumber(phone)) {
         setFieldAlert(true);
+        setFieldText("Please phone number");
+
         //   setFieldText("Phone not valid");
         //   setBtnLoading(false);
         return;
@@ -235,11 +243,7 @@ export default function ReferencesModalComp({
                 </div>
               </div>
             </form>
-            {fieldAlert && (
-              <p className="text-danger">
-                Please fill all the required fields.
-              </p>
-            )}
+            {fieldAlert && <p className="text-danger">{FieldText}</p>}
           </div>
           <div className="modal-footer">
             <button

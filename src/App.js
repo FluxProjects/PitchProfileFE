@@ -133,30 +133,30 @@ function App() {
                 style={{
                   background: "transparent",
                   border: "transparent",
-                  color: "#2e55fa",
                   fontSize: 40,
                 }}
-                className=" radius-xl"
+                className="btnChatStyle radius-xl"
               >
                 <i className="fa fa-comment"></i>
-                <sup
-                  style={{
-                    position: "relative",
-                    right: "16px",
-                    zIndex: 10,
-                    bottom: "13px",
-                  }}
-                >
-                  <span
-                    style={{ fontSize: 10 }}
-                    class="badge badge-pill badge-danger"
+                {state.IsReadLength > 0 && (
+                  <sup
+                    style={{
+                      position: "relative",
+                      right: "16px",
+                      zIndex: 10,
+                      bottom: "13px",
+                    }}
                   >
-                    {state.IsReadLength}
-                  </span>
-                </sup>
+                    <span
+                      style={{ fontSize: 10 }}
+                      class="badge badge-pill badge-danger "
+                    >
+                      {state.IsReadLength}
+                    </span>
+                  </sup>
+                )}
               </button>
             </p>
-
             <Modal
               // backdrop={false}
               scrollable={true}

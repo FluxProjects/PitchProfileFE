@@ -11,6 +11,7 @@ export default function ProfileSummary({ isView }) {
   const [show, setShow] = useState(false);
   const [description, setDescription] = useState(state.userDetails.summary);
   const [fieldAlert, setFieldAlert] = useState(false);
+  const [fieldText, setFieldText] = useState(false);
 
   const handleClose = () => {
     setShow(false);
@@ -22,6 +23,7 @@ export default function ProfileSummary({ isView }) {
   const callUpdateCandidateSummary = async () => {
     if (description == null || description == "") {
       setFieldAlert(true);
+      setFieldText("Please enter description field");
       return;
     }
     dispatch(UpdateCandidateSummary(description, handleClose()));
@@ -97,11 +99,7 @@ export default function ProfileSummary({ isView }) {
                   </div>
                 </div>
               </form>
-              {fieldAlert && (
-                <p className=" text-danger">
-                  Please fill all the required fields.
-                </p>
-              )}
+              {fieldAlert && <p className=" text-danger">{fieldText}</p>}
             </div>
             <div className="modal-footer">
               <button

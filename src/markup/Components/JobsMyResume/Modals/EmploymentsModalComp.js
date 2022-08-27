@@ -41,36 +41,50 @@ export default function EmploymentsModalComp({
     isUpdate == true ? data?.is_current : false
   );
   const [fieldAlert, setFieldAlert] = useState(false);
+  const [fieldText, setFieldText] = useState(false);
 
   const callAction = async () => {
     if (organization == null || organization == "") {
       setFieldAlert(true);
+      setFieldText("Please enter organization");
       return;
     }
     if (industry == null || industry == "") {
       setFieldAlert(true);
+      setFieldText("Please enter industry");
+
       return;
     }
     if (department == null || department == "") {
       setFieldAlert(true);
+      setFieldText("Please enter department");
+
       return;
     }
     if (role == null || role == "") {
       setFieldAlert(true);
+      setFieldText("Please enter role");
+
       return;
     }
     if (description == null || description == "") {
       setFieldAlert(true);
+      setFieldText("Please enter description");
+
       return;
     }
     if (startDate == null || startDate == "") {
       setFieldAlert(true);
+      setFieldText("Please enter start date");
+
       return;
     }
 
     if (isCurrent == false) {
       if (endDate == null || endDate == "") {
         setFieldAlert(true);
+        setFieldText("Please enter end date");
+
         return;
       }
     }
@@ -134,7 +148,9 @@ export default function EmploymentsModalComp({
               <div className="row">
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Organisation</label>
+                    <label>
+                      Organisation <span className="text-danger"> *</span>
+                    </label>
                     <input
                       onChange={(e) => {
                         console.log("eee", e.target.value);
@@ -162,7 +178,9 @@ export default function EmploymentsModalComp({
 
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Industry</label>
+                    <label>
+                      Industry <span className="text-danger"> *</span>
+                    </label>
                     <DropDownModalComponent
                       onChange={(e) => {
                         console.log("eee", e.target.value);
@@ -175,7 +193,9 @@ export default function EmploymentsModalComp({
                 </div>
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Department</label>
+                    <label>
+                      Department <span className="text-danger"> *</span>
+                    </label>
                     <DropDownModalComponent
                       onChange={(e) => {
                         console.log("eee", e.target.value);
@@ -189,7 +209,9 @@ export default function EmploymentsModalComp({
 
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Role</label>
+                    <label>
+                      Role <span className="text-danger"> *</span>
+                    </label>
                     <TextInputModal
                       placeholder="Enter Role"
                       onChange={(e) => setRole(e.target.value)}
@@ -199,7 +221,9 @@ export default function EmploymentsModalComp({
                 </div>
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Start Date</label>
+                    <label>
+                      Start Date <span className="text-danger"> *</span>
+                    </label>
                     <div className="row">
                       <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                         <TextInputModal
@@ -218,7 +242,9 @@ export default function EmploymentsModalComp({
                 {isCurrent == false && (
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>End Date</label>
+                      <label>
+                        End Date <span className="text-danger"> *</span>
+                      </label>
                       <div className="row">
                         <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                           <TextInputModal
@@ -238,7 +264,9 @@ export default function EmploymentsModalComp({
 
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Description</label>
+                    <label>
+                      Description <span className="text-danger"> *</span>
+                    </label>
                     <TextAreaModalComponent
                       onChange={(e) => {
                         setDescription(e.target.value);
@@ -251,7 +279,10 @@ export default function EmploymentsModalComp({
                 {/* {!endDate && ( */}
                 <div className="col-lg-12 col-md-12">
                   <div className="form-group">
-                    <label>Is this your current company?</label>
+                    <label>
+                      Is this your current company?{" "}
+                      <span className="text-danger"> *</span>
+                    </label>
                     <div className="row">
                       <div className="col-lg-4 mb-2 col-md-6 col-sm-6 col-6">
                         <div className="custom-control custom-radio">
@@ -297,11 +328,7 @@ export default function EmploymentsModalComp({
                 {/* )} */}
               </div>
             </form>
-            {fieldAlert && (
-              <p className="text-danger">
-                Please fill all the required fields.
-              </p>
-            )}
+            {fieldAlert && <p className="text-danger">{fieldText}</p>}
           </div>
           <div className="modal-footer">
             <button

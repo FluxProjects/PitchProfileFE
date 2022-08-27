@@ -267,16 +267,47 @@ export default function HeaderCandidateResume({
 
               {/* message */}
               <>
-                <button
-                  onClick={() => {
-                    console.log("clis");
-                    toggleModal();
+                <p
+                  style={{
+                    position: "fixed",
+                    bottom: 20,
+                    right: 30,
+                    padding: 8,
+                    zIndex: 10,
                   }}
-                  className="site-button radius-xl"
-                  style={{ position: "fixed", bottom: 20, right: 30 }}
                 >
-                  <i className="fa fa-comment"></i>
-                </button>
+                  <button
+                    onClick={() => {
+                      console.log("clis");
+                      toggleModal();
+                    }}
+                    style={{
+                      background: "transparent",
+                      border: "transparent",
+                      fontSize: 40,
+                    }}
+                    className="btnChatStyle radius-xl"
+                  >
+                    <i className="fa fa-comment"></i>
+                    {state.IsReadLength > 0 && (
+                      <sup
+                        style={{
+                          position: "relative",
+                          right: "16px",
+                          zIndex: 10,
+                          bottom: "13px",
+                        }}
+                      >
+                        <span
+                          style={{ fontSize: 10 }}
+                          class="badge badge-pill badge-danger "
+                        >
+                          {state.IsReadLength}
+                        </span>
+                      </sup>
+                    )}
+                  </button>
+                </p>
               </>
               {/* message */}
 

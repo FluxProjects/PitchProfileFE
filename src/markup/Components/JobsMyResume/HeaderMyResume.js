@@ -280,7 +280,7 @@ export default function HeaderMyResume({ isView }) {
                   )}
 
                   <p className="ml-2 text-white font-weight-bold m-b15">
-                    {ToggleIsActive ? "Available" : "Unavailable"}
+                    {ToggleIsActive ? "Actively Looking" : "Happily Employed"}
                   </p>
                 </div>
               </div>

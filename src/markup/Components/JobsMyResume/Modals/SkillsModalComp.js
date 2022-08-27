@@ -44,24 +44,30 @@ export default function SkillsModalComponent({
     IsTopSkillProp ? IsTopSkillProp : false
   );
   const [fieldAlert, setFieldAlert] = useState(false);
+  const [fieldText, setFieldText] = useState(false);
 
   const callAddCandidateSkill = async () => {
     if (ItSkills == null || ItSkills == "") {
       console.log("update ItSkills");
 
       setFieldAlert(true);
+      setFieldText("Please enter IT skills");
       return;
     }
     if (skillType == null || skillType == "") {
       console.log("update skillType");
 
       setFieldAlert(true);
+      setFieldText("Please enter skill type");
+
       return;
     }
     if (ProLev == null || ProLev == "") {
       console.log("update ProLev");
 
       setFieldAlert(true);
+      setFieldText("Please enter Proficiency level");
+
       return;
     }
 
@@ -69,6 +75,8 @@ export default function SkillsModalComponent({
       console.log("update IsTopSkill", IsTopSkill == null, IsTopSkill == "");
 
       setFieldAlert(true);
+      setFieldText("Please select is top skill");
+
       return;
     }
     if (ItSkills == "other") {
@@ -127,7 +135,9 @@ export default function SkillsModalComponent({
               <div className="row">
                 <div className="col-lg-6 col-md-12">
                   <div className="form-group">
-                    <label>Skill Name</label>
+                    <label>
+                      Skill Name <span className="text-danger"> *</span>
+                    </label>
                     <select
                       value={ItSkills}
                       onChange={(e) => {
@@ -164,7 +174,10 @@ export default function SkillsModalComponent({
                   <div className="col-lg-6 col-md-12">
                     <div className="form-group">
                       <div>
-                        <label>New Skill Title</label>
+                        <label>
+                          New Skill Title{" "}
+                          <span className="text-danger"> *</span>
+                        </label>
                       </div>
 
                       <TextInputModal
@@ -182,7 +195,9 @@ export default function SkillsModalComponent({
                 )}
                 <div className="col-lg-6 col-md-6 col-sm-12">
                   <div className="form-group">
-                    <label>Skill Type</label>
+                    <label>
+                      Skill Type <span className="text-danger"> *</span>
+                    </label>
                     <DropDownModalComponent
                       onChange={(e) => {
                         console.log("eee", e.target.value);
@@ -197,7 +212,9 @@ export default function SkillsModalComponent({
                 <div className="col-lg-6 col-md-12">
                   <div className="form-group">
                     <div>
-                      <label>Proficiency</label>
+                      <label>
+                        Proficiency <span className="text-danger"> *</span>
+                      </label>
                     </div>
 
                     <TextInputModal
@@ -216,7 +233,9 @@ export default function SkillsModalComponent({
 
                 <div className="col-lg-6 col-md-12">
                   <div className="form-group">
-                    <label>Top Skill</label>
+                    <label>
+                      Top Skill <span className="text-danger"> *</span>
+                    </label>
                     <div className="row">
                       <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                         <div className="custom-control custom-radio">
@@ -261,11 +280,7 @@ export default function SkillsModalComponent({
                 </div>
               </div>
             </form>
-            {fieldAlert && (
-              <p className="text-danger">
-                Please fill all the required fields.
-              </p>
-            )}
+            {fieldAlert && <p className="text-danger">{fieldText}</p>}
           </div>
           <div className="modal-footer">
             <button
