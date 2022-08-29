@@ -91,6 +91,9 @@ export default function CompanyDetailHeader({ isView, callAddRoom }) {
             {!state.userDetails?.company_name && (
               <div className="customFlexRow mt-3">
                 <button
+                  style={{
+                    outline: "none",
+                  }}
                   onClick={() => {
                     console.log("clis");
                     callAddRoom(toggleModal());
@@ -125,10 +128,16 @@ export default function CompanyDetailHeader({ isView, callAddRoom }) {
               background: "transparent",
               border: "transparent",
               fontSize: 40,
+              outline: "none",
             }}
-            className="btnChatStyle radius-xl"
+            className=" radius-xl"
           >
-            <i className="fa fa-comment"></i>
+            <i
+              style={{
+                color: "rgb(71, 120, 240)",
+              }}
+              className="btnChatStyle fa fa-comment"
+            ></i>
             {state.IsReadLength > 0 && (
               <sup
                 style={{

@@ -110,7 +110,7 @@ export default function Homepage() {
                       textTransform: "uppercase",
                       marginBottom: 0,
                       fontWeight: 200,
-                      fontFamily: "Poppins",
+                      fontFamily: "montserrat",
                     }}
                   >
                     Pitch your{" "}
@@ -126,7 +126,7 @@ export default function Homepage() {
                     style={{
                       marginBottom: 20,
                       color: "3e3e3e",
-                      fontFamily: "Poppins",
+                      fontFamily: "montserrat",
                       marginTop: 0,
                       fontWeight: 400,
                       width: "50%",

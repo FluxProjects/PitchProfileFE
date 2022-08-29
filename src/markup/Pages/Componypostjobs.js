@@ -154,13 +154,7 @@ export default function Componypostjobs() {
 
       return;
     }
-    // if (state.SaveJobVideo == "") {
-    //   console.log("video");
 
-    //   setLoading(false);
-    //   setFieldAlert(true);
-    //   return;
-    // }
     if (jobType == null) {
       console.log("jobType");
 
@@ -179,20 +173,7 @@ export default function Componypostjobs() {
 
       return;
     }
-    // if (minSalary == "") {
-    //   console.log("minSalary");
-
-    //   setLoading(false);
-    //   setFieldAlert(true);
-    //   return;
-    // }
-    // if (maxSalary == "") {
-    //   console.log("maxSalary");
-
-    //   setLoading(false);
-    //   setFieldAlert(true);
-    //   return;
-    // }
+   
     if (role == "") {
       console.log("role");
 

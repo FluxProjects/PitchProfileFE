@@ -28,7 +28,7 @@
 }
 .fullwidth .header-nav .nav > li > a:hover {
   padding: 10px 15px;
-  border-radius: 4px;
+  border-radius: 33px;
   color: white !important;
 }
 .fullwidth .is-fixed .header-nav .nav > li {

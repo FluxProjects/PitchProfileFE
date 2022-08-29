@@ -67,7 +67,7 @@ export default function LoginContainer() {
                 <span
                   style={{
                     fontWeight: 100,
-                    fontFamily: "Poppins",
+                    fontFamily: "montserrat",
                     fontSize: 80,
                     color: "white",
                   }}
@@ -77,7 +77,7 @@ export default function LoginContainer() {
                 <span
                   style={{
                     fontWeight: "bold",
-                    fontFamily: "Poppins",
+                    fontFamily: "montserrat",
                     textTransform: "capitalize",
 
                     color: "white",

@@ -71,7 +71,7 @@ export default function LoginContainer() {
                 <span
                   style={{
                     fontWeight: 100,
-                    fontFamily: "Poppins",
+                    fontFamily: "montserrat",
                     fontSize: 80,
                     color: "white",
                   }}
@@ -81,7 +81,7 @@ export default function LoginContainer() {
                 <span
                   style={{
                     fontWeight: "bold",
-                    fontFamily: "Poppins",
+                    fontFamily: "montserrat",
                     textTransform: "capitalize",
                     color: "white",
                   }}
@@ -92,7 +92,7 @@ export default function LoginContainer() {
               </h1>
               <p
                 className="mb-4 text-left opacity-70"
-                style={{ color: "white", fontFamily: "Poppins" }}
+                style={{ color: "white", fontFamily: "montserrat" }}
               >
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Temporibus, expedita iusto veniam atque, magni tempora mollitia

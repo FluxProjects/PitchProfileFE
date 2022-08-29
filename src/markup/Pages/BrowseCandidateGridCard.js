@@ -8,6 +8,8 @@ import { GetAllCandidates } from "../../redux/action/candidates/BrowseCandidates
 import Header2 from "../Layout/Header2";
 import { AddWishlistCandidate, AddWishlistCompany } from "../../redux/action";
 
+import ProfileIcon from "./../../images/profile.png";
+import SkillIcon from "./../../images/topskills.png";
 var bnr = require("./../../images/banner/bnr1.jpg");
 
 export default function BrowseCandidateGridCard({
@@ -54,6 +56,7 @@ export default function BrowseCandidateGridCard({
       style={{
         paddingRight: 3,
         paddingLeft: 3,
+        fontFamily: "montserrat",
       }}
       className={` ${
         isWishlistPage
@@ -73,6 +76,7 @@ export default function BrowseCandidateGridCard({
           paddingBottom: 9,
           minHeight: "380px",
           maxHeight: "380px",
+          fontFamily: "montserrat",
         }}
       >
         <div className="containerImageGrid">
@@ -123,6 +127,9 @@ export default function BrowseCandidateGridCard({
               color: "white",
               width: "100%",
               textAlign: "center",
+              fontFamily: "montserrat",
+              fontSize: "12px",
+              padding: "2px 0px",
             }}
             className="isAvail"
           >
@@ -137,8 +144,8 @@ export default function BrowseCandidateGridCard({
             state: { id: item?.id },
           }}
           style={{
-            padding: 0,
-            paddingTop: 10,
+            padding: "10px 15px 0px",
+            // paddingTop: 10,
           }}
           className="card-body"
         >
@@ -147,23 +154,29 @@ export default function BrowseCandidateGridCard({
               whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "clip",
+              fontFamily: "montserrat",
             }}
             className=" card-title"
           >
-            <i className="fa mr-2  fa-user"></i> {item?.f_name} {item?.l_name}
+            {/* <i className="fa mr-2  fa-user"></i> */}
+            <img
+              style={{
+                width: "20px",
+                marginRight: "7px",
+              }}
+              src={ProfileIcon}
+            />
+            {item?.f_name} {item?.l_name}
           </h5>
           <p
             style={{
               marginTop: "-10px",
               marginLeft: "25px",
               color: "rgb(111, 111, 111)",
+              fontFamily: "montserrat",
             }}
             className="mb-0 cardGridFont"
           >
-            {console.log(
-              "item?.employmentsitem?.employments",
-              item?.employments
-            )}
             {item?.employments[0]?.role != null &&
             item?.employments[0]?.role != "" ? (
               <>{item?.employments[0]?.role},</>
@@ -176,6 +189,7 @@ export default function BrowseCandidateGridCard({
               marginTop: "-10px",
               marginLeft: "25px",
               color: "rgb(111, 111, 111)",
+              fontFamily: "montserrat",
             }}
             className="mb-0 cardGridFont"
           >
@@ -188,10 +202,19 @@ export default function BrowseCandidateGridCard({
           <h5
             style={{
               marginTop: "-10px",
+              fontFamily: "montserrat",
             }}
             className="mb-0  card-title"
           >
-            <i className="fa fa-list"></i> Top Skills
+            {/* <i className="fa fa-list"></i>  */}
+            <img
+              style={{
+                width: "20px",
+                marginRight: "7px",
+              }}
+              src={SkillIcon}
+            />
+            Top Skills
           </h5>
           <ul className="mb-0">
             {item?.candidate_skills.length > 1 ? (
@@ -201,6 +224,7 @@ export default function BrowseCandidateGridCard({
                     display: "block",
                     color: "#6f6f6f",
                     marginLeft: "25px",
+                    fontFamily: "montserrat",
                   }}
                   className="cardGridFont"
                 >
@@ -218,6 +242,7 @@ export default function BrowseCandidateGridCard({
                     display: "block",
                     color: "#6f6f6f",
                     marginLeft: "25px",
+                    fontFamily: "montserrat",
                   }}
                   className="cardGridFont"
                 >
@@ -228,6 +253,7 @@ export default function BrowseCandidateGridCard({
                     display: "block",
                     color: "#6f6f6f",
                     marginLeft: "25px",
+                    fontFamily: "montserrat",
                   }}
                   className="cardGridFont"
                 >
@@ -238,6 +264,7 @@ export default function BrowseCandidateGridCard({
                     display: "block",
                     color: "#6f6f6f",
                     marginLeft: "25px",
+                    fontFamily: "montserrat",
                   }}
                   className="cardGridFont"
                 >

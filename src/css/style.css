@@ -6703,6 +6703,7 @@ a,
 }
 .site-button {
   background-color: #efbb20;
+  border: 0;
 }
 .site-button:active,
 .site-button:hover,
@@ -6710,6 +6711,7 @@ a,
 .active > .site-button {
   background-color: #d8a409;
   color: #fff;
+  border: 0;
 }
 .site-button-secondry {
   background-color: #282a3c;
@@ -13743,7 +13745,7 @@ ol.commentlist li .star-rating {
 
 .textHeadingLoginContainer {
   font-weight: bolder;
-  font-family: "Poppins";
+  font-family: "montserrat";
   color: white;
   margin-bottom: 5px;
   text-align: left;
