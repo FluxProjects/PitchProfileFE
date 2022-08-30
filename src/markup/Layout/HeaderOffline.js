@@ -183,6 +183,9 @@ export default function Header({ textColor, fromLogin }) {
                             e.preventDefault();
                             callLogoutUser();
                           }}
+                          style={{
+                            color: "#0056b3 !important",
+                          }}
                           className="logoutBtn"
                         >
                           <i className="fa fa-user"></i> Logout

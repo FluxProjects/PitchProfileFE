@@ -12,8 +12,8 @@
 }
 .fullwidth .header-nav .nav > li.active > a,
 .fullwidth .header-nav .nav > li:hover > a {
-  background-color: #1b6cd5;
-  color: #fff;
+  /* background-color: #1b6cd5; */
+  /* color: #fff; */
 }
 .extra-nav {
   padding: 20px 0;
@@ -29,7 +29,7 @@
 .fullwidth .header-nav .nav > li > a:hover {
   padding: 10px 15px;
   border-radius: 33px;
-  color: white !important;
+  color: white;
 }
 .fullwidth .is-fixed .header-nav .nav > li {
   padding: 13px 0;

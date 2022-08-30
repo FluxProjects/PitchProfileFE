@@ -181,6 +181,9 @@ export default function Header() {
                             e.preventDefault();
                             callLogoutUser();
                           }}
+                          style={{
+                            color: "#0056b3 !important",
+                          }}
                           className="logoutBtn"
                         >
                           Logout
@@ -239,7 +242,16 @@ export default function Header() {
                     </>
                   ) : (
                     <li className="active float-right">
-                      <Link to={"/login"} className="site-button">
+                      <Link
+                        style={{
+                          color: "#0056b3 !important",
+                        }}
+                        style={{
+                          color: "#0056b3 !important",
+                        }}
+                        to={"/login"}
+                        className="site-button"
+                      >
                         <i className="fa fa-user"></i> Login
                       </Link>
                     </li>

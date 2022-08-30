@@ -32,8 +32,8 @@ export default function HomeJobcard({ item, index }) {
               />
             </span>
           </div>
-          <div className="job-post-info">
-            <h4>
+          <div className="job-post-info ">
+            <h4 className="fontTitle mb-0">
               <Link
                 to={{
                   pathname: `/job-detail`,
@@ -45,37 +45,39 @@ export default function HomeJobcard({ item, index }) {
                 }}
               >
                 {item?.job_title}
-
-                {/* {item?.job_title?.length > 8 && "... "} */}
-                {/* {item?.seniority_level != null && "- "} */}
-                {/* <span
-            className="text-uppercase"
-            style={{
-              fontSize: "12px",
-              fontWeight: "normal",
-            }}
-          >
-            {SeniorityLevel.findIndex(
-              (x) => x?.id == item?.seniority_level
-            ) == -1
-              ? ""
-              : SeniorityLevel[
-                  SeniorityLevel.findIndex(
-                    (x) => x?.id == item?.seniority_level
-                  )
-                ].name}
-             {item.department?.name} 
-          </span> */}
               </Link>
             </h4>
+            <Link
+              to={{
+                pathname: "/company-detail",
+                search: `?company_id=${item?.company_id}`,
+                state: {
+                  company_id: item?.company_id,
+                },
+              }}
+            >
+              <span
+                className="text-uppercase mb-0 cardGridFont"
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "normal",
+                  color: "#1b6cd5",
+                  textDecoration: "none",
+                }}
+              >
+                {item?.company?.company_name}
+                {/* {item.department?.name} */}
+              </span>
+            </Link>
             <ul>
-              <li>
+              <li className="fontLocationItems">
                 <i className="fa fa-map-marker"></i> {item?.city?.name}
                 {item?.city && ", "} {item?.state?.name}
                 {item?.state && ", "}
                 {item?.country?.sortname}
               </li>
-              <li>
+              <br />
+              <li className="fontLocationItems">
                 <i className="fa fa-bookmark-o"></i>{" "}
                 {jobTypeDrop.findIndex((x) => x?.id == item?.job_type) == -1
                   ? ""

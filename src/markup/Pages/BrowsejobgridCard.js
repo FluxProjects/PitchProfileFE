@@ -96,7 +96,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
         <div className="d-flex m-b30">
           <div className="job-post-info ">
             <h5
-              className="text-uppercase text-decoration-none"
+              className="text-uppercase text-decoration-none fontTitle"
               style={{
                 textDecoration: "none !important",
                 fontSize: 15,
@@ -123,7 +123,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
 
               {/* <br /> */}
               <div
-                className="text-uppercase mbt00"
+                className="text-uppercase mbt00 cardGridFont"
                 style={{
                   fontSize: "12px",
                   fontWeight: "normal",
@@ -172,7 +172,10 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                 textDecoration: "none",
               }}
             >
-              <li style={{ marginBottom: 0 }} className="mb-0 cardGridFont">
+              <li
+                style={{ marginBottom: 0 }}
+                className="mb-0 cardGridFont fontLocationItems"
+              >
                 <i className="fa fa-map-marker"></i>
                 {item?.city?.name}
                 {/* {item?.city?.name?.length > 6 && "... "} */}
@@ -197,7 +200,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                 )
               ].name}
         </div> */}
-          <div className="mb-0 cardGridFont text-primary">
+          <div className="mb-0 cardGridFont fontLocationItems text-primary">
             <i className="fa fa-clock-o"></i>{" "}
             {jobTypeDrop.findIndex((x) => x?.id == item?.job_type) == -1
               ? ""

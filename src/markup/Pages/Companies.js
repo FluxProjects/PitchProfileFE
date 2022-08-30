@@ -422,7 +422,7 @@ export default function Companies(props) {
                           <div className="d-flex m-b30">
                             <div className="job-post-info ">
                               <h5
-                                className="text-uppercase text-decoration-none"
+                                className="text-uppercase fontTitle text-decoration-none"
                                 style={{
                                   textDecoration: "none !important",
                                   fontSize: 15,
@@ -453,7 +453,7 @@ export default function Companies(props) {
                                   }}
                                 >
                                   <span
-                                    className="text-uppercase mb-0 cardGridFont "
+                                    className="text-uppercase fontLocationItems mb-0 cardGridFont "
                                     style={{
                                       // fontSize: "14px",
                                       fontWeight: "normal",
@@ -482,7 +482,7 @@ export default function Companies(props) {
                                   textDecoration: "none",
                                 }}
                               >
-                                <li className="mb-0 cardGridFont">
+                                <li className="mb-0 fontLocationItems cardGridFont">
                                   <i className="fa fa-map-marker"></i>
                                   {item.city?.name}
                                   {/* {item?.city?.name?.length > 6 && "... "} */}

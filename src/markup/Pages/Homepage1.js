@@ -96,7 +96,8 @@ export default function Homepage() {
           className="dez-bnr-inr dez-bnr-inr-md"
           style={{
             backgroundImage: `url(${LandingBg})`,
-            height: "100vh",
+            height: "80vh",
+            paddingBottom: "8vh",
           }}
         >
           <div className="container">
