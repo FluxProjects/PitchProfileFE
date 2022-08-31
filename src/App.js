@@ -128,10 +128,7 @@ function App() {
   const toggleModal = () => {
     setChatModal(!ChatModal);
   };
-  console.log(
-    "window.location.pathnamewindow.location.pathname",
-    window.location.pathname
-  );
+
   return (
     <SocketContext.Provider value={socket}>
       <div className="App">
