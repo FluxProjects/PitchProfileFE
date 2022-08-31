@@ -89,6 +89,7 @@ const Chat = ({
       sent_by: state.userDetails.id,
     });
     socket.on("message recieved", (data) => {
+      console.log("message recieved");
       callGetMessages(otherId);
     });
   };

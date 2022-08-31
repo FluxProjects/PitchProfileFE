@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Markup from "./markup/Markup";
 import "./css/plugins.css";
 import "./css/style.css";
@@ -20,6 +20,7 @@ import {
   GetDepartments,
   GetEducationLevels,
   GetIndustries,
+  getMessages,
   getMyRoomsCandidate,
   getMyRoomsCompany,
   getSingleUserData,
@@ -29,22 +30,53 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import WeavyApp from "./weavy/WeavyApp";
 import Weavy from "./weavy/Weavy";
-import { SocketContext, socket } from "./utils/socket";
 import Chat from "./markup/Pages/MyChat/Chat/Chat";
 import ChatContacts from "./markup/Pages/MyChat/ChatContacts/ChatContacts";
+import { SocketContext } from "./utils/socket";
 
 function App() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [show, setShow] = useState(false);
   const [ChatModal, setChatModal] = useState(false);
   const [otherId, setOtherId] = useState("");
+  const [socketId, setSocketId] = useState("");
 
   useEffect(() => {
     callGetDrop();
   }, []);
+
+  const socket = useContext(SocketContext);
+  useEffect(() => {
+    callGetMessages(otherId);
+
+    socket.emit("setup", state.userDetails.id);
+    socket.on("connected", () => {
+      console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
+
+      setSocketId(socket.id);
+    });
+
+    socket.on("message recieved", (data) => {
+      console.log("message recieved");
+      callGetMessages(otherId);
+    });
+  }, [socket]);
+
+  const callGetMessages = async (id) => {
+    console.log("message called");
+    await dispatch(
+      getMessages(
+        state.userDetails.company_name ? id : state.userDetails.id,
+        state.userDetails.company_name ? state.userDetails.id : id
+      )
+    );
+    // console.log("state.", state.messagesChat);
+    setIsLoading(false);
+  };
 
   const callGetDrop = async () => {
     if (state.departments.length < 1) {

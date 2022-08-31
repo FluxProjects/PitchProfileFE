@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
@@ -14,6 +14,7 @@ import logger from "redux-logger";
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { SocketContext } from "./utils/socket";
 
 const persistConfig = {
   key: "root",
@@ -31,13 +32,13 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = createStore(persistedReducer, applyMiddleware(thunk, logger));
 let persistor = persistStore(store);
-
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <App />
     </PersistGate>
   </Provider>,
+
   document.getElementById("root")
 );
 
