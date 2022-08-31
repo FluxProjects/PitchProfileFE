@@ -71,7 +71,7 @@ export default function BrowseCandidateGridCard({
         style={{
           // width: "18rem",
           borderWidth: 4,
-          borderRadius: 20,
+          borderRadius: 8,
           borderColor: "#0275d8",
           paddingBottom: 9,
           minHeight: "380px",

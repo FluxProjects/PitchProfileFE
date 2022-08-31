@@ -26,7 +26,11 @@ export default function AboutUs(props) {
       <div className="page-content bg-white">
         <div
           className="dez-bnr-inr overlay-black-middle"
-          style={{ backgroundImage: "url(" + bnr1 + ")" }}
+          style={{
+            backgroundImage: "url(" + bnr1 + ")",
+            backgroundSize: "cover",
+            height: "200px",
+          }}
         >
           <div className="container">
             <div className="dez-bnr-inr-entry">

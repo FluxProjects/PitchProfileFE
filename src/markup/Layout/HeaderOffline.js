@@ -267,7 +267,12 @@ export default function Header({ textColor, fromLogin }) {
                             fontWeight: "bold",
                           }}
                         >
-                          <p className="BtnJoinNow">
+                          <p
+                            style={{
+                              background: fromLogin ? "transparent" : "#1b6cd5",
+                            }}
+                            className="BtnJoinNow"
+                          >
                             Join Now <i class="fa-solid fa-caret-down"></i>
                           </p>
                         </div>

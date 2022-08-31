@@ -49,7 +49,10 @@ export default function Jobsection() {
         </div>
         <div className="row">
           <div className="col-lg-9">
-            <ul className="post-job-bx browse-job">
+            <ul
+              style={{ marginBottom: "10px", marginTop: "10px" }}
+              className="post-job-bx browse-job"
+            >
               {state.Alljobs.splice(0, 5).map((item, index) => (
                 <HomeJobcard item={item} index={index} />
               ))}
