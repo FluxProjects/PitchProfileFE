@@ -39,7 +39,7 @@ const ChatContacts = ({
   const [isLoading, setIsLoading] = useState(false);
   const [ChatModal, setChatModal] = useState(false);
   const [otherId, setOtherId] = useState(otherIdProp ? otherIdProp : "");
-  const [RoomId, setRoomId] = useState(RoomIdProp ? RoomIdProp : "");
+  const [RoomId, setRoomId] = useState(RoomIdProp);
   const [RoomName, setRoomName] = useState(RoomNameProp ? RoomNameProp : "");
   const [indexSelected, setIndexSelected] = useState(0);
 

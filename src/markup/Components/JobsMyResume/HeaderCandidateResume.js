@@ -325,6 +325,10 @@ export default function HeaderCandidateResume({
                 onHide={() => toggleModal()}
                 className="modal fade modal-bx-info editor"
               >
+                {console.log(
+                  "state.SingleRoomNamestate.SingleRoomName",
+                  state.SingleRoomName
+                )}
                 <ChatContacts
                   setCloseModal={() => toggleModal()}
                   otherIdProp={state?.singleUserData.id}

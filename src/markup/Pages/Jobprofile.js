@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Header2 from "./../Layout/Header2";
 import Footer from "./../Layout/Footer";
@@ -21,18 +21,63 @@ import {
   GetCountryName,
   GetCityName,
   getAuthToken,
+  getMessages,
+  getMyRoomsCompany,
+  getMyRoomsCandidate,
 } from "../../redux/action";
 import Header from "../Layout/Header";
 import DropdownSearch from "../Components/JobsMyResume/DropdownSearch";
 import AddLanguagesForm from "../Components/JobsMyResume/Modals/AddLanguagesForm";
 import { Modal } from "react-bootstrap";
 import { validatePhoneNumber } from "../../utils/functions";
+import { SocketContext } from "../../utils/socket";
 
 export default function Jobprofile() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
+  const [otherId, setOtherId] = useState("");
+  const [socketId, setSocketId] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const router = useHistory();
+
+  const socket = useContext(SocketContext);
+  console.log("setup ", socket); // x8WIv7-mJelg7on_ALbx
+
+  {
+    console.log(
+      "state.SingleRoomNamestate.SingleRoomName",
+      state.SingleRoomName
+    );
+  }
+  useEffect(() => {
+    callGetRooms();
+    // callGetMessages(otherId);
+
+    socket.emit("setup", state.userDetails.id);
+    socket.on("connected", () => {
+      console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
+
+      setSocketId(socket.id);
+    });
+
+    socket.on("message recieved", (data) => {
+      console.log("message recieved");
+      callGetRooms();
+    });
+  }, []);
+
+  const callGetRooms = async (id) => {
+    if (state.userDetails?.company_name) {
+      console.log("Company called");
+
+      await dispatch(getMyRoomsCompany());
+    } else {
+      console.log("Candidate called");
+
+      await dispatch(getMyRoomsCandidate());
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
     // auth

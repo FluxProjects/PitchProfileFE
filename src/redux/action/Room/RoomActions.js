@@ -70,7 +70,7 @@ export const getMyRoomsCandidate = () => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log("messsgaes gettig woo", response.data);
+      console.log("messsgaes gettig rooms", response.data);
       dispatch({
         type: "myRooms",
         data: response.data.data,
@@ -91,7 +91,7 @@ export const getMyRoomsCompany = () => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log("messsgaes gettig woo", response.data);
+      console.log("messsgaes gettig rooms company", response.data);
       dispatch({
         type: "myRooms",
         data: response.data.data,
