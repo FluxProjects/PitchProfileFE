@@ -16,7 +16,12 @@ import ProfileDetailsComponent from "../Components/JobsMyResume/ProfileDetailsCo
 import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeComponent";
 
 import { useDispatch, useSelector } from "react-redux";
-import { AddRoom, getSingleUserData } from "../../redux/action";
+import {
+  AddRoom,
+  getMyRoomsCandidate,
+  getMyRoomsCompany,
+  getSingleUserData,
+} from "../../redux/action";
 import { GetStateName, SortSameVals } from "../../utils/functions";
 import HeaderCandidateResume from "../Components/JobsMyResume/HeaderCandidateResume";
 import ProfileCandidateSummary from "../Components/JobsMyResume/ProfileCandidateSummary";
@@ -76,6 +81,19 @@ export default function ViewCandidateProfile(props) {
         setModal
       )
     );
+    callGetRooms();
+  };
+
+  const callGetRooms = async (id) => {
+    if (state.userDetails?.company_name) {
+      console.log("Company called");
+
+      await dispatch(getMyRoomsCompany());
+    } else {
+      console.log("Candidate called");
+
+      await dispatch(getMyRoomsCandidate());
+    }
   };
 
   return (

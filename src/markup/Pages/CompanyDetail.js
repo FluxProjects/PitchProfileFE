@@ -19,6 +19,8 @@ import {
 import {
   AddRoom,
   GetFeaturedJobs,
+  getMyRoomsCandidate,
+  getMyRoomsCompany,
   GetSingleCompany,
   GetSingleJob,
 } from "../../redux/action";
@@ -73,6 +75,19 @@ export default function Jobdetail(props) {
         setModal
       )
     );
+    callGetRooms();
+  };
+
+  const callGetRooms = async (id) => {
+    if (state.userDetails?.company_name) {
+      console.log("Company called");
+
+      await dispatch(getMyRoomsCompany());
+    } else {
+      console.log("Candidate called");
+
+      await dispatch(getMyRoomsCandidate());
+    }
   };
 
   if (loading) {

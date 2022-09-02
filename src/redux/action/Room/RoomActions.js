@@ -23,7 +23,6 @@ export const AddRoom =
 
     axios(config)
       .then(async function (response) {
-        console.log("message sdnsa", response.data);
         if (response.data.message == "Rooms get Successfully") {
           await dispatch({
             type: "SingleRoomData",
@@ -34,10 +33,14 @@ export const AddRoom =
             data: response.data.room,
           });
         } else if (response.data.message == "Room created Successfully") {
+          const arr = state?.myRooms.push(response.data);
+          console.log("message sdnsa", arr);
+
           await dispatch({
             type: "myRooms",
-            data: response.data.data,
+            data: arr,
           });
+
           await dispatch({
             type: "SingleRoomName",
             data: response.data.room,

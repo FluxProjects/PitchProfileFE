@@ -67,10 +67,26 @@ const ChatContacts = ({
       console.log("Company called");
 
       await dispatch(getMyRoomsCompany());
+      // setRoomId(state?.myRooms[0].id);
+      // setRoomName(
+      //   state.userDetails?.company_name
+      //     ? state?.myRooms[0].candidate?.f_name +
+      //         " " +
+      //         state?.myRooms[0].candidate?.l_name
+      //     : state?.myRooms[0].company?.company_name
+      // );
     } else {
       console.log("Candidate called");
 
       await dispatch(getMyRoomsCandidate());
+      // setRoomId(state?.myRooms[0].id);
+      // setRoomName(
+      //   state.userDetails?.company_name
+      //     ? state?.myRooms[0].candidate?.f_name +
+      //         " " +
+      //         state?.myRooms[0].candidate?.l_name
+      //     : state?.myRooms[0].company?.company_name
+      // );
     }
     setLoading(false);
   };
@@ -150,6 +166,7 @@ const ChatContacts = ({
                         <a
                           className="btnStyle"
                           onClick={() => {
+                            console.log("romfvdf id", item?.id);
                             setIsLoading(true);
                             setOtherId(
                               state.userDetails?.company_name

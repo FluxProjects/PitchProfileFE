@@ -6,6 +6,8 @@ import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import {
   GetCities,
+  getMyRoomsCandidate,
+  getMyRoomsCompany,
   GetStates,
   UpdateCandidateSummary,
   UpdateIsActive,
@@ -325,10 +327,6 @@ export default function HeaderCandidateResume({
                 onHide={() => toggleModal()}
                 className="modal fade modal-bx-info editor"
               >
-                {console.log(
-                  "state.SingleRoomNamestate.SingleRoomName",
-                  state.SingleRoomName
-                )}
                 <ChatContacts
                   setCloseModal={() => toggleModal()}
                   otherIdProp={state?.singleUserData.id}
