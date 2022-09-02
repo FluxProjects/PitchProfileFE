@@ -15,6 +15,7 @@ const initialState = {
   IsReadLength: 0,
   SingleRoomData: {},
   SingleRoomName: "",
+  SingleRoomId: "",
   myroomupdated: {},
 
   // Dropdown data actions
@@ -183,6 +184,9 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, SingleRoomData: rest.data };
     case "SingleRoomName":
       return { ...state, SingleRoomName: rest.data };
+    case "SingleRoomId":
+      return { ...state, SingleRoomId: rest.data };
+
     case "GetEducationLevels":
       return { ...state, educationLevels: rest.data };
     case "GetUserState":

@@ -23,6 +23,7 @@ export const AddRoom =
 
     axios(config)
       .then(async function (response) {
+        console.log("message sdnsa", response.data);
         if (response.data.message == "Rooms get Successfully") {
           await dispatch({
             type: "SingleRoomData",
@@ -34,7 +35,7 @@ export const AddRoom =
           });
         } else if (response.data.message == "Room created Successfully") {
           const arr = state?.myRooms.push(response.data);
-          console.log("message sdnsa", arr);
+          console.log("message sdnsa", response.data);
 
           await dispatch({
             type: "myRooms",
@@ -44,6 +45,10 @@ export const AddRoom =
           await dispatch({
             type: "SingleRoomName",
             data: response.data.room,
+          });
+          await dispatch({
+            type: "SingleRoomId",
+            data: response.data.room_id,
           });
           setModal(true);
           // router.push("/company-manage-job");

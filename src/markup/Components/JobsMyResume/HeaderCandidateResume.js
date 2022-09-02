@@ -330,8 +330,8 @@ export default function HeaderCandidateResume({
                 <ChatContacts
                   setCloseModal={() => toggleModal()}
                   otherIdProp={state?.singleUserData.id}
-                  RoomIdProp={state.SingleRoomName}
-                  RoomNameProp={userDetail.f_name + " " + userDetail.l_name}
+                  RoomIdProp={state?.SingleRoomId}
+                  RoomNameProp={state.SingleRoomName}
                 />
                 {/* <Chat
                   otherId={state?.singleUserData.id}
