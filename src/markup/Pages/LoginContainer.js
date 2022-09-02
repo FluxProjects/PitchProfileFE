@@ -83,7 +83,7 @@ export default function LoginContainer() {
                     color: "white",
                   }}
                 >
-                  we are
+                  WE ARE
                 </span>{" "}
                 <br />
               </h1>

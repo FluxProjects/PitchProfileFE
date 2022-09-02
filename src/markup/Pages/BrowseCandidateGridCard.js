@@ -143,10 +143,12 @@ export default function BrowseCandidateGridCard({
             search: `?id=${item?.id}`,
             state: { id: item?.id },
           }}
-          style={{
-            padding: "10px 15px 0px",
-            // paddingTop: 10,
-          }}
+          style={
+            {
+              // padding: "10px 15px 0px",
+              // paddingTop: 10,
+            }
+          }
           className="card-body"
         >
           <h5
@@ -155,6 +157,7 @@ export default function BrowseCandidateGridCard({
               overflow: "hidden",
               textOverflow: "clip",
               fontFamily: "montserrat",
+              marginBottom: 4,
             }}
             className=" card-title"
           >

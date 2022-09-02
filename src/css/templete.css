@@ -26,10 +26,19 @@
   border-radius: 4px;
   color: white;
 }
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: Montserrat !important;
+}
 .fullwidth .header-nav .nav > li > a:hover {
-  padding: 10px 15px;
   border-radius: 33px;
-  color: white;
+  color: rgb(27, 108, 213) !important;
 }
 .fullwidth .is-fixed .header-nav .nav > li {
   padding: 13px 0;

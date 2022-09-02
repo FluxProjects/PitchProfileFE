@@ -70,14 +70,24 @@ export default function HomeJobcard({ item, index }) {
               </span>
             </Link>
             <ul>
-              <li className="fontLocationItems">
+              <li
+                style={{
+                  fontSize: 11,
+                }}
+                className="fontLocationItems"
+              >
                 <i className="fa fa-map-marker"></i> {item?.city?.name}
                 {item?.city && ", "} {item?.state?.name}
                 {item?.state && ", "}
                 {item?.country?.sortname}
               </li>
               <br />
-              <li className="fontLocationItems">
+              <li
+                style={{
+                  fontSize: 11,
+                }}
+                className="fontLocationItems"
+              >
                 <i className="fa fa-bookmark-o"></i>{" "}
                 {jobTypeDrop.findIndex((x) => x?.id == item?.job_type) == -1
                   ? ""
