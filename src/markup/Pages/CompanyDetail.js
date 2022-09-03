@@ -196,24 +196,19 @@ export default function Jobdetail(props) {
                   <div className="col-lg-8">
                     <div className="job-info-box">
                       <h4 className="text-black font-weight-700 p-t10 m-b15">
+                        About Company
+                        <span
+                          className="text-uppercase"
+                          style={{
+                            fontSize: "12px",
+                            fontWeight: "normal",
+                          }}
+                        ></span>
                         <Link
-                          to={""}
-                          className="text-secondry text-capitalize m-r30"
+                          to={"/companies"}
+                          className="site-button right-arrow button-sm float-right"
                         >
-                          About Company
-                          <span
-                            className="text-uppercase"
-                            style={{
-                              fontSize: "12px",
-                              fontWeight: "normal",
-                            }}
-                          ></span>
-                          <Link
-                            to={"/companies"}
-                            className="site-button right-arrow button-sm float-right"
-                          >
-                            Back
-                          </Link>
+                          Back
                         </Link>
                       </h4>
 
@@ -248,6 +243,10 @@ export default function Jobdetail(props) {
             </div>
 
             <div className="container mt-3">
+              <h4>
+                Recently Posted Jobs by{" "}
+                {state.PreviewSingleCompany?.company_name}:
+              </h4>
               <ul className="post-job-bx browse-job-grid row">
                 {state?.FeaturedJobs != null &&
                   state?.FeaturedJobs?.map((item, index) => (
