@@ -74,7 +74,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
               Your browser does not support the video tag.
             </video>
           ) : (
-            <div style={{ width: "auto", height: "165px" }}>
+            <div style={{ width: "auto", height: "170px" }}>
               <img
                 className="card-img-top"
                 src={
