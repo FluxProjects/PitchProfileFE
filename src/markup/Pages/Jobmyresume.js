@@ -354,7 +354,7 @@ export default function Jobmyresume() {
                   {/* ProfileDetailsComponent */}
                   <ProfileDetailsComponent />
 
-                  <p style={{ fontStyle: "italic" }}>
+                  <p style={{ fontStyle: "italic", fontSize: 18 }}>
                     <i
                       class="fa fa-exclamation-circle text-danger"
                       aria-hidden="true"

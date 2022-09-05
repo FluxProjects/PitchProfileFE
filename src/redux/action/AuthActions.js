@@ -109,15 +109,15 @@ export const verifyCandidate =
         if (response.data.successful == true) {
           console.log(JSON.stringify(response.data));
           setModal(false);
-          toast.success("Verified successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success("Verified successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
@@ -255,7 +255,7 @@ export const updateUser =
         console.log(response.data);
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success("Update Success!", {
+          toast.success("Updated Successfully!", {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -330,7 +330,7 @@ export const updateUserProfileModal =
         console.log(response.data);
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success("Update Success!", {
+          toast.success("Updated Successfully!", {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -392,7 +392,7 @@ export const UpdateIsActive = (is_active) => async (dispatch, state) => {
       console.log(JSON.stringify(response.data));
       if (response.data.successful) {
         console.log("data", response.data.data);
-        toast.success("Update Success!", {
+        toast.success("Updated Successfully!", {
           position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -455,7 +455,7 @@ export const UploadImage = (files) => async (dispatch, state) => {
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           console.log("data", response.data.data);
-          // toast.success("Update Success!", {
+          // toast.success("Updated Successfully!", {
           //   position: "bottom-center",
           //   autoClose: 5000,
           //   hideProgressBar: false,
@@ -520,7 +520,7 @@ export const UploadCoverLetter = (files) => async (dispatch, state) => {
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success("Update Success!", {
+          toast.success("Updated Successfully!", {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -589,18 +589,18 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success(
-            "Uploaded successfully. Your uploaded video is being reviewed.",
-            {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            }
-          );
+          // toast.success(
+          //   "Uploaded successfully. Your uploaded video is being reviewed.",
+          //   {
+          //     position: "bottom-center",
+          //     autoClose: 5000,
+          //     hideProgressBar: false,
+          //     closeOnClick: true,
+          //     pauseOnHover: true,
+          //     draggable: true,
+          //     progress: undefined,
+          //   }
+          // );
           // var myVal = state().pedningActions;
           // var arr = myVal.push(
           //   "You will receive an email shortly once it is approved. Please note your profile will be LIVE once video is reviewed and approved"

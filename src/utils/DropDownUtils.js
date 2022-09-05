@@ -60,8 +60,8 @@ export const proficiencyLevelDrop = [
 ];
 
 export const AvailabliltyDrop = [
-  { id: "Available", name: "Actively Looking" },
-  { id: "Unavailable", name: "Happily Employed" },
+  { id: "Available", name: "Available" },
+  { id: "Unavailable", name: "Employed" },
 ];
 
 export const skillTypeDrop = [

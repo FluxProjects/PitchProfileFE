@@ -133,7 +133,7 @@ export default function BrowseCandidateGridCard({
             }}
             className="isAvail"
           >
-            {item?.is_active == true ? "Actively Looking" : "Happily Employed"}
+            {item?.is_active == true ? "Available" : "Employed"}
           </span>
         </div>
 

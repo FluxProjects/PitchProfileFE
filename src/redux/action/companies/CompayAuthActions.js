@@ -203,7 +203,7 @@ export const UploadCompanyProfileImage = (files) => async (dispatch, state) => {
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success("Update Success!", {
+          toast.success("Updated Successfully!", {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -302,7 +302,7 @@ export const updateCompany =
         console.log(response.data);
         if (response.data.successful) {
           console.log("data", response.data.data);
-          toast.success("Update Success!", {
+          toast.success("Updated Successfully!", {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -364,7 +364,7 @@ export const updateCompany =
 //       console.log(JSON.stringify(response.data));
 //       if (response.data.successful) {
 //         console.log("data", response.data.data);
-//         toast.success("Update Success!", {
+//         toast.success("Updated Successfully!", {
 //           position: "bottom-center",
 //           autoClose: 5000,
 //           hideProgressBar: false,
@@ -427,7 +427,7 @@ export const updateCompany =
 //         console.log(JSON.stringify(response.data));
 //         if (response.data.successful) {
 //           console.log("data", response.data.data);
-//           toast.success("Update Success!", {
+//           toast.success("Updated Successfully!", {
 //             position: "bottom-center",
 //             autoClose: 5000,
 //             hideProgressBar: false,
@@ -492,7 +492,7 @@ export const updateCompany =
 //         console.log(JSON.stringify(response.data));
 //         if (response.data.successful) {
 //           console.log("data", response.data.data);
-//           toast.success("Update Success!", {
+//           toast.success("Updated Successfully!", {
 //             position: "bottom-center",
 //             autoClose: 5000,
 //             hideProgressBar: false,
@@ -556,7 +556,7 @@ export const updateCompany =
 //         console.log(JSON.stringify(response.data));
 //         if (response.data.successful) {
 //           console.log("data", response.data.data);
-//           toast.success("Update Success!", {
+//           toast.success("Updated Successfully!", {
 //             position: "bottom-center",
 //             autoClose: 5000,
 //             hideProgressBar: false,

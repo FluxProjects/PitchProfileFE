@@ -2508,7 +2508,7 @@ export const UpdateCandidateProfile =
         console.log(response.data);
         if (response.data.successful) {
           console.log("data", response.data.data);
-          // toast.success("Update Success!", {
+          // toast.success("Updated Successfully!", {
           //   position: "bottom-center",
           //   autoClose: 5000,
           //   hideProgressBar: false,
@@ -2579,7 +2579,7 @@ export const UpdateCandidateSummary =
         console.log(response.data);
         if (response.data.successful) {
           console.log("data", response.data);
-          // toast.success("Update Success!", {
+          // toast.success("Updated Successfully!", {
           //   position: "bottom-center",
           //   autoClose: 5000,
           //   hideProgressBar: false,
@@ -2651,7 +2651,7 @@ export const UploadProfileStatus = (status) => async (dispatch, state) => {
       console.log(response.data);
       if (response.data.successful) {
         console.log("data", response.data);
-        // toast.success("Update Success!", {
+        // toast.success("Updated Successfully!", {
         //   position: "bottom-center",
         //   autoClose: 5000,
         //   hideProgressBar: false,
@@ -2724,7 +2724,7 @@ export const UploadProfileisReviewd =
         if (response.data.successful) {
           console.log("data", response.data);
 
-          // toast.success("Update Success!", {
+          // toast.success("Updated Successfully!", {
           //   position: "bottom-center",
           //   autoClose: 5000,
           //   hideProgressBar: false,
@@ -2981,7 +2981,7 @@ export const UpdateResumeHeader =
         console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           console.log("data", response.data.data);
-          // toast.success("Update Success!", {
+          // toast.success("Updated Successfully!", {
           //   position: "bottom-center",
           //   autoClose: 5000,
           //   hideProgressBar: false,

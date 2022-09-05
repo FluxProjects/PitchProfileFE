@@ -33,7 +33,11 @@ export default function Browsecandidategrid({}) {
       <div className="page-content bg-white">
         <div
           className="dez-bnr-inr overlay-black-middle"
-          style={{ backgroundImage: "url(" + bnr + ")" }}
+          style={{
+            backgroundImage: "url(" + bnr + ")",
+            backgroundSize: "cover",
+            height: "200px",
+          }}
         >
           <div className="container">
             <div className="dez-bnr-inr-entry">

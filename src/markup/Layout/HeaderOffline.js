@@ -289,7 +289,7 @@ export default function Header({ textColor, fromLogin }) {
                           </li>
                           <li>
                             <Link to={"/company-login"} className="dez-page">
-                              Comapny
+                              Company
                             </Link>
                           </li>
                         </ul>
@@ -306,7 +306,7 @@ export default function Header({ textColor, fromLogin }) {
                           </li>
                           <li>
                             <Link to={"/company-login"} className="dez-page">
-                              As a Comapny
+                              As a Company
                             </Link>
                           </li>
                         </ul>

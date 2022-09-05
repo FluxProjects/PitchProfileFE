@@ -35,7 +35,7 @@ export default function Companyprofile() {
     state?.userDetails?.state_id ? state?.userDetails?.state_id : 3805
   );
   const [country, setCountry] = useState(
-    state?.userDetails?.country_id ? state?.userDetails?.country_id : 230
+    state?.userDetails?.country_id ? state?.userDetails?.country_id : 0
   );
   const [loading, setLoading] = useState(true);
   const [BtnLoading, setBtnLoading] = useState(false);
