@@ -980,7 +980,7 @@ span {
 @media only screen and (max-width: 1280px) {
   .fullwidth .header-nav .nav > li > a {
     padding: 10px 8px;
-    color: black !important;
+    color: black;
   }
   .job-search-form h2 {
     font-size: 40px;

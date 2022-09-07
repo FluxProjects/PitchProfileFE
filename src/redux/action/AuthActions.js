@@ -236,7 +236,7 @@ export const updateUser =
         state_id,
         country_id,
         hometown_country_id: "",
-        phone: `+${phone}`,
+        phone: `${phone}`,
         email,
       },
     });

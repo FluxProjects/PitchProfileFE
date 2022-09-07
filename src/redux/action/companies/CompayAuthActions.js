@@ -276,7 +276,7 @@ export const updateCompany =
         industry,
         industry_name,
         website,
-        phone: `+${phone}`,
+        phone: `${phone}`,
         email,
         address,
         city_id,

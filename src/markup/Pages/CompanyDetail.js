@@ -155,9 +155,9 @@ export default function Jobdetail(props) {
                             </span>
                           )}
                           <div className="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                            <strong className="font-weight-700 text-black m-b15">
+                            <h5 className=" text-black m-b15">
                               Contact Details
-                            </strong>
+                            </h5>
                             <ul>
                               <li>
                                 <i className="fa fa-map-marker"></i>

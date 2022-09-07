@@ -98,6 +98,7 @@ export default function Homepage() {
             backgroundImage: `url(${LandingBg})`,
             height: "80vh",
             paddingBottom: "8vh",
+            paddingTop: "25px",
           }}
         >
           <div className="container">

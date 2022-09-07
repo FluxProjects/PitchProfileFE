@@ -73,6 +73,31 @@ export default function Companyprofile() {
 
   const callUpdateCompany = async () => {
     setFieldAlert(false);
+
+    if (city == "") {
+      console.log("city", city);
+      setBtnLoading(false);
+      setFieldText("Enter City Name");
+
+      setFieldAlert(true);
+      return;
+    }
+    if (stateName == "") {
+      console.log("stateName", stateName);
+      setBtnLoading(false);
+      setFieldText("Enter State Name");
+
+      setFieldAlert(true);
+      return;
+    }
+    if (country == "") {
+      console.log("country", country);
+      setBtnLoading(false);
+      setFieldText("Enter Country Name");
+
+      setFieldAlert(true);
+      return;
+    }
     if (companyName == "") {
       console.log("companyName", companyName);
       setBtnLoading(false);

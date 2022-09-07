@@ -140,8 +140,8 @@ export default function Companyresume(props) {
                             <th>Candidate Name</th>
                             <th>Job Title</th>
                             <th>Applied Date</th>
-                            <th>Attachments</th>
                             <th>Cover Letter</th>
+                            <th>Attachments</th>
                             <th>Status</th>
                           </tr>
                         </thead>
@@ -205,25 +205,6 @@ export default function Companyresume(props) {
                                     )
                                   : ""}{" "}
                               </td>
-
-                              <td className="text-center job-links">
-                                {item?.attachment_url != null ? (
-                                  <a
-                                    className="text-center"
-                                    href={item?.attachment_url}
-                                  >
-                                    <i
-                                      className="fa fa-download"
-                                      aria-hidden="true"
-                                    ></i>
-                                  </a>
-                                ) : (
-                                  "None uploaded"
-                                )}
-
-                                {/* {item?.attachment_url} */}
-                              </td>
-
                               <td className="expired pending">
                                 {item?.description.length > 0 ? (
                                   <a
@@ -268,6 +249,24 @@ export default function Companyresume(props) {
                                   "Not available"
                                 )}
                               </td>
+                              <td className="text-center job-links">
+                                {item?.attachment_url != null ? (
+                                  <a
+                                    className="text-center"
+                                    href={item?.attachment_url}
+                                  >
+                                    <i
+                                      className="fa fa-download"
+                                      aria-hidden="true"
+                                    ></i>
+                                  </a>
+                                ) : (
+                                  "None uploaded"
+                                )}
+
+                                {/* {item?.attachment_url} */}
+                              </td>
+
                               <td className="expired pending">
                                 {JobStatus.findIndex(
                                   (x) => x?.id == item?.status

@@ -42,7 +42,7 @@ export default function Componypostjobs() {
   const [country, setCountry] = useState(state.userDetails.country_id);
   const [loading, setLoading] = useState(true);
 
-  const [TopSkill1, setTopSkill1] = useState(1);
+  const [TopSkill1, setTopSkill1] = useState(null);
 
   const [TopSkillName1, setTopSkillName1] = useState("");
   const [TopSkillName2, setTopSkillName2] = useState("");
@@ -131,6 +131,30 @@ export default function Componypostjobs() {
 
     setLoading(true);
 
+    if (city == "") {
+      console.log("city", city);
+      setLoading(false);
+      setFieldText("Enter City Name");
+
+      setFieldAlert(true);
+      return;
+    }
+    if (stateName == "") {
+      console.log("stateName", stateName);
+      setLoading(false);
+      setFieldText("Enter State Name");
+
+      setFieldAlert(true);
+      return;
+    }
+    if (country == "") {
+      console.log("country", country);
+      setLoading(false);
+      setFieldText("Enter Country Name");
+
+      setFieldAlert(true);
+      return;
+    }
     if (jobTitle == "") {
       console.log("jobTitle");
       setLoading(false);

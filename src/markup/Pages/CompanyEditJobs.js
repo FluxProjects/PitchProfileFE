@@ -35,9 +35,9 @@ export default function Componypostjobs(props) {
   console.log("irtemskjnes", item);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [city, setCity] = useState(item.city_id);
-  const [stateName, setStateName] = useState(item.state_id);
-  const [country, setCountry] = useState(item.country_id);
+  const [city, setCity] = useState(item.city.id);
+  const [stateName, setStateName] = useState(item.state.id);
+  const [country, setCountry] = useState(item.country.id);
   const [loading, setLoading] = useState(true);
   const [department, setDepartment] = useState(
     item?.department_id ? item?.department_id : 1
@@ -457,7 +457,7 @@ export default function Componypostjobs(props) {
                             <label>State:</label>
                             <DropDownModalComponent
                               onChange={(e) => {
-                                console.log("eee", e.target.value);
+                                console.log("state", e.target.value);
                                 CallGetCities(e.target.value);
 
                                 setStateName(e.target.value);
@@ -473,7 +473,7 @@ export default function Componypostjobs(props) {
                             <label>City:</label>
                             <DropDownModalComponent
                               onChange={(e) => {
-                                console.log("eee", e.target.value);
+                                console.log("City ", e.target.value);
                                 setCity(e.target.value);
                                 //   setLastUsed(e.target.value);
                               }}
