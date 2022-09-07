@@ -234,7 +234,17 @@ export default function HeaderMyResume({ isView }) {
                 </li>
               )}
               <li className="w-100">
-                <i className="ti-email"></i> {state.userDetails.email}
+                <div>
+                  <a
+                    className="arem"
+                    href={`mailto:${state.singleUserData.email}`}
+                    style={{
+                      color: "white",
+                    }}
+                  >
+                    <i className="ti-email"></i> {state.userDetails.email}
+                  </a>
+                </div>
               </li>
             </ul>
 

@@ -144,11 +144,11 @@ export const filterCandidateAll =
     //    ? is available filter
     state().backupCandidates.filter((item) => {
       if (is_active?.length == 0 || is_active == null) {
-        console.log("is_active null");
+        console.log("is_active null", item?.is_active);
 
         result.push(item);
       } else if (item?.is_active?.toString() == is_active?.toString()) {
-        console.log("is_active else");
+        console.log("is_active else", item?.is_active, is_active);
 
         result.push(item);
       }
@@ -158,12 +158,15 @@ export const filterCandidateAll =
     result.map((itemM) => {
       if (itemM.candidate_skills.length > 0) {
         itemM.candidate_skills.filter((item) => {
+          console.log("item.skill_name == skill_id", item.skill_name, skill_id);
+
           if (skill_id == null || skill_id?.length == 0) {
             console.log("skill_id null");
             resultSkill.push(itemM);
             // result.push(itemM);
           } else if (item.skill_name == skill_id) {
             resultSkill.push(itemM);
+
             // result.push(itemM);
           }
         });

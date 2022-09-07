@@ -697,7 +697,7 @@ export const UpdateCompanyPassword =
             progress: undefined,
           });
         } else {
-          toast.error("Something went wrong!", {
+          toast.error(`${response.data?.message}!`, {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,

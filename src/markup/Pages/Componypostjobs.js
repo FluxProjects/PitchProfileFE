@@ -173,7 +173,7 @@ export default function Componypostjobs() {
 
       return;
     }
-   
+
     if (role == "") {
       console.log("role");
 
@@ -1024,7 +1024,7 @@ export default function Componypostjobs() {
                               <span className="text-danger"> *</span>
                             </label>
                             <ReactQuill
-                              onKeyDown={checkCharacterCount}
+                              // onKeyDown={checkCharacterCount}
                               className="quillEditor"
                               value={role}
                               onChange={setRole}
@@ -1045,7 +1045,7 @@ export default function Componypostjobs() {
                             </label>
 
                             <ReactQuill
-                              onKeyDown={checkCharacterCount}
+                              // onKeyDown={checkCharacterCount}
                               className="quillEditor"
                               value={keyRes}
                               onChange={setKeyRes}
@@ -1070,7 +1070,7 @@ export default function Componypostjobs() {
                             </label>
 
                             <ReactQuill
-                              onKeyDown={checkCharacterCount}
+                              // onKeyDown={checkCharacterCount}
                               className="quillEditor"
                               value={lookingFor}
                               onChange={setLookingFor}
@@ -1095,7 +1095,7 @@ export default function Componypostjobs() {
 
                             <ReactQuill
                               ref={reactQuillRef}
-                              onKeyDown={checkCharacterCount}
+                              // onKeyDown={checkCharacterCount}
                               className="quillEditor"
                               value={perks}
                               onChange={setPerks}
@@ -1110,7 +1110,6 @@ export default function Componypostjobs() {
                               maxLength={"500"}
                               value={perks}
                             /> */}
-                            <small>Characters left: {500 - perks.length}</small>
                           </div>
                         </div>
 

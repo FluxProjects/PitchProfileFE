@@ -16,6 +16,19 @@ export default function Changepasswordpage() {
   const [CnfrmPassword, setCnfrmPassword] = useState("");
 
   const CallUpdateUserPassword = async () => {
+    console.log("password", password.length);
+    if (password.length < 8 || CnfrmPassword.length < 8) {
+      toast.error("Passwords length should be more than 8!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     if (password == CnfrmPassword) {
       dispatch(
         UpdateUserPassword(state.userDetails.id, password, state.authToken)
@@ -51,7 +64,7 @@ export default function Changepasswordpage() {
                   <div className="job-bx job-profile">
                     <div className="job-bx-title clearfix">
                       <h5 className="font-weight-700 pull-left text-uppercase">
-                        Change Password
+                        Change Password sss
                       </h5>
                       <Link
                         to={"/jobs-cv-manager"}

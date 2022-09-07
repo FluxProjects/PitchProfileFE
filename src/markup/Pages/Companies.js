@@ -423,82 +423,87 @@ export default function Companies(props) {
                               />
                             </div>
                           </div>
-                          <div className="d-flex m-b30">
-                            <div className="job-post-info ">
-                              <h5
-                                className="text-uppercase fontTitle text-decoration-none"
-                                style={{
-                                  textDecoration: "none !important",
-                                  fontSize: 15,
-                                  marginTop: "2px",
+                          {/* <div className="d-flex m-b30"> */}
+                          <div
+                            style={{
+                              minHeight: "137px",
+                            }}
+                            className="job-post-info p-3 "
+                          >
+                            <h5
+                              className="text-uppercase fontTitle text-decoration-none"
+                              style={{
+                                textDecoration: "none !important",
+                                fontSize: 15,
+                                marginTop: "2px",
+                              }}
+                            >
+                              <Link
+                                to={{
+                                  pathname: "/company-detail",
+                                  search: `?company_id=${item?.id}`,
+                                  state: {
+                                    company_id: item?.id,
+                                  },
                                 }}
                               >
-                                <Link
-                                  to={{
-                                    pathname: "/company-detail",
-                                    search: `?company_id=${item?.id}`,
-                                    state: {
-                                      company_id: item?.id,
-                                    },
-                                  }}
-                                >
-                                  {/* {item?.company_name?.substring(0, 11)} */}
-                                  {/* {item?.company_name?.length > 11 && "... "} */}
-                                  {item?.company_name}
-                                </Link>
+                                {/* {item?.company_name?.substring(0, 11)} */}
+                                {/* {item?.company_name?.length > 11 && "... "} */}
+                                {item?.company_name}
+                              </Link>
 
-                                <br />
-                                <Link
-                                  to={{
-                                    pathname: "/company-detail",
-                                    search: `?company_id=${item?.id}`,
-                                    state: {
-                                      company_id: item?.id,
-                                    },
-                                  }}
-                                >
-                                  <span
-                                    className="text-uppercase fontLocationItems mb-0 cardGridFont "
-                                    style={{
-                                      // fontSize: "14px",
-                                      fontWeight: "normal",
-                                      color: "#1b6cd5",
-                                      textDecoration: "none",
-                                    }}
-                                  >
-                                    {state?.industries.findIndex(
-                                      (x) => x?.id == item?.industry
-                                    ) == -1 ? (
-                                      <div> ‎ </div>
-                                    ) : (
-                                      state?.industries[
-                                        state?.industries.findIndex(
-                                          (x) => x?.id == item?.industry
-                                        )
-                                      ].name
-                                    )}
-                                  </span>
-                                </Link>
-                              </h5>
-                              <ul
-                                className="mb-0 cardGridFont"
-                                style={{
-                                  marginTop: "-12px",
-                                  textDecoration: "none",
+                              <br />
+                              <Link
+                                to={{
+                                  pathname: "/company-detail",
+                                  search: `?company_id=${item?.id}`,
+                                  state: {
+                                    company_id: item?.id,
+                                  },
                                 }}
                               >
-                                <li className="mb-0 fontLocationItems cardGridFont">
-                                  <i className="fa fa-map-marker"></i>
-                                  {item.city?.name}
-                                  {/* {item?.city?.name?.length > 6 && "... "} */}
-                                  {item.city && ", "} {item.state?.name}
-                                  {/* {item?.state?.name?.length > 6 && "... "} */}
-                                  {item.state && ", "}
-                                  {item.country?.sortname}
-                                </li>
-                              </ul>
-                            </div>
+                                <span
+                                  className="text-uppercase fontLocationItems mb-0 cardGridFont "
+                                  style={{
+                                    // fontSize: "14px",
+                                    fontWeight: "normal",
+                                    color: "#1b6cd5",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  {state?.industries.findIndex(
+                                    (x) => x?.id == item?.industry
+                                  ) == -1 ? (
+                                    <div> ‎ </div>
+                                  ) : (
+                                    state?.industries[
+                                      state?.industries.findIndex(
+                                        (x) => x?.id == item?.industry
+                                      )
+                                    ].name
+                                  )}
+                                </span>
+                              </Link>
+                            </h5>
+                            <ul
+                              className="mb-0 cardGridFont"
+                              style={{
+                                marginTop: "-12px",
+                                textDecoration: "none",
+                              }}
+                            >
+                              <li className="mb-0 fontLocationItems cardGridFont">
+                                <i className="fa fa-map-marker"></i>
+                                {item.city?.name}
+                                {/* {item?.city?.name?.length > 6 && "... "} */}
+                                {item.city && ", "} {item.state?.name}
+                                {/* {item?.state?.name?.length > 6 && "... "} */}
+                                {item.state && ", "}
+                                {item.country?.sortname}
+                              </li>
+                            </ul>
                           </div>
+                          {/* </div> */}
 
                           <label className="like-btn">
                             <input type="checkbox" />

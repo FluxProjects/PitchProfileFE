@@ -156,7 +156,7 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                     style={{
                       fontSize: "14px",
                       fontWeight: "normal",
-                      color: "#1b6cd5",
+                      color: "#6f6f6f",
                       textDecoration: "none",
                     }}
                   >
@@ -181,7 +181,8 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
                 {/* {item?.city?.name?.length > 6 && "... "} */}
                 {item?.city && ", "}
                 {item?.state?.name}
-                {/* {item?.state?.name?.length > 6 && "... "} */}
+                {item?.state?.name?.length > 6 && "... "}
+                {item?.country?.name}
               </li>
             </ul>
           </div>

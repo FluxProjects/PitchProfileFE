@@ -797,7 +797,7 @@ export const UpdateUserPassword =
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        if (response.data.status) {
+        if (response.data.successful) {
           toast.success("Password updated successfully!", {
             position: "bottom-center",
             autoClose: 5000,
@@ -808,7 +808,7 @@ export const UpdateUserPassword =
             progress: undefined,
           });
         } else {
-          toast.error("Something went wrong!", {
+          toast.error(`${response.data?.message}!`, {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,

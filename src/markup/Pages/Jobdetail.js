@@ -314,10 +314,14 @@ export default function Jobdetail(props) {
                           <strong>Location:</strong>{" "}
                           {/* <i className="ti-location-pin text-black m-r5"></i>{" "} */}
                           {state.PreviewPost.city?.name}
-                          {state.PreviewPost.city && ", "}{" "}
+                          {state.PreviewPost.state?.name &&
+                            state.PreviewPost.city?.name &&
+                            ", "}{" "}
                           {state.PreviewPost.state?.name}
-                          {state.PreviewPost.state && ", "}
-                          {state.PreviewPost.country?.sortname}
+                          {state.PreviewPost.country?.name &&
+                            state.PreviewPost.state?.name &&
+                            ", "}
+                          {state.PreviewPost.country?.name}
                         </li>
                       </ul>
                       <h5 className="mt-5 font-weight-600">Job Description:</h5>
@@ -433,7 +437,7 @@ export default function Jobdetail(props) {
                           }}
                           id="setUseUploaded"
                           name="setUseUploaded"
-                          // defaultChecked={}
+                          defaultChecked={true}
                           type="radio"
                         />{" "}
                         Write cover letter
@@ -445,7 +449,7 @@ export default function Jobdetail(props) {
                           onClick={() => {
                             setUseUploaded("uploadCoverLetter");
                           }}
-                          defaultChecked={true}
+                          defaultChecked={false}
                           id="setUseUploadedAdditionla"
                           name="setUseUploaded"
                           type="radio"
@@ -454,7 +458,7 @@ export default function Jobdetail(props) {
                       </div>
                     </div>
 
-                    {useUploaded == "uploadnew" ? (
+                    {useUploaded == "uploadnew" && (
                       <div className="col-lg-12 col-md-12">
                         <div className="form-group">
                           <label>Cover Letter</label>
@@ -475,7 +479,7 @@ export default function Jobdetail(props) {
                           />
                         </div>
                       </div>
-                    ) : null}
+                    )}
 
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">

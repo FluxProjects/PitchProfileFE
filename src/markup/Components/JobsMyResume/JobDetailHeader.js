@@ -147,7 +147,19 @@ export default function JobDetailHeader({ isView }) {
             style={{}}
             className="text-white   align-self-center  browse-job text-left"
           >
-            <h4 className="m-b0">{state.PreviewPost?.company?.company_name}</h4>
+            <Link
+              to={{
+                pathname: "/company-detail",
+                search: `?company_id=${state.PreviewPost?.company?.id}`,
+                state: {
+                  company_id: state.PreviewPost?.company?.id,
+                },
+              }}
+            >
+              <h4 className="m-b0">
+                {state.PreviewPost?.company?.company_name}
+              </h4>
+            </Link>
             <p className="m-b15 text-justify">
               {state.PreviewPost?.company?.description}
             </p>

@@ -16,6 +16,18 @@ export default function Changepasswordpage() {
   const [CnfrmPassword, setCnfrmPassword] = useState("");
 
   const CallUpdateUserPassword = async () => {
+    if (password.length < 8 || CnfrmPassword.length < 8) {
+      toast.error("Passwords length should be more than 8!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     if (password == CnfrmPassword) {
       dispatch(
         UpdateCompanyPassword(state.userDetails.id, password, state.authToken)

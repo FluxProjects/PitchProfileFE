@@ -767,7 +767,7 @@ span {
   margin-right: 20px;
 }
 .post-job-bx .post-bx {
-  padding: 25px;
+  padding: 1rem !important;
   background-color: #fff;
   border: 4px solid rgb(2, 117, 216);
   border-radius: 8px;
@@ -1777,7 +1777,6 @@ span {
   border-bottom-left-radius: 0;
 }
 .post-bx .job-post-info h5 {
-  margin-right: 35px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
