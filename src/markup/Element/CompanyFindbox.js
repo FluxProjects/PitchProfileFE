@@ -588,12 +588,8 @@ export default function Jobfindbox({ isView }) {
                       />
 
                       <datalist id="LocationFilter">
-                        {state.cities.map((item, key) => (
-                          <option
-                            key={key}
-                            value={item.name}
-                            label={item.name}
-                          />
+                        {state.AllCityJobNames.map((item, key) => (
+                          <option key={key} value={item} label={item} />
                         ))}
                       </datalist>
                     </div>

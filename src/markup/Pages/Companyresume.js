@@ -12,6 +12,7 @@ import { URL } from "../../utils/APIUtils";
 import { formatDate } from "../../utils/functions";
 import moment from "moment";
 import { Modal } from "react-bootstrap";
+import { filterJobsbyId } from "../../redux/action";
 
 const postResume = [
   { title: "Tammy Dixon" },
@@ -40,6 +41,8 @@ export default function Companyresume(props) {
   const callGetJobApplications = async () => {
     if (!props.location?.state?.fromFilter) {
       await dispatch(GetJobApplications());
+    } else {
+      await dispatch(filterJobsbyId(props.location?.state?.id));
     }
     setLoading(false);
   };

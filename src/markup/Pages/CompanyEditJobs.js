@@ -312,7 +312,8 @@ export default function Componypostjobs(props) {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Department</label>
+                            <label>Department</label>{" "}
+                            <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
@@ -325,7 +326,8 @@ export default function Componypostjobs(props) {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Seniority Level</label>
+                            <label>Seniority Level</label>{" "}
+                            <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
@@ -340,7 +342,8 @@ export default function Componypostjobs(props) {
                           <div className="form-group">
                             <label>
                               Salary Range (Per Annum){" "}
-                              {state.userDetails?.country?.currency_symbol}
+                              {state.userDetails?.country?.currency_symbol}{" "}
+                              <span className="text-danger"> *</span>
                             </label>
                             <DropDownModalComponent
                               onChange={(e) => {
@@ -367,7 +370,8 @@ export default function Componypostjobs(props) {
                         </div> */}
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Job Type</label>
+                            <label>Job Type</label>{" "}
+                            <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
@@ -381,7 +385,8 @@ export default function Componypostjobs(props) {
 
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Employment Type</label>
+                            <label>Employment Type</label>{" "}
+                            <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("eee", e.target.value);
@@ -394,7 +399,8 @@ export default function Componypostjobs(props) {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
-                            <label>Experience (Years)</label>
+                            <label>Experience (Years)</label>{" "}
+                            <span className="text-danger"> *</span>
                             <TextInputModal
                               type={"number"}
                               onChange={(e) => {
@@ -436,8 +442,8 @@ export default function Componypostjobs(props) {
 
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>Country:</label>
-
+                            <label>Country:</label>{" "}
+                            <span className="text-danger"> *</span>
                             {/* <DropdownSearch items={state.countries} /> */}
                             <DropDownModalComponent
                               onChange={(e) => {
@@ -454,7 +460,8 @@ export default function Componypostjobs(props) {
 
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>State:</label>
+                            <label>State:</label>{" "}
+                            <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("state", e.target.value);
@@ -470,7 +477,8 @@ export default function Componypostjobs(props) {
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
-                            <label>City:</label>
+                            <label>City:</label>{" "}
+                            <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
                                 console.log("City ", e.target.value);

@@ -209,7 +209,7 @@ export default function Companymanage() {
                                 className="cursorPointer text-center"
                                 to={{
                                   pathname: `company-resume/${item?.id}`,
-                                  state: { fromFilter: true },
+                                  state: { fromFilter: true, id: item?.id },
                                 }}
                                 onClick={() => {
                                   dispatch(filterJobsbyId(item?.id, router));

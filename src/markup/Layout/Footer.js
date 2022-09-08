@@ -63,6 +63,14 @@ export default function Footer() {
             <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12"></div>
 
             <div className="col-xl-5 col-lg-5 col-md-8 col-sm-8 col-12">
+              <h4
+                style={{
+                  fontSize: 18,
+                  color: "black",
+                }}
+              >
+                Email Newsletters
+              </h4>
               <p style={{ color: "gray" }} className="text-capitalize  m-b20">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry has been the industry's standard dummy text ever since
@@ -96,8 +104,27 @@ export default function Footer() {
                   </div>
                 </form>
               </div>
-              <ul className="list-inline m-a0">
-                <li>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-top">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 col-sm-12 ">
+              <span>
+                {" "}
+                © Copyright by{" "}
+                <i className="fa fa-heart m-lr5 text-red heart"></i>
+                <Link to={""}>Pitch profile</Link> All rights reserved.
+              </span>
+            </div>
+
+            {/* Icons */}
+            <div className="col-lg-6 col-sm-12 text-right">
+              <ul className="list-inline m-a0 fontBgColor">
+                <li style={{}}>
                   <Link to={""} className="site-button white facebook circle ">
                     <i className="fa fa-facebook"></i>
                   </Link>
@@ -132,21 +159,6 @@ export default function Footer() {
                   </Link>
                 </li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="footer-bottom">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 text-center">
-              <span>
-                {" "}
-                © Copyright by{" "}
-                <i className="fa fa-heart m-lr5 text-red heart"></i>
-                <Link to={""}>Pitch profile</Link> All rights reserved.
-              </span>
             </div>
           </div>
         </div>

@@ -33,6 +33,7 @@ const initialState = {
 
   organizationDrop: [],
   AllCompanyNames: [],
+  AllCityJobNames: [],
   AllJobNames: [],
   DesignationDrop: [],
 
@@ -161,6 +162,11 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return {
         ...state,
         AllJobNames: rest.data,
+      };
+    case "AllCityJobNames":
+      return {
+        ...state,
+        AllCityJobNames: rest.data,
       };
     case "setLangs":
       return { ...state, languages: rest.data };

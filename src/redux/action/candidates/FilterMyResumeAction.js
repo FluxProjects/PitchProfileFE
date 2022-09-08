@@ -142,10 +142,10 @@ export const filterCandidateAll =
     var resultDesignation = [];
     var resultNameFilter = [];
     //    ? is available filter
+    console.log("is_activeis_activeis_activeis_active", is_active);
     state().backupCandidates.filter((item) => {
+      console.log("is_active null", item?.is_active);
       if (is_active?.length == 0 || is_active == null) {
-        console.log("is_active null", item?.is_active);
-
         result.push(item);
       } else if (item?.is_active?.toString() == is_active?.toString()) {
         console.log("is_active else", item?.is_active, is_active);
@@ -153,6 +153,7 @@ export const filterCandidateAll =
         result.push(item);
       }
     });
+
     console.log("resulte unavailable", result);
     //  ? skill filter
     result.map((itemM) => {
@@ -200,7 +201,11 @@ export const filterCandidateAll =
     });
 
     resultNameFilter = resultDesignation.filter(function (item) {
-      if (item?.f_name + " " + item?.l_name == nameFilter) return item;
+      if (designationFilter == null || designationFilter?.length == 0) {
+        return item;
+      } else {
+        if (item?.f_name + " " + item?.l_name == nameFilter) return item;
+      }
     });
 
     console.log("resultDesignation unavailable", resultNameFilter);

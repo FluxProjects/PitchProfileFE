@@ -1137,7 +1137,12 @@ export default function Componypostjobs() {
                           </div>
                         </div>
 
-                        <div className="col-lg-12 col-md-12">
+                        <div
+                          style={{
+                            margin: "0 14px",
+                          }}
+                          className="col-lg-12 col-md-12"
+                        >
                           <AttachVideoCompanyJob
                             setLoading={(e) => {
                               console.log("eeee", e);

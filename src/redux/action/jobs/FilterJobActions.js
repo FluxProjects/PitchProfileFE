@@ -18,15 +18,6 @@ export const filterCompanyName = (companyName) => async (dispatch, state) => {
     if (item?.company?.company_name == companyName) return item;
   });
 
-  // toast.success("Updated Successfully!", {
-  //   position: "bottom-center",
-  //   autoClose: 5000,
-  //   hideProgressBar: false,
-  //   closeOnClick: true,
-  //   pauseOnHover: true,
-  //   draggable: true,
-  //   progress: undefined,
-  // });
   dispatch({
     type: "FilterAllJobs",
     data: resultCompanySize,
@@ -387,6 +378,7 @@ export const filterJobAll =
       }
     });
 
+    console.log("this is my filter test ", resultLocationFilter);
     resultLocationFilter.filter(function (item) {
       if (EmploymentType?.length == 0 || EmploymentType == null) {
         resultEmploymentType.push(item);
@@ -420,12 +412,16 @@ export const filterJobAll =
       }
     });
 
-    resultSkillType = resultJobName.filter(function (item) {
-      if (item?.skill_id1 == SkillType) return item;
-      if (item?.skill_id2 == SkillType) return item;
-      if (item?.skill_id3 == SkillType) return item;
-      if (item?.skill_id4 == SkillType) return item;
-      if (item?.skill_id5 == SkillType) return item;
+    resultJobName.filter(function (item) {
+      if (SkillType?.length == 0 || SkillType == null) {
+        resultSkillType.push(item);
+      } else {
+        if (item?.skill_id1 == SkillType) resultSkillType.push(item);
+        if (item?.skill_id2 == SkillType) resultSkillType.push(item);
+        if (item?.skill_id3 == SkillType) resultSkillType.push(item);
+        if (item?.skill_id4 == SkillType) resultSkillType.push(item);
+        if (item?.skill_id5 == SkillType) resultSkillType.push(item);
+      }
     });
 
     const uniqueResults = Array.from(
@@ -433,6 +429,7 @@ export const filterJobAll =
     ).map((id) => {
       return resultSkillType.find((a) => a.id === id);
     });
+    console.log("tgihjsycdgsb", resultSkillType, SkillType);
 
     // toast.success("Updated Successfully!", {
     //   position: "bottom-center",

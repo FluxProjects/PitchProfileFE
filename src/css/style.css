@@ -120,6 +120,13 @@
   margin-bottom: 50px;
 }
 
+.fontBgColor i {
+  color: white;
+  background: #196bd5;
+  padding: 10px 14px;
+  border-radius: 100px;
+}
+
 /* Grid view  */
 .cardGridFont {
   font-size: 11px !important;
@@ -523,6 +530,14 @@ strong {
 @media only screen and (max-width: 767px) {
   .mlPhoneHeader {
     margin-left: 0px;
+  }
+  .BtnJoinNow {
+    /* background: ; */
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 25px;
+    border: 1px solid #2e55fa;
+    color: #2e55fa;
   }
   h1 {
     font-size: 35px;
