@@ -214,7 +214,16 @@ export default function Jobdetail(props) {
 
                       {/* <h5 className="mt-5 font-weight-600">Job Description:</h5> */}
                       <div className="bg-gray-dark mb-4 mt-0"></div>
-                      <p>{state.PreviewSingleCompany?.description}</p>
+                      <div
+                        style={{
+                          overflowWrap: "break-word",
+                          wordWrap: "breakWord",
+                          hyphens: "auto",
+                          whiteSpace: "normal",
+                        }}
+                      >
+                        <p>{state.PreviewSingleCompany?.description}</p>
+                      </div>
 
                       <h5 className="mt-5 font-weight-600">Company Size:</h5>
                       <div className="bg-gray-dark mb-4 mt-0"></div>

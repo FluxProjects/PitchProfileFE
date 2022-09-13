@@ -36,7 +36,7 @@ export const AddMessage =
           // });
           dispatch({
             type: "messagesChat",
-            data: [],
+            data: response.data.data,
           });
           // router.push("/company-manage-job");
         } else {

@@ -13,7 +13,7 @@ import {
   AddMessage,
   getMessages,
 } from "../../../../redux/action/Messages/MessagesActions";
-import { SocketContext } from "../../../../utils/socket";
+import { socket } from "../../../../utils/socket";
 
 const Chat = ({
   location,
@@ -27,7 +27,7 @@ const Chat = ({
   const dispatch = useDispatch();
 
   // socket
-  const socket = useContext(SocketContext);
+  // const socket = useContext(SocketContext);
 
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
@@ -41,12 +41,12 @@ const Chat = ({
   useEffect(() => {
     callGetMessages(otherId);
 
-    socket.emit("setup", state.userDetails.id);
-    socket.on("connected", () => {
-      console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
+    // socket.emit("setup", state.userDetails.id);
+    // socket.on("connected", () => {
+    //   console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
 
-      setSocketId(socket.id);
-    });
+    // setSocketId(socket.id);
+    // });
 
     // socket.emit("join", { name, room }, (error) => {
     //   if (error) {

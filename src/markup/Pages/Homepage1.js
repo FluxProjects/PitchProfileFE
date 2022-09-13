@@ -81,6 +81,185 @@ export default function Homepage() {
     await dispatch(getAuthToken(state.authToken, router));
   };
 
+  const HomeProfileCards = [
+    // Naomi
+    {
+      address: "street 123",
+      city_id: 48184,
+      country_id: 232,
+      disability: false,
+      disability_description: "T",
+      email: "pitchprofile@proton.me",
+      f_name: "Naomi",
+      gender: 1,
+      headline: " ",
+      hometown_country_id: 1,
+      is_active: true,
+      is_reviewed: false,
+      l_name: "Scott",
+      marital_status: 1,
+      passport_number: "1234",
+      password: "$2b$10$M4/6POPN3YIp/f7WFG7v6eXWccn59tsEIpOlfWhlx7AuqK7ezESvy",
+      phone: "112345",
+      pic: "https://res.cloudinary.com/flux-official/image/upload/v1659359560/pomb58osyqzb2ucuhvqk.jpg",
+      state_id: 2336,
+      summary: null,
+      updated_at: "2022-08-03T19:39:21.132Z",
+      video:
+        "https://res.cloudinary.com/flux-official/video/upload/v1659360624/fv3a3rug0xojxa4uxdph.mp4",
+      employments: [
+        { role: "HR Business Partner", organization: "Vitanomix Inc." },
+      ],
+      candidate_skills: [
+        {
+          name: "Recruitment",
+          skill_type: 1,
+        },
+        {
+          name: "Resource Planning",
+          skill_type: 1,
+        },
+        {
+          name: "Training & developement",
+          skill_type: 1,
+        },
+      ],
+    },
+    // Adam
+    {
+      address: "street 123",
+      city_id: 48184,
+      country_id: 232,
+      disability: false,
+      disability_description: "T",
+      email: "pitchprofile@proton.me",
+      f_name: "Adam",
+      gender: 1,
+      headline: " ",
+      hometown_country_id: 1,
+      is_active: true,
+      is_reviewed: false,
+      l_name: "Smith",
+      marital_status: 1,
+      passport_number: "1234",
+      password: "$2b$10$M4/6POPN3YIp/f7WFG7v6eXWccn59tsEIpOlfWhlx7AuqK7ezESvy",
+      phone: "112345",
+      pic: "https://res.cloudinary.com/flux-official/image/upload/v1659359560/pomb58osyqzb2ucuhvqk.jpg",
+      state_id: 2336,
+      summary: null,
+      updated_at: "2022-08-03T19:39:21.132Z",
+      video:
+        "https://res.cloudinary.com/flux-official/video/upload/v1659360624/fv3a3rug0xojxa4uxdph.mp4",
+      employments: [
+        {
+          role: "Digital Marketing Strategist",
+          organization: "Printon Advertising",
+        },
+      ],
+      candidate_skills: [
+        {
+          name: "Social Media Marketing",
+          skill_type: 1,
+        },
+        {
+          name: "Online Advertising",
+          skill_type: 1,
+        },
+        {
+          name: "SEO",
+          skill_type: 1,
+        },
+      ],
+    },
+    // Rachel
+    {
+      address: "street 123",
+      city_id: 48184,
+      country_id: 232,
+      disability: false,
+      disability_description: "T",
+      email: "pitchprofile@proton.me",
+      f_name: "Rachel",
+      gender: 1,
+      headline: " ",
+      hometown_country_id: 1,
+      is_active: true,
+      is_reviewed: false,
+      l_name: "Brown",
+      marital_status: 1,
+      passport_number: "1234",
+      password: "$2b$10$M4/6POPN3YIp/f7WFG7v6eXWccn59tsEIpOlfWhlx7AuqK7ezESvy",
+      phone: "112345",
+      pic: "https://res.cloudinary.com/flux-official/image/upload/v1659359560/pomb58osyqzb2ucuhvqk.jpg",
+      state_id: 2336,
+      summary: null,
+      updated_at: "2022-08-03T19:39:21.132Z",
+      video:
+        "https://res.cloudinary.com/flux-official/video/upload/v1659360624/fv3a3rug0xojxa4uxdph.mp4",
+      employments: [
+        { role: "Fashion Designer", organization: "Style Enterprise" },
+      ],
+      candidate_skills: [
+        {
+          name: "Trends Analysis",
+          skill_type: 1,
+        },
+        {
+          name: "Design Development",
+          skill_type: 1,
+        },
+        {
+          name: "Consumer Research",
+          skill_type: 1,
+        },
+      ],
+    },
+    // Mark
+    {
+      address: "street 123",
+      city_id: 48184,
+      country_id: 232,
+      disability: false,
+      disability_description: "T",
+      email: "pitchprofile@proton.me",
+      f_name: "Mark",
+      gender: 1,
+      headline: " ",
+      hometown_country_id: 1,
+      is_active: true,
+      is_reviewed: false,
+      l_name: "Taylor",
+      marital_status: 1,
+      passport_number: "1234",
+      password: "$2b$10$M4/6POPN3YIp/f7WFG7v6eXWccn59tsEIpOlfWhlx7AuqK7ezESvy",
+      phone: "112345",
+      pic: "https://res.cloudinary.com/flux-official/image/upload/v1659359560/pomb58osyqzb2ucuhvqk.jpg",
+      state_id: 2336,
+      summary: null,
+      updated_at: "2022-08-03T19:39:21.132Z",
+      video:
+        "https://res.cloudinary.com/flux-official/video/upload/v1659360624/fv3a3rug0xojxa4uxdph.mp4",
+      employments: [
+        { role: "IT Project Manager", organization: "Flux Technologies LTD." },
+      ],
+      candidate_skills: [
+        {
+          name: "Project Management",
+          skill_type: 1,
+        },
+        {
+          name: "Agile Delivery",
+          skill_type: 1,
+        },
+        {
+          name: "PRINCE 2",
+          skill_type: 1,
+        },
+      ],
+    },
+  ];
+
+  console.log("HomeProfilecards", HomeProfileCards);
   return (
     <div className="page-wraper">
       {state.authToken == "" ? null : state.userDetails?.company_name ? (
@@ -154,9 +333,10 @@ export default function Homepage() {
                       {loading ? (
                         <p>Loading...</p>
                       ) : (
-                        state.allCandidates.splice(0, 4).map((item, index) => (
+                        HomeProfileCards.map((item, index) => (
                           <BrowseCandidateGridCard
-                            // fromHomeScreen={true}
+                            key={index}
+                            fromHomeScreen={true}
                             item={item}
                             index={index}
                           />

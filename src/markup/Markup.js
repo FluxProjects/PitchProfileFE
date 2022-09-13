@@ -100,7 +100,7 @@ export default function Markup() {
           <Route path="/category-all-jobs" component={Categoryalljob} />
           <Route path="/" exact component={Homepage} />
           <Route path="/job-detail" component={Jobdetail} />
-          <Route path="/admin" component={AdminPage} />
+          {/* <Route path="/admin" component={AdminPage} /> */}
 
           <Route
             path="/browse-candidate-grid"

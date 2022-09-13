@@ -30,7 +30,7 @@ import DropdownSearch from "../Components/JobsMyResume/DropdownSearch";
 import AddLanguagesForm from "../Components/JobsMyResume/Modals/AddLanguagesForm";
 import { Modal } from "react-bootstrap";
 import { validatePhoneNumber } from "../../utils/functions";
-import { SocketContext } from "../../utils/socket";
+import { socket } from "../../utils/socket";
 
 export default function Jobprofile() {
   const state = useSelector((state) => state);
@@ -40,7 +40,7 @@ export default function Jobprofile() {
   const [isLoading, setIsLoading] = useState(true);
   const router = useHistory();
 
-  const socket = useContext(SocketContext);
+  // const socket = useContext(SocketContext);
   console.log("setup ", socket); // x8WIv7-mJelg7on_ALbx
 
   {
@@ -53,12 +53,12 @@ export default function Jobprofile() {
     callGetRooms();
     // callGetMessages(otherId);
 
-    socket.emit("setup", state.userDetails.id);
-    socket.on("connected", () => {
-      console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
+    // socket.emit("setup", state.userDetails.id);
+    // socket.on("connected", () => {
+    //   console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
 
-      setSocketId(socket.id);
-    });
+    //   setSocketId(socket.id);
+    // });
 
     socket.on("message recieved", (data) => {
       console.log("message recieved");

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Markup from "./markup/Markup";
 import "./css/plugins.css";
 import "./css/style.css";
@@ -20,6 +20,7 @@ import {
   GetDepartments,
   GetEducationLevels,
   GetIndustries,
+  getMessages,
   getMyRoomsCandidate,
   getMyRoomsCompany,
   getSingleUserData,
@@ -29,9 +30,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import WeavyApp from "./weavy/WeavyApp";
 import Weavy from "./weavy/Weavy";
-import { SocketContext, socket } from "./utils/socket";
 import Chat from "./markup/Pages/MyChat/Chat/Chat";
 import ChatContacts from "./markup/Pages/MyChat/ChatContacts/ChatContacts";
+import { socket } from "./utils/socket";
 
 function App() {
   const state = useSelector((state) => state);
@@ -41,6 +42,7 @@ function App() {
   const [show, setShow] = useState(false);
   const [ChatModal, setChatModal] = useState(false);
   const [otherId, setOtherId] = useState("");
+  const [socketId, setSocketId] = useState("");
 
   useEffect(() => {
     callGetDrop();
@@ -96,97 +98,116 @@ function App() {
   const toggleModal = () => {
     setChatModal(!ChatModal);
   };
-  console.log(
-    "window.location.pathnamewindow.location.pathname",
-    window.location.pathname
-  );
+
+  // socket
+  // const socket = useContext(SocketContext);
+
+  useEffect(() => {
+    socket.emit("setup", state.userDetails.id);
+    socket.on("connected", () => {
+      console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
+
+      setSocketId(socket.id);
+    });
+    // socket.on("connection", () => {
+    //   socket.emit("setup", state.userDetails.id);
+    //   console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
+
+    //   setSocketId(socket.id);
+    // });
+  }, [socket]);
+
+  socket.on("message recieved", (data) => {
+    console.log("testings t mesgs rece");
+    callGetRooms();
+  });
+
   return (
-    <SocketContext.Provider value={socket}>
-      <div className="App">
-        {window.location.pathname == "/jobs-profile" ||
-        window.location.pathname == "/jobs-applied-job" ||
-        window.location.pathname == "/jobs-change-password" ||
-        window.location.pathname == "/my-wishlists-candidate" ||
-        window.location.pathname == "/company-profile" ||
-        window.location.pathname == "/company-post-jobs" ||
-        window.location.pathname == "/company-manage-job" ||
-        window.location.pathname == "/company-resume" ||
-        window.location.pathname == "/company-change-password" ||
-        // window.location.pathname == "/company-detail" ||
-        // window.location.pathname == "/job-detail" ||
-        window.location.pathname == "/my-wishlists-company" ? (
-          <>
-            <p
-              style={{
-                position: "fixed",
-                bottom: 20,
-                right: 30,
-                padding: 8,
-                zIndex: 10,
+    <div className="App">
+      {state?.authToken ? (
+        // window.location.pathname == "/jobs-change-password" ||
+        // window.location.pathname == "/my-wishlists-candidate" ||
+        // window.location.pathname == "/company-profile" ||
+        // window.location.pathname == "/company-post-jobs" ||
+        // window.location.pathname == "/company-manage-job" ||
+        // window.location.pathname == "/company-resume" ||
+        // window.location.pathname == "/company-change-password" ||
+        // // window.location.pathname == "/company-detail" ||
+        // // window.location.pathname == "/job-detail" ||
+        // window.location.pathname == "/my-wishlists-company" ?
+        <>
+          <p
+            style={{
+              position: "fixed",
+              bottom: 20,
+              right: 30,
+              padding: 8,
+              zIndex: 10,
+            }}
+          >
+            <button
+              onClick={() => {
+                console.log("clis");
+                toggleModal();
               }}
+              style={{
+                background: "transparent",
+                border: "transparent",
+                fontSize: 40,
+                outline: "none",
+              }}
+              className=" radius-xl"
             >
-              <button
-                onClick={() => {
-                  console.log("clis");
-                  toggleModal();
-                }}
+              <i
                 style={{
-                  background: "transparent",
-                  border: "transparent",
-                  fontSize: 40,
-                  outline: "none",
+                  color: "rgb(71, 120, 240)",
                 }}
-                className=" radius-xl"
-              >
-                <i
+                className="btnChatStyle fa fa-comment"
+              ></i>
+              {state.IsReadLength > 0 && (
+                <sup
                   style={{
-                    color: "rgb(71, 120, 240)",
+                    position: "relative",
+                    right: "16px",
+                    zIndex: 10,
+                    bottom: "13px",
                   }}
-                  className="btnChatStyle fa fa-comment"
-                ></i>
-                {state.IsReadLength > 0 && (
-                  <sup
-                    style={{
-                      position: "relative",
-                      right: "16px",
-                      zIndex: 10,
-                      bottom: "13px",
-                    }}
+                >
+                  <span
+                    style={{ fontSize: 10 }}
+                    class="badge badge-pill badge-danger "
                   >
-                    <span
-                      style={{ fontSize: 10 }}
-                      class="badge badge-pill badge-danger "
-                    >
-                      {state.IsReadLength}
-                    </span>
-                  </sup>
-                )}
-              </button>
-            </p>
+                    {state.IsReadLength}
+                  </span>
+                </sup>
+              )}
+            </button>
+          </p>
+          {ChatModal && (
             <Modal
               // backdrop={false}
               scrollable={true}
-              show={ChatModal}
+              show={true}
               onHide={() => toggleModal()}
               className="modal fade modal-bx-info editor"
             >
               {/* <Chat otherId={otherId} /> */}
               <ChatContacts setCloseModal={() => toggleModal()} />
             </Modal>
-          </>
-        ) : null}
+          )}
+        </>
+      ) : null}
 
-        <Markup />
-        <ToastContainer
-          position="bottom-center"
-          autoClose={1000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-        />
-      </div>
-    </SocketContext.Provider>
+      <Markup />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+      />
+    </div>
   );
 }
 

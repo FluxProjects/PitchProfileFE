@@ -144,7 +144,7 @@ export default function JobDetailHeader({ isView }) {
             </Link>
           </div>
           <div
-            style={{}}
+            style={{ width: "80%" }}
             className="text-white   align-self-center  browse-job text-left"
           >
             <Link
@@ -160,7 +160,14 @@ export default function JobDetailHeader({ isView }) {
                 {state.PreviewPost?.company?.company_name}
               </h4>
             </Link>
-            <p className="m-b15 text-justify">
+            <p
+              style={{
+                overflowWrap: "break-word",
+                hyphens: "auto",
+                whiteSpace: "normal",
+              }}
+              className="m-b15 text-justify"
+            >
               {state.PreviewPost?.company?.description}
             </p>
             <ul className="clearfix">

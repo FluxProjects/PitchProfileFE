@@ -57,7 +57,7 @@ export default function Jobsappliedjob() {
                     />
                   </div>
 
-                  <div className="col-xl-9 col-lg-8 m-b30 browse-job">
+                  <div className="col-xl-9 col-lg-8 m-b30 table-responsive job-bx browse-job clearfix">
                     <div className="job-bx-title  clearfix">
                       <h5 className="font-weight-700 pull-left text-uppercase">
                         {state?.JobApplications?.length} Jobs Applied
@@ -98,7 +98,10 @@ export default function Jobsappliedjob() {
                         </select>
                       </div> */}
                     </div>
-                    <table className="table-job-bx cv-manager company-manage-job">
+                    <table
+                      width="100%"
+                      className="table-job-bx table cv-manager company-manage-job"
+                    >
                       <thead>
                         <tr>
                           <th className="feature">

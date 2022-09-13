@@ -18,7 +18,7 @@ export default function BrowseCandidateGridCard({
   isWishlistPage,
   fromHomeScreen,
 }) {
-  console.log("BrowseCandidateGridCardBrowseCandidateGridCard", item?.f_name);
+  console.log("BrowseCandidateGridCardBrowseCandidateGridCard", item);
   const [loading, setLoading] = useState(true);
   const [isLiked, setIsLiked] = useState();
 
@@ -59,11 +59,7 @@ export default function BrowseCandidateGridCard({
         fontFamily: "montserrat",
       }}
       className={` ${
-        isWishlistPage
-          ? "col-md-4 col-lg-4"
-          : fromHomeScreen
-          ? "col-md-6 col-lg-6"
-          : "col-md-4 col-lg-3"
+        isWishlistPage ? "col-md-4 col-lg-4" : "col-md-4 col-lg-3"
       }   col-xs-12 col-sm-12  mb-2 marginMobileBrowseCard `}
     >
       <div
@@ -220,7 +216,7 @@ export default function BrowseCandidateGridCard({
             Top Skills
           </h5>
           <ul className="mb-0">
-            {item?.candidate_skills.length > 1 ? (
+            {item?.candidate_skills.length > 0 ? (
               item?.candidate_skills.map((skill) => (
                 <li
                   style={{
@@ -231,11 +227,11 @@ export default function BrowseCandidateGridCard({
                   }}
                   className="cardGridFont"
                 >
-                  {
-                    state.skills[
-                      state.skills.findIndex((x) => x.id == skill.skill_id)
-                    ].name
-                  }
+                  {!fromHomeScreen
+                    ? state.skills[
+                        state.skills.findIndex((x) => x.id == skill.skill_id)
+                      ].name
+                    : skill.name}
                 </li>
               ))
             ) : (

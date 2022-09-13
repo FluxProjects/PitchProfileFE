@@ -166,6 +166,7 @@ export const UpdateJobPost =
     router
   ) =>
   async (dispatch, state) => {
+    console.log("state_idstate_idstate_id", state_id);
     // const formData = new FormData();
     // formData.append("file", files[0]);
     // formData.append("upload_preset", "pitchprofile");
@@ -205,7 +206,7 @@ export const UpdateJobPost =
     };
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        console.log("this is perk", JSON.stringify(response.data));
         if (response.data.successful) {
           toast.success("Job updated Successfully!", {
             position: "bottom-center",

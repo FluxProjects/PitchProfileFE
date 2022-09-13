@@ -144,6 +144,14 @@ export default function Componypostjobs(props) {
 
       return;
     }
+    if (perks == null) {
+      console.log("perks", perks);
+      setLoading(false);
+      setFieldAlert(true);
+      setFieldText("Please enter Perks");
+
+      return;
+    }
     if (seniorityLevelVal == null) {
       console.log("seniorityLevelVal");
       setLoading(false);
@@ -179,6 +187,30 @@ export default function Componypostjobs(props) {
       setFieldAlert(true);
       setFieldText("Please enter your role");
 
+      return;
+    }
+    if (city == "") {
+      console.log("city", city);
+      setLoading(false);
+      setFieldText("Enter City Name");
+
+      setFieldAlert(true);
+      return;
+    }
+    if (stateName == "") {
+      console.log("stateName", stateName);
+      setLoading(false);
+      setFieldText("Enter State Name");
+
+      setFieldAlert(true);
+      return;
+    }
+    if (country == "") {
+      console.log("country", country);
+      setLoading(false);
+      setFieldText("Enter Country Name");
+
+      setFieldAlert(true);
       return;
     }
     if (keyRes == "") {

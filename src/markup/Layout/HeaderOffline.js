@@ -270,6 +270,7 @@ export default function Header({ textColor, fromLogin }) {
                           <p
                             style={{
                               background: fromLogin ? "transparent" : "#1b6cd5",
+                              color: fromLogin ? "1b6cd5" : "white",
                             }}
                             className="BtnJoinNow"
                           >

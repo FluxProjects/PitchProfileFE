@@ -99,7 +99,7 @@ export const GetStates =
 
         if (response.data.successful) {
           if (!isFirstFecth) {
-            setStateName(-1);
+            // setStateName(-1);
           }
           const sortedArr = response.data.states.sort((a, b) =>
             a.name.localeCompare(b.name)
@@ -150,7 +150,7 @@ export const GetCities = (id, setCity, isFirstFecth) => async (dispatch) => {
       if (response.data.successful) {
         console.log("is firststs", isFirstFecth);
         if (!isFirstFecth) {
-          setCity(-1);
+          // setCity(-1);
         }
         const sortedArr = response.data.cities_data.sort((a, b) =>
           a.name.localeCompare(b.name)
