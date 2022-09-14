@@ -55,6 +55,7 @@ export default function HeaderMyResume({ isView }) {
     state.userDetails.hometown_country_id
   );
   const [cityLoading, setCityLoading] = useState(true);
+  const [FieldText, setFieldText] = useState(true);
 
   useEffect(async () => {
     callGetCityState(
@@ -88,21 +89,27 @@ export default function HeaderMyResume({ isView }) {
   const callUpdateResumeHeader = async () => {
     if (fname == null || fname == "") {
       setFieldAlert(true);
+      setFieldText("Please enter First name ");
+
       return;
     }
     if (lname == null || lname == "") {
       setFieldAlert(true);
+      setFieldText("Please enter Last name ");
+
       return;
     }
     if (ResumeHeadline == null || ResumeHeadline == "") {
       setFieldAlert(true);
+      setFieldText("Please enter headline ");
+      // setBtnLoading(false);
       return;
     }
     if (phone == null || phone != "") {
       if (!validatePhoneNumber(phone)) {
         setFieldAlert(true);
-        //   setFieldText("Phone not valid");
-        //   setBtnLoading(false);
+        setFieldText("Phone not valid");
+        // setBtnLoading(false);
         return;
         console.log("this is not vlais");
       }
@@ -454,11 +461,7 @@ export default function HeaderMyResume({ isView }) {
                   </div>
                 </div>
               </form>
-              {fieldAlert && (
-                <p className="text-danger">
-                  Please fill all the required fields.
-                </p>
-              )}
+              {fieldAlert && <p className="text-danger">{FieldText}</p>}
             </div>
             <div className="modal-footer">
               <button

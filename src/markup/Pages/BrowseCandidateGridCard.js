@@ -18,13 +18,16 @@ export default function BrowseCandidateGridCard({
   isWishlistPage,
   fromHomeScreen,
 }) {
-  console.log("BrowseCandidateGridCardBrowseCandidateGridCard", item);
   const [loading, setLoading] = useState(true);
   const [isLiked, setIsLiked] = useState();
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
+  console.log(
+    "BrowseCandidateGridCardBrowseCandidateGridCard",
+    state?.wishlist[0]?.candidate_id
+  );
   useEffect(() => {
     checkLiked();
   }, []);
@@ -92,7 +95,16 @@ export default function BrowseCandidateGridCard({
                 }}
                 defaultChecked={isLiked}
               />
-              <span className="checkmark"></span>
+              <span className="checkmark">
+                {isLiked ? (
+                  <i className="iconPosDet fa fa-heart" aria-hidden="true"></i>
+                ) : (
+                  <i
+                    className="iconPosDet fa fa-heart-o"
+                    aria-hidden="true"
+                  ></i>
+                )}
+              </span>
             </label>
           )}
 

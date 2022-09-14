@@ -131,7 +131,7 @@ export default function AdminPage(props) {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.AllUserData?.length > 1 &&
+                  {state.AllUserData?.length > 0 &&
                     state.AllUserData.map((item, index) => (
                       <tr key={index}>
                         <td>

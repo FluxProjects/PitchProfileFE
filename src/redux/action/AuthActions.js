@@ -392,15 +392,15 @@ export const UpdateIsActive = (is_active) => async (dispatch, state) => {
       console.log(JSON.stringify(response.data));
       if (response.data.successful) {
         console.log("data", response.data.data);
-        toast.success("Updated Successfully!", {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        // toast.success("Updated Successfully!", {
+        //   position: "bottom-center",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // });
 
         dispatch({
           type: "RegisterUser",

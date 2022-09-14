@@ -87,6 +87,11 @@ export const AddJobPost =
             type: "SavePreviewPost",
             data: response.data.data,
           });
+          dispatch({
+            type: "SaveJobVideo",
+            data: "",
+          });
+
           router.push("/company-manage-job");
         } else {
           toast.success(response.data.message, {

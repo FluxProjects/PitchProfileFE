@@ -1148,6 +1148,7 @@ export default function Componypostjobs() {
                               console.log("eeee", e);
                               // setLoading(e);
                             }}
+                            isFullCol={true}
                             setVideoFile={(e) => {
                               console.log("files", e[0]);
                               setVideo(e);

@@ -326,12 +326,26 @@ export default function Jobdetail(props) {
                       </ul>
                       <h5 className="mt-5 font-weight-600">Job Description:</h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{ReactHtmlParser(state.PreviewPost?.role)}</p>
+                      <p
+                        style={{
+                          overflowWrap: "break-word",
+                          hyphens: "auto",
+                          whiteSpace: "normal",
+                        }}
+                      >
+                        {ReactHtmlParser(state.PreviewPost?.role)}
+                      </p>
                       <h5 className="font-weight-600 mt-4">
                         Key Responsibilities:
                       </h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>
+                      <p
+                        style={{
+                          overflowWrap: "break-word",
+                          hyphens: "auto",
+                          whiteSpace: "normal",
+                        }}
+                      >
                         {ReactHtmlParser(
                           state.PreviewPost?.key_responsibilities
                         )}
@@ -340,10 +354,26 @@ export default function Jobdetail(props) {
                         What are we looking for?:
                       </h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{ReactHtmlParser(state.PreviewPost?.looking_for)}</p>
+                      <p
+                        style={{
+                          overflowWrap: "break-word",
+                          hyphens: "auto",
+                          whiteSpace: "normal",
+                        }}
+                      >
+                        {ReactHtmlParser(state.PreviewPost?.looking_for)}
+                      </p>
                       <h5 className="font-weight-600">Perks:</h5>
                       <div className="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                      <p>{ReactHtmlParser(state.PreviewPost?.the_perks)}</p>
+                      <p
+                        style={{
+                          overflowWrap: "break-word",
+                          hyphens: "auto",
+                          whiteSpace: "normal",
+                        }}
+                      >
+                        {ReactHtmlParser(state.PreviewPost?.the_perks)}
+                      </p>
 
                       {!state.userDetails.company_name && (
                         <>

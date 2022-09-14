@@ -1732,7 +1732,7 @@ span {
   background-color: #2196f3;
 }
 .checkmark:after {
-  content: "\f08a";
+  /* content: "\f08a"; */
   position: absolute;
   display: none;
 }
@@ -1752,14 +1752,18 @@ span {
   width: 5px;
   height: 10px;
 }
+.iconPosDet {
+  color: #1b6cd5;
+  margin: 0 3px;
+}
 .like-btn .checkmark:before {
-  content: "\f08a";
+  /* content: "\f08a"; */
   left: 6px;
   top: 3px;
   position: absolute;
   font-size: 16px;
   font-weight: normal;
-  color: #1b6cd5;
+  /* color: #1b6cd5; */
 }
 .comment-reply-link:hover {
   color: #333 !important;

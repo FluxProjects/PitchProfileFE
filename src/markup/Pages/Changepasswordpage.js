@@ -18,7 +18,7 @@ export default function Changepasswordpage() {
   const CallUpdateUserPassword = async () => {
     console.log("password", password.length);
     if (password.length < 8 || CnfrmPassword.length < 8) {
-      toast.error("Passwords length should be more than 8!", {
+      toast.error("Password length should be at least 8 characters!", {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -64,7 +64,7 @@ export default function Changepasswordpage() {
                   <div className="job-bx job-profile">
                     <div className="job-bx-title clearfix">
                       <h5 className="font-weight-700 pull-left text-uppercase">
-                        Change Password sss
+                        Change Password
                       </h5>
                       <Link
                         to={"/jobs-cv-manager"}

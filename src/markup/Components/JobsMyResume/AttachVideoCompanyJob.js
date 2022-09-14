@@ -7,6 +7,7 @@ export default function AttachVideoCompanyJob({
   isView,
   setVideoFile,
   setLoading,
+  isFullCol,
 }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -57,7 +58,11 @@ export default function AttachVideoCompanyJob({
         >
           <div className="row">
             {console.log("state.SaveJobVideo", state.SaveJobVideo)}
-            <div className="col-lg-6 col-md-6">
+            <div
+              className={`${
+                !isFullCol ? "col-lg-6 col-md-6" : "col-lg-12 col-md-12"
+              } `}
+            >
               {state.SaveJobVideo != null && state.SaveJobVideo != "" ? (
                 <div className="col-lg-12 col-md-12">
                   <ReactPlayer
@@ -102,7 +107,7 @@ export default function AttachVideoCompanyJob({
                       onChange={(e) => {
                         setVideoFile(e.target.files);
 
-                        dispatch(SaveJobVideo(e.target.files));
+                        dispatch(SaveJobVideo(e.target.files, setLoading));
                         setvideoSelected(true);
                       }}
                     />
@@ -124,7 +129,7 @@ export default function AttachVideoCompanyJob({
             console.log("files", e.target.files);
             setVideoFile(e.target.files);
 
-            dispatch(SaveJobVideo(e.target.files));
+            dispatch(SaveJobVideo(e.target.files, setLoading));
             setvideoSelected(true);
             // setLoading(false);
           }}

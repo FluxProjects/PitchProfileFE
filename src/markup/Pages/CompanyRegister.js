@@ -25,6 +25,18 @@ export default function CompanyRegister({ setIsCurrentTab }) {
   const [isDisabled, setIsDisabled] = useState(false);
 
   const callRegisterUser = async () => {
+    if (password.length < 8 || CnfrmPassword.length < 8) {
+      toast.error("Password length should be at least 8 characters!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     if (password == CnfrmPassword) {
       setIsDisabled(true);
       await dispatch(

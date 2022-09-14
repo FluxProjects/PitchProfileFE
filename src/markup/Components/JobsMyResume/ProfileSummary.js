@@ -53,7 +53,16 @@ export default function ProfileSummary({ isView }) {
           career you are looking for. Write a meaningful summary of more than 50
           characters.
         </p> */}
-        <p className="m-b0 ">{state.userDetails.summary}</p>
+        <p
+          style={{
+            overflowWrap: "break-word",
+            hyphens: "auto",
+            whiteSpace: "normal",
+          }}
+          className="m-b0 "
+        >
+          {state.userDetails.summary}
+        </p>
       </div>
 
       <Modal

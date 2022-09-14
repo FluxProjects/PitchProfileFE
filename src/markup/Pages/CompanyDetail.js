@@ -137,7 +137,7 @@ export default function Jobdetail(props) {
                             )}
                         </div>
                         <div className="col-lg-12 col-md-6">
-                          {props?.location?.state?.showBack && (
+                          {/* {props?.location?.state?.showBack && (
                             <span className="mt-2">
                               <Link
                                 onClick={() => {
@@ -153,7 +153,7 @@ export default function Jobdetail(props) {
                                 Back
                               </Link>
                             </span>
-                          )}
+                          )} */}
                           <div className="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                             <h5 className=" text-black m-b15">
                               Contact Details
@@ -205,7 +205,10 @@ export default function Jobdetail(props) {
                           }}
                         ></span>
                         <Link
-                          to={"/companies"}
+                          onClick={() => {
+                            router.goBack();
+                          }}
+                          // to={"/companies"}
                           className="site-button right-arrow button-sm float-right"
                         >
                           Back

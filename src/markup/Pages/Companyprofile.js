@@ -564,7 +564,7 @@ export default function Companyprofile() {
                                   setFacebook(e.target.value);
                                 }}
                                 value={facebook}
-                                placeholder="https://www.facebook.com/"
+                                // placeholder="https://www.facebook.com/"
                               />
                               <small>
                                 ex: https://www.facebook.com/profile_name
@@ -580,7 +580,7 @@ export default function Companyprofile() {
                                   setTwitter(e.target.value);
                                 }}
                                 value={twitter}
-                                placeholder="https://www.twitter.com/"
+                                // placeholder="https://www.twitter.com/"
                               />
                               <small>
                                 ex: https://twitter.com/profile_name
@@ -609,7 +609,7 @@ export default function Companyprofile() {
                                   setLinkedin(e.target.value);
                                 }}
                                 value={linkedin}
-                                placeholder="https://www.linkedin.com/"
+                                // placeholder="https://www.linkedin.com/"
                               />
                               <small>
                                 ex: https://www.linkedin.com/in/profile_name

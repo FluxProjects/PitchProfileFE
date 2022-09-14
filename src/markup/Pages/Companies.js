@@ -32,6 +32,7 @@ export default function Companies(props) {
     await dispatch(GetAllCompanies());
     setLoading(false);
   };
+  const [isLiked, setIsLiked] = useState();
 
   const [activeTab, setActiveTab] = useState("1");
 
@@ -448,7 +449,7 @@ export default function Companies(props) {
                                 }}
                               >
                                 {/* {item?.company_name?.substring(0, 11)} */}
-                                {/* {item?.company_name?.length > 11 && "... "} */}
+                                {/* {item?.company_name?.length > 01 && "... "} */}
                                 {item?.company_name}
                               </Link>
 
@@ -507,7 +508,19 @@ export default function Companies(props) {
 
                           <label className="like-btn">
                             <input type="checkbox" />
-                            <span className="checkmark"></span>
+                            <span className="checkmark">
+                              {isLiked ? (
+                                <i
+                                  className="iconPosDet fa fa-heart"
+                                  aria-hidden="true"
+                                ></i>
+                              ) : (
+                                <i
+                                  className="iconPosDet fa fa-heart-o"
+                                  aria-hidden="true"
+                                ></i>
+                              )}
+                            </span>
                           </label>
                         </div>
                       </Link>

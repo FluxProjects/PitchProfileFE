@@ -17,7 +17,7 @@ export default function Changepasswordpage() {
 
   const CallUpdateUserPassword = async () => {
     if (password.length < 8 || CnfrmPassword.length < 8) {
-      toast.error("Passwords length should be more than 8!", {
+      toast.error("Password length should be at least 8 characters!", {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,

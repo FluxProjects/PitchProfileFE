@@ -219,7 +219,13 @@ export default function AppliedJobGrid({ item, index }) {
             }}
             defaultChecked={isLiked}
           />
-          <span className="checkmark"></span>
+          <span className="checkmark">
+            {isLiked ? (
+              <i className="iconPosDet fa fa-heart" aria-hidden="true"></i>
+            ) : (
+              <i className="iconPosDet fa fa-heart-o" aria-hidden="true"></i>
+            )}
+          </span>
         </label>
       </div>
     </li>

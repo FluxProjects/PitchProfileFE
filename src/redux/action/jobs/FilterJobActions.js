@@ -147,8 +147,12 @@ export const filterLocationFilter =
     console.log("LocationFilter", LocationFilter);
     var resultLocationFilter = [];
     // ? company filter
-    resultLocationFilter = state().BackupAlljobs.filter(function (item) {
-      if (item?.city_id == LocationFilter) return item;
+    console.log(
+      "this is my filter testthis is my filter test",
+      resultLocationFilter
+    );
+    state().BackupAlljobs.filter(function (item) {
+      if (item?.city?.name == LocationFilter) resultLocationFilter.push(item);
     });
 
     // toast.success("Updated Successfully!", {
@@ -373,7 +377,7 @@ export const filterJobAll =
     resultShiftType.filter(function (item) {
       if (LocationFilter?.length == 0 || LocationFilter == null) {
         resultLocationFilter.push(item);
-      } else if (item?.city_id == LocationFilter) {
+      } else if (item?.city?.name == LocationFilter) {
         resultLocationFilter.push(item);
       }
     });

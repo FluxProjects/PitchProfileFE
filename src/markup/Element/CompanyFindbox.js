@@ -152,7 +152,7 @@ export default function Jobfindbox({ isView }) {
     if (LocationFilter != null && LocationFilter != "") {
       count++;
     }
-    if (count > 1) {
+    if (count > 0) {
       dispatch(
         filterJobAll(
           CompanyNameFilter,
@@ -176,11 +176,7 @@ export default function Jobfindbox({ isView }) {
                 jobTypeDrop.findIndex((x) => x?.name == EmploymentTypeFilter)
               ].id,
 
-          state.cities.findIndex((x) => x?.name == LocationFilter) == -1
-            ? ""
-            : state.cities[
-                state.cities.findIndex((x) => x?.name == LocationFilter)
-              ].id,
+          LocationFilter,
 
           employmentTypeDrop.findIndex(
             (x) => x?.name == EmploymentTypeFilter
@@ -310,15 +306,7 @@ export default function Jobfindbox({ isView }) {
       return;
     }
     if (LocationFilter != null && LocationFilter != "") {
-      dispatch(
-        filterLocationFilter(
-          state.cities.findIndex((x) => x?.name == LocationFilter) == -1
-            ? ""
-            : state.cities[
-                state.cities.findIndex((x) => x?.name == LocationFilter)
-              ].id
-        )
-      );
+      dispatch(filterLocationFilter(LocationFilter));
       return;
     }
   };

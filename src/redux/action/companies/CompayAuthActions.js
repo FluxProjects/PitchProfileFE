@@ -95,7 +95,7 @@ export const verifyCompany = (setModal, router) => async (dispatch, state) => {
 
   var config = {
     method: "post",
-    url: "http://localhost:8080/company_profile/verify_email",
+    url: `${URL}/company_profile/verify_email`,
     headers: {
       "Content-Type": "application/json",
     },

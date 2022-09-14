@@ -93,7 +93,15 @@ export default function Companyresume(props) {
             <div className="card-body">
               <div className="form-group">
                 <label>Cover Letter</label>
-                <p>{ReactHtmlParser(descModal)}</p>
+                <p
+                  style={{
+                    overflowWrap: "break-word",
+                    hyphens: "auto",
+                    whiteSpace: "normal",
+                  }}
+                >
+                  {ReactHtmlParser(descModal)}
+                </p>
               </div>
             </div>
           </div>

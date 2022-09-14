@@ -35,9 +35,9 @@ export default function Componypostjobs(props) {
   console.log("irtemskjnes", item);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [city, setCity] = useState(item.city.id);
-  const [stateName, setStateName] = useState(item.state.id);
-  const [country, setCountry] = useState(item.country.id);
+  const [city, setCity] = useState(item.city?.id);
+  const [stateName, setStateName] = useState(item.state?.id);
+  const [country, setCountry] = useState(item.country?.id);
   const [loading, setLoading] = useState(true);
   const [department, setDepartment] = useState(
     item?.department_id ? item?.department_id : 1
@@ -244,7 +244,7 @@ export default function Componypostjobs(props) {
     // // if (UpdatedVideo) {
     // await dispatch(
     //   UpdateJobWithVideoPost(
-    //     item.id,
+    //     item?.id,
     //     jobTitle,
     //     jobType,
     //     employmentType,
@@ -270,7 +270,7 @@ export default function Componypostjobs(props) {
     // else {
     await dispatch(
       UpdateJobPost(
-        item.id,
+        item?.id,
         jobTitle,
         jobType,
         employmentType,
@@ -575,7 +575,7 @@ export default function Componypostjobs(props) {
                                   Select option
                                 </option>
                                 {state.skills.map((item) => (
-                                  <option key={item.id} value={item.id}>
+                                  <option key={item?.id} value={item?.id}>
                                     {item.name}
                                   </option>
                                 ))}
@@ -667,7 +667,7 @@ export default function Componypostjobs(props) {
                                   Select option
                                 </option>
                                 {state.skills.map((item) => (
-                                  <option key={item.id} value={item.id}>
+                                  <option key={item?.id} value={item?.id}>
                                     {item.name}
                                   </option>
                                 ))}
@@ -773,7 +773,7 @@ export default function Componypostjobs(props) {
                                   Select option
                                 </option>
                                 {state.skills.map((item) => (
-                                  <option key={item.id} value={item.id}>
+                                  <option key={item?.id} value={item?.id}>
                                     {item.name}
                                   </option>
                                 ))}
@@ -878,7 +878,7 @@ export default function Componypostjobs(props) {
                                   Select option
                                 </option>
                                 {state.skills.map((item) => (
-                                  <option key={item.id} value={item.id}>
+                                  <option key={item?.id} value={item?.id}>
                                     {item.name}
                                   </option>
                                 ))}
@@ -983,7 +983,7 @@ export default function Componypostjobs(props) {
                                   Select option
                                 </option>
                                 {state.skills.map((item) => (
-                                  <option key={item.id} value={item.id}>
+                                  <option key={item?.id} value={item?.id}>
                                     {item.name}
                                   </option>
                                 ))}
@@ -1102,6 +1102,7 @@ export default function Componypostjobs(props) {
 
                         <div className=" col-lg-12 col-md-12">
                           <AttachVideoCompanyJob
+                            isFullCol={true}
                             setVideoFile={(e) => {
                               console.log("files", e[0]);
                               setUpdatedVideo(true);
