@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
+import ReactPlayer from "react-player";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Toggle from "react-toggle";
@@ -364,7 +365,20 @@ export default function HeaderCandidateResume({
       </div>
       <div className="col-lg-5 col-md-5 col-sm-12">
         <div className=" text-white ">
-          <AttachVideo isView={isView} />
+          {state.userDetails?.id == state.singleUserData?.id ? (
+            <AttachVideo isView={isView} />
+          ) : (
+            state.singleUserData?.video && (
+              <div className="col-lg-12 col-md-12">
+                <ReactPlayer
+                  url={state.singleUserData?.video}
+                  width="100%"
+                  height="100%"
+                  controls={true}
+                />
+              </div>
+            )
+          )}
         </div>
       </div>
 

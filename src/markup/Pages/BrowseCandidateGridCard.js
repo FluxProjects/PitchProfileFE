@@ -127,7 +127,7 @@ export default function BrowseCandidateGridCard({
               alt="Card image cap"
             />
           )}
-          <p className="playBtn">Play</p>
+          {/* <p className="playBtn">Play</p> */}
           <span
             style={{
               zIndex: 10,
@@ -181,23 +181,24 @@ export default function BrowseCandidateGridCard({
           </h5>
           <p
             style={{
-              marginTop: "-10px",
+              marginTop: "-6px",
               marginLeft: "25px",
               color: "rgb(111, 111, 111)",
               fontFamily: "montserrat",
+              lineHeight: "normal",
             }}
             className="mb-0 cardGridFont"
           >
             {item?.employments[0]?.role != null &&
             item?.employments[0]?.role != "" ? (
-              <>{item?.employments[0]?.role},</>
+              <>{item?.employments[0]?.role}</>
             ) : (
               "Role"
             )}{" "}
           </p>
           <p
             style={{
-              marginTop: "-10px",
+              marginTop: "-5px",
               marginLeft: "25px",
               color: "rgb(111, 111, 111)",
               fontFamily: "montserrat",

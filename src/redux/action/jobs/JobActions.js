@@ -110,7 +110,7 @@ export const AddJobPost =
       });
   };
 
-export const SaveJobVideo = (files, setLoading) => async (dispatch, state) => {
+export const SaveJobVideo = (files) => async (dispatch, state) => {
   const formData = new FormData();
   formData.append("file", files[0]);
   formData.append("upload_preset", "pitchprofile");
@@ -134,7 +134,6 @@ export const SaveJobVideo = (files, setLoading) => async (dispatch, state) => {
         type: "SaveJobVideo",
         data: res.data.secure_url,
       });
-      setLoading(false);
     }
   });
 };

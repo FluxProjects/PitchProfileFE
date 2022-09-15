@@ -41,6 +41,7 @@ export default function Componypostjobs() {
   const [stateName, setStateName] = useState(state.userDetails.state_id);
   const [country, setCountry] = useState(state.userDetails.country_id);
   const [loading, setLoading] = useState(true);
+  const [vidLoading, setVidLoading] = useState(true);
 
   const [TopSkill1, setTopSkill1] = useState(null);
 
@@ -117,21 +118,9 @@ export default function Componypostjobs() {
   };
 
   const callAddJobPost = async () => {
-    // if (AddTopSkill1 != null) {
-    //   await dispatch(
-    //     AddCandidateSkill()
-    //     // ItSkills,
-    //     // skillType,
-    //     // skillsName,
-    //     // ProLev,
-    //     // IsTopSkill,
-    //     // handleClose()
-    //   );
-    // }
-
     setLoading(true);
 
-    if (city == "") {
+    if (city == "" || city == null) {
       console.log("city", city);
       setLoading(false);
       setFieldText("Enter City Name");
@@ -139,7 +128,7 @@ export default function Componypostjobs() {
       setFieldAlert(true);
       return;
     }
-    if (stateName == "") {
+    if (stateName == "" || stateName == null) {
       console.log("stateName", stateName);
       setLoading(false);
       setFieldText("Enter State Name");
@@ -147,7 +136,7 @@ export default function Componypostjobs() {
       setFieldAlert(true);
       return;
     }
-    if (country == "") {
+    if (country == "" || country == null) {
       console.log("country", country);
       setLoading(false);
       setFieldText("Enter Country Name");
@@ -155,14 +144,14 @@ export default function Componypostjobs() {
       setFieldAlert(true);
       return;
     }
-    if (jobTitle == "") {
+    if (jobTitle == "" || jobTitle == null) {
       console.log("jobTitle");
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter Job title");
       return;
     }
-    if (salaryRangeVal == null) {
+    if (salaryRangeVal == null || salaryRangeVal == null) {
       console.log("salaryRangeVal", salaryRangeVal);
       setLoading(false);
       setFieldAlert(true);
@@ -170,7 +159,7 @@ export default function Componypostjobs() {
 
       return;
     }
-    if (seniorityLevelVal == null) {
+    if (seniorityLevelVal == null || seniorityLevelVal == null) {
       console.log("seniorityLevelVal");
       setLoading(false);
       setFieldAlert(true);
@@ -179,7 +168,7 @@ export default function Componypostjobs() {
       return;
     }
 
-    if (jobType == null) {
+    if (jobType == null || jobType == null) {
       console.log("jobType");
 
       setLoading(false);
@@ -188,7 +177,7 @@ export default function Componypostjobs() {
 
       return;
     }
-    if (employmentType == "") {
+    if (employmentType == "" || employmentType == null) {
       console.log("employmentType");
 
       setLoading(false);
@@ -198,16 +187,16 @@ export default function Componypostjobs() {
       return;
     }
 
-    if (role == "") {
+    if (role == "" || role == null) {
       console.log("role");
 
       setLoading(false);
       setFieldAlert(true);
-      setFieldText("Please enter your role");
+      setFieldText("Please enter your job description");
 
       return;
     }
-    if (keyRes == "") {
+    if (keyRes == "" || keyRes == null) {
       console.log("keyRes");
 
       setLoading(false);
@@ -216,7 +205,7 @@ export default function Componypostjobs() {
 
       return;
     }
-    if (closingDate == "") {
+    if (closingDate == "" || closingDate == null) {
       console.log("closingDate");
 
       setLoading(false);
@@ -225,7 +214,7 @@ export default function Componypostjobs() {
 
       return;
     }
-    if (department == null) {
+    if (department == null || department == null) {
       console.log("department");
 
       setLoading(false);
@@ -235,6 +224,7 @@ export default function Componypostjobs() {
       return;
     }
 
+    setFieldAlert(false);
     await dispatch(
       AddJobPost(
         jobTitle,
@@ -1145,7 +1135,8 @@ export default function Componypostjobs() {
                         >
                           <AttachVideoCompanyJob
                             setLoading={(e) => {
-                              console.log("eeee", e);
+                              console.log("eeee vid load", e);
+                              setVidLoading(e);
                               // setLoading(e);
                             }}
                             isFullCol={true}
@@ -1154,6 +1145,7 @@ export default function Componypostjobs() {
                               setVideo(e);
                             }}
                           />
+                          {/* {vidLoading ? "Uploading..." : ""} */}
                         </div>
                       </div>
                       {fieldAlert && <p className="text-danger">{FieldText}</p>}

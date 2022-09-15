@@ -10,9 +10,12 @@ const Input = ({ setMessage, sendMessage, message }) => (
       placeholder="Type a message..."
       value={message}
       onChange={({ target: { value } }) => setMessage(value)}
-      onKeyPress={(event) =>
-        event.key === "Enter" ? sendMessage(event) : null
-      }
+      onKeyPress={(event) => {
+        if (event.key === "Enter") {
+          sendMessage(event);
+          setMessage("");
+        }
+      }}
     />
     <button
       className="sendButtonChat"

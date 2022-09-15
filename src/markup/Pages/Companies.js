@@ -506,7 +506,7 @@ export default function Companies(props) {
                           </div>
                           {/* </div> */}
 
-                          <label className="like-btn">
+                          {/* <label className="like-btn">
                             <input type="checkbox" />
                             <span className="checkmark">
                               {isLiked ? (
@@ -521,7 +521,7 @@ export default function Companies(props) {
                                 ></i>
                               )}
                             </span>
-                          </label>
+                          </label> */}
                         </div>
                       </Link>
                     </li>

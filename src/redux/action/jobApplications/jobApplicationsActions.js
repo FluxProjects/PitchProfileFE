@@ -95,6 +95,17 @@ export const ApplyJobPost =
       });
   };
 
+export const cleanCoverLetterState = (id) => async (dispatch, state) => {
+  dispatch({
+    type: "AddDocApply",
+    data: "",
+  });
+  dispatch({
+    type: "CoverLetterForApplying",
+    data: "",
+  });
+};
+
 export const GetJobApplications = (id) => async (dispatch, state) => {
   var config = {
     method: "get",

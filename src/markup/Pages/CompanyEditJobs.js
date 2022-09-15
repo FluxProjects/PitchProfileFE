@@ -129,14 +129,38 @@ export default function Componypostjobs(props) {
     // console.log("UpdatedVideo", UpdatedVideo);
     // return;
 
-    if (jobTitle == "") {
+    if (city == "" || city == null) {
+      console.log("city", city);
+      setLoading(false);
+      setFieldText("Enter City Name");
+
+      setFieldAlert(true);
+      return;
+    }
+    if (stateName == "" || stateName == null) {
+      console.log("stateName", stateName);
+      setLoading(false);
+      setFieldText("Enter State Name");
+
+      setFieldAlert(true);
+      return;
+    }
+    if (country == "" || country == null) {
+      console.log("country", country);
+      setLoading(false);
+      setFieldText("Enter Country Name");
+
+      setFieldAlert(true);
+      return;
+    }
+    if (jobTitle == "" || jobTitle == null) {
       console.log("jobTitle");
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter Job title");
       return;
     }
-    if (salaryRangeVal == null) {
+    if (salaryRangeVal == null || salaryRangeVal == null) {
       console.log("salaryRangeVal", salaryRangeVal);
       setLoading(false);
       setFieldAlert(true);
@@ -144,15 +168,7 @@ export default function Componypostjobs(props) {
 
       return;
     }
-    if (perks == null) {
-      console.log("perks", perks);
-      setLoading(false);
-      setFieldAlert(true);
-      setFieldText("Please enter Perks");
-
-      return;
-    }
-    if (seniorityLevelVal == null) {
+    if (seniorityLevelVal == null || seniorityLevelVal == null) {
       console.log("seniorityLevelVal");
       setLoading(false);
       setFieldAlert(true);
@@ -161,7 +177,7 @@ export default function Componypostjobs(props) {
       return;
     }
 
-    if (jobType == null) {
+    if (jobType == null || jobType == null) {
       console.log("jobType");
 
       setLoading(false);
@@ -170,7 +186,7 @@ export default function Componypostjobs(props) {
 
       return;
     }
-    if (employmentType == "") {
+    if (employmentType == "" || employmentType == null) {
       console.log("employmentType");
 
       setLoading(false);
@@ -180,40 +196,16 @@ export default function Componypostjobs(props) {
       return;
     }
 
-    if (role == "") {
+    if (role == "" || role == null) {
       console.log("role");
 
       setLoading(false);
       setFieldAlert(true);
-      setFieldText("Please enter your role");
+      setFieldText("Please enter your job description");
 
       return;
     }
-    if (city == "") {
-      console.log("city", city);
-      setLoading(false);
-      setFieldText("Enter City Name");
-
-      setFieldAlert(true);
-      return;
-    }
-    if (stateName == "") {
-      console.log("stateName", stateName);
-      setLoading(false);
-      setFieldText("Enter State Name");
-
-      setFieldAlert(true);
-      return;
-    }
-    if (country == "") {
-      console.log("country", country);
-      setLoading(false);
-      setFieldText("Enter Country Name");
-
-      setFieldAlert(true);
-      return;
-    }
-    if (keyRes == "") {
+    if (keyRes == "" || keyRes == null) {
       console.log("keyRes");
 
       setLoading(false);
@@ -222,7 +214,7 @@ export default function Componypostjobs(props) {
 
       return;
     }
-    if (closingDate == "") {
+    if (closingDate == "" || closingDate == null) {
       console.log("closingDate");
 
       setLoading(false);
@@ -231,7 +223,7 @@ export default function Componypostjobs(props) {
 
       return;
     }
-    if (department == null) {
+    if (department == null || department == null) {
       console.log("department");
 
       setLoading(false);

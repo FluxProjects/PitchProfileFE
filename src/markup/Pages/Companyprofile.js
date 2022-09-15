@@ -153,17 +153,17 @@ export default function Companyprofile() {
       setFieldAlert(true);
       return;
     }
-    if (website != "") {
+    if (website != "" && website != null) {
       if (isValidUrl(website) == false) {
         setFieldAlert(true);
-        setFieldText("Enter valid URL");
+        setFieldText("Enter valid website URL");
         setBtnLoading(false);
 
         return;
       }
     }
 
-    if (facebook != "") {
+    if (facebook != "" && facebook != null) {
       if (isValidUrl(facebook) == false) {
         setFieldAlert(true);
         setFieldText("Enter valid Facebook URL");
@@ -172,7 +172,7 @@ export default function Companyprofile() {
         return;
       }
     }
-    if (twitter != "") {
+    if (twitter != "" && twitter != null) {
       if (isValidUrl(twitter) == false) {
         setFieldAlert(true);
         setFieldText("Enter valid Twitter URL");
@@ -181,7 +181,7 @@ export default function Companyprofile() {
         return;
       }
     }
-    if (linkedin != "") {
+    if (linkedin != "" && linkedin != null) {
       if (isValidUrl(linkedin) == false) {
         setFieldAlert(true);
         setFieldText("Enter valid Linkedin URL");

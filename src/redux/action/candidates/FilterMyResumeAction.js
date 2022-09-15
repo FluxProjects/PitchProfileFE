@@ -201,7 +201,7 @@ export const filterCandidateAll =
     });
 
     resultNameFilter = resultDesignation.filter(function (item) {
-      if (resultNameFilter == null || resultNameFilter?.length == 0) {
+      if (nameFilter == null || nameFilter?.length == 0) {
         return item;
       } else {
         if (item?.f_name + " " + item?.l_name == nameFilter) return item;

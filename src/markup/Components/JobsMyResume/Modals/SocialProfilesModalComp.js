@@ -124,10 +124,11 @@ export default function EmploymentsModalComp({
                   <div className="form-group">
                     <label>URL</label>
                     <TextInputModal
-                      placeholder="https://url.com"
+                      placeholder=""
                       onChange={(e) => setUrl(e.target.value)}
                       value={url}
                     />
+                    <small>ex: https://www.url.com/profile_name</small>
                   </div>
                 </div>
                 {/* <div className="col-lg-12 col-md-12">

@@ -38,7 +38,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
           : state?.industries[
               state?.industries.findIndex((x) => x?.id == item?.industry_id)
             ].name,
-      required: true,
+      required: false,
     },
     {
       name: "Department",
@@ -48,12 +48,12 @@ export default function DesiredCareerProfileComponent({ isView }) {
           : state?.departments[
               state?.departments.findIndex((x) => x?.id == item?.department_id)
             ].name,
-      required: true,
+      required: false,
     },
     {
       name: "Role",
       desc: item.role,
-      required: true,
+      required: false,
     },
     {
       name: "Employment Type",
@@ -63,7 +63,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
           : employmentTypeDrop[
               employmentTypeDrop.findIndex((x) => x?.id == item.employment_type)
             ].name,
-      required: true,
+      required: false,
     },
     {
       name: "Job Type",
@@ -71,7 +71,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
         shiftDrop.findIndex((x) => x?.id == item.job_type) == -1
           ? ""
           : shiftDrop[shiftDrop.findIndex((x) => x?.id == item.job_type)].name,
-      required: true,
+      required: false,
     },
     {
       name: "Shift",
@@ -81,17 +81,17 @@ export default function DesiredCareerProfileComponent({ isView }) {
           : jobTypeDrop[
               jobTypeDrop.findIndex((x) => x?.id == item.preferred_shift)
             ].name,
-      required: true,
+      required: false,
     },
     {
       name: "Expected Annual Salary in GBP",
       desc: item?.expected_salary,
-      required: true,
+      required: false,
     },
     {
       name: "Availability To Join",
       desc: item.available_join != null ? formatDate(item.available_join) : "",
-      required: true,
+      required: false,
     },
   ];
 
@@ -244,9 +244,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                     <div className="row">
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
-                          <label>
-                            Industry <span className="text-danger"> *</span>
-                          </label>
+                          <label>Industry</label>
                           <DropDownModalComponent
                             onChange={(e) => {
                               console.log("eee", e.target.value);
@@ -259,9 +257,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                       </div>
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
-                          <label>
-                            Department <span className="text-danger"> *</span>
-                          </label>
+                          <label>Department</label>
                           <DropDownModalComponent
                             onChange={(e) => {
                               console.log("eee", e.target.value);
@@ -274,9 +270,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                       </div>
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
-                          <label>
-                            Role <span className="text-danger"> *</span>
-                          </label>
+                          <label>Role</label>
                           <TextInputModal
                             onChange={(e) => {
                               console.log(e.target.value);
@@ -289,9 +283,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                       </div>
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
-                          <label>
-                            Job Type <span className="text-danger"> *</span>
-                          </label>
+                          <label>Job Type</label>
                           <div className="row">
                             {shiftDrop.map((item) => (
                               <div className="col-lg-3 col-md-6 col-sm-6 col-6">
@@ -339,10 +331,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                       </div>
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
-                          <label>
-                            Employment Type{" "}
-                            <span className="text-danger"> *</span>
-                          </label>
+                          <label>Employment Type </label>
                           <div className="row">
                             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
                               <div className="custom-control custom-radio">
@@ -387,9 +376,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                       </div>
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
-                          <label>
-                            Shift <span className="text-danger"> *</span>
-                          </label>
+                          <label>Shift</label>
                           <div className="row">
                             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
                               <div className="custom-control custom-radio">
@@ -434,10 +421,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                       </div>
                       <div className="col-lg-12 col-md-6">
                         <div className="form-group">
-                          <label>
-                            Availability To Join{" "}
-                            <span className="text-danger"> *</span>
-                          </label>
+                          <label>Availability To Join </label>
                           <TextInputModal
                             type="date"
                             onChange={(e) => {
@@ -449,10 +433,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
                       </div>
                       <div className="col-lg-12 col-md-12 ">
                         <div className="form-group">
-                          <label>
-                            Expected Salary{" "}
-                            <span className="text-danger"> *</span>
-                          </label>
+                          <label>Expected Salary </label>
                           <TextInputModal
                             placeholder="Enter your Expected Annual Salary"
                             onChange={(e) => {
@@ -468,15 +449,12 @@ export default function DesiredCareerProfileComponent({ isView }) {
                     <div className="col-12 job-bx-title clearfix">
                       <h5 className="font-weight-700 pull-left text-uppercase">
                         Preferred Location{" "}
-                        <span className="text-danger"> *</span>
                       </h5>
                     </div>
                     <div className="row">
                       <div className="col-lg-4 col-md-4 mt-0 col-sm-12">
                         <div className="form-group">
-                          <label>
-                            Country: <span className="text-danger"> *</span>
-                          </label>
+                          <label>Country:</label>
                           <DropDownModalComponent
                             onChange={(e) => {
                               console.log("eee", e.target.value);
@@ -492,9 +470,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
 
                       <div className="col-lg-4 col-md-4 col-sm-12">
                         <div className="form-group">
-                          <label>
-                            State: <span className="text-danger"> *</span>
-                          </label>
+                          <label>State:</label>
                           <DropDownModalComponent
                             onChange={(e) => {
                               console.log("eee", e.target.value);
@@ -509,9 +485,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
 
                       <div className="col-lg-4 col-md-4 col-sm-12">
                         <div className="form-group">
-                          <label>
-                            City: <span className="text-danger"> *</span>
-                          </label>
+                          <label>City:</label>
                           <DropDownModalComponent
                             onChange={(e) => {
                               console.log("eee", e.target.value);

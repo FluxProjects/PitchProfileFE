@@ -103,7 +103,7 @@ export default function Jobfindbox({ isView }) {
       count++;
     }
 
-    if (count > 0) {
+    if (count > 1) {
       dispatch(
         filterCandidateAll(
           availaibityBool,

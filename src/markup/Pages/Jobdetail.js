@@ -22,6 +22,7 @@ import {
   ResetCoverLetterJob,
   UploadCoverLetterJob,
   UploadAdditionalDocsJobApply,
+  cleanCoverLetterState,
 } from "../../redux/action/jobApplications/jobApplicationsActions";
 import { useHistory } from "react-router-dom";
 
@@ -29,6 +30,7 @@ import ReactHtmlParser from "react-html-parser";
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
 import ReactQuill from "react-quill";
 import BrowsejobgridCard from "./BrowsejobgridCard";
+import { toast } from "react-toastify";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -91,7 +93,17 @@ export default function Jobdetail(props) {
     setLoading(false);
   };
 
+  const [FieldText, setFieldText] = useState();
+  const [FieldAlert, setFieldAlert] = useState(false);
+
   const callApplyJobPost = () => {
+    console.log("description.length > 512", description.length > 512);
+    if (description.length > 512) {
+      setFieldAlert(true);
+      setFieldText("Cover letter cannot be more than 512 characters");
+      return;
+    }
+
     setBtnLoading(true);
     dispatch(
       ApplyJobPost(
@@ -507,6 +519,9 @@ export default function Jobdetail(props) {
                             value={description}
                             onChange={setDescription}
                           />
+                          <small>
+                            Characters left: {512 - description?.length}
+                          </small>
                         </div>
                       </div>
                     )}
@@ -536,7 +551,6 @@ export default function Jobdetail(props) {
                         )}
                       </div>
                     </div>
-
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         {/* <label>Upload Additional Supporting Documents</label> */}
@@ -558,6 +572,7 @@ export default function Jobdetail(props) {
                         )}
                       </div>
                     </div>
+                    {FieldAlert && <p className="text-danger">{FieldText}</p>}
                   </div>
                 </form>
               </div>
@@ -565,6 +580,7 @@ export default function Jobdetail(props) {
                 <button
                   onClick={(e) => {
                     handleClose();
+                    dispatch(cleanCoverLetterState());
                   }}
                   type="button"
                   className="site-button"

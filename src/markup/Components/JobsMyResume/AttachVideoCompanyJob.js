@@ -104,11 +104,12 @@ export default function AttachVideoCompanyJob({
                       type="file"
                       className="site-button form-control"
                       // id="customFile"
-                      onChange={(e) => {
+                      onChange={async (e) => {
                         setVideoFile(e.target.files);
-
-                        dispatch(SaveJobVideo(e.target.files, setLoading));
+                        // setLoading(true);
+                        await dispatch(SaveJobVideo(e.target.files));
                         setvideoSelected(true);
+                        // setLoading(false);
                       }}
                     />
                   </div>
@@ -124,12 +125,12 @@ export default function AttachVideoCompanyJob({
           }}
           id="customFile"
           ref={(refParam) => (inputRef = refParam)}
-          onChange={(e) => {
+          onChange={async (e) => {
             // setLoading(true);
             console.log("files", e.target.files);
             setVideoFile(e.target.files);
-
-            dispatch(SaveJobVideo(e.target.files, setLoading));
+            // setLoading(true);
+            dispatch(SaveJobVideo(e.target.files));
             setvideoSelected(true);
             // setLoading(false);
           }}
