@@ -217,7 +217,7 @@ export default function Companyresume(props) {
                                   : ""}{" "}
                               </td>
                               <td className="expired pending">
-                                {item?.description.length > 0 ? (
+                                {item?.description?.length > 0 ? (
                                   <a
                                     className="text-center"
                                     onClick={() => {

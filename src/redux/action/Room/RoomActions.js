@@ -31,7 +31,7 @@ export const AddRoom =
           });
           await dispatch({
             type: "SingleRoomName",
-            data: response.data.room,
+            data: response.data.room_id,
           });
         } else if (response.data.message == "Room created Successfully") {
           const arr = state?.myRooms.push(response.data);

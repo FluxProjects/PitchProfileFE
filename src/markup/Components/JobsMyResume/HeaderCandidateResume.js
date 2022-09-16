@@ -44,6 +44,7 @@ export default function HeaderCandidateResume({
     state.singleUserData.headline
   );
   const [ChatModal, setChatModal] = useState(false);
+  const [chatId, setChatId] = useState("");
 
   const [fname, setFname] = useState(state.singleUserData.f_name);
   const [lname, setLname] = useState(state.singleUserData.l_name);
@@ -331,8 +332,12 @@ export default function HeaderCandidateResume({
                 <ChatContacts
                   setCloseModal={() => toggleModal()}
                   otherIdProp={state?.singleUserData.id}
-                  RoomIdProp={state?.SingleRoomId}
-                  RoomNameProp={state.SingleRoomName}
+                  RoomIdProp={state?.SingleRoomName}
+                  RoomNameProp={
+                    state.singleUserData?.company_name
+                      ? state.singleUserData?.company_name
+                      : state.singleUserData?.f_name
+                  }
                 />
                 {/* <Chat
                   otherId={state?.singleUserData.id}

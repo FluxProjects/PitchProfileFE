@@ -70,7 +70,7 @@ export default function BrowseCandidateGridCard({
         style={{
           // width: "18rem",
           borderWidth: 4,
-          borderRadius: 8,
+          borderRadius: 15,
           borderColor: "#0275d8",
           paddingBottom: 9,
           minHeight: "380px",
@@ -125,19 +125,25 @@ export default function BrowseCandidateGridCard({
                   : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
               }
               alt="Card image cap"
+              style={{
+                width: "100%",
+                objectFit: "cover",
+              }}
             />
           )}
           {/* <p className="playBtn">Play</p> */}
           <span
             style={{
               zIndex: 10,
-              backgroundColor: "red",
+              backgroundColor: "#c40606",
               color: "white",
               width: "100%",
               textAlign: "center",
               fontFamily: "montserrat",
-              fontSize: "12px",
+              fontSize: "16px",
               padding: "2px 0px",
+
+              fontWeight: "600",
             }}
             className="isAvail"
           >
@@ -183,7 +189,7 @@ export default function BrowseCandidateGridCard({
             style={{
               marginTop: "-6px",
               marginLeft: "25px",
-              color: "rgb(111, 111, 111)",
+              color: "#252525",
               fontFamily: "montserrat",
               lineHeight: "normal",
             }}
@@ -200,7 +206,7 @@ export default function BrowseCandidateGridCard({
             style={{
               marginTop: "-5px",
               marginLeft: "25px",
-              color: "rgb(111, 111, 111)",
+              color: "#252525",
               fontFamily: "montserrat",
             }}
             className="mb-0 cardGridFont"

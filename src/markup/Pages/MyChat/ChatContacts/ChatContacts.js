@@ -39,9 +39,11 @@ const ChatContacts = ({
   const [isLoading, setIsLoading] = useState(false);
   const [ChatModal, setChatModal] = useState(false);
   const [otherId, setOtherId] = useState(otherIdProp ? otherIdProp : "");
-  const [RoomId, setRoomId] = useState();
-  const [RoomName, setRoomName] = useState("");
+  const [RoomId, setRoomId] = useState(RoomIdProp ? RoomIdProp : "");
+  const [RoomName, setRoomName] = useState(RoomNameProp ? RoomNameProp : "");
   const [indexSelected, setIndexSelected] = useState(0);
+
+  console.log("RoomIdPropRoomIdProp", RoomIdProp);
 
   const toggleModal = () => {
     setChatModal(!ChatModal);

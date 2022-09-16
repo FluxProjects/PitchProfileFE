@@ -13,6 +13,11 @@ import { GetAllJobPosts, getAuthToken } from "../../redux/action";
 import Header2 from "../Layout/Header2";
 import HeaderOffline from "../Layout/HeaderOffline";
 
+import Home1 from "../../images/home1.png";
+import Home2 from "../../images/home2.png";
+import Home3 from "../../images/home3.png";
+import Home4 from "../../images/home4.png";
+
 import LandingBg from "../../images/bgLanding.png";
 
 import { GetAllCandidates } from "../../redux/action/candidates/BrowseCandidatesAction";
@@ -101,12 +106,10 @@ export default function Homepage() {
       passport_number: "1234",
       password: "$2b$10$M4/6POPN3YIp/f7WFG7v6eXWccn59tsEIpOlfWhlx7AuqK7ezESvy",
       phone: "112345",
-      pic: "https://res.cloudinary.com/flux-official/image/upload/v1659359560/pomb58osyqzb2ucuhvqk.jpg",
+      pic: Home2,
       state_id: 2336,
       summary: null,
       updated_at: "2022-08-03T19:39:21.132Z",
-      video:
-        "https://res.cloudinary.com/flux-official/video/upload/v1659360624/fv3a3rug0xojxa4uxdph.mp4",
       employments: [
         { role: "HR Business Partner", organization: "Vitanomix Inc." },
       ],
@@ -144,12 +147,10 @@ export default function Homepage() {
       passport_number: "1234",
       password: "$2b$10$M4/6POPN3YIp/f7WFG7v6eXWccn59tsEIpOlfWhlx7AuqK7ezESvy",
       phone: "112345",
-      pic: "https://res.cloudinary.com/flux-official/image/upload/v1659359560/pomb58osyqzb2ucuhvqk.jpg",
+      pic: Home3,
       state_id: 2336,
       summary: null,
       updated_at: "2022-08-03T19:39:21.132Z",
-      video:
-        "https://res.cloudinary.com/flux-official/video/upload/v1659360624/fv3a3rug0xojxa4uxdph.mp4",
       employments: [
         {
           role: "Digital Marketing Strategist",
@@ -190,12 +191,10 @@ export default function Homepage() {
       passport_number: "1234",
       password: "$2b$10$M4/6POPN3YIp/f7WFG7v6eXWccn59tsEIpOlfWhlx7AuqK7ezESvy",
       phone: "112345",
-      pic: "https://res.cloudinary.com/flux-official/image/upload/v1659359560/pomb58osyqzb2ucuhvqk.jpg",
+      pic: Home4,
       state_id: 2336,
       summary: null,
       updated_at: "2022-08-03T19:39:21.132Z",
-      video:
-        "https://res.cloudinary.com/flux-official/video/upload/v1659360624/fv3a3rug0xojxa4uxdph.mp4",
       employments: [
         { role: "Fashion Designer", organization: "Style Enterprise" },
       ],
@@ -233,12 +232,10 @@ export default function Homepage() {
       passport_number: "1234",
       password: "$2b$10$M4/6POPN3YIp/f7WFG7v6eXWccn59tsEIpOlfWhlx7AuqK7ezESvy",
       phone: "112345",
-      pic: "https://res.cloudinary.com/flux-official/image/upload/v1659359560/pomb58osyqzb2ucuhvqk.jpg",
+      pic: Home1,
       state_id: 2336,
       summary: null,
       updated_at: "2022-08-03T19:39:21.132Z",
-      video:
-        "https://res.cloudinary.com/flux-official/video/upload/v1659360624/fv3a3rug0xojxa4uxdph.mp4",
       employments: [
         { role: "IT Project Manager", organization: "Flux Technologies LTD." },
       ],
