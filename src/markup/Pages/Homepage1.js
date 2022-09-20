@@ -333,6 +333,7 @@ export default function Homepage() {
                         HomeProfileCards.map((item, index) => (
                           <BrowseCandidateGridCard
                             key={index}
+                            noClick={true}
                             fromHomeScreen={true}
                             item={item}
                             index={index}
@@ -432,10 +433,7 @@ export default function Homepage() {
                           aliqua
                         </p>
                         <div className="m-t20">
-                          <Link
-                            to={"/register"}
-                            className="site-button radius-xl"
-                          >
+                          <Link to={"/login"} className="site-button radius-xl">
                             <span className="p-lr30">Sign Up</span>
                           </Link>
                         </div>
@@ -461,7 +459,7 @@ export default function Homepage() {
                         </p>
                         <div className="m-t20">
                           <Link
-                            to={"/register"}
+                            to={"/login"}
                             className="site-button white radius-xl"
                           >
                             <span className="text-primary p-lr30">Sign Up</span>
@@ -488,10 +486,7 @@ export default function Homepage() {
                           aliqua
                         </p>
                         <div className="m-t20">
-                          <Link
-                            to={"/register"}
-                            className="site-button radius-xl"
-                          >
+                          <Link to={"/login"} className="site-button radius-xl">
                             <span className="p-lr30">Sign Up</span>
                           </Link>
                         </div>

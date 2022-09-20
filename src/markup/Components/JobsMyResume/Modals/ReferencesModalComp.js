@@ -35,21 +35,11 @@ export default function ReferencesModalComp({
   const [jobTitle, setJobTitle] = useState(
     isUpdate == true ? data?.job_title : ""
   );
-  const [city, setCity] = useState(isUpdate == true ? cityProp : 0);
-  const [cstate, setCState] = useState(isUpdate == true ? cstateProp : 3866);
-  const [country, setCountry] = useState(isUpdate == true ? countryProp : 230);
+
   const [phone, setPhone] = useState(isUpdate == true ? data?.phone : "");
   const [email, setEmail] = useState(isUpdate == true ? data?.email : "");
   const [fieldAlert, setFieldAlert] = useState(false);
   const [FieldText, setFieldText] = useState("");
-
-  const CallGetCities = async (stateId) => {
-    await dispatch(GetCities(stateId, setCity));
-  };
-
-  const CallGetStates = async (stateId) => {
-    await dispatch(GetStates(stateId, setCState, CallGetCities));
-  };
 
   const callAction = async () => {
     if (refererName == null || refererName == "") {
@@ -88,9 +78,6 @@ export default function ReferencesModalComp({
           refererName,
           organization,
           jobTitle,
-          city,
-          cstate,
-          country,
           phone,
           email.toLowerCase(),
           index,
@@ -104,9 +91,6 @@ export default function ReferencesModalComp({
           refererName,
           organization,
           jobTitle,
-          city,
-          cstate,
-          country,
           phone,
           email.toLowerCase(),
           handleClose()
@@ -223,7 +207,7 @@ export default function ReferencesModalComp({
                   <div className="form-group">
                     <label>Phone</label>
                     <TextInputModal
-                      placeholder={"Enter Referee Phone (0044 7123456789)"}
+                      placeholder={""}
                       onChange={(e) => setPhone(e.target.value)}
                       value={phone}
                     />

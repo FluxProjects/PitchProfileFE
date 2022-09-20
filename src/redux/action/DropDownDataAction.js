@@ -85,7 +85,8 @@ export const GetCountries = () => async (dispatch) => {
 };
 
 export const GetStates =
-  (country, setStateName, CallGetCities, isFirstFecth) => async (dispatch) => {
+  (country, setStateName, CallGetCities, isFirstFecth, idCity) =>
+  async (dispatch, state) => {
     console.log("isFirstFecthisFirstFecth", isFirstFecth);
     var config = {
       method: "get",
@@ -104,7 +105,8 @@ export const GetStates =
           const sortedArr = response.data.states.sort((a, b) =>
             a.name.localeCompare(b.name)
           );
-          CallGetCities(sortedArr[0]?.id);
+          console.log("idCityidCity", idCity);
+          CallGetCities(idCity ? idCity : sortedArr[0]?.id);
           dispatch({
             type: "setStates",
             data: sortedArr,
@@ -184,6 +186,114 @@ export const GetCities = (id, setCity, isFirstFecth) => async (dispatch) => {
       });
     });
 };
+
+export const GetUserStates =
+  (country, setStateName, CallGetCities, isFirstFecth) =>
+  async (dispatch, state) => {
+    console.log("isFirstFecthisFirstFecth", isFirstFecth);
+    var config = {
+      method: "get",
+      url: `${URL}/locations/states/${country}`,
+      headers: {},
+    };
+
+    axios(config)
+      .then(function (response) {
+        // console.log("testing the ", response.data.states[0]?.id);
+
+        if (response.data.successful) {
+          if (!isFirstFecth) {
+            // setStateName(-1);
+          }
+          const sortedArr = response.data.states.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+          CallGetCities(
+            state().userDetails.state_id
+              ? state().userDetails.state_id
+              : sortedArr[0]?.id
+          );
+          console.log("testxegyfhcsd", sortedArr);
+          dispatch({
+            type: "GetUserState",
+            data: sortedArr,
+          });
+        } else {
+          toast.error(response.data.message, {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+        toast.error(error, {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  };
+
+export const GetUserCities =
+  (id, setCity, isFirstFecth) => async (dispatch) => {
+    console.log("teteteecvr", isFirstFecth);
+
+    var config = {
+      method: "get",
+      url: `${URL}/locations/cities/${id}`,
+      headers: {},
+    };
+
+    axios(config)
+      .then(function (response) {
+        // console.log("testing the ", response.data);
+        if (response.data.successful) {
+          console.log("is firststs", isFirstFecth);
+          if (!isFirstFecth) {
+            // setCity(-1);
+          }
+          const sortedArr = response.data.cities_data.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+          dispatch({
+            type: "GetUserCity",
+            data: sortedArr,
+          });
+        } else {
+          toast.error(response.data.message, {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+        toast.error(error, {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  };
 
 export const GetDepartments = (id) => async (dispatch) => {
   var config = {

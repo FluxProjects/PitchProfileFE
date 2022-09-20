@@ -17,15 +17,26 @@ import { useSelector, useDispatch } from "react-redux";
 import { employmentTypeDrop, jobTypeDrop } from "../../utils/DropDownUtils";
 import { formatDate } from "../../utils/functions";
 import { textSpanContainsTextSpan } from "typescript";
+import { GetJobApplications } from "../../redux/action/jobApplications/jobApplicationsActions";
 
-export default function Companymanage() {
+export default function Companymanage(props) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
   const router = useHistory();
 
   const CallGetMyJobPosts = async () => {
     await dispatch(GetMyJobPosts());
+  };
+
+  const callGetJobApplications = async () => {
+    if (!props.location?.state?.fromFilter) {
+      await dispatch(GetJobApplications());
+    } else {
+      await dispatch(filterJobsbyId(props.location?.state?.id));
+    }
+    setLoading(false);
   };
 
   const CallDeleteSingle = async (id, index) => {
@@ -34,6 +45,7 @@ export default function Companymanage() {
 
   useEffect(() => {
     CallGetMyJobPosts();
+    callGetJobApplications();
   }, []);
 
   const [show, setShow] = useState(false);

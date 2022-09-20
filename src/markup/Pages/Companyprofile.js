@@ -19,6 +19,8 @@ import {
   GetIndustries,
   GetSkills,
   GetStates,
+  GetUserCities,
+  GetUserStates,
   updateCompany,
 } from "../../redux/action";
 import TextInputModal from "../Components/JobsMyResume/TextInputModal";
@@ -39,6 +41,8 @@ export default function Companyprofile() {
   );
   const [loading, setLoading] = useState(true);
   const [BtnLoading, setBtnLoading] = useState(false);
+  const [stateLoad, setStateLoad] = useState(true);
+  const [cityLoad, setCityLoad] = useState(true);
 
   const [companyName, setCompanyName] = useState(
     state?.userDetails?.company_name
@@ -241,6 +245,8 @@ export default function Companyprofile() {
     if (state.departments.length < 1) {
       await dispatch(GetDepartments());
     }
+    await CallGetStates(state?.userDetails?.country_id);
+    await CallGetCities(state?.userDetails?.state_id);
 
     if (state.skills.length < 1) {
       await dispatch(GetSkills());
@@ -249,21 +255,7 @@ export default function Companyprofile() {
       await dispatch(GetEducationLevels());
     }
     await dispatch(GetCountries());
-    await dispatch(
-      GetStates(
-        state?.userDetails?.country_id ? state?.userDetails?.country_id : 230,
-        setStateName,
-        CallGetCities,
-        true
-      )
-    );
-    await dispatch(
-      GetCities(
-        state?.userDetails?.state_id ? state?.userDetails?.state_id : 3805,
-        setCity,
-        true
-      )
-    );
+
     setIsFirstFecth(false);
     if (state.industries.length < 1) {
       await dispatch(GetIndustries());
@@ -271,11 +263,15 @@ export default function Companyprofile() {
     setLoading(false);
   };
   const CallGetCities = async (stateId) => {
-    await dispatch(GetCities(stateId, setCity, isFirstFecth));
+    setCityLoad(true);
+    await dispatch(GetUserCities(stateId, setCity, isFirstFecth));
+    setCityLoad(false);
   };
 
   const CallGetStates = async (stateId) => {
-    await dispatch(GetStates(stateId, setStateName, CallGetCities));
+    setStateLoad(true);
+    await dispatch(GetUserStates(stateId, setStateName, CallGetCities));
+    setStateLoad(false);
   };
 
   if (loading) {
@@ -438,7 +434,7 @@ export default function Companyprofile() {
                                   setPhone(e.target.value);
                                 }}
                                 value={phone}
-                                placeholder={"0044 7123456789"}
+                                placeholder=""
                               />
                               <small>ex: 00447123456789</small>
                             </div>
@@ -503,19 +499,23 @@ export default function Companyprofile() {
                               <label>
                                 State: <span className="text-danger"> *</span>
                               </label>
-                              <DropDownModalComponent
-                                onChange={(e) => {
-                                  console.log("eee state", e.target.value);
-                                  if (!isFirstFecth) {
-                                    CallGetCities(e.target.value);
-                                  }
+                              {!stateLoad ? (
+                                <DropDownModalComponent
+                                  onChange={(e) => {
+                                    console.log("eee state", e.target.value);
+                                    if (!isFirstFecth) {
+                                      CallGetCities(e.target.value);
+                                    }
 
-                                  setStateName(e.target.value);
-                                  //   setLastUsed(e.target.value);
-                                }}
-                                value={stateName}
-                                options={state.states}
-                              />
+                                    setStateName(e.target.value);
+                                    //   setLastUsed(e.target.value);
+                                  }}
+                                  value={stateName}
+                                  options={state?.userState}
+                                />
+                              ) : (
+                                "Loading..."
+                              )}
                             </div>
                           </div>
                           <div className="col-lg-6 col-md-6 col-sm-12">
@@ -523,15 +523,19 @@ export default function Companyprofile() {
                               <label>
                                 City: <span className="text-danger"> *</span>
                               </label>
-                              <DropDownModalComponent
-                                onChange={(e) => {
-                                  console.log("eee", e.target.value);
-                                  setCity(e.target.value);
-                                  //   setLastUsed(e.target.value);
-                                }}
-                                value={city}
-                                options={state.cities}
-                              />
+                              {!cityLoad ? (
+                                <DropDownModalComponent
+                                  onChange={(e) => {
+                                    console.log("eee", e.target.value);
+                                    setCity(e.target.value);
+                                    //   setLastUsed(e.target.value);
+                                  }}
+                                  value={city}
+                                  options={state?.userCity}
+                                />
+                              ) : (
+                                "Loading..."
+                              )}
                             </div>
                           </div>
                           {/* <div className="col-lg-12">

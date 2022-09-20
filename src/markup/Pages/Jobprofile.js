@@ -24,6 +24,9 @@ import {
   getMessages,
   getMyRoomsCompany,
   getMyRoomsCandidate,
+  GetUserStates,
+  GetUserCities,
+  verifyCandidate,
 } from "../../redux/action";
 import Header from "../Layout/Header";
 import DropdownSearch from "../Components/JobsMyResume/DropdownSearch";
@@ -39,6 +42,7 @@ export default function Jobprofile() {
   const [socketId, setSocketId] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const router = useHistory();
+  const [modal, setModal] = useState("");
 
   // const socket = useContext(SocketContext);
   console.log("setup ", socket); // x8WIv7-mJelg7on_ALbx
@@ -52,6 +56,9 @@ export default function Jobprofile() {
   useEffect(() => {
     callGetRooms();
     // callGetMessages(otherId);
+
+    CallGetStates(state.userDetails.country_id);
+    CallGetCities(state.userDetails.state_id);
 
     // socket.emit("setup", state.userDetails.id);
     // socket.on("connected", () => {
@@ -107,11 +114,11 @@ export default function Jobprofile() {
   const [disabilityDescription, setDisabilityDescription] = useState(
     state.userDetails.disability_description
   );
-  const [city, setCity] = useState(
-    state.userDetails.city_id ? state.userDetails.city_id : 1
-  );
+  const [city, setCity] = useState(state.userDetails.city_id);
   const [stateName, setStateName] = useState(state.userDetails.state_id);
-  const [country, setCountry] = useState(state.userDetails.country_id);
+  const [country, setCountry] = useState(
+    state.userDetails.country_id ? state.userDetails.country_id : 1
+  );
   const [hometownCountry, setHometownCountry] = useState(
     state.userDetails.hometown_country_id
   );
@@ -134,6 +141,7 @@ export default function Jobprofile() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setStateName(state.userDetails.state_id);
     //  to get languages
     CallGetDropDown();
     CallGetCandidateLanguages();
@@ -151,8 +159,7 @@ export default function Jobprofile() {
       GetStates(
         state.userDetails.country_id ? state.userDetails.country_id : 230,
         setStateName,
-        CallGetCities,
-        true
+        CallGetCities
       )
     );
     await dispatch(
@@ -167,10 +174,10 @@ export default function Jobprofile() {
   };
 
   const CallGetStates = async (stateId) => {
-    await dispatch(GetStates(stateId, setStateName, CallGetCities));
+    await dispatch(GetUserStates(stateId, setStateName, CallGetCities));
   };
   const CallGetCities = async (stateId) => {
-    await dispatch(GetCities(stateId, setCity, isFirstFecth));
+    await dispatch(GetUserCities(stateId, setCity, isFirstFecth));
   };
 
   const callUpdateUser = async () => {
@@ -687,7 +694,7 @@ export default function Jobprofile() {
                                   //   setLastUsed(e.target.value);
                                 }}
                                 value={stateName}
-                                options={state.states}
+                                options={state.userState}
                               />
                             </div>
                           </div>
@@ -703,7 +710,7 @@ export default function Jobprofile() {
                                   //   setLastUsed(e.target.value);
                                 }}
                                 value={city}
-                                options={state.cities}
+                                options={state.userCity}
                               />
                             </div>
                           </div>
@@ -743,6 +750,7 @@ export default function Jobprofile() {
                               />
                             </div>
                           </div>
+
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                               <label>
@@ -752,7 +760,7 @@ export default function Jobprofile() {
                                 fieldHighlight={
                                   fieldHighlight == "phone" ? true : false
                                 }
-                                placeholder={"0044 7123456789"}
+                                placeholder=""
                                 value={phone}
                                 onChange={(e) => {
                                   setPhone(e.target.value);

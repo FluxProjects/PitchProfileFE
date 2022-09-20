@@ -59,16 +59,28 @@ export const filterCandidateName = (nameFilter) => async (dispatch, state) => {
 };
 
 export const filterCandidateSkill = (skill_id) => async (dispatch, state) => {
+  console.log("skillIDID", skill_id);
   var resultSkill = [];
 
   //  ? skill filter
-  state().backupCandidates.map((itemM) => {
-    itemM.candidate_skills.filter((item) => {
-      if (item.skill_name == skill_id) {
-        resultSkill.push(itemM);
-      }
-    });
-  });
+  await Promise.all(
+    state().backupCandidates.map((itemM) => {
+      itemM.candidate_skills.map((item) => {
+        console.log(
+          "itemM.candidate_skillsitemM.candidate_skillsitemM.candidate_skills",
+          {
+            candidate_id: itemM,
+            candidate_skills: item.skill_name,
+            skill_id,
+            condition: item.skill_name == skill_id,
+          }
+        );
+        if (item.skill_name == skill_id && item?.skill_name != null) {
+          resultSkill.push(itemM);
+        }
+      });
+    })
+  );
 
   // toast.success("Updated Successfully!", {
   //   position: "bottom-center",

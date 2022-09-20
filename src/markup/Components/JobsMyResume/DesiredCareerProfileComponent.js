@@ -113,7 +113,7 @@ export default function DesiredCareerProfileComponent({ isView }) {
     item?.available_join ? item?.available_join : ""
   );
   const [expSalary, setExpSalary] = useState(
-    item?.expected_salary ? item?.expected_salary : ""
+    item?.expected_salary ? item?.expected_salary : 0
   );
   const [country, setCountry] = useState(
     item?.country_id ? item?.country_id : 0
@@ -131,7 +131,9 @@ export default function DesiredCareerProfileComponent({ isView }) {
   };
 
   const CallGetStates = async (stateId) => {
-    await dispatch(GetStates(stateId, setStateName, CallGetCities));
+    await dispatch(
+      GetStates(stateId, setStateName, CallGetCities, false, item?.state_id)
+    );
   };
 
   const [loading, setLoading] = useState(true);
@@ -141,10 +143,14 @@ export default function DesiredCareerProfileComponent({ isView }) {
   const [countryName, setCountryName] = useState("");
 
   useEffect(() => {
+    console.log("item.state_iditem.state_iditem.state_id", item.state_id);
     callGetCityState(item.state_id, item.city_id, item.country_id);
     //  to get languages
     CallGetDropDown();
     callGetDesiredCareer();
+
+    CallGetStates(item.country_id);
+    CallGetCities(item.state_id);
   }, []);
 
   const callGetCityState = async (state_id, city_id, country_id) => {

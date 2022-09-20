@@ -151,7 +151,16 @@ export default function EmploymentsComponent({ isView }) {
 
               <div className="col-md-12 col-sm-12 col-lg-12 mb-2">
                 <h6 className="font-14 m-b0">Description</h6>
-                <p className="m-b0">{item.description}</p>
+                <p
+                  style={{
+                    overflowWrap: "break-word",
+                    hyphens: "auto",
+                    whiteSpace: "normal",
+                  }}
+                  className="m-b0"
+                >
+                  {item.description}
+                </p>
               </div>
               <div className="col-md-6 col-sm-12 col-lg-4 mb-2">
                 <h6 className="font-14 m-b0">Current Role</h6>

@@ -42,7 +42,10 @@ export default function Jobsection() {
             <h6 className="fw4 m-b0">20+ Recently Added Jobs</h6>
           </div>
           <div className="align-self-end">
-            <Link to={"/browse-job-grid"} className="site-button button-sm">
+            <Link
+              to={state?.authToken ? "/browse-job-grid" : "login"}
+              className="site-button button-sm"
+            >
               Browse All Jobs <i className="fa fa-long-arrow-right"></i>
             </Link>
           </div>
@@ -98,7 +101,7 @@ export default function Jobsection() {
                     Your resume in minutes with JobBoard resume assistant is
                     ready!
                   </p>
-                  <Link to={"/register"} className="site-button">
+                  <Link to={"/login"} className="site-button">
                     Create an Account
                   </Link>
                 </div>

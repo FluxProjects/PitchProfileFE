@@ -36,8 +36,10 @@ export default function HomeJobcard({ item, index }) {
             <h4 className="fontTitle mb-0">
               <Link
                 to={{
-                  pathname: `/job-detail`,
-                  search: `?id=${item?.id}&company=${item?.company_id}`,
+                  pathname: state.authToken ? `/job-detail` : "/login",
+                  search: state.authToken
+                    ? `?id=${item?.id}&company=${item?.company_id}`
+                    : "",
                   state: {
                     company_id: item?.company_id,
                     post_id: item?.id,

@@ -196,8 +196,8 @@ export default function Componypostjobs(props) {
       return;
     }
 
-    if (role == "" || role == null) {
-      console.log("role");
+    if (role == "" || role == null || role == "<p><br></p>") {
+      console.log("role", role);
 
       setLoading(false);
       setFieldAlert(true);
@@ -205,7 +205,7 @@ export default function Componypostjobs(props) {
 
       return;
     }
-    if (keyRes == "" || keyRes == null) {
+    if (keyRes == "" || keyRes == null || keyRes == "<p><br></p>") {
       console.log("keyRes");
 
       setLoading(false);
@@ -223,12 +223,30 @@ export default function Componypostjobs(props) {
 
       return;
     }
-    if (department == null || department == null) {
+    if (department == "" || department == null) {
       console.log("department");
 
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter department");
+
+      return;
+    }
+    if (lookingFor == "" || lookingFor == null || lookingFor == "<p><br></p>") {
+      console.log("lookingFor");
+
+      setLoading(false);
+      setFieldAlert(true);
+      setFieldText("Please describe what are you looking for.");
+
+      return;
+    }
+    if (perks == "" || perks == null || perks == "<p><br></p>") {
+      console.log("Perks");
+
+      setLoading(false);
+      setFieldAlert(true);
+      setFieldText("Please enter Perks");
 
       return;
     }
@@ -260,6 +278,7 @@ export default function Componypostjobs(props) {
     // );
     // }
     // else {
+    setFieldAlert(false);
     await dispatch(
       UpdateJobPost(
         item?.id,

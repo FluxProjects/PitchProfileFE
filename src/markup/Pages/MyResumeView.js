@@ -52,8 +52,8 @@ export default function MyResumeView() {
     if (state.languages != null) await dispatch(GetLanguages());
 
     if (state.countries != null) await dispatch(GetCountries());
-    if (state.states != null) await dispatch(GetStates(230));
-    if (state.cities != null) await dispatch(GetCities(3866));
+    // if (state.states != null) await dispatch(GetStates(230));
+    // if (state.cities != null) await dispatch(GetCities(3866));
 
     setLoading(false);
   };

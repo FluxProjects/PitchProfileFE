@@ -69,6 +69,10 @@ const Chat = ({
 
   const sendMessage = async (event) => {
     event.preventDefault();
+    state.messagesChat.push({
+      sent_by: state?.userDetails?.id,
+      text: message,
+    });
     await dispatch(
       AddMessage(
         state.userDetails.company_name ? otherId : state.userDetails.id,

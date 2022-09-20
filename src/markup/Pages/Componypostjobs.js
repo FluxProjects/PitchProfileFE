@@ -92,6 +92,7 @@ export default function Componypostjobs() {
     setJobType(0);
     setExpirience(0);
     setEmploymentType(1);
+
     //  to get languages
     CallGetDropDown();
   }, []);
@@ -108,13 +109,24 @@ export default function Componypostjobs() {
       await dispatch(GetIndustries());
     }
 
+    CallGetStates(state.userDetails?.country_id);
+    CallGetCities(state.userDetails?.state_id);
+
     setLoading(false);
   };
   const CallGetCities = async (stateId) => {
     await dispatch(GetCities(stateId, setCity));
   };
   const CallGetStates = async (stateId) => {
-    await dispatch(GetStates(stateId, setStateName, CallGetCities));
+    await dispatch(
+      GetStates(
+        stateId,
+        setStateName,
+        CallGetCities,
+        false,
+        state.userDetails?.state_id
+      )
+    );
   };
 
   const callAddJobPost = async () => {
@@ -214,12 +226,30 @@ export default function Componypostjobs() {
 
       return;
     }
-    if (department == null || department == null) {
+    if (department == "" || department == null) {
       console.log("department");
 
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter department");
+
+      return;
+    }
+    if (lookingFor == "" || lookingFor == null) {
+      console.log("lookingFor");
+
+      setLoading(false);
+      setFieldAlert(true);
+      setFieldText("Please describe what are you looking for.");
+
+      return;
+    }
+    if (perks == "" || perks == null) {
+      console.log("Perks");
+
+      setLoading(false);
+      setFieldAlert(true);
+      setFieldText("Please enter Perks");
 
       return;
     }

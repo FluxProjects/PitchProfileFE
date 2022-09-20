@@ -34,13 +34,14 @@ const ChatContacts = ({
 }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [ChatModal, setChatModal] = useState(false);
   const [otherId, setOtherId] = useState(otherIdProp ? otherIdProp : "");
   const [RoomId, setRoomId] = useState(RoomIdProp ? RoomIdProp : "");
   const [RoomName, setRoomName] = useState(RoomNameProp ? RoomNameProp : "");
+
+  const [TrueIndex, setTrueIndex] = useState(false);
   const [indexSelected, setIndexSelected] = useState(0);
 
   console.log("RoomIdPropRoomIdProp", RoomIdProp);
@@ -51,7 +52,27 @@ const ChatContacts = ({
 
   useEffect(() => {
     callGetRooms();
+    roomIndexSelect();
   }, []);
+
+  useEffect(() => {
+    if (!TrueIndex) {
+      roomIndexSelect();
+    }
+  }, [state?.myRooms]);
+
+  const roomIndexSelect = () => {
+    const val = state?.myRooms.map((item, index) => {
+      const nameRoomItem = state.userDetails?.company_name
+        ? item?.candidate?.f_name + " " + item?.candidate?.l_name
+        : item?.company?.company_name;
+
+      if (RoomNameProp == nameRoomItem) {
+        setIndexSelected(index);
+        setTrueIndex(true);
+      }
+    });
+  };
 
   useEffect(() => {
     console.log("update", otherId, RoomId);

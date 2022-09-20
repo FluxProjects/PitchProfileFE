@@ -17,6 +17,7 @@ export default function BrowseCandidateGridCard({
   index,
   isWishlistPage,
   fromHomeScreen,
+  noClick,
 }) {
   const [loading, setLoading] = useState(true);
   const [isLiked, setIsLiked] = useState();
@@ -131,7 +132,16 @@ export default function BrowseCandidateGridCard({
               }}
             />
           )}
-          {/* <p className="playBtn">Play</p> */}
+          <p className="playBtn">
+            <img
+              style={{
+                width: "35%",
+                zIndex: 100,
+              }}
+              src={require("../../images/playIcon.png")}
+            />{" "}
+          </p>
+
           <span
             style={{
               zIndex: 10,
@@ -153,8 +163,8 @@ export default function BrowseCandidateGridCard({
 
         <Link
           to={{
-            pathname: "view-candidate-profile",
-            search: `?id=${item?.id}`,
+            pathname: !noClick ? "view-candidate-profile" : "/",
+            search: !noClick ? `?id=${item?.id}` : "",
             state: { id: item?.id },
           }}
           style={

@@ -2786,19 +2786,10 @@ export const UpdateDesiredCareer =
   ) =>
   async (dispatch, state) => {
     console.log(
-      "dedw",
-      industry_id,
-      department_id,
-      role,
-      job_type,
-      employment_type,
-      preferred_shift,
-      available_join,
-      expected_salary,
-      city_id,
-      state_id,
-      country_id
+      "state().candidateDesiredCareer.idstate().candidateDesiredCareer.idstate().candidateDesiredCareer.id",
+      state().candidateDesiredCareer.id
     );
+
     var data = JSON.stringify({
       data: {
         candidate_id: state().userDetails.id,

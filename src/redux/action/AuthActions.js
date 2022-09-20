@@ -781,6 +781,7 @@ export const UpdateUserPassword =
         password,
         id,
         name: state().userDetails.f_name,
+        email: state().userDetails.email,
       },
     });
 

@@ -68,10 +68,6 @@ export default function Jobmyresume() {
     await dispatch(GetDepartments());
     await dispatch(GetIndustries());
 
-    if (state.countries != null) await dispatch(GetCountries());
-    if (state.states != null) await dispatch(GetStates(230));
-    if (state.cities != null) await dispatch(GetCities(3866));
-
     setLoading(false);
   };
 

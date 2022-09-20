@@ -8,6 +8,8 @@ import {
   GetCandidateSkills,
   GetCities,
   GetStates,
+  GetUserCities,
+  GetUserStates,
   UpdateCandidateSummary,
   UpdateIsActive,
   UpdateResumeHeader,
@@ -46,11 +48,13 @@ export default function HeaderMyResume({ isView }) {
   const [stateName, setStateName] = useState();
   const [cityName, setCityName] = useState();
   const [countryName, setCountryName] = useState();
-  const [city, setCity] = useState(state.userDetails.city_id);
+
+  const [country, setCountry] = useState(state.userDetails.country_id);
   const [stateNameDrop, setStateNameDrop] = useState(
     state.userDetails.state_id
   );
-  const [country, setCountry] = useState(state.userDetails.country_id);
+  const [city, setCity] = useState(state.userDetails.city_id);
+
   const [hometownCountry, setHometownCountry] = useState(
     state.userDetails.hometown_country_id
   );
@@ -63,6 +67,9 @@ export default function HeaderMyResume({ isView }) {
       userDetail.city_id,
       userDetail.country_id
     );
+
+    CallGetStates(state.userDetails.country_id);
+    CallGetCities(state.userDetails.state_id);
   }, []);
 
   const callGetCityState = async (state_id, city_id, country_id) => {
@@ -137,11 +144,13 @@ export default function HeaderMyResume({ isView }) {
   };
 
   const CallGetCities = async (stateId) => {
-    await dispatch(GetCities(stateId, setCity));
+    console.log("stateIdstateId", stateId);
+
+    await dispatch(GetUserCities(stateId, setCity));
   };
 
   const CallGetStates = async (stateId) => {
-    await dispatch(GetStates(stateId, setStateName, CallGetCities));
+    await dispatch(GetUserStates(stateId, setStateName, CallGetCities));
   };
 
   return (
@@ -396,7 +405,7 @@ export default function HeaderMyResume({ isView }) {
                           //   setLastUsed(e.target.value);
                         }}
                         value={stateNameDrop}
-                        options={state.states}
+                        options={state.userState}
                       />
                     </div>
                   </div>
@@ -411,7 +420,7 @@ export default function HeaderMyResume({ isView }) {
                           //   setLastUsed(e.target.value);
                         }}
                         value={city}
-                        options={state.cities}
+                        options={state.userCity}
                       />
                     </div>
                   </div>
@@ -450,7 +459,7 @@ export default function HeaderMyResume({ isView }) {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder={"0044 7123456789"}
+                        placeholder=""
                         onChange={(e) => {
                           setPhone(e.target.value);
                         }}

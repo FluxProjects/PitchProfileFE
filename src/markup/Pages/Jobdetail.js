@@ -197,6 +197,10 @@ export default function Jobdetail(props) {
                                 <strong className="font-weight-700 text-black">
                                   Seniority Level
                                 </strong>{" "}
+                                {console.log(
+                                  "state.PreviewPost?.seniority_levelstate.PreviewPost?.seniority_level",
+                                  state.PreviewPost?.seniority_level
+                                )}
                                 {SeniorityLevel.findIndex(
                                   (x) =>
                                     x?.id == state.PreviewPost?.seniority_level

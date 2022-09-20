@@ -22,8 +22,8 @@ export const AddJobPost =
     expirience,
     department_id,
     preferred_shift,
-    seniority_level,
     salary_range,
+    seniority_level,
     files,
     skill_id1,
     skill_id2,
@@ -33,6 +33,8 @@ export const AddJobPost =
     router
   ) =>
   async (dispatch, state) => {
+    console.log("salary_rangesalary_range", salary_range);
+
     var data = JSON.stringify({
       data: {
         company_id: state().userDetails.id,
@@ -50,10 +52,10 @@ export const AddJobPost =
         the_perks,
         closing_date,
         expirience: expirience,
-        department_id: department_id,
+        department_id: parseInt(department_id),
         preferred_shift,
-        seniority_level,
-        salary_range,
+        seniority_level: parseInt(seniority_level),
+        salary_range: parseInt(salary_range),
         video: files,
         skill_id1,
         skill_id2,

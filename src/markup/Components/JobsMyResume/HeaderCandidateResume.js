@@ -336,7 +336,9 @@ export default function HeaderCandidateResume({
                   RoomNameProp={
                     state.singleUserData?.company_name
                       ? state.singleUserData?.company_name
-                      : state.singleUserData?.f_name
+                      : state.singleUserData?.f_name +
+                        " " +
+                        state.singleUserData?.l_name
                   }
                 />
                 {/* <Chat
@@ -526,7 +528,7 @@ export default function HeaderCandidateResume({
                       <input
                         type="text"
                         className="form-control"
-                        placeholder={"0044 7123456789"}
+                        placeholder=""
                         onChange={(e) => {
                           setPhone(e.target.value);
                         }}

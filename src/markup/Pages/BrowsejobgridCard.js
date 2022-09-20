@@ -229,22 +229,27 @@ export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
             </span>
           </div>
         </div>
-        <label className="like-btn">
-          <input
-            type="checkbox"
-            onClick={() => {
-              onClickLike();
-            }}
-            defaultChecked={isLiked}
-          />
-          <span className="checkmark">
-            {isLiked ? (
-              <i className="iconPosDet fa fa-heart" aria-hidden="true"></i>
-            ) : (
-              <i className="iconPosDet fa fa-heart-o" aria-hidden="true"></i>
-            )}
-          </span>
-        </label>
+        {state?.userDetails?.company_name ? (
+          ""
+        ) : (
+          <label className="like-btn">
+            <input
+              type="checkbox"
+              onClick={() => {
+                onClickLike();
+              }}
+              defaultChecked={isLiked}
+            />
+
+            <span className="checkmark">
+              {isLiked ? (
+                <i className="iconPosDet fa fa-heart" aria-hidden="true"></i>
+              ) : (
+                <i className="iconPosDet fa fa-heart-o" aria-hidden="true"></i>
+              )}
+            </span>
+          </label>
+        )}
       </div>
     </li>
   );
