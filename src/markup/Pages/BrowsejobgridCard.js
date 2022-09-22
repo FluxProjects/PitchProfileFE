@@ -24,7 +24,12 @@ import ReactPlayer from "react-player";
 
 var bnr = require("./../../images/banner/bnr1.jpg");
 
-export default function BrowsejobgridCard({ item, index, isWishlistPage }) {
+export default function BrowsejobgridCard({
+  item,
+  index,
+
+  isWishlistPage,
+}) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 

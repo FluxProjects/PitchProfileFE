@@ -17,6 +17,8 @@ export default function BrowseCandidateGridCard({
   index,
   isWishlistPage,
   fromHomeScreen,
+  objectPosition,
+  hasNoFavIcon,
   noClick,
 }) {
   const [loading, setLoading] = useState(true);
@@ -74,43 +76,50 @@ export default function BrowseCandidateGridCard({
           borderRadius: 15,
           borderColor: "#0275d8",
           paddingBottom: 9,
-          minHeight: "380px",
+          minHeight: "400px",
           maxHeight: "380px",
           fontFamily: "montserrat",
         }}
       >
         <div className="containerImageGrid">
-          {state?.userDetails?.company_name && (
-            <label
-              onClick={() => {
-                console.log("tetsings ss cicic");
-                onClickLike(item);
-              }}
-              className="like-btn heartBtn zIndexHeart"
-            >
-              <input
-                type="checkbox"
-                onClick={() => {
-                  // console.log("tetsings ss cicic");
-                  onClickLike(item);
-                }}
-                defaultChecked={isLiked}
-              />
-              <span className="checkmark">
-                {isLiked ? (
-                  <i className="iconPosDet fa fa-heart" aria-hidden="true"></i>
-                ) : (
-                  <i
-                    className="iconPosDet fa fa-heart-o"
-                    aria-hidden="true"
-                  ></i>
-                )}
-              </span>
-            </label>
+          {!hasNoFavIcon && (
+            <>
+              {state?.userDetails?.company_name && (
+                <label
+                  onClick={() => {
+                    console.log("tetsings ss cicic");
+                    onClickLike(item);
+                  }}
+                  className="like-btn heartBtn zIndexHeart"
+                >
+                  <input
+                    type="checkbox"
+                    onClick={() => {
+                      // console.log("tetsings ss cicic");
+                      onClickLike(item);
+                    }}
+                    defaultChecked={isLiked}
+                  />
+                  <span className="checkmark">
+                    {isLiked ? (
+                      <i
+                        className="iconPosDet fa fa-heart"
+                        aria-hidden="true"
+                      ></i>
+                    ) : (
+                      <i
+                        className="iconPosDet fa fa-heart-o"
+                        aria-hidden="true"
+                      ></i>
+                    )}
+                  </span>
+                </label>
+              )}
+            </>
           )}
 
           {item?.video ? (
-            <video className="card-img-top" width="auto" height="165" controls>
+            <video className="card-img-top" width="auto" height="190" controls>
               <source src={item?.video} type="video/mp4" />
               <source src={item?.video} type="video/wmv" />
               <source src={item?.video} type="video/mkv" />
@@ -127,6 +136,8 @@ export default function BrowseCandidateGridCard({
               }
               alt="Card image cap"
               style={{
+                objectPosition: objectPosition ? objectPosition : "inherit",
+                height: "190px",
                 width: "100%",
                 objectFit: "cover",
               }}

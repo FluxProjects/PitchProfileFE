@@ -90,6 +90,8 @@ export default function Homepage() {
     // Naomi
     {
       address: "street 123",
+      objectPosition: "top",
+
       city_id: 48184,
       country_id: 232,
       disability: false,
@@ -332,6 +334,8 @@ export default function Homepage() {
                       ) : (
                         HomeProfileCards.map((item, index) => (
                           <BrowseCandidateGridCard
+                            hasNoFavIcon={true}
+                            objectPosition={item?.objectPosition}
                             key={index}
                             noClick={true}
                             fromHomeScreen={true}
