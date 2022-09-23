@@ -1,6 +1,8 @@
 .messagesChat {
-  padding: 5% 0;
+  /* padding: 5% 0; */
   overflow: auto;
   flex: auto;
   border-left: 1px solid lightgray;
+  /* height: 10vh; */
+  /* overflow-y: auto; */
 }

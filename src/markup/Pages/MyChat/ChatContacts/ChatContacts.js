@@ -13,13 +13,17 @@ import { URL } from "../../../../utils/APIUtils";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddMessage,
+  clearMessages,
   getMessages,
 } from "../../../../redux/action/Messages/MessagesActions";
 import { SocketContext } from "../../../../utils/socket";
 import {
   getMyRoomsCandidate,
   getMyRoomsCompany,
+  setRoomIdRedux,
+  setRoomNameRedux,
   updateMyRoomsisRead,
+  UpdateRoom,
 } from "../../../../redux/action";
 import Chat from "../Chat/Chat";
 import { Modal } from "react-bootstrap";
@@ -28,8 +32,7 @@ import { getUserAvatar } from "../../../../utils/functions";
 const ChatContacts = ({
   location,
   otherIdProp,
-  RoomIdProp,
-  RoomNameProp,
+
   setCloseModal,
 }) => {
   const state = useSelector((state) => state);
@@ -38,13 +41,11 @@ const ChatContacts = ({
   const [isLoading, setIsLoading] = useState(false);
   const [ChatModal, setChatModal] = useState(false);
   const [otherId, setOtherId] = useState(otherIdProp ? otherIdProp : "");
-  const [RoomId, setRoomId] = useState(RoomIdProp ? RoomIdProp : "");
-  const [RoomName, setRoomName] = useState(RoomNameProp ? RoomNameProp : "");
+
+  const [RoomName, setRoomName] = useState(state?.RoomNameProp);
 
   const [TrueIndex, setTrueIndex] = useState(false);
-  const [indexSelected, setIndexSelected] = useState(0);
-
-  console.log("RoomIdPropRoomIdProp", RoomIdProp);
+  const [indexSelected, setIndexSelected] = useState(-1);
 
   const toggleModal = () => {
     setChatModal(!ChatModal);
@@ -55,19 +56,19 @@ const ChatContacts = ({
     roomIndexSelect();
   }, []);
 
-  useEffect(() => {
-    if (!TrueIndex) {
-      roomIndexSelect();
-    }
-  }, [state?.myRooms]);
+  // useEffect(() => {
+  //   if (!TrueIndex) {
+  //     roomIndexSelect();
+  //   }
+  // }, [state?.myRooms]);
 
   const roomIndexSelect = () => {
-    const val = state?.myRooms.map((item, index) => {
+    const val = state?.myRooms?.map((item, index) => {
       const nameRoomItem = state.userDetails?.company_name
         ? item?.candidate?.f_name + " " + item?.candidate?.l_name
         : item?.company?.company_name;
 
-      if (RoomNameProp == nameRoomItem) {
+      if (state?.RoomNameProp == nameRoomItem) {
         setIndexSelected(index);
         setTrueIndex(true);
       }
@@ -75,13 +76,14 @@ const ChatContacts = ({
   };
 
   useEffect(() => {
-    console.log("update", otherId, RoomId);
     setIsLoading(true);
-  }, [otherId, RoomId]);
+  }, [otherId, state.SingleRoomName]);
 
   const callUpdateMyRoomsisRead = async (room_id) => {
     await dispatch(updateMyRoomsisRead(room_id)).then(() => {
-      callGetRooms();
+      // callGetRooms();
+      roomIndexSelect();
+      console.log("test");
     });
   };
 
@@ -118,7 +120,13 @@ const ChatContacts = ({
     <div className="">
       <div className="containerChatContact">
         <InfoBar
-          room={RoomName ? RoomName : "Chat"}
+          room={
+            state?.RoomNameProp != ""
+              ? state?.RoomNameProp
+              : `Messages ${
+                  state?.IsReadLength > 0 ? "(" + state?.IsReadLength + ")" : ""
+                }`
+          }
           setCloseModal={setCloseModal}
         />
         <div
@@ -137,7 +145,7 @@ const ChatContacts = ({
             }}
             className="col-md-4 col-sm-12"
           >
-            <ScrollToBottom>
+            <ScrollToBottom style={{}}>
               {state?.myRooms?.length > 0
                 ? state?.myRooms?.map((item, index) => (
                     <>
@@ -189,24 +197,42 @@ const ChatContacts = ({
                         <a
                           className="btnStyle"
                           onClick={() => {
-                            console.log("romfvdf id", item?.id);
+                            dispatch(clearMessages());
+
+                            dispatch(
+                              setRoomNameRedux(
+                                state.userDetails?.company_name
+                                  ? item?.candidate?.f_name +
+                                      " " +
+                                      item?.candidate?.l_name
+                                  : item?.company?.company_name
+                              )
+                            );
+                            dispatch(setRoomIdRedux(item?.id));
+
+                            // dispatch(UpdateRoom(index));
+
                             setIsLoading(true);
+                            console.log(
+                              "item?.candidate_iditem?.candidate_id",
+                              item?.candidate_id
+                            );
                             setOtherId(
                               state.userDetails?.company_name
                                 ? item?.candidate_id
                                 : item?.company_id
                             );
-                            setRoomId(item?.id);
 
+                            // setRoomName(
+                            //   state.userDetails?.company_name
+                            //     ? item?.candidate?.f_name +
+                            //         " " +
+                            //         item?.candidate?.l_name
+                            //     : item?.company?.company_name
+                            // );
                             callUpdateMyRoomsisRead(item?.id);
-                            setRoomName(
-                              state.userDetails?.company_name
-                                ? item?.candidate?.f_name +
-                                    " " +
-                                    item?.candidate?.l_name
-                                : item?.company?.company_name
-                            );
                             setIndexSelected(index);
+                            // roomIndexSelect();
                             setChatModal(true);
                           }}
                           style={{
@@ -244,10 +270,8 @@ const ChatContacts = ({
           >
             <Chat
               loading={isLoading}
-              RoomName={RoomName}
               setIsLoading={(e) => setIsLoading(e)}
               otherId={otherId}
-              RoomId={RoomId}
             />
           </div>
         </div>

@@ -90,6 +90,38 @@ export const getMyRoomsCandidate = () => async (dispatch, state) => {
     });
 };
 
+export const setIsChatModalUp = (index) => async (dispatch, state) => {
+  dispatch({
+    type: "isChatModalUp",
+    data: !state().isChatModalUp,
+    // IsReadLength: state().IsReadLength - 1,
+  });
+};
+
+export const setRoomNameRedux = (data) => async (dispatch, state) => {
+  dispatch({
+    type: "RoomNameProp",
+    data: data,
+  });
+};
+
+export const setRoomIdRedux = (data) => async (dispatch, state) => {
+  dispatch({
+    type: "SingleRoomName",
+    data: data,
+  });
+};
+
+export const UpdateRoom = (index) => async (dispatch, state) => {
+  state().myRooms[index].isRead = true;
+  const data = state().myRooms;
+  dispatch({
+    type: "myRooms",
+    data,
+    // IsReadLength: state().IsReadLength - 1,
+  });
+};
+
 export const getMyRoomsCompany = () => async (dispatch, state) => {
   var config = {
     method: "get",
@@ -120,12 +152,21 @@ export const updateMyRoomsisRead = (room_id) => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log("update messsgaes gettig woo", response.data);
+      const roomIndex = state().myRooms.findIndex(
+        (item) => item.id === room_id
+      );
+      state().myRooms[roomIndex].isRead = true;
+      const data = state().myRooms;
       dispatch({
-        type: "myRoomsUpdated",
-        data: response.data.data,
-        // IsReadLength: response.data?.IsReadLength,
+        type: "myRooms",
+        data,
+        IsReadLength: response.data?.IsReadLength,
       });
+      // dispatch({
+      //   type: "myRoomsUpdated",
+      //   data: response.data.data,
+      //   // IsReadLength: response.data?.IsReadLength,
+      // });
     })
     .catch(function (error) {
       console.log(error);

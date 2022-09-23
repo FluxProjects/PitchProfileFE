@@ -8,6 +8,7 @@ import "react-toggle/style.css";
 import {
   GetCities,
   GetStates,
+  setRoomNameRedux,
   UpdateCandidateSummary,
   UpdateIsActive,
   UpdateResumeHeader,
@@ -32,6 +33,8 @@ export default function CompanyDetailHeader({ isView, callAddRoom }) {
   const [ChatModal, setChatModal] = useState(false);
 
   const toggleModal = () => {
+    dispatch(setRoomNameRedux(state.PreviewSingleCompany?.company_name));
+
     setChatModal(!ChatModal);
   };
 
@@ -169,8 +172,6 @@ export default function CompanyDetailHeader({ isView, callAddRoom }) {
         <ChatContacts
           setCloseModal={() => toggleModal()}
           otherIdProp={state.PreviewSingleCompany.id}
-          RoomIdProp={state.SingleRoomName}
-          RoomNameProp={state.PreviewSingleCompany?.company_name}
         />
         {/* <Chat
 

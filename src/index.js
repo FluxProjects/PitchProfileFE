@@ -24,6 +24,9 @@ const persistConfig = {
     "PreviewPost",
     "SavePreviewPost",
     "GetWishlist",
+    "SingleRoomName",
+    "isChatModalUp",
+    "RoomNameProp",
   ],
   storage,
 };

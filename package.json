@@ -6,6 +6,7 @@
   "dependencies": {
     "@weavy/dropin-js": "^10.1.0",
     "axios": "^0.26.0",
+    "firebase": "^9.10.0",
     "moment": "^2.29.2",
     "query-string": "^7.1.1",
     "react": "^17.0.0",

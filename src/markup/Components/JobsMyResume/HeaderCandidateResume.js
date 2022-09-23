@@ -10,6 +10,7 @@ import {
   getMyRoomsCandidate,
   getMyRoomsCompany,
   GetStates,
+  setRoomNameRedux,
   UpdateCandidateSummary,
   UpdateIsActive,
   UpdateResumeHeader,
@@ -75,6 +76,13 @@ export default function HeaderCandidateResume({
   }, []);
 
   const toggleModal = () => {
+    dispatch(
+      setRoomNameRedux(
+        state.singleUserData?.company_name
+          ? state.singleUserData?.company_name
+          : state.singleUserData?.f_name + " " + state.singleUserData?.l_name
+      )
+    );
     setChatModal(!ChatModal);
   };
 
@@ -332,14 +340,6 @@ export default function HeaderCandidateResume({
                 <ChatContacts
                   setCloseModal={() => toggleModal()}
                   otherIdProp={state?.singleUserData.id}
-                  RoomIdProp={state?.SingleRoomName}
-                  RoomNameProp={
-                    state.singleUserData?.company_name
-                      ? state.singleUserData?.company_name
-                      : state.singleUserData?.f_name +
-                        " " +
-                        state.singleUserData?.l_name
-                  }
                 />
                 {/* <Chat
                   otherId={state?.singleUserData.id}

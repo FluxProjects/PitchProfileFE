@@ -47,12 +47,6 @@ export default function Jobprofile() {
   // const socket = useContext(SocketContext);
   console.log("setup ", socket); // x8WIv7-mJelg7on_ALbx
 
-  {
-    console.log(
-      "state.SingleRoomNamestate.SingleRoomName",
-      state.SingleRoomName
-    );
-  }
   useEffect(() => {
     callGetRooms();
     // callGetMessages(otherId);
@@ -69,7 +63,9 @@ export default function Jobprofile() {
 
     socket.on("message recieved", (data) => {
       console.log("message recieved");
+      // if (!state?.isChatModalUp) {
       callGetRooms();
+      // }
     });
   }, []);
 

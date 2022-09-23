@@ -15,14 +15,7 @@ import {
 } from "../../../../redux/action/Messages/MessagesActions";
 import { socket } from "../../../../utils/socket";
 
-const Chat = ({
-  location,
-  otherId,
-  RoomId,
-  loading,
-  setIsLoading,
-  RoomName,
-}) => {
+const Chat = ({ location, otherId, loading, setIsLoading }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -39,6 +32,7 @@ const Chat = ({
   // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("otherIdotherId", otherId);
     callGetMessages(otherId);
 
     // socket.emit("setup", state.userDetails.id);
@@ -67,6 +61,17 @@ const Chat = ({
     setIsLoading(false);
   };
 
+  socket.on("message recieved", (data) => {
+    if (
+      state.userDetails.id == data?.company_id ||
+      (state.userDetails.id == data?.candidate_id &&
+        state.userDetails.id != data?.sent_by)
+    ) {
+      console.log("testing the messages", data);
+      callGetMessages(otherId);
+    }
+  });
+
   const sendMessage = async (event) => {
     event.preventDefault();
     state.messagesChat.push({
@@ -78,7 +83,7 @@ const Chat = ({
         state.userDetails.company_name ? otherId : state.userDetails.id,
         state.userDetails.company_name ? state.userDetails.id : otherId,
         message,
-        RoomId
+        state.SingleRoomName
       )
     );
 
@@ -92,9 +97,6 @@ const Chat = ({
       text: message,
       sent_by: state.userDetails.id,
     });
-    socket.on("message recieved", (data) => {
-      callGetMessages(otherId);
-    });
   };
 
   return (
@@ -105,12 +107,34 @@ const Chat = ({
         <div className="">
           <div className="containerChat">
             {/* <InfoBar room={RoomName} /> */}
-            <Messages messages={state.messagesChat} />
-            <Input
-              message={message}
-              setMessage={setMessage}
-              sendMessage={sendMessage}
-            />
+            {state?.RoomNameProp && state?.myRooms?.length > 0 ? (
+              <>
+                {console.log(
+                  "state.messagesChatstate.messagesChat",
+                  state.messagesChat
+                )}
+                <Messages messages={state.messagesChat} />
+                <Input
+                  message={message}
+                  setMessage={setMessage}
+                  sendMessage={sendMessage}
+                />
+              </>
+            ) : (
+              <p
+                style={{
+                  borderLeft: "1px solid lightgray",
+                  // width: "80%",
+                  display: "flex",
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
+                Please select the user from the left panel to start chatting
+              </p>
+            )}
           </div>
         </div>
       )}

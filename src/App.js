@@ -25,6 +25,7 @@ import {
   getMyRoomsCompany,
   getSingleUserData,
   GetSkills,
+  setIsChatModalUp,
 } from "./redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -113,6 +114,7 @@ function App() {
 
   const toggleModal = () => {
     setChatModal(!ChatModal);
+    dispatch(setIsChatModalUp());
   };
 
   // socket
@@ -135,7 +137,9 @@ function App() {
 
   socket.on("message recieved", (data) => {
     console.log("testings t mesgs rece");
+    // if (!state?.isChatModalUp) {
     callGetRooms();
+    // }
   });
 
   return (

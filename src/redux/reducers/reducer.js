@@ -7,6 +7,8 @@ const initialState = {
 
   // Admin
   AllUserData: [],
+  isChatModalUp: false,
+  RoomNameProp: "",
 
   GetAllCandidatesNames: [],
   // messages
@@ -92,6 +94,8 @@ const changeState = (state = initialState, { type, ...rest }) => {
     case "myRoomsUpdated": {
       return { ...state, myRoomsUpdated: rest.data };
     }
+    case "RoomNameProp":
+      return { ...state, RoomNameProp: rest.data };
 
     case "LogoutUser":
       return {
@@ -186,6 +190,8 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, messagesChat: rest.data };
     case "myRooms":
       return { ...state, myRooms: rest.data, IsReadLength: rest.IsReadLength };
+    case "isChatModalUp":
+      return { ...state, isChatModalUp: rest.data };
     case "SingleRoomData":
       return { ...state, SingleRoomData: rest.data };
     case "SingleRoomName":
