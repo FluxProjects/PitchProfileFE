@@ -427,7 +427,9 @@ export default function Companyprofile() {
                         <div className="row m-b30">
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
-                              <label>Phone:</label>
+                              <label>
+                                Phone: <span className="text-danger"> *</span>
+                              </label>
                               <TextInputModal
                                 onChange={(e) => {
                                   console.log(e.target.value);

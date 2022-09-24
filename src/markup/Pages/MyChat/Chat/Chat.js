@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   AddMessage,
   getMessages,
+  socketUpdateMessages,
 } from "../../../../redux/action/Messages/MessagesActions";
 import { socket } from "../../../../utils/socket";
 
@@ -61,32 +62,36 @@ const Chat = ({ location, otherId, loading, setIsLoading }) => {
     setIsLoading(false);
   };
 
-  socket.on("message recieved", (data) => {
+  socket.off("message recieved").on("message recieved", (data) => {
     if (
       state.userDetails.id == data?.company_id ||
       (state.userDetails.id == data?.candidate_id &&
         state.userDetails.id != data?.sent_by)
     ) {
-      console.log("testing the messages", data);
-      callGetMessages(otherId);
+      console.log("testing the messages if", data);
+
+      let tempArr = state.messagesChat;
+
+      tempArr.push({
+        sent_by: data?.sent_by,
+        text: data?.text,
+        created_at: Date().now(),
+      });
+      dispatch(socketUpdateMessages(tempArr));
+    } else {
+      console.log("testing the messages if", data);
+      let tempArr = state.messagesChat;
+      tempArr.push({
+        sent_by: data?.sent_by,
+        text: data?.text,
+        created_at: Date().now(),
+      });
+      dispatch(socketUpdateMessages(tempArr));
     }
   });
 
   const sendMessage = async (event) => {
     event.preventDefault();
-    state.messagesChat.push({
-      sent_by: state?.userDetails?.id,
-      text: message,
-    });
-    await dispatch(
-      AddMessage(
-        state.userDetails.company_name ? otherId : state.userDetails.id,
-        state.userDetails.company_name ? state.userDetails.id : otherId,
-        message,
-        state.SingleRoomName
-      )
-    );
-
     socket.emit("new message", {
       candidate_id: state.userDetails.company_name
         ? otherId
@@ -97,6 +102,15 @@ const Chat = ({ location, otherId, loading, setIsLoading }) => {
       text: message,
       sent_by: state.userDetails.id,
     });
+
+    await dispatch(
+      AddMessage(
+        state.userDetails.company_name ? otherId : state.userDetails.id,
+        state.userDetails.company_name ? state.userDetails.id : otherId,
+        message,
+        state.SingleRoomName
+      )
+    );
   };
 
   return (

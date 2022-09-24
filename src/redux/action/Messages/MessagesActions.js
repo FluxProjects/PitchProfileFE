@@ -25,15 +25,15 @@ export const AddMessage =
       .then(function (response) {
         console.log("message sdnsa", response.data);
         if (response.data.status) {
-          toast.success(" added Successfully!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          // toast.success(" added Successfully!", {
+          //   position: "bottom-center",
+          //   autoClose: 5000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          // });
           // dispatch({
           //   type: "messagesChat",
           //   data: response.data.data,
@@ -62,6 +62,14 @@ export const clearMessages = () => async (dispatch, state) => {
     data: [],
   });
 };
+
+export const socketUpdateMessages =
+  (messagesChat) => async (dispatch, state) => {
+    dispatch({
+      type: "messagesChat",
+      data: messagesChat,
+    });
+  };
 
 export const getMessages =
   (candidate_id, company_id) => async (dispatch, state) => {

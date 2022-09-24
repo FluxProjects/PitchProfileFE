@@ -1,18 +1,24 @@
 .messageBoxChat {
   background: #f3f3f3;
   border-radius: 20px;
-  padding: 5px 20px;
+  padding: 0px 20px;
   color: white;
   display: inline-block;
   max-width: 80%;
+}
+
+.timeStampMsg {
+  font-size: 10px;
 }
 
 .messageTextChat {
   width: 100%;
   letter-spacing: 0;
   float: left;
-  font-size: 1.1em;
+  font-size: 1em;
   word-wrap: break-word;
+  margin: 0px;
+  margin: 10px;
 }
 
 .messageTextChat img {
