@@ -27,6 +27,9 @@ const persistConfig = {
     "SingleRoomName",
     "isChatModalUp",
     "RoomNameProp",
+    "SingleRoomData",
+    "SingleRoomId",
+    "myroomupdated",
   ],
   storage,
 };

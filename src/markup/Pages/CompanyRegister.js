@@ -241,7 +241,12 @@ export default function CompanyRegister({ setIsCurrentTab }) {
 
             <p className="font-weight-600 text-white text-center">
               If you have an account with us,{" "}
-              <Link className="text-white" to={"/login"}>
+              <Link
+                onClick={() => {
+                  setIsCurrentTab("login");
+                }}
+                className="text-white"
+              >
                 Log in
               </Link>
               .

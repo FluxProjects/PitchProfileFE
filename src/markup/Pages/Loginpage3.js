@@ -97,7 +97,12 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
 
           <p className="font-weight-600 text-white text-center">
             Don't have an account with us,{" "}
-            <Link className="text-white" to={"/register"}>
+            <Link
+              onClick={() => {
+                setIsCurrentTab("register");
+              }}
+              className="text-white"
+            >
               Sign up
             </Link>
             .

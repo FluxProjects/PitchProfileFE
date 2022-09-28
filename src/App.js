@@ -136,16 +136,32 @@ function App() {
   }, [socket]);
 
   socket.on("message recieved", (data) => {
-    console.log("testings t mesgs rece");
+    console.log(
+      "testings t mesgs rece",
+      state.userDetails.id == data?.company_id ||
+        (state.userDetails.id == data?.candidate_id &&
+          state.userDetails.id != data?.sent_by)
+    );
     // if (!state?.isChatModalUp) {
-    callGetRooms();
+    if (
+      state.userDetails.id == data?.company_id ||
+      (state.userDetails.id == data?.candidate_id &&
+        state.userDetails.id != data?.sent_by)
+    ) {
+      callGetRooms();
+    }
     // }
   });
 
   return (
     <div className="App">
+      {console.log(
+        "window.location.pathnamewindow.location.pathname",
+        window.location.pathname,
+        window.location.pathname != "/view-candidate-profile"
+      )}
       {state?.authToken ? (
-        // window.location.pathname == "/jobs-change-password" ||
+        // window.location.pathname != "/view-candidate-profile" ||
         // window.location.pathname == "/my-wishlists-candidate" ||
         // window.location.pathname == "/company-profile" ||
         // window.location.pathname == "/company-post-jobs" ||

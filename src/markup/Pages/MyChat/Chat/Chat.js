@@ -68,23 +68,20 @@ const Chat = ({ location, otherId, loading, setIsLoading }) => {
       (state.userDetails.id == data?.candidate_id &&
         state.userDetails.id != data?.sent_by)
     ) {
-      console.log("testing the messages if", data);
-
       let tempArr = state.messagesChat;
 
       tempArr.push({
         sent_by: data?.sent_by,
         text: data?.text,
-        created_at: Date().now(),
+        created_at: new Date(),
       });
       dispatch(socketUpdateMessages(tempArr));
     } else {
-      console.log("testing the messages if", data);
       let tempArr = state.messagesChat;
       tempArr.push({
         sent_by: data?.sent_by,
         text: data?.text,
-        created_at: Date().now(),
+        created_at: new Date(),
       });
       dispatch(socketUpdateMessages(tempArr));
     }

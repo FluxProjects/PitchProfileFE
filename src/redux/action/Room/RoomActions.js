@@ -79,9 +79,16 @@ export const getMyRoomsCandidate = () => async (dispatch, state) => {
   axios(config)
     .then(function (response) {
       console.log("messsgaes gettig rooms", response.data);
+      var arr = response.data.data;
+
+      const uniqueAddresses = Array.from(
+        new Set(arr.map((a) => a.company?.company_name))
+      ).map((id) => {
+        return arr.find((a) => a.company?.company_name === id);
+      });
       dispatch({
         type: "myRooms",
-        data: response.data.data,
+        data: uniqueAddresses,
         IsReadLength: response.data?.IsReadLength,
       });
     })
@@ -132,9 +139,19 @@ export const getMyRoomsCompany = () => async (dispatch, state) => {
   axios(config)
     .then(function (response) {
       console.log("messsgaes gettig rooms company", response.data);
+      var arr = response.data.data;
+
+      const uniqueAddresses = Array.from(
+        new Set(arr.map((a) => a.candidate.f_name + " " + a.candidate.l_name))
+      ).map((id) => {
+        return arr.find(
+          (a) => a.candidate.f_name + " " + a.candidate.l_name === id
+        );
+      });
+
       dispatch({
         type: "myRooms",
-        data: response.data.data,
+        data: uniqueAddresses,
         IsReadLength: response.data?.IsReadLength,
       });
     })

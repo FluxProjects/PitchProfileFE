@@ -82,7 +82,7 @@ const ChatContacts = ({
   const callUpdateMyRoomsisRead = async (room_id) => {
     await dispatch(updateMyRoomsisRead(room_id)).then(() => {
       // callGetRooms();
-      roomIndexSelect();
+      // roomIndexSelect();
       console.log("test");
     });
   };
@@ -116,6 +116,10 @@ const ChatContacts = ({
     setLoading(false);
   };
 
+  useEffect(() => {
+    console.log("indexSelected", indexSelected);
+  }, [indexSelected]);
+
   return (
     <div className="">
       <div className="containerChatContact">
@@ -145,121 +149,132 @@ const ChatContacts = ({
             }}
             className="col-md-4 col-sm-12"
           >
-            <ScrollToBottom style={{}}>
-              {state?.myRooms?.length > 0
-                ? state?.myRooms?.map((item, index) => (
-                    <>
-                      <div
-                        className="cursorPointer"
-                        style={{
-                          borderBottom: "1px solid",
-                          flexDirection: "row",
-                          paddingTop: "10px",
-                          paddingBottom: "10px",
-                          background:
-                            indexSelected == index
-                              ? "lightgray"
-                              : "transparent",
+            <ScrollToBottom
+              style={{
+                height: 520,
+                width: 400,
+              }}
+            >
+              <div style={{ height: "550px" }}>
+                {state?.myRooms?.length > 0
+                  ? state?.myRooms?.map((item, index) => (
+                      <a
+                        style={{ position: "relative" }}
+                        onClick={() => {
+                          setIndexSelected(index);
+
+                          dispatch(clearMessages());
+
+                          dispatch(
+                            setRoomNameRedux(
+                              state.userDetails?.company_name
+                                ? item?.candidate?.f_name +
+                                    " " +
+                                    item?.candidate?.l_name
+                                : item?.company?.company_name
+                            )
+                          );
+                          dispatch(setRoomIdRedux(item?.id));
+
+                          // dispatch(UpdateRoom(index));
+
+                          setIsLoading(true);
+                          console.log(
+                            "item?.candidate_iditem?.candidate_id",
+                            item?.candidate_id
+                          );
+                          setOtherId(
+                            state.userDetails?.company_name
+                              ? item?.candidate_id
+                              : item?.company_id
+                          );
+
+                          // setRoomName(
+                          //   state.userDetails?.company_name
+                          //     ? item?.candidate?.f_name +
+                          //         " " +
+                          //         item?.candidate?.l_name
+                          //     : item?.company?.company_name
+                          // );
+                          callUpdateMyRoomsisRead(item?.id);
+                          // roomIndexSelect();
+                          setChatModal(true);
                         }}
                       >
-                        <span
+                        <div
+                          className="cursorPointer"
                           style={{
-                            border: "1px solid",
-                            borderRadius: 500,
-                            width: 28,
-                            marginLeft: 10,
-                            marginRight: 10,
+                            borderBottom: "1px solid",
+                            flexDirection: "row",
+                            paddingTop: "10px",
+                            paddingBottom: "10px",
+                            background:
+                              indexSelected == index
+                                ? "lightgray"
+                                : "transparent",
                           }}
                         >
-                          <img
+                          <span
                             style={{
-                              maxWidth: "21px",
-                              borderRadius: 100,
-                              height: "21px",
-                              marginBottom: "4px",
+                              border: "1px solid",
+                              borderRadius: 500,
+                              width: 28,
+                              marginLeft: 10,
+                              marginRight: 10,
                             }}
-                            width={30}
-                            src={
-                              state.userDetails?.company_name
-                                ? item?.candidate?.pic
-                                  ? item?.candidate?.pic
-                                  : getUserAvatar(
-                                      item?.candidate?.f_name +
-                                        " " +
-                                        item?.candidate?.l_name
-                                    )
-                                : item?.company?.pic
-                                ? item?.company?.pic
-                                : getUserAvatar(item?.company?.company_name)
-                            }
-                          />
-                        </span>
-                        <a
-                          className="btnStyle"
-                          onClick={() => {
-                            dispatch(clearMessages());
-
-                            dispatch(
-                              setRoomNameRedux(
-                                state.userDetails?.company_name
-                                  ? item?.candidate?.f_name +
-                                      " " +
-                                      item?.candidate?.l_name
-                                  : item?.company?.company_name
-                              )
-                            );
-                            dispatch(setRoomIdRedux(item?.id));
-
-                            // dispatch(UpdateRoom(index));
-
-                            setIsLoading(true);
-                            console.log(
-                              "item?.candidate_iditem?.candidate_id",
-                              item?.candidate_id
-                            );
-                            setOtherId(
-                              state.userDetails?.company_name
-                                ? item?.candidate_id
-                                : item?.company_id
-                            );
-
-                            // setRoomName(
-                            //   state.userDetails?.company_name
-                            //     ? item?.candidate?.f_name +
-                            //         " " +
-                            //         item?.candidate?.l_name
-                            //     : item?.company?.company_name
-                            // );
-                            callUpdateMyRoomsisRead(item?.id);
-                            setIndexSelected(index);
-                            // roomIndexSelect();
-                            setChatModal(true);
-                          }}
-                          style={{
-                            color: indexSelected == index ? "#2e55fa" : "black",
-                          }}
-                        >
-                          {state.userDetails?.company_name
-                            ? item?.candidate?.f_name +
-                              " " +
-                              item?.candidate?.l_name
-                            : item?.company?.company_name}
-                          {item?.isRead == false && (
-                            <span
+                          >
+                            <img
                               style={{
-                                position: "absolute",
-                                background: "red",
-                                width: "10px",
-                                height: "10px",
-                                borderRadius: "50%",
+                                maxWidth: "21px",
+                                borderRadius: 100,
+                                height: "21px",
+                                marginBottom: "4px",
                               }}
-                            ></span>
-                          )}
-                        </a>
-                      </div>
-                    </>
-                  ))
-                : "No chats added yet"}
+                              width={30}
+                              src={
+                                state.userDetails?.company_name
+                                  ? item?.candidate?.pic
+                                    ? item?.candidate?.pic
+                                    : getUserAvatar(
+                                        item?.candidate?.f_name +
+                                          " " +
+                                          item?.candidate?.l_name
+                                      )
+                                  : item?.company?.pic
+                                  ? item?.company?.pic
+                                  : getUserAvatar(item?.company?.company_name)
+                              }
+                            />
+                          </span>
+                          <a
+                            className="btnStyle"
+                            style={{
+                              color:
+                                indexSelected == index ? "#2e55fa" : "black",
+                            }}
+                          >
+                            {state.userDetails?.company_name
+                              ? item?.candidate?.f_name +
+                                " " +
+                                item?.candidate?.l_name
+                              : item?.company?.company_name}
+                            {item?.isRead == false && (
+                              <span
+                                style={{
+                                  position: "absolute",
+                                  background: "red",
+                                  width: "10px",
+                                  height: "10px",
+                                  borderRadius: "50%",
+                                }}
+                              ></span>
+                            )}
+                          </a>
+                        </div>
+                      </a>
+                    ))
+                  : "No chats added yet"}
+              </div>
             </ScrollToBottom>
           </div>
           <div

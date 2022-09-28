@@ -18,42 +18,18 @@ export default function Footer() {
                 <div className="widget border-0">
                   <ul className="list-2 list-line">
                     <li>
-                      <Link className="textFooter" to={""}>
-                        Privacy & Seurty
+                      <Link className="textFooter" to={"/about-us"}>
+                        About
                       </Link>
                     </li>
                     <li>
-                      <Link to={""}>Terms of Serice</Link>
-                    </li>
-                    <li>
-                      <Link to={""}>Communications</Link>
-                    </li>
-                    <li>
-                      <Link to={""}>Referral Terms</Link>
-                    </li>
-                    <li>
-                      <Link to={""}>Lending Licnses</Link>
-                    </li>
-                    <li>
                       <Link to={""}>Support</Link>
+                    </li>
+                    <li>
+                      <Link to={"/contact"}>Contact</Link>
                     </li>
                     <li>
                       <Link to={""}>How It Works</Link>
-                    </li>
-                    <li>
-                      <Link to={""}>For Employers</Link>
-                    </li>
-                    <li>
-                      <Link to={""}>Underwriting</Link>
-                    </li>
-                    <li>
-                      <Link to={""}>Contact Us</Link>
-                    </li>
-                    <li>
-                      <Link to={""}>Lending Licnses</Link>
-                    </li>
-                    <li>
-                      <Link to={""}>Support</Link>
                     </li>
                   </ul>
                 </div>

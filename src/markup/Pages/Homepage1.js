@@ -386,7 +386,7 @@ export default function Homepage() {
 
         {/* <Featureblog /> */}
 
-        <Jobsection />
+        {/* <Jobsection /> */}
         <div
           className="section-full p-tb70 overlay-black-dark text-white text-center bg-img-fix"
           style={{ backgroundImage: "url(" + bnr2 + ")" }}
@@ -401,7 +401,7 @@ export default function Homepage() {
           </div>
         </div>
 
-        <div
+        {/* <div
           className="section-full content-inner-2 overlay-white-middle"
           style={{
             backgroundImage: "url( " + bnr3 + ")",
@@ -501,7 +501,7 @@ export default function Homepage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Footer />
