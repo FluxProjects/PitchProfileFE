@@ -87,7 +87,7 @@ export default function AttachVideo({ isView }) {
                       </h5>
                       <p className="m-auto mt-3  align-self-center">
                         {/* <i className="fa  fa-upload"></i> */}
-                        Pitch your talent, experience and achievements in a
+                        Pitch your skills, experience and achievements in a
                         short video. (Ideal video length should be 1-2 minutes)
                       </p>
                       <br />

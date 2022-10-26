@@ -97,13 +97,13 @@ export default function Homepage() {
       disability: false,
       disability_description: "T",
       email: "pitchprofile@proton.me",
-      f_name: "Naomi",
+      f_name: "Rachel",
       gender: 1,
       headline: " ",
       hometown_country_id: 1,
       is_active: true,
       is_reviewed: false,
-      l_name: "Scott",
+      l_name: "Brown",
       marital_status: 1,
       passport_number: "1234",
       password: "$2b$10$M4/6POPN3YIp/f7WFG7v6eXWccn59tsEIpOlfWhlx7AuqK7ezESvy",
@@ -182,13 +182,13 @@ export default function Homepage() {
       disability: false,
       disability_description: "T",
       email: "pitchprofile@proton.me",
-      f_name: "Rachel",
+      f_name: "Naomi",
       gender: 1,
       headline: " ",
       hometown_country_id: 1,
       is_active: true,
       is_reviewed: false,
-      l_name: "Brown",
+      l_name: "Scott",
       marital_status: 1,
       passport_number: "1234",
       password: "$2b$10$M4/6POPN3YIp/f7WFG7v6eXWccn59tsEIpOlfWhlx7AuqK7ezESvy",
@@ -293,13 +293,13 @@ export default function Homepage() {
                       fontFamily: "montserrat",
                     }}
                   >
-                    Pitch your{" "}
+                    Pitch Your{" "}
                     <span style={{ fontWeight: "bold", color: "#1b6cd5" }}>
-                      talent
+                      Yalent
                     </span>
-                    , <br /> get notified and{" "}
+                    , <br /> Get Noticed And{" "}
                     <span style={{ fontWeight: "bold", color: "#1b6cd5" }}>
-                      get hired.
+                      Get Hired.
                     </span>
                   </h2>
                   <span

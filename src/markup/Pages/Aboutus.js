@@ -56,23 +56,15 @@ export default function AboutUs(props) {
                   <h2 className="m-b5">About Us</h2>
                   <h3 className="fw4">We create unique experiences</h3>
                   <p className="m-b15">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and. It is a long established
-                    fact that a reader will be distracted by the readable
-                    content of a page when looking at its layout. The point of
-                    using Lorem Ipsum is that it has a more-or-less.
+                    Pitch Profile is a video based profile sharing network that
+                    allows professionals to pitch their skills and experience in
+                    a short video recorded at their own time and comfort. It
+                    enables employers and recruiters to view video profiles of
+                    candidates in a quick effective manner to support their
+                    shortlisting process. They do not have to go through
+                    hundreds of pages of CVs to get a feel for candidate
+                    competencies.
                   </p>
-                  <p className="m-b15">
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout. The point of using Lorem Ipsum is that it has a
-                    more-or-less.
-                  </p>
-                  <Link to={""} className="site-button">
-                    Read More
-                  </Link>
                 </div>
                 <div className="col-md-12 col-lg-6">
                   <img
@@ -92,11 +84,11 @@ export default function AboutUs(props) {
                     </div>
                     <div className="icon-content">
                       <h5 className="dlab-tilte text-uppercase">
-                        Elegant / Unique design
+                        Create Pitch
                       </h5>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit, sed diam nonummy nibh euismod.
+                        Just create a quick video profile about your skills and
+                        experience
                       </p>
                     </div>
                   </div>
@@ -111,11 +103,11 @@ export default function AboutUs(props) {
                     </div>
                     <div className="icon-content">
                       <h5 className="dlab-tilte text-uppercase">
-                        Make it Simple
+                        Attract Employers
                       </h5>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit, sed diam nonummy nibh euismod.
+                        Get noticed by hundreds of companies & recruiters. Find
+                        ideal job and apply
                       </p>
                     </div>
                   </div>
@@ -129,13 +121,8 @@ export default function AboutUs(props) {
                       </Link>{" "}
                     </div>
                     <div className="icon-content">
-                      <h5 className="dlab-tilte text-uppercase">
-                        Different Layout Type
-                      </h5>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit, sed diam nonummy nibh euismod.
-                      </p>
+                      <h5 className="dlab-tilte text-uppercase">Get Hired</h5>
+                      <p>Secure your dream job</p>
                     </div>
                   </div>
                 </div>
@@ -154,11 +141,11 @@ export default function AboutUs(props) {
                     Make a Difference with Your Online Resume!
                   </h2>
                   <p className="m-b0">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                    It is not always easy to explain your talent on paper. Make
+                    a quick 2 min video to find your dream role.
                   </p>
                   <Link
-                    to={"/register-2"}
+                    to={"/login"}
                     className="site-button m-t20 outline outline-2 radius-xl"
                   >
                     Create an Account
@@ -169,7 +156,7 @@ export default function AboutUs(props) {
           </div>
           <div className="section-full content-inner-2 overlay-white-middle">
             <div className="container">
-              <div className="section-head text-black text-center">
+              {/* <div className="section-head text-black text-center">
                 <h2 className="text-uppercase m-b0">Our Latest Blog</h2>
                 <p>
                   Lorem Ipsum is simply dummy text of the printing and
@@ -177,7 +164,7 @@ export default function AboutUs(props) {
                   standard dummy.
                 </p>
               </div>
-              <Latestblogowl />
+              <Latestblogowl /> */}
             </div>
           </div>
         </div>

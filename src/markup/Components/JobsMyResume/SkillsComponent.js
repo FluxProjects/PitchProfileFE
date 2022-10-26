@@ -45,9 +45,7 @@ export default function SkillsComponent({ isView }) {
           <h5 className="m-b15">
             Skills{" "}
             <span style={{ color: "red", fontSize: 11 }}>
-              {
-                "(This section is mandatory please add at leaset top 3 skills. )"
-              }
+              {"(This section is mandatory please add at least top 3 skills. )"}
             </span>
           </h5>
           {!isView && (
@@ -69,6 +67,10 @@ export default function SkillsComponent({ isView }) {
           Skills are the first thing recruiters notice in your profile. List
           down your expertise and identify Top 3 skills to highlight your
           profile.
+        </p>
+        <p style={{ color: "red", fontSize: 12 }}>
+          Please note these Top Skills will appear on your public profile and
+          will be visible to Companies and Recruiters
         </p>
         <table>
           <thead>

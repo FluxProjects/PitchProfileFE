@@ -70,7 +70,8 @@ export default function Contact(props) {
                           Address:
                         </h6>
                         <p>
-                          123 West Street, Melbourne Victoria 3000 Australia
+                          38 Ruffle Close, West Drayton, Greater London, United
+                          Kingdom
                         </p>
                       </div>
                     </li>
@@ -85,7 +86,8 @@ export default function Contact(props) {
                         <h6 className="text-uppercase m-tb0 dez-tilte">
                           Email:
                         </h6>
-                        <p>info@example.com</p>
+
+                        <p>info@pitchprofile.com</p>
                       </div>
                     </li>
                     <li className="icon-bx-wraper left">
@@ -99,7 +101,7 @@ export default function Contact(props) {
                         <h6 className="text-uppercase m-tb0 dez-tilte">
                           PHONE
                         </h6>
-                        <p>+61 3 8376 6284</p>
+                        <p>+44 1895 600662</p>
                       </div>
                     </li>
                   </ul>
@@ -142,7 +144,7 @@ export default function Contact(props) {
 
               <div className="col-lg-4 col-md-6">
                 <div className="p-a30 m-b30 radius-sm bg-gray clearfix">
-                  <h4>Send Message Us</h4>
+                  <h4>Send Us a Message</h4>
                   <div className="dzFormMsg"></div>
                   <form
                     method="post"

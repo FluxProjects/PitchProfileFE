@@ -23,8 +23,17 @@ export default function Footer() {
                       </Link>
                     </li>
                     <li>
+                      <Link className="textFooter" to={"/about-us"}>
+                        Terms and conditions
+                      </Link>
+                    </li>
+                    <li>
                       <Link to={""}>Support</Link>
                     </li>
+                    <li>
+                      <Link to={""}>Privacy Policy</Link>
+                    </li>
+
                     <li>
                       <Link to={"/contact"}>Contact</Link>
                     </li>
@@ -48,9 +57,8 @@ export default function Footer() {
                 Email Newsletters
               </h4>
               <p style={{ color: "gray" }} className="text-capitalize  m-b20">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry has been the industry's standard dummy text ever since
-                the.
+                Sign up to receive email updates on product announcements, new
+                features, promotions and special subscription offers
               </p>
               <div className="subscribe-form m-b20">
                 <form

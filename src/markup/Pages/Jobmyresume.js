@@ -295,8 +295,8 @@ export default function Jobmyresume() {
                   </div>
                 )}
                 {/* 
-                This section is mandatory please add at leaset top 3 skills.
-                This section is mandatory please add at leaset 1 previous employment. 
+                This section is mandatory please add at least top 3 skills.
+                This section is mandatory please add at least 1 previous employment. 
                 */}
                 {/* {!state.userDetails.is_reviewed && state.userDetails.video && (
                   <div className="col-12 m-b30 ">
@@ -355,8 +355,8 @@ export default function Jobmyresume() {
                       class="fa fa-exclamation-circle text-danger"
                       aria-hidden="true"
                     ></i>{" "}
-                    Note: Your profile will be visible for public view once the
-                    video you have uploaded is approved by admin.
+                    Note:Your profile will be visible for public view once the
+                    uploaded video is approved by admin.
                   </p>
 
                   {/* AttachResumeComponent */}

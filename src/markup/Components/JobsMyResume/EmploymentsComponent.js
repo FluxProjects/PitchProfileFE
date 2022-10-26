@@ -44,9 +44,7 @@ export default function EmploymentsComponent({ isView }) {
           <h5 className=" mb-2">
             Employment{" "}
             <span style={{ color: "red", fontSize: 11 }}>
-              {
-                "(This section is mandatory please add at leaset 1 employment. )"
-              }
+              {"(This section is mandatory please add at least 1 employment. )"}
             </span>
           </h5>
           {!isView && (
