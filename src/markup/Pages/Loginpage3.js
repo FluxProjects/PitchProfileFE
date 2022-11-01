@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { LoginUser } from "../../redux/action";
+import {
+  forgetPassFuncCandidate,
+  LoginUser,
+  verifyCandidate,
+} from "../../redux/action";
 import RegisterTextInput from "../Components/RegisterTextInput";
 
 export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
@@ -10,11 +15,18 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
   const history = useHistory();
 
   const [email, setEmail] = useState("");
+  const [emailForPass, setEmailForPass] = useState("");
+  const [showForget, setShowForget] = useState(false);
+
   const [password, setPassword] = useState("");
 
   const callLoginUser = async () => {
     await dispatch(LoginUser(email.toLowerCase(), password, history));
     // router.push("/registration/");
+  };
+
+  const onForgetPass = async () => {
+    await dispatch(forgetPassFuncCandidate(email, setShowForget()));
   };
 
   const textInputFields = [
@@ -118,6 +130,9 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
               Login
             </button>
             <Link
+              onClick={() => {
+                setShowForget(!showForget);
+              }}
               data-toggle="tab"
               to="#forgot-password"
               className="site-button-link text-white forget-pass pull-right m-t15"
@@ -126,30 +141,51 @@ export default function Loginpage3({ setIsCurrentTab, isCurrentTab }) {
             </Link>
           </div>
         </form>
-        <form id="forgot-password" className="tab-pane fade col-12 p-a0">
-          <p>We will send you an email to reset your password. </p>
 
-          <label className="labelCol">E-Mail address *</label>
-          <div className="input-group">
-            <input
-              name="dzName"
-              required=""
-              className="form-control"
-              placeholder="Your Email Address"
-              type="email"
-            />
+        <Modal
+          // backdrop={false}
+          scrollable={true}
+          show={showForget}
+          onHide={() => setShowForget()}
+          className="modal fade modal-bx-info editor"
+        >
+          <div className="p-6">
+            <p>We will send you an email to reset your password. </p>
+            <div className="form-group">
+              <label>E-Mail address *</label>
+              <div className="input-group">
+                <input
+                  name="dzName"
+                  onChange={(e) => {
+                    setEmailForPass(e.target.value.toLowerCase());
+                  }}
+                  required=""
+                  className="form-control"
+                  placeholder="Your Email Address"
+                  type="email"
+                />
+              </div>
+            </div>
+            <div className="text-left">
+              <Link
+                className="site-button outline gray"
+                data-toggle="tab"
+                to="#login"
+              >
+                Back
+              </Link>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  onForgetPass();
+                }}
+                className="site-button pull-right"
+              >
+                Submit
+              </button>
+            </div>
           </div>
-          <div className="text-left">
-            <Link
-              className="site-button outline gray"
-              data-toggle="tab"
-              to="#login"
-            >
-              Back
-            </Link>
-            <button className="site-button pull-right">Submit</button>
-          </div>
-        </form>
+        </Modal>
       </div>
     </div>
   );

@@ -88,11 +88,13 @@ export default function ReferencesModalComp({
       console.log("add called");
       await dispatch(
         AddCandidateReference(
-          refererName,
-          organization,
-          jobTitle,
-          phone,
-          email.toLowerCase(),
+          {
+            refererName,
+            organization,
+            jobTitle,
+            phone,
+            email: email.toLowerCase(),
+          },
           handleClose()
         )
       );

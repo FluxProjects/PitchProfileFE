@@ -1906,30 +1906,16 @@ export const DeleteCandidateCertificate =
   };
 
 export const AddCandidateReference =
-  (
-    referer_name,
-    organization,
-    job_title,
-    city_id,
-    state_id,
-    country_id,
-    phone,
-    email,
-    setModal
-  ) =>
-  async (dispatch, state) => {
-    console.log("logging", state().authToken);
+  (vals, setModal) => async (dispatch, state) => {
+    console.log("logging", vals?.phone);
     var data = JSON.stringify({
       data: {
         candidate_id: state().userDetails.id,
-        referer_name,
-        organization,
-        job_title,
-        city_id,
-        state_id,
-        country_id,
-        phone,
-        email,
+        referer_name: vals?.refererName,
+        organization: vals?.organization,
+        job_title: vals?.jobTitle,
+        phone: vals?.phone,
+        email: vals?.email,
       },
     });
 

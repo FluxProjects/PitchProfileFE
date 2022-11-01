@@ -586,7 +586,7 @@ export default function Jobfindbox({ isView }) {
               )}
 
               {/* <div ></div> */}
-              <div className="col-lg-2 col-md-2">
+              <div className="col-lg-2 col-md-2 mb-2 mb-md-0">
                 <button
                   onClick={(e) => {
                     e.preventDefault();
@@ -620,7 +620,7 @@ export default function Jobfindbox({ isView }) {
                   type="submit"
                   className="site-button btn-block"
                 >
-                  Reset Filter
+                  <i className="fa fa-refresh"></i> Reset Filter
                 </button>
               </div>
             </div>

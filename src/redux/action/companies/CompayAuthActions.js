@@ -144,6 +144,64 @@ export const verifyCompany = (setModal, router) => async (dispatch, state) => {
     });
 };
 
+// forget password
+export const forgetPassFuncCompany =
+  (email, setModal, router) => async (dispatch, state) => {
+    var data = JSON.stringify({
+      email,
+    });
+
+    var config = {
+      method: "post",
+      url: `${URL}/profile/forgetPassword`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    await axios(config)
+      .then(function (response) {
+        console.log("testsjhde", response.data);
+
+        if (response.data.successful == true) {
+          console.log(JSON.stringify(response.data));
+          setModal(false);
+          toast.success("Email Sent to your function!", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          dispatch({
+            type: "RegisterUser",
+            data: response.data.data,
+          });
+          dispatch({
+            type: "SetAuthToken",
+            data: response.data.accessToken,
+          });
+          router.push("/jobs-profile");
+        } else {
+          toast.error(response.data.message, {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
 export const getSingleUserData = (id) => async (dispatch) => {
   var config = {
     method: "get",

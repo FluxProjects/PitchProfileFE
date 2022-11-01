@@ -295,7 +295,7 @@ export default function Homepage() {
                   >
                     Pitch Your{" "}
                     <span style={{ fontWeight: "bold", color: "#1b6cd5" }}>
-                      Yalent
+                      Talent
                     </span>
                     , <br /> Get Noticed And{" "}
                     <span style={{ fontWeight: "bold", color: "#1b6cd5" }}>
