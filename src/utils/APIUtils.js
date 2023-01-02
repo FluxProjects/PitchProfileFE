@@ -1,5 +1,5 @@
 // Heroku link
-export const URL = "https://pitchprofile.herokuapp.com";
+export const URL = "https://pitchprofilebe-production.up.railway.app";
 // Localhost
 // export const URL = "http://localhost:8080";
 export const cloudURL = "https://api.cloudinary.com/v1_1/flux-official";
