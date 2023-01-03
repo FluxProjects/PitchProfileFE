@@ -26,7 +26,6 @@ var bnr = require("./../../images/banner/bnr1.jpg");
 export default function AppliedJobGrid({ item, index }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
   const [isLiked, setIsLiked] = useState();
 
   useEffect(() => {
@@ -35,10 +34,7 @@ export default function AppliedJobGrid({ item, index }) {
 
   const checkLiked = () => {
     const val = state.wishlist.find((element) => {
-      console.log("istrue yahoo", element.job_id, item.id);
-
       if (element.job_id == item.id) {
-        console.log("istrue isliked yahoo");
         return true;
       }
       return false;
@@ -48,11 +44,8 @@ export default function AppliedJobGrid({ item, index }) {
 
   const onClickLike = async () => {
     if (state?.userDetails?.company_name) {
-      console.log("called companu");
       await dispatch(AddWishlistCompany(item.id));
     } else {
-      console.log("called acndid");
-
       await dispatch(AddWishlistCandidate(item.id));
     }
   };
@@ -102,9 +95,6 @@ export default function AppliedJobGrid({ item, index }) {
                   },
                 }}
               >
-                {/* {item?.job?.job_title?.substring(0, 5)}
-                {"... "}
-                {item?.job?.seniority_level != null && "- "} */}
                 {item?.job?.job_title}
                 <span
                   className="text-uppercase"
@@ -122,7 +112,6 @@ export default function AppliedJobGrid({ item, index }) {
                           (x) => x?.id == item?.job?.seniority_level
                         )
                       ].name}
-                  {/* {item.department?.name} */}
                 </span>
               </Link>
 
@@ -146,7 +135,6 @@ export default function AppliedJobGrid({ item, index }) {
                   }}
                 >
                   {item?.company?.company_name}
-                  {/* {item.department?.name} */}
                 </span>
               </Link>
             </h5>
@@ -168,18 +156,6 @@ export default function AppliedJobGrid({ item, index }) {
         </div>
 
         <div className="mb-2 d-flex " style={{ marginTop: "-30px" }}>
-          {/* <div className="text-primary">
-          <i className="fa fa-bookmark-o"></i>{" "}
-          {employmentTypeDrop.findIndex(
-            (x) => x?.id == item.employment_type
-          ) == -1
-            ? ""
-            : employmentTypeDrop[
-                employmentTypeDrop.findIndex(
-                  (x) => x?.id == item.employment_type
-                )
-              ].name}
-        </div> */}
           <div className="mb-0 cardGridFont text-primary">
             <i className="fa fa-clock-o"></i>{" "}
             {jobTypeDrop.findIndex((x) => x?.id == item.job?.job_type) == -1
