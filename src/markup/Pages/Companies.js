@@ -22,7 +22,6 @@ var bnr = require("./../../images/banner/bnr1.jpg");
 export default function Companies(props) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     callGetAllCompanies();
@@ -33,9 +32,7 @@ export default function Companies(props) {
     setLoading(false);
   };
   const [isLiked, setIsLiked] = useState();
-
   const [activeTab, setActiveTab] = useState("1");
-
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
     dispatch(filterCompanyAlphabetical(tab));
@@ -424,7 +421,6 @@ export default function Companies(props) {
                               />
                             </div>
                           </div>
-                          {/* <div className="d-flex m-b30"> */}
                           <div
                             style={{
                               minHeight: "137px",
@@ -448,8 +444,6 @@ export default function Companies(props) {
                                   },
                                 }}
                               >
-                                {/* {item?.company_name?.substring(0, 11)} */}
-                                {/* {item?.company_name?.length > 01 && "... "} */}
                                 {item?.company_name}
                               </Link>
 
@@ -504,24 +498,6 @@ export default function Companies(props) {
                               </li>
                             </ul>
                           </div>
-                          {/* </div> */}
-
-                          {/* <label className="like-btn">
-                            <input type="checkbox" />
-                            <span className="checkmark">
-                              {isLiked ? (
-                                <i
-                                  className="iconPosDet fa fa-heart"
-                                  aria-hidden="true"
-                                ></i>
-                              ) : (
-                                <i
-                                  className="iconPosDet fa fa-heart-o"
-                                  aria-hidden="true"
-                                ></i>
-                              )}
-                            </span>
-                          </label> */}
                         </div>
                       </Link>
                     </li>
