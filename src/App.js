@@ -7,12 +7,8 @@ import "./css/templete.css";
 import "./css/skin/skin-1.css";
 import "./plugins/slick/slick.min.css";
 import "./plugins/slick/slick-theme.min.css";
-
-// git@github.com-personal:FluxProjects/pitchprofile.git
-
 import { ToastContainer } from "react-toastify";
 import { Form, Modal, ToggleButton } from "react-bootstrap";
-
 import "react-toastify/dist/ReactToastify.css";
 import {
   getAuthToken,
@@ -38,7 +34,6 @@ import { socket } from "./utils/socket";
 function App() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
   const [ChatModal, setChatModal] = useState(false);
@@ -81,20 +76,14 @@ function App() {
   };
 
   useEffect(() => {
-    //  to get languages
-
     callGetSingleUserData();
     callGetRooms();
   }, []);
 
   const callGetRooms = async (id) => {
     if (state.userDetails?.company_name) {
-      console.log("Company called");
-
       await dispatch(getMyRoomsCompany());
     } else {
-      console.log("Candidate called");
-
       await dispatch(getMyRoomsCandidate());
     }
     setLoading(false);
@@ -105,10 +94,7 @@ function App() {
     var url = new URL(url_string);
     var id = url.searchParams.get("id");
     setOtherId(id);
-    console.log("window.location.href", id);
-
     await dispatch(getSingleUserData(id));
-    console.log("singleUserData", state.singleUserData);
     setLoading(false);
   };
 
@@ -123,16 +109,8 @@ function App() {
   useEffect(() => {
     socket.emit("setup", state.userDetails.id);
     socket.on("connected", () => {
-      console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
-
       setSocketId(socket.id);
     });
-    // socket.on("connection", () => {
-    //   socket.emit("setup", state.userDetails.id);
-    //   console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
-
-    //   setSocketId(socket.id);
-    // });
   }, [socket]);
 
   socket.on("message recieved", (data) => {
@@ -142,7 +120,7 @@ function App() {
         (state.userDetails.id == data?.candidate_id &&
           state.userDetails.id != data?.sent_by)
     );
-    // if (!state?.isChatModalUp) {
+
     if (
       state.userDetails.id == data?.company_id ||
       (state.userDetails.id == data?.candidate_id &&
@@ -150,7 +128,7 @@ function App() {
     ) {
       callGetRooms();
     }
-    // }
+    
   });
 
   return (
@@ -161,16 +139,6 @@ function App() {
         window.location.pathname != "/view-candidate-profile"
       )}
       {state?.authToken ? (
-        // window.location.pathname != "/view-candidate-profile" ||
-        // window.location.pathname == "/my-wishlists-candidate" ||
-        // window.location.pathname == "/company-profile" ||
-        // window.location.pathname == "/company-post-jobs" ||
-        // window.location.pathname == "/company-manage-job" ||
-        // window.location.pathname == "/company-resume" ||
-        // window.location.pathname == "/company-change-password" ||
-        // // window.location.pathname == "/company-detail" ||
-        // // window.location.pathname == "/job-detail" ||
-        // window.location.pathname == "/my-wishlists-company" ?
         <>
           <p
             style={{
@@ -221,13 +189,11 @@ function App() {
           </p>
           {ChatModal && (
             <Modal
-              // backdrop={false}
               scrollable={true}
               show={true}
               onHide={() => toggleModal()}
               className="modal fade modal-bx-info editor"
             >
-              {/* <Chat otherId={otherId} /> */}
               <ChatContacts setCloseModal={() => toggleModal()} />
             </Modal>
           )}
