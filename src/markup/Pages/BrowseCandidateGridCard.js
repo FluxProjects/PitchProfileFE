@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetAllCandidates } from "../../redux/action/candidates/BrowseCandidatesAction";
 import Header2 from "../Layout/Header2";
 import { AddWishlistCandidate, AddWishlistCompany } from "../../redux/action";
-
 import ProfileIcon from "./../../images/profile.png";
 import SkillIcon from "./../../images/topskills.png";
 var bnr = require("./../../images/banner/bnr1.jpg");
@@ -23,24 +22,16 @@ export default function BrowseCandidateGridCard({
 }) {
   const [loading, setLoading] = useState(true);
   const [isLiked, setIsLiked] = useState();
-
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  console.log(
-    "BrowseCandidateGridCardBrowseCandidateGridCard",
-    state?.wishlist[0]?.candidate_id
-  );
   useEffect(() => {
     checkLiked();
   }, []);
 
   const checkLiked = () => {
     const val = state.wishlist.find((element) => {
-      console.log("istrue yahoo", element.candidate_id, item?.id);
-
       if (element.candidate_id == item?.id) {
-        console.log("istrue isliked yahoo");
         return true;
       }
       return false;
@@ -49,9 +40,7 @@ export default function BrowseCandidateGridCard({
   };
 
   const onClickLike = async (item) => {
-    console.log("test click ");
     if (state?.userDetails?.company_name) {
-      console.log("called companu");
       await dispatch(AddWishlistCompany(item?.id));
       setIsLiked(!isLiked);
     }
@@ -245,7 +234,7 @@ export default function BrowseCandidateGridCard({
             }}
             className="mb-0  card-title"
           >
-            {/* <i className="fa fa-list"></i>  */}
+
             <img
               style={{
                 width: "20px",
