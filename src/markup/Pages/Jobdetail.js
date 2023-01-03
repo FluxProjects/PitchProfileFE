@@ -25,7 +25,6 @@ import {
   cleanCoverLetterState,
 } from "../../redux/action/jobApplications/jobApplicationsActions";
 import { useHistory } from "react-router-dom";
-
 import ReactHtmlParser from "react-html-parser";
 import TextAreaModalComponent from "../Components/JobsMyResume/TextAreaModalComponent";
 import ReactQuill from "react-quill";
@@ -62,12 +61,9 @@ export default function Jobdetail(props) {
       ? props?.location?.state?.isNavigateFromManageJob
       : false
   );
-
   const router = useHistory();
-
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
   const handleClose = () => {
     setShow(false);
   };
@@ -80,30 +76,22 @@ export default function Jobdetail(props) {
     var url = new URL(url_string);
     var id = url.searchParams.get("id");
     var company = url.searchParams.get("company");
-
-    console.log("window.location.href", id);
-    console.log("window.location.href", company);
-
     callGetSingleJob(id, company);
   }, []);
-
+  
   const callGetSingleJob = async (id, company) => {
     await dispatch(GetSingleJob(company, id));
     await dispatch(GetFeaturedJobs(company));
     setLoading(false);
   };
-
   const [FieldText, setFieldText] = useState();
   const [FieldAlert, setFieldAlert] = useState(false);
-
   const callApplyJobPost = () => {
-    console.log("description.length > 512", description.length > 512);
     if (description.length > 512) {
       setFieldAlert(true);
       setFieldText("Cover letter cannot be more than 512 characters");
       return;
     }
-
     setBtnLoading(true);
     dispatch(
       ApplyJobPost(
@@ -119,7 +107,6 @@ export default function Jobdetail(props) {
         setBtnLoading
       )
     );
-
     handleClose();
   };
 
@@ -129,16 +116,7 @@ export default function Jobdetail(props) {
     return (
       <div className="page-wraper">
         {state.userDetails.company_name ? <Header2 /> : <Header />}
-
         <div className="page-content bg-white">
-          {/* <div
-            className="dez-bnr-inr overlay-black-middle"
-            style={{ backgroundImage: "url(" + bnr + ")" }}
-          >
-            <div className="container">
-
-            </div>
-          </div> */}
           <div
             className="overlay-black-dark profile-edit p-t50 "
             style={{ backgroundImage: "url(" + bnr + ")" }}
@@ -178,18 +156,6 @@ export default function Jobdetail(props) {
                           <div className="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                             <h4 className="text-black font-weight-700 p-t10 m-b15">
                               Job Details
-                              {/* {hasGoBack && (
-                                <span>
-                                  <Link
-                                    onClick={() => {
-                                      router.goBack();
-                                    }}
-                                    className="site-button right-arrow button-sm float-right"
-                                  >
-                                    Back
-                                  </Link>
-                                </span>
-                              )} */}
                             </h4>
                             <ul>
                               <li>
@@ -403,8 +369,6 @@ export default function Jobdetail(props) {
                           state?.userDetails?.job_applications != null ? (
                             <Link
                               onClick={() => {
-                                // dispatch(ResetCoverLetterJob());
-                                // handleShow();
                               }}
                               className="site-button"
                             >
@@ -472,8 +436,6 @@ export default function Jobdetail(props) {
               </div>
               <div className="modal-body">
                 <form>
-                  {/* <label>Cover Letter</label> */}
-
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group">
@@ -508,16 +470,6 @@ export default function Jobdetail(props) {
                       <div className="col-lg-12 col-md-12">
                         <div className="form-group">
                           <label>Cover Letter</label>
-                          {/* 
-                          <TextAreaModalComponent
-                            placeholder="Enter Cover Letter"
-                            type="text"
-                            value={description}
-                            onChange={(e) => {
-                              console.log(e.target.value);
-                              setDescription(e.target.value);
-                            }}
-                          /> */}
                           <ReactQuill
                             className="quillEditor"
                             value={description}
@@ -540,7 +492,6 @@ export default function Jobdetail(props) {
                               <UploadDataComponent
                                 text={"Upload New Cover Letter"}
                                 onChange={(e) => {
-                                  console.log("e upload", e.target.value);
                                   setBtnLoading(true);
                                   dispatch(
                                     UploadCoverLetterJob(
@@ -557,8 +508,6 @@ export default function Jobdetail(props) {
                     </div>
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        {/* <label>Upload Additional Supporting Documents</label> */}
-
                         {state.AddDocApply ? (
                           <p>{state.AddDocApply.name}</p>
                         ) : (
@@ -567,7 +516,6 @@ export default function Jobdetail(props) {
                               "Upload Additional Supporting Documents (optional)"
                             }
                             onChange={(e) => {
-                              console.log("e upload", e.target.value);
                               dispatch(
                                 UploadAdditionalDocsJobApply(e.target.files)
                               );
