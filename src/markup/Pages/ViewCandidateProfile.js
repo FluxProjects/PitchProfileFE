@@ -14,7 +14,6 @@ import SocialProfilesComponent from "../Components/JobsMyResume/SocialProfilesCo
 import DesiredCareerProfileComponent from "../Components/JobsMyResume/DesiredCareerProfileComponent";
 import ProfileDetailsComponent from "../Components/JobsMyResume/ProfileDetailsComponent";
 import AttachResumeComponent from "../Components/JobsMyResume/AttachResumeComponent";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddRoom,
@@ -36,6 +35,7 @@ import DesiredCandidateCareerProfile from "../Components/JobsMyResume/DesiredCan
 import Header2 from "../Layout/Header2";
 import Chat from "./MyChat/Chat/Chat";
 import { Modal } from "react-bootstrap";
+
 var bnr = require("./../../images/banner/bnr1.jpg");
 var bnr2 = require("./../../images/background/bg3.jpg");
 
