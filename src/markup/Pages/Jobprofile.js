@@ -44,58 +44,31 @@ export default function Jobprofile() {
   const router = useHistory();
   const [modal, setModal] = useState("");
 
-  // const socket = useContext(SocketContext);
-  console.log("setup ", socket); // x8WIv7-mJelg7on_ALbx
-
   useEffect(() => {
     callGetRooms();
-    // callGetMessages(otherId);
-
     CallGetStates(state.userDetails.country_id);
     CallGetCities(state.userDetails.state_id);
-
-    // socket.emit("setup", state.userDetails.id);
-    // socket.on("connected", () => {
-    //   console.log("setup connected", socket.id); // x8WIv7-mJelg7on_ALbx
-
-    //   setSocketId(socket.id);
-    // });
-
     socket.on("message recieved", (data) => {
-      console.log("message recieved");
-      // if (!state?.isChatModalUp) {
       callGetRooms();
-      // }
     });
   }, []);
 
   const callGetRooms = async (id) => {
     if (state.userDetails?.company_name) {
-      console.log("Company called");
-
       await dispatch(getMyRoomsCompany());
     } else {
-      console.log("Candidate called");
-
       await dispatch(getMyRoomsCandidate());
     }
     setLoading(false);
   };
 
   useEffect(() => {
-    // auth
-    // if (state.authToken) {
-    //   // callGetAuth();
-    // } else {
-    //   router.push("/login");
-    // }
   }, []);
 
   const callGetAuth = async () => {
     await dispatch(getAuthToken(state.authToken, router));
   };
 
-  // states
   const [fname, setFname] = useState(state.userDetails.f_name);
   const [lname, setLname] = useState(state.userDetails.l_name);
   const [dob, setDob] = useState(state.userDetails.dob);
@@ -123,7 +96,6 @@ export default function Jobprofile() {
   const [email, setEmail] = useState(state.userDetails.email);
   const [fieldAlert, setFieldAlert] = useState(false);
   const [fieldText, setFieldText] = useState(false);
-
   const [fieldHighlight, setFieldHighlight] = useState("");
   const [isFirstFecth, setIsFirstFecth] = useState(true);
 
@@ -138,7 +110,6 @@ export default function Jobprofile() {
 
   useEffect(() => {
     setStateName(state.userDetails.state_id);
-    //  to get languages
     CallGetDropDown();
     CallGetCandidateLanguages();
   }, []);
@@ -146,10 +117,8 @@ export default function Jobprofile() {
   const CallGetCandidateLanguages = async () => {
     await dispatch(GetCandidateLanguages());
   };
-
   const CallGetDropDown = async () => {
     await dispatch(GetLanguages());
-
     await dispatch(GetCountries());
     await dispatch(
       GetStates(
@@ -168,78 +137,51 @@ export default function Jobprofile() {
     setIsFirstFecth(false);
     setLoading(false);
   };
-
   const CallGetStates = async (stateId) => {
     await dispatch(GetUserStates(stateId, setStateName, CallGetCities));
   };
   const CallGetCities = async (stateId) => {
     await dispatch(GetUserCities(stateId, setCity, isFirstFecth));
   };
-
   const callUpdateUser = async () => {
     if (fname == null || fname == "") {
       setFieldAlert(true);
       setFieldHighlight("fname");
-      setFieldText("Phone enter first name");
-
+      setFieldText("Enter First Name");
       return;
     }
     if (lname == null || lname == "") {
       setFieldAlert(true);
       setFieldHighlight("lname");
-      setFieldText("Phone enter last name");
-
+      setFieldText("Enter Last Name");
       return;
     }
     if (gender == null) {
       setFieldAlert(true);
       setFieldHighlight("gender");
-      setFieldText("Phone select gender");
-
+      setFieldText("Please Select Gender");
       return;
     }
     if (address == null || address == "") {
       setFieldAlert(true);
       setFieldHighlight("address");
-      setFieldText("Please enter address");
-
+      setFieldText("Please Enter Address");
       return;
     }
-    // if (country == null || country == "") {
-    //   setFieldAlert(true);
-    //   return;
-    // }
-    // if (city == null || city == "") {
-    //   setFieldAlert(true);
-    //   return;
-    // }
-    // if (stateName == null || stateName == "") {
-    //   setFieldAlert(true);
-    //   return;
-    // }
     if (email == null || email == "") {
       setFieldAlert(true);
       setFieldHighlight("email");
-      setFieldText("Email not valid");
-
+      setFieldText("Email is not valid");
       return;
     }
-
     if (phone == null || phone != "") {
       if (!validatePhoneNumber(phone)) {
         setFieldAlert(true);
         setFieldHighlight("phone");
-
-        setFieldText("Phone not valid");
-        //   setBtnLoading(false);
+        setFieldText("Phone is not valid");
         return;
-        console.log("this is not vlais");
       }
     }
-    // if (passport == null || passport == "") {
-    //   setFieldAlert(true);
-    //   return;
-    // }
     setFieldAlert(false);
     await dispatch(
       updateUser(
@@ -260,26 +202,21 @@ export default function Jobprofile() {
         phone,
         email.toLowerCase(),
         state.userDetails.authToken
-        // router
       )
     );
   };
-
   const deleteCandidateVal = async (id, index) => {
     await dispatch(DeleteCandidateLanguages(id, index));
   };
-
   const [show, setShow] = useState(false);
   const [updateData, setUpdateData] = useState(false);
   const [modalDataIndex, setModalDataIndex] = useState(0);
-
   const handleClose = () => {
     setShow(false);
   };
   const handleShow = () => {
     setShow(true);
   };
-
   if (loading) {
     return (
       <div className="page-wraper">
@@ -421,7 +358,6 @@ export default function Jobprofile() {
                             <div className="form-group">
                               <label>
                                 Passport Number:{" "}
-                                {/* <span className="text-danger"> *</span> */}
                               </label>
 
                               <TextInputModal
@@ -482,73 +418,6 @@ export default function Jobprofile() {
                               </div>
                             </div>
                           </div>
-
-                          {/* <div className="col-lg-12 col-md-12">
-                            <div className="form-group">
-                              <label>Any disability?</label>
-                              <div className="row">
-                                <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                                  <div className="custom-control custom-radio">
-                                    <input
-                                      type="radio"
-                                      className="custom-control-input"
-                                      id="yes"
-                                      onChange={() => {
-                                        setHasDisability(true);
-                                      }}
-                                      checked={
-                                        Disability == true ? true : false
-                                      }
-                                      name="disability"
-                                    />
-
-                                    <label
-                                      className="custom-control-label"
-                                      htmlFor="yes"
-                                    >
-                                      Yes
-                                    </label>
-                                  </div>
-                                </div>
-                                <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                                  <div className="custom-control custom-radio">
-                                    <input
-                                      type="radio"
-                                      className="custom-control-input"
-                                      id="no"
-                                      onChange={() => {
-                                        setHasDisability(false);
-                                      }}
-                                      checked={
-                                        Disability == false ? true : false
-                                      }
-                                      name="disability"
-                                    />
-                                    <label
-                                      className="custom-control-label"
-                                      htmlFor="no"
-                                    >
-                                      No
-                                    </label>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          {Disability && (
-                            <div className="col-lg-12 col-md-12">
-                              <div className="form-group">
-                                <label>Disability Description:</label>
-                                <textarea
-                                  onChange={(e) => {
-                                    setDisabilityDescription(e.target.value);
-                                  }}
-                                  value={disabilityDescription}
-                                  className="form-control"
-                                ></textarea>
-                              </div>
-                            </div>
-                          )} */}
                         </div>
 
                         <div className="col-12">
@@ -584,8 +453,6 @@ export default function Jobprofile() {
                                   </span>
                                   <span
                                     onClick={() => {
-                                      console.log("tests", index);
-
                                       deleteCandidateVal(item.id, index);
                                     }}
                                     className="m-l15 cursorPointer font-14"
@@ -636,7 +503,6 @@ export default function Jobprofile() {
                             </>
                           ))}
                         </div>
-
                         <div className="job-bx-title clearfix">
                           <h5 className="font-weight-700 pull-left text-uppercase">
                             Contact Information
@@ -663,10 +529,8 @@ export default function Jobprofile() {
                                 Country: <span className="text-danger"> *</span>
                               </label>
 
-                              {/* <DropdownSearch items={state.countries} /> */}
                               <DropDownModalComponent
                                 onChange={(e) => {
-                                  console.log("eee", e.target.value);
                                   CallGetStates(e.target.value);
                                   setCountry(e.target.value);
                                 }}
@@ -683,11 +547,8 @@ export default function Jobprofile() {
                               </label>
                               <DropDownModalComponent
                                 onChange={(e) => {
-                                  console.log("eee", e.target.value);
                                   CallGetCities(e.target.value);
-
                                   setStateName(e.target.value);
-                                  //   setLastUsed(e.target.value);
                                 }}
                                 value={stateName}
                                 options={state.userState}
@@ -701,29 +562,13 @@ export default function Jobprofile() {
                               </label>
                               <DropDownModalComponent
                                 onChange={(e) => {
-                                  console.log("eee", e.target.value);
                                   setCity(e.target.value);
-                                  //   setLastUsed(e.target.value);
                                 }}
                                 value={city}
                                 options={state.userCity}
                               />
                             </div>
                           </div>
-                          {/* <div className="col-lg-6 col-md-6 col-sm-12">
-                            <div className="form-group">
-                              <label>Hometown:</label>
-                              <DropDownModalComponent
-                                onChange={(e) => {
-                                  console.log("eee", e.target.value);
-                                  setHometownCountry(e.target.value);
-                                  //   setLastUsed(e.target.value);
-                                }}
-                                value={hometownCountry}
-                                options={state.countries}
-                              />
-                            </div>
-                          </div> */}
 
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
