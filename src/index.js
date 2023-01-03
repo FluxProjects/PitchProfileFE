@@ -2,16 +2,12 @@ import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-
-//  import Redux
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import reducer from "./redux/reducers/reducer";
 import logger from "redux-logger";
-
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { socket } from "./utils/socket";
