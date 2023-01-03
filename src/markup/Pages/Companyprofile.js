@@ -43,7 +43,6 @@ export default function Companyprofile() {
   const [BtnLoading, setBtnLoading] = useState(false);
   const [stateLoad, setStateLoad] = useState(true);
   const [cityLoad, setCityLoad] = useState(true);
-
   const [companyName, setCompanyName] = useState(
     state?.userDetails?.company_name
   );
@@ -79,109 +78,86 @@ export default function Companyprofile() {
     setFieldAlert(false);
 
     if (city == "") {
-      console.log("city", city);
       setBtnLoading(false);
-      setFieldText("Enter City Name");
-
+      setFieldText("Enter City");
       setFieldAlert(true);
       return;
     }
     if (stateName == "") {
-      console.log("stateName", stateName);
       setBtnLoading(false);
-      setFieldText("Enter State Name");
-
+      setFieldText("Enter State");
       setFieldAlert(true);
       return;
     }
     if (country == "") {
-      console.log("country", country);
       setBtnLoading(false);
-      setFieldText("Enter Country Name");
-
+      setFieldText("Enter Country");
       setFieldAlert(true);
       return;
     }
     if (companyName == "") {
-      console.log("companyName", companyName);
       setBtnLoading(false);
       setFieldText("Enter Company Name");
-
       setFieldAlert(true);
       return;
     }
     if (email == "") {
-      console.log("email", email);
       setBtnLoading(false);
-      setFieldText("Enter email");
+      setFieldText("Enter Email");
       setFieldAlert(true);
       return;
     }
     if (CompanyTypeVal == "") {
-      console.log("CompanyTypeVal", CompanyTypeVal);
       setBtnLoading(false);
-      setFieldText("Enter CompanyTypeVal");
-
+      setFieldText("Enter Company Type");
       setFieldAlert(true);
       return;
     }
     if (industry == null) {
-      console.log("industry", industry);
       setBtnLoading(false);
-      setFieldText("Enter industry");
-
+      setFieldText("Enter Industry");
       setFieldAlert(true);
       return;
     }
     if (address == "") {
-      console.log("address", address);
       setBtnLoading(false);
-      setFieldText("Enter address");
-
+      setFieldText("Enter Address");
       setFieldAlert(true);
       return;
     }
     if (agreement == false) {
-      console.log("agreement", agreement);
       setBtnLoading(false);
-      setFieldText("Enter agreement");
-
+      setFieldText("Check User Agreement");
       setFieldAlert(true);
       return;
     }
     if (Description == "") {
-      console.log("Description", Description);
       setBtnLoading(false);
-      setFieldText("Enter Description");
-
+      setFieldText("Enter Company Description");
       setFieldAlert(true);
       return;
     }
     if (website != "" && website != null) {
       if (isValidUrl(website) == false) {
         setFieldAlert(true);
-        setFieldText("Enter valid website URL");
+        setFieldText("Enter Valid Website URL");
         setBtnLoading(false);
-
         return;
       }
     }
-
     if (facebook != "" && facebook != null) {
       if (isValidUrl(facebook) == false) {
         setFieldAlert(true);
-        setFieldText("Enter valid Facebook URL");
+        setFieldText("Enter Valid Facebook URL");
         setBtnLoading(false);
-
         return;
       }
     }
     if (twitter != "" && twitter != null) {
       if (isValidUrl(twitter) == false) {
         setFieldAlert(true);
-        setFieldText("Enter valid Twitter URL");
+        setFieldText("Enter Valid Twitter URL");
         setBtnLoading(false);
-
         return;
       }
     }
@@ -190,17 +166,15 @@ export default function Companyprofile() {
         setFieldAlert(true);
         setFieldText("Enter valid Linkedin URL");
         setBtnLoading(false);
-
         return;
       }
     }
     if (phone != "") {
       if (!validatePhoneNumber(phone)) {
         setFieldAlert(true);
-        setFieldText("Phone not valid");
+        setFieldText("Enter Valid Phone Number");
         setBtnLoading(false);
         return;
-        console.log("this is not vlais");
       }
     }
 
@@ -237,7 +211,6 @@ export default function Companyprofile() {
   };
 
   useEffect(() => {
-    //  to get languages
     CallGetDropDown();
   }, []);
 
@@ -247,7 +220,6 @@ export default function Companyprofile() {
     }
     await CallGetStates(state?.userDetails?.country_id);
     await CallGetCities(state?.userDetails?.state_id);
-
     if (state.skills.length < 1) {
       await dispatch(GetSkills());
     }
@@ -267,13 +239,11 @@ export default function Companyprofile() {
     await dispatch(GetUserCities(stateId, setCity, isFirstFecth));
     setCityLoad(false);
   };
-
   const CallGetStates = async (stateId) => {
     setStateLoad(true);
     await dispatch(GetUserStates(stateId, setStateName, CallGetCities));
     setStateLoad(false);
   };
-
   if (loading) {
     return <p>Loading...</p>;
   } else {
@@ -317,7 +287,6 @@ export default function Companyprofile() {
                               </label>
                               <TextInputModal
                                 onChange={(e) => {
-                                  console.log(e.target.value);
                                   setCompanyName(e.target.value);
                                 }}
                                 value={companyName}
@@ -330,7 +299,6 @@ export default function Companyprofile() {
                               <label>Tagline:</label>
                               <TextInputModal
                                 onChange={(e) => {
-                                  console.log(e.target.value);
                                   setTagline(e.target.value);
                                 }}
                                 value={tagline}
@@ -338,7 +306,6 @@ export default function Companyprofile() {
                               />
                             </div>
                           </div>
-
                           <div className="col-lg-12 col-md-12">
                             <div className="form-group">
                               <label>
@@ -367,7 +334,6 @@ export default function Companyprofile() {
                               </label>
                               <DropDownModalComponent
                                 onChange={(e) => {
-                                  console.log("eee", e.target.value);
                                   setCompanyTypeVal(e.target.value);
                                 }}
                                 value={CompanyTypeVal}
@@ -380,7 +346,6 @@ export default function Companyprofile() {
                               <label>Company Size:</label>
                               <DropDownModalComponent
                                 onChange={(e) => {
-                                  console.log("eee", e.target.value);
                                   setCompanySize(e.target.value);
                                 }}
                                 value={CompanySize}
@@ -396,7 +361,6 @@ export default function Companyprofile() {
                               </label>
                               <DropDownModalComponent
                                 onChange={(e) => {
-                                  console.log("eee", e.target.value);
                                   setIndustry(e.target.value);
                                 }}
                                 value={industry}
@@ -409,7 +373,6 @@ export default function Companyprofile() {
                               <label>Website:</label>
                               <TextInputModal
                                 onChange={(e) => {
-                                  console.log(e.target.value);
                                   setWebsite(e.target.value);
                                 }}
                                 value={website}
@@ -418,7 +381,6 @@ export default function Companyprofile() {
                             </div>
                           </div>
                         </div>
-
                         <div className="job-bx-title clearfix">
                           <h5 className="font-weight-700 pull-left text-uppercase">
                             Contact Information
@@ -432,7 +394,6 @@ export default function Companyprofile() {
                               </label>
                               <TextInputModal
                                 onChange={(e) => {
-                                  console.log(e.target.value);
                                   setPhone(e.target.value);
                                 }}
                                 value={phone}
@@ -447,13 +408,9 @@ export default function Companyprofile() {
                                 Email: <span className="text-danger"> *</span>
                               </label>
                               <br />
-                              {/* <label>{email}</label> */}
-
                               <TextInputModal
                                 disabled={true}
                                 onChange={(e) => {
-                                  console.log(e.target.value);
-                                  // setEmail(e.target.value.toLowerCase());
                                 }}
                                 value={email}
                                 placeholder="Email"
@@ -475,19 +432,14 @@ export default function Companyprofile() {
                               ></textarea>
                             </div>
                           </div>
-
                           <div className="col-lg-6 col-md-6 col-sm-12">
                             <div className="form-group">
                               <label>
                                 Country: <span className="text-danger"> *</span>
                               </label>
-
-                              {/* <DropdownSearch items={state.countries} /> */}
                               <DropDownModalComponent
                                 onChange={(e) => {
-                                  console.log("eee", e.target.value);
                                   CallGetStates(e.target.value);
-
                                   setCountry(e.target.value);
                                 }}
                                 value={country}
@@ -495,7 +447,6 @@ export default function Companyprofile() {
                               />
                             </div>
                           </div>
-
                           <div className="col-lg-6 col-md-6 col-sm-12">
                             <div className="form-group">
                               <label>
@@ -504,13 +455,10 @@ export default function Companyprofile() {
                               {!stateLoad ? (
                                 <DropDownModalComponent
                                   onChange={(e) => {
-                                    console.log("eee state", e.target.value);
                                     if (!isFirstFecth) {
                                       CallGetCities(e.target.value);
                                     }
-
                                     setStateName(e.target.value);
-                                    //   setLastUsed(e.target.value);
                                   }}
                                   value={stateName}
                                   options={state?.userState}
@@ -528,9 +476,7 @@ export default function Companyprofile() {
                               {!cityLoad ? (
                                 <DropDownModalComponent
                                   onChange={(e) => {
-                                    console.log("eee", e.target.value);
                                     setCity(e.target.value);
-                                    //   setLastUsed(e.target.value);
                                   }}
                                   value={city}
                                   options={state?.userCity}
@@ -540,19 +486,6 @@ export default function Companyprofile() {
                               )}
                             </div>
                           </div>
-                          {/* <div className="col-lg-12">
-                          <GoogleMaps
-                            apiKey={"AIzaSyBPDjB2qkV4Yxn9h0tGSk2X5uH6NKmssXw"}
-                            style={{
-                              height: "300px",
-                              width: "100%",
-                              border: "0",
-                            }}
-                            zoom={6}
-                            center={{ lat: 37.4224764, lng: -122.0842499 }}
-                            markers={{ lat: 37.4224764, lng: -122.0842499 }} //optional
-                          />
-                        </div> */}
                         </div>
 
                         <div className="job-bx-title clearfix">
@@ -566,11 +499,9 @@ export default function Companyprofile() {
                               <label>Facebook:</label>
                               <TextInputModal
                                 onChange={(e) => {
-                                  console.log(e.target.value);
                                   setFacebook(e.target.value);
                                 }}
                                 value={facebook}
-                                // placeholder="https://www.facebook.com/"
                               />
                               <small>
                                 ex: https://www.facebook.com/profile_name
@@ -582,40 +513,23 @@ export default function Companyprofile() {
                               <label>Twitter:</label>
                               <TextInputModal
                                 onChange={(e) => {
-                                  console.log(e.target.value);
                                   setTwitter(e.target.value);
                                 }}
                                 value={twitter}
-                                // placeholder="https://www.twitter.com/"
                               />
                               <small>
                                 ex: https://twitter.com/profile_name
                               </small>
                             </div>
                           </div>
-                          {/* <div className="col-lg-6 col-md-6">
-                          <div className="form-group">
-                            <label>Google</label>
-                            <TextInputModal
-                              onChange={(e) => {
-                                console.log(e.target.value);
-                                setGoogle(e.target.value);
-                              }}
-                              value={google}
-                              placeholder="https://www.google.com/"
-                            />
-                          </div>
-                        </div> */}
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                               <label>Linkedin:</label>
                               <TextInputModal
                                 onChange={(e) => {
-                                  console.log(e.target.value);
                                   setLinkedin(e.target.value);
                                 }}
                                 value={linkedin}
-                                // placeholder="https://www.linkedin.com/"
                               />
                               <small>
                                 ex: https://www.linkedin.com/in/profile_name
@@ -628,7 +542,6 @@ export default function Companyprofile() {
                             Disclaimer <span className="text-danger"> *</span>
                           </h5>
                         </div>
-
                         <div className="row">
                           <div class="form-group form-check">
                             <input
@@ -640,12 +553,6 @@ export default function Companyprofile() {
                               value={0}
                               onChange={() => setAgreement(!agreement)}
                             />
-                            {/* <input
-                            type="checkbox"
-                            class="form-check-input"
-                            id="exampleCheck1"
-                            onChange={e}
-                          /> */}
                             <label class="" for="exampleCheck1">
                               I can confirm that I am an authorised
                               representative of this company and then have the
@@ -678,28 +585,6 @@ export default function Companyprofile() {
                             Loading....
                           </button>
                         )}
-                        {/* {!loading ? (
-                          <Link
-                            to={{
-                              pathname: "/company-detail",
-                              search: `?company_id=${state.userDetails?.id}`,
-                              state: {
-                                company_id: state.userDetails?.id,
-                                showBack: true,
-                              },
-                            }}
-                            className="site-button  m-b30"
-                          >
-                            Preview
-                          </Link>
-                        ) : (
-                          <button
-                            type="button"
-                            className="site-button mr-4 m-b30"
-                          >
-                            Loading...
-                          </button>
-                        )} */}
                       </form>
                     </div>
                   </div>
