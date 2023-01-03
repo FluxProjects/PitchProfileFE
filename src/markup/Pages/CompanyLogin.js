@@ -14,13 +14,10 @@ export default function CompanyLogin({ setIsCurrentTab }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
-
   const [email, setEmail] = useState("");
   const [emailForPass, setEmailForPass] = useState("");
   const [showForget, setShowForget] = useState(false);
-
   const [password, setPassword] = useState("");
-
   const callLoginUser = async () => {
     await dispatch(LoginCompany(email.toLowerCase(), password, history));
     // router.push("/registration/");
@@ -59,15 +56,7 @@ export default function CompanyLogin({ setIsCurrentTab }) {
 
   return (
     <div className="align-items-baseline d-flex justify-content-center">
-      <div
-        className="conatinerLogin tab-content nav"
-        // style={{
-        //   padding: "35px",
-        //   borderRadius: "11px",
-        //   border: "5px solid white",
-        //   borderRadius: 10,
-        // }}
-      >
+      <div className="conatinerLogin tab-content nav">
         <form id="login" className="tab-pane active col-12 p-a0 ">
           <ul className="nav flexJustifyAround ">
             <li
@@ -138,7 +127,6 @@ export default function CompanyLogin({ setIsCurrentTab }) {
           </div>
         </form>
         <Modal
-          // backdrop={false}
           scrollable={true}
           show={showForget}
           onHide={() => setShowForget()}
