@@ -11,12 +11,9 @@ import Profilesidebar from "../Element/Profilesidebar";
 export default function Changepasswordpage() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
   const [password, setPassword] = useState("");
   const [CnfrmPassword, setCnfrmPassword] = useState("");
-
   const CallUpdateUserPassword = async () => {
-    console.log("password", password.length);
     if (password.length < 8 || CnfrmPassword.length < 8) {
       toast.error("Password length should be at least 8 characters!", {
         position: "bottom-center",
