@@ -11,7 +11,6 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
-
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +19,6 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
   const [modal, setModal] = useState("");
   const [otp, setOTP] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
-
   const callRegisterUser = async () => {
     setIsDisabled(true);
     if (password.length < 8 || CnfrmPassword.length < 8) {
@@ -60,9 +58,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
       });
       setIsDisabled(false);
     }
-    // router.push("/registration/");
   };
-
   const callVerifyOTP = async () => {
     if (otp == state.otp) await dispatch(verifyCandidate(setModal, history));
     else
@@ -76,13 +72,12 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
         progress: undefined,
       });
   };
-
   const textInputFields = [
     {
       name: "firstName",
       required: "true",
       className: "form-control ",
-      placeholder: "Your first name",
+      placeholder: "Your First Name",
       type: "text",
       label: "First Name",
       onChange: (e) => {
@@ -94,7 +89,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
       name: "lastName",
       required: "true",
       className: "form-control ",
-      placeholder: "Your last name",
+      placeholder: "Your Last Name",
       type: "text",
       label: "Last Name",
       onChange: (e) => {
@@ -106,7 +101,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
       name: "email",
       required: "true",
       className: "form-control ",
-      placeholder: "Your email",
+      placeholder: "Your Email",
       type: "text",
       label: "Email",
       onChange: (e) => {
@@ -118,7 +113,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
       name: "password",
       required: "true",
       className: "form-control ",
-      placeholder: "Your password",
+      placeholder: "Your Password",
       type: "password",
       label: "Password",
       onChange: (e) => {
@@ -166,12 +161,10 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
             label={
               "A verification code has been sent to your email address. Please enter the code below to complete sign up"
             }
-            // key={index}
             onChange={(e) => {
               setOTP(e.target.value);
             }}
           />
-
           <div
             style={{
               display: "flex",
@@ -182,7 +175,6 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                // callRegisterUser(e);
                 callVerifyOTP(e);
               }}
               className="site-button"
@@ -196,16 +188,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
         style={{}}
         className="align-items-baseline d-flex justify-content-center"
       >
-        <div
-          className=" conatinerLogin tab-content nav"
-
-          // style={{
-          //   padding: "35px",
-          //   borderRadius: "11px",
-          //   border: "5px solid white",
-          //   borderRadius: 10,
-          // }}
-        >
+        <div className=" conatinerLogin tab-content nav">
           <form id="login" className="tab-pane active col-12  ">
             <ul className="nav flexJustifyAround ">
               <li
@@ -225,7 +208,6 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
                 <a>Sign up</a>
               </li>
             </ul>
-
             <h2 className="textHeadingLoginContainer">Sign up for free.</h2>
             <p className="font-weight-600 text-white text-left">
               Join Thousands of Companies that <br /> use Pitch Profile everyday
@@ -251,8 +233,7 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
                 className="text-white"
               >
                 Log in
-              </Link>
-              .
+              </Link>       .
             </p>
             <div className="text-left">
               <button
@@ -270,16 +251,6 @@ export default function Register({ setIsCurrentTab, isCurrentTab }) {
               >
                 Sign up
               </button>
-
-              {/* <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setModal(true);
-                        }}
-                        className="site-button mr-2 ml-2"
-                      >
-                        Open Modal
-                      </button> */}
             </div>
           </form>
         </div>
