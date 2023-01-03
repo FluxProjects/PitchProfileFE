@@ -1,6 +1,5 @@
 import axios from "axios";
 import { URL } from "../../utils/APIUtils";
-
 import { toast } from "react-toastify";
 
 export const GetLanguages = () => async (dispatch) => {
@@ -12,7 +11,6 @@ export const GetLanguages = () => async (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      console.log("languages get", response.data);
       if (response.data.successful) {
         dispatch({
           type: "setLangs",
@@ -31,7 +29,6 @@ export const GetLanguages = () => async (dispatch) => {
       }
     })
     .catch(function (error) {
-      console.log(error);
       toast.error(error, {
         position: "bottom-center",
         autoClose: 5000,
@@ -71,7 +68,6 @@ export const GetCountries = () => async (dispatch) => {
       }
     })
     .catch(function (error) {
-      console.log(error);
       toast.error(error, {
         position: "bottom-center",
         autoClose: 5000,
@@ -87,7 +83,6 @@ export const GetCountries = () => async (dispatch) => {
 export const GetStates =
   (country, setStateName, CallGetCities, isFirstFecth, idCity) =>
   async (dispatch, state) => {
-    console.log("isFirstFecthisFirstFecth", isFirstFecth);
     var config = {
       method: "get",
       url: `${URL}/locations/states/${country}`,
@@ -96,8 +91,6 @@ export const GetStates =
 
     axios(config)
       .then(function (response) {
-        // console.log("testing the ", response.data.states[0]?.id);
-
         if (response.data.successful) {
           if (!isFirstFecth) {
             // setStateName(-1);
@@ -105,7 +98,6 @@ export const GetStates =
           const sortedArr = response.data.states.sort((a, b) =>
             a.name.localeCompare(b.name)
           );
-          console.log("idCityidCity", idCity);
           CallGetCities(idCity ? idCity : sortedArr[0]?.id);
           dispatch({
             type: "setStates",
@@ -124,7 +116,6 @@ export const GetStates =
         }
       })
       .catch(function (error) {
-        console.log(error);
         toast.error(error, {
           position: "bottom-center",
           autoClose: 5000,
@@ -138,8 +129,6 @@ export const GetStates =
   };
 
 export const GetCities = (id, setCity, isFirstFecth) => async (dispatch) => {
-  console.log("teteteecvr", isFirstFecth);
-
   var config = {
     method: "get",
     url: `${URL}/locations/cities/${id}`,
@@ -148,7 +137,6 @@ export const GetCities = (id, setCity, isFirstFecth) => async (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      // console.log("testing the ", response.data);
       if (response.data.successful) {
         console.log("is firststs", isFirstFecth);
         if (!isFirstFecth) {
@@ -174,7 +162,6 @@ export const GetCities = (id, setCity, isFirstFecth) => async (dispatch) => {
       }
     })
     .catch(function (error) {
-      console.log(error);
       toast.error(error, {
         position: "bottom-center",
         autoClose: 5000,
@@ -190,7 +177,6 @@ export const GetCities = (id, setCity, isFirstFecth) => async (dispatch) => {
 export const GetUserStates =
   (country, setStateName, CallGetCities, isFirstFecth) =>
   async (dispatch, state) => {
-    console.log("isFirstFecthisFirstFecth", isFirstFecth);
     var config = {
       method: "get",
       url: `${URL}/locations/states/${country}`,
@@ -199,8 +185,6 @@ export const GetUserStates =
 
     axios(config)
       .then(function (response) {
-        // console.log("testing the ", response.data.states[0]?.id);
-
         if (response.data.successful) {
           if (!isFirstFecth) {
             // setStateName(-1);
@@ -213,7 +197,6 @@ export const GetUserStates =
               ? state().userDetails.state_id
               : sortedArr[0]?.id
           );
-          console.log("testxegyfhcsd", sortedArr);
           dispatch({
             type: "GetUserState",
             data: sortedArr,
@@ -231,7 +214,6 @@ export const GetUserStates =
         }
       })
       .catch(function (error) {
-        console.log(error);
         toast.error(error, {
           position: "bottom-center",
           autoClose: 5000,
@@ -246,8 +228,6 @@ export const GetUserStates =
 
 export const GetUserCities =
   (id, setCity, isFirstFecth) => async (dispatch) => {
-    console.log("teteteecvr", isFirstFecth);
-
     var config = {
       method: "get",
       url: `${URL}/locations/cities/${id}`,
@@ -256,7 +236,6 @@ export const GetUserCities =
 
     axios(config)
       .then(function (response) {
-        // console.log("testing the ", response.data);
         if (response.data.successful) {
           console.log("is firststs", isFirstFecth);
           if (!isFirstFecth) {
@@ -282,7 +261,6 @@ export const GetUserCities =
         }
       })
       .catch(function (error) {
-        console.log(error);
         toast.error(error, {
           position: "bottom-center",
           autoClose: 5000,
@@ -304,7 +282,6 @@ export const GetDepartments = (id) => async (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      // console.log("res data", response.data);
       if (response.data.successful) {
         dispatch({
           type: "GetDepartments",
@@ -336,7 +313,6 @@ export const GetIndustries = (id) => async (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      // console.log(JSON.stringify(response.data));
       if (response.data.successful) {
         dispatch({
           type: "GetIndustries",
@@ -368,7 +344,6 @@ export const GetSkills = (id) => async (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      // console.log(JSON.stringify(response.data));
       if (response.data.successful) {
         dispatch({
           type: "GetSkills",
@@ -400,7 +375,6 @@ export const GetEducationLevels = (id) => async (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
       if (response.data.successful) {
         dispatch({
           type: "GetEducationLevels",
