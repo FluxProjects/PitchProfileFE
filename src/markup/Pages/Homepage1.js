@@ -12,14 +12,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetAllJobPosts, getAuthToken } from "../../redux/action";
 import Header2 from "../Layout/Header2";
 import HeaderOffline from "../Layout/HeaderOffline";
-
 import Home1 from "../../images/home1.png";
 import Home2 from "../../images/home2.png";
 import Home3 from "../../images/home3.png";
 import Home4 from "../../images/home4.png";
-
 import LandingBg from "../../images/bgLanding.png";
-
 import { GetAllCandidates } from "../../redux/action/candidates/BrowseCandidatesAction";
 import BrowseCandidateGridCard from "./BrowseCandidateGridCard";
 
@@ -33,12 +30,10 @@ export default function Homepage() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const router = useHistory();
-
   const callGetAllCandidates = async () => {
     await dispatch(GetAllCandidates());
     setLoading(false);
   };
-
   const callGetAllJobs = async () => {
     await dispatch(GetAllJobPosts());
   };
@@ -48,8 +43,6 @@ export default function Homepage() {
     callGetAllCandidates();
 
     var i = 0;
-
-    // Placeholder Animation Start
     var inputSelector = document.querySelectorAll("input, textarea");
 
     for (i = 0; i < inputSelector.length; i++) {
@@ -69,29 +62,16 @@ export default function Homepage() {
         }
       });
     }
-
-    // Placeholder Animation End
   }, []);
-
-  // useEffect(() => {
-  //   // auth
-  //   if (state.authToken) {
-  //     callGetAuth();
-  //   } else {
-  //     router.push("/login");
-  //   }
-  // }, []);
 
   const callGetAuth = async () => {
     await dispatch(getAuthToken(state.authToken, router));
   };
 
   const HomeProfileCards = [
-    // Naomi
     {
       address: "street 123",
       objectPosition: "top",
-
       city_id: 48184,
       country_id: 232,
       disability: false,
@@ -130,7 +110,6 @@ export default function Homepage() {
         },
       ],
     },
-    // Adam
     {
       address: "street 123",
       city_id: 48184,
@@ -174,7 +153,6 @@ export default function Homepage() {
         },
       ],
     },
-    // Rachel
     {
       address: "street 123",
       city_id: 48184,
@@ -215,7 +193,6 @@ export default function Homepage() {
         },
       ],
     },
-    // Mark
     {
       address: "street 123",
       city_id: 48184,
@@ -258,7 +235,6 @@ export default function Homepage() {
     },
   ];
 
-  console.log("HomeProfilecards", HomeProfileCards);
   return (
     <div className="page-wraper">
       {state.authToken == "" ? null : state.userDetails?.company_name ? (
@@ -400,110 +376,7 @@ export default function Homepage() {
             <Owltestimonial />
           </div>
         </div>
-
-        {/* <div
-          className="section-full content-inner-2 overlay-white-middle"
-          style={{
-            backgroundImage: "url( " + bnr3 + ")",
-            backgroundPosition: "bottom",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "100%",
-          }}
-        >
-          <div className="container">
-            <div className="section-head text-black text-center">
-              <h2 className="m-b0">Membership Plans</h2>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy.
-              </p>
-            </div>
-
-            <div className="section-content box-sort-in button-example m-t80">
-              <div className="pricingtable-row">
-                <div className="row max-w1000 m-auto">
-                  <div className="col-sm-12 col-md-4 col-lg-4 p-lr0">
-                    <div className="pricingtable-wrapper style2 bg-white">
-                      <div className="pricingtable-inner">
-                        <div className="pricingtable-price">
-                          <h4 className="font-weight-300 m-t10 m-b0">Basic</h4>
-                          <div className="pricingtable-bx">
-                            <span>Free</span>
-                          </div>
-                        </div>
-                        <p>
-                          Lorem ipsum dolor sit amet adipiscing elit sed do
-                          eiusmod tempors labore et dolore magna siad enim
-                          aliqua
-                        </p>
-                        <div className="m-t20">
-                          <Link to={"/login"} className="site-button radius-xl">
-                            <span className="p-lr30">Sign Up</span>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-12 col-md-4 col-lg-4 p-lr0">
-                    <div className="pricingtable-wrapper style2 bg-primary text-white active">
-                      <div className="pricingtable-inner">
-                        <div className="pricingtable-price">
-                          <h4 className="font-weight-300 m-t10 m-b0">
-                            Professional
-                          </h4>
-                          <div className="pricingtable-bx">
-                            {" "}
-                            $ <span>29</span> / Per Installation{" "}
-                          </div>
-                        </div>
-                        <p>
-                          Lorem ipsum dolor sit amet adipiscing elit sed do
-                          eiusmod tempors labore et dolore magna siad enim
-                          aliqua
-                        </p>
-                        <div className="m-t20">
-                          <Link
-                            to={"/login"}
-                            className="site-button white radius-xl"
-                          >
-                            <span className="text-primary p-lr30">Sign Up</span>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-12 col-md-4 col-lg-4 p-lr0">
-                    <div className="pricingtable-wrapper style2 bg-white">
-                      <div className="pricingtable-inner">
-                        <div className="pricingtable-price">
-                          <h4 className="font-weight-300 m-t10 m-b0">
-                            Extended
-                          </h4>
-                          <div className="pricingtable-bx">
-                            {" "}
-                            $ <span>29</span> / Per Installation{" "}
-                          </div>
-                        </div>
-                        <p>
-                          Lorem ipsum dolor sit amet adipiscing elit sed do
-                          eiusmod tempors labore et dolore magna siad enim
-                          aliqua
-                        </p>
-                        <div className="m-t20">
-                          <Link to={"/login"} className="site-button radius-xl">
-                            <span className="p-lr30">Sign Up</span>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
-
       <Footer />
     </div>
   );
