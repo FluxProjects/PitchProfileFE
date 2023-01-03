@@ -103,9 +103,6 @@ function App() {
     dispatch(setIsChatModalUp());
   };
 
-  // socket
-  // const socket = useContext(SocketContext);
-
   useEffect(() => {
     socket.emit("setup", state.userDetails.id);
     socket.on("connected", () => {
