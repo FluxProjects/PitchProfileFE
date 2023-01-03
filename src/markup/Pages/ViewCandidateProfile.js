@@ -45,7 +45,6 @@ export default function ViewCandidateProfile(props) {
   const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
   const [otherId, setOtherId] = useState("");
-
   const handleClose = () => {
     setShow(false);
   };
@@ -59,17 +58,12 @@ export default function ViewCandidateProfile(props) {
     var url = new URL(url_string);
     var id = url.searchParams.get("id");
     setOtherId(id);
-    console.log("window.location.href", id);
-
     await dispatch(getSingleUserData(id));
-    console.log("singleUserData", state.singleUserData);
     setLoading(false);
   };
-
   const callGetStateName = async () => {
     GetStateName();
   };
-
   const callAddRoom = async (setModal) => {
     await dispatch(
       AddRoom(
@@ -77,7 +71,6 @@ export default function ViewCandidateProfile(props) {
         state.userDetails?.company_name ? state.userDetails?.id : otherId,
         (state.userDetails?.company_name ? otherId : state.userDetails?.id) +
           (state.userDetails?.company_name ? state.userDetails?.id : otherId),
-
         setModal
       )
     );
@@ -86,12 +79,8 @@ export default function ViewCandidateProfile(props) {
 
   const callGetRooms = async (id) => {
     if (state.userDetails?.company_name) {
-      console.log("Company called");
-
       await dispatch(getMyRoomsCompany());
     } else {
-      console.log("Candidate called");
-
       await dispatch(getMyRoomsCandidate());
     }
   };
@@ -129,58 +118,36 @@ export default function ViewCandidateProfile(props) {
                     />
                   </div>
                   <div className="col-xl-9 col-lg-8 col-md-8 col-sm-12">
-                    {/* Resume Headline */}
-                    {/* <ResumeHeadlineComponent /> */}
-
-                    {/* ProfileSummaryComponent */}
                     {state.singleUserData.summary && (
                       <ProfileCandidateSummary isView={true} />
                     )}
-                    {/* Employment */}
                     {state.singleUserData.employments.length > 0 && (
                       <EmploymentCandidate isView={true} />
                     )}
-
-                    {/* Education */}
                     {state.singleUserData.educations.length > 0 && (
                       <EducaionCandidate isView={true} />
                     )}
-
-                    {/* SkillCandidate */}
                     {state.singleUserData.candidate_skills.length > 0 && (
                       <SkillCandidate isView={true} />
                     )}
-
-                    {/* ProjectsComponent */}
                     {state.singleUserData.projects.length > 0 && (
                       <ProjectCandidate isView={true} />
                     )}
-
-                    {/* Certification */}
                     {state.singleUserData.certificates.length > 0 && (
                       <CertificateCandidate isView={true} />
                     )}
-
-                    {/* Social  */}
                     {state.singleUserData.social_profiles.length > 0 && (
                       <SocialProfileCandidate isView={true} />
                     )}
-
-                    {/* Reference Component */}
                     {state.singleUserData.references.length > 0 && (
                       <ReferencesCandidate isView={true} />
                     )}
-                    {/* DesiredCareerProfileComponent */}
                     {state.singleUserData?.desired_careers?.length > 0 && (
                       <DesiredCandidateCareerProfile isView={true} />
                     )}
-
-                    {/* ProfileDetailsComponent */}
                     {state.singleUserData.dob && (
                       <ProfileCandidate isView={true} />
                     )}
-
-                    {/* AttachResumeComponent */}
                     {state.singleUserData.cover_letter && (
                       <AttachResumeCandidate isView={true} />
                     )}
@@ -188,7 +155,6 @@ export default function ViewCandidateProfile(props) {
                 </div>
               </div>
             </div>
-
             <div
               className="modal fade lead-form-modal"
               id="car-details"
