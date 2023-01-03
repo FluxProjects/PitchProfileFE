@@ -31,7 +31,7 @@ export default function Changepasswordpage() {
         UpdateUserPassword(state.userDetails.id, password, state.authToken)
       );
     } else {
-      toast.error("Passwords don't match!", {
+      toast.error("Passwords do not match!", {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
