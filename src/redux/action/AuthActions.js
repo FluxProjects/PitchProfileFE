@@ -1,6 +1,5 @@
 import axios from "axios";
 import { cloudURL, URL } from "../../utils/APIUtils";
-
 import { toast } from "react-toastify";
 import { lazySlidesOnLeft } from "react-slick/lib/utils/innerSliderUtils";
 
@@ -8,12 +7,10 @@ export const registerUser =
   (f_name, l_name, email, password, router, setModal, setIsDisabled) =>
   async (dispatch) => {
     var val = Math.floor(1000 + Math.random() * 9000);
-    console.log(val);
     dispatch({
       type: "SetOTP",
       data: val,
     });
-
     var data = {
       r_data: {
         f_name,
@@ -23,7 +20,6 @@ export const registerUser =
         otp: val,
       },
     };
-
     var config = {
       method: "post",
       url: `${URL}/profile/register`,
@@ -33,28 +29,13 @@ export const registerUser =
 
     axios(config)
       .then(function (response) {
-        console.log("datsss", response.data);
         if (response.data.successful) {
           setModal(true);
           setIsDisabled(false);
-          // toast.success("OTP has been sent to your email!", {
-          //   position: "bottom-center",
-          //   autoClose: 5000,
-          //   hideProgressBar: false,
-          //   closeOnClick: true,
-          //   pauseOnHover: true,
-          //   draggable: true,
-          //   progress: undefined,
-          // });
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
           });
-          // dispatch({
-          //   type: "SetAuthToken",
-          //   data: response.data.accessToken,
-          // });
-          // router.push("/");
         } else {
           setIsDisabled(false);
           toast.error(`Something went wrong! ${response.data.message}`, {
@@ -69,8 +50,6 @@ export const registerUser =
         }
       })
       .catch(function (error) {
-        console.log(error);
-
         toast.error(error, {
           position: "bottom-center",
           autoClose: 5000,
@@ -83,16 +62,13 @@ export const registerUser =
       });
   };
 
-// verify_email
 export const verifyCandidate =
   (setModal, router) => async (dispatch, state) => {
-    console.log("is avcllefsr", state().userDetails);
     var data = JSON.stringify({
       data: {
         id: state().userDetails,
       },
     });
-
     var config = {
       method: "post",
       url: `${URL}/profile/verify_email`,
@@ -104,20 +80,8 @@ export const verifyCandidate =
 
     await axios(config)
       .then(function (response) {
-        console.log("testsjhde", response.data);
-
         if (response.data.successful == true) {
-          console.log(JSON.stringify(response.data));
           setModal(false);
-          // toast.success("Verified successfully!", {
-          //   position: "bottom-center",
-          //   autoClose: 5000,
-          //   hideProgressBar: false,
-          //   closeOnClick: true,
-          //   pauseOnHover: true,
-          //   draggable: true,
-          //   progress: undefined,
-          // });
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
@@ -144,13 +108,11 @@ export const verifyCandidate =
       });
   };
 
-// forget password
 export const forgetPassFuncCandidate =
   (email, setModal, router) => async (dispatch, state) => {
     var data = JSON.stringify({
       email,
     });
-
     var config = {
       method: "post",
       url: `${URL}/profile/forgetPassword`,
@@ -162,10 +124,7 @@ export const forgetPassFuncCandidate =
 
     await axios(config)
       .then(function (response) {
-        console.log("testsjhde", response.data);
-
         if (response.data.successful == true) {
-          console.log(JSON.stringify(response.data));
           setModal(false);
           toast.success("Email Sent to your function!", {
             position: "bottom-center",
@@ -211,7 +170,6 @@ export const getSingleUserData = (id) => async (dispatch) => {
 
   await axios(config)
     .then(function (response) {
-      console.log("Ayoooo", response.data);
       if (response.data.successful) {
         dispatch({
           type: "setSingleUserData",
@@ -225,7 +183,6 @@ export const getSingleUserData = (id) => async (dispatch) => {
 };
 
 export const getAllUserData = () => async (dispatch) => {
-  console.log("tesing fall");
   var config = {
     method: "get",
     url: `${URL}/profile/get_all_candidates/`,
@@ -234,7 +191,6 @@ export const getAllUserData = () => async (dispatch) => {
 
   await axios(config)
     .then(function (response) {
-      console.log("AllUserDataAllUserDataAllUserData", response.data);
       if (response.data.successful) {
         dispatch({
           type: "setAllUserData",
@@ -252,7 +208,6 @@ export const LogoutUser = (router) => async (dispatch) => {
     type: "LogoutUser",
     data: {},
   });
-
   router.push("/login");
 };
 
@@ -298,7 +253,6 @@ export const updateUser =
         email,
       },
     });
-    console.log("testing te", data);
     var config = {
       method: "post",
       url: `${URL}/profile/update_profile`,
@@ -310,9 +264,7 @@ export const updateUser =
     };
     axios(config)
       .then(function (response) {
-        console.log(response.data);
         if (response.data.successful) {
-          console.log("data", response.data.data);
           toast.success("Updated Successfully!", {
             position: "bottom-center",
             autoClose: 5000,
@@ -322,7 +274,6 @@ export const updateUser =
             draggable: true,
             progress: undefined,
           });
-
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
@@ -354,16 +305,6 @@ export const updateUser =
 export const updateUserProfileModal =
   (id, f_name, l_name, dob, gender, marital_status, setModal) =>
   async (dispatch, state) => {
-    console.log(
-      "update_profile_modalupdate_profile_modalupdate_profile_modalupdate_profile_modal",
-      id,
-      f_name,
-      l_name,
-      dob,
-      gender,
-      marital_status
-    );
-
     var data = JSON.stringify({
       data: {
         id,
@@ -385,9 +326,7 @@ export const updateUserProfileModal =
     };
     axios(config)
       .then(function (response) {
-        console.log(response.data);
         if (response.data.successful) {
-          console.log("data", response.data.data);
           toast.success("Updated Successfully!", {
             position: "bottom-center",
             autoClose: 5000,
@@ -397,7 +336,6 @@ export const updateUserProfileModal =
             draggable: true,
             progress: undefined,
           });
-
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
@@ -426,7 +364,6 @@ export const updateUserProfileModal =
       });
   };
 
-// Update is active
 export const UpdateIsActive = (is_active) => async (dispatch, state) => {
   var data = JSON.stringify({
     data: {
@@ -447,19 +384,7 @@ export const UpdateIsActive = (is_active) => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
       if (response.data.successful) {
-        console.log("data", response.data.data);
-        // toast.success("Updated Successfully!", {
-        //   position: "bottom-center",
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        // });
-
         dispatch({
           type: "RegisterUser",
           data: response.data.data,
@@ -491,14 +416,12 @@ export const UploadImage = (files) => async (dispatch, state) => {
   formData.append("upload_preset", "pitchprofile");
 
   await axios.post(`${cloudURL}/image/upload`, formData).then(async (res) => {
-    console.log("ressss", res.data);
     var data = JSON.stringify({
       data: {
         id: state().userDetails.id,
         pic: res.data.secure_url,
       },
     });
-
     var config = {
       method: "post",
       url: `${URL}/profile/update_profile_pic`,
@@ -510,19 +433,7 @@ export const UploadImage = (files) => async (dispatch, state) => {
 
     await axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
         if (response.data.successful) {
-          console.log("data", response.data.data);
-          // toast.success("Updated Successfully!", {
-          //   position: "bottom-center",
-          //   autoClose: 5000,
-          //   hideProgressBar: false,
-          //   closeOnClick: true,
-          //   pauseOnHover: true,
-          //   draggable: true,
-          //   progress: undefined,
-          // });
-
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
@@ -555,7 +466,6 @@ export const UploadCoverLetter = (files) => async (dispatch, state) => {
   formData.append("upload_preset", "pitchprofile");
 
   await axios.post(`${cloudURL}/image/upload`, formData).then(async (res) => {
-    console.log("ressss", res.data);
     var data = JSON.stringify({
       data: {
         id: state().userDetails.id,
@@ -563,7 +473,6 @@ export const UploadCoverLetter = (files) => async (dispatch, state) => {
         cover_letter: res.data.original_filename,
       },
     });
-
     var config = {
       method: "post",
       url: `${URL}/profile/update_profile_cover_letter`,
@@ -575,9 +484,7 @@ export const UploadCoverLetter = (files) => async (dispatch, state) => {
 
     await axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
         if (response.data.successful) {
-          console.log("data", response.data.data);
           toast.success("Updated Successfully!", {
             position: "bottom-center",
             autoClose: 5000,
@@ -587,7 +494,6 @@ export const UploadCoverLetter = (files) => async (dispatch, state) => {
             draggable: true,
             progress: undefined,
           });
-
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
@@ -596,7 +502,6 @@ export const UploadCoverLetter = (files) => async (dispatch, state) => {
             type: "setSingleUserData",
             data: response.data.data,
           });
-
           dispatch({
             type: "SetAuthToken",
             data: response.data.accessToken,
@@ -625,14 +530,12 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
   formData.append("upload_preset", "pitchprofile");
 
   await axios.post(`${cloudURL}/video/upload`, formData).then(async (res) => {
-    console.log("ressss", res.data);
     var data = JSON.stringify({
       data: {
         id: state().userDetails.id,
         video: res.data.secure_url,
       },
     });
-
     var config = {
       method: "post",
       url: `${URL}/profile/update_profile_vid`,
@@ -644,30 +547,7 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
 
     await axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
         if (response.data.successful) {
-          console.log("data", response.data.data);
-          // toast.success(
-          //   "Uploaded successfully. Your uploaded video is being reviewed.",
-          //   {
-          //     position: "bottom-center",
-          //     autoClose: 5000,
-          //     hideProgressBar: false,
-          //     closeOnClick: true,
-          //     pauseOnHover: true,
-          //     draggable: true,
-          //     progress: undefined,
-          //   }
-          // );
-          // var myVal = state().pedningActions;
-          // var arr = myVal.push(
-          //   "You will receive an email shortly once it is approved. Please note your profile will be LIVE once video is reviewed and approved"
-          // );
-          // dispatch({
-          //   type: "setPendingAction",
-          //   data: arr,
-          // });
-          // come here
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
@@ -696,15 +576,6 @@ export const UploadProfileVid = (files) => async (dispatch, state) => {
 
 export const LoginUser = (email, password, router) => async (dispatch) => {
   if (email == "admin@pitchprofile.com" && password == "123456") {
-    // toast.success("Login Success!", {
-    //   position: "bottom-center",
-    //   autoClose: 5000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    // });
     dispatch({
       type: "RegisterUser",
       data: { name: "admin" },
@@ -738,18 +609,7 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
         if (response.data.successful) {
-          console.log("data", response.data.data);
-          // toast.success("Login Success!", {
-          //   position: "bottom-center",
-          //   autoClose: 5000,
-          //   hideProgressBar: false,
-          //   closeOnClick: true,
-          //   pauseOnHover: true,
-          //   draggable: true,
-          //   progress: undefined,
-          // });
           dispatch({
             type: "RegisterUser",
             data: response.data.data,
@@ -772,7 +632,6 @@ export const LoginUser = (email, password, router) => async (dispatch) => {
         }
       })
       .catch(function (error) {
-        console.log(error);
         toast.error(error, {
           position: "bottom-center",
           autoClose: 5000,
@@ -798,7 +657,6 @@ export const getAuthToken = (authToken, router) => async (dispatch, state) => {
 
   axios(config)
     .then(function (response) {
-      console.log("workd", response);
       if (response.data.successful) {
         dispatch({
           type: "RegisterUser",
@@ -828,7 +686,6 @@ export const getAuthToken = (authToken, router) => async (dispatch, state) => {
         draggable: true,
         progress: undefined,
       });
-      console.log(error);
     });
 };
 
@@ -842,7 +699,6 @@ export const UpdateUserPassword =
         email: state().userDetails.email,
       },
     });
-
     var config = {
       method: "post",
       url: `${URL}/profile/passwordreset`,
@@ -855,7 +711,6 @@ export const UpdateUserPassword =
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
         if (response.data.successful) {
           toast.success("Password updated successfully!", {
             position: "bottom-center",
