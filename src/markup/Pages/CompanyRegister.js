@@ -15,7 +15,6 @@ export default function CompanyRegister({ setIsCurrentTab }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
-
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +22,6 @@ export default function CompanyRegister({ setIsCurrentTab }) {
   const [modal, setModal] = useState("");
   const [otp, setOTP] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
-
   const callRegisterUser = async () => {
     if (password.length < 8 || CnfrmPassword.length < 8) {
       toast.error("Password length should be at least 8 characters!", {
@@ -49,7 +47,7 @@ export default function CompanyRegister({ setIsCurrentTab }) {
         )
       );
     } else {
-      toast.error(`Passwords don't match!`, {
+      toast.error(`Passwords did not match!`, {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -60,13 +58,11 @@ export default function CompanyRegister({ setIsCurrentTab }) {
       });
       setIsDisabled(false);
     }
-    // router.push("/registration/");
   };
-
   const callVerifyOTP = async () => {
     if (otp == state.otp) await dispatch(verifyCompany(setModal, history));
     else
-      toast.error("OTP not matched!", {
+      toast.error("OTP did not match!", {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -90,23 +86,11 @@ export default function CompanyRegister({ setIsCurrentTab }) {
       },
       value: companyName,
     },
-    // {
-    //   name: "lastName",
-    //   required: "true",
-    //   className: "form-control ",
-    //   placeholder: "Your last name",
-    //   type: "text",
-    //   label: "Last Name",
-    //   onChange: (e) => {
-    //     setLName(e.target.value);
-    //   },
-    //   value: lname,
-    // },
     {
       name: "email",
       required: "true",
       className: "form-control ",
-      placeholder: "Your email",
+      placeholder: "Your Email",
       type: "text",
       label: "Email",
       onChange: (e) => {
@@ -118,7 +102,7 @@ export default function CompanyRegister({ setIsCurrentTab }) {
       name: "password",
       required: "true",
       className: "form-control ",
-      placeholder: "Your password",
+      placeholder: "Your Password",
       type: "password",
       label: "Password",
       onChange: (e) => {
@@ -194,15 +178,7 @@ export default function CompanyRegister({ setIsCurrentTab }) {
         style={{}}
         className="align-items-baseline d-flex justify-content-center"
       >
-        <div
-          className=" conatinerLogin tab-content nav"
-          // style={{
-          //   padding: "35px",
-          //   borderRadius: "11px",
-          //   border: "5px solid white",
-          //   borderRadius: 10,
-          // }}
-        >
+        <div className=" conatinerLogin tab-content nav">
           <form id="login" className="tab-pane active col-12 p-a0 ">
             <ul className="nav flexJustifyAround ">
               <li
@@ -263,16 +239,6 @@ export default function CompanyRegister({ setIsCurrentTab }) {
               >
                 Sign up
               </button>
-
-              {/* <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setModal(true);
-                        }}
-                        className="site-button mr-2 ml-2"
-                      >
-                        Open Modal
-                      </button> */}
             </div>
           </form>
         </div>
