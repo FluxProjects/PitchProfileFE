@@ -21,12 +21,8 @@ export const GetStateName = async (id, setStateName) => {
 
   await axios(config)
     .then(function (response) {
-      console.log("NWO test sttae", response.data.data[0].name);
       if (response.data.successful) {
-        // if (setVal) {
-        console.log("yesys", response.data.data);
         setStateName(response.data.data[0].name);
-        // }
         return response.data.data[0].name;
       } else {
         toast.error(response.data.message, {
@@ -54,12 +50,8 @@ export const GetCityName = async (id, setCityName) => {
 
   await axios(config)
     .then(function (response) {
-      console.log("NWO test city", response.data.data[0].name);
       if (response.data.successful) {
-        console.log("response.data.data city", response.data.data);
-        // if (setVal) {
         setCityName(response.data.data[0].name);
-        // }
         return response.data.data[0].name;
       } else {
         toast.error(response.data.message, {
@@ -87,11 +79,8 @@ export const GetCountryName = async (id, setVal) => {
 
   await axios(config)
     .then(function (response) {
-      console.log("NWO ", response.data.data[0].name);
       if (response.data.successful) {
-        // if (setVal) {
         setVal(response.data.data[0].name);
-        // }
         return response.data.data[0].name;
       } else {
         toast.error(response.data.message, {
@@ -127,7 +116,6 @@ export const SortSameVals = (a) => {
 
 export const daysSinceGivenDate = (date) => {
   var seconds = Math.floor((new Date() - date) / 1000);
-
   var interval = seconds / 31536000;
 
   if (interval > 1) {
@@ -168,6 +156,7 @@ export const validateEmail = (email) => {
 export const validatePhoneNumber = (input_str) => {
   return /^[0-9]+$/.test(input_str);
 };
+
 export const validateURL = (str) => {
   var regex = new RegExp("/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-s./0-9]*$/g");
   var without_regex = new RegExp(
@@ -189,7 +178,7 @@ export const isValidUrl = (urlString) => {
       "(\\?[;&a-z\\d%_.~+=-]*)?" + // validate query string
       "(\\#[-a-z\\d_]*)?$",
     "i"
-  ); // validate fragment locator
+  );
   return !!urlPattern.test(urlString);
 };
 
