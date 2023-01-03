@@ -27,12 +27,10 @@ var bnr = require("./../../images/banner/bnr1.jpg");
 export default function BrowsejobgridCard({
   item,
   index,
-
   isWishlistPage,
 }) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
   const [isLiked, setIsLiked] = useState();
 
   useEffect(() => {
@@ -41,10 +39,7 @@ export default function BrowsejobgridCard({
 
   const checkLiked = () => {
     const val = state.wishlist.find((element) => {
-      console.log("istrue yahoo", element.job_id, item?.id);
-
       if (element.job_id == item?.id) {
-        console.log("istrue isliked yahoo");
         return true;
       }
       return false;
@@ -53,8 +48,6 @@ export default function BrowsejobgridCard({
   };
 
   const onClickLike = async () => {
-    console.log("called acndid");
-
     await dispatch(AddWishlistCandidate(item?.id));
   };
 
@@ -117,13 +110,7 @@ export default function BrowsejobgridCard({
                   },
                 }}
               >
-                {/* {isWishlistPage
-                  ? item?.job_title.substring(0, 7)
-                  : item?.job_title} */}
                 {item?.job_title}
-
-                {/* {isWishlistPage ? item?.job_title?.length > 7 && "... " : ""} */}
-                {/* {item?.seniority_level != null && "- "} */}
               </Link>
 
               {/* <br /> */}
@@ -143,9 +130,7 @@ export default function BrowsejobgridCard({
                         (x) => x?.id == item?.seniority_level
                       )
                     ].name}
-                {/* {item.department?.name} */}
               </div>
-              {/* <br /> */}
               <div>
                 <Link
                   to={{
@@ -166,7 +151,6 @@ export default function BrowsejobgridCard({
                     }}
                   >
                     {item?.company?.company_name}
-                    {/* {item.department?.name} */}
                   </span>
                 </Link>
               </div>
@@ -183,7 +167,6 @@ export default function BrowsejobgridCard({
               >
                 <i className="fa fa-map-marker"></i>
                 {item?.city?.name}
-                {/* {item?.city?.name?.length > 6 && "... "} */}
                 {item?.city && ", "}
                 {item?.state?.name}
                 {item?.state?.name?.length > 6 && "... "}
@@ -218,9 +201,7 @@ export default function BrowsejobgridCard({
 
         <div className="d-flex">
           <div className="mb-0  cardGridFont job-time mr-auto">
-            {/* <Link to={""}> */}
             <span>{daysSinceGivenDate(new Date(item?.created_at))} ago</span>
-            {/* </Link> */}
           </div>
           <div className="mb-0 cardGridFont salary-bx">
             <span style={{ fontSize: 15 }}>
