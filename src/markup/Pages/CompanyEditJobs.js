@@ -30,9 +30,7 @@ import ReactQuill from "react-quill";
 
 export default function Componypostjobs(props) {
   const router = useHistory();
-
   const { item } = props.location.state;
-  console.log("irtemskjnes", item);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [city, setCity] = useState(item.city?.id);
@@ -51,9 +49,6 @@ export default function Componypostjobs(props) {
   const [shiftVal, setShiftVal] = useState(
     item?.preferred_shift ? item?.preferred_shift : 1
   );
-
-  console.log("item?.employment_typeitem?.employment_type", item);
-
   const [jobTitle, setJobTitle] = useState(item?.job_title);
   const [jobType, setJobType] = useState(item?.job_type);
   const [Expirience, setExpirience] = useState(item?.expirience);
@@ -67,28 +62,20 @@ export default function Componypostjobs(props) {
   const [perks, setPerks] = useState(item?.the_perks);
   const [video, setVideo] = useState(item?.video);
   const [UpdatedVideo, setUpdatedVideo] = useState(false);
-
   const [TopSkill1, setTopSkill1] = useState(1);
-
   const [TopSkillName1, setTopSkillName1] = useState("");
   const [TopSkillName2, setTopSkillName2] = useState("");
   const [TopSkillName3, setTopSkillName3] = useState("");
   const [TopSkillName4, setTopSkillName4] = useState("");
   const [TopSkillName5, setTopSkillName5] = useState("");
-
   const [handleDisplay, sethandleDisplay] = useState(1);
-
   const [TopSkill2, setTopSkill2] = useState(null);
   const [TopSkill3, setTopSkill3] = useState(null);
   const [TopSkill4, setTopSkill4] = useState(null);
   const [TopSkill5, setTopSkill5] = useState(null);
-
   const [OtherSkills, setOtherSkills] = useState(null);
-
   const [fieldAlert, setFieldAlert] = useState(false);
   const [FieldText, setFieldText] = useState("");
-
-  // const [perks, setPerks] = useState("");
 
   useEffect(() => {
     console.log("testing the props", item);
@@ -99,12 +86,8 @@ export default function Componypostjobs(props) {
   const callAddNewSkill = async (OtherSkill, setItSkills) => {
     await dispatch(AddNewSkill(OtherSkill, setItSkills));
   };
-
   const CallGetDropDown = async () => {
     await dispatch(GetCountries());
-    // await dispatch(GetStates(230));
-    // await dispatch(GetCities(3866));
-
     if (state.departments.length < 1) {
       await dispatch(GetDepartments());
     }
@@ -113,7 +96,6 @@ export default function Componypostjobs(props) {
     }
     CallGetCities(item?.state_id);
     CallGetStates(item?.country_id);
-
     setLoading(false);
   };
   const CallGetCities = async (stateId) => {
@@ -122,162 +104,92 @@ export default function Componypostjobs(props) {
   const CallGetStates = async (stateId) => {
     await dispatch(GetStates(stateId, setStateName, CallGetCities));
   };
-
   const callUpdateJobPost = async () => {
     setLoading(true);
-
-    // console.log("UpdatedVideo", UpdatedVideo);
-    // return;
-
     if (city == "" || city == null) {
-      console.log("city", city);
       setLoading(false);
       setFieldText("Enter City Name");
-
       setFieldAlert(true);
       return;
     }
     if (stateName == "" || stateName == null) {
-      console.log("stateName", stateName);
       setLoading(false);
       setFieldText("Enter State Name");
-
       setFieldAlert(true);
       return;
     }
     if (country == "" || country == null) {
-      console.log("country", country);
       setLoading(false);
       setFieldText("Enter Country Name");
-
       setFieldAlert(true);
       return;
     }
     if (jobTitle == "" || jobTitle == null) {
-      console.log("jobTitle");
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter Job title");
       return;
     }
     if (salaryRangeVal == null || salaryRangeVal == null) {
-      console.log("salaryRangeVal", salaryRangeVal);
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter Salary range");
-
       return;
     }
     if (seniorityLevelVal == null || seniorityLevelVal == null) {
-      console.log("seniorityLevelVal");
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter Seniority level");
-
       return;
     }
-
     if (jobType == null || jobType == null) {
-      console.log("jobType");
-
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter Job type");
-
       return;
     }
     if (employmentType == "" || employmentType == null) {
-      console.log("employmentType");
-
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter Employment type");
-
       return;
     }
-
     if (role == "" || role == null || role == "<p><br></p>") {
-      console.log("role", role);
-
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter your job description");
-
       return;
     }
     if (keyRes == "" || keyRes == null || keyRes == "<p><br></p>") {
-      console.log("keyRes");
-
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter key responsiblities");
-
       return;
     }
     if (closingDate == "" || closingDate == null) {
-      console.log("closingDate");
-
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter key closing date");
-
       return;
     }
     if (department == "" || department == null) {
-      console.log("department");
-
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter department");
-
       return;
     }
     if (lookingFor == "" || lookingFor == null || lookingFor == "<p><br></p>") {
-      console.log("lookingFor");
-
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please describe what are you looking for.");
-
       return;
     }
     if (perks == "" || perks == null || perks == "<p><br></p>") {
-      console.log("Perks");
-
       setLoading(false);
       setFieldAlert(true);
       setFieldText("Please enter Perks");
-
       return;
     }
-
-    // // if (UpdatedVideo) {
-    // await dispatch(
-    //   UpdateJobWithVideoPost(
-    //     item?.id,
-    //     jobTitle,
-    //     jobType,
-    //     employmentType,
-    //     minSalary,
-    //     maxSalary,
-    //     city,
-    //     stateName,
-    //     country,
-    //     role,
-    //     keyRes,
-    //     lookingFor,
-    //     perks,
-    //     closingDate,
-    //     Expirience,
-    //     department,
-    //     shiftVal,
-    //     seniorityLevelVal,
-    //     salaryRangeVal,
-    //     state.SaveJobVideo
-    //   )
-    // );
-    // }
-    // else {
     setFieldAlert(false);
     await dispatch(
       UpdateJobPost(
@@ -304,8 +216,6 @@ export default function Componypostjobs(props) {
         router
       )
     );
-    // }
-
     setLoading(false);
   };
 
@@ -345,7 +255,6 @@ export default function Componypostjobs(props) {
                             </label>
                             <TextInputModal
                               onChange={(e) => {
-                                console.log(e.target.value);
                                 setJobTitle(e.target.value);
                               }}
                               value={jobTitle}
@@ -359,7 +268,6 @@ export default function Componypostjobs(props) {
                             <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
-                                console.log("eee", e.target.value);
                                 setDepartment(e.target.value);
                               }}
                               value={department}
@@ -373,7 +281,6 @@ export default function Componypostjobs(props) {
                             <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
-                                console.log("eee", e.target.value);
                                 setSeniorityLevelVal(e.target.value);
                               }}
                               value={seniorityLevelVal}
@@ -390,7 +297,6 @@ export default function Componypostjobs(props) {
                             </label>
                             <DropDownModalComponent
                               onChange={(e) => {
-                                console.log("eee", e.target.value);
                                 setSalaryRangeVal(e.target.value);
                               }}
                               value={salaryRangeVal}
@@ -398,26 +304,12 @@ export default function Componypostjobs(props) {
                             />
                           </div>
                         </div>
-                        {/* <div className="col-lg-6 col-md-6">
-                          <div className="form-group">
-                            <label>Shift</label>
-                            <DropDownModalComponent
-                              onChange={(e) => {
-                                console.log("eee", e.target.value);
-                                setShiftVal(e.target.value);
-                              }}
-                              value={shiftVal}
-                              options={shiftDrop}
-                            />
-                          </div>
-                        </div> */}
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Job Type</label>{" "}
                             <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
-                                console.log("eee", e.target.value);
                                 setJobType(e.target.value);
                               }}
                               value={jobType}
@@ -425,14 +317,12 @@ export default function Componypostjobs(props) {
                             />
                           </div>
                         </div>
-
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group">
                             <label>Employment Type</label>{" "}
                             <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
-                                console.log("eee", e.target.value);
                                 setEmploymentType(e.target.value);
                               }}
                               value={employmentType}
@@ -447,7 +337,6 @@ export default function Componypostjobs(props) {
                             <TextInputModal
                               type={"number"}
                               onChange={(e) => {
-                                console.log(e.target.value);
                                 setExpirience(e.target.value);
                               }}
                               value={Expirience}
@@ -456,33 +345,6 @@ export default function Componypostjobs(props) {
                           </div>
                         </div>
 
-                        {/* <div className="col-lg-6 col-md-6">
-                          <div className="form-group">
-                            <label>Minimum Salary ($):</label>
-                            <TextInputModal
-                              onChange={(e) => {
-                                console.log(e.target.value);
-                                setMinSalary(e.target.value);
-                              }}
-                              value={minSalary}
-                              placeholder="e.g. 10000"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-6 col-md-6">
-                          <div className="form-group">
-                            <label>Maximum Salary ($):</label>
-                            <TextInputModal
-                              onChange={(e) => {
-                                console.log(e.target.value);
-                                setMaxSalary(e.target.value);
-                              }}
-                              value={maxSalary}
-                              placeholder="e.g. 20000"
-                            />
-                          </div>
-                        </div> */}
-
                         <div className="col-lg-6 col-md-6 col-sm-12">
                           <div className="form-group">
                             <label>Country:</label>{" "}
@@ -490,7 +352,6 @@ export default function Componypostjobs(props) {
                             {/* <DropdownSearch items={state.countries} /> */}
                             <DropDownModalComponent
                               onChange={(e) => {
-                                console.log("eee", e.target.value);
                                 CallGetStates(e.target.value);
                                 setCity(-1);
                                 setCountry(e.target.value);
@@ -507,11 +368,8 @@ export default function Componypostjobs(props) {
                             <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
-                                console.log("state", e.target.value);
                                 CallGetCities(e.target.value);
-
                                 setStateName(e.target.value);
-                                //   setLastUsed(e.target.value);
                               }}
                               value={stateName}
                               options={state.states}
@@ -524,9 +382,7 @@ export default function Componypostjobs(props) {
                             <span className="text-danger"> *</span>
                             <DropDownModalComponent
                               onChange={(e) => {
-                                console.log("City ", e.target.value);
                                 setCity(e.target.value);
-                                //   setLastUsed(e.target.value);
                               }}
                               value={city}
                               options={state.cities}
@@ -542,7 +398,6 @@ export default function Componypostjobs(props) {
                             </label>
                             <TextInputModal
                               onChange={(e) => {
-                                console.log(e.target.value);
                                 setClosingDate(e.target.value);
                               }}
                               type={"date"}
@@ -553,20 +408,16 @@ export default function Componypostjobs(props) {
 
                         <div className="col-lg-6 col-md-6"></div>
 
-                        {/* {handleDisplay >= 0 && ( */}
                         <>
                           <div className="col-lg-6 col-md-12">
                             <div className="form-group">
                               <label>
                                 Top Skill 1:
-                                {/* <span className="text-danger"> *</span> */}
                               </label>
                               <select
                                 value={TopSkill1}
                                 onChange={(e) => {
-                                  console.log("ret", e.target.value);
                                   setTopSkill1(e.target.value);
-
                                   var c =
                                     state?.skills.findIndex(
                                       (x) => x?.id == e.target.value
@@ -651,12 +502,10 @@ export default function Componypostjobs(props) {
                             <div className="form-group">
                               <label>
                                 Top Skill 2:
-                                {/* <span className="text-danger"> *</span> */}
                               </label>
                               <select
                                 value={TopSkill2}
                                 onChange={(e) => {
-                                  console.log("ret", e.target.value);
                                   setTopSkill2(e.target.value);
 
                                   var c =
@@ -737,21 +586,8 @@ export default function Componypostjobs(props) {
                             <div className="col-md-6 col-lg-6" />
                           )}
 
-                          {/* <div className="col-lg-6 col-md-12">
-                              <div
-                                onClick={() => {
-                                  setTopSkill3(1);
-                                  sethandleDisplay(3);
-                                }}
-                                className="site-button add-btn button-sm"
-                              >
-                                <i className="fa fa-plus m-r5"></i> Add
-                              </div>
-                            </div> */}
                         </>
-                        {/* )} */}
 
-                        {/* {handleDisplay >= 3 && ( */}
                         <>
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
@@ -762,9 +598,7 @@ export default function Componypostjobs(props) {
                               <select
                                 value={TopSkill3}
                                 onChange={(e) => {
-                                  console.log("ret", e.target.value);
                                   setTopSkill3(e.target.value);
-
                                   var c =
                                     state?.skills.findIndex(
                                       (x) => x?.id == e.target.value
@@ -842,32 +676,17 @@ export default function Componypostjobs(props) {
                           ) : (
                             <div className="col-md-6 col-lg-6" />
                           )}
-                          {/* <div className="col-lg-6 col-md-12">
-                              <div
-                                onClick={() => {
-                                  setTopSkill4(1);
-                                  sethandleDisplay(4);
-                                }}
-                                className="site-button add-btn button-sm"
-                              >
-                                <i className="fa fa-plus m-r5"></i> Add
-                              </div>
-                            </div> */}
                         </>
-                        {/* )} */}
 
-                        {/* {handleDisplay >= 4 && ( */}
                         <>
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                               <label>
                                 Top Skill 4:
-                                {/* <span className="text-danger"> *</span> */}
                               </label>
                               <select
                                 value={TopSkill4}
                                 onChange={(e) => {
-                                  console.log("ret", e.target.value);
                                   setTopSkill4(e.target.value);
 
                                   var c =
@@ -947,34 +766,18 @@ export default function Componypostjobs(props) {
                           ) : (
                             <div className="col-md-6 col-lg-6" />
                           )}
-                          {/* <div className="col-lg-6 col-md-12">
-                              <div
-                                onClick={() => {
-                                  setTopSkill5(1);
-                                  sethandleDisplay(5);
-                                }}
-                                className="site-button add-btn button-sm"
-                              >
-                                <i className="fa fa-plus m-r5"></i> Add
-                              </div>
-                            </div> */}
                         </>
-                        {/* )} */}
 
-                        {/* {handleDisplay >= 5 && ( */}
                         <>
                           <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                               <label>
                                 Top Skill 5:
-                                {/* <span className="text-danger"> *</span> */}
                               </label>
                               <select
                                 value={TopSkill5}
                                 onChange={(e) => {
-                                  console.log("ret", e.target.value);
                                   setTopSkill5(e.target.value);
-
                                   var c =
                                     state?.skills.findIndex(
                                       (x) => x?.id == e.target.value
@@ -1061,7 +864,6 @@ export default function Componypostjobs(props) {
                               Job Description
                               <span className="text-danger"> *</span>
                             </label>
-
                             <ReactQuill
                               className="quillEditor"
                               value={role}
@@ -1110,12 +912,10 @@ export default function Componypostjobs(props) {
                             />
                           </div>
                         </div>
-
                         <div className=" col-lg-12 col-md-12">
                           <AttachVideoCompanyJob
                             isFullCol={true}
                             setVideoFile={(e) => {
-                              console.log("files", e[0]);
                               setUpdatedVideo(true);
                               setVideo(e);
                             }}
@@ -1142,27 +942,6 @@ export default function Componypostjobs(props) {
                           Loading...
                         </button>
                       )}
-                      {/* {!loading ? (
-                        <Link
-                          to={{
-                            pathname: "job-detail",
-                            state: {
-                              company_id: state.SavePreviewPost?.company_id,
-                              post_id: state.SavePreviewPost?.id,
-                            },
-                          }}
-                          className="site-button  m-b30"
-                        >
-                          Preview
-                        </Link>
-                      ) : (
-                        <button
-                          type="button"
-                          className="site-button mr-4 m-b30"
-                        >
-                          Loading...
-                        </button>
-                      )} */}
                     </form>
                   </div>
                 </div>
