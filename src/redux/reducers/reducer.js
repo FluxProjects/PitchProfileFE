@@ -1,5 +1,5 @@
 const initialState = {
-  //  Auth actions
+  //  Auth Actions
   userDetails: {},
   authToken: "",
   pedningActions: [],
@@ -9,9 +9,9 @@ const initialState = {
   AllUserData: [],
   isChatModalUp: false,
   RoomNameProp: "",
-
   GetAllCandidatesNames: [],
-  // messages
+  
+  // Messages
   messagesChat: [],
   myRooms: [],
   IsReadLength: 0,
@@ -32,14 +32,13 @@ const initialState = {
   userState: {},
   userCity: {},
   userCountry: {},
-
   organizationDrop: [],
   AllCompanyNames: [],
   AllCityJobNames: [],
   AllJobNames: [],
   DesignationDrop: [],
 
-  // Candidate my resume
+  // Candidate Resume
   candidateSkills: [],
   candidateEducations: [],
   candidateEmployments: [],
@@ -49,10 +48,9 @@ const initialState = {
   candidateSocialProfiles: [],
   candidateLanguages: [],
   candidateDesiredCareer: {},
-
   singleUserData: {},
 
-  // Browsecandicate actions
+  // Browse Candidate
   allCandidates: [],
   backupCandidates: [],
 
@@ -64,7 +62,7 @@ const initialState = {
   BackupAlljobs: [],
   SavePreviewPost: {},
   SaveJobVideo: "",
-
+  
   PreviewSingleCompany: {},
 
   wishlist: [],
@@ -79,7 +77,6 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, ...rest };
     case "setPendingAction":
       return { ...state, pedningActions: rest.data };
-    //  Auth actions
     case "RegisterUser":
       return { ...state, userDetails: rest.data };
     case "SetOTP":
@@ -90,7 +87,6 @@ const changeState = (state = initialState, { type, ...rest }) => {
     case "setAllUserData": {
       return { ...state, AllUserData: rest.data };
     }
-
     case "myRoomsUpdated": {
       return { ...state, myRoomsUpdated: rest.data };
     }
@@ -100,14 +96,12 @@ const changeState = (state = initialState, { type, ...rest }) => {
     case "LogoutUser":
       return {
         ...state,
-
         userDetails: {},
         authToken: "",
         pedningActions: [],
-
         wishlist: [],
 
-        // Dropdown data actions
+        // Dropdown Data
         languages: [],
         countries: [],
         states: [],
@@ -120,7 +114,7 @@ const changeState = (state = initialState, { type, ...rest }) => {
         userCity: {},
         userCountry: {},
 
-        // Candidate my resume
+        // Candidate Resume
         candidateSkills: [],
         candidateEducations: [],
         candidateEmployments: [],
@@ -131,7 +125,7 @@ const changeState = (state = initialState, { type, ...rest }) => {
         candidateLanguages: [],
         candidateDesiredCareer: {},
 
-        // Browsecandicate actions
+        // Browse Candidate
         allCandidates: [],
         backupCandidates: [],
 
@@ -144,34 +138,18 @@ const changeState = (state = initialState, { type, ...rest }) => {
       };
     case "SetAuthToken":
       return { ...state, authToken: rest.data };
-
     case "GetAllCandidatesNames":
-      return {
-        ...state,
-        GetAllCandidatesNames: rest.data,
-      };
-    // Dropdown data actions
+      return { ...state, GetAllCandidatesNames: rest.data };
+      
+    // Dropdown Data
     case "SetOrganizationDrop":
-      return {
-        ...state,
-        organizationDrop: rest.data,
-        DesignationDrop: rest.DesignationDrop,
-      };
+      return { ...state, organizationDrop: rest.data, DesignationDrop: rest.DesignationDrop };
     case "AllCompanyNames":
-      return {
-        ...state,
-        AllCompanyNames: rest.data,
-      };
+      return { ...state, AllCompanyNames: rest.data };
     case "AllJobNames":
-      return {
-        ...state,
-        AllJobNames: rest.data,
-      };
+      return { ...state, AllJobNames: rest.data };
     case "AllCityJobNames":
-      return {
-        ...state,
-        AllCityJobNames: rest.data,
-      };
+      return { ...state, AllCityJobNames: rest.data };
     case "setLangs":
       return { ...state, languages: rest.data };
     case "setCountries":
@@ -186,6 +164,16 @@ const changeState = (state = initialState, { type, ...rest }) => {
       return { ...state, industries: rest.data };
     case "GetSkills":
       return { ...state, skills: rest.data };
+    case "GetEducationLevels":
+      return { ...state, educationLevels: rest.data };
+    case "GetUserState":
+      return { ...state, userState: rest.data };
+    case "GetUserCountry":
+      return { ...state, userCountry: rest.data };
+    case "GetUserCity":
+      return { ...state, userCity: rest.data };
+      
+    //Chat
     case "messagesChat":
       return { ...state, messagesChat: rest.data };
     case "myRooms":
@@ -199,166 +187,65 @@ const changeState = (state = initialState, { type, ...rest }) => {
     case "SingleRoomId":
       return { ...state, SingleRoomId: rest.data };
 
-    case "GetEducationLevels":
-      return { ...state, educationLevels: rest.data };
-    case "GetUserState":
-      return { ...state, userState: rest.data };
-    case "GetUserCountry":
-      return { ...state, userCountry: rest.data };
-    case "GetUserCity":
-      return { ...state, userCity: rest.data };
-
-    //  Candidate my resume
+    //  Candidate Resume
     case "SetCandidateSkill":
-      return {
-        ...state,
-        candidateSkills: rest.data,
-      };
+      return { ...state, candidateSkills: rest.data };
     case "SetCandidateEducation":
-      return {
-        ...state,
-        candidateEducations: rest.data,
-      };
+      return { ...state, candidateEducations: rest.data };
     case "SetCandidateEmployment":
-      return {
-        ...state,
-        candidateEmployments: rest.data,
-      };
+      return { ...state, candidateEmployments: rest.data };
     case "SetCandidateProject":
-      return {
-        ...state,
-        candidateProjects: rest.data,
-      };
+      return { ...state, candidateProjects: rest.data };
     case "SetCandidateCertificate":
-      return {
-        ...state,
-        candidateCertificates: rest.data,
-      };
-
+      return { ...state, candidateCertificates: rest.data };
     case "SetCandidateReference":
-      return {
-        ...state,
-        candidateReferences: rest.data,
-      };
-
+      return { ...state, candidateReferences: rest.data };
     case "SetCandidateSocialProfile":
-      return {
-        ...state,
-        candidateSocialProfiles: rest.data,
-      };
+      return { ...state, candidateSocialProfiles: rest.data };
     case "SetDesiredCareer":
-      return {
-        ...state,
-        candidateDesiredCareer: rest.data,
-      };
+      return { ...state, candidateDesiredCareer: rest.data };
     case "SetCandidateLanguages":
-      return {
-        ...state,
-        candidateLanguages: rest.data,
-      };
+      return { ...state, candidateLanguages: rest.data };
 
-    // Browse candidates page actions
+    // Browse Candidate
     case "GetAllCandidates":
-      return {
-        ...state,
-        allCandidates: rest.data,
-      };
+      return { ...state, allCandidates: rest.data };
     case "BackupAllCandidates":
-      return {
-        ...state,
-        backupCandidates: rest.data,
-      };
+      return { ...state, backupCandidates: rest.data };
 
-    // Job posts
+    // Job Posts
     case "PreviewPost":
-      return {
-        ...state,
-        PreviewPost: rest.data,
-      };
+      return { ...state, PreviewPost: rest.data };
     case "SaveJobVideo":
-      return {
-        ...state,
-        SaveJobVideo: rest.data,
-      };
+      return { ...state, SaveJobVideo: rest.data };
     case "MyPostedJobs":
-      return {
-        ...state,
-        MyPostedJobs: rest.data,
-      };
+      return { ...state, MyPostedJobs: rest.data };
     case "MyPostedJobsBackup":
-      return {
-        ...state,
-        MyPostedJobsBackup: rest.data,
-      };
-
+      return { ...state, MyPostedJobsBackup: rest.data };
     case "Alljobs":
-      return {
-        ...state,
-        Alljobs: rest.data,
-        BackupAlljobs: rest.data,
-      };
+      return { ...state, Alljobs: rest.data, BackupAlljobs: rest.data };
     case "FilterAllJobs":
-      return {
-        ...state,
-        Alljobs: rest.data,
-      };
+      return { ...state, Alljobs: rest.data };
     case "SavePreviewPost":
-      return {
-        ...state,
-        SavePreviewPost: rest.data,
-      };
-
+      return { ...state, SavePreviewPost: rest.data };
     case "AllCompanies":
-      return {
-        ...state,
-        AllCompanies: rest.data,
-      };
+      return { ...state, AllCompanies: rest.data };
     case "BackupAllCompanies":
-      return {
-        ...state,
-        BackupAllCompanies: rest.data,
-      };
-
+      return { ...state, BackupAllCompanies: rest.data };
     case "PreviewSingleCompany":
-      return {
-        ...state,
-        PreviewSingleCompany: rest.data,
-      };
-
+      return { ...state, PreviewSingleCompany: rest.data };
     case "GetJobApplications":
-      return {
-        ...state,
-        JobApplications: rest.data,
-      };
+      return { ...state, JobApplications: rest.data };
     case "GetBackupJobApplications":
-      return {
-        ...state,
-        JobApplicationsBackup: rest.data,
-      };
-
+      return { ...state, JobApplicationsBackup: rest.data };
     case "GetFeaturedJobs":
-      return {
-        ...state,
-        FeaturedJobs: rest.data,
-      };
-
+      return { ...state, FeaturedJobs: rest.data };
     case "GetWishlist":
-      return {
-        ...state,
-        wishlist: rest.data,
-      };
-
+      return { ...state, wishlist: rest.data };
     case "CoverLetterForApplying":
-      return {
-        ...state,
-        CoverLetterForApplying: rest.data,
-      };
+      return { ...state, CoverLetterForApplying: rest.data };
     case "AddDocApply":
-      return {
-        ...state,
-        AddDocApply: rest.data,
-      };
-
+      return { ...state, AddDocApply: rest.data };
     default:
       return state;
   }
