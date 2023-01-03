@@ -34,13 +34,10 @@ export default function Jobdetail(props) {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
   const [otherId, setOtherId] = useState("");
-
   const router = useHistory();
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
   const onClickLetter = () => {};
-
   const handleClose = () => {
     setShow(false);
   };
@@ -59,7 +56,6 @@ export default function Jobdetail(props) {
 
     setOtherId(id);
 
-    console.log("window.location.href", id);
     await dispatch(GetSingleCompany(id));
     await dispatch(GetFeaturedJobs(id));
     setLoading(false);
@@ -80,12 +76,8 @@ export default function Jobdetail(props) {
 
   const callGetRooms = async (id) => {
     if (state.userDetails?.company_name) {
-      console.log("Company called");
-
       await dispatch(getMyRoomsCompany());
     } else {
-      console.log("Candidate called");
-
       await dispatch(getMyRoomsCandidate());
     }
   };
@@ -111,7 +103,6 @@ export default function Jobdetail(props) {
               </div>
             </div>
           </div>
-
           <div className="content-block">
             <div className="section-full content-inner-1">
               <div className="container">
@@ -172,7 +163,6 @@ export default function Jobdetail(props) {
                               <li>
                                 <i className="fa fa-phone"></i>
                                 <p className="mt-1 text-black">
-                                  {/* Phone */}
                                   {state.PreviewSingleCompany?.phone}
                                 </p>{" "}
                               </li>
@@ -309,27 +299,6 @@ export default function Jobdetail(props) {
                         />
                       </div>
                     </div>
-
-                    {/* <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Upload Resume</label>
-                        <UploadDataComponent
-                          onChange={(e) => {
-                            console.log("e", e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-12 col-md-12">
-                      <div className="form-group">
-                        <label>Upload video</label>
-                        <UploadDataComponent
-                          onChange={(e) => {
-                            console.log("e", e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div> */}
                   </div>
                 </form>
               </div>
@@ -343,8 +312,6 @@ export default function Jobdetail(props) {
                   Cancel
                 </button>
                 <Link
-                  // to={"/jobs-applied-job"}
-
                   type="button"
                   className="site-button"
                 >
