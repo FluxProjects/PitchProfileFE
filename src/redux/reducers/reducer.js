@@ -90,9 +90,9 @@ const changeState = (state = initialState, { type, ...rest }) => {
     case "myRoomsUpdated": {
       return { ...state, myRoomsUpdated: rest.data };
     }
-    case "RoomNameProp":
+    case "RoomNameProp":  {
       return { ...state, RoomNameProp: rest.data };
-
+    }
     case "LogoutUser":
       return {
         ...state,
